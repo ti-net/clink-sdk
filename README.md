@@ -1,5 +1,5 @@
 # Clink-SDK
-欢迎使用天润融通 “全能行” 客服云开发者工具套件（SDK）。SDK 对 API 接口调用进行了封装，让您不用复杂编程即可实现“全能行”客服云与自有系统的集成，管理“全能行”客服云的数据配置、呼叫控制、通话记录等各种资源。
+欢迎使用天润融通 “智慧服务平台” 开发者工具套件（SDK）。SDK 对 API 接口调用进行了封装，让您不用复杂编程即可实现“全能行”客服云与自有系统的集成，管理“全能行”客服云的数据配置、呼叫控制、通话记录等各种资源。
 
 ## 环境准备
 和直接调用 API 接口一样，您也需要一个访问密钥：AccessKeyID/AccessKeySecret。 访问密钥对可以通过登录系统管理后台，在【系统管理-系统对接-接口密钥】模块自助生成。每个访问密钥对可以设置不同的接口访问控制权限。
@@ -9,7 +9,7 @@
 如果您使用 Apache Maven 来管理 Java 项目，只需在项目的 pom.xml 中文件加入相应的依赖项即可
 ```
 <dependency>
-    <groupId>com.tinet</groupId>
+    <groupId>com.ti-net</groupId>
     <artifactId>clink-serversdk</artifactId>
     <version>2.0.0</version>
 </dependency>
