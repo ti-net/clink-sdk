@@ -1,0 +1,15 @@
+.settings
+.project
+.classpath
+/target/
+*/.settings
+*/.project
+*/.classpath
+*/.gitignore
+*/target/
+.tern-project
+*/.tern-project
+.idea/
+*/.idea
+*.iml
+*/*.iml
