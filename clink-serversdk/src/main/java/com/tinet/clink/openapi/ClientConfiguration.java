@@ -10,6 +10,8 @@ public class ClientConfiguration {
 
     private int port = 80;
 
+    private String scheme = "https";
+
     private String accessKeyId = null;
     private String accessKeySecret = null;
 
@@ -52,5 +54,13 @@ public class ClientConfiguration {
 
     public void setAccessKeySecret(String accessKeySecret) {
         this.accessKeySecret = accessKeySecret;
+    }
+
+    public String getScheme() {
+        return scheme;
+    }
+
+    public void setScheme(String scheme) {
+        this.scheme = scheme;
     }
 }
