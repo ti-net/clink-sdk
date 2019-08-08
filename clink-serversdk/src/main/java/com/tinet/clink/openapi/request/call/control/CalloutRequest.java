@@ -44,6 +44,12 @@ public class CalloutRequest extends AbstractRequestModel<CalloutResponse> {
      */
     private Integer customerTimeout;
 
+
+    /**
+     * 唯一id
+     */
+    private String requestUniqueId;
+
     /**
      * 用户自定义变量，json格式字符串，例如：{"key":"value"}，需要进行urlEncode。传入的值会在通话记录中进行展示
      */
@@ -127,6 +133,18 @@ public class CalloutRequest extends AbstractRequestModel<CalloutResponse> {
         this.userField = userField;
         if (userField != null) {
             putBodyParameter("userField", userField);
+        }
+    }
+
+    public String getRequestUniqueId() {
+        return requestUniqueId;
+    }
+
+    public void setRequestUniqueId(String requestUniqueId) {
+        this.requestUniqueId = requestUniqueId;
+
+        if (requestUniqueId != null) {
+            putBodyParameter("requestUniqueId", requestUniqueId);
         }
     }
 
