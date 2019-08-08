@@ -47,10 +47,10 @@ public class Client {
         httpClient = HttpClientBuilder.create().build();
 
         if (configuration.getPort() == 80) {
-            httpHost = HttpHost.create(this.configuration.getScheme() + "://" + this.configuration.getHost());
+            httpHost = new HttpHost(this.configuration.getHost(), -1, this.configuration.getScheme());
         } else {
-            httpHost = HttpHost.create(this.configuration.getScheme() + "://" + this.configuration.getHost() +
-                    ":" + configuration.getPort());
+            httpHost = new HttpHost(this.configuration.getHost(), this.configuration.getPort(),
+                    this.configuration.getScheme());
         }
     }
 
