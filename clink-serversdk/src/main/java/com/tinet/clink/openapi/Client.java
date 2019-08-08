@@ -1,5 +1,6 @@
 package com.tinet.clink.openapi;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tinet.clink.openapi.auth.Signer;
 import com.tinet.clink.openapi.exceptions.ClientException;
@@ -126,6 +127,7 @@ public class Client {
 
     private <T> T getHttpContentObject(HttpResponse response, Class<T> clazz) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         return objectMapper.readValue(response.getEntity().getContent(), clazz);
     }
 
