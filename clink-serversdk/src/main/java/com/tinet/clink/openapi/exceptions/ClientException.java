@@ -6,7 +6,7 @@ public class ClientException extends Exception {
     private String errCode;
     private String errMsg;
 
-    public ClientException(String errCode, String errMsg, String requestId) {
+    public ClientException(String requestId, String errCode, String errMsg) {
         this(errCode, errMsg);
         this.requestId = requestId;
     }
