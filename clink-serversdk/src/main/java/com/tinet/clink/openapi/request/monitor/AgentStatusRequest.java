@@ -26,7 +26,7 @@ public class AgentStatusRequest extends AbstractRequestModel<AgentStatusResponse
     /**
      * 座席状态
      */
-    private List<String> agentStates;
+    private List<String> agentStatus;
     /**
      * 置忙类型
      */
@@ -74,17 +74,17 @@ public class AgentStatusRequest extends AbstractRequestModel<AgentStatusResponse
         }
     }
 
-    public List<String> getAgentStates() {
-        return agentStates;
+    public List<String> getAgentStatus() {
+        return agentStatus;
     }
 
-    public void setAgentStates(List<String> agentStates) {
-        this.agentStates = agentStates;
-        if (agentStates != null) {
-            putQueryParameter("agentStates", agentStates);
+    public void setAgentStatus(List<String> agentStatus) {
+        this.agentStatus = agentStatus;
+        if (agentStatus != null) {
+            putQueryParameter("agentStatus", agentStatus);
         }
     }
-
+    
     public List<Integer> getPauseTypes() {
         return pauseTypes;
     }
