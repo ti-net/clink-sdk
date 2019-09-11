@@ -18,6 +18,12 @@ public class DescribeRecordFileUrlRequest extends AbstractRequestModel<DescribeR
      */
     private String mainUniqueId;
 
+    /**
+     *  非必选参数,不传该参数时获取普通mp3格式通话录音,
+     *  传参数时获取双轨录音的某一侧录音: 1-客户侧,2-座席侧
+     */
+    private Integer recordSide;
+
     public DescribeRecordFileUrlRequest() {
         super(PathEnum.DescribeRecordFileUrl.value(), HttpMethodType.GET);
     }
@@ -36,5 +42,16 @@ public class DescribeRecordFileUrlRequest extends AbstractRequestModel<DescribeR
     @Override
     public Class<DescribeRecordFileUrlResponse> getResponseClass() {
         return DescribeRecordFileUrlResponse.class;
+    }
+
+    public Integer getRecordSide() {
+        return recordSide;
+    }
+
+    public void setRecordSide(Integer recordSide) {
+        this.recordSide = recordSide;
+        if (recordSide != null) {
+            putQueryParameter("recordSide", recordSide);
+        }
     }
 }
