@@ -26,11 +26,11 @@ public class AgentStatusRequest extends AbstractRequestModel<AgentStatusResponse
     /**
      * 座席状态
      */
-    private List<String> agentStatus;
+    private String[] agentStatus;
     /**
      * 置忙类型
      */
-    private List<Integer> pauseTypes;
+    private Integer[] pauseTypes;
     /**
      * 偏移量，默认值为 0，最大范围 10000
      */
@@ -58,9 +58,10 @@ public class AgentStatusRequest extends AbstractRequestModel<AgentStatusResponse
     public void setQnos(String[] qnos) {
         this.qnos = qnos;
         if (qnos != null) {
-            putQueryParameter("qnos", qnos);
+            for (int i = 0; i < qnos.length; i++) {
+                putQueryParameter("qnos[" + i + "]", qnos[i]);
+            }
         }
-
     }
 
     public String[] getCnos() {
@@ -70,30 +71,36 @@ public class AgentStatusRequest extends AbstractRequestModel<AgentStatusResponse
     public void setCnos(String[] cnos) {
         this.cnos = cnos;
         if (cnos != null) {
-            putQueryParameter("cnos", cnos);
+            for (int i = 0; i < cnos.length; i++) {
+                putQueryParameter("cnos[" + i + "]", cnos[i]);
+            }
         }
     }
 
-    public List<String> getAgentStatus() {
+    public void setAgentStatus(String[] agentStatus) {
+        this.agentStatus = agentStatus;
+        if (agentStatus != null) {
+            for (int i = 0; i < agentStatus.length; i++) {
+                putQueryParameter("agentStatus[" + i + "]", agentStatus[i]);
+            }
+        }
+    }
+
+    public void setPauseTypes(Integer[] pauseTypes) {
+        this.pauseTypes = pauseTypes;
+        if (pauseTypes != null) {
+            for (int i = 0; i < pauseTypes.length; i++) {
+                putQueryParameter("pauseTypes[" + i + "]", pauseTypes[i]);
+            }
+        }
+    }
+
+    public String[] getAgentStatus() {
         return agentStatus;
     }
 
-    public void setAgentStatus(List<String> agentStatus) {
-        this.agentStatus = agentStatus;
-        if (agentStatus != null) {
-            putQueryParameter("agentStatus", agentStatus);
-        }
-    }
-    
-    public List<Integer> getPauseTypes() {
+    public Integer[] getPauseTypes() {
         return pauseTypes;
-    }
-
-    public void setPauseTypes(List<Integer> pauseTypes) {
-        this.pauseTypes = pauseTypes;
-        if (pauseTypes != null) {
-            putQueryParameter("pauseTypes", pauseTypes);
-        }
     }
 
     public Integer getOffset() {
