@@ -84,7 +84,9 @@ public enum PathEnum {
     DescribeRecordFileUrl("describe_record_file_url"),
     // 语音导航
     ListIvrs("list_ivrs"),
-    ListIvrNodes("list_ivr_nodes");
+    ListIvrNodes("list_ivr_nodes"),
+    // 座席状态监控
+    AgentStatus("agent_status");
 
 
     private String value;
