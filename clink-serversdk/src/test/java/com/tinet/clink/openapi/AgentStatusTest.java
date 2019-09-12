@@ -27,7 +27,7 @@ public class AgentStatusTest extends AbstractTest {
 
         AgentStatusResponse response = client.getResponseModel(request);
 
-        System.out.println(mapper.writeValueAsString(response.getAgentStatus()));
+        System.out.println(mapper.writeValueAsString(response));
 
     }
 
