@@ -1,6 +1,7 @@
 package com.tinet.clink.openapi.response.monitor;
 
 import com.tinet.clink.openapi.model.AgentStatusModel;
+import com.tinet.clink.openapi.response.PagedResponse;
 import com.tinet.clink.openapi.response.ResponseModel;
 
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
  * @author wangll
  * @date 2019/09/11
  **/
-public class AgentStatusResponse extends ResponseModel {
+public class AgentStatusResponse extends PagedResponse {
 
     private List<AgentStatusModel> agentStatus;
 
