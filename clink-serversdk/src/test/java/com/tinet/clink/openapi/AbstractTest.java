@@ -12,9 +12,10 @@ public abstract class AbstractTest {
 
     @Before
     public void init() {
-        configuration = new ClientConfiguration("74f10f3e7976f982b82403bfcf6e72d5", "h0II3baesl87VlLpKG7K");
+        configuration = new ClientConfiguration("df7f5b379e01c672d3b0b23ada55e089", "h0II3baesl87VlLpKG7K");
         configuration.setHost("api-bj-test.clink.cn");
         configuration.setPort(80);
+        configuration.setScheme("http");
 
         client = new Client(configuration);
     }
