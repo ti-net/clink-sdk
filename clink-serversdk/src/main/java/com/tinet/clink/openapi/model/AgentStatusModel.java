@@ -36,9 +36,12 @@ public class AgentStatusModel {
      * 置忙类型
      */
     private Integer pauseType;
-
     /**
-     * 设备状态 (空闲、置忙(具体置忙原因)、通话、振铃、整理、外呼中(离线不展示))
+     * 置忙状态
+     */
+    private String pauseDescription;
+    /**
+     * 设备状态 (空闲、置忙(具体置忙原因)、通话、振铃、整理、外呼中)
      */
     private String agentStatus;
 
@@ -149,5 +152,13 @@ public class AgentStatusModel {
 
     public void setLoginDuration(Long loginDuration) {
         this.loginDuration = loginDuration;
+    }
+
+    public String getPauseDescription() {
+        return pauseDescription;
+    }
+
+    public void setPauseDescription(String pauseDescription) {
+        this.pauseDescription = pauseDescription;
     }
 }
