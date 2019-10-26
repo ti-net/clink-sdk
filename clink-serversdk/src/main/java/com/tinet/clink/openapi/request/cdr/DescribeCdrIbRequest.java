@@ -18,6 +18,11 @@ public class DescribeCdrIbRequest extends AbstractRequestModel<DescribeCdrIbResp
      */
     private String mainUniqueId;
 
+    /**
+     * 是否隐藏号码
+     */
+    private Integer hiddenType;
+
     public DescribeCdrIbRequest() {
         super(PathEnum.DescribeCdrIb.value(), HttpMethodType.GET);
     }
@@ -30,6 +35,17 @@ public class DescribeCdrIbRequest extends AbstractRequestModel<DescribeCdrIbResp
         this.mainUniqueId = mainUniqueId;
         if (mainUniqueId != null) {
             putQueryParameter("mainUniqueId", mainUniqueId);
+        }
+    }
+
+    public Integer getHiddenType() {
+        return hiddenType;
+    }
+
+    public void setHiddenType(Integer hiddenType) {
+        this.hiddenType = hiddenType;
+        if (hiddenType != null) {
+            putQueryParameter("hiddenType", hiddenType);
         }
     }
 

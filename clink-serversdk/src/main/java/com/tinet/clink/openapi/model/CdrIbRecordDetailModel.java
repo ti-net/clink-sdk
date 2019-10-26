@@ -25,6 +25,11 @@ public class CdrIbRecordDetailModel {
     private String customerNumber;
 
     /**
+     * 客户来电号码加密串
+     */
+    private String customerNumberEncrypt;
+
+    /**
      * 客户来电省份
      */
     private String customerProvince;
@@ -146,6 +151,14 @@ public class CdrIbRecordDetailModel {
 
     public void setCustomerNumber(String customerNumber) {
         this.customerNumber = customerNumber;
+    }
+
+    public String getCustomerNumberEncrypt() {
+        return customerNumberEncrypt;
+    }
+
+    public void setCustomerNumberEncrypt(String customerNumberEncrypt) {
+        this.customerNumberEncrypt = customerNumberEncrypt;
     }
 
     public String getCustomerProvince() {

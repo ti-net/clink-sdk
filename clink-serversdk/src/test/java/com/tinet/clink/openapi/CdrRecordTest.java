@@ -6,6 +6,7 @@ import com.tinet.clink.openapi.exceptions.ClientException;
 import com.tinet.clink.openapi.exceptions.ServerException;
 import com.tinet.clink.openapi.request.cdr.*;
 import com.tinet.clink.openapi.response.cdr.*;
+import org.junit.Test;
 
 /**
  * 通话记录单元测试
@@ -19,10 +20,11 @@ public class CdrRecordTest extends AbstractTest {
     /**
      * 呼入通话记录列表单元测试
      */
-//    @Test
+    //@Test
     public void listCdrIbsTest() throws ServerException, ClientException, JsonProcessingException {
 
         ListCdrIbsRequest request = new ListCdrIbsRequest();
+        request.setHiddenType(1);
         ListCdrIbsResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getCdrIbs()));
     }
@@ -30,11 +32,12 @@ public class CdrRecordTest extends AbstractTest {
     /**
      * 呼入通话记录详情单元测试
      */
-//    @Test
+    //@Test
     public void describeCdrIbTest() throws ServerException, ClientException, JsonProcessingException {
 
         DescribeCdrIbRequest request = new DescribeCdrIbRequest();
-        request.setMainUniqueId("AWS_DEV_MEDIA_SERVER_8-1540431801.5");
+        request.setMainUniqueId("medias_1-1572002913.20");
+        request.setHiddenType(1);
         DescribeCdrIbResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getCdrIb()));
     }
@@ -53,11 +56,12 @@ public class CdrRecordTest extends AbstractTest {
     /**
      * 同步呼入通话记录详情单元测试
      */
-//    @Test
+   // @Test
     public void copyCdrIbsTest() throws ServerException, ClientException, JsonProcessingException {
 
         CopyCdrIbsRequest request = new CopyCdrIbsRequest();
-        request.setDate("20181025");
+        request.setDate("20191025");
+        request.setHiddenType(1);
         CopyCdrIbsResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getCdrIbs()));
     }
@@ -78,10 +82,11 @@ public class CdrRecordTest extends AbstractTest {
     /**
      * 外呼通话记录列表单元测试
      */
-//    @Test
+    //@Test
     public void listCdrObsTest() throws ServerException, ClientException, JsonProcessingException {
 
         ListCdrObsRequest request = new ListCdrObsRequest();
+        request.setHiddenType(1);
         ListCdrObsResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getCdrObs()));
     }
@@ -89,11 +94,12 @@ public class CdrRecordTest extends AbstractTest {
     /**
      * 外呼通话记录详情单元测试
      */
-//    @Test
+    //@Test
     public void describeCdrObTest() throws ServerException, ClientException, JsonProcessingException {
 
         DescribeCdrObRequest request = new DescribeCdrObRequest();
-        request.setMainUniqueId("AWS_DEV_MEDIA_SERVER_8-1540435106.22");
+        request.setMainUniqueId("medias_1-1571976270.5");
+        request.setHiddenType(1);
         DescribeCdrObResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getCdrOb()));
     }
@@ -112,11 +118,12 @@ public class CdrRecordTest extends AbstractTest {
     /**
      * 同步外呼通话记录详情单元测试
      */
-//    @Test
+    @Test
     public void copyCdrObsTest() throws ServerException, ClientException, JsonProcessingException {
 
         CopyCdrObsRequest request = new CopyCdrObsRequest();
-        request.setDate("20181025");
+        request.setDate("20191025");
+        request.setHiddenType(1);
         CopyCdrObsResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getCdrObs()));
     }
