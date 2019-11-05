@@ -51,6 +51,6 @@ public class UnpauseClientRequest extends AbstractRequestModel<UnpauseClientResp
 
     @Override
     public Class<UnpauseClientResponse> getResponseClass() {
-        return null;
+        return UnpauseClientResponse.class;
     }
 }
