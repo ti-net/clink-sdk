@@ -35,6 +35,6 @@ public class ConsultCancelRequest extends AbstractRequestModel<ConsultCancelResp
 
     @Override
     public Class<ConsultCancelResponse> getResponseClass() {
-        return null;
+        return ConsultCancelResponse.class;
     }
 }
