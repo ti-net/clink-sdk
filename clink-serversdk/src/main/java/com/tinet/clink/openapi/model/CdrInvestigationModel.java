@@ -9,6 +9,10 @@ package com.tinet.clink.openapi.model;
 public class CdrInvestigationModel {
 
     /**
+     * 主通道通话唯一标识
+     */
+    private String mainUniqueId;
+    /**
      * 热线号码
      */
     private String hotline;
@@ -67,6 +71,14 @@ public class CdrInvestigationModel {
      * 满意度按键值；当键值为 null 时，说明用户无按键操作
      */
     private Integer keys;
+
+    public String getMainUniqueId() {
+        return mainUniqueId;
+    }
+
+    public void setMainUniqueId(String mainUniqueId) {
+        this.mainUniqueId = mainUniqueId;
+    }
 
     public String getHotline() {
         return hotline;
