@@ -87,6 +87,8 @@ public enum PathEnum {
     ListIvrNodes("list_ivr_nodes"),
     // 座席状态监控
     AgentStatus("agent_status"),
+    // 队列状态监控
+    QueueStatus("queue_status"),
     //客户资料-获取可用查询参数
     CustomerParam("customer_params"),
     //客户资料-查询客户资料列表
