@@ -29,6 +29,16 @@ public class ListCustomerRequest extends AbstractRequestModel<ListCustomerRespon
     private Long endTime;
 
     /**
+     * 按修改时间查询的起始时间
+     */
+    private Long updateStartTime;
+
+    /**
+     * 按修改时间查询的结束时间
+     */
+    private Long updateEndTime;
+
+    /**
      * 偏移量，范围 0-10000，默认值为 0
      */
     private Integer offset;
@@ -99,6 +109,28 @@ public class ListCustomerRequest extends AbstractRequestModel<ListCustomerRespon
         this.endTime = endTime;
         if (endTime != null) {
             putQueryParameter("endTime", endTime);
+        }
+    }
+
+    public Long getUpdateStartTime() {
+        return updateStartTime;
+    }
+
+    public void setUpdateStartTime(Long updateStartTime) {
+        this.updateStartTime = updateStartTime;
+        if (updateStartTime != null) {
+            putQueryParameter("updateStartTime", updateStartTime);
+        }
+    }
+
+    public Long getUpdateEndTime() {
+        return updateEndTime;
+    }
+
+    public void setUpdateEndTime(Long updateEndTime) {
+        this.updateEndTime = updateEndTime;
+        if (updateEndTime != null) {
+            putQueryParameter("updateEndTime", updateEndTime);
         }
     }
 }
