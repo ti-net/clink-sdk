@@ -49,7 +49,7 @@ public class CustomerTest extends AbstractTest {
         //userParamMap.put("等级", "1");
         //userParamMap.put("来源", "3");
         //userParamMap.put("客户归属", "{\"shareType\":1,\"share\":\"0000\"}");
-        userParamMap.put("112233有","23");
+        //userParamMap.put("112233有","23");
 
 
 
@@ -85,8 +85,10 @@ public class CustomerTest extends AbstractTest {
         ListCustomerRequest listCustomerRequest = new ListCustomerRequest();
         listCustomerRequest.setOffset(0);
         listCustomerRequest.setLimit(15);
-        listCustomerRequest.setStartTime(1571068800L);
-        listCustomerRequest.setEndTime(1573747199L);
+        listCustomerRequest.setStartTime(1575424800L);
+        listCustomerRequest.setEndTime(1575475199L);
+        listCustomerRequest.setUpdateStartTime(1575428400L);
+        listCustomerRequest.setUpdateEndTime(1575430259L);
         listCustomerRequest.setCustomerParams(customerParams);
         ListCustomerResponse customerResponse = client.getResponseModel(listCustomerRequest);
 
