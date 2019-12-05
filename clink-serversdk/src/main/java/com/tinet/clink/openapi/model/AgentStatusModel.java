@@ -31,7 +31,10 @@ public class AgentStatusModel {
      * 主叫号码，即来电客户号码
      */
     private String customerNumber;
-
+    /**
+     * 客户号码加密串
+     */
+    private String customerNumberEncrypt;
     /**
      * 置忙类型
      */
@@ -160,5 +163,13 @@ public class AgentStatusModel {
 
     public void setPauseDescription(String pauseDescription) {
         this.pauseDescription = pauseDescription;
+    }
+
+    public String getCustomerNumberEncrypt() {
+        return customerNumberEncrypt;
+    }
+
+    public void setCustomerNumberEncrypt(String customerNumberEncrypt) {
+        this.customerNumberEncrypt = customerNumberEncrypt;
     }
 }
