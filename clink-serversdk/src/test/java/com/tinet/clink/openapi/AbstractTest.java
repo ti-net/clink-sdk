@@ -3,6 +3,9 @@ package com.tinet.clink.openapi;
 import org.junit.Before;
 
 /**
+ * 访问秘钥ID：5a2b3ccc76d58ceca44daadbc8ea5707
+ * 私有访问秘钥：48ogGS2Lo4O5A1ONp114
+ *
  * @author houfc
  */
 public abstract class AbstractTest {
@@ -12,7 +15,7 @@ public abstract class AbstractTest {
 
     @Before
     public void init() {
-        configuration = new ClientConfiguration("68531638194ed8d3ec142e317635296c", "xbly5F6yEDFmYbZSeq60");
+        configuration = new ClientConfiguration("5a2b3ccc76d58ceca44daadbc8ea5707", "48ogGS2Lo4O5A1ONp114");
         configuration.setHost("api-bj-test.clink.cn");
         configuration.setPort(80);
         configuration.setScheme("http");
