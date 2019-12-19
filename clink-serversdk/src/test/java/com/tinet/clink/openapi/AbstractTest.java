@@ -3,8 +3,6 @@ package com.tinet.clink.openapi;
 import org.junit.Before;
 
 /**
- * 访问秘钥ID：5a2b3ccc76d58ceca44daadbc8ea5707
- * 私有访问秘钥：48ogGS2Lo4O5A1ONp114
  *
  * @author houfc
  */
