@@ -114,6 +114,11 @@ public class CdrObRecordDetailModel {
     private String userField;
 
     /**
+     * 虚拟号码
+     */
+    private String xnumber;
+
+    /**
      * 满意度调查
      */
     private Investigation investigation;
@@ -292,5 +297,13 @@ public class CdrObRecordDetailModel {
 
     public void setInvestigation(Investigation investigation) {
         this.investigation = investigation;
+    }
+
+    public String getXnumber() {
+        return xnumber;
+    }
+
+    public void setXnumber(String xnumber) {
+        this.xnumber = xnumber;
     }
 }
