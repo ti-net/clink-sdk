@@ -11,19 +11,23 @@ import com.tinet.clink.openapi.request.AbstractRequestModel;
 import com.tinet.clink.openapi.response.ResponseModel;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
+import org.apache.http.NoHttpResponseException;
 import org.apache.http.StatusLine;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.HttpRequestRetryHandler;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicHttpEntityEnclosingRequest;
+import org.apache.http.protocol.HttpContext;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URISyntaxException;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author houfc
@@ -44,7 +48,26 @@ public class Client {
 
     public Client(ClientConfiguration configuration) {
         this.configuration = configuration;
-        httpClient = HttpClientBuilder.create().build();
+        httpClient = HttpClientBuilder.create()
+                //增加空闲线程回收机制
+                .evictIdleConnections(5, TimeUnit.SECONDS)
+                //增加失败请求重试机制
+                .setRetryHandler(new HttpRequestRetryHandler() {
+                    @Override
+                    public boolean retryRequest(IOException exception, int executionCount, HttpContext context) {
+
+                        if (executionCount > maxRetryNumber) {
+                            return false;
+                        }
+
+                        //增加重试机制，处理服务器主动丢弃连接后，新的请求从HttpClient连接池拿到无效的后无法获取响应的问题
+                        if (exception instanceof NoHttpResponseException) {
+                            return true;
+                        }
+                        return false;
+                    }
+                })
+                .build();
 
         if (configuration.getPort() == 80) {
             httpHost = new HttpHost(this.configuration.getHost(), -1, this.configuration.getScheme());
