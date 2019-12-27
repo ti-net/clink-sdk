@@ -11,7 +11,7 @@
 <dependency>
     <groupId>com.ti-net</groupId>
     <artifactId>clink-serversdk</artifactId>
-    <version>2.0.0</version>
+    <version>2.0.16</version>
 </dependency>
 ```
 
@@ -64,10 +64,15 @@ public class Test {
     }
 }
 ```
-## change log
-V 2.0.15
+# Change Log
+### V 2.0.15
 ```
 1.增加httpClient线程池空闲线程回收机制
 2.增加失败请求重试机制，最多重试三次
 3.补全外呼接口遗漏参数
+```
+### V 2.0.16
+```
+1.记录查询接口-外呼通话记录-查询外呼通话记录列表、查询外呼通话记录详情、同步外呼通话记录，返回结果增加虚拟号码
+2.记录查询接口-通话录音-下载通话录音文件、查询通话记录地址，增加wav合成文件获取
 ```

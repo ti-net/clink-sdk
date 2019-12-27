@@ -113,6 +113,11 @@ public class CdrObRecordModel {
      */
     private String userField;
 
+    /**
+     * 虚拟号码
+     */
+    private String xnumber;
+
     public String getUniqueId() {
         return uniqueId;
     }
@@ -279,5 +284,13 @@ public class CdrObRecordModel {
 
     public void setUserField(String userField) {
         this.userField = userField;
+    }
+
+    public String getXnumber() {
+        return xnumber;
+    }
+
+    public void setXnumber(String xnumber) {
+        this.xnumber = xnumber;
     }
 }
