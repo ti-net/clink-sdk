@@ -13,9 +13,9 @@ public abstract class AbstractTest {
 
     @Before
     public void init() {
-        configuration = new ClientConfiguration("5a2b3ccc76d58ceca44daadbc8ea5707", "48ogGS2Lo4O5A1ONp114");
-        configuration.setHost("api-bj-test.clink.cn");
-        configuration.setPort(80);
+        configuration = new ClientConfiguration("1cda28b6368c8a50b2f31d2a82e65415", "wHH0C2YF5xvU4c447734");
+        configuration.setHost("api-bj-test5.clink.cn");
+//        configuration.setPort(80);
         configuration.setScheme("http");
 
         client = new Client(configuration);
