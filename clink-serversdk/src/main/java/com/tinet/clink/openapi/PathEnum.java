@@ -92,7 +92,10 @@ public enum PathEnum {
     //客户资料-获取可用查询参数
     CustomerParam("customer_params"),
     //客户资料-查询客户资料列表
-    ListCustomers("list_customers");
+    ListCustomers("list_customers"),
+
+    //短信发送
+    SmsSend("sms_send");
 
 
     private String value;
