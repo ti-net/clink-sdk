@@ -5,10 +5,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tinet.clink.openapi.exceptions.ClientException;
 import com.tinet.clink.openapi.exceptions.ServerException;
 import com.tinet.clink.openapi.model.CustomerSearchResponse;
-import com.tinet.clink.openapi.request.config.customer.CustomerParamRequest;
-import com.tinet.clink.openapi.request.config.customer.ListCustomerRequest;
-import com.tinet.clink.openapi.response.config.customer.CustomerParamResponse;
-import com.tinet.clink.openapi.response.config.customer.ListCustomerResponse;
+import com.tinet.clink.openapi.model.IdValue;
+import com.tinet.clink.openapi.request.config.customer.*;
+import com.tinet.clink.openapi.response.config.customer.*;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -50,7 +49,6 @@ public class CustomerTest extends AbstractTest {
         //userParamMap.put("来源", "3");
         //userParamMap.put("客户归属", "{\"shareType\":1,\"share\":\"0000\"}");
         //userParamMap.put("112233有","23");
-
 
 
         //当前企业可以用的查询参数
@@ -99,4 +97,88 @@ public class CustomerTest extends AbstractTest {
             e.printStackTrace();
         }
     }
+
+    @Test
+    public void listCustomersFileds() throws ServerException, ClientException {
+
+        //开始查询客户资料，拼装参数
+        ListCustomerFieldRequest listCustomerFieldRequest = new ListCustomerFieldRequest();
+
+        ListCustomerFieldResponse responseModel = client.getResponseModel(listCustomerFieldRequest);
+
+        try {
+            String resultStr = mapper.writeValueAsString(responseModel);
+            System.out.println(resultStr);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+    @Test
+    public void createCustomer() throws ServerException, ClientException {
+
+        //开始查询客户资料，拼装参数
+        CreateCustomerRequest request = new CreateCustomerRequest();
+
+        request.setName("李志颖");
+        request.setLevel(0);
+        request.setEmail("lizy@ti-net.com.cn");
+        request.setSex(0);
+        String[] tels = {"152107218891"};
+        request.setTel(tels);
+        request.setShareType(0);
+        request.setAddress("河北省沧州市");
+
+        IdValue[] idValues = new IdValue[1];
+
+        idValues[0] = new IdValue();
+        idValues[0].setId(440);
+        idValues[0].setValue("1");
+        request.setCustomize(idValues);
+        CreateCustomerResponse responseModel = client.getResponseModel(request);
+        try {
+            String resultStr = mapper.writeValueAsString(responseModel);
+            System.out.println(resultStr);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @Test
+    public void updateCustomer() throws ServerException, ClientException {
+
+        //开始查询客户资料，拼装参数
+        UpdateCustomerRequest request = new UpdateCustomerRequest();
+
+        request.setName("李志颖");
+        request.setLevel(0);
+        request.setEmail("lizy@ti-net.com.cn");
+        request.setSex(0);
+        String[] tels = {"152107218891"};
+        request.setTel(tels);
+        request.setShareType(3);
+        request.setAddress("河北省沧州市");
+        request.setId(84176);
+
+        IdValue[] idValues = new IdValue[1];
+
+        idValues[0] = new IdValue();
+        idValues[0].setId(440);
+        idValues[0].setValue("1234");
+        request.setCustomize(idValues);
+
+        UpdateCustomerResponse responseModel = client.getResponseModel(request);
+
+        try {
+            String resultStr = mapper.writeValueAsString(responseModel);
+            System.out.println(resultStr);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 }

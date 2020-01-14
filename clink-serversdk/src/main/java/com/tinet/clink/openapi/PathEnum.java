@@ -93,6 +93,13 @@ public enum PathEnum {
     CustomerParam("customer_params"),
     //客户资料-查询客户资料列表
     ListCustomers("list_customers"),
+    //创建客户资料
+    CreateCustomer("create_customer"),
+
+    //更新客户资料
+    UpdateCustomer("update_customer"),
+    //创建客户资料
+    ListCustomerField("list_customer_field"),
 
     //短信发送
     SmsSend("sms_send");
