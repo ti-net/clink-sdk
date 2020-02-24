@@ -20,11 +20,19 @@ public class CdrRecordTest extends AbstractTest {
     /**
      * 呼入通话记录列表单元测试
      */
-    //@Test
+    @Test
     public void listCdrIbsTest() throws ServerException, ClientException, JsonProcessingException {
 
         ListCdrIbsRequest request = new ListCdrIbsRequest();
         request.setHiddenType(1);
+        request.setStartTime(1577845447L);
+        request.setEndTime(1580522407L);
+        request.setLimit(100);
+       // request.setCno("1089");
+      //  request.setStatus(2);
+      //  request.setMark(8);
+        //request.setProvince("陕西");
+       // request.setCity("广州");
         ListCdrIbsResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getCdrIbs()));
     }
