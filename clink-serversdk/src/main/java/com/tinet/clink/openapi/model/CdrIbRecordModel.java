@@ -119,6 +119,11 @@ public class CdrIbRecordModel {
      */
     private String userField;
 
+    /**
+     * 标记
+     */
+    private Integer mark;
+
     public String getUniqueId() {
         return uniqueId;
     }
@@ -293,5 +298,13 @@ public class CdrIbRecordModel {
 
     public void setUserField(String userField) {
         this.userField = userField;
+    }
+
+    public Integer getMark() {
+        return mark;
+    }
+
+    public void setMark(Integer mark) {
+        this.mark = mark;
     }
 }

@@ -64,6 +64,28 @@ public class ListCdrObsRequest extends AbstractRequestModel<ListCdrObsResponse> 
      */
     private Integer limit;
 
+    /**
+     * 自定义字段
+     */
+    private String userField;
+
+    /**
+     * 标记
+     */
+    private Integer mark;
+
+    /**
+     * 省份
+     */
+    private String province;
+
+    /**
+     * 城市
+     */
+    private String city;
+
+
+
     public ListCdrObsRequest() {
         super(PathEnum.ListCdrObs.value(), HttpMethodType.GET);
     }
@@ -164,6 +186,50 @@ public class ListCdrObsRequest extends AbstractRequestModel<ListCdrObsResponse> 
         this.limit = limit;
         if (limit != null) {
             putQueryParameter("limit", limit);
+        }
+    }
+
+    public String getUserField() {
+        return userField;
+    }
+
+    public void setUserField(String userField) {
+        this.userField = userField;
+        if (userField != null) {
+            putQueryParameter("userField", userField);
+        }
+    }
+
+    public Integer getMark() {
+        return mark;
+    }
+
+    public void setMark(Integer mark) {
+        this.mark = mark;
+        if (mark != null) {
+            putQueryParameter("mark", mark);
+        }
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+        if (province != null) {
+            putQueryParameter("province", province);
+        }
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+        if (city != null) {
+            putQueryParameter("city", city);
         }
     }
 
