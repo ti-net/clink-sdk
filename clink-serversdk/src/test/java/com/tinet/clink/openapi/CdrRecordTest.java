@@ -20,7 +20,7 @@ public class CdrRecordTest extends AbstractTest {
     /**
      * 呼入通话记录列表单元测试
      */
-    //@Test
+    @Test
     public void listCdrIbsTest() throws ServerException, ClientException, JsonProcessingException {
 
         ListCdrIbsRequest request = new ListCdrIbsRequest();

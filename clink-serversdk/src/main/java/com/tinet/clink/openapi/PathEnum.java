@@ -1,5 +1,7 @@
 package com.tinet.clink.openapi;
 
+import com.tinet.clink.openapi.request.stat.StatClientWorkloadRequest;
+
 /**
  * @author wangll
  * @date 2019/2/19
@@ -102,8 +104,12 @@ public enum PathEnum {
     ListCustomerField("list_customer_field"),
 
     //短信发送
-    SmsSend("sms_send");
+    SmsSend("sms_send"),
 
+    //座席工作量报表
+    StatClientWorkload("stat_client_workload"),
+    //队列报表
+    StatQueue("stat_queue");
 
     private String value;
 
