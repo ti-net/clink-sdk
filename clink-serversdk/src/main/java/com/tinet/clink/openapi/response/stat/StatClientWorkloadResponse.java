@@ -11,13 +11,13 @@ import java.util.Map;
  **/
 public class StatClientWorkloadResponse extends PagedResponse {
 
-    List<Map<String,Object>> data;
+    private List<Map<String,Object>> statClientWorkload;
 
-    public List<Map<String, Object>> getData() {
-        return data;
+    public List<Map<String, Object>> getStatClientWorkload() {
+        return statClientWorkload;
     }
 
-    public void setData(List<Map<String, Object>> data) {
-        this.data = data;
+    public void setStatClientWorkload(List<Map<String, Object>> statClientWorkload) {
+        this.statClientWorkload = statClientWorkload;
     }
 }

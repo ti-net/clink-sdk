@@ -11,13 +11,13 @@ import java.util.Map;
  **/
 public class StatQueueResponse extends PagedResponse {
 
-    List<Map<String,Object>> data;
+    private List<Map<String,Object>> statQueue;
 
-    public List<Map<String, Object>> getData() {
-        return data;
+    public List<Map<String, Object>> getStatQueue() {
+        return statQueue;
     }
 
-    public void setData(List<Map<String, Object>> data) {
-        this.data = data;
+    public void setStatQueue(List<Map<String, Object>> statQueue) {
+        this.statQueue = statQueue;
     }
 }

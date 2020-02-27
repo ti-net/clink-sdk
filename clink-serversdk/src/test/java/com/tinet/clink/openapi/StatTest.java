@@ -37,7 +37,7 @@ public class StatTest extends AbstractTest {
         fields.add("ibTotalCount");
         request.setFields(fields);*/
         StatClientWorkloadResponse response = client.getResponseModel(request);
-        System.out.println(mapper.writeValueAsString(response));
+        System.out.println(mapper.writeValueAsString(response.getStatClientWorkload()));
     }
 
 
@@ -53,6 +53,6 @@ public class StatTest extends AbstractTest {
         fields.add("totalAbandonWaitDuration");
         request.setFields(fields);*/
         StatQueueResponse response = client.getResponseModel(request);
-        System.out.println(mapper.writeValueAsString(response));
+        System.out.println(mapper.writeValueAsString(response.getStatQueue()));
     }
 }
