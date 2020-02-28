@@ -3,7 +3,6 @@ package com.tinet.clink.openapi;
 import org.junit.Before;
 
 /**
- *
  * @author houfc
  */
 public abstract class AbstractTest {
@@ -13,7 +12,9 @@ public abstract class AbstractTest {
 
     @Before
     public void init() {
-        configuration = new ClientConfiguration("1cda28b6368c8a50b2f31d2a82e65415", "wHH0C2YF5xvU4c447734");
+
+
+        configuration = new ClientConfiguration("dc3b26c043995d362743fe5efdb1c3fb", "1J97178Tu15K41l1F5G4");
         configuration.setHost("api-bj-test5.clink.cn");
 //        configuration.setPort(80);
         configuration.setScheme("http");

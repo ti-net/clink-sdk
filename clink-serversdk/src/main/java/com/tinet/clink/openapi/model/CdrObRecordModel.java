@@ -118,6 +118,11 @@ public class CdrObRecordModel {
      */
     private String xnumber;
 
+    /**
+     * 标记
+     */
+    private Integer mark;
+
     public String getUniqueId() {
         return uniqueId;
     }
@@ -292,5 +297,13 @@ public class CdrObRecordModel {
 
     public void setXnumber(String xnumber) {
         this.xnumber = xnumber;
+    }
+
+    public Integer getMark() {
+        return mark;
+    }
+
+    public void setMark(Integer mark) {
+        this.mark = mark;
     }
 }
