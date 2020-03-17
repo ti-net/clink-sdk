@@ -94,6 +94,17 @@ public class UpdateQueueRequest extends AbstractRequestModel<UpdateQueueResponse
      */
     private Integer chatLocation;
 
+    /**
+     * 语音报号
+     */
+    private Integer sayCno;
+
+    /**
+     * 队列是否支持vip级别 0:不支持 1:支持
+     */
+    private Integer vipSupport;
+
+
     public String getQno() {
         return qno;
     }
@@ -265,6 +276,28 @@ public class UpdateQueueRequest extends AbstractRequestModel<UpdateQueueResponse
         this.chatLocation = chatLocation;
         if (chatLocation != null) {
             putBodyParameter("chatLocation", chatLocation);
+        }
+    }
+
+    public Integer getSayCno() {
+        return sayCno;
+    }
+
+    public void setSayCno(Integer sayCno) {
+        this.sayCno = sayCno;
+        if (sayCno != null) {
+            putBodyParameter("sayCno", sayCno);
+        }
+    }
+
+    public Integer getVipSupport() {
+        return vipSupport;
+    }
+
+    public void setVipSupport(Integer vipSupport) {
+        this.vipSupport = vipSupport;
+        if (vipSupport != null) {
+            putBodyParameter("vipSupport", vipSupport);
         }
     }
 }
