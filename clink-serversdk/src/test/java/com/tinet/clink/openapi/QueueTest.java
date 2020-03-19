@@ -1,5 +1,7 @@
 package com.tinet.clink.openapi;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tinet.clink.openapi.exceptions.ClientException;
 import com.tinet.clink.openapi.exceptions.ServerException;
 import com.tinet.clink.openapi.model.QueueDetailModel;
@@ -18,14 +20,18 @@ import java.util.List;
  */
 public class QueueTest extends AbstractTest {
 
+    private ObjectMapper mapper = new ObjectMapper();
+
     @Test
-    public void createQueue()throws ServerException, ClientException{
+    public void createQueue() throws ServerException, ClientException {
         CreateQueueRequest createQueueRequest = new CreateQueueRequest();
-        createQueueRequest.setQno("2002");
-        createQueueRequest.setName("测试openApi");
+        createQueueRequest.setQno("4444");
+        createQueueRequest.setName("4444");
         createQueueRequest.setChatStrategy(1);
         createQueueRequest.setChatMaxWait(12);
         createQueueRequest.setChatLocation(6);
+        createQueueRequest.setSayCno(1);
+        createQueueRequest.setVipSupport(1);
 
         //设置队列座席关系
         List<QueueMemberModel> queueMembers = new LinkedList<QueueMemberModel>();
@@ -36,36 +42,40 @@ public class QueueTest extends AbstractTest {
         createQueueRequest.setQueueMembers(queueMembers);
 
         CreateQueueResponse response = client.getResponseModel(createQueueRequest);
-        response.getQueue();
+
+        try {
+            System.out.println(mapper.writeValueAsString(response.getQueue()));
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Test
-    public void updateQueue()throws ServerException, ClientException{
+    public void updateQueue() throws ServerException, ClientException {
         UpdateQueueRequest updateQueueRequest = new UpdateQueueRequest();
-        updateQueueRequest.setQno("2002");
-        updateQueueRequest.setName("测试openApi11");
+        updateQueueRequest.setQno("4444");
+        updateQueueRequest.setName("4444");
         updateQueueRequest.setChatStrategy(2);
         updateQueueRequest.setChatMaxWait(22);
         updateQueueRequest.setChatLocation(7);
 
-        //修改队列座席关系
-        List<QueueMemberModel> queueMembers = new LinkedList<QueueMemberModel>();
-        QueueMemberModel queueMember1 = new QueueMemberModel();
-        queueMember1.setCno("5818");
-        queueMember1.setPenalty(2);
-        queueMembers.add(queueMember1);
-        QueueMemberModel queueMember2 = new QueueMemberModel();
-        queueMember2.setCno("8902");
-        queueMember2.setPenalty(3);
-        queueMembers.add(queueMember2);
-        updateQueueRequest.setQueueMembers(queueMembers);
+        updateQueueRequest.setSayCno(0);
+        updateQueueRequest.setVipSupport(0);
+
+
 
         UpdateQueueResponse response = client.getResponseModel(updateQueueRequest);
-        response.getQueue();
+
+        try {
+            System.out.println(mapper.writeValueAsString(response.getQueue()));
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
-    public void listQueues()throws ServerException, ClientException{
+    public void listQueues() throws ServerException, ClientException {
         ListQueuesRequest request = new ListQueuesRequest();
         request.setLimit(50);
         request.setOffset(0);
@@ -77,23 +87,30 @@ public class QueueTest extends AbstractTest {
     }
 
     @Test
-    public void describeQueue()throws ServerException, ClientException{
+    public void describeQueue() throws ServerException, ClientException {
         DescribeQueueRequest request = new DescribeQueueRequest();
-        request.setQno("1111");
+        request.setQno("4444");
         DescribeQueueResponse response = client.getResponseModel(request);
-        QueueDetailModel queue = response.getQueue();
-        System.out.println(queue.toString());
+        try {
+            System.out.println(mapper.writeValueAsString(response.getQueue()));
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
-    public void deleteQueue()throws ServerException, ClientException{
+    public void deleteQueue() throws ServerException, ClientException {
         DeleteQueueRequest request = new DeleteQueueRequest();
-        request.setQno("2002");
+        request.setQno("4444");
         DeleteQueueResponse response = client.getResponseModel(request);
-        response.getRequestId();
+
+        try {
+            System.out.println(mapper.writeValueAsString(response.getQno()));
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
     }
-
-
 
 
 }
