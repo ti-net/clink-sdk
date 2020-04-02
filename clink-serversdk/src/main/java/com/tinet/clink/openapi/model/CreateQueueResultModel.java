@@ -88,6 +88,16 @@ public class CreateQueueResultModel {
      */
     private Integer chatLocation;
 
+    /**
+     * 语音报号
+     */
+    private Integer sayCno;
+
+    /**
+     * 队列是否支持vip级别 0:不支持 1:支持
+     */
+    private Integer vipSupport;
+
     public String getQno() {
         return qno;
     }
@@ -206,5 +216,21 @@ public class CreateQueueResultModel {
 
     public void setChatLocation(Integer chatLocation) {
         this.chatLocation = chatLocation;
+    }
+
+    public Integer getSayCno() {
+        return sayCno;
+    }
+
+    public void setSayCno(Integer sayCno) {
+        this.sayCno = sayCno;
+    }
+
+    public Integer getVipSupport() {
+        return vipSupport;
+    }
+
+    public void setVipSupport(Integer vipSupport) {
+        this.vipSupport = vipSupport;
     }
 }
