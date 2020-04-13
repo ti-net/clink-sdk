@@ -13,7 +13,7 @@ import java.util.List;
 public abstract class AbstractStatRequest<T extends ResponseModel> extends AbstractRequestModel<T> {
 
     /**
-     * 开始时间 时间格式 yyyy-MM-dd
+     * 同步日期 时间格式 yyyyMMdd
      */
     protected String date;
 

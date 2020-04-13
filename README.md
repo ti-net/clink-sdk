@@ -93,3 +93,7 @@ public class Test {
 1.配置管理接口-队列设置-新增队列，增加sayCno、vipSupport属性设置
 2.配置管理接口-队列设置-更新队列，增加sayCno、vipSupport属性设置
 ```
+### V 2.0.21
+```
+1.报表接口-呼叫中心-座席状态统计报表
+```
