@@ -25,18 +25,18 @@ public class CdrRecordTest extends AbstractTest {
 
         ListCdrIbsRequest request = new ListCdrIbsRequest();
         request.setHiddenType(1);
-        request.setStartTime(1577845447L);
-        request.setEndTime(1580522407L);
+        request.setStartTime(1581520254L);
+        request.setEndTime(1584025854L);
         request.setLimit(100);
+        request.setStatus(1);
        // request.setCno("1089");
       //  request.setStatus(2);
-      //  request.setMark(8);
+        //request.setMark(8);
         //request.setProvince("陕西");
        // request.setCity("广州");
         ListCdrIbsResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getCdrIbs()));
     }
-
     /**
      * 呼入通话记录详情单元测试
      */
@@ -90,11 +90,16 @@ public class CdrRecordTest extends AbstractTest {
     /**
      * 外呼通话记录列表单元测试
      */
-    //@Test
+    @Test
     public void listCdrObsTest() throws ServerException, ClientException, JsonProcessingException {
 
         ListCdrObsRequest request = new ListCdrObsRequest();
         request.setHiddenType(1);
+        request.setStartTime(1581520254L);
+        request.setEndTime(1584025854L);
+        request.setLimit(100);
+        request.setStatus(1);
+        request.setCity("北京");
         ListCdrObsResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getCdrObs()));
     }
