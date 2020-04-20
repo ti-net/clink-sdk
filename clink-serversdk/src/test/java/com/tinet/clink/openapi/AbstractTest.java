@@ -14,10 +14,10 @@ public abstract class AbstractTest {
     public void init() {
 
 
-        configuration = new ClientConfiguration("dc3b26c043995d362743fe5efdb1c3fb", "1J97178Tu15K41l1F5G4");
-        configuration.setHost("api-bj-test5.clink.cn");
+        configuration = new ClientConfiguration("48401d1bec7060ff6a18c918bb4ed6c4", "9ehn0KEW5B9ee772467u");
+        configuration.setHost("api-bj.clink.cn");
 //        configuration.setPort(80);
-        configuration.setScheme("http");
+        configuration.setScheme("https");
 
         client = new Client(configuration);
     }

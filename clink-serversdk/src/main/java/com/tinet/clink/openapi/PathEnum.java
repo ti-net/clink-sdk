@@ -110,6 +110,8 @@ public enum PathEnum {
     StatClientWorkload("stat_client_workload"),
     //队列报表
     StatQueue("stat_queue"),
+    // webcall
+    Webcall("webcall"),
     //状态统计报表
     StatClientStatus("stat_client_status");
 
