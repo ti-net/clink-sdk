@@ -111,7 +111,9 @@ public enum PathEnum {
     //队列报表
     StatQueue("stat_queue"),
     // webcall
-    Webcall("webcall");
+    Webcall("webcall"),
+    //状态统计报表
+    StatClientStatus("stat_client_status");
 
     private String value;
 
