@@ -20,7 +20,7 @@ import java.io.InputStream;
 public class RecordFileTest extends AbstractTest {
 
     String obUniqueId = "medias_1-1566987273.10";
-    String ibUniqueId = "medias_1-1567069576.11";
+    String ibUniqueId = "medias_1a.21";
 
     @Test
     public void describeRecordFileUrl() {
