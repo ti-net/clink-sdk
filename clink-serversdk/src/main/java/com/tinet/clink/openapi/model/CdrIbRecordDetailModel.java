@@ -129,6 +129,12 @@ public class CdrIbRecordDetailModel {
      */
     private Investigation investigation;
 
+    /**
+     * 标签
+     */
+    private String[] tags;
+
+
     public String getUniqueId() {
         return uniqueId;
     }
@@ -319,5 +325,13 @@ public class CdrIbRecordDetailModel {
 
     public void setInvestigation(Investigation investigation) {
         this.investigation = investigation;
+    }
+
+    public String[] getTags() {
+        return tags;
+    }
+
+    public void setTags(String[] tags) {
+        this.tags = tags;
     }
 }

@@ -123,6 +123,12 @@ public class CdrObRecordDetailModel {
      */
     private Investigation investigation;
 
+    /**
+     * 标签
+     */
+    private String[] tags;
+
+
     public String getUniqueId() {
         return uniqueId;
     }
@@ -305,5 +311,13 @@ public class CdrObRecordDetailModel {
 
     public void setXnumber(String xnumber) {
         this.xnumber = xnumber;
+    }
+
+    public String[] getTags() {
+        return tags;
+    }
+
+    public void setTags(String[] tags) {
+        this.tags = tags;
     }
 }
