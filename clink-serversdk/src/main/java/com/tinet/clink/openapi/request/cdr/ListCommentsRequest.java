@@ -40,7 +40,7 @@ public class ListCommentsRequest extends AbstractRequestModel<ListCommentsRespon
     private Integer hiddenType;
 
     /**
-     * 偏移量，范围 0-10000。默认值为 0
+     * 偏移量，范围 0-10000。默认值为 0，但limit + offset 不允许超过100000
      */
     private Integer offset;
 
