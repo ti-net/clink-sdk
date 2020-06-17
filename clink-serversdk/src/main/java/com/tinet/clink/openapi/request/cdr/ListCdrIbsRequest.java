@@ -70,12 +70,12 @@ public class ListCdrIbsRequest extends AbstractRequestModel<ListCdrIbsResponse> 
     private Integer hiddenType;
 
     /**
-     * 偏移量，范围 0-100000。默认值为 0，但limit + offset 不允许超过100000
+     * 偏移量，范围 0-99990。默认值为 0，但limit + offset 不允许超过100000
      */
     private Integer offset;
 
     /**
-     * 查询条数，范围 10-100。默认值为 10
+     * 查询条数，范围 10-100。默认值为 10，但limit + offset 不允许超过100000
      */
     private Integer limit;
 
