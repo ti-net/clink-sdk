@@ -3,7 +3,6 @@ package com.tinet.clink.openapi.request.config.customer;
 import com.tinet.clink.openapi.PathEnum;
 import com.tinet.clink.openapi.model.IdValue;
 import com.tinet.clink.openapi.request.AbstractRequestModel;
-import com.tinet.clink.openapi.response.config.customer.CreateCustomerResponse;
 import com.tinet.clink.openapi.response.config.customer.UpdateCustomerResponse;
 import com.tinet.clink.openapi.utils.HttpMethodType;
 
@@ -63,6 +62,11 @@ public class UpdateCustomerRequest extends AbstractRequestModel<UpdateCustomerRe
      * 地址
      */
     private String address;
+
+    /**
+     * 外部id(第三方平台id)
+     */
+    private String externalId;
 
     /**
      * 自定义字段
@@ -199,6 +203,18 @@ public class UpdateCustomerRequest extends AbstractRequestModel<UpdateCustomerRe
 
         if (customize != null) {
             putBodyParameter("customize", customize);
+        }
+    }
+
+    public String getExternalId() {
+        return externalId;
+    }
+
+    public void setExternalId(String externalId) {
+        this.externalId = externalId;
+
+        if (externalId != null) {
+            putBodyParameter("externalId", externalId);
         }
     }
 

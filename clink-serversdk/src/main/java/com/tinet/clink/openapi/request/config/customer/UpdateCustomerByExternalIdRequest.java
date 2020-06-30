@@ -3,14 +3,20 @@ package com.tinet.clink.openapi.request.config.customer;
 import com.tinet.clink.openapi.PathEnum;
 import com.tinet.clink.openapi.model.IdValue;
 import com.tinet.clink.openapi.request.AbstractRequestModel;
-import com.tinet.clink.openapi.response.config.customer.CreateCustomerResponse;
+import com.tinet.clink.openapi.response.config.customer.UpdateCustomerByExternalIdResponse;
 import com.tinet.clink.openapi.utils.HttpMethodType;
 
 /**
  * @author lizy
  * @date 2020/01/09
  */
-public class CreateCustomerRequest extends AbstractRequestModel<CreateCustomerResponse> {
+public class UpdateCustomerByExternalIdRequest extends AbstractRequestModel<UpdateCustomerByExternalIdResponse> {
+
+
+    /**
+     * 客户资料id
+     */
+    private Integer id;
 
 
     /**
@@ -67,6 +73,17 @@ public class CreateCustomerRequest extends AbstractRequestModel<CreateCustomerRe
      */
     private IdValue[] customize;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+
+        if (id != null) {
+            putBodyParameter("id", id);
+        }
+    }
 
     public String getName() {
         return name;
@@ -201,12 +218,12 @@ public class CreateCustomerRequest extends AbstractRequestModel<CreateCustomerRe
         }
     }
 
-    public CreateCustomerRequest() {
-        super(PathEnum.CreateCustomer.value(), HttpMethodType.POST);
+    public UpdateCustomerByExternalIdRequest() {
+        super(PathEnum.UpdateCustomerByExternalId.value(), HttpMethodType.POST);
     }
 
     @Override
-    public Class<CreateCustomerResponse> getResponseClass() {
-        return CreateCustomerResponse.class;
+    public Class<UpdateCustomerByExternalIdResponse> getResponseClass() {
+        return UpdateCustomerByExternalIdResponse.class;
     }
 }
