@@ -1,7 +1,5 @@
 package com.tinet.clink.openapi;
 
-import com.tinet.clink.openapi.request.stat.StatClientWorkloadRequest;
-
 /**
  * @author wangll
  * @date 2019/2/19
@@ -100,6 +98,9 @@ public enum PathEnum {
 
     //更新客户资料
     UpdateCustomer("update_customer"),
+
+    //更新客户资料
+    UpdateCustomerByExternalId("/update_customer_by_external_id"),
     //创建客户资料
     ListCustomerField("list_customer_field"),
 

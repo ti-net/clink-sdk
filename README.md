@@ -117,3 +117,10 @@ public class Test {
 5.查看外呼通话记录 返回值增加标签字段[tags]
 6.同步外呼通话记录 返回值增加标签字段[tags]
 ```
+
+### V 2.0.25
+```
+1.创建客户资料 增加外部id字段[externalId]
+2.更新客户资料 增加外部id字段[externalId]
+3.增加根据外部id更新客户资料[UpdateCustomerByExternalIdRequest]
+```
