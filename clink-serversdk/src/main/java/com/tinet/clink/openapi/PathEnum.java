@@ -100,7 +100,7 @@ public enum PathEnum {
     UpdateCustomer("update_customer"),
 
     //更新客户资料
-    UpdateCustomerByExternalId("update_customer_by_externalId"),
+    UpdateCustomerByExternalId("/update_customer_by_external_id"),
     //创建客户资料
     ListCustomerField("list_customer_field"),
 
