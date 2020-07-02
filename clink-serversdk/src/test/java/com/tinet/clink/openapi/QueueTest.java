@@ -27,7 +27,7 @@ public class QueueTest extends AbstractTest {
         CreateQueueRequest createQueueRequest = new CreateQueueRequest();
         createQueueRequest.setQno("4444");
         createQueueRequest.setName("4444");
-        createQueueRequest.setChatStrategy(1);
+        createQueueRequest.setChatStrategy(2);
         createQueueRequest.setChatMaxWait(12);
         createQueueRequest.setChatLocation(6);
         createQueueRequest.setSayCno(1);
