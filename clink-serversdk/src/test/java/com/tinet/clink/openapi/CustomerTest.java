@@ -181,4 +181,52 @@ public class CustomerTest extends AbstractTest {
 
     }
 
+    @Test
+    public void updateCustomerByExternalId() throws ServerException, ClientException {
+
+        UpdateCustomerByExternalIdRequest updateCustomerByExternalIdRequest = new UpdateCustomerByExternalIdRequest();
+
+        updateCustomerByExternalIdRequest.setId(273795);
+
+        updateCustomerByExternalIdRequest.setName("axaxax");
+
+        updateCustomerByExternalIdRequest.setLevel(0);
+
+        updateCustomerByExternalIdRequest.setShareType(0);
+
+        updateCustomerByExternalIdRequest.setSex(1);
+
+        updateCustomerByExternalIdRequest.setEmail("15533888888@qq.com");
+
+
+        updateCustomerByExternalIdRequest.setAddress("山ddoasdsngasddddaa");
+
+        String[] tel = {"16741291729"};
+
+        updateCustomerByExternalIdRequest.setTel(tel);
+
+        IdValue[] idValues = new IdValue[1];
+
+        IdValue idValue = new IdValue();
+        idValue.setId(344);
+
+        idValue.setValue("xaxxxxaaxax");
+
+        idValues[0] = idValue;
+
+        updateCustomerByExternalIdRequest.setCustomize(idValues);
+
+        updateCustomerByExternalIdRequest.setExternalId("13201a646126");
+
+        UpdateCustomerByExternalIdResponse updateCustomerByExternalIdResponse = client.getResponseModel(updateCustomerByExternalIdRequest);
+
+        try {
+            String resultStr = mapper.writeValueAsString(updateCustomerByExternalIdResponse);
+            System.out.println(resultStr);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 }
