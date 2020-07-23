@@ -16,13 +16,14 @@ public class ListIvrNodesResponse extends ResponseModel {
     /**
      * ivr节点对象列表
      */
-    private List<IvrNodeModel> listIvrNodes;
+    private List<IvrNodeModel> ivrNodes;
 
-    public List<IvrNodeModel> getListIvrNodes() {
-        return listIvrNodes;
+
+    public List<IvrNodeModel> getIvrNodes() {
+        return ivrNodes;
     }
 
-    public void setListIvrNodes(List<IvrNodeModel> listIvrNodes) {
-        this.listIvrNodes = listIvrNodes;
+    public void setIvrNodes(List<IvrNodeModel> ivrNodes) {
+        this.ivrNodes = ivrNodes;
     }
 }

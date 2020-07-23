@@ -16,13 +16,13 @@ public class ListIvrsResponse extends ResponseModel {
     /**
      * ivr对象列表
      */
-    private List<IvrModel> listIvrs;
+    private List<IvrModel> ivrs;
 
-    public List<IvrModel> getListIvrs() {
-        return listIvrs;
+    public List<IvrModel> getIvrs() {
+        return ivrs;
     }
 
-    public void setListIvrs(List<IvrModel> listIvrs) {
-        this.listIvrs = listIvrs;
+    public void setIvrs(List<IvrModel> ivrs) {
+        this.ivrs = ivrs;
     }
 }

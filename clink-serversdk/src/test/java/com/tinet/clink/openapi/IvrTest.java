@@ -31,7 +31,7 @@ public class IvrTest extends AbstractTest{
         ListIvrsRequest request = new ListIvrsRequest();
 
         ListIvrsResponse response = client.getResponseModel(request);
-        System.out.println(mapper.writeValueAsString(response.getListIvrs()));
+        System.out.println(mapper.writeValueAsString(response.getIvrs()));
     }
 
     /**
@@ -41,10 +41,10 @@ public class IvrTest extends AbstractTest{
     public void listIvrNodesTest() throws ServerException, ClientException, JsonProcessingException {
 
         ListIvrNodesRequest request = new ListIvrNodesRequest();
-        request.setIvrId(1);
+        request.setIvrId(5732);
 
         ListIvrNodesResponse response = client.getResponseModel(request);
-        System.out.println(mapper.writeValueAsString(response.getListIvrNodes()));
+        System.out.println(mapper.writeValueAsString(response.getIvrNodes()));
     }
 
 }
