@@ -11,7 +11,7 @@
 <dependency>
     <groupId>com.ti-net</groupId>
     <artifactId>clink-serversdk</artifactId>
-    <version>2.0.16</version>
+    <version>2.0.26</version>
 </dependency>
 ```
 
@@ -123,4 +123,10 @@ public class Test {
 1.创建客户资料 增加外部id字段[externalId]
 2.更新客户资料 增加外部id字段[externalId]
 3.增加根据外部id更新客户资料[UpdateCustomerByExternalIdRequest]
+```
+
+### V 2.0.26
+```
+1.设置-语音导航设置-查询语音导航列表，修改因参数名称错误而导致的返回值丢失问题
+2.设置-语音导航设置-查询语音导航节点列表，修改因参数名称错误而导致的返回值丢失问题
 ```
