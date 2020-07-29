@@ -114,7 +114,13 @@ public enum PathEnum {
     // webcall
     Webcall("webcall"),
     //状态统计报表
-    StatClientStatus("stat_client_status");
+    StatClientStatus("stat_client_status"),
+
+    //创建客户资料
+    ListBusinessField("list_business_customize_field"),
+
+
+    ListBusiness("list_business");
 
     private String value;
 
