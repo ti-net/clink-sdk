@@ -1,7 +1,7 @@
 package com.tinet.clink.openapi.response.chat;
 
 import com.tinet.clink.openapi.model.ChatMessage;
-import com.tinet.clink.openapi.response.PagedResponse;
+import com.tinet.clink.openapi.response.ResponseModel;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import java.util.List;
  * @author Wangyl
  * @date 2020/7/29
  */
-public class ChatMessageResponse extends PagedResponse {
+public class ChatMessageResponse extends ResponseModel {
     List<ChatMessage> chatMessages;
 
     public String getScrollId() {

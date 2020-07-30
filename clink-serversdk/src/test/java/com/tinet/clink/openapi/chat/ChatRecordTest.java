@@ -30,9 +30,10 @@ public class ChatRecordTest extends AbstractTest {
         ChatRecordRequest request = new ChatRecordRequest();
 
         request.setLimit(10);
-        request.setDate("20200730");
+        request.setDate("20200727");
 
         ChatRecordResponse response = client.getResponseModel(request);
+        System.out.println(response.getChatRecords().size());;
         System.out.println(mapper.writeValueAsString(response));
     }
 

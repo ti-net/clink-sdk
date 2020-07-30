@@ -1,8 +1,7 @@
 package com.tinet.clink.openapi.response.chat;
 
-import com.tinet.clink.openapi.model.CdrIbRecordModel;
 import com.tinet.clink.openapi.model.ChatInvestigation;
-import com.tinet.clink.openapi.response.PagedResponse;
+import com.tinet.clink.openapi.response.ResponseModel;
 
 import java.util.List;
 
@@ -10,7 +9,7 @@ import java.util.List;
  * @author Wangyl
  * @date 2020/7/29
  */
-public class ChatInvestigationResponse extends PagedResponse {
+public class ChatInvestigationResponse extends ResponseModel {
 
     List<ChatInvestigation> chatInvestigations;
     public String getScrollId() {

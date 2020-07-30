@@ -2,6 +2,7 @@ package com.tinet.clink.openapi.response.chat;
 
 import com.tinet.clink.openapi.model.ChatRecord;
 import com.tinet.clink.openapi.response.PagedResponse;
+import com.tinet.clink.openapi.response.ResponseModel;
 
 import java.util.List;
 
@@ -9,7 +10,7 @@ import java.util.List;
  * @author Wangyl
  * @date 2020/7/29
  */
-public class ChatRecordResponse extends PagedResponse {
+public class ChatRecordResponse extends ResponseModel {
 
     List<ChatRecord> chatRecords;
 
