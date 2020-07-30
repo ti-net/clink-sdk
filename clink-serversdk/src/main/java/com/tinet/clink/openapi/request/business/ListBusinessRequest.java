@@ -20,7 +20,7 @@ public class ListBusinessRequest extends AbstractRequestModel<ListBusinessRespon
 
     private Long endTime;
 
-    private Map<String, String> customize = new HashMap<String, String>();
+    private Map<String, String> customize;
 
     /**
      * 偏移量，范围 0-10000，默认值为 0
