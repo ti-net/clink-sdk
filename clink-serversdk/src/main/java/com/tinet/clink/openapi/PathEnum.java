@@ -116,10 +116,10 @@ public enum PathEnum {
     //状态统计报表
     StatClientStatus("stat_client_status"),
 
-    //创建客户资料
+    //查询业务记录的自定义字段
     ListBusinessField("list_business_customize_field"),
 
-
+    //查询业务记录
     ListBusiness("list_business");
 
     private String value;
