@@ -56,7 +56,7 @@ public class BusinessTest extends AbstractTest {
         customize.put("25868","用车,出城,报备出城");
 
 
-        listBusinessRequest.setCustomize(customize);
+//        listBusinessRequest.setCustomize(customize);
 
         listBusinessRequest.setLimit(20);
 
