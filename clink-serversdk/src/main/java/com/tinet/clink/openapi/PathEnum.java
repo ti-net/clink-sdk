@@ -107,14 +107,26 @@ public enum PathEnum {
     //短信发送
     SmsSend("sms_send"),
 
+    //----------------------------------------------↓呼叫中心-报表↓----------------------------------------------//
+
     //座席工作量报表
     StatClientWorkload("stat_client_workload"),
     //队列报表
     StatQueue("stat_queue"),
+    //座席状态统计报表
+    StatClientStatus("stat_client_status"),
+    //外呼报表-预览外呼
+    StatPreviewOb("stat_preview_ob"),
+    //中继报表-来电分析
+    StatHotlineIb("stat_hotline_ib"),
+    //中继报表-外呼接听率分析
+    StatHotlineObAnsweredRate("stat_hotline_ob_answered_rate"),
+
+    //----------------------------------------------↑呼叫中心-报表↑----------------------------------------------//
+
+
     // webcall
     Webcall("webcall"),
-    //状态统计报表
-    StatClientStatus("stat_client_status"),
 
     //查询业务记录的自定义字段
     ListBusinessField("list_business_customize_field"),
