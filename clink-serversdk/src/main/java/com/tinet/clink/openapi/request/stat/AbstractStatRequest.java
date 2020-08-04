@@ -53,11 +53,11 @@ public abstract class AbstractStatRequest<T extends ResponseModel> extends Abstr
         super(path, httpMethod);
     }
 
-    protected static String convertListToString(List objList) {
-        if (objList == null || objList.size() == 0) {
+    private static String convertListToString(List<String> list) {
+        if (list == null || list.size() == 0) {
             return null;
         } else {
-            return objList.toString().substring(1, objList.toString().length() - 1);
+            return String.join(",", list.toArray(new String[0]));
         }
     }
 }
