@@ -120,7 +120,14 @@ public enum PathEnum {
     ListBusinessField("list_business_customize_field"),
 
     //查询业务记录
-    ListBusiness("list_business");
+    ListBusiness("list_business"),
+
+    // 在线客服
+    ChatOpen("chat/open"),
+    ChatClose("chat/close"),
+    ChatSend("chat/send"),
+    ChatUpload("chat/upload"),
+    ChatMediaUrl("chat/media_url");
 
     private String value;
 
