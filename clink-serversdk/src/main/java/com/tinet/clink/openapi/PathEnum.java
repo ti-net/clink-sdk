@@ -133,8 +133,6 @@ public enum PathEnum {
 
     //查询业务记录
     ListBusiness("list_business"),
-    //状态统计报表
-    StatClientStatus("stat_client_status"),
 
     // 在线客服 - 获取会话记录
     ChatRecord("copy_chat_records"),
