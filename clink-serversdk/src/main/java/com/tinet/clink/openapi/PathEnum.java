@@ -132,7 +132,20 @@ public enum PathEnum {
     ListBusinessField("list_business_customize_field"),
 
     //查询业务记录
-    ListBusiness("list_business");
+    ListBusiness("list_business"),
+    //状态统计报表
+    StatClientStatus("stat_client_status"),
+
+    // 在线客服 - 获取会话记录
+    ChatRecord("copy_chat_records"),
+    // 在线客服 - 获取会话详情
+    ChatDetail("copy_chat_details"),
+    // 在线客服 - 获取聊天记录
+    ChatMessage("copy_chat_messages"),
+    // 在线客服 - 获取会话满意度
+    ChatInvestigation("copy_chat_investigations"),
+    // 在线客服 - 获取会话留言
+    ChatComment("copy_chat_comments");
 
     private String value;
 
