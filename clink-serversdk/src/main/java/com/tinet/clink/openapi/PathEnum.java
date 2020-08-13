@@ -127,6 +127,7 @@ public enum PathEnum {
 
     // webcall
     Webcall("webcall"),
+    //状态统计报表
 
     // 在线客服 - 获取会话记录
     ChatRecord("copy_chat_records"),
