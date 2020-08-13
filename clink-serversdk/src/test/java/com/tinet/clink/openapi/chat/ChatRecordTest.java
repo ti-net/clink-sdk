@@ -30,8 +30,8 @@ public class ChatRecordTest extends AbstractTest {
         ChatRecordRequest request = new ChatRecordRequest();
 
         request.setLimit(10);
-        request.setDate("20200727");
-        request.setScrollId("DnF1ZXJ5VGhlbkZldGNoAwAAAAABSWwoFkdfSmt5XzY1U2VHMFFaSTNkYjlPQ0EAAAAAAUlsJhZHX0preV82NVNlRzBRWkkzZGI5T0NBAAAAAAFJbCcWR19Ka3lfNjVTZUcwUVpJM2RiOU9DQQ==");
+        request.setDate("20200813");
+        //request.setScrollId("DnF1ZXJ5VGhlbkZldGNoAwAAAAABSWwoFkdfSmt5XzY1U2VHMFFaSTNkYjlPQ0EAAAAAAUlsJhZHX0preV82NVNlRzBRWkkzZGI5T0NBAAAAAAFJbCcWR19Ka3lfNjVTZUcwUVpJM2RiOU9DQQ==");
 
         ChatRecordResponse response = client.getResponseModel(request);
         System.out.println(response.getRecords().size());;
@@ -43,7 +43,7 @@ public class ChatRecordTest extends AbstractTest {
         ChatMessageRequest request = new ChatMessageRequest();
 
         request.setLimit(10);
-        request.setDate("20200730");
+        request.setDate("20200813");
 
         ChatMessageResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response));
@@ -54,8 +54,8 @@ public class ChatRecordTest extends AbstractTest {
         ChatDetailRequest request = new ChatDetailRequest();
 
         request.setLimit(10);
-        request.setDate("20200730");
-        request.setScrollId("DnF1ZXJ5VGhlbkZldGNoAwAAAAABSWRpFkdfSmt5XzY1U2VHMFFaSTNkYjlPQ0EAAAAAAUlkahZHX0preV82NVNlRzBRWkkzZGI5T0NBAAAAAAFJZGsWR19Ka3lfNjVTZUcwUVpJM2RiOU9DQQ==");
+        request.setDate("20200813");
+        //request.setScrollId("DnF1ZXJ5VGhlbkZldGNoAwAAAAABSWRpFkdfSmt5XzY1U2VHMFFaSTNkYjlPQ0EAAAAAAUlkahZHX0preV82NVNlRzBRWkkzZGI5T0NBAAAAAAFJZGsWR19Ka3lfNjVTZUcwUVpJM2RiOU9DQQ==");
 
         ChatDetailResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response));
@@ -66,7 +66,7 @@ public class ChatRecordTest extends AbstractTest {
         ChatCommentRequest request = new ChatCommentRequest();
 
         request.setLimit(10);
-        request.setDate("20200730");
+        request.setDate("20200813");
 
         ChatCommentResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response));
@@ -77,7 +77,7 @@ public class ChatRecordTest extends AbstractTest {
         ChatInvestigationRequest request = new ChatInvestigationRequest();
 
         request.setLimit(10);
-        request.setDate("20200730");
+        request.setDate("20200813");
 
         ChatInvestigationResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response));
