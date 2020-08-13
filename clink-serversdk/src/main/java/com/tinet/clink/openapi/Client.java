@@ -46,6 +46,12 @@ public class Client {
 
     private Signer signer = Signer.getSigner();
 
+    private static final ObjectMapper CONTENT_OBJECT_MAPPER = new ObjectMapper();
+
+    static {
+        CONTENT_OBJECT_MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+    }
+
     public Client(ClientConfiguration configuration) {
         this.configuration = configuration;
         httpClient = HttpClientBuilder.create()
@@ -151,9 +157,7 @@ public class Client {
     }
 
     private <T> T getHttpContentObject(HttpResponse response, Class<T> clazz) throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        return objectMapper.readValue(response.getEntity().getContent(), clazz);
+        return CONTENT_OBJECT_MAPPER.readValue(response.getEntity().getContent(), clazz);
     }
 
 }

@@ -1,7 +1,8 @@
 package com.tinet.clink.openapi.request.stat;
 
 import com.tinet.clink.openapi.PathEnum;
-import com.tinet.clink.openapi.response.stat.StatClientWorkloadResponse;
+import com.tinet.clink.openapi.response.stat.StatHotlineIbResponse;
+import com.tinet.clink.openapi.response.stat.StatQueueResponse;
 import com.tinet.clink.openapi.utils.HttpMethodType;
 
 
@@ -9,7 +10,7 @@ import com.tinet.clink.openapi.utils.HttpMethodType;
  * @author Chenjf
  * @date 2020/2/24 15:32
  **/
-public class StatClientWorkloadRequest extends AbstractStatRequest<StatClientWorkloadResponse> {
+public class StatHotlineIbRequest extends AbstractStatRequest<StatHotlineIbResponse> {
 
     /**
      * 统计方式 2-汇总 3-分时累计
@@ -31,12 +32,12 @@ public class StatClientWorkloadRequest extends AbstractStatRequest<StatClientWor
     }
 
     @Override
-    public Class<StatClientWorkloadResponse> getResponseClass() {
-        return StatClientWorkloadResponse.class;
+    public Class<StatHotlineIbResponse> getResponseClass() {
+        return StatHotlineIbResponse.class;
     }
 
-    public StatClientWorkloadRequest() {
-        super(PathEnum.StatClientWorkload.value(), HttpMethodType.POST);
+    public StatHotlineIbRequest() {
+        super(PathEnum.StatHotlineIb.value(), HttpMethodType.POST);
     }
 
 }
