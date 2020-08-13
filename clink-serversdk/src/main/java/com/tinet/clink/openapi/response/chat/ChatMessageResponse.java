@@ -10,7 +10,7 @@ import java.util.List;
  * @date 2020/7/29
  */
 public class ChatMessageResponse extends ResponseModel {
-    List<ChatMessage> chatMessages;
+    List<ChatMessage> records;
 
     public String getScrollId() {
         return scrollId;
@@ -24,11 +24,11 @@ public class ChatMessageResponse extends ResponseModel {
      * 游标 id
      */
     private String scrollId;
-    public List<ChatMessage> getChatMessages() {
-        return chatMessages;
+    public List<ChatMessage> getRecords() {
+        return records;
     }
 
-    public void setChatMessages(List<ChatMessage> chatMessages) {
-        this.chatMessages = chatMessages;
+    public void setRecords(List<ChatMessage> records) {
+        this.records = records;
     }
 }

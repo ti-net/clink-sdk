@@ -1,7 +1,6 @@
 package com.tinet.clink.openapi.response.chat;
 
 import com.tinet.clink.openapi.model.ChatRecord;
-import com.tinet.clink.openapi.response.PagedResponse;
 import com.tinet.clink.openapi.response.ResponseModel;
 
 import java.util.List;
@@ -12,19 +11,19 @@ import java.util.List;
  */
 public class ChatRecordResponse extends ResponseModel {
 
-    List<ChatRecord> chatRecords;
+    List<ChatRecord> records;
 
     /**
      * 游标 id
      */
     private String scrollId;
 
-    public List<ChatRecord> getChatRecords() {
-        return chatRecords;
+    public List<ChatRecord> getRecords() {
+        return records;
     }
 
-    public void setChatRecords(List<ChatRecord> chatRecords) {
-        this.chatRecords = chatRecords;
+    public void setRecords(List<ChatRecord> records) {
+        this.records = records;
     }
 
     public String getScrollId() {

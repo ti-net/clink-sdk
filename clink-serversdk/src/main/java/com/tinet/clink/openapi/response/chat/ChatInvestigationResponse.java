@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class ChatInvestigationResponse extends ResponseModel {
 
-    List<ChatInvestigation> chatInvestigations;
+    List<ChatInvestigation> records;
     public String getScrollId() {
         return scrollId;
     }
@@ -25,11 +25,11 @@ public class ChatInvestigationResponse extends ResponseModel {
      */
     private String scrollId;
 
-    public List<ChatInvestigation> getChatInvestigations() {
-        return chatInvestigations;
+    public List<ChatInvestigation> getRecords() {
+        return records;
     }
 
-    public void setChatInvestigations(List<ChatInvestigation> chatInvestigations) {
-        this.chatInvestigations = chatInvestigations;
+    public void setRecords(List<ChatInvestigation> records) {
+        this.records = records;
     }
 }

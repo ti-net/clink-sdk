@@ -34,7 +34,7 @@ public class ChatRecordTest extends AbstractTest {
         request.setScrollId("DnF1ZXJ5VGhlbkZldGNoAwAAAAABSWwoFkdfSmt5XzY1U2VHMFFaSTNkYjlPQ0EAAAAAAUlsJhZHX0preV82NVNlRzBRWkkzZGI5T0NBAAAAAAFJbCcWR19Ka3lfNjVTZUcwUVpJM2RiOU9DQQ==");
 
         ChatRecordResponse response = client.getResponseModel(request);
-        System.out.println(response.getChatRecords().size());;
+        System.out.println(response.getRecords().size());;
         System.out.println(mapper.writeValueAsString(response));
     }
 
