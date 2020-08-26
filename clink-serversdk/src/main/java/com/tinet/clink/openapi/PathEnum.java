@@ -143,7 +143,13 @@ public enum PathEnum {
     // 在线客服 - 获取会话满意度
     ChatInvestigation("copy_chat_investigations"),
     // 在线客服 - 获取会话留言
-    ChatComment("copy_chat_comments");
+    ChatComment("copy_chat_comments"),
+
+
+//    -----工单记录-------
+
+    //查询工单记录
+    ListTicket("list_ticket");
 
     private String value;
 

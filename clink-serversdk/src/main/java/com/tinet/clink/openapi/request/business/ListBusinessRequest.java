@@ -39,7 +39,7 @@ public class ListBusinessRequest extends AbstractRequestModel<ListBusinessRespon
     public void setOffset(Integer offset) {
         this.offset = offset;
         if (offset != null) {
-            putBodyParameter("offset", offset);
+            putQueryParameter("offset", offset);
         }
     }
 

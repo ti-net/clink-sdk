@@ -13,7 +13,7 @@ public abstract class AbstractTest {
     @Before
     public void init() {
 
-        configuration = new ClientConfiguration("210916b1ef8f33cbc93d0eb5141228a8", "5SZ19a96q528VMx2mi69");
+        configuration = new ClientConfiguration("d6e46afd59a5162595213ffecc825606", "LFDIuhX79R8Mb2HN161x");
         configuration.setScheme("http");
         configuration.setHost("api-bj-test0.clink.cn");
 
