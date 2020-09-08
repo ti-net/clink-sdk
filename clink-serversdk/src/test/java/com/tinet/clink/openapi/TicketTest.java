@@ -1,6 +1,8 @@
 package com.tinet.clink.openapi;
 
+import com.tinet.clink.openapi.request.ticket.GetTicketDetailRequest;
 import com.tinet.clink.openapi.request.ticket.ListTicketRequest;
+import com.tinet.clink.openapi.response.ticket.GetTicketDetailResponse;
 import com.tinet.clink.openapi.response.ticket.ListTicketResponse;
 import org.junit.Test;
 
@@ -21,6 +23,24 @@ public class TicketTest extends AbstractTest{
         listTicketRequest.setLimit(10);
         try {
             ListTicketResponse response=client.getResponseModel(listTicketRequest);
+
+            System.out.println(response);
+
+            System.out.println(111);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @Test
+    public void getTicketDeatil() {
+        GetTicketDetailRequest getTicketDetailRequest = new GetTicketDetailRequest();
+
+        getTicketDetailRequest.setId(160734);
+        try {
+            GetTicketDetailResponse response = client.getResponseModel(getTicketDetailRequest);
 
             System.out.println(response);
 
