@@ -140,6 +140,11 @@ public class TicketDeatilModel {
      */
     private TicketOperationLogModel[] operationLogs;
 
+    /**
+     * 关闭时间
+     */
+    private Date closeTime;
+
     public Integer getId() {
         return id;
     }
@@ -346,5 +351,13 @@ public class TicketDeatilModel {
 
     public void setOperationLogs(TicketOperationLogModel[] operationLogs) {
         this.operationLogs = operationLogs;
+    }
+
+    public Date getCloseTime() {
+        return closeTime;
+    }
+
+    public void setCloseTime(Date closeTime) {
+        this.closeTime = closeTime;
     }
 }
