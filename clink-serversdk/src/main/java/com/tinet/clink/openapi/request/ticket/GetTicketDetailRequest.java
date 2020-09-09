@@ -34,6 +34,6 @@ public class GetTicketDetailRequest extends AbstractRequestModel<GetTicketDetail
 
     @Override
     public Class<GetTicketDetailResponse> getResponseClass() {
-        return null;
+        return GetTicketDetailResponse.class;
     }
 }
