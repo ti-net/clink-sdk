@@ -18,7 +18,7 @@ import org.junit.Test;
  * @date 2018/10/29
  **/
 @Ignore
-public class CallTest extends AbstractTest{
+public class CallTest extends AbstractTest {
 
     private ObjectMapper mapper = new ObjectMapper();
 
@@ -37,6 +37,7 @@ public class CallTest extends AbstractTest{
         OnlineResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getRequestId()));
     }
+
     /**
      * 下线单元测试
      */
@@ -50,6 +51,7 @@ public class CallTest extends AbstractTest{
         OfflineResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getRequestId()));
     }
+
     /**
      * 置忙单元测试
      */
@@ -63,6 +65,7 @@ public class CallTest extends AbstractTest{
         PauseResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getRequestId()));
     }
+
     /**
      * 置闲单元测试
      */
@@ -75,6 +78,7 @@ public class CallTest extends AbstractTest{
         UnpauseResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getRequestId()));
     }
+
     /**
      * 外呼单元测试
      */
@@ -90,6 +94,7 @@ public class CallTest extends AbstractTest{
         CalloutResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getRequestId()));
     }
+
     /**
      * 外呼取消单元测试
      */
@@ -102,6 +107,7 @@ public class CallTest extends AbstractTest{
         CalloutCancelResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getRequestId()));
     }
+
     /**
      * 挂机单元测试
      */
@@ -114,6 +120,7 @@ public class CallTest extends AbstractTest{
         UnlinkResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getRequestId()));
     }
+
     /**
      * 拒接单元测试
      */
@@ -126,6 +133,7 @@ public class CallTest extends AbstractTest{
         RefuseResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getRequestId()));
     }
+
     /**
      * 转移单元测试
      */
@@ -140,6 +148,7 @@ public class CallTest extends AbstractTest{
         TransferResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getRequestId()));
     }
+
     /**
      * 交互单元测试
      */
@@ -148,12 +157,13 @@ public class CallTest extends AbstractTest{
 
         InteractRequest request = new InteractRequest();
         request.setCno("1000");
-        request.setInteractType(0);
-        request.setInteractNumber("");
+        request.setIvrId(0);
+        request.setIvrNode("");
 
         InteractResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getRequestId()));
     }
+
     /**
      * 咨询单元测试
      */
@@ -168,6 +178,7 @@ public class CallTest extends AbstractTest{
         ConsultResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getRequestId()));
     }
+
     /**
      * 咨询取消单元测试
      */
@@ -180,6 +191,7 @@ public class CallTest extends AbstractTest{
         ConsultCancelResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getRequestId()));
     }
+
     /**
      * 咨询转移单元测试
      */
@@ -192,6 +204,7 @@ public class CallTest extends AbstractTest{
         ConsultTransferResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getRequestId()));
     }
+
     /**
      * 咨询三方单元测试
      */
@@ -217,6 +230,7 @@ public class CallTest extends AbstractTest{
         UnconsultResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getRequestId()));
     }
+
     /**
      * 保持单元测试
      */
@@ -229,6 +243,7 @@ public class CallTest extends AbstractTest{
         HoldResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getRequestId()));
     }
+
     /**
      * 取消保持单元测试
      */
@@ -241,6 +256,7 @@ public class CallTest extends AbstractTest{
         UnholdResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getRequestId()));
     }
+
     /**
      * 静音单元测试
      */
@@ -254,6 +270,7 @@ public class CallTest extends AbstractTest{
         MuteResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getRequestId()));
     }
+
     /**
      * 取消静音单元测试
      */
@@ -267,6 +284,7 @@ public class CallTest extends AbstractTest{
         UnmuteResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getRequestId()));
     }
+
     /**
      * 发送按键单元测试
      */
@@ -281,6 +299,7 @@ public class CallTest extends AbstractTest{
         DtmfResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getRequestId()));
     }
+
     /**
      * 满意度调查单元测试
      */
@@ -294,6 +313,7 @@ public class CallTest extends AbstractTest{
         System.out.println(mapper.writeValueAsString(response.getRequestId()));
     }
     /*====================================================================================================*/
+
     /**
      * 监听单元测试
      */
@@ -308,6 +328,7 @@ public class CallTest extends AbstractTest{
         SpyResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getRequestId()));
     }
+
     /**
      * 三方单元测试
      */
@@ -322,6 +343,7 @@ public class CallTest extends AbstractTest{
         ThreewayResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getRequestId()));
     }
+
     /**
      * 耳语单元测试
      */
@@ -336,6 +358,7 @@ public class CallTest extends AbstractTest{
         WhisperResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getRequestId()));
     }
+
     /**
      * 强拆单元测试
      */
@@ -350,6 +373,7 @@ public class CallTest extends AbstractTest{
         DisconnectResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getRequestId()));
     }
+
     /**
      * 强插单元测试
      */
@@ -364,6 +388,7 @@ public class CallTest extends AbstractTest{
         BargeResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getRequestId()));
     }
+
     /**
      * 置忙单元测试
      */
@@ -376,6 +401,7 @@ public class CallTest extends AbstractTest{
         PauseClientResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getRequestId()));
     }
+
     /**
      * 置闲单元测试
      */

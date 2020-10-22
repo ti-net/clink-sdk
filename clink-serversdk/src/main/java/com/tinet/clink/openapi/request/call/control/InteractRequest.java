@@ -21,12 +21,12 @@ public class InteractRequest extends AbstractRequestModel<InteractResponse> {
     /**
      * 交互类型，0:语音导航节点；1:语音导航名称
      */
-    private Integer interactType;
+    private Integer ivrId;
 
     /**
      * 交互对象号码
      */
-    private String interactNumber;
+    private String ivrNode;
 
 
     public InteractRequest() {
@@ -44,25 +44,25 @@ public class InteractRequest extends AbstractRequestModel<InteractResponse> {
         }
     }
 
-    public Integer getInteractType() {
-        return interactType;
+    public Integer getIvrId() {
+        return ivrId;
     }
 
-    public void setInteractType(Integer interactType) {
-        this.interactType = interactType;
-        if (interactType != null) {
-            putBodyParameter("interactType", interactType);
+    public void setIvrId(Integer ivrId) {
+        this.ivrId = ivrId;
+        if (ivrId != null) {
+            putBodyParameter("ivrId", ivrId);
         }
     }
 
-    public String getInteractNumber() {
-        return interactNumber;
+    public String getIvrNode() {
+        return ivrNode;
     }
 
-    public void setInteractNumber(String interactNumber) {
-        this.interactNumber = interactNumber;
-        if (interactNumber != null) {
-            putBodyParameter("interactNumber", interactNumber);
+    public void setIvrNode(String ivrNode) {
+        this.ivrNode = ivrNode;
+        if (ivrNode != null) {
+            putBodyParameter("ivrNode", ivrNode);
         }
     }
 
