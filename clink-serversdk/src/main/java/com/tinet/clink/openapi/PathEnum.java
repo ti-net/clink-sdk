@@ -149,7 +149,10 @@ public enum PathEnum {
 //    -----工单记录-------
 
     //查询工单记录
-    ListTicket("list_ticket");
+    ListTicket("list_ticket"),
+
+    // 获取工单详情
+    GetTicketDetail("get_ticket_detail");
 
     private String value;
 
