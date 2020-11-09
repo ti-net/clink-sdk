@@ -2,8 +2,10 @@ package com.tinet.clink.openapi;
 
 import com.tinet.clink.openapi.exceptions.ClientException;
 import com.tinet.clink.openapi.exceptions.ServerException;
+import com.tinet.clink.openapi.request.cdr.DescribeDetailRecordFileUrlRequest;
 import com.tinet.clink.openapi.request.cdr.DescribeRecordFileUrlRequest;
 import com.tinet.clink.openapi.request.cdr.DownloadRecordFileRequest;
+import com.tinet.clink.openapi.response.cdr.DescribeDetailRecordFileUrlResponse;
 import com.tinet.clink.openapi.response.cdr.DescribeRecordFileUrlResponse;
 import org.apache.http.HttpResponse;
 import org.junit.Test;
@@ -19,8 +21,9 @@ import java.io.InputStream;
  */
 public class RecordFileTest extends AbstractTest {
 
-    String obUniqueId = "medias_1-1566987273.10";
+    String obUniqueId = "medias_1-1604542113.9";
     String ibUniqueId = "medias_1a.21";
+    String uniqueId = "medias_1-1604542150.11";
 
     @Test
     public void describeRecordFileUrl() {
@@ -38,7 +41,22 @@ public class RecordFileTest extends AbstractTest {
             e.printStackTrace();
         }
     }
+    @Test
+    public void describeDetailRecordFileUrl(){
+        DescribeDetailRecordFileUrlRequest request = new DescribeDetailRecordFileUrlRequest();
+        request.setMainUniqueId(obUniqueId);
+        request.setUniqueId(uniqueId);
 
+        try {
+            DescribeDetailRecordFileUrlResponse response = client.getResponseModel(request);
+            System.out.println(response.getRecordFileUrl());
+        } catch (ClientException e) {
+            e.printStackTrace();
+        } catch (ServerException e) {
+            e.printStackTrace();
+        }
+
+    }
     @Test
     public void downloadRecordFile() {
         DownloadRecordFileRequest request = new DownloadRecordFileRequest();
