@@ -9,11 +9,13 @@ import com.tinet.clink.openapi.utils.HttpMethodType;
 import com.tinet.clink.openapi.utils.RequestConstant;
 import org.apache.http.client.utils.URIBuilder;
 
+import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -31,6 +33,16 @@ public abstract class AbstractRequestModel<T extends ResponseModel> {
     private SignatureComposer composer = null;
 
     private final Map<String, String> queryParameters = new TreeMap<String, String>();
+
+    /**
+     * multipart 添加附件列表
+     */
+    protected Map<String, List<File>> fileMap = null;
+
+    /**
+     * multipart 添加文本参数
+     */
+    protected Object model = null;
 
     public AbstractRequestModel(String path) {
         this.composer = new SignatureComposer();
@@ -111,5 +123,28 @@ public abstract class AbstractRequestModel<T extends ResponseModel> {
 
     public HttpMethodType httpMethod() {
         return httpMethod;
+    }
+
+    @JsonIgnore
+    public boolean isMultipartFormData() {
+        return false;
+    }
+
+    @JsonIgnore
+    public Map<String, List<File>> getFileMap() {
+        return fileMap;
+    }
+
+    @JsonIgnore
+    public Object getModel() {
+        return model;
+    }
+
+    public void setModel(Object model) {
+        this.model = model;
+    }
+
+    public void setFileMap(Map<String, List<File>> fileMap) {
+        this.fileMap = fileMap;
     }
 }

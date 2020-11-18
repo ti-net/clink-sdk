@@ -1,5 +1,6 @@
 package com.tinet.clink.openapi;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tinet.clink.openapi.auth.Signer;
@@ -9,24 +10,28 @@ import com.tinet.clink.openapi.model.ErrorCode;
 import com.tinet.clink.openapi.model.OpenapiError;
 import com.tinet.clink.openapi.request.AbstractRequestModel;
 import com.tinet.clink.openapi.response.ResponseModel;
-import org.apache.http.HttpHost;
-import org.apache.http.HttpResponse;
-import org.apache.http.NoHttpResponseException;
-import org.apache.http.StatusLine;
+import org.apache.http.*;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.HttpRequestRetryHandler;
 import org.apache.http.entity.ContentType;
+import org.apache.http.entity.FileEntity;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.entity.mime.FormBodyPartBuilder;
+import org.apache.http.entity.mime.MultipartEntityBuilder;
+import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicHttpEntityEnclosingRequest;
 import org.apache.http.protocol.HttpContext;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.URISyntaxException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -91,9 +96,14 @@ public class Client {
             BasicHttpEntityEnclosingRequest httpRequest = new BasicHttpEntityEnclosingRequest(method, uri);
 
             if (request.httpMethod().hasContent()) {
-                StringEntity entity = new StringEntity(mapper.writeValueAsString(request),
-                        ContentType.APPLICATION_JSON);
-                httpRequest.setEntity(entity);
+                if (request.isMultipartFormData()) {
+                    MultipartEntityBuilder builder = getMultipartEntityBuilder(request);
+                    httpRequest.setEntity(builder.build());
+                } else {
+                    StringEntity entity = new StringEntity(mapper.writeValueAsString(request),
+                            ContentType.APPLICATION_JSON);
+                    httpRequest.setEntity(entity);
+                }
             }
 
             return httpClient.execute(httpHost, httpRequest);
@@ -104,6 +114,42 @@ public class Client {
         } catch (IOException e) {
             throw new ClientException("SDK", "服务器连接失败", e);
         }
+    }
+
+    private <T extends ResponseModel> MultipartEntityBuilder getMultipartEntityBuilder(AbstractRequestModel<T> request) throws JsonProcessingException {
+        MultipartEntityBuilder builder = MultipartEntityBuilder.create();
+        // 设置字符编码
+        builder.setCharset(StandardCharsets.UTF_8);
+
+        // multipart data 普通字符的处理
+        Object model = request.getModel();
+        if (Objects.nonNull(model)) {
+            String modelStr;
+            if (model instanceof String) {
+                modelStr = (String) model;
+            } else {
+                modelStr = mapper.writeValueAsString(model);
+            }
+            builder.addTextBody("model", modelStr, ContentType.create(ContentType.TEXT_PLAIN.getMimeType(), Consts.UTF_8));
+        }
+
+        // multipart data附件的处理
+        Map<String, List<File>> fileMap = request.getFileMap();
+        if (Objects.isNull(fileMap)) {
+            return builder;
+        }
+        for (Map.Entry<String, List<File>> entry : fileMap.entrySet()) {
+            if (Objects.isNull(entry.getValue()) || entry.getValue().size() == 0) {
+                continue;
+            }
+            for (File file : entry.getValue()) {
+                if (Objects.isNull(file) || file.length() == 0) {
+                    continue;
+                }
+                builder.addPart(FormBodyPartBuilder.create(entry.getKey(), new FileBody(file)).build());
+            }
+        }
+        return builder;
     }
 
     public <T extends ResponseModel> T getResponseModel(AbstractRequestModel<T> request) throws ClientException,
