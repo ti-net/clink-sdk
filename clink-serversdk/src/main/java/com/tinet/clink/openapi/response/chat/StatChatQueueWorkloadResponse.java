@@ -2,6 +2,12 @@ package com.tinet.clink.openapi.response.chat;
 
 import com.tinet.clink.openapi.response.ResponseModel;
 
+/**
+ * 在线客服-队列报表 Response
+ *
+ * @author ningkun
+ * @date 2020/11/25
+ */
 public class StatChatQueueWorkloadResponse extends ResponseModel {
     private Integer status;
 

@@ -3,9 +3,14 @@ package com.tinet.clink.openapi.request.chat;
 import com.tinet.clink.openapi.PathEnum;
 import com.tinet.clink.openapi.request.stat.AbstractStatRequest;
 import com.tinet.clink.openapi.response.chat.StatChatClientWorkloadResponse;
-import com.tinet.clink.openapi.response.stat.StatClientWorkloadResponse;
 import com.tinet.clink.openapi.utils.HttpMethodType;
 
+/**
+ * 在线客服-座席工作量报表 Request
+ *
+ * @author ningkun
+ * @date 2020/11/25
+ */
 public class StatChatClientWorkloadRequest extends AbstractStatRequest<StatChatClientWorkloadResponse> {
 
     /**

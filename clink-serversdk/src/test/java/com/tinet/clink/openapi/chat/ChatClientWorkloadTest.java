@@ -41,18 +41,7 @@ public class ChatClientWorkloadTest {
         Client client = new Client(clientConfiguration);
         StatChatQueueWorkloadResponse response2 = client.getResponseModel(request2);
         System.out.println(mapper.writeValueAsString(response2.getResult()));
-        try {
-            response2 = client.getResponseModel(request2);
-            try {
-                System.out.println(mapper.writeValueAsString(response2.getResult()));
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
-            }
-        }  catch (ClientException e) {
-            e.printStackTrace();
-        } catch (ServerException e) {
-            e.printStackTrace();
-        }
+
     }
 
 }

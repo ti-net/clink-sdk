@@ -3,40 +3,16 @@ package com.tinet.clink.openapi.response.chat;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 在线客服-座席工作量报表数据
+ *
+ * @author ningkun
+ * @date 2020/11/25
+ */
 public class StatChatClientResponseModel {
-
-
-    private Integer start;
-
-    private Integer currentPageNo;
-
-    private Integer pageSize;
 
     List<Map<String, Object>> data;
 
-    public Integer getStart() {
-        return start;
-    }
-
-    public void setStart(Integer start) {
-        this.start = start;
-    }
-
-    public Integer getCurrentPageNo() {
-        return currentPageNo;
-    }
-
-    public void setCurrentPageNo(Integer currentPageNo) {
-        this.currentPageNo = currentPageNo;
-    }
-
-    public Integer getPageSize() {
-        return pageSize;
-    }
-
-    public void setPageSize(Integer pageSize) {
-        this.pageSize = pageSize;
-    }
 
     public List<Map<String, Object>> getData() {
         return data;
