@@ -26,7 +26,7 @@ public class ChatClientWorkloadTest {
         clientConfiguration.setHost("api-bj-test5.clink.cn");
         Client client = new Client(clientConfiguration);
         StatChatClientWorkloadResponse response = client.getResponseModel(request);
-        System.out.println(mapper.writeValueAsString(response.getResult()));
+        System.out.println(mapper.writeValueAsString(response.getStatChatClientWorkload()));
 
     }
 
@@ -40,7 +40,7 @@ public class ChatClientWorkloadTest {
         clientConfiguration.setHost("api-bj-test5.clink.cn");
         Client client = new Client(clientConfiguration);
         StatChatQueueWorkloadResponse response2 = client.getResponseModel(request2);
-        System.out.println(mapper.writeValueAsString(response2.getResult()));
+        System.out.println(mapper.writeValueAsString(response2.getStatChatQueueWorkload()));
 
     }
 

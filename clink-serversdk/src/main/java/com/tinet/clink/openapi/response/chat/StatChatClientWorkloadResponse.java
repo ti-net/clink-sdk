@@ -2,6 +2,9 @@ package com.tinet.clink.openapi.response.chat;
 
 import com.tinet.clink.openapi.response.ResponseModel;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * 在线客服-座席工作量报表 Response
  *
@@ -10,33 +13,13 @@ import com.tinet.clink.openapi.response.ResponseModel;
  */
 public class StatChatClientWorkloadResponse extends ResponseModel {
 
-    private Integer status;
+    private List<Map<String, Object>> statChatClientWorkload;
 
-    private String message;
-
-    private StatChatClientResponseModel result;
-
-    public Integer getStatus() {
-        return status;
+    public List<Map<String, Object>> getStatChatClientWorkload() {
+        return statChatClientWorkload;
     }
 
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public StatChatClientResponseModel getResult() {
-        return result;
-    }
-
-    public void setResult(StatChatClientResponseModel result) {
-        this.result = result;
+    public void setStatChatClientWorkload(List<Map<String, Object>> statChatClientWorkload) {
+        this.statChatClientWorkload = statChatClientWorkload;
     }
 }
