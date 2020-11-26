@@ -10,7 +10,6 @@ import org.junit.Test;
 /**
  * 工单模板类别请求示例
  *
- * @author liuhy
  * @date: 2020/11/25
  **/
 public class ListTicketCategoryTest extends AbstractTest {

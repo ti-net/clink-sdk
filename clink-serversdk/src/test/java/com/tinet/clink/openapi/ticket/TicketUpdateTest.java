@@ -72,8 +72,12 @@ public class TicketUpdateTest extends AbstractTest {
         field2.setName("gq文件1");
         field2.setType(14);
         field2.setRequired(0);
+        /*
+        工单创建如果上传了一个文件，那么该文件会生成一个key，该key保存在该字段的value中，
+        如果更新时更新这个字段，并且不需要删除这个附件，那么需要将该key放入value中传递
+         */
         field2.setValue("ticket/20201126/8000559/5fd603ce-bfd4-41e8-ae30-b1246ee86538.");
-//
+
         fieldList.add(field);
         fieldList.add(field1);
         fieldList.add(field2);
