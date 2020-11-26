@@ -20,6 +20,9 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
+ * 如果需要支持上传附件则需要按照以下方式：
+ * 1、重写isMultipartFormData方法，使其支持 multipart form data 请求方式
+ * 2、如果有text参数，传入到父类的到 model中；如果有附件，传入到父类的 fileMap中。
  * @author houfc
  */
 public abstract class AbstractRequestModel<T extends ResponseModel> {
