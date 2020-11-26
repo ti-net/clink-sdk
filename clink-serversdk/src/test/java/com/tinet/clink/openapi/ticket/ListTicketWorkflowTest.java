@@ -20,6 +20,9 @@ public class ListTicketWorkflowTest extends AbstractTest {
 
         listTicketWorkflowRequest.setOffset(0);
         listTicketWorkflowRequest.setLimit(20);
+        listTicketWorkflowRequest.setCategory(112);
+        listTicketWorkflowRequest.setName("奇虎360工单模板");
+//        listTicketWorkflowRequest.setId(707);
         ListTicketWorkflowResponse ticketWorkflowResponse;
 
         try {

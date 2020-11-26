@@ -38,7 +38,7 @@ public class TicketTest extends AbstractTest{
     public void getTicketDeatil() {
         GetTicketDetailRequest getTicketDetailRequest = new GetTicketDetailRequest();
 
-        getTicketDetailRequest.setId(123);
+        getTicketDetailRequest.setId(162879);
         try {
             GetTicketDetailResponse response = client.getResponseModel(getTicketDetailRequest);
 
