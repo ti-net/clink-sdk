@@ -16,7 +16,7 @@ public class ListTicketRequest extends AbstractRequestModel<ListTicketResponse> 
 
 
     /**
-     *工单id
+     * 工单id
      */
     private Integer id;
 

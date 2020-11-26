@@ -6,12 +6,12 @@ import com.tinet.clink.openapi.response.ticket.TicketSaveResponse;
 import com.tinet.clink.openapi.utils.HttpMethodType;
 
 /**
+ * 工单保存
  *
  * @author liuhy
  * @date: 2020/11/22
  **/
 public class TicketSaveRequest extends AbstractRequestModel<TicketSaveResponse> {
-
 
 
     public TicketSaveRequest() {

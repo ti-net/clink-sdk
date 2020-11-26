@@ -7,7 +7,9 @@ import com.tinet.clink.openapi.request.ticket.ListTicketCategoryRequest;
 import com.tinet.clink.openapi.response.ticket.ListTicketCategoryResponse;
 import org.junit.Test;
 
-/**工单模板类别请求示例
+/**
+ * 工单模板类别请求示例
+ *
  * @author liuhy
  * @date: 2020/11/25
  **/

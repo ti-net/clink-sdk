@@ -13,7 +13,9 @@ import org.junit.Test;
 import java.io.File;
 import java.util.*;
 
-/**保存工单请求示例
+/**
+ * 保存工单请求示例
+ *
  * @date 2020/11/17
  **/
 public class TicketSaveTest extends AbstractTest {
@@ -32,7 +34,7 @@ public class TicketSaveTest extends AbstractTest {
         TicketSaveRequest ticketSaveRequest = new TicketSaveRequest();
 
         // 请求参数
-        TicketSaveModel ticketSaveModel=new TicketSaveModel();
+        TicketSaveModel ticketSaveModel = new TicketSaveModel();
         ticketSaveModel.setWorkflowId(707);
         ticketSaveModel.setClose(0);
         ticketSaveModel.setCreateTime(new Date());
@@ -43,27 +45,27 @@ public class TicketSaveTest extends AbstractTest {
         ticketSaveModel.setStateSelected("9");
 
         // 需要保存的工单的表单对象
-        TicketFormModel ticketFormModel=new TicketFormModel();
+        TicketFormModel ticketFormModel = new TicketFormModel();
         ticketFormModel.setId(1890);
 
         // 需要保存的字段集合
-        List<Field> fieldList=new ArrayList<>();
+        List<Field> fieldList = new ArrayList<>();
 
-        Field field=new Field();
+        Field field = new Field();
         field.setId(33929);
         field.setName("kk_串号");
         field.setRequired(0);
         field.setType(1);
         field.setValue("100");
 
-        Field field1=new Field();
+        Field field1 = new Field();
         field1.setId(33930);
         field1.setName("kk_产品名称");
         field1.setRequired(0);
         field1.setType(1);
         field1.setValue("复选1,复选2,复选3");
 
-        Field field2=new Field();
+        Field field2 = new Field();
         field2.setId(31075);
         field2.setName("gq文件1");
         field2.setType(14);
@@ -77,15 +79,15 @@ public class TicketSaveTest extends AbstractTest {
 
         ticketSaveModel.setForm(ticketFormModel);
 
-        List<File> fileList=new ArrayList<>();
+        List<File> fileList = new ArrayList<>();
 
-        File file=new File("E:\\工单信息 - 副本.xlsx");
+        File file = new File("E:\\工单信息 - 副本.xlsx");
 
         fileList.add(file);
 
         Map<String, List<File>> fileMap = new HashMap<>();
 
-        fileMap.put("31075",fileList);
+        fileMap.put("31075", fileList);
 
         //将请求参数赋值到 request中
         ticketSaveRequest.setModel(ticketSaveModel);

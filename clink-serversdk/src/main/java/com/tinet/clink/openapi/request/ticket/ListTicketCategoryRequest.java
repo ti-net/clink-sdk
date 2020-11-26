@@ -6,6 +6,7 @@ import com.tinet.clink.openapi.response.ticket.ListTicketCategoryResponse;
 import com.tinet.clink.openapi.utils.HttpMethodType;
 
 /**
+ * 获取工单模板类别
  *
  * @author liuhy
  * @date: 2020/11/22

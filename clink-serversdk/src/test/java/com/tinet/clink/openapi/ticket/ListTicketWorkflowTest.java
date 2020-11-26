@@ -7,7 +7,9 @@ import com.tinet.clink.openapi.request.ticket.ListTicketWorkflowRequest;
 import com.tinet.clink.openapi.response.ticket.ListTicketWorkflowResponse;
 import org.junit.Test;
 
-/**工单模板查询请求示例
+/**
+ * 工单模板查询请求示例
+ *
  * @date 2020/11/17
  **/
 public class ListTicketWorkflowTest extends AbstractTest {
