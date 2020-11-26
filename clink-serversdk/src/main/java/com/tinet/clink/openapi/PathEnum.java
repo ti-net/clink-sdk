@@ -144,7 +144,10 @@ public enum PathEnum {
     ChatInvestigation("copy_chat_investigations"),
     // 在线客服 - 获取会话留言
     ChatComment("copy_chat_comments"),
-
+    //在线客服 - 座席工作量报表
+    StatChatClientWorkload("stat_chat_client_workload"),
+    //队列报表
+    StatChatQueueWorkload("stat_chat_queue_workload"),
 
 //    -----工单记录-------
 
