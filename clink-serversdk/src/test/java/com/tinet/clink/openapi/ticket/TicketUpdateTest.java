@@ -17,7 +17,6 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author huwk
  * @date 2020/11/17
  **/
 public class TicketUpdateTest extends AbstractTest {
@@ -30,11 +29,8 @@ public class TicketUpdateTest extends AbstractTest {
         TicketUpdateModel updateModel=new TicketUpdateModel();
 
         updateModel.setId(162885);
-
         updateModel.setTopic("你好好好好");
-
         updateModel.setStateSelected("7");
-
 
         TicketFormModel ticketFormModel=new TicketFormModel();
         ticketFormModel.setId(1890);
@@ -42,7 +38,6 @@ public class TicketUpdateTest extends AbstractTest {
         List<Field> fieldList=new ArrayList<>();
 
         Field field=new Field();
-
         field.setId(33929);
         field.setName("kk_串号");
         field.setRequired(0);
@@ -50,7 +45,6 @@ public class TicketUpdateTest extends AbstractTest {
         field.setValue("100111122222");
 
         Field field1=new Field();
-
         field1.setId(33930);
         field1.setName("kk_产品名称");
         field1.setRequired(0);
@@ -58,14 +52,11 @@ public class TicketUpdateTest extends AbstractTest {
         field1.setValue("复选1,12311");
 
         Field field2=new Field();
-
-
         field2.setId(31075);
         field2.setName("gq文件1");
         field2.setType(14);
         field2.setRequired(0);
         field2.setValue("ticket/20201126/8000559/5fd603ce-bfd4-41e8-ae30-b1246ee86538.");
-
 //
         fieldList.add(field);
         fieldList.add(field1);
@@ -77,21 +68,13 @@ public class TicketUpdateTest extends AbstractTest {
 
         File file=new File("E:\\工单信息 - 副本.xlsx");
         File file1=new File("E:\\工单信息 - 副本.xlsx");
-        File file2=new File("E:\\工单信息 - 副本.xlsx");
-        File file3=new File("E:\\工单信息 - 副本.xlsx");
-        File file4=new File("E:\\工单信息 - 副本.xlsx");
 
         fileList.add(file);
         fileList.add(file1);
-        fileList.add(file2);
-        fileList.add(file3);
-        fileList.add(file4);
-
 
         Map<String, List<File>> fileMap = new HashMap<>();
 
         fileMap.put("31075"+"",fileList);
-
 
         updateModel.setForm(ticketFormModel);
 

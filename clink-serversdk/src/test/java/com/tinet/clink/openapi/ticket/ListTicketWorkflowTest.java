@@ -6,7 +6,6 @@ import com.tinet.clink.openapi.response.ticket.ListTicketWorkflowResponse;
 import org.junit.Test;
 
 /**
- * @author huwk
  * @date 2020/11/17
  **/
 public class ListTicketWorkflowTest extends AbstractTest {
@@ -16,13 +15,10 @@ public class ListTicketWorkflowTest extends AbstractTest {
 
         ListTicketWorkflowRequest listTicketWorkflowRequest = new ListTicketWorkflowRequest();
 
-
-
         listTicketWorkflowRequest.setOffset(0);
         listTicketWorkflowRequest.setLimit(20);
         listTicketWorkflowRequest.setCategory(112);
-        listTicketWorkflowRequest.setName("奇虎360工单模板");
-//        listTicketWorkflowRequest.setId(707);
+
         ListTicketWorkflowResponse ticketWorkflowResponse;
 
         try {

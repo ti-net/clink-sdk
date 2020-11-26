@@ -12,7 +12,6 @@ import java.io.File;
 import java.util.*;
 
 /**
- * @author huwk
  * @date 2020/11/17
  **/
 public class TicketSaveTest extends AbstractTest {
@@ -29,7 +28,7 @@ public class TicketSaveTest extends AbstractTest {
         ticketSaveModel.setHandlerType(1);
         ticketSaveModel.setHandlerId(32939);
         ticketSaveModel.setLevel(1);
-        ticketSaveModel.setTopic("奇虎模板测试创建工单");
+        ticketSaveModel.setTopic("测试创建工单");
         ticketSaveModel.setStateSelected("9");
 
         TicketFormModel ticketFormModel=new TicketFormModel();
@@ -38,7 +37,6 @@ public class TicketSaveTest extends AbstractTest {
         List<Field> fieldList=new ArrayList<>();
 
         Field field=new Field();
-
         field.setId(33929);
         field.setName("kk_串号");
         field.setRequired(0);
@@ -46,7 +44,6 @@ public class TicketSaveTest extends AbstractTest {
         field.setValue("100");
 
         Field field1=new Field();
-
         field1.setId(33930);
         field1.setName("kk_产品名称");
         field1.setRequired(0);
@@ -54,8 +51,6 @@ public class TicketSaveTest extends AbstractTest {
         field1.setValue("复选1,复选2,复选3");
 
         Field field2=new Field();
-
-
         field2.setId(31075);
         field2.setName("gq文件1");
         field2.setType(14);
@@ -67,18 +62,15 @@ public class TicketSaveTest extends AbstractTest {
 
         ticketFormModel.setFields(fieldList);
 
-
         ticketSaveModel.setForm(ticketFormModel);
 
         ticketSaveRequest.setModel(ticketSaveModel);
-
 
         List<File> fileList=new ArrayList<>();
 
         File file=new File("E:\\工单信息 - 副本.xlsx");
 
         fileList.add(file);
-
 
         Map<String, List<File>> fileMap = new HashMap<>();
 
