@@ -9,6 +9,11 @@ package com.tinet.clink.openapi.model;
 public class ClientSearchResultModel {
 
     /**
+     * 座席id
+     */
+    private Integer id;
+
+    /**
      * 座席号
      */
     private String cno;
@@ -52,6 +57,14 @@ public class ClientSearchResultModel {
      * 座席类型，1：全渠道、2：呼叫中心、3：在线客服
      */
     private Integer type;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getCno() {
         return cno;
@@ -130,6 +143,7 @@ public class ClientSearchResultModel {
     @Override
     public String toString() {
         return "ClientSearchResultModel{" +
+                "id='" + id + '\'' +
                 "cno='" + cno + '\'' +
                 ", name='" + name + '\'' +
                 ", areaCode='" + areaCode + '\'' +

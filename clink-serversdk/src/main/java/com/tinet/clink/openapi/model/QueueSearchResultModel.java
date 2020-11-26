@@ -8,6 +8,12 @@ package com.tinet.clink.openapi.model;
  */
 public class QueueSearchResultModel {
 
+
+    /**
+     * 队列id
+     */
+    private Integer id;
+
     /**
      * 队列号，在0000 - 9999之间
      */
@@ -32,6 +38,14 @@ public class QueueSearchResultModel {
      * 在线客服座席数
      */
     private Integer chatClientNum;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getQno() {
         return qno;
@@ -76,6 +90,7 @@ public class QueueSearchResultModel {
     @Override
     public String toString() {
         return "QueueSearchResultModel{" +
+                "id='" + id + '\'' +
                 "qno='" + qno + '\'' +
                 ", name='" + name + '\'' +
                 ", omniClientNum=" + omniClientNum +
