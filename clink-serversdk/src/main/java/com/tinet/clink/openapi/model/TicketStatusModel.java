@@ -1,6 +1,6 @@
 package com.tinet.clink.openapi.model;
 
-/**
+/**工单状态实体对象
  *
  * @author liuhy
  * @date: 2020/8/25

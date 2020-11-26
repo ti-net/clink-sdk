@@ -2,7 +2,7 @@ package com.tinet.clink.openapi.model;
 
 import java.util.Date;
 
-/**
+/**工单更新实体对象
  *
  * @author liuhy
  * @date: 2020/11/25

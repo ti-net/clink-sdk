@@ -1,6 +1,6 @@
 package com.tinet.clink.openapi.model;
 
-/**
+/**工单标签对象
  * @author liuhy
  * @date: 2020/9/8
  **/

@@ -44,12 +44,9 @@ public class BusinessTest extends AbstractTest {
         //当前企业可以用的查询参数
         ListBusinessRequest listBusinessRequest = new ListBusinessRequest();
 
-
         listBusinessRequest.setStartTime(1595952000L);
 
         listBusinessRequest.setEndTime(1596124800L);
-
-
 
         Map<String, String> customize = new HashMap<String, String>();
 

@@ -1,11 +1,13 @@
 package com.tinet.clink.openapi.ticket;
 
 import com.tinet.clink.openapi.AbstractTest;
+import com.tinet.clink.openapi.Client;
+import com.tinet.clink.openapi.ClientConfiguration;
 import com.tinet.clink.openapi.request.ticket.ListTicketCategoryRequest;
 import com.tinet.clink.openapi.response.ticket.ListTicketCategoryResponse;
 import org.junit.Test;
 
-/**
+/**工单模板类别请求示例
  * @author liuhy
  * @date: 2020/11/25
  **/
@@ -14,6 +16,14 @@ public class ListTicketCategoryTest extends AbstractTest {
     @Test
     public void listTicketCategory() {
 
+        // 创建访问服务的client实例并初始化
+        ClientConfiguration configuration = new ClientConfiguration(
+                "AK",          // AccessKeyId
+                "SK");     // AccessKeySecret
+        configuration.setHost("host");
+        Client client = new Client(configuration);
+
+        // 创建请求request
         ListTicketCategoryRequest listTicketCategoryRequest = new ListTicketCategoryRequest();
 
         ListTicketCategoryResponse listTicketCategoryResponse;

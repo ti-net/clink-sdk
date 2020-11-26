@@ -2,13 +2,13 @@ package com.tinet.clink.openapi.model;
 
 import java.util.Date;
 
-/**
+/**工单详情对象
  *
  * @author liuhy
  * @date: 2020/9/8
  **/
 
-public class TicketDeatilModel {
+public class TicketDetailModel {
 
     /**
      * 工单id

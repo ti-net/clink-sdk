@@ -1,6 +1,6 @@
 package com.tinet.clink.openapi.response.ticket;
 
-import com.tinet.clink.openapi.model.TicketDeatilModel;
+import com.tinet.clink.openapi.model.TicketDetailModel;
 import com.tinet.clink.openapi.response.ResponseModel;
 
 /**
@@ -10,13 +10,13 @@ import com.tinet.clink.openapi.response.ResponseModel;
 public class GetTicketDetailResponse extends ResponseModel {
 
 
-    private TicketDeatilModel ticketDetail;
+    private TicketDetailModel ticketDetail;
 
-    public TicketDeatilModel getTicketDetail() {
+    public TicketDetailModel getTicketDetail() {
         return ticketDetail;
     }
 
-    public void setTicketDetail(TicketDeatilModel ticketDetail) {
+    public void setTicketDetail(TicketDetailModel ticketDetail) {
         this.ticketDetail = ticketDetail;
     }
 }

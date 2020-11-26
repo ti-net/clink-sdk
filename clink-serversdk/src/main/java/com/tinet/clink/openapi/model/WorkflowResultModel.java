@@ -1,12 +1,9 @@
-package com.tinet.clink.openapi.model;/**
- * @author liuhy
- * @date: 2020/11/22
- **/
+package com.tinet.clink.openapi.model;
 
 import java.util.Date;
 import java.util.List;
 
-/**
+/**工单模板实体对象
  *
  * @author liuhy
  * @date: 2020/11/22

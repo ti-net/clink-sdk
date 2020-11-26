@@ -1,7 +1,4 @@
-package com.tinet.clink.openapi.response.ticket;/**
- * @author liuhy
- * @date: 2020/8/20
- **/
+package com.tinet.clink.openapi.response.ticket;
 
 import com.tinet.clink.openapi.model.TicketResultModel;
 import com.tinet.clink.openapi.response.PagedResponse;

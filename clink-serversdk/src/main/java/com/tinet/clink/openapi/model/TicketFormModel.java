@@ -3,7 +3,7 @@ package com.tinet.clink.openapi.model;
 
 import java.util.List;
 
-/**
+/**工单中的表单对象
  *
  * @author liuhy
  * @date: 2020/11/19

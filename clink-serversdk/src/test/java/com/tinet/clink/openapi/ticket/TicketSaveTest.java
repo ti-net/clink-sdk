@@ -1,6 +1,8 @@
 package com.tinet.clink.openapi.ticket;
 
 import com.tinet.clink.openapi.AbstractTest;
+import com.tinet.clink.openapi.Client;
+import com.tinet.clink.openapi.ClientConfiguration;
 import com.tinet.clink.openapi.model.Field;
 import com.tinet.clink.openapi.model.TicketFormModel;
 import com.tinet.clink.openapi.model.TicketSaveModel;
@@ -11,7 +13,7 @@ import org.junit.Test;
 import java.io.File;
 import java.util.*;
 
-/**
+/**保存工单请求示例
  * @date 2020/11/17
  **/
 public class TicketSaveTest extends AbstractTest {
@@ -19,8 +21,17 @@ public class TicketSaveTest extends AbstractTest {
     @Test
     public void saveTicket() {
 
+        // 创建访问服务的client实例并初始化
+        ClientConfiguration configuration = new ClientConfiguration(
+                "AK",          // AccessKeyId
+                "SK");     // AccessKeySecret
+        configuration.setHost("host");
+        Client client = new Client(configuration);
+
+        // 创建请求的request
         TicketSaveRequest ticketSaveRequest = new TicketSaveRequest();
 
+        // 请求参数
         TicketSaveModel ticketSaveModel=new TicketSaveModel();
         ticketSaveModel.setWorkflowId(707);
         ticketSaveModel.setClose(0);
@@ -31,9 +42,11 @@ public class TicketSaveTest extends AbstractTest {
         ticketSaveModel.setTopic("测试创建工单");
         ticketSaveModel.setStateSelected("9");
 
+        // 需要保存的工单的表单对象
         TicketFormModel ticketFormModel=new TicketFormModel();
         ticketFormModel.setId(1890);
 
+        // 需要保存的字段集合
         List<Field> fieldList=new ArrayList<>();
 
         Field field=new Field();
@@ -64,8 +77,6 @@ public class TicketSaveTest extends AbstractTest {
 
         ticketSaveModel.setForm(ticketFormModel);
 
-        ticketSaveRequest.setModel(ticketSaveModel);
-
         List<File> fileList=new ArrayList<>();
 
         File file=new File("E:\\工单信息 - 副本.xlsx");
@@ -76,6 +87,8 @@ public class TicketSaveTest extends AbstractTest {
 
         fileMap.put("31075",fileList);
 
+        //将请求参数赋值到 request中
+        ticketSaveRequest.setModel(ticketSaveModel);
         ticketSaveRequest.setFileMap(fileMap);
 
         TicketSaveResponse ticketSaveResponse;
