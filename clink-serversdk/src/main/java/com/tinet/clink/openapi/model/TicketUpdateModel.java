@@ -2,7 +2,8 @@ package com.tinet.clink.openapi.model;
 
 import java.util.Date;
 
-/**工单更新实体对象
+/**
+ * 工单更新实体对象
  *
  * @author liuhy
  * @date: 2020/11/25
@@ -10,7 +11,7 @@ import java.util.Date;
 public class TicketUpdateModel {
 
     /**
-     *工单 Id (id和externalId 二者必有一个)
+     * 工单 Id (id和externalId 二者必有一个)
      */
     private Integer id;
 

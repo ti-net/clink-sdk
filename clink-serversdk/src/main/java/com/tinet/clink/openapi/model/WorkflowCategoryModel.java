@@ -1,6 +1,7 @@
 package com.tinet.clink.openapi.model;
 
-/**工单模板类别实体对象
+/**
+ * 工单模板类别实体对象
  *
  * @author liuhy
  * @date: 2020/11/22

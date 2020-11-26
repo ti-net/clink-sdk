@@ -8,7 +8,8 @@ import com.tinet.clink.openapi.utils.HttpMethodType;
 import java.util.HashMap;
 import java.util.Map;
 
-/**业务记录查询
+/**
+ * 业务记录查询
  *
  * @author liuhy
  * @date: 2020/7/29

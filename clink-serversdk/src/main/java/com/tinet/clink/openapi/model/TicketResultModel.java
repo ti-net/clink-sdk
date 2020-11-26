@@ -2,7 +2,8 @@ package com.tinet.clink.openapi.model;
 
 import java.util.Date;
 
-/**工单列表查询结果对象
+/**
+ * 工单列表查询结果对象
  *
  * @author liuhy
  * @date: 2020/8/25
