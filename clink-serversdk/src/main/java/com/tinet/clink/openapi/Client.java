@@ -18,6 +18,7 @@ import org.apache.http.entity.ContentType;
 import org.apache.http.entity.FileEntity;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.entity.mime.FormBodyPartBuilder;
+import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.impl.client.HttpClientBuilder;
@@ -117,7 +118,7 @@ public class Client {
     }
 
     private <T extends ResponseModel> MultipartEntityBuilder getMultipartEntityBuilder(AbstractRequestModel<T> request) throws JsonProcessingException {
-        MultipartEntityBuilder builder = MultipartEntityBuilder.create();
+        MultipartEntityBuilder builder = MultipartEntityBuilder.create().setMode(HttpMultipartMode.RFC6532);
         // 设置字符编码
         builder.setCharset(StandardCharsets.UTF_8);
 

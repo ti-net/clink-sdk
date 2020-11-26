@@ -152,7 +152,14 @@ public enum PathEnum {
     ListTicket("list_ticket"),
 
     // 获取工单详情
-    GetTicketDetail("get_ticket_detail");
+    GetTicketDetail("get_ticket_detail"),
+
+    ListTicketCategory("list_ticket_category"),
+
+    ListTicketWorkflow("list_ticket_workflow"),
+
+    SaveTicket("save_ticket"),
+    UpdateTicket("update_ticket");
 
     private String value;
 
