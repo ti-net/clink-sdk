@@ -103,6 +103,8 @@ public enum PathEnum {
     UpdateCustomerByExternalId("update_customer_by_external_id"),
     //创建客户资料
     ListCustomerField("list_customer_field"),
+    // 删除客户资料
+    DeleteCustomer("delete_customer"),
 
     //短信发送
     SmsSend("sms_send"),
