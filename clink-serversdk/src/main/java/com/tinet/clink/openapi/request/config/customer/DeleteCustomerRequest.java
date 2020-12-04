@@ -12,13 +12,14 @@ import com.tinet.clink.openapi.utils.HttpMethodType;
  * @date 2020/11/30
  */
 public class DeleteCustomerRequest extends AbstractRequestModel<DeleteCustomerResponse> {
+
     /**
-     * 座席号
+     * 客户资料id
      */
     private Integer id;
 
     public DeleteCustomerRequest() {
-        super(PathEnum.DeleteCustomer.value(), HttpMethodType.GET);
+        super(PathEnum.DeleteCustomer.value(), HttpMethodType.POST);
     }
 
     public Integer getId() {
@@ -28,7 +29,7 @@ public class DeleteCustomerRequest extends AbstractRequestModel<DeleteCustomerRe
     public void setId(Integer id) {
         this.id = id;
         if (id != null) {
-            putQueryParameter("id", id);
+            putBodyParameter("id", id);
         }
     }
 
