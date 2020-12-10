@@ -25,6 +25,11 @@ public class CalloutRequest extends AbstractRequestModel<CalloutResponse> {
     private String customerNumber;
 
     /**
+     * 座席临时绑定号码，暂时只支持手机号
+     */
+    private String bindTel;
+
+    /**
      * 客户侧外显号码
      */
     private String clid;
@@ -48,7 +53,6 @@ public class CalloutRequest extends AbstractRequestModel<CalloutResponse> {
      * 呼叫客户侧超时时间，取值范围 5-60s，默认 45s
      */
     private Integer customerTimeout;
-
 
     /**
      * 唯一id
@@ -83,6 +87,17 @@ public class CalloutRequest extends AbstractRequestModel<CalloutResponse> {
         this.customerNumber = customerNumber;
         if (customerNumber != null) {
             putBodyParameter("customerNumber", customerNumber);
+        }
+    }
+
+    public String getBindTel() {
+        return bindTel;
+    }
+
+    public void setBindTel(String bindTel) {
+        this.bindTel = bindTel;
+        if (bindTel != null) {
+            putBodyParameter("bindTel", bindTel);
         }
     }
 
