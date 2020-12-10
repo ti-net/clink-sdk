@@ -50,7 +50,6 @@ public class CustomerTest extends AbstractTest {
         //userParamMap.put("客户归属", "{\"shareType\":1,\"share\":\"0000\"}");
         //userParamMap.put("112233有","23");
 
-
         //当前企业可以用的查询参数
         CustomerParamRequest customerParamRequest = new CustomerParamRequest();
         CustomerParamResponse customerParamResponse = client.getResponseModel(customerParamRequest);
@@ -115,7 +114,6 @@ public class CustomerTest extends AbstractTest {
 
     }
 
-
     @Test
     public void createCustomer() throws ServerException, ClientException {
 
@@ -145,7 +143,6 @@ public class CustomerTest extends AbstractTest {
             e.printStackTrace();
         }
     }
-
 
     @Test
     public void updateCustomer() throws ServerException, ClientException {
@@ -198,7 +195,6 @@ public class CustomerTest extends AbstractTest {
 
         updateCustomerByExternalIdRequest.setEmail("15533888888@qq.com");
 
-
         updateCustomerByExternalIdRequest.setAddress("山ddoasdsngasddddaa");
 
         String[] tel = {"16741291729"};
@@ -218,10 +214,30 @@ public class CustomerTest extends AbstractTest {
 
         updateCustomerByExternalIdRequest.setExternalId("13201a646126");
 
-        UpdateCustomerByExternalIdResponse updateCustomerByExternalIdResponse = client.getResponseModel(updateCustomerByExternalIdRequest);
+        UpdateCustomerByExternalIdResponse updateCustomerByExternalIdResponse =
+                client.getResponseModel(updateCustomerByExternalIdRequest);
 
         try {
             String resultStr = mapper.writeValueAsString(updateCustomerByExternalIdResponse);
+            System.out.println(resultStr);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Test
+    public void deleteCustomer() throws ServerException, ClientException {
+
+        // 开始删除客户资料，拼装参数
+        DeleteCustomerRequest request = new DeleteCustomerRequest();
+
+        request.setId(75422);
+
+        DeleteCustomerResponse responseModel = client.getResponseModel(request);
+
+        try {
+            String resultStr = mapper.writeValueAsString(responseModel);
             System.out.println(resultStr);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
