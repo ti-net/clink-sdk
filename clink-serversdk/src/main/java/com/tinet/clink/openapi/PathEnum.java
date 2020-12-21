@@ -74,6 +74,10 @@ public enum PathEnum {
     DescribeCdrObDetails("describe_cdr_ob_details"),
     CopyCdrObs("copy_cdr_obs"),
     CopyCdrObDetails("copy_cdr_ob_details"),
+    // sqc asr
+    sqcAsr("sqc_asr"),
+
+
     //  留言记录
     ListComments("list_comments"),
     // 满意度记录
