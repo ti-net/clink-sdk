@@ -50,7 +50,7 @@ public class CdrRecordTest extends AbstractTest {
         SqcAsrRequest request = new SqcAsrRequest();
         request.setMainUniqueId("medias_1-1606392391.107");
         SqcAsrResponse responseModel = client.getResponseModel(request);
-        System.out.println(mapper.writeValueAsString(responseModel.toString()));
+        System.out.println(mapper.writeValueAsString(responseModel));
     }
     /**
      * 呼入通话记录详情单元测试
