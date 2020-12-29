@@ -2,11 +2,8 @@ package com.tinet.clink.openapi.request.business;
 
 import com.tinet.clink.openapi.PathEnum;
 import com.tinet.clink.openapi.request.AbstractRequestModel;
-import com.tinet.clink.openapi.response.Business.ListBusinessResponse;
+import com.tinet.clink.openapi.response.business.ListBusinessResponse;
 import com.tinet.clink.openapi.utils.HttpMethodType;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * 业务记录查询
