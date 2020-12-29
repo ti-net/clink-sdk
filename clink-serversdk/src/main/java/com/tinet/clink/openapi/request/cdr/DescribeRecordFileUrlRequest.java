@@ -23,6 +23,10 @@ public class DescribeRecordFileUrlRequest extends AbstractRequestModel<DescribeR
      *  传参数时获取双轨录音的某一侧录音: 1-客户侧,2-座席侧
      */
     private Integer recordSide;
+    /**
+     *  通话录音超时时长 默认一小时 范围 1-24
+     */
+    private Long timeout;
 
     public DescribeRecordFileUrlRequest() {
         super(PathEnum.DescribeRecordFileUrl.value(), HttpMethodType.GET);
@@ -54,4 +58,12 @@ public class DescribeRecordFileUrlRequest extends AbstractRequestModel<DescribeR
             putQueryParameter("recordSide", recordSide);
         }
     }
+    public Long getTimeout(){return timeout;}
+    public void setTimeout(Long timeout){
+        this.timeout = timeout;
+        if (timeout != null) {
+            putQueryParameter("timeout", timeout);
+        }
+    }
+
 }
