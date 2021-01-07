@@ -4,10 +4,12 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tinet.clink.openapi.exceptions.ClientException;
 import com.tinet.clink.openapi.exceptions.ServerException;
+import com.tinet.clink.openapi.request.business.GetBusinessRequest;
 import com.tinet.clink.openapi.request.business.ListBusinessFieldRequest;
 import com.tinet.clink.openapi.request.business.ListBusinessRequest;
-import com.tinet.clink.openapi.response.Business.ListBusinessFieldResponse;
-import com.tinet.clink.openapi.response.Business.ListBusinessResponse;
+import com.tinet.clink.openapi.response.business.GetBusinessResponse;
+import com.tinet.clink.openapi.response.business.ListBusinessFieldResponse;
+import com.tinet.clink.openapi.response.business.ListBusinessResponse;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -81,7 +83,17 @@ public class BusinessTest extends AbstractTest {
 
     }
 
+    @Test
+    public void getBusinessDetail() throws ServerException, ClientException {
 
+        GetBusinessRequest businessRequest = new GetBusinessRequest();
+
+        businessRequest.setId(121840);
+
+        GetBusinessResponse response = client.getResponseModel(businessRequest);
+
+        System.out.println(1);
+    }
 
 
 

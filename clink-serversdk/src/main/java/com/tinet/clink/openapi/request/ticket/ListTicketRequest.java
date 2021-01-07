@@ -2,7 +2,6 @@ package com.tinet.clink.openapi.request.ticket;
 
 import com.tinet.clink.openapi.PathEnum;
 import com.tinet.clink.openapi.request.AbstractRequestModel;
-import com.tinet.clink.openapi.response.Business.ListBusinessResponse;
 import com.tinet.clink.openapi.response.ticket.ListTicketResponse;
 import com.tinet.clink.openapi.utils.HttpMethodType;
 

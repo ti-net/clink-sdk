@@ -140,6 +140,9 @@ public enum PathEnum {
     //查询业务记录
     ListBusiness("list_business"),
 
+    //查询业务记录
+    GetBusinessDetail("get_business_detail"),
+
     // 在线客服 - 获取会话记录
     ChatRecord("copy_chat_records"),
     // 在线客服 - 获取会话详情
