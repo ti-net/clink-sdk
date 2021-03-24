@@ -8,9 +8,6 @@ import com.tinet.clink.openapi.request.monitor.AgentStatusRequest;
 import com.tinet.clink.openapi.response.monitor.AgentStatusResponse;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class AgentStatusTest extends AbstractTest {
 
     private ObjectMapper mapper = new ObjectMapper();
