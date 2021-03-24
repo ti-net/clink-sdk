@@ -2,7 +2,7 @@ package com.tinet.clink.openapi.request.business;
 
 import com.tinet.clink.openapi.PathEnum;
 import com.tinet.clink.openapi.request.AbstractRequestModel;
-import com.tinet.clink.openapi.response.Business.ListBusinessFieldResponse;
+import com.tinet.clink.openapi.response.business.ListBusinessFieldResponse;
 import com.tinet.clink.openapi.utils.HttpMethodType;
 
 /**

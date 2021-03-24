@@ -27,6 +27,11 @@ public class DescribeDetailRecordFileUrlRequest extends AbstractRequestModel<Des
      */
 
     private Integer recordSide;
+
+    /**
+     *  通话录音超时时长 默认一小时 范围 1-24
+     */
+    private Long timeout;
     public DescribeDetailRecordFileUrlRequest() {
         super(PathEnum.DescribeRecordFileUrl.value(), HttpMethodType.GET);
     }
@@ -65,4 +70,12 @@ public class DescribeDetailRecordFileUrlRequest extends AbstractRequestModel<Des
             putQueryParameter("recordSide", recordSide);
         }
     }
+    public Long getTimeout(){return timeout;}
+    public void setTimeout(Long timeout){
+        this.timeout = timeout;
+        if (timeout != null) {
+            putQueryParameter("timeout", timeout);
+        }
+    }
+
 }

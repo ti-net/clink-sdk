@@ -22,15 +22,16 @@ import java.io.InputStream;
 public class RecordFileTest extends AbstractTest {
 
     String obUniqueId = "medias_1-1604542113.9";
-    String ibUniqueId = "medias_1a.21";
+    String ibUniqueId = "medias_1-1609221606.6";
     String uniqueId = "medias_1-1604542150.11";
 
     @Test
     public void describeRecordFileUrl() {
         DescribeRecordFileUrlRequest request = new DescribeRecordFileUrlRequest();
         request.setMainUniqueId(ibUniqueId);
-        request.setRecordSide(2);
         request.expires(86400);
+        request.setTimeout(8000L);
+
 
         try {
             DescribeRecordFileUrlResponse response = client.getResponseModel(request);
@@ -44,8 +45,10 @@ public class RecordFileTest extends AbstractTest {
     @Test
     public void describeDetailRecordFileUrl(){
         DescribeDetailRecordFileUrlRequest request = new DescribeDetailRecordFileUrlRequest();
-        request.setMainUniqueId(obUniqueId);
-        request.setUniqueId(uniqueId);
+        request.setMainUniqueId(ibUniqueId);
+        request.setUniqueId(ibUniqueId);
+        request.setTimeout(7200L);
+
 
         try {
             DescribeDetailRecordFileUrlResponse response = client.getResponseModel(request);

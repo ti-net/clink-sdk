@@ -37,6 +37,21 @@ public class CdrRecordTest extends AbstractTest {
         ListCdrIbsResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getCdrIbs()));
     }
+
+    /**
+     * sqc _ asr
+     * @throws ServerException
+     * @throws ClientException
+     * @throws JsonProcessingException
+     */
+    @Test
+    public void sqcAsr() throws ServerException, ClientException, JsonProcessingException {
+
+        SqcAsrRequest request = new SqcAsrRequest();
+        request.setMainUniqueId("medias_1-1606392391.107");
+        SqcAsrResponse responseModel = client.getResponseModel(request);
+        System.out.println(mapper.writeValueAsString(responseModel));
+    }
     /**
      * 呼入通话记录详情单元测试
      */

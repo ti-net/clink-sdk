@@ -74,6 +74,10 @@ public enum PathEnum {
     DescribeCdrObDetails("describe_cdr_ob_details"),
     CopyCdrObs("copy_cdr_obs"),
     CopyCdrObDetails("copy_cdr_ob_details"),
+    // sqc asr
+    sqcAsr("sqc_asr"),
+
+
     //  留言记录
     ListComments("list_comments"),
     // 满意度记录
@@ -137,6 +141,9 @@ public enum PathEnum {
 
     //查询业务记录
     ListBusiness("list_business"),
+
+    //查询业务记录
+    GetBusinessDetail("get_business_detail"),
 
     // 在线客服 - 获取会话记录
     ChatRecord("copy_chat_records"),

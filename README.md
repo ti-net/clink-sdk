@@ -11,7 +11,7 @@
 <dependency>
     <groupId>com.ti-net</groupId>
     <artifactId>clink-serversdk</artifactId>
-    <version>2.0.26</version>
+    <version>2.0.35</version>
 </dependency>
 ```
 
@@ -159,3 +159,13 @@ public class Test {
 ### V 2.0.34
 ```
 客户中心接口-客户资料模块-增加客户资料删除接口
+```
+### V 2.0.35
+```
+数据-质检记录-获取质检转写结果
+```
+
+### V 2.0.36
+```
+业务记录接口-业务记录-增加业务记录详情接口
+```
