@@ -12,24 +12,22 @@ import com.tinet.clink.openapi.request.AbstractRequestModel;
 import com.tinet.clink.openapi.response.ResponseModel;
 import org.apache.http.*;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.HttpRequestRetryHandler;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.entity.ContentType;
-import org.apache.http.entity.FileEntity;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.entity.mime.FormBodyPartBuilder;
 import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.entity.mime.content.FileBody;
+import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicHttpEntityEnclosingRequest;
 import org.apache.http.protocol.HttpContext;
 
 import java.io.*;
 import java.net.URISyntaxException;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -40,17 +38,17 @@ import java.util.concurrent.TimeUnit;
  */
 public class Client {
 
-    private final ObjectMapper mapper = new ObjectMapper();
+    private static final ObjectMapper mapper = new ObjectMapper();
 
-    private HttpClient httpClient = null;
+    private static CloseableHttpClient httpClient = null;
 
-    private HttpHost httpHost = null;
+    private static HttpHost httpHost = null;
 
-    private int maxRetryNumber = 3;
+    private static int maxRetryNumber = 3;
 
-    private ClientConfiguration configuration = null;
+    private static ClientConfiguration configuration = null;
 
-    private Signer signer = Signer.getSigner();
+    private static Signer signer = Signer.getSigner();
 
     private static final ObjectMapper CONTENT_OBJECT_MAPPER = new ObjectMapper();
 
@@ -59,57 +57,79 @@ public class Client {
     }
 
     public Client(ClientConfiguration configuration) {
-        this.configuration = configuration;
-        httpClient = HttpClientBuilder.create()
-                //增加空闲线程回收机制
-                .evictIdleConnections(5, TimeUnit.SECONDS)
-                //增加失败请求重试机制
-                .setRetryHandler(new HttpRequestRetryHandler() {
-                    @Override
-                    public boolean retryRequest(IOException exception, int executionCount, HttpContext context) {
+        Client.configuration = configuration;
+        if (Objects.isNull(httpClient)) {
+            synchronized (Client.class) {
+                if (Objects.isNull(httpClient)) {
+                    httpClient = HttpClientBuilder.create()
+                            //增加空闲线程回收机制
+                            .evictIdleConnections(5, TimeUnit.SECONDS)
+                            //增加失败请求重试机制，由于是使用jdk1.6编译因此不能使用lambda
+                            .setRetryHandler(new HttpRequestRetryHandler() {
+                                @Override
+                                public boolean retryRequest(IOException exception, int executionCount,
+                                                            HttpContext context) {
 
-                        if (executionCount > maxRetryNumber) {
-                            return false;
-                        }
+                                    if (executionCount > maxRetryNumber) {
+                                        return false;
+                                    }
 
-                        //增加重试机制，处理服务器主动丢弃连接后，新的请求从HttpClient连接池拿到无效的后无法获取响应的问题
-                        if (exception instanceof NoHttpResponseException) {
-                            return true;
-                        }
-                        return false;
+                                    //增加重试机制，处理服务器主动丢弃连接后，新的请求从HttpClient连接池拿到无效的后无法获取响应的问题
+                                    if (exception instanceof NoHttpResponseException) {
+                                        return true;
+                                    }
+                                    return false;
+                                }
+                            })
+                            .build();
+
+                    if (configuration.getPort() == 80) {
+                        httpHost = new HttpHost(Client.configuration.getHost(), -1, Client.configuration.getScheme());
+                    } else {
+                        httpHost = new HttpHost(Client.configuration.getHost(), Client.configuration.getPort(),
+                                Client.configuration.getScheme());
                     }
-                })
-                .build();
-
-        if (configuration.getPort() == 80) {
-            httpHost = new HttpHost(this.configuration.getHost(), -1, this.configuration.getScheme());
-        } else {
-            httpHost = new HttpHost(this.configuration.getHost(), this.configuration.getPort(),
-                    this.configuration.getScheme());
+                }
+            }
         }
     }
 
     public <T extends ResponseModel> HttpResponse doAction(AbstractRequestModel<T> request) throws ClientException {
+
+        request.signRequest(signer, configuration.getCredentials(), configuration.getHost());
+        String method = request.httpMethod().toString();
+
+        String uri;
         try {
-            request.signRequest(signer, configuration.getCredentials(), configuration.getHost());
-            String method = request.httpMethod().toString();
-            String uri = "/" + request.getPath() + "/?" + request.generateUri();
-            BasicHttpEntityEnclosingRequest httpRequest = new BasicHttpEntityEnclosingRequest(method, uri);
-
-            if (request.httpMethod().hasContent()) {
-                if (request.isMultipartFormData()) {
-                    MultipartEntityBuilder builder = getMultipartEntityBuilder(request);
-                    httpRequest.setEntity(builder.build());
-                } else {
-                    StringEntity entity = new StringEntity(mapper.writeValueAsString(request),
-                            ContentType.APPLICATION_JSON);
-                    httpRequest.setEntity(entity);
-                }
-            }
-
-            return httpClient.execute(httpHost, httpRequest);
+            uri = "/" + request.getPath() + "/?" + request.generateUri();
         } catch (URISyntaxException e) {
             throw new ClientException("SDK", "URI 错误", e);
+        }
+        BasicHttpEntityEnclosingRequest httpRequest = new BasicHttpEntityEnclosingRequest(method, uri);
+
+        if (request.httpMethod().hasContent()) {
+            if (request.isMultipartFormData()) {
+                MultipartEntityBuilder builder;
+                try {
+                    builder = getMultipartEntityBuilder(request);
+                } catch (JsonProcessingException e) {
+                    throw new ClientException("SDK", "Multipart参数设置错误", e);
+                }
+                httpRequest.setEntity(builder.build());
+            } else {
+                StringEntity entity;
+                try {
+                    entity = new StringEntity(mapper.writeValueAsString(request),
+                            ContentType.APPLICATION_JSON);
+                } catch (JsonProcessingException e) {
+                    throw new ClientException("SDK", "StringEntity参数设置错误", e);
+                }
+                httpRequest.setEntity(entity);
+            }
+        }
+
+        try {
+            return httpClient.execute(httpHost, httpRequest);
         } catch (ClientProtocolException e) {
             throw new ClientException("SDK", "SDK 协议错误", e);
         } catch (IOException e) {
@@ -131,7 +151,8 @@ public class Client {
             } else {
                 modelStr = mapper.writeValueAsString(model);
             }
-            builder.addTextBody("model", modelStr, ContentType.create(ContentType.TEXT_PLAIN.getMimeType(), Consts.UTF_8));
+            builder.addTextBody("model", modelStr, ContentType.create(ContentType.TEXT_PLAIN.getMimeType(),
+                    Consts.UTF_8));
         }
 
         // multipart data附件的处理
@@ -155,18 +176,30 @@ public class Client {
 
     public <T extends ResponseModel> T getResponseModel(AbstractRequestModel<T> request) throws ClientException,
             ServerException {
-        HttpResponse response = doAction(request);
-        if (isSuccess(response)) {
-            return readResponse(response, request.getResponseClass());
-        } else {
-            OpenapiError openapiError = readError(response);
-            ErrorCode errorCode = openapiError.getError();
-            if (500 <= openapiError.getHttpStatus()) {
-                throw new ServerException(openapiError.getRequestId(), errorCode.getCode(), errorCode.getMessage());
+        HttpResponse response = null;
+        try {
+            response = doAction(request);
+            if (isSuccess(response)) {
+                return readResponse(response, request.getResponseClass());
             } else {
-                throw new ClientException(openapiError.getRequestId(), errorCode.getCode(), errorCode.getMessage());
+                OpenapiError openapiError = readError(response);
+                ErrorCode errorCode = openapiError.getError();
+                if (500 <= openapiError.getHttpStatus()) {
+                    throw new ServerException(openapiError.getRequestId(), errorCode.getCode(), errorCode.getMessage());
+                } else {
+                    throw new ClientException(openapiError.getRequestId(), errorCode.getCode(), errorCode.getMessage());
+                }
+            }
+        } finally {
+            if (response instanceof CloseableHttpResponse) {
+                try {
+                    ((CloseableHttpResponse) response).close();
+                } catch (IOException e) {
+                    throw new ClientException("SDK", "关闭Response流失败", e);
+                }
             }
         }
+
     }
 
     private boolean isSuccess(HttpResponse response) {
