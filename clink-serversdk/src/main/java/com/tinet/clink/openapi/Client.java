@@ -12,14 +12,15 @@ import com.tinet.clink.openapi.request.AbstractRequestModel;
 import com.tinet.clink.openapi.response.ResponseModel;
 import org.apache.http.*;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.HttpRequestRetryHandler;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.entity.mime.FormBodyPartBuilder;
 import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.entity.mime.content.FileBody;
+import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicHttpEntityEnclosingRequest;
 import org.apache.http.protocol.HttpContext;
@@ -39,7 +40,7 @@ public class Client {
 
     private static final ObjectMapper mapper = new ObjectMapper();
 
-    private static HttpClient httpClient = null;
+    private static CloseableHttpClient httpClient = null;
 
     private static HttpHost httpHost = null;
 
@@ -175,18 +176,30 @@ public class Client {
 
     public <T extends ResponseModel> T getResponseModel(AbstractRequestModel<T> request) throws ClientException,
             ServerException {
-        HttpResponse response = doAction(request);
-        if (isSuccess(response)) {
-            return readResponse(response, request.getResponseClass());
-        } else {
-            OpenapiError openapiError = readError(response);
-            ErrorCode errorCode = openapiError.getError();
-            if (500 <= openapiError.getHttpStatus()) {
-                throw new ServerException(openapiError.getRequestId(), errorCode.getCode(), errorCode.getMessage());
+        HttpResponse response = null;
+        try {
+            response = doAction(request);
+            if (isSuccess(response)) {
+                return readResponse(response, request.getResponseClass());
             } else {
-                throw new ClientException(openapiError.getRequestId(), errorCode.getCode(), errorCode.getMessage());
+                OpenapiError openapiError = readError(response);
+                ErrorCode errorCode = openapiError.getError();
+                if (500 <= openapiError.getHttpStatus()) {
+                    throw new ServerException(openapiError.getRequestId(), errorCode.getCode(), errorCode.getMessage());
+                } else {
+                    throw new ClientException(openapiError.getRequestId(), errorCode.getCode(), errorCode.getMessage());
+                }
+            }
+        } finally {
+            if (response instanceof CloseableHttpResponse) {
+                try {
+                    ((CloseableHttpResponse) response).close();
+                } catch (IOException e) {
+                    throw new ClientException("SDK", "关闭Response流失败", e);
+                }
             }
         }
+
     }
 
     private boolean isSuccess(HttpResponse response) {
