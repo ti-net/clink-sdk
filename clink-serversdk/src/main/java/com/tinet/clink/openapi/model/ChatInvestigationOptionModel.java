@@ -6,7 +6,7 @@ package com.tinet.clink.openapi.model;
  * @author wangtao
  * @date 2019/06/04
  */
-public class ChatInvestigationSaveOption {
+public class ChatInvestigationOptionModel {
 
     /**
      * 选项名称

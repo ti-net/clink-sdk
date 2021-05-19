@@ -1,7 +1,7 @@
 package com.tinet.clink.openapi.request.chat;
 
 import com.tinet.clink.openapi.PathEnum;
-import com.tinet.clink.openapi.model.ChatInvestigationSaveOption;
+import com.tinet.clink.openapi.model.ChatInvestigationOptionModel;
 import com.tinet.clink.openapi.request.AbstractRequestModel;
 import com.tinet.clink.openapi.response.chat.ChatSubmitInvestigationResponse;
 import com.tinet.clink.openapi.utils.HttpMethodType;
@@ -28,7 +28,7 @@ public class ChatSubmitInvestigationRequest extends AbstractRequestModel<ChatSub
     /**
      * 评价信息
      */
-    private ChatInvestigationSaveOption[] options;
+    private ChatInvestigationOptionModel[] options;
 
     /**
      * 评价备注
@@ -49,11 +49,11 @@ public class ChatSubmitInvestigationRequest extends AbstractRequestModel<ChatSub
         putQueryParameter("sessionId", sessionId);
     }
 
-    public ChatInvestigationSaveOption[] getOptions() {
+    public ChatInvestigationOptionModel[] getOptions() {
         return options;
     }
 
-    public void setOptions(ChatInvestigationSaveOption[] options) {
+    public void setOptions(ChatInvestigationOptionModel[] options) {
         this.options = options;
         putQueryParameter("options", options);
     }
