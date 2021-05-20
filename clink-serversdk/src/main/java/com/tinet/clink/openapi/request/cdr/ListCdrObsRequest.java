@@ -84,6 +84,16 @@ public class ListCdrObsRequest extends AbstractRequestModel<ListCdrObsResponse> 
      */
     private String city;
 
+    /**
+     * 通话记录唯一标识
+     */
+    private String mainUniqueId;
+
+    /**
+     * 请求唯一标识
+     */
+    private String requestUniqueId;
+
 
 
     public ListCdrObsRequest() {
@@ -233,8 +243,31 @@ public class ListCdrObsRequest extends AbstractRequestModel<ListCdrObsResponse> 
         }
     }
 
+    public String getMainUniqueId() {
+        return mainUniqueId;
+    }
+
+    public void setMainUniqueId(String mainUniqueId) {
+        this.mainUniqueId = mainUniqueId;
+        if (mainUniqueId != null) {
+            putQueryParameter("mainUniqueId", mainUniqueId);
+        }
+    }
+
+    public String getRequestUniqueId() {
+        return requestUniqueId;
+    }
+
+    public void setRequestUniqueId(String requestUniqueId) {
+        this.requestUniqueId = requestUniqueId;
+        if (requestUniqueId != null) {
+            putQueryParameter("requestUniqueId", requestUniqueId);
+        }
+    }
+
     @Override
     public Class<ListCdrObsResponse> getResponseClass() {
         return ListCdrObsResponse.class;
     }
 }
+

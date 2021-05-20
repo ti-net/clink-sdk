@@ -134,6 +134,11 @@ public class CdrIbRecordDetailModel {
      */
     private String[] tags;
 
+    /**
+     * 标记
+     */
+    private String mark;
+
 
     public String getUniqueId() {
         return uniqueId;
@@ -334,4 +339,13 @@ public class CdrIbRecordDetailModel {
     public void setTags(String[] tags) {
         this.tags = tags;
     }
+
+    public String getMark() {
+        return mark;
+    }
+
+    public void setMark(String mark) {
+        this.mark = mark;
+    }
 }
+
