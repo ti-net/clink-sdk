@@ -131,7 +131,7 @@ public class CdrObRecordDetailModel {
     /**
      * 标记
      */
-    private String mark;
+    private Integer mark;
 
 
     public String getUniqueId() {
@@ -326,11 +326,11 @@ public class CdrObRecordDetailModel {
         this.tags = tags;
     }
 
-    public String getMark() {
+    public Integer getMark() {
         return mark;
     }
 
-    public void setMark(String mark) {
+    public void setMark(Integer mark) {
         this.mark = mark;
     }
 }
