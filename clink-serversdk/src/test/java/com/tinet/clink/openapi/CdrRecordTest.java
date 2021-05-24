@@ -25,15 +25,16 @@ public class CdrRecordTest extends AbstractTest {
 
         ListCdrIbsRequest request = new ListCdrIbsRequest();
         request.setHiddenType(1);
-        request.setStartTime(1581520254L);
-        request.setEndTime(1584025854L);
+        request.setStartTime(1620468450L);
+        request.setEndTime(1620468457L);
         request.setLimit(100);
-        request.setStatus(1);
-       // request.setCno("1089");
-      //  request.setStatus(2);
+//        request.setMainUniqueId("medias_1-1620468456.12");
+//        request.setStatus(1);
+        // request.setCno("1089");
+        //  request.setStatus(2);
         //request.setMark(8);
         //request.setProvince("陕西");
-       // request.setCity("广州");
+        // request.setCity("广州");
         ListCdrIbsResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getCdrIbs()));
     }
@@ -55,11 +56,11 @@ public class CdrRecordTest extends AbstractTest {
     /**
      * 呼入通话记录详情单元测试
      */
-    //@Test
+    @Test
     public void describeCdrIbTest() throws ServerException, ClientException, JsonProcessingException {
 
         DescribeCdrIbRequest request = new DescribeCdrIbRequest();
-        request.setMainUniqueId("medias_1-1572002913.20");
+        request.setMainUniqueId("medias_1-1620786596.3");
         request.setHiddenType(1);
         DescribeCdrIbResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getCdrIb()));
@@ -79,7 +80,7 @@ public class CdrRecordTest extends AbstractTest {
     /**
      * 同步呼入通话记录详情单元测试
      */
-   // @Test
+    // @Test
     public void copyCdrIbsTest() throws ServerException, ClientException, JsonProcessingException {
 
         CopyCdrIbsRequest request = new CopyCdrIbsRequest();
@@ -110,11 +111,11 @@ public class CdrRecordTest extends AbstractTest {
 
         ListCdrObsRequest request = new ListCdrObsRequest();
         request.setHiddenType(1);
-        request.setStartTime(1581520254L);
-        request.setEndTime(1584025854L);
+        request.setStartTime(1620645356L);
+        request.setEndTime(1620645381L);
         request.setLimit(100);
-        request.setStatus(1);
-        request.setCity("北京");
+//        request.setStatus(1);
+//        request.setCity("北京");
         ListCdrObsResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getCdrObs()));
     }
@@ -190,3 +191,4 @@ public class CdrRecordTest extends AbstractTest {
     }
 
 }
+

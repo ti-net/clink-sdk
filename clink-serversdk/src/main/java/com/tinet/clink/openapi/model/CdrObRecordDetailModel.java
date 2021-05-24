@@ -128,6 +128,11 @@ public class CdrObRecordDetailModel {
      */
     private String[] tags;
 
+    /**
+     * 标记
+     */
+    private Integer mark;
+
 
     public String getUniqueId() {
         return uniqueId;
@@ -320,4 +325,13 @@ public class CdrObRecordDetailModel {
     public void setTags(String[] tags) {
         this.tags = tags;
     }
+
+    public Integer getMark() {
+        return mark;
+    }
+
+    public void setMark(Integer mark) {
+        this.mark = mark;
+    }
 }
+

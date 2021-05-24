@@ -24,6 +24,11 @@ public class ListInvestigationsRequest extends AbstractRequestModel<ListInvestig
     private String hotline;
 
     /**
+     * 通话唯一标识
+     */
+    private String mainUniqueId;
+
+    /**
      * 开始时间，时间戳格式精确到秒。默认值取当前月份第一天
      */
     private Long startTime;
@@ -86,6 +91,17 @@ public class ListInvestigationsRequest extends AbstractRequestModel<ListInvestig
         }
     }
 
+    public String getMainUniqueId() {
+        return mainUniqueId;
+    }
+
+    public void setMainUniqueId(String mainUniqueId) {
+        this.mainUniqueId = mainUniqueId;
+        if (mainUniqueId != null) {
+            putQueryParameter("mainUniqueId", mainUniqueId);
+        }
+    }
+
     public Long getStartTime() {
         return startTime;
     }
@@ -135,3 +151,4 @@ public class ListInvestigationsRequest extends AbstractRequestModel<ListInvestig
         return ListInvestigationsResponse.class;
     }
 }
+

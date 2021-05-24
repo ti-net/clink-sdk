@@ -23,6 +23,7 @@ public class TicketSaveTest extends AbstractTest {
     @Test
     public void saveTicket() {
 
+
         // 创建访问服务的client实例并初始化
         ClientConfiguration configuration = new ClientConfiguration(
                 "AK",          // AccessKeyId
