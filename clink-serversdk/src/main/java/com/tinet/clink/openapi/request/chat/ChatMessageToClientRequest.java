@@ -14,7 +14,7 @@ import com.tinet.clink.openapi.utils.HttpMethodType;
 public class ChatMessageToClientRequest extends AbstractRequestModel<ChatMessageToClientResponse> {
 
     public ChatMessageToClientRequest() {
-        super(PathEnum.ChatQuitQueue.value(), HttpMethodType.POST);
+        super(PathEnum.ChatMessageToClient.value(), HttpMethodType.POST);
     }
 
     /**
