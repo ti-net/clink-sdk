@@ -114,6 +114,10 @@ public enum PathEnum {
     SmsSend("sms_send"),
     //手机号码状态检测
     PhoneStatus("phone_status"),
+    // 号码申诉
+    NumberAppeal("number_appeal"),
+    // 号码申诉记录查询
+    ListNumberAppeal("list_number_appeal"),
 
     //----------------------------------------------↓呼叫中心-报表↓----------------------------------------------//
 
@@ -184,4 +188,5 @@ public enum PathEnum {
     public String value() {
         return value;
     }
+
 }
