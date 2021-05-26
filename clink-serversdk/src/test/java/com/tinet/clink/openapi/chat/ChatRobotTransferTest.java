@@ -3,18 +3,23 @@ package com.tinet.clink.openapi.chat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tinet.clink.openapi.Client;
 import com.tinet.clink.openapi.ClientConfiguration;
-import com.tinet.clink.openapi.request.chat.ChatVisitorCloseSessionRequest;
-import com.tinet.clink.openapi.response.chat.ChatVisitorCloseSessionResponse;
+import com.tinet.clink.openapi.request.chat.ChatQuitQueueRequest;
+import com.tinet.clink.openapi.request.chat.ChatRobotTransferRequest;
+import com.tinet.clink.openapi.response.chat.ChatQuitQueueResponse;
+import com.tinet.clink.openapi.response.chat.ChatRobotTransferResponse;
 import org.junit.Before;
 import org.junit.Test;
 
-public class ChatVisitorCloseSessionTest {
+/**
+ * 会话开始
+ */
+public class ChatRobotTransferTest {
     protected Client client = null;
     ClientConfiguration configuration = null;
 
     @Before
     public void init() {
-
+        System.out.println("----------------------------->");
         configuration = new ClientConfiguration("706ff5f9bbb10286dcf7545262a7d702", "IO9Fpa392A3y54375Tvu");
         configuration.setScheme("http");
         configuration.setHost("api-bj-test3.clink.cn");
@@ -22,12 +27,14 @@ public class ChatVisitorCloseSessionTest {
         client = new Client(configuration);
     }
 
+
     @Test
-    public void testCloseSession() throws Exception {
+    public void testRobotTransfer() throws Exception {
         ObjectMapper mapper = new ObjectMapper();
-        ChatVisitorCloseSessionRequest request = new ChatVisitorCloseSessionRequest();
-        request.setSessionId("1592fa50-f46f-4c98-a07a-f9f18cd99b8f.1621945232");
-        ChatVisitorCloseSessionResponse responseModel = client.getResponseModel(request);
+        ChatRobotTransferRequest request = new ChatRobotTransferRequest();
+        request.setSessionId("5f0dfecc-ceb4-4a35-ba7e-4bf5abe598df.1622014593");
+
+        ChatRobotTransferResponse responseModel = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(responseModel));
     }
 }

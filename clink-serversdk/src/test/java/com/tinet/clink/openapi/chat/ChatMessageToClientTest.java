@@ -27,9 +27,10 @@ public class ChatMessageToClientTest {
     public void testMessageToClient() throws Exception{
         ObjectMapper mapper = new ObjectMapper();
         ChatMessageToClientRequest request = new ChatMessageToClientRequest();
-        request.setSessionId("5728526c-3088-4f9b-936a-d6f6a10f7fad.1621757501");
-        request.setMessageType(1);
+        request.setSessionId("a895364c-1700-46a6-8253-ae9674a8529a.1622014974");
+        request.setMessageType(3);
         request.setContent("你好");
+        request.setFileUrl("https://clink-resource-test.oss-cn-beijing.aliyuncs.com/chat/message/8000581/20210526/agent/8000581_20210526154216080_agent_f7ec5c4f-79ab-4dc9-a86e-416c7a6a2e5c.1622014798_2b896b1dcef7.txt?Expires=1622022136&OSSAccessKeyId=LTAI4G44RHvg2beXagryMPdK&Signature=xbNjHGDxrzSrUvzB86%2FnQLS804I%3D&response-content-disposition=attachment%3B%20filename%3D%E8%BF%94%E5%9B%9E%E7%A4%BA%E4%BE%8B.txt");
         ChatMessageToClientResponse responseModel = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(responseModel));
     }

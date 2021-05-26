@@ -3,15 +3,18 @@ package com.tinet.clink.openapi.chat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tinet.clink.openapi.Client;
 import com.tinet.clink.openapi.ClientConfiguration;
-import com.tinet.clink.openapi.request.chat.ChatVisitorOpenSessionRequest;
-import com.tinet.clink.openapi.response.chat.ChatVisitorOpenSessionResponse;
+import com.tinet.clink.openapi.model.ChatInvestigationOptionModel;
+import com.tinet.clink.openapi.request.chat.ChatQuitQueueRequest;
+import com.tinet.clink.openapi.request.chat.ChatSubmitInvestigationRequest;
+import com.tinet.clink.openapi.response.chat.ChatQuitQueueResponse;
+import com.tinet.clink.openapi.response.chat.ChatSubmitInvestigationResponse;
 import org.junit.Before;
 import org.junit.Test;
 
 /**
  * 会话开始
  */
-public class ChatVisitorOpenSessionTest {
+public class ChatQuitQueueTest {
     protected Client client = null;
     ClientConfiguration configuration = null;
 
@@ -27,12 +30,12 @@ public class ChatVisitorOpenSessionTest {
 
 
     @Test
-    public void testOpenSession() throws Exception{
+    public void testQuitQueue() throws Exception {
         ObjectMapper mapper = new ObjectMapper();
-        ChatVisitorOpenSessionRequest request = new ChatVisitorOpenSessionRequest();
-        request.setAppId("086dd7a1-4daa-4295-a568-bb0854fa8d64");
-        request.setAppName("sdk测试渠道01");
-        ChatVisitorOpenSessionResponse responseModel = client.getResponseModel(request);
+        ChatQuitQueueRequest request = new ChatQuitQueueRequest();
+        request.setSessionId("4d8ecc81-1384-40fb-a430-8d8fa0133e4b.1622014405");
+
+        ChatQuitQueueResponse responseModel = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(responseModel));
     }
 }
