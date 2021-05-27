@@ -4,9 +4,11 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tinet.clink.openapi.exceptions.ClientException;
 import com.tinet.clink.openapi.exceptions.ServerException;
+import com.tinet.clink.openapi.request.added.ListNumberAppealRequest;
 import com.tinet.clink.openapi.request.config.numbers.ListClidNumbersRequest;
-import com.tinet.clink.openapi.response.config.numbers.ListClidNumbersResponse;
 import com.tinet.clink.openapi.request.config.numbers.ListHotlineNumbersRequest;
+import com.tinet.clink.openapi.response.ResponseModel;
+import com.tinet.clink.openapi.response.config.numbers.ListClidNumbersResponse;
 import com.tinet.clink.openapi.response.config.numbers.ListHotlineNumbersResponse;
 import org.junit.Test;
 
@@ -34,5 +36,20 @@ public class NumberTest extends AbstractTest {
         ListHotlineNumbersResponse response = client.getResponseModel(listHotlineNumbersRequest);
 
         System.out.println(mapper.writeValueAsString(response));
+    }
+
+
+    @Test
+    public void NumberAppealTest(){
+        // todo need test
+        ListNumberAppealRequest request  = new ListNumberAppealRequest();
+        request.setStartTime("2021-05-01 00:00:00");
+        request.setEndTime("2021-05-31 00:00:00");
+        try {
+            ResponseModel response = client.getResponseModel(request);
+            System.out.println(response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

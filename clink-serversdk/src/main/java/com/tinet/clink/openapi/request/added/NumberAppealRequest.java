@@ -7,7 +7,7 @@ import com.tinet.clink.openapi.utils.HttpMethodType;
 
 /**
  * Class for:
- *
+ *  号码申诉
  * @author yinzk
  * @date 2021/5/26
  */
@@ -24,6 +24,6 @@ public class NumberAppealRequest extends AbstractRequestModel<NumberAppealRespon
 
     @Override
     public Class<NumberAppealResponse> getResponseClass() {
-        return null;
+        return NumberAppealResponse.class;
     }
 }
