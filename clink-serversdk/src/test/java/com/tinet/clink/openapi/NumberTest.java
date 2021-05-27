@@ -40,14 +40,31 @@ public class NumberTest extends AbstractTest {
 
 
     @Test
-    public void NumberAppealTest(){
-        // todo need test
+    public void NumberAppealTest() {
+        // appeal
+//        NumberAppealRequest request = new NumberAppealRequest();
+//        // {"customerNumber":"18832015829","appealReason":"客户回访"}
+//        String model = "{\"customerNumber\":\"18832015829\",\"appealReason\":\"客户回访\"}";
+//        request.setModel(model);
+//        HashMap<String, List<File>> fileMap = new HashMap<>();
+//        fileMap.put("file", Collections.singletonList(new File("C:\\Users\\edz\\Pictures\\tinet.png")));
+//        request.setFileMap(fileMap);
+//        try {
+//            NumberAppealResponse response = client.getResponseModel(request);
+//            System.out.println(new ObjectMapper().writeValueAsString(response));
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+
+        // list appeal record
         ListNumberAppealRequest request  = new ListNumberAppealRequest();
-        request.setStartTime("2021-05-01 00:00:00");
+        request.setStartTime("2021-03-01 00:00:00");
         request.setEndTime("2021-05-31 00:00:00");
+        request.setCustomerNumber("18832015829");
         try {
             ResponseModel response = client.getResponseModel(request);
-            System.out.println(response);
+            ObjectMapper mapper=new ObjectMapper();
+            System.out.println(mapper.writeValueAsString(response));
         } catch (Exception e) {
             e.printStackTrace();
         }
