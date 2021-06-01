@@ -32,7 +32,7 @@ public class ChatRobotTransferTest {
     public void testRobotTransfer() throws Exception {
         ObjectMapper mapper = new ObjectMapper();
         ChatRobotTransferRequest request = new ChatRobotTransferRequest();
-        request.setSessionId("5f0dfecc-ceb4-4a35-ba7e-4bf5abe598df.1622014593");
+        request.setSessionId("f7bb6e71-47ec-4e8f-bb6b-f768a7e09026.1622515844");
 
         ChatRobotTransferResponse responseModel = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(responseModel));

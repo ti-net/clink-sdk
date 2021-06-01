@@ -18,6 +18,7 @@ public class ChatVisitorOpenSessionRequest extends AbstractRequestModel<ChatVisi
     public ChatVisitorOpenSessionRequest() {
         super(PathEnum.ChatVisitorOpenSession.value(), HttpMethodType.POST);
     }
+
     /**
      * 渠道id
      */
@@ -42,18 +43,6 @@ public class ChatVisitorOpenSessionRequest extends AbstractRequestModel<ChatVisi
      * 访客头像
      */
     private String avatar;
-
-    private String ip;
-
-    private String province;
-
-    private String city;
-
-    private String browser;
-
-    private String operatingSystem;
-
-    private String website;
 
     /**
      * 客户资料信息
@@ -86,36 +75,6 @@ public class ChatVisitorOpenSessionRequest extends AbstractRequestModel<ChatVisi
     public void setAvatar(String avatar) {
         this.avatar = avatar;
         putQueryParameter("avatar", avatar);
-    }
-
-    public void setIp(String ip) {
-        this.ip = ip;
-        putQueryParameter("ip", ip);
-    }
-
-    public void setProvince(String province) {
-        this.province = province;
-        putQueryParameter("province", province);
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-        putQueryParameter("city", city);
-    }
-
-    public void setBrowser(String browser) {
-        this.browser = browser;
-        putQueryParameter("browser", browser);
-    }
-
-    public void setOperatingSystem(String operatingSystem) {
-        this.operatingSystem = operatingSystem;
-        putQueryParameter("operatingSystem", operatingSystem);
-    }
-
-    public void setWebsite(String website) {
-        this.website = website;
-        putQueryParameter("website", website);
     }
 
     public void setCustomerFields(Map<String, Object> customerFields) {
@@ -153,30 +112,6 @@ public class ChatVisitorOpenSessionRequest extends AbstractRequestModel<ChatVisi
         return avatar;
     }
 
-    public String getIp() {
-        return ip;
-    }
-
-    public String getProvince() {
-        return province;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public String getBrowser() {
-        return browser;
-    }
-
-    public String getOperatingSystem() {
-        return operatingSystem;
-    }
-
-    public String getWebsite() {
-        return website;
-    }
-
     public Map<String, Object> getCustomerFields() {
         return customerFields;
     }
@@ -202,12 +137,6 @@ public class ChatVisitorOpenSessionRequest extends AbstractRequestModel<ChatVisi
                 ", visitorId='" + visitorId + '\'' +
                 ", visitorName='" + visitorName + '\'' +
                 ", avatar='" + avatar + '\'' +
-                ", ip='" + ip + '\'' +
-                ", province='" + province + '\'' +
-                ", city='" + city + '\'' +
-                ", browser='" + browser + '\'' +
-                ", operatingSystem='" + operatingSystem + '\'' +
-                ", website='" + website + '\'' +
                 ", customerFields=" + customerFields +
                 ", extraInfo=" + extraInfo +
                 ", visitorExtraInfo=" + visitorExtraInfo +

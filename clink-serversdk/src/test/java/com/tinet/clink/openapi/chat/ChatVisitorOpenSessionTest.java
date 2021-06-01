@@ -27,11 +27,11 @@ public class ChatVisitorOpenSessionTest {
 
 
     @Test
-    public void testOpenSession() throws Exception{
+    public void testOpenSession() throws Exception {
         ObjectMapper mapper = new ObjectMapper();
         ChatVisitorOpenSessionRequest request = new ChatVisitorOpenSessionRequest();
-        request.setAppId("086dd7a1-4daa-4295-a568-bb0854fa8d64");
-        request.setAppName("sdk测试渠道01");
+        request.setAppId("086dd7a1-4daa-4295-a568-bb0854fa8123");
+        request.setAppName("sdk测试渠道03");
         ChatVisitorOpenSessionResponse responseModel = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(responseModel));
     }
