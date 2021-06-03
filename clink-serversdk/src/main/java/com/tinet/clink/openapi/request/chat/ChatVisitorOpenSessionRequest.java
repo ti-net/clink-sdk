@@ -25,11 +25,6 @@ public class ChatVisitorOpenSessionRequest extends AbstractRequestModel<ChatVisi
     private String appId;
 
     /**
-     * 渠道名称
-     */
-    private String appName;
-
-    /**
      * 访客id
      */
     private String visitorId;
@@ -55,11 +50,6 @@ public class ChatVisitorOpenSessionRequest extends AbstractRequestModel<ChatVisi
 
     public void setAppId(String appId) {
         this.appId = appId;
-    }
-
-    public void setAppName(String appName) {
-        this.appName = appName;
-        putQueryParameter("appName", appName);
     }
 
     public void setVisitorId(String visitorId) {
@@ -96,10 +86,6 @@ public class ChatVisitorOpenSessionRequest extends AbstractRequestModel<ChatVisi
         return appId;
     }
 
-    public String getAppName() {
-        return appName;
-    }
-
     public String getVisitorId() {
         return visitorId;
     }
@@ -133,7 +119,6 @@ public class ChatVisitorOpenSessionRequest extends AbstractRequestModel<ChatVisi
     public String toString() {
         return "ChatVisitorOpenSessionRequest{" +
                 "appId='" + appId + '\'' +
-                ", appName='" + appName + '\'' +
                 ", visitorId='" + visitorId + '\'' +
                 ", visitorName='" + visitorName + '\'' +
                 ", avatar='" + avatar + '\'' +
