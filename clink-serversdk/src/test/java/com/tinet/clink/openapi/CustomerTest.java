@@ -159,6 +159,7 @@ public class CustomerTest extends AbstractTest {
         request.setShareType(3);
         request.setAddress("河北省沧州市");
         request.setId(84176);
+        request.setRenovate(0);
 
         IdValue[] idValues = new IdValue[1];
 

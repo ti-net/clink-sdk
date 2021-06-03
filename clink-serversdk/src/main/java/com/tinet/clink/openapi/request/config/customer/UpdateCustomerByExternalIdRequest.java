@@ -73,6 +73,11 @@ public class UpdateCustomerByExternalIdRequest extends AbstractRequestModel<Upda
      */
     private IdValue[] customize;
 
+    /**
+     * 更新方式  0: 更新/ 1: 可覆盖
+     */
+    private Integer renovate;
+
     public Integer getId() {
         return id;
     }
@@ -215,6 +220,18 @@ public class UpdateCustomerByExternalIdRequest extends AbstractRequestModel<Upda
 
         if (externalId != null) {
             putBodyParameter("externalId", externalId);
+        }
+    }
+
+    public Integer getRenovate() {
+        return renovate;
+    }
+
+    public void setRenovate(Integer renovate) {
+        this.renovate = renovate;
+
+        if (renovate != null) {
+            putBodyParameter("renovate", renovate);
         }
     }
 
