@@ -18,9 +18,9 @@ public class ChatVisitorOpenSessionTest {
     @Before
     public void init() {
         System.out.println("----------------------------->");
-        configuration = new ClientConfiguration("706ff5f9bbb10286dcf7545262a7d702", "IO9Fpa392A3y54375Tvu");
-        configuration.setScheme("http");
-        configuration.setHost("api-bj-test3.clink.cn");
+        configuration = new ClientConfiguration("e67d46b40bcca7d888cf5182ca2ad976", "l508t7Z1L4fl30978m50");
+        configuration.setScheme("https");
+        configuration.setHost("api-bj.clink.cn");
 
         client = new Client(configuration);
     }
@@ -31,8 +31,8 @@ public class ChatVisitorOpenSessionTest {
         ObjectMapper mapper = new ObjectMapper();
         ChatVisitorOpenSessionRequest request = new ChatVisitorOpenSessionRequest();
         request.setAppId("086dd7a1-4daa-4295-a568-bb0854fa8123");
-        request.setAppName("sdk测试渠道03");
         ChatVisitorOpenSessionResponse responseModel = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(responseModel));
+        //{"requestId":"65818e12-b008-9883-a5b0-a121b2ab5912","sessionId":"84911939-51e5-4dcc-a5ef-5251c19475b9.1623209260","startTime":1623209260000}
     }
 }
