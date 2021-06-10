@@ -167,6 +167,11 @@ public enum PathEnum {
     ChatQuitQueue("chat_quit_queue"),
     ChatRobotTransfer("chat_robot_transfer"),
     ChatMessageToClient("chat_message_to_client"),
+    ChatClientOpenSession("chat_client_open_session"),
+    ChatClientCloseSession("chat_client_close_session"),
+    ChatClientInvestigation("chat_client_investigation"),
+    ChatMessageToVisitor("chat_message_to_visitor"),
+    ChatClientWithdraw("chat_client_withdraw"),
 
     //-------------------在线客服服务端API--------
 
