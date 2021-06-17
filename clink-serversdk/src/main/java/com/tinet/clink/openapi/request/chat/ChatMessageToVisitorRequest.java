@@ -1,5 +1,6 @@
 package com.tinet.clink.openapi.request.chat;
 
+import com.sun.istack.internal.NotNull;
 import com.tinet.clink.openapi.PathEnum;
 import com.tinet.clink.openapi.request.AbstractRequestModel;
 import com.tinet.clink.openapi.response.chat.ChatMessageToVisitorResponse;
@@ -16,6 +17,16 @@ public class ChatMessageToVisitorRequest extends AbstractRequestModel<ChatMessag
     public ChatMessageToVisitorRequest() {
         super(PathEnum.ChatMessageToVisitor.value(), HttpMethodType.POST);
     }
+
+    /**
+     * 座席工号
+     */
+    private String cno;
+
+    /**
+     * 发送人类型
+     */
+    private Integer senderType;
 
     /**
      * 主会话标识
@@ -36,6 +47,39 @@ public class ChatMessageToVisitorRequest extends AbstractRequestModel<ChatMessag
      * 文件类型消息文件访问地址
      */
     private String fileUrl;
+
+    /**
+     * 文件类型消息文件名
+     */
+    private String fileName;
+
+
+    public void setCno(String cno) {
+        this.cno = cno;
+        putQueryParameter("cno", cno);
+    }
+
+    public void setSenderType(Integer senderType) {
+        this.senderType = senderType;
+        putQueryParameter("senderType", senderType);
+    }
+
+    public String getCno() {
+        return cno;
+    }
+
+    public Integer getSenderType() {
+        return senderType;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+        putQueryParameter("fileName", fileName);
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
 
 
     public String getSessionId() {
@@ -82,10 +126,13 @@ public class ChatMessageToVisitorRequest extends AbstractRequestModel<ChatMessag
     @Override
     public String toString() {
         return "ChatMessageToVisitorRequest{" +
-                "sessionId='" + sessionId + '\'' +
+                "cno='" + cno + '\'' +
+                ", senderType=" + senderType +
+                ", sessionId='" + sessionId + '\'' +
                 ", messageType=" + messageType +
                 ", content='" + content + '\'' +
                 ", fileUrl='" + fileUrl + '\'' +
+                ", fileName='" + fileName + '\'' +
                 "} " + super.toString();
     }
 }

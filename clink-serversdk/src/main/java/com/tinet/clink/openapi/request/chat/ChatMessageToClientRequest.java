@@ -37,6 +37,19 @@ public class ChatMessageToClientRequest extends AbstractRequestModel<ChatMessage
      */
     private String fileUrl;
 
+    /**
+     * 文件类型消息文件名
+     */
+    private String fileName;
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+        putQueryParameter("fileName", fileName);
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
 
     public String getSessionId() {
         return sessionId;
@@ -86,6 +99,7 @@ public class ChatMessageToClientRequest extends AbstractRequestModel<ChatMessage
                 ", messageType=" + messageType +
                 ", content='" + content + '\'' +
                 ", fileUrl='" + fileUrl + '\'' +
+                ", fileName='" + fileName + '\'' +
                 "} " + super.toString();
     }
 }

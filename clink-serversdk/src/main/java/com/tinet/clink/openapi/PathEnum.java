@@ -160,7 +160,7 @@ public enum PathEnum {
     //队列报表
     StatChatQueueWorkload("stat_chat_queue_workload"),
 
-    //-------------------在线客服服务端API--------
+    //-------------------在线客服API--------
     ChatVisitorOpenSession("chat_visitor_open_session"),
     ChatVisitorCloseSession("chat_visitor_close_session"),
     ChatSubmitInvestigation("chat_submit_investigation"),
@@ -172,8 +172,10 @@ public enum PathEnum {
     ChatClientInvestigation("chat_client_investigation"),
     ChatMessageToVisitor("chat_message_to_visitor"),
     ChatClientWithdraw("chat_client_withdraw"),
+    ChatClientLogin("chat_client_login"),
+    ChatClientLogout("chat_client_logout"),
 
-    //-------------------在线客服服务端API--------
+    //-------------------在线客服API--------
 
 //    -----工单记录-------
 
