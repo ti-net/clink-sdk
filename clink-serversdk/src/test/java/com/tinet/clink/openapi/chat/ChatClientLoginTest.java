@@ -33,8 +33,6 @@ public class ChatClientLoginTest {
         request.setCno("061101");
         request.setChatLimitNumber(10);
         request.setChatLoginStatus(1);
-        request.setPauseType(1);
-        request.setPauseDescription("在线空闲");
         ChatClientLoginResponse responseModel = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(responseModel));
     }
