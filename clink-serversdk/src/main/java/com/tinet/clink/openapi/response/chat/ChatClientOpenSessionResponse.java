@@ -14,6 +14,11 @@ public class ChatClientOpenSessionResponse extends ResponseModel {
     private String sessionId;
 
     /**
+     * 访客id
+     */
+    private String visitorId;
+
+    /**
      * 会话开始时间（毫秒）
      */
     private Long startTime;
@@ -32,5 +37,22 @@ public class ChatClientOpenSessionResponse extends ResponseModel {
 
     public void setStartTime(Long startTime) {
         this.startTime = startTime;
+    }
+
+    public String getVisitorId() {
+        return visitorId;
+    }
+
+    public void setVisitorId(String visitorId) {
+        this.visitorId = visitorId;
+    }
+
+    @Override
+    public String toString() {
+        return "ChatClientOpenSessionResponse{" +
+                "sessionId='" + sessionId + '\'' +
+                ", visitorId='" + visitorId + '\'' +
+                ", startTime=" + startTime +
+                "} " + super.toString();
     }
 }

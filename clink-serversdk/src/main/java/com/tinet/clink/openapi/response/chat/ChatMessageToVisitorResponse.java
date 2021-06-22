@@ -15,11 +15,6 @@ public class ChatMessageToVisitorResponse extends ResponseModel {
     private String sessionId;
 
     /**
-     * 访客id
-     */
-    private String visitorId;
-
-    /**
      * 消息id
      */
     private String messageId;
@@ -46,14 +41,6 @@ public class ChatMessageToVisitorResponse extends ResponseModel {
 
     public void setSessionId(String sessionId) {
         this.sessionId = sessionId;
-    }
-
-    public String getVisitorId() {
-        return visitorId;
-    }
-
-    public void setVisitorId(String visitorId) {
-        this.visitorId = visitorId;
     }
 
     public String getMessageId() {
@@ -86,5 +73,16 @@ public class ChatMessageToVisitorResponse extends ResponseModel {
 
     public void setSensitiveWord(String sensitiveWord) {
         this.sensitiveWord = sensitiveWord;
+    }
+
+    @Override
+    public String toString() {
+        return "ChatMessageToVisitorResponse{" +
+                "sessionId='" + sessionId + '\'' +
+                ", messageId='" + messageId + '\'' +
+                ", sendStatus=" + sendStatus +
+                ", createTime=" + createTime +
+                ", sensitiveWord='" + sensitiveWord + '\'' +
+                "} " + super.toString();
     }
 }
