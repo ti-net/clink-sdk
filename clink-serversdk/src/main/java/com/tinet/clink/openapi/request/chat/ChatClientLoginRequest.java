@@ -29,6 +29,14 @@ public class ChatClientLoginRequest extends AbstractRequestModel<ChatClientLogin
      * 座席登录状态
      */
     private Integer chatLoginStatus;
+    /**
+     * 座席置忙类型
+     */
+    private Integer pauseType;
+    /**
+     * 座席置忙状态描述
+     */
+    private String pauseDescription;
 
     @Override
     public Class<ChatClientLoginResponse> getResponseClass() {
@@ -50,6 +58,16 @@ public class ChatClientLoginRequest extends AbstractRequestModel<ChatClientLogin
         this.chatLoginStatus = chatLoginStatus;
     }
 
+    public void setPauseType(Integer pauseType) {
+        putQueryParameter("pauseType", pauseType);
+        this.pauseType = pauseType;
+    }
+
+    public void setPauseDescription(String pauseDescription) {
+        putQueryParameter("pauseDescription", pauseDescription);
+        this.pauseDescription = pauseDescription;
+    }
+
     public String getCno() {
         return cno;
     }
@@ -62,6 +80,13 @@ public class ChatClientLoginRequest extends AbstractRequestModel<ChatClientLogin
         return chatLoginStatus;
     }
 
+    public Integer getPauseType() {
+        return pauseType;
+    }
+
+    public String getPauseDescription() {
+        return pauseDescription;
+    }
 
     @Override
     public String toString() {
@@ -69,6 +94,8 @@ public class ChatClientLoginRequest extends AbstractRequestModel<ChatClientLogin
                 "cno='" + cno + '\'' +
                 ", chatLimitNumber=" + chatLimitNumber +
                 ", chatLoginStatus=" + chatLoginStatus +
+                ", pauseType=" + pauseType +
+                ", pauseDescription='" + pauseDescription + '\'' +
                 "} " + super.toString();
     }
 }

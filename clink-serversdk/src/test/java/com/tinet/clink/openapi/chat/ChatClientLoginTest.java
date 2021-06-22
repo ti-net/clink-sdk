@@ -32,7 +32,7 @@ public class ChatClientLoginTest {
         ChatClientLoginRequest request = new ChatClientLoginRequest();
         request.setCno("061101");
         request.setChatLimitNumber(10);
-        request.setChatLoginStatus(1);
+        request.setChatLoginStatus(2);
         ChatClientLoginResponse responseModel = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(responseModel));
     }
