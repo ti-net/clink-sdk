@@ -170,6 +170,14 @@ public enum PathEnum {
 
     //-------------------在线客服服务端API--------
 
+
+    //-------------------知识库API--------
+    DescribeArticle("describe_article"),
+    ListArticles("list_articles"),
+    ListRepositories("list_repositories"),
+    ListDirectories("list_directories"),
+    //-------------------知识库API--------
+
 //    -----工单记录-------
 
     //查询工单记录
