@@ -32,6 +32,7 @@ public class ListArticleTest extends KbAbstractTest{
         // 创建请求的request
         DescribeArticleRequest request = new DescribeArticleRequest();
         request.setId(3653);
+        request.setEnterpriseId(8000559);
 
         try {
             DescribeArticleResponse response = client.getResponseModel(request);

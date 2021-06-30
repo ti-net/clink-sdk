@@ -29,7 +29,7 @@ public class ListRepositoryTest extends KbAbstractTest{
 
         // 创建请求的request
         ListRepositoriesRequest request = new ListRepositoriesRequest();
-        request.setName("FAQ测试");
+        // request.setName("FAQ测试");
         request.setType(0);
 
         try {

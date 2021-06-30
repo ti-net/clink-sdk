@@ -14,9 +14,25 @@ import com.tinet.clink.openapi.utils.HttpMethodType;
 public class DescribeArticleRequest extends AbstractRequestModel<DescribeArticleResponse> {
 
     /**
+     * 企业ID
+     */
+    private Integer enterpriseId;
+
+    /**
      * 文章ID
      */
     private Integer id;
+
+    public Integer getEnterpriseId() {
+        return enterpriseId;
+    }
+
+    public void setEnterpriseId(Integer enterpriseId) {
+        this.enterpriseId = enterpriseId;
+        if (enterpriseId != null) {
+            putQueryParameter("enterpriseId", enterpriseId);
+        }
+    }
 
     public Integer getId() {
         return id;
