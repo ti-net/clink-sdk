@@ -3,15 +3,17 @@ package com.tinet.clink.openapi.chat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tinet.clink.openapi.Client;
 import com.tinet.clink.openapi.ClientConfiguration;
+import com.tinet.clink.openapi.request.chat.ChatClientOpenSessionRequest;
 import com.tinet.clink.openapi.request.chat.ChatVisitorOpenSessionRequest;
+import com.tinet.clink.openapi.response.chat.ChatClientOpenSessionResponse;
 import com.tinet.clink.openapi.response.chat.ChatVisitorOpenSessionResponse;
 import org.junit.Before;
 import org.junit.Test;
 
 /**
- * 会话开始
+ * 客服会话开始
  */
-public class ChatVisitorOpenSessionTest {
+public class ChatClientOpenSessionTest {
     protected Client client = null;
     ClientConfiguration configuration = null;
 
@@ -27,11 +29,13 @@ public class ChatVisitorOpenSessionTest {
 
 
     @Test
-    public void testOpenSession() throws Exception {
+    public void testClientOpenSession() throws Exception {
         ObjectMapper mapper = new ObjectMapper();
-        ChatVisitorOpenSessionRequest request = new ChatVisitorOpenSessionRequest();
-        request.setAppId("123dd7a1-4daa-4295-a568-bb0854fa8888");
-        ChatVisitorOpenSessionResponse responseModel = client.getResponseModel(request);
+        ChatClientOpenSessionRequest request = new ChatClientOpenSessionRequest();
+        request.setCno("061101");
+        request.setSessionId("665c04b7-5846-418a-b12f-896c30751c08.1623906024");
+        request.setStartTime(1623906024000L);
+        ChatClientOpenSessionResponse responseModel = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(responseModel));
     }
 }

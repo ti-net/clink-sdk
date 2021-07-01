@@ -3,15 +3,15 @@ package com.tinet.clink.openapi.chat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tinet.clink.openapi.Client;
 import com.tinet.clink.openapi.ClientConfiguration;
-import com.tinet.clink.openapi.request.chat.ChatVisitorOpenSessionRequest;
-import com.tinet.clink.openapi.response.chat.ChatVisitorOpenSessionResponse;
+import com.tinet.clink.openapi.request.chat.ChatClientLoginRequest;
+import com.tinet.clink.openapi.response.chat.ChatClientLoginResponse;
 import org.junit.Before;
 import org.junit.Test;
 
 /**
- * 会话开始
+ * 客服会话开始
  */
-public class ChatVisitorOpenSessionTest {
+public class ChatClientLoginTest {
     protected Client client = null;
     ClientConfiguration configuration = null;
 
@@ -27,11 +27,13 @@ public class ChatVisitorOpenSessionTest {
 
 
     @Test
-    public void testOpenSession() throws Exception {
+    public void testClientLogin() throws Exception {
         ObjectMapper mapper = new ObjectMapper();
-        ChatVisitorOpenSessionRequest request = new ChatVisitorOpenSessionRequest();
-        request.setAppId("123dd7a1-4daa-4295-a568-bb0854fa8888");
-        ChatVisitorOpenSessionResponse responseModel = client.getResponseModel(request);
+        ChatClientLoginRequest request = new ChatClientLoginRequest();
+        request.setCno("061101");
+        request.setChatLimitNumber(10);
+        request.setChatLoginStatus(2);
+        ChatClientLoginResponse responseModel = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(responseModel));
     }
 }
