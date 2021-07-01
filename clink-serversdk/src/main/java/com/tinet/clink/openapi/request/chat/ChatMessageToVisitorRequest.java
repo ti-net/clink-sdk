@@ -1,21 +1,32 @@
 package com.tinet.clink.openapi.request.chat;
 
+import com.sun.istack.internal.NotNull;
 import com.tinet.clink.openapi.PathEnum;
 import com.tinet.clink.openapi.request.AbstractRequestModel;
-import com.tinet.clink.openapi.response.chat.ChatMessageToClientResponse;
+import com.tinet.clink.openapi.response.chat.ChatMessageToVisitorResponse;
 import com.tinet.clink.openapi.utils.HttpMethodType;
 
 /**
- * 访客退出排队
+ * 发送消息到访客
  *
  * @author wangpw
  * @date 2021年5月14日
  */
-public class ChatMessageToClientRequest extends AbstractRequestModel<ChatMessageToClientResponse> {
+public class ChatMessageToVisitorRequest extends AbstractRequestModel<ChatMessageToVisitorResponse> {
 
-    public ChatMessageToClientRequest() {
-        super(PathEnum.ChatMessageToClient.value(), HttpMethodType.POST);
+    public ChatMessageToVisitorRequest() {
+        super(PathEnum.ChatMessageToVisitor.value(), HttpMethodType.POST);
     }
+
+    /**
+     * 座席工号
+     */
+    private String cno;
+
+    /**
+     * 发送人类型
+     */
+    private Integer senderType;
 
     /**
      * 主会话标识
@@ -42,6 +53,25 @@ public class ChatMessageToClientRequest extends AbstractRequestModel<ChatMessage
      */
     private String fileName;
 
+
+    public void setCno(String cno) {
+        this.cno = cno;
+        putQueryParameter("cno", cno);
+    }
+
+    public void setSenderType(Integer senderType) {
+        this.senderType = senderType;
+        putQueryParameter("senderType", senderType);
+    }
+
+    public String getCno() {
+        return cno;
+    }
+
+    public Integer getSenderType() {
+        return senderType;
+    }
+
     public void setFileName(String fileName) {
         this.fileName = fileName;
         putQueryParameter("fileName", fileName);
@@ -50,6 +80,7 @@ public class ChatMessageToClientRequest extends AbstractRequestModel<ChatMessage
     public String getFileName() {
         return fileName;
     }
+
 
     public String getSessionId() {
         return sessionId;
@@ -88,14 +119,16 @@ public class ChatMessageToClientRequest extends AbstractRequestModel<ChatMessage
     }
 
     @Override
-    public Class<ChatMessageToClientResponse> getResponseClass() {
-        return ChatMessageToClientResponse.class;
+    public Class<ChatMessageToVisitorResponse> getResponseClass() {
+        return ChatMessageToVisitorResponse.class;
     }
 
     @Override
     public String toString() {
-        return "ChatMessageToClientRequest{" +
-                "sessionId='" + sessionId + '\'' +
+        return "ChatMessageToVisitorRequest{" +
+                "cno='" + cno + '\'' +
+                ", senderType=" + senderType +
+                ", sessionId='" + sessionId + '\'' +
                 ", messageType=" + messageType +
                 ", content='" + content + '\'' +
                 ", fileUrl='" + fileUrl + '\'' +
