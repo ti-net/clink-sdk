@@ -1,6 +1,5 @@
 package com.tinet.clink.openapi.request.chat;
 
-import com.sun.istack.internal.NotNull;
 import com.tinet.clink.openapi.PathEnum;
 import com.tinet.clink.openapi.request.AbstractRequestModel;
 import com.tinet.clink.openapi.response.chat.ChatMessageToVisitorResponse;
