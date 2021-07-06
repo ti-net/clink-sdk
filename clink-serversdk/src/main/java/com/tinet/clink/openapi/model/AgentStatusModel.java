@@ -44,9 +44,14 @@ public class AgentStatusModel {
      */
     private String pauseDescription;
     /**
-     * 设备状态 (空闲、置忙(具体置忙原因)、通话、振铃、整理、外呼中)
+     * 座席状态 (空闲、置忙(具体置忙原因)、通话、振铃、整理、外呼中)
      */
     private String agentStatus;
+
+    /**
+     * 座席状态详情
+     */
+    private String agentStatusDetail;
 
     /**
      * 来电接听数
@@ -115,6 +120,14 @@ public class AgentStatusModel {
 
     public void setPauseType(Integer pauseType) {
         this.pauseType = pauseType;
+    }
+
+    public String getAgentStatusDetail() {
+        return agentStatusDetail;
+    }
+
+    public void setAgentStatusDetail(String agentStatusDetail) {
+        this.agentStatusDetail = agentStatusDetail;
     }
 
     public String getAgentStatus() {

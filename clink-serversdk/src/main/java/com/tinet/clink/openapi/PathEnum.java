@@ -23,6 +23,11 @@ public enum PathEnum {
     DeleteQueue("delete_queue"),
     ListQueues("list_queues"),
     DescribeQueue("describe_queue"),
+    /**
+     * 置忙状态
+     */
+    ListEnterprisePauses("list_enterprise_pauses"),
+
     //  话机设置
     CreateExten("create_exten"),
     UpdateExten("update_exten"),
