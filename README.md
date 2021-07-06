@@ -191,3 +191,9 @@ public class Test {
 数据-外呼通话记录-查询外呼通话记录 返回值修改标记字段[mark]类型为Integer
 数据-外呼通话记录-同步外呼通话记录 返回值修改标记字段[mark]类型为Integer
 ```
+
+### V 2.0.41
+```
+设置-置忙状态-查询置忙状态 增加接口
+监控-座席状态监控 增加agentStatusDetails查询条件，返回增加agentStatusDetail字段
+```
