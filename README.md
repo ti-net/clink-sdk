@@ -11,7 +11,7 @@
 <dependency>
     <groupId>com.ti-net</groupId>
     <artifactId>clink-serversdk</artifactId>
-    <version>2.0.35</version>
+    <version>2.0.41</version>
 </dependency>
 ```
 
@@ -217,5 +217,10 @@ public class Test {
 9.在线客服-会话管理-客服发起满意度评价接口
 10.在线客服-会话管理-发消息给访客接口
 11.在线客服-会话管理-客服撤回消息接口
+```
 
+### V 2.0.41
+```
+设置-置忙状态-查询置忙状态 增加接口
+监控-座席状态监控 增加agentStatusDetails查询条件，返回增加agentStatusDetail字段
 ```

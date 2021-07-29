@@ -5,8 +5,6 @@ import com.tinet.clink.openapi.request.AbstractRequestModel;
 import com.tinet.clink.openapi.response.monitor.AgentStatusResponse;
 import com.tinet.clink.openapi.utils.HttpMethodType;
 
-import java.util.List;
-
 /**
  * 查询座席状态请求对象
  *
@@ -27,6 +25,12 @@ public class AgentStatusRequest extends AbstractRequestModel<AgentStatusResponse
      * 座席状态
      */
     private String[] agentStatus;
+
+    /**
+     * 座席状态详情
+     */
+    private String[] agentStatusDetails;
+
     /**
      * 置忙类型
      */
@@ -86,6 +90,15 @@ public class AgentStatusRequest extends AbstractRequestModel<AgentStatusResponse
         }
     }
 
+    public void setAgentStatusDetails(String[] agentStatusDetails) {
+        this.agentStatusDetails = agentStatusDetails;
+        if (agentStatusDetails != null) {
+            for (int i = 0; i < agentStatusDetails.length; i++) {
+                putQueryParameter("agentStatusDetails[" + i + "]", agentStatusDetails[i]);
+            }
+        }
+    }
+
     public void setPauseTypes(Integer[] pauseTypes) {
         this.pauseTypes = pauseTypes;
         if (pauseTypes != null) {
@@ -97,6 +110,10 @@ public class AgentStatusRequest extends AbstractRequestModel<AgentStatusResponse
 
     public String[] getAgentStatus() {
         return agentStatus;
+    }
+
+    public String[] getAgentStatusDetails() {
+        return agentStatusDetails;
     }
 
     public Integer[] getPauseTypes() {
