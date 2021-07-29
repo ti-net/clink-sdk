@@ -15,9 +15,9 @@ public class ChatVisitorCloseSessionTest {
     @Before
     public void init() {
 
-        configuration = new ClientConfiguration("706ff5f9bbb10286dcf7545262a7d702", "IO9Fpa392A3y54375Tvu");
-        configuration.setScheme("http");
-        configuration.setHost("api-bj-test3.clink.cn");
+        configuration = new ClientConfiguration("e67d46b40bcca7d888cf5182ca2ad976", "l508t7Z1L4fl30978m50");
+        configuration.setScheme("https");
+        configuration.setHost("api-bj.clink.cn");
 
         client = new Client(configuration);
     }
@@ -26,7 +26,7 @@ public class ChatVisitorCloseSessionTest {
     public void testCloseSession() throws Exception {
         ObjectMapper mapper = new ObjectMapper();
         ChatVisitorCloseSessionRequest request = new ChatVisitorCloseSessionRequest();
-        request.setSessionId("1592fa50-f46f-4c98-a07a-f9f18cd99b8f.1621945232");
+        request.setSessionId("f4cc8391-58e9-4c0e-a483-48c5e9330fb9.1623208279");
         ChatVisitorCloseSessionResponse responseModel = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(responseModel));
     }

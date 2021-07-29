@@ -11,7 +11,7 @@
 <dependency>
     <groupId>com.ti-net</groupId>
     <artifactId>clink-serversdk</artifactId>
-    <version>2.0.35</version>
+    <version>2.0.41</version>
 </dependency>
 ```
 
