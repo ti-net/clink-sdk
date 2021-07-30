@@ -7,6 +7,12 @@ package com.tinet.clink.openapi.model;
  * @date 2018/09/17
  **/
 public class CdrCommentModel {
+
+    /**
+     * 通话唯一标识
+     */
+    private String uniqueId;
+
     /**
      * 客户号码
      */
@@ -109,5 +115,13 @@ public class CdrCommentModel {
 
     public void setRecordFile(String recordFile) {
         this.recordFile = recordFile;
+    }
+
+    public String getUniqueId() {
+        return uniqueId;
+    }
+
+    public void setUniqueId(String uniqueId) {
+        this.uniqueId = uniqueId;
     }
 }

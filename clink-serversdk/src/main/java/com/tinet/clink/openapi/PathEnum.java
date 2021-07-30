@@ -23,6 +23,7 @@ public enum PathEnum {
     DeleteQueue("delete_queue"),
     ListQueues("list_queues"),
     DescribeQueue("describe_queue"),
+
     /**
      * 置忙状态
      */
@@ -134,7 +135,14 @@ public enum PathEnum {
     StatHotlineIb("stat_hotline_ib"),
     //中继报表-外呼接听率分析
     StatHotlineObAnsweredRate("stat_hotline_ob_answered_rate"),
-
+    //IVR报表-IVR统计
+    StatIvrList("stat_ivr_list"),
+    //IVR报表-IVR节点统计
+    StatIvrNodes("stat_ivr_nodes"),
+    //满意度报表-按座席统计
+    StatInvestigationByCno("stat_investigation_by_cno"),
+    //满意度报表-按热线号码
+    StatInvestigationByHotlines("stat_investigation_by_hotlines"),
     //----------------------------------------------↑呼叫中心-报表↑----------------------------------------------//
 
 
