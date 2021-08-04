@@ -146,6 +146,11 @@ public class TicketDetailModel {
      */
     private Date closeTime;
 
+    /**
+     * 通话记录id
+     */
+    private String callId;
+
     public Integer getId() {
         return id;
     }
@@ -360,5 +365,13 @@ public class TicketDetailModel {
 
     public void setCloseTime(Date closeTime) {
         this.closeTime = closeTime;
+    }
+
+    public String getCallId() {
+        return callId;
+    }
+
+    public void setCallId(String callId) {
+        this.callId = callId;
     }
 }
