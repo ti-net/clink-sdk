@@ -15,7 +15,7 @@ public class ChatVisitorCloseSessionTest {
     @Before
     public void init() {
 
-        configuration = new ClientConfiguration("e67d46b40bcca7d888cf5182ca2ad976", "l508t7Z1L4fl30978m50");
+        configuration = new ClientConfiguration("8480c8cb7fab15530388a0e8b76b1960", "8Q82jb1DX3uG05WEYZ77");
         configuration.setScheme("https");
         configuration.setHost("api-bj.clink.cn");
 
