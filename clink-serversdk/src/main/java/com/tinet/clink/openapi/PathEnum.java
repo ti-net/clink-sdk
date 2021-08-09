@@ -68,6 +68,7 @@ public enum PathEnum {
     Barge("barge"),
     PauseClient("pause_client"),
     UnpauseClient("unpause_client"),
+    OfflineClient("offline_client"),
     //  呼入通话记录
     ListCdrIbs("list_cdr_ibs"),
     DescribeCdrIb("describe_cdr_ib"),

@@ -53,6 +53,19 @@ public class CallTest extends AbstractTest {
     }
 
     /**
+     * 下线单元测试
+     */
+    @Test
+    public void offlineClientTest() throws ServerException, ClientException, JsonProcessingException {
+
+        OfflineClientRequest request = new OfflineClientRequest();
+        request.setCno("6666");
+
+        OfflineClientResponse response = client.getResponseModel(request);
+        System.out.println(mapper.writeValueAsString(response));
+    }
+
+    /**
      * 置忙单元测试
      */
     @Test
