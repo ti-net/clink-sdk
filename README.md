@@ -11,7 +11,7 @@
 <dependency>
     <groupId>com.ti-net</groupId>
     <artifactId>clink-serversdk</artifactId>
-    <version>2.0.41</version>
+    <version>2.0.43</version>
 </dependency>
 ```
 
@@ -223,4 +223,9 @@ public class Test {
 ```
 设置-置忙状态-查询置忙状态 增加接口
 监控-座席状态监控 增加agentStatusDetails查询条件，返回增加agentStatusDetail字段
+```
+
+### V 2.0.43
+```
+电话-呼叫管理-下线 增加接口
 ```
