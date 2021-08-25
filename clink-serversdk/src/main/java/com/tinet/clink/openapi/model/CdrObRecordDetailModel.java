@@ -94,6 +94,11 @@ public class CdrObRecordDetailModel {
     private String status;
 
     /**
+     * 接听状态映射
+     */
+    private String statusCode;
+
+    /**
      * 挂机原因 1000主通道挂机 1001非主通道挂机 1002被强拆
      */
     private String endReason;
@@ -270,6 +275,14 @@ public class CdrObRecordDetailModel {
         this.status = status;
     }
 
+    public String getStatusCode() {
+        return statusCode;
+    }
+
+    public void setStatusCode(String statusCode) {
+        this.statusCode = statusCode;
+    }
+
     public String getEndReason() {
         return endReason;
     }
@@ -334,4 +347,5 @@ public class CdrObRecordDetailModel {
         this.mark = mark;
     }
 }
+
 
