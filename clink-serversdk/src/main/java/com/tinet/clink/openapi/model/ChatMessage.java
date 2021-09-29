@@ -43,7 +43,7 @@ public class ChatMessage {
     private Long createTime;
 
     /**
-     * 文件的地址
+     * 文件Key
      */
     private String fileKey;
 
@@ -51,6 +51,11 @@ public class ChatMessage {
      * 文件名称
      */
     private String fileName;
+
+    /**
+     * 文件Url
+     */
+    private String fileUrl;
 
     /**
      * 发送类型: 1-正常, 2-敏感词
@@ -140,6 +145,14 @@ public class ChatMessage {
 
     public void setFileName(String fileName) {
         this.fileName = fileName;
+    }
+
+    public String getFileUrl() {
+        return fileUrl;
+    }
+
+    public void setFileUrl(String fileUrl) {
+        this.fileUrl = fileUrl;
     }
 
     public Integer getSendStatus() {

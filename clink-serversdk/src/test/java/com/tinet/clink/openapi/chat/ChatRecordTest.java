@@ -30,7 +30,7 @@ public class ChatRecordTest extends AbstractTest {
         ChatRecordRequest request = new ChatRecordRequest();
 
         request.setLimit(10);
-        request.setDate("20200813");
+        request.setDate("20210928");
         //request.setScrollId("DnF1ZXJ5VGhlbkZldGNoAwAAAAABSWwoFkdfSmt5XzY1U2VHMFFaSTNkYjlPQ0EAAAAAAUlsJhZHX0preV82NVNlRzBRWkkzZGI5T0NBAAAAAAFJbCcWR19Ka3lfNjVTZUcwUVpJM2RiOU9DQQ==");
 
         ChatRecordResponse response = client.getResponseModel(request);
@@ -42,8 +42,8 @@ public class ChatRecordTest extends AbstractTest {
     public void testChatMessage() throws ServerException, ClientException, JsonProcessingException {
         ChatMessageRequest request = new ChatMessageRequest();
 
-        request.setLimit(10);
-        request.setDate("20200813");
+        request.setLimit(100);
+        request.setDate("20210928");
 
         ChatMessageResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response));
