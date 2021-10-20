@@ -8,6 +8,7 @@ import com.tinet.clink.openapi.exceptions.ServerException;
 import com.tinet.clink.openapi.request.chat.ChatCommentRequest;
 import com.tinet.clink.openapi.request.chat.ChatDetailRequest;
 import com.tinet.clink.openapi.request.chat.ChatInvestigationRequest;
+import com.tinet.clink.openapi.request.chat.ChatMessageDetailRequest;
 import com.tinet.clink.openapi.request.chat.ChatMessageRequest;
 import com.tinet.clink.openapi.request.chat.ChatRecordRequest;
 import com.tinet.clink.openapi.response.chat.ChatCommentResponse;
@@ -44,6 +45,18 @@ public class ChatRecordTest extends AbstractTest {
 
         request.setLimit(100);
         request.setDate("20210928");
+
+        ChatMessageResponse response = client.getResponseModel(request);
+        System.out.println(mapper.writeValueAsString(response));
+    }
+
+    @Test
+    public void testChatMessageDetail() throws ServerException, ClientException, JsonProcessingException {
+        ChatMessageDetailRequest request = new ChatMessageDetailRequest();
+
+        request.setLimit(100);
+        request.setDate("20211020");
+        request.setMainUniqueId("677586f3-c8a7-4e08-bfd4-8ba9e0be152c.1634632141");
 
         ChatMessageResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response));
