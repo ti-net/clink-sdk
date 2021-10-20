@@ -55,7 +55,7 @@ public class ChatRecordTest extends AbstractTest {
         ChatMessageDetailRequest request = new ChatMessageDetailRequest();
 
         request.setLimit(100);
-        request.setDate("20211020");
+        request.setDate("20211019");
         request.setMainUniqueId("677586f3-c8a7-4e08-bfd4-8ba9e0be152c.1634632141");
 
         ChatMessageResponse response = client.getResponseModel(request);
