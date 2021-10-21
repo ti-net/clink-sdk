@@ -9,7 +9,7 @@ import com.tinet.clink.openapi.utils.HttpMethodType;
  * @author yuqiang
  * @date 2021/10/20
  */
-public class ChatMessageDetailRequest extends AbstractRequestModel<ChatMessageResponse> {
+public class ListChatMessageRequest extends AbstractRequestModel<ChatMessageResponse> {
 
     private String scrollId;
     private String date;
@@ -60,7 +60,7 @@ public class ChatMessageDetailRequest extends AbstractRequestModel<ChatMessageRe
         }
     }
 
-    public ChatMessageDetailRequest() {
+    public ListChatMessageRequest() {
         super(PathEnum.ChatMessageDetail.value(), HttpMethodType.GET);
     }
 
