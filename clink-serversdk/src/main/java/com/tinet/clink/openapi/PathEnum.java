@@ -166,7 +166,7 @@ public enum PathEnum {
     // 在线客服 - 获取聊天记录
     ChatMessage("copy_chat_messages"),
     // 在线客服 - 获取聊天记录明细
-    ChatMessageDetail("copy_chat_messages_detail"),
+    ChatMessageDetail("list_chat_messages"),
     // 在线客服 - 获取会话满意度
     ChatInvestigation("copy_chat_investigations"),
     // 在线客服 - 获取会话留言
