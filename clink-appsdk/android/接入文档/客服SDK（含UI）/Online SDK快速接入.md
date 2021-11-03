@@ -32,7 +32,7 @@ allprojects {
 ```
 
 
-2.  在app/build.gradle中添加库依赖，推送依赖包(push_lib.zip)
+2.  在app/build.gradle中添加库依赖，推送[依赖包](https://github.com/ti-net/clink-sdk/tree/master/clink-appsdk/android/lib/libs.zip)
 
 
 
@@ -218,4 +218,4 @@ OnlineServiceClient.connect(id,nickname,headerUrl,new OnlineConnectResultCallbac
 OnlineServiceClient.disConnect(boolean isReceivePush,null)
 ```
 ### 7. 资源下载
-demo详见online-demo.zip
+demo详见[online-demo.zip](https://github.com/ti-net/clink-sdk/tree/master/clink-appsdk/android/demo/online-sdk.zip)
