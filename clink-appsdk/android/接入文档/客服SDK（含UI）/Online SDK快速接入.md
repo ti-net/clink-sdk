@@ -39,7 +39,7 @@ allprojects {
 ```java
 dependencies {
 	//客服基础库，必须依赖
-	implementation 'com.tinet.oskit:online:1.0.0.0_beta4'
+	implementation 'com.tinet.oskit:online:1.0.0'
 	//客服Push依赖
 	//华为 push
     implementation(name: 'hms-base-2.6.3.301', ext: 'aar')
@@ -52,7 +52,7 @@ dependencies {
 ```
 
 3.  初始化SDK
-3.1. 在自定义Application类的onCreate()中初始化SDK ，[OnlineInitOption参数配置](https://sharp.yuque.com/ytytn2/lwt1pt/xa1g1v)。
+3.1. 在自定义Application类的onCreate()中初始化SDK ，[OnlineInitOption参数配置](https://github.com/ti-net/clink-sdk/tree/master/clink-appsdk/android/接入文档/初始化参数说明.md)。
 ```java
    public class MyApplication extends Application {
 
