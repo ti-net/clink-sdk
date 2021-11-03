@@ -214,7 +214,14 @@ public enum PathEnum {
     ListTicketWorkflow("list_ticket_workflow"),
 
     SaveTicket("save_ticket"),
-    UpdateTicket("update_ticket");
+    UpdateTicket("update_ticket"),
+
+
+//    -----志邦工单记录-------
+
+    ZbTicketUpdateStatus("update_status"),
+
+    ZbTicketAddRecord("add_record");
 
     private String value;
 
