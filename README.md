@@ -2,7 +2,7 @@
 
 ### 欢迎使用天润融通 “智慧服务平台” 开发者工具套件（SDK）。SDK 对 API 接口调用进行了封装，让您不用复杂编程即可实现 “智慧服务平台” 与自有系统的集成，管理 “智慧服务平台” 的数据配置、呼叫控制、通话记录等各种资源。
 
-## [后端接入](https://github.com/ti-net/clink-sdk/README.md)
+## [后端接入](https://github.com/ti-net/clink-sdk/blob/master/clink-serversdk/README.md)
 
 ## 终端接入
 
