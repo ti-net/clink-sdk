@@ -12,7 +12,7 @@ allprojects {
 ```java
 dependencies {
   //客服基础库，必须依赖
-  implementation 'com.tinet.oslib:online:1.0.0.0_beta4'
+  implementation 'com.tinet.oslib:online:1.0.1'
 }
 ```
 ## 3、 在AndroidManifest.xml中添加Online SDK所需要的权限。
