@@ -123,7 +123,7 @@ public enum PathEnum {
     PhoneStatus("phone_status"),
 
     //短信发送
-    SsologinUrl("login_url"),
+    SsoLoginToken("login_token"),
 
     //----------------------------------------------↓呼叫中心-报表↓----------------------------------------------//
 

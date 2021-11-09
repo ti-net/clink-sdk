@@ -18,16 +18,16 @@ public class SsoLoginUrlRequest extends AbstractRequestModel<SsoLoginUrlResponse
     private String username;
 
     public SsoLoginUrlRequest() {
-        super(PathEnum.SsologinUrl.value(), HttpMethodType.GET);
+        super(PathEnum.SsoLoginToken.value(), HttpMethodType.GET);
     }
 
     public void setLoginType(Integer loginType) {
-        putBodyParameter("loginType", loginType);
+        putQueryParameter("loginType", loginType);
         this.loginType = loginType;
     }
 
     public void setUsername(String username) {
-        putBodyParameter("username", username);
+        putQueryParameter("username", username);
         this.username = username;
     }
 

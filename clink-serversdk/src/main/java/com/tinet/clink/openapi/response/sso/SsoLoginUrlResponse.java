@@ -13,6 +13,14 @@ public class SsoLoginUrlResponse extends PagedResponse {
      */
     private String loginUrl;
 
+    public String getLoginUrl() {
+        return loginUrl;
+    }
+
+    public void setLoginUrl(String loginUrl) {
+        this.loginUrl = loginUrl;
+    }
+
     @Override
     public String toString() {
         return "SsoLoginUrlResponse{" +

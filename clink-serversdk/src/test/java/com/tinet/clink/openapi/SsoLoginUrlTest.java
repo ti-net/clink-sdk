@@ -8,9 +8,6 @@ import com.tinet.clink.openapi.response.sso.SsoLoginUrlResponse;
 import org.junit.Before;
 import org.junit.Test;
 
-/**
- * 客服会话开始
- */
 @SuppressWarnings("Duplicates")
 public class SsoLoginUrlTest {
     protected Client client = null;
@@ -19,25 +16,25 @@ public class SsoLoginUrlTest {
     @Before
     public void init() {
         System.out.println("----------------------------->");
-        configuration = new ClientConfiguration("706ff5f9bbb10286dcf7545262a7d702", "IO9Fpa392A3y54375Tvu");
+        configuration = new ClientConfiguration("a4db0f9336cdcdab09dec3f8dcea9377", "B61Z0h1UuBsr9376LR43");
         configuration.setScheme("http");
-        configuration.setHost("api-bj-test5.clink.cn");
+        configuration.setHost("api-bj-test0.clink.cn");
 
         client = new Client(configuration);
     }
 
 
     @Test
-    public void testClientWithdraw() throws Exception {
+    public void testSsoLoginUrl() throws Exception {
         ObjectMapper mapper = new ObjectMapper();
         SsoLoginUrlRequest request = new SsoLoginUrlRequest();
         //管理员
-        request.setLoginType(2);
-        request.setUsername("wangpw");
-        //座席
         request.setLoginType(1);
         request.setUsername("0611");
+//        //座席
+//        request.setLoginType(1);
+//        request.setUsername("0611");
         SsoLoginUrlResponse responseModel = client.getResponseModel(request);
-        System.out.println(mapper.writeValueAsString(responseModel));
+        System.out.println(responseModel.getLoginUrl());
     }
 }
