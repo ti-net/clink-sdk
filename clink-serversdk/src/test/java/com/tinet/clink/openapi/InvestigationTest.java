@@ -5,8 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tinet.clink.openapi.exceptions.ClientException;
 import com.tinet.clink.openapi.exceptions.ServerException;
 import com.tinet.clink.openapi.request.cdr.ListInvestigationsRequest;
-import com.tinet.clink.openapi.response.call.control.InvestigationResponse;
 import com.tinet.clink.openapi.response.cdr.ListInvestigationsResponse;
+
 import org.junit.Test;
 
 public class InvestigationTest extends AbstractTest {
