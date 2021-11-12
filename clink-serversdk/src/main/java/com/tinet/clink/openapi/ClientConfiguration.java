@@ -6,7 +6,7 @@ import com.tinet.clink.openapi.auth.Credentials;
  * @author houfc
  */
 public class ClientConfiguration {
-    private String host = "api-bj.clink.cn";
+    private String host = "callcenter-openapi.zbom.com";
 
     private int port = 80;
 

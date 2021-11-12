@@ -16,9 +16,9 @@ public abstract class AbstractTest {
     @Before
     public void init() {
 
-        configuration = new ClientConfiguration("d249b2b5db6c0279d4e6e47ad97a3913", "op7jwj1H11Xq904AHf79");
-        configuration.setScheme("http");
-        configuration.setHost("api-bj-test4.clink.cn");
+        configuration = new ClientConfiguration("076057cbbe2f894329d68f6603d9b8df", "nbk6eg2y0VDt7Rq98cbJ");
+        configuration.setScheme("https");
+        configuration.setHost("callcenter-openapi.zbom.com");
 
         client = new Client(configuration);
     }

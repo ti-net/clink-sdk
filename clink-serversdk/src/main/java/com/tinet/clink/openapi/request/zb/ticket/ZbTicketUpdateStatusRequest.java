@@ -3,6 +3,7 @@ package com.tinet.clink.openapi.request.zb.ticket;
 import com.tinet.clink.openapi.PathEnum;
 import com.tinet.clink.openapi.request.AbstractRequestModel;
 import com.tinet.clink.openapi.response.zb.ticket.ZbTicketUpdateStatusResponse;
+import com.tinet.clink.openapi.utils.HttpMethodType;
 
 /**
  * @author liuhy
@@ -46,7 +47,7 @@ public class ZbTicketUpdateStatusRequest extends AbstractRequestModel<ZbTicketUp
     }
 
     public ZbTicketUpdateStatusRequest() {
-        super(PathEnum.ZbTicketUpdateStatus.value());
+        super(PathEnum.ZbTicketUpdateStatus.value(), HttpMethodType.POST);
     }
 
     @Override

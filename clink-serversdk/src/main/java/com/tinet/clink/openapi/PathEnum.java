@@ -221,6 +221,9 @@ public enum PathEnum {
 
     ZbTicketUpdateStatus("update_status"),
 
+    ZbTicketDetail("get_zb_ticket_detail"),
+    ZbListTicket("list_zb_ticket"),
+
     ZbTicketAddRecord("add_record");
 
     private String value;
