@@ -26,7 +26,7 @@ allprojects {
     repositories {
         ...
         //客服SDK maven 仓库地址
-        maven {url "http://dev.clink.cn:8081/repository/maven-releases/"}
+        maven {url "https://github.com/ti-net/clink-sdk/raw/master/clink-appsdk/android/repository/"}
     }
 }
 ```
