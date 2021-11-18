@@ -4,6 +4,7 @@ import com.tinet.clink.openapi.PathEnum;
 import com.tinet.clink.openapi.model.Field;
 import com.tinet.clink.openapi.request.AbstractRequestModel;
 import com.tinet.clink.openapi.response.zb.ticket.ZbTicketAddRecordResponse;
+import com.tinet.clink.openapi.utils.HttpMethodType;
 
 /**
  * @author liuhy
@@ -28,7 +29,7 @@ public class ZbTicketAddRecordRequest extends AbstractRequestModel<ZbTicketAddRe
     private Field[] fields;
 
     public ZbTicketAddRecordRequest() {
-        super(PathEnum.ZbTicketAddRecord.value());
+        super(PathEnum.ZbTicketAddRecord.value(), HttpMethodType.POST);
     }
 
     public Integer getId() {

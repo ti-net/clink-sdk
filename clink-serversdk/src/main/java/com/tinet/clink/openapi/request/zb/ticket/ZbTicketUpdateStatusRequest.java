@@ -18,6 +18,11 @@ public class ZbTicketUpdateStatusRequest extends AbstractRequestModel<ZbTicketUp
     private Integer ticketId;
 
     /**
+     * 外部ID
+     */
+
+    private String externalId;
+    /**
      * 工单状态
      */
     private Integer status;
@@ -43,6 +48,18 @@ public class ZbTicketUpdateStatusRequest extends AbstractRequestModel<ZbTicketUp
 
         if (status != null) {
             putBodyParameter("status", status);
+        }
+    }
+
+    public String getExternalId() {
+        return externalId;
+    }
+
+    public void setExternalId(String externalId) {
+        this.externalId = externalId;
+
+        if (externalId != null) {
+            putBodyParameter("externalId", externalId);
         }
     }
 

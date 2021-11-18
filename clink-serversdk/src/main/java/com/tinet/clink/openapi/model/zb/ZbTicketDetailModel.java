@@ -27,6 +27,8 @@ public class ZbTicketDetailModel {
 
     private Integer crmFlag;
 
+    private String sCode;
+
     public Integer getId() {
         return id;
     }
@@ -97,5 +99,13 @@ public class ZbTicketDetailModel {
 
     public void setCrmFlag(Integer crmFlag) {
         this.crmFlag = crmFlag;
+    }
+
+    public String getsCode() {
+        return sCode;
+    }
+
+    public void setsCode(String sCode) {
+        this.sCode = sCode;
     }
 }

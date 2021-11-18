@@ -33,21 +33,21 @@ public class ZbTicketTest extends AbstractTest {
         // 创建请求的实体request
         ZbTicketAddRecordRequest ticketAddRecordRequest = new ZbTicketAddRecordRequest();
         // 设置工单id和工单状态
-        ticketAddRecordRequest.setId(1);
+        ticketAddRecordRequest.setId(51);
         ticketAddRecordRequest.setStatus(2);
 
         // 设置要修改的自定义字段
         List<Field> fieldList = new ArrayList<>();
 
         Field field = new Field();
-        field.setId(1);
+        field.setId(128);
         field.setName("处理方案");
         field.setValue("这是我的方案");
 
         Field field1 = new Field();
-        field.setId(2);
-        field.setName("工单图片");
-        field.setValue("url1,url2");
+        field1.setId(148);
+        field1.setName("工单图片");
+        field1.setValue("url1,url2");
 
         fieldList.add(field);
         fieldList.add(field1);
@@ -56,6 +56,7 @@ public class ZbTicketTest extends AbstractTest {
 
         // 请求
         ZbTicketAddRecordResponse recordResponse = client.getResponseModel(ticketAddRecordRequest);
+        System.out.println(11);
 
     }
 
@@ -68,11 +69,12 @@ public class ZbTicketTest extends AbstractTest {
         ZbTicketUpdateStatusRequest zbTicketUpdateStatusRequest = new ZbTicketUpdateStatusRequest();
         // 设置工单id和工单状态
         zbTicketUpdateStatusRequest.setStatus(2);
-        zbTicketUpdateStatusRequest.setTicketId(73);
+        zbTicketUpdateStatusRequest.setTicketId(167);
 
         // 请求
         ZbTicketUpdateStatusResponse recordResponse = client.getResponseModel(zbTicketUpdateStatusRequest);
         System.out.println(1);
+
 
     }
 
@@ -80,7 +82,7 @@ public class ZbTicketTest extends AbstractTest {
     public void getTicketDeatil() {
         ZbTicketDetailRequest getTicketDetailRequest = new ZbTicketDetailRequest();
 
-        getTicketDetailRequest.setId(20);
+        getTicketDetailRequest.setId(98);
         try {
             ZbTicketDetailResponse response = client.getResponseModel(getTicketDetailRequest);
 
@@ -97,14 +99,15 @@ public class ZbTicketTest extends AbstractTest {
     public void list(){
         ZbListTicketRequest listTicketRequest=new ZbListTicketRequest();
 
-        listTicketRequest.setStartTime("2020-05-01 00:00:00");
-        listTicketRequest.setEndTime("2021-11-10 23:59:59");
+        listTicketRequest.setStartTime("2021-11-17 00:00:00");
+        listTicketRequest.setEndTime("2021-11-20 23:59:59");
         listTicketRequest.setOffset(0);
         listTicketRequest.setLimit(10);
-        listTicketRequest.setsCode("S001955");
-        listTicketRequest.setLevel(0);
-        listTicketRequest.setHandleStatus(0);
-        listTicketRequest.setHandlerType(0);
+//        listTicketRequest.setScode("S001955");
+//        listTicketRequest.setLevel(0);
+        listTicketRequest.setHandleStatus(2);
+        listTicketRequest.setCustomerAddress("");
+//        listTicketRequest.setHandlerType(0);
 
         try {
             ZbListTicketResponse response=client.getResponseModel(listTicketRequest);

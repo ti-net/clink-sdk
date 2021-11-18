@@ -39,7 +39,7 @@ public class ZbListTicketRequest extends AbstractRequestModel<ZbListTicketRespon
     /**
      * 加盟商编码。（如果是钉钉时sCode为空，如果是U都传sCode）
      */
-    private String sCode;
+    private String scode;
 
     /**
      * 工单类型（咨询/报修/投诉）
@@ -99,14 +99,14 @@ public class ZbListTicketRequest extends AbstractRequestModel<ZbListTicketRespon
         }
     }
 
-    public String getsCode() {
-        return sCode;
+    public String getScode() {
+        return scode;
     }
 
-    public void setsCode(String sCode) {
-        this.sCode = sCode;
-        if (sCode != null) {
-            putQueryParameter("sCode", sCode);
+    public void setScode(String scode) {
+        this.scode = scode;
+        if (scode != null) {
+            putQueryParameter("scode", scode);
         }
     }
 
