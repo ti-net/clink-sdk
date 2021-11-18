@@ -1,13 +1,13 @@
 package com.tinet.clink.openapi;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.tinet.clink.openapi.auth.SignatureComposer;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.logging.SocketHandler;
 
 /**
  * @author 侯法超
