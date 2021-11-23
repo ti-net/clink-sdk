@@ -2,6 +2,7 @@ package com.tinet.clink.openapi.model;
 
 
 import java.util.List;
+import java.util.StringJoiner;
 
 /**
  * 座席详情对象
@@ -112,6 +113,11 @@ public class ClientDetailModel {
      * 在线客服座席会话上限
      */
     private Integer chatLimitNum;
+
+    /**
+     * 队列信息
+     */
+    private List<QueueResultModel> queues;
 
 
     public String getCno() {
@@ -274,30 +280,38 @@ public class ClientDetailModel {
         this.chatLimitNum = chatLimitNum;
     }
 
+    public List<QueueResultModel> getQueues() {
+        return queues;
+    }
+
+    public void setQueues(List<QueueResultModel> queues) {
+        this.queues = queues;
+    }
 
     @Override
     public String toString() {
-        return "ClientDetailModel{" +
-                "cno='" + cno + '\'' +
-                ", name='" + name + '\'' +
-                ", areaCode='" + areaCode + '\'' +
-                ", bindTel='" + bindTel + '\'' +
-                ", telType=" + telType +
-                ", role=" + role +
-                ", active=" + active +
-                ", status=" + status +
-                ", hiddenTel=" + hiddenTel +
-                ", permission=" + permission +
-                ", qnos=" + qnos +
-                ", clid=" + clid +
-                ", clidType=" + clidType +
-                ", clidArea=" + clidArea +
-                ", clidRule=" + clidRule +
-                ", recurrentselectionType=" + recurrentselectionType +
-                ", recurrentselectionValue=" + recurrentselectionValue +
-                ", type=" + type +
-                ", chatLimit=" + chatLimit +
-                ", chatLimitNum=" + chatLimitNum +
-                '}';
+        return new StringJoiner(", ", ClientDetailModel.class.getSimpleName() + "[", "]")
+                .add("cno='" + cno + "'")
+                .add("name='" + name + "'")
+                .add("areaCode='" + areaCode + "'")
+                .add("bindTel='" + bindTel + "'")
+                .add("telType=" + telType)
+                .add("role=" + role)
+                .add("active=" + active)
+                .add("status=" + status)
+                .add("hiddenTel=" + hiddenTel)
+                .add("permission=" + permission)
+                .add("qnos=" + qnos)
+                .add("clid=" + clid)
+                .add("clidType=" + clidType)
+                .add("clidArea=" + clidArea)
+                .add("clidRule=" + clidRule)
+                .add("recurrentselectionType=" + recurrentselectionType)
+                .add("recurrentselectionValue=" + recurrentselectionValue)
+                .add("type=" + type)
+                .add("chatLimit=" + chatLimit)
+                .add("chatLimitNum=" + chatLimitNum)
+                .add("queues=" + queues)
+                .toString();
     }
 }

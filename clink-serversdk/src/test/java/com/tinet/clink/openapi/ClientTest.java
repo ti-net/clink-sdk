@@ -1,5 +1,6 @@
 package com.tinet.clink.openapi;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.tinet.clink.openapi.exceptions.ClientException;
 import com.tinet.clink.openapi.exceptions.ServerException;
 import com.tinet.clink.openapi.model.ClientDetailModel;
@@ -97,13 +98,13 @@ public class ClientTest extends AbstractTest{
     }
 
     @Test
-    public void describeClient() throws ServerException, ClientException {
+    public void describeClient() throws ServerException, ClientException, JsonProcessingException {
         DescribeClientRequest describeClientRequest = new DescribeClientRequest();
-        describeClientRequest.setCno("5877");
+        describeClientRequest.setCno("6666");
         DescribeClientResponse response = client.getResponseModel(describeClientRequest);
 
         ClientDetailModel client =  response.getClient();
-        System.out.println(client.toString());
+        System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(client));
 
     }
 

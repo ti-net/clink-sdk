@@ -122,6 +122,9 @@ public enum PathEnum {
     //手机号码状态检测
     PhoneStatus("phone_status"),
 
+    //短信发送
+    SsoLoginToken("login_token"),
+
     //----------------------------------------------↓呼叫中心-报表↓----------------------------------------------//
 
     //座席工作量报表
@@ -165,6 +168,8 @@ public enum PathEnum {
     ChatDetail("copy_chat_details"),
     // 在线客服 - 获取聊天记录
     ChatMessage("copy_chat_messages"),
+    // 在线客服 - 获取聊天记录明细
+    ChatMessageDetail("list_chat_messages"),
     // 在线客服 - 获取会话满意度
     ChatInvestigation("copy_chat_investigations"),
     // 在线客服 - 获取会话留言
