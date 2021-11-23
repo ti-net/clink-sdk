@@ -3,9 +3,7 @@ package com.tinet.clink.openapi;
 import com.tinet.clink.openapi.exceptions.ClientException;
 import com.tinet.clink.openapi.exceptions.ServerException;
 import com.tinet.clink.openapi.model.ClientTelModel;
-import com.tinet.clink.openapi.request.cdr.DescribeRecordFileUrlRequest;
 import com.tinet.clink.openapi.request.config.client.ListClientTelsRequest;
-import com.tinet.clink.openapi.response.cdr.DescribeRecordFileUrlResponse;
 import com.tinet.clink.openapi.response.config.client.ListClientTelsResponse;
 
 /**

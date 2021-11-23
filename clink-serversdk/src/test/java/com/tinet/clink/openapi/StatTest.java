@@ -4,20 +4,14 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tinet.clink.openapi.exceptions.ClientException;
 import com.tinet.clink.openapi.exceptions.ServerException;
-import com.tinet.clink.openapi.request.cdr.ListCdrIbsRequest;
 import com.tinet.clink.openapi.request.stat.StatClientStatusRequest;
 import com.tinet.clink.openapi.request.stat.StatClientWorkloadRequest;
 import com.tinet.clink.openapi.request.stat.StatQueueRequest;
-import com.tinet.clink.openapi.response.cdr.ListCdrIbsResponse;
 import com.tinet.clink.openapi.response.stat.StatClientStatusResponse;
 import com.tinet.clink.openapi.response.stat.StatClientWorkloadResponse;
 import com.tinet.clink.openapi.response.stat.StatQueueResponse;
-import org.junit.Test;
 
-import java.lang.reflect.Field;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import org.junit.Test;
 
 /**
  * @author Chenjf

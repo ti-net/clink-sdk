@@ -1,18 +1,26 @@
 package com.tinet.clink.openapi;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tinet.clink.openapi.exceptions.ClientException;
 import com.tinet.clink.openapi.exceptions.ServerException;
-import com.tinet.clink.openapi.model.QueueDetailModel;
 import com.tinet.clink.openapi.model.QueueMemberModel;
 import com.tinet.clink.openapi.model.QueueSearchResultModel;
-import com.tinet.clink.openapi.request.config.queue.*;
-import com.tinet.clink.openapi.response.config.queue.*;
-import org.junit.Test;
+import com.tinet.clink.openapi.request.config.queue.CreateQueueRequest;
+import com.tinet.clink.openapi.request.config.queue.DeleteQueueRequest;
+import com.tinet.clink.openapi.request.config.queue.DescribeQueueRequest;
+import com.tinet.clink.openapi.request.config.queue.ListQueuesRequest;
+import com.tinet.clink.openapi.request.config.queue.UpdateQueueRequest;
+import com.tinet.clink.openapi.response.config.queue.CreateQueueResponse;
+import com.tinet.clink.openapi.response.config.queue.DeleteQueueResponse;
+import com.tinet.clink.openapi.response.config.queue.DescribeQueueResponse;
+import com.tinet.clink.openapi.response.config.queue.ListQueuesResponse;
+import com.tinet.clink.openapi.response.config.queue.UpdateQueueResponse;
 
-import java.util.LinkedList;
-import java.util.List;
+import org.junit.Test;
 
 /**
  * @author lizy
