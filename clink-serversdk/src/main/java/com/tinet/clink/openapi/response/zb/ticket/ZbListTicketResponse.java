@@ -7,7 +7,6 @@ import com.tinet.clink.openapi.response.PagedResponse;
 import java.util.List;
 
 /**
- *
  * @author liuhy
  * @date: 2020/8/20
  **/
@@ -16,7 +15,27 @@ public class ZbListTicketResponse extends PagedResponse {
     /**
      * 工单实体对象集合
      */
-    List<ZbTicketResultModel> tickets;
+    private List<ZbTicketResultModel> tickets;
+
+    private String code;
+
+    private String message;
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
     public List<ZbTicketResultModel> getTickets() {
         return tickets;
