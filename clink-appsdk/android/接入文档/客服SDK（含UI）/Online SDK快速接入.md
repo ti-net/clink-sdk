@@ -186,12 +186,12 @@ dependencies {
 ### 5. 创建会话
 
 
-连接在线客服，同一用户多次调用connect不会触发多次连接，id为用户侧的用户ID（可为空，为空的情况下，系统默认为UUID去除-号，不可包含中文或特殊符号，建议使用用户系统ID方便APP拓展功能），nickname为用户昵称（可为空），headUrl用户头像全链接地址（可为空）。
+连接在线客服，同一用户多次调用connect不会触发多次连接，id为用户侧的用户ID（可为空，为空的情况下，系统默认为UUID去除-号，不可包含中文或特殊符号，建议使用用户系统ID方便APP拓展功能），nickname为用户昵称（可为空），headUrl用户头像全链接地址（可为空）。mobile为绑定手机号（可以为空），extraInfo为额外的附加信息（没有可以传空）
 
 
 ```java
 //同一用户不会导致重连
-OnlineServiceClient.connect(id,nickname,headerUrl,new OnlineConnectResultCallback(){
+OnlineServiceClient.connect(id,nickname,headerUrl,mobile,extraInfo,new OnlineConnectResultCallback(){
 
     @Override
     public void onSuccess(String data) {
