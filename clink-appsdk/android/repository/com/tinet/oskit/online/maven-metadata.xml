@@ -3,10 +3,11 @@
   <groupId>com.tinet.oskit</groupId>
   <artifactId>online</artifactId>
   <versioning>
-    <release>1.2.2</release>
+    <release>1.2.3</release>
     <versions>
       <version>1.2.2</version>
+      <version>1.2.3</version>
     </versions>
-    <lastUpdated>20211123150257</lastUpdated>
+    <lastUpdated>20211123151824</lastUpdated>
   </versioning>
 </metadata>
