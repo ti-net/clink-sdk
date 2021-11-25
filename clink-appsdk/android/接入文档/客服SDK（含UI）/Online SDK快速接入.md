@@ -12,8 +12,11 @@
 
 ### 1.申请AppKey
 accessId   //移动端唯一标识，对应座席端渠道ID
+
 accessSecret  //加密信息
+
 enterpriseId  //企业ID
+
 注：测试环境与正式环境的企业信息需要单独申请。
 ### 2.接入Online SDK
 
