@@ -4,7 +4,16 @@ allprojects {
     repositories {
         ...
         //客服SDK maven 仓库地址
-        maven {url "https://github.com/ti-net/clink-sdk/raw/master/clink-appsdk/android/repository/"}
+        maven {
+            url 'https://maven.aliyun.com/repository/public'
+        }
+        maven {
+            credentials {
+                username '61965416dd32cb6444a19056'
+                password 'VptyuwI3QX3j'
+            }
+            url 'https://packages.aliyun.com/maven/repository/2157415-release-qzT0Ka/'
+        }
     }
 }
 ```
@@ -12,7 +21,7 @@ allprojects {
 ```java
 dependencies {
   //客服基础库，必须依赖
-  implementation 'com.tinet.oslib:online:1.0.1'
+  implementation 'com.tinet.oslib:online:1.2.5'
 }
 ```
 ## 3、 在AndroidManifest.xml中添加Online SDK所需要的权限。
