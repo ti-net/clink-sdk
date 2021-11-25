@@ -14,6 +14,7 @@
 accessId   //移动端唯一标识，对应座席端渠道ID
 accessSecret  //加密信息
 enterpriseId  //企业ID
+注：测试环境与正式环境的企业信息需要单独申请。
 ### 2.接入Online SDK
 
 
@@ -83,8 +84,10 @@ dependencies {
    		option.setEnterpriseId(enterpriseId);
         // 请注意北京平台/上海平台
    		option.setApiUrl("https://octopus-api-1.vlink.cn/api/sdk/v1");
-        // 请注意北京平台/上海平台
+        // 测试环境
    		option.setOnlineUrl("http://chat-app-bj-test3.clink.cn");
+		// 正式环境
+   		// option.setOnlineUrl("https://chat-app-bj.clink.cn");
    		option.setDebug(BuildConfig.DEBUG);
 
    		OnlineKitManager.init(this, option, new TImageLoader() {
