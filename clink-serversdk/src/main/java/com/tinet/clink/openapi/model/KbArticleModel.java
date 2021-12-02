@@ -152,6 +152,19 @@ public class KbArticleModel {
          */
         private Integer transfer;
 
+        /**
+         * 问答库-关联知识点
+         */
+        private List<RelatedQuestion> relatedQuestions;
+
+        public List<RelatedQuestion> getRelatedQuestions() {
+            return relatedQuestions;
+        }
+
+        public void setRelatedQuestions(List<RelatedQuestion> relatedQuestions) {
+            this.relatedQuestions = relatedQuestions;
+        }
+
         public String getAnswer() {
             return answer;
         }
@@ -190,6 +203,36 @@ public class KbArticleModel {
 
         public void setTransfer(Integer transfer) {
             this.transfer = transfer;
+        }
+    }
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class RelatedQuestion {
+
+        /**
+         * 知识点标题
+         */
+        private String relatedQuestion;
+
+        /**
+         * 标题ID
+         */
+        private String relatedQuestionId;
+
+        public String getRelatedQuestion() {
+            return relatedQuestion;
+        }
+
+        public void setRelatedQuestion(String relatedQuestion) {
+            this.relatedQuestion = relatedQuestion;
+        }
+
+        public String getRelatedQuestionId() {
+            return relatedQuestionId;
+        }
+
+        public void setRelatedQuestionId(String relatedQuestionId) {
+            this.relatedQuestionId = relatedQuestionId;
         }
     }
 
