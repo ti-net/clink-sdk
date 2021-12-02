@@ -12,8 +12,12 @@
 
 ### 1.申请AppKey
 accessId   //移动端唯一标识，对应座席端渠道ID
+
 accessSecret  //加密信息
+
 enterpriseId  //企业ID
+
+注：测试环境与正式环境的企业信息需要单独申请。
 ### 2.接入Online SDK
 
 
@@ -26,7 +30,16 @@ allprojects {
     repositories {
         ...
         //客服SDK maven 仓库地址
-        maven {url "https://github.com/ti-net/clink-sdk/raw/master/clink-appsdk/android/repository/"}
+        maven {
+            url 'https://maven.aliyun.com/repository/public'
+        }
+        maven {
+            credentials {
+                username '61965416dd32cb6444a19056'
+                password 'VptyuwI3QX3j'
+            }
+            url 'https://packages.aliyun.com/maven/repository/2157415-release-qzT0Ka/'
+        }
     }
 }
 ```
@@ -39,7 +52,7 @@ allprojects {
 ```java
 dependencies {
 	//客服基础库，必须依赖
-	implementation 'com.tinet.oskit:online:1.0.0'
+	implementation 'com.tinet.oskit:online:1.2.5'
 	//客服Push依赖
 	//华为 push
     implementation(name: 'hms-base-2.6.3.301', ext: 'aar')
@@ -74,8 +87,10 @@ dependencies {
    		option.setEnterpriseId(enterpriseId);
         // 请注意北京平台/上海平台
    		option.setApiUrl("https://octopus-api-1.vlink.cn/api/sdk/v1");
-        // 请注意北京平台/上海平台
+        // 测试环境
    		option.setOnlineUrl("http://chat-app-bj-test3.clink.cn");
+		// 正式环境
+   		// option.setOnlineUrl("https://chat-app-bj.clink.cn");
    		option.setDebug(BuildConfig.DEBUG);
 
    		OnlineKitManager.init(this, option, new TImageLoader() {
