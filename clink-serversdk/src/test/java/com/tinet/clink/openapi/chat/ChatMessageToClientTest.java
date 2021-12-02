@@ -8,6 +8,8 @@ import com.tinet.clink.openapi.response.chat.ChatMessageToClientResponse;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.File;
+
 public class ChatMessageToClientTest {
     protected Client client = null;
     ClientConfiguration configuration = null;
@@ -15,9 +17,9 @@ public class ChatMessageToClientTest {
     @Before
     public void init() {
 
-        configuration = new ClientConfiguration("e67d46b40bcca7d888cf5182ca2ad976", "l508t7Z1L4fl30978m50");
-        configuration.setScheme("https");
-        configuration.setHost("api-bj.clink.cn");
+        configuration = new ClientConfiguration("1ad36475b5fb78c23f033250cb19a0a5", "li8FM094H5qj4O0SEdu8");
+        configuration.setScheme("http");
+        configuration.setHost("api-bj-test4.clink.cn");
 
         client = new Client(configuration);
     }
@@ -29,10 +31,12 @@ public class ChatMessageToClientTest {
     public void testMessageToClient() throws Exception{
         ObjectMapper mapper = new ObjectMapper();
         ChatMessageToClientRequest request = new ChatMessageToClientRequest();
-        request.setSessionId("8d5da47d-0e1e-40ed-8304-61e3d48d2a65.1623209143");
+        request.setSessionId("5d43691b-7fd3-4077-b116-6ec2feb05f0f.1638415584");
         request.setMessageType(1);
-        request.setContent("你好");
-        request.setFileUrl("");
+        request.setContent("一样一样");
+
+        // multipartFile 转file https://blog.csdn.net/qisoft1213/article/details/105098007
+//        request.setFile(new File("F:\\钉钉缓存\\绩效管理制度配套附表-20210121(1).xlsx"));
         ChatMessageToClientResponse responseModel = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(responseModel));
     }

@@ -5,8 +5,15 @@ import com.tinet.clink.openapi.request.AbstractRequestModel;
 import com.tinet.clink.openapi.response.chat.ChatMessageToClientResponse;
 import com.tinet.clink.openapi.utils.HttpMethodType;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+
 /**
- * 访客退出排队
+ * 发送消息到座席
  *
  * @author wangpw
  * @date 2021年5月14日
@@ -41,6 +48,21 @@ public class ChatMessageToClientRequest extends AbstractRequestModel<ChatMessage
      * 文件类型消息文件名
      */
     private String fileName;
+
+    private File file;
+
+    public File getFile() {
+        return file;
+    }
+
+    public void setFile(File file) {
+        this.file = file;
+        List<File> fileList = new ArrayList<>();
+        fileList.add(file);
+        Map<String, List<File>> fileMap = new HashMap<>();
+        fileMap.put("file", fileList);
+        setFileMap(fileMap);
+    }
 
     public void setFileName(String fileName) {
         this.fileName = fileName;
@@ -101,5 +123,10 @@ public class ChatMessageToClientRequest extends AbstractRequestModel<ChatMessage
                 ", fileUrl='" + fileUrl + '\'' +
                 ", fileName='" + fileName + '\'' +
                 "} " + super.toString();
+    }
+
+    @Override
+    public boolean isMultipartFormData() {
+        return Objects.nonNull(getFile());
     }
 }
