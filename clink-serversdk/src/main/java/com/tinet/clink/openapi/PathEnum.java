@@ -198,6 +198,9 @@ public enum PathEnum {
 
 
     //-------------------知识库API--------
+    CreateArticle("create_article"),
+    UpdateArticle("update_article"),
+    DeleteArticle("delete_article"),
     DescribeArticle("describe_article"),
     ListArticles("list_articles"),
     ListRepositories("list_repositories"),
