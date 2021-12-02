@@ -1,10 +1,12 @@
 package com.tinet.clink.openapi.request.chat;
 
 import com.tinet.clink.openapi.PathEnum;
+import com.tinet.clink.openapi.model.ChatMessageSyncModel;
 import com.tinet.clink.openapi.request.AbstractRequestModel;
 import com.tinet.clink.openapi.response.chat.ChatVisitorOpenSessionResponse;
 import com.tinet.clink.openapi.utils.HttpMethodType;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -48,6 +50,31 @@ public class ChatVisitorOpenSessionRequest extends AbstractRequestModel<ChatVisi
 
     private Map<String, Object> visitorExtraInfo;
 
+    /**
+     * 座席编号
+     */
+    private String cno;
+
+    /**
+     * 队列编号
+     */
+    private String qno;
+
+    /**
+     * 是否只做消息同步
+     */
+    private Boolean messageSyncOnly;
+
+    /**
+     * 同步的消息
+     */
+    private List<ChatMessageSyncModel> messages;
+
+    /**
+     * 会话创建时间
+     */
+    private Long createTime;
+
     public void setAppId(String appId) {
         this.appId = appId;
     }
@@ -82,6 +109,31 @@ public class ChatVisitorOpenSessionRequest extends AbstractRequestModel<ChatVisi
         putQueryParameter("visitorExtraInfo", visitorExtraInfo);
     }
 
+    public void setCno(String cno) {
+        this.cno = cno;
+        putQueryParameter("cno", cno);
+    }
+
+    public void setQno(String qno) {
+        this.qno = qno;
+        putQueryParameter("qno", qno);
+    }
+
+    public void setMessageSyncOnly(Boolean messageSyncOnly) {
+        this.messageSyncOnly = messageSyncOnly;
+        putQueryParameter("messageSyncOnly", messageSyncOnly);
+    }
+
+    public void setMessages(List<ChatMessageSyncModel> messages) {
+        this.messages = messages;
+        putQueryParameter("messages", messages);
+    }
+
+    public void setCreateTime(Long createTime) {
+        this.createTime = createTime;
+        putQueryParameter("createTime", createTime);
+    }
+
     public String getAppId() {
         return appId;
     }
@@ -110,6 +162,26 @@ public class ChatVisitorOpenSessionRequest extends AbstractRequestModel<ChatVisi
         return visitorExtraInfo;
     }
 
+    public String getCno() {
+        return cno;
+    }
+
+    public String getQno() {
+        return qno;
+    }
+
+    public Boolean getMessageSyncOnly() {
+        return messageSyncOnly;
+    }
+
+    public List<ChatMessageSyncModel> getMessages() {
+        return messages;
+    }
+
+    public Long getCreateTime() {
+        return createTime;
+    }
+
     @Override
     public Class<ChatVisitorOpenSessionResponse> getResponseClass() {
         return ChatVisitorOpenSessionResponse.class;
@@ -125,6 +197,11 @@ public class ChatVisitorOpenSessionRequest extends AbstractRequestModel<ChatVisi
                 ", customerFields=" + customerFields +
                 ", extraInfo=" + extraInfo +
                 ", visitorExtraInfo=" + visitorExtraInfo +
-                "} " + super.toString();
+                ", cno='" + cno + '\'' +
+                ", qno='" + qno + '\'' +
+                ", messageSyncOnly=" + messageSyncOnly +
+                ", messages=" + messages +
+                ", createTime=" + createTime +
+                '}';
     }
 }
