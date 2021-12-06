@@ -94,6 +94,10 @@ public class ListCdrObsRequest extends AbstractRequestModel<ListCdrObsResponse> 
      */
     private String requestUniqueId;
 
+    /**
+     * 座席电话
+     */
+    private String clientNumber;
 
 
     public ListCdrObsRequest() {
@@ -262,6 +266,17 @@ public class ListCdrObsRequest extends AbstractRequestModel<ListCdrObsResponse> 
         this.requestUniqueId = requestUniqueId;
         if (requestUniqueId != null) {
             putQueryParameter("requestUniqueId", requestUniqueId);
+        }
+    }
+
+    public String getClientNumber() {
+        return clientNumber;
+    }
+
+    public void setClientNumber(String clientNumber) {
+        this.clientNumber = clientNumber;
+        if (clientNumber != null) {
+            putQueryParameter("clientNumber", clientNumber);
         }
     }
 

@@ -110,6 +110,11 @@ public class ListCdrIbsRequest extends AbstractRequestModel<ListCdrIbsResponse> 
      */
     private String requestUniqueId;
 
+    /**
+     * 座席电话
+     */
+    private String clientNumber;
+
 
     public ListCdrIbsRequest() {
         super(PathEnum.ListCdrIbs.value(), HttpMethodType.GET);
@@ -288,6 +293,17 @@ public class ListCdrIbsRequest extends AbstractRequestModel<ListCdrIbsResponse> 
         this.requestUniqueId = requestUniqueId;
         if (requestUniqueId != null) {
             putQueryParameter("requestUniqueId", requestUniqueId);
+        }
+    }
+
+    public String getClientNumber() {
+        return clientNumber;
+    }
+
+    public void setClientNumber(String clientNumber) {
+        this.clientNumber = clientNumber;
+        if (clientNumber != null) {
+            putQueryParameter("clientNumber", clientNumber);
         }
     }
 
