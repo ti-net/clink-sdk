@@ -28,8 +28,8 @@ public enum PathEnum {
      * 置忙状态
      */
     ListEnterprisePauses("list_enterprise_pauses"),
-    AddEnterprisePauses("add_enterprise_pause"),
-    DelEnterprisePauses("del_enterprise_pause"),
+    AddEnterprisePauses("create_enterprise_pause"),
+    DelEnterprisePauses("delete_enterprise_pause"),
     UpdateEnterprisePauses("update_enterprise_pause"),
 
     //  话机设置

@@ -18,7 +18,7 @@ public class DelTelRestrictRequest extends AbstractRequestModel<DelTelRestrictRe
     private String tel;
 
     public DelTelRestrictRequest() {
-        super(PathEnum.DelTelRestrict.value(), HttpMethodType.GET);
+        super(PathEnum.DelTelRestrict.value(), HttpMethodType.POST);
     }
 
     @Override

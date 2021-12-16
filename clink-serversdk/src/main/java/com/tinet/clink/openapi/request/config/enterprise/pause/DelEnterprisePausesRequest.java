@@ -16,7 +16,7 @@ public class DelEnterprisePausesRequest extends AbstractRequestModel<DelEnterpri
     private String pauseStatus;
 
     public DelEnterprisePausesRequest() {
-        super(PathEnum.DelEnterprisePauses.value(), HttpMethodType.GET);
+        super(PathEnum.DelEnterprisePauses.value(), HttpMethodType.POST);
     }
 
     @Override

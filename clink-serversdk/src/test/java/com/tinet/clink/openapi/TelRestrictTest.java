@@ -50,7 +50,7 @@ public class TelRestrictTest extends AbstractTest {
     public void delTest() throws ServerException, ClientException, JsonProcessingException {
         DelTelRestrictRequest request = new DelTelRestrictRequest();
 
-        request.setTel("18800334455");
+        request.setTel("16600998865");
         request.setRestrictType(1);
 
         DelTelRestrictResponse responseModel = client.getResponseModel(request);
@@ -59,24 +59,17 @@ public class TelRestrictTest extends AbstractTest {
 
     @Test
     public void listSettingTest() throws JsonProcessingException {
-        boolean flag = true;
-        while (flag){
             ListTelRestrictSettingRequest request = new ListTelRestrictSettingRequest();
-
-
             ListTelRestrictSettingResponse responseModel = null;
             try {
                 responseModel = client.getResponseModel(request);
             } catch (ClientException e) {
                 e.printStackTrace();
-                continue;
             } catch (ServerException e) {
                 e.printStackTrace();
-                continue;
             }
-            flag = false;
             System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(responseModel));
-        }
+
 
     }
 

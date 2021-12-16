@@ -12,7 +12,6 @@ import com.tinet.clink.openapi.utils.HttpMethodType;
 public class ListTelRestrictSettingRequest extends AbstractRequestModel<ListTelRestrictSettingResponse> {
 
 
-
     public ListTelRestrictSettingRequest() {
         super(PathEnum.ListTelRestrictSetting.value(), HttpMethodType.GET);
     }
