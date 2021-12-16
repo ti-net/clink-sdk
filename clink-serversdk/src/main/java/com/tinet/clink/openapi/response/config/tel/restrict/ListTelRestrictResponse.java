@@ -1,6 +1,6 @@
 package com.tinet.clink.openapi.response.config.tel.restrict;
 
-import com.tinet.clink.openapi.model.TelRestrict;
+import com.tinet.clink.openapi.model.TelRestrictSearchResultModel;
 import com.tinet.clink.openapi.response.ResponseModel;
 
 import java.util.List;
@@ -15,7 +15,7 @@ public class ListTelRestrictResponse extends ResponseModel {
 
     private Integer pageSize;
 
-    private List<TelRestrict> restrictTels;
+    private List<TelRestrictSearchResultModel> restrictTels;
 
     private Integer totalCount;
 
@@ -35,11 +35,11 @@ public class ListTelRestrictResponse extends ResponseModel {
         this.pageSize = pageSize;
     }
 
-    public List<TelRestrict> getRestrictTels() {
+    public List<TelRestrictSearchResultModel> getRestrictTels() {
         return restrictTels;
     }
 
-    public void setRestrictTels(List<TelRestrict> restrictTels) {
+    public void setRestrictTels(List<TelRestrictSearchResultModel> restrictTels) {
         this.restrictTels = restrictTels;
     }
 

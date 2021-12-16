@@ -2,26 +2,12 @@ package com.tinet.clink.openapi.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import java.util.Date;
-
 /**
- * 呼叫限制（黑白名单）
- *
- * @author wangyq
- * @date 2018/03/20
+ * @author libin
+ * @date 2021-12-15 3:36 下午
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class TelRestrict {
-
-    /**
-     * 主键id
-     */
-    private Integer id;
-
-    /**
-     *
-     */
-    private Integer enterpriseId;
+public class TelRestrictSearchResultModel {
 
     /**
      * 呼叫限制类型 1:黑名单 2:白名单
@@ -48,31 +34,6 @@ public class TelRestrict {
      */
     private String description;
 
-    /**
-     * 记录创建时间
-     */
-    private Date createTime;
-
-    /**
-     * 记录更新时间
-     */
-    private Date updateTime;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getEnterpriseId() {
-        return enterpriseId;
-    }
-
-    public void setEnterpriseId(Integer enterpriseId) {
-        this.enterpriseId = enterpriseId;
-    }
 
     public Integer getRestrictType() {
         return restrictType;
@@ -112,21 +73,5 @@ public class TelRestrict {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
     }
 }

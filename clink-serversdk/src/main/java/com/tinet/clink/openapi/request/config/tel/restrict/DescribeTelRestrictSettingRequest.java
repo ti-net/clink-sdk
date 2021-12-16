@@ -9,10 +9,10 @@ import com.tinet.clink.openapi.utils.HttpMethodType;
  * @author libin
  * @date 2021-12-13 2:05 下午
  */
-public class ListTelRestrictSettingRequest extends AbstractRequestModel<DescribeTelRestrictSettingResponse> {
+public class DescribeTelRestrictSettingRequest extends AbstractRequestModel<DescribeTelRestrictSettingResponse> {
 
 
-    public ListTelRestrictSettingRequest() {
+    public DescribeTelRestrictSettingRequest() {
         super(PathEnum.ListTelRestrictSetting.value(), HttpMethodType.GET);
     }
 

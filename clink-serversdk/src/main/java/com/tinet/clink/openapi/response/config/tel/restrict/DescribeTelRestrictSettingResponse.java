@@ -1,6 +1,6 @@
 package com.tinet.clink.openapi.response.config.tel.restrict;
 
-import com.tinet.clink.openapi.model.TelRestrictSetting;
+import com.tinet.clink.openapi.model.TelRestrictSettingSearchModel;
 import com.tinet.clink.openapi.response.ResponseModel;
 
 /**
@@ -9,13 +9,13 @@ import com.tinet.clink.openapi.response.ResponseModel;
  */
 public class DescribeTelRestrictSettingResponse extends ResponseModel {
 
-    private TelRestrictSetting setting;
+    private TelRestrictSettingSearchModel setting;
 
-    public TelRestrictSetting getSetting() {
+    public TelRestrictSettingSearchModel getSetting() {
         return setting;
     }
 
-    public void setSetting(TelRestrictSetting setting) {
+    public void setSetting(TelRestrictSettingSearchModel setting) {
         this.setting = setting;
     }
 }

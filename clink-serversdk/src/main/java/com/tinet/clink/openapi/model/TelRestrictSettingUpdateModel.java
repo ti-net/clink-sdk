@@ -4,10 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * @author libin
- * @date 2021-12-16 10:07 上午
+ * @date 2021-12-15 4:18 下午
  */
+
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class TelRestrictSetting {
+public class TelRestrictSettingUpdateModel {
 
     private Integer settingValue;
 

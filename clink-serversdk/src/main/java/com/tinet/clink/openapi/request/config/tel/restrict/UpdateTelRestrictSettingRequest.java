@@ -16,7 +16,7 @@ public class UpdateTelRestrictSettingRequest extends AbstractRequestModel<Update
     private Integer settingValue;
 
     public UpdateTelRestrictSettingRequest() {
-        super(PathEnum.UpdateTelRestrictSetting.value(), HttpMethodType.GET);
+        super(PathEnum.UpdateTelRestrictSetting.value(), HttpMethodType.POST);
     }
 
     @Override

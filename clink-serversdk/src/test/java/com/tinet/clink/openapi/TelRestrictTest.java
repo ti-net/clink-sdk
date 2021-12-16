@@ -6,7 +6,7 @@ import com.tinet.clink.openapi.exceptions.ServerException;
 import com.tinet.clink.openapi.request.config.tel.restrict.CreateTelRestrictRequest;
 import com.tinet.clink.openapi.request.config.tel.restrict.DeleteTelRestrictRequest;
 import com.tinet.clink.openapi.request.config.tel.restrict.ListTelRestrictRequest;
-import com.tinet.clink.openapi.request.config.tel.restrict.ListTelRestrictSettingRequest;
+import com.tinet.clink.openapi.request.config.tel.restrict.DescribeTelRestrictSettingRequest;
 import com.tinet.clink.openapi.request.config.tel.restrict.UpdateTelRestrictSettingRequest;
 import com.tinet.clink.openapi.response.config.tel.restrict.ListTelRestrictResponse;
 import com.tinet.clink.openapi.response.config.tel.restrict.CreateTelRestrictResponse;
@@ -58,16 +58,9 @@ public class TelRestrictTest extends AbstractTest {
     }
 
     @Test
-    public void listSettingTest() throws JsonProcessingException {
-            ListTelRestrictSettingRequest request = new ListTelRestrictSettingRequest();
-            DescribeTelRestrictSettingResponse responseModel = null;
-            try {
-                responseModel = client.getResponseModel(request);
-            } catch (ClientException e) {
-                e.printStackTrace();
-            } catch (ServerException e) {
-                e.printStackTrace();
-            }
+    public void listSettingTest() throws JsonProcessingException, ServerException, ClientException {
+            DescribeTelRestrictSettingRequest request = new DescribeTelRestrictSettingRequest();
+            DescribeTelRestrictSettingResponse responseModel = client.getResponseModel(request);
             System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(responseModel));
 
 
