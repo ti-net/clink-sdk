@@ -2,7 +2,7 @@ package com.tinet.clink.openapi.request.config.enterprise.pause;
 
 import com.tinet.clink.openapi.PathEnum;
 import com.tinet.clink.openapi.request.AbstractRequestModel;
-import com.tinet.clink.openapi.response.config.enterprise.pause.AddEnterprisePausesResponse;
+import com.tinet.clink.openapi.response.config.enterprise.pause.CreateEnterprisePausesResponse;
 import com.tinet.clink.openapi.utils.HttpMethodType;
 
 import java.util.Objects;
@@ -11,7 +11,7 @@ import java.util.Objects;
  * @author libin
  * @date 2021-12-14 5:27 下午
  */
-public class AddEnterprisePausesRequest extends AbstractRequestModel<AddEnterprisePausesResponse> {
+public class CreateEnterprisePausesRequest extends AbstractRequestModel<CreateEnterprisePausesResponse> {
 
     private String pauseStatus;
 
@@ -19,13 +19,13 @@ public class AddEnterprisePausesRequest extends AbstractRequestModel<AddEnterpri
 
     private Integer isDefault;
 
-    public AddEnterprisePausesRequest() {
-        super(PathEnum.AddEnterprisePauses.value(), HttpMethodType.POST);
+    public CreateEnterprisePausesRequest() {
+        super(PathEnum.CreateEnterprisePauses.value(), HttpMethodType.POST);
     }
 
     @Override
-    public Class<AddEnterprisePausesResponse> getResponseClass() {
-        return AddEnterprisePausesResponse.class;
+    public Class<CreateEnterprisePausesResponse> getResponseClass() {
+        return CreateEnterprisePausesResponse.class;
     }
 
     public void setPauseStatus(String pauseStatus) {

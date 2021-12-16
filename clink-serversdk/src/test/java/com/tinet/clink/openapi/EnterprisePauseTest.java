@@ -3,12 +3,12 @@ package com.tinet.clink.openapi;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.tinet.clink.openapi.exceptions.ClientException;
 import com.tinet.clink.openapi.exceptions.ServerException;
-import com.tinet.clink.openapi.request.config.enterprise.pause.AddEnterprisePausesRequest;
-import com.tinet.clink.openapi.request.config.enterprise.pause.DelEnterprisePausesRequest;
+import com.tinet.clink.openapi.request.config.enterprise.pause.CreateEnterprisePausesRequest;
+import com.tinet.clink.openapi.request.config.enterprise.pause.DeleteEnterprisePausesRequest;
 import com.tinet.clink.openapi.request.config.enterprise.pause.ListEnterprisePausesRequest;
 import com.tinet.clink.openapi.request.config.enterprise.pause.UpdateEnterprisePausesRequest;
-import com.tinet.clink.openapi.response.config.enterprise.pause.AddEnterprisePausesResponse;
-import com.tinet.clink.openapi.response.config.enterprise.pause.DelEnterprisePausesResponse;
+import com.tinet.clink.openapi.response.config.enterprise.pause.CreateEnterprisePausesResponse;
+import com.tinet.clink.openapi.response.config.enterprise.pause.DeleteEnterprisePausesResponse;
 import com.tinet.clink.openapi.response.config.enterprise.pause.ListEnterprisePausesResponse;
 import com.tinet.clink.openapi.response.config.enterprise.pause.UpdateEnterprisePausesResponse;
 import org.junit.Test;
@@ -29,11 +29,11 @@ public class EnterprisePauseTest extends AbstractTest {
 
     @Test
     public void addTest() throws ServerException, ClientException, JsonProcessingException {
-        AddEnterprisePausesRequest request = new AddEnterprisePausesRequest();
+        CreateEnterprisePausesRequest request = new CreateEnterprisePausesRequest();
         request.setIsDefault(0);
         request.setIsRest(1);
         request.setPauseStatus("opt");
-        AddEnterprisePausesResponse responseModel = client.getResponseModel(request);
+        CreateEnterprisePausesResponse responseModel = client.getResponseModel(request);
         System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(responseModel));
     }
 
@@ -50,9 +50,9 @@ public class EnterprisePauseTest extends AbstractTest {
 
     @Test
     public void delTest() throws ServerException, ClientException, JsonProcessingException {
-        DelEnterprisePausesRequest request = new DelEnterprisePausesRequest();
+        DeleteEnterprisePausesRequest request = new DeleteEnterprisePausesRequest();
         request.setPauseStatus("opt");
-        DelEnterprisePausesResponse responseModel = client.getResponseModel(request);
+        DeleteEnterprisePausesResponse responseModel = client.getResponseModel(request);
         System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(responseModel));
     }
 }

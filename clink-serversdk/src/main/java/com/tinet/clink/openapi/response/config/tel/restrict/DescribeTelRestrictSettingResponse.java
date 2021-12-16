@@ -7,7 +7,7 @@ import com.tinet.clink.openapi.response.ResponseModel;
  * @author libin
  * @date 2021-12-13 2:05 下午
  */
-public class ListTelRestrictSettingResponse extends ResponseModel {
+public class DescribeTelRestrictSettingResponse extends ResponseModel {
 
     private TelRestrictSetting setting;
 

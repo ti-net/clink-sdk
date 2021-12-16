@@ -13,13 +13,13 @@ import java.util.Objects;
  */
 public class UpdateEnterprisePausesRequest extends AbstractRequestModel<UpdateEnterprisePausesResponse> {
 
+    private Integer id;
+
     private String pauseStatus;
 
     private Integer isRest;
 
     private Integer isDefault;
-
-    private Integer id;
 
     public UpdateEnterprisePausesRequest() {
         super(PathEnum.UpdateEnterprisePauses.value(), HttpMethodType.POST);

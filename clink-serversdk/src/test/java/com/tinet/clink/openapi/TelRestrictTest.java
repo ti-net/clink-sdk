@@ -4,14 +4,14 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.tinet.clink.openapi.exceptions.ClientException;
 import com.tinet.clink.openapi.exceptions.ServerException;
 import com.tinet.clink.openapi.request.config.tel.restrict.CreateTelRestrictRequest;
-import com.tinet.clink.openapi.request.config.tel.restrict.DelTelRestrictRequest;
+import com.tinet.clink.openapi.request.config.tel.restrict.DeleteTelRestrictRequest;
 import com.tinet.clink.openapi.request.config.tel.restrict.ListTelRestrictRequest;
 import com.tinet.clink.openapi.request.config.tel.restrict.ListTelRestrictSettingRequest;
 import com.tinet.clink.openapi.request.config.tel.restrict.UpdateTelRestrictSettingRequest;
 import com.tinet.clink.openapi.response.config.tel.restrict.ListTelRestrictResponse;
 import com.tinet.clink.openapi.response.config.tel.restrict.CreateTelRestrictResponse;
-import com.tinet.clink.openapi.response.config.tel.restrict.DelTelRestrictResponse;
-import com.tinet.clink.openapi.response.config.tel.restrict.ListTelRestrictSettingResponse;
+import com.tinet.clink.openapi.response.config.tel.restrict.DeleteTelRestrictResponse;
+import com.tinet.clink.openapi.response.config.tel.restrict.DescribeTelRestrictSettingResponse;
 import com.tinet.clink.openapi.response.config.tel.restrict.UpdateTelRestrictSettingResponse;
 import org.junit.Test;
 
@@ -48,19 +48,19 @@ public class TelRestrictTest extends AbstractTest {
 
     @Test
     public void delTest() throws ServerException, ClientException, JsonProcessingException {
-        DelTelRestrictRequest request = new DelTelRestrictRequest();
+        DeleteTelRestrictRequest request = new DeleteTelRestrictRequest();
 
         request.setTel("16600998865");
         request.setRestrictType(1);
 
-        DelTelRestrictResponse responseModel = client.getResponseModel(request);
+        DeleteTelRestrictResponse responseModel = client.getResponseModel(request);
         System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(responseModel));
     }
 
     @Test
     public void listSettingTest() throws JsonProcessingException {
             ListTelRestrictSettingRequest request = new ListTelRestrictSettingRequest();
-            ListTelRestrictSettingResponse responseModel = null;
+            DescribeTelRestrictSettingResponse responseModel = null;
             try {
                 responseModel = client.getResponseModel(request);
             } catch (ClientException e) {

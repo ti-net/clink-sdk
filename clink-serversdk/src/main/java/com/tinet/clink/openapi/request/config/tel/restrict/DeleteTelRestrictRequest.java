@@ -2,7 +2,7 @@ package com.tinet.clink.openapi.request.config.tel.restrict;
 
 import com.tinet.clink.openapi.PathEnum;
 import com.tinet.clink.openapi.request.AbstractRequestModel;
-import com.tinet.clink.openapi.response.config.tel.restrict.DelTelRestrictResponse;
+import com.tinet.clink.openapi.response.config.tel.restrict.DeleteTelRestrictResponse;
 import com.tinet.clink.openapi.utils.HttpMethodType;
 
 import java.util.Objects;
@@ -11,19 +11,19 @@ import java.util.Objects;
  * @author libin
  * @date 2021-12-13 11:13 上午
  */
-public class DelTelRestrictRequest extends AbstractRequestModel<DelTelRestrictResponse> {
+public class DeleteTelRestrictRequest extends AbstractRequestModel<DeleteTelRestrictResponse> {
 
     private Integer restrictType;
 
     private String tel;
 
-    public DelTelRestrictRequest() {
-        super(PathEnum.DelTelRestrict.value(), HttpMethodType.POST);
+    public DeleteTelRestrictRequest() {
+        super(PathEnum.DeleteTelRestrict.value(), HttpMethodType.POST);
     }
 
     @Override
-    public Class<DelTelRestrictResponse> getResponseClass() {
-        return DelTelRestrictResponse.class;
+    public Class<DeleteTelRestrictResponse> getResponseClass() {
+        return DeleteTelRestrictResponse.class;
     }
 
     public void setRestrictType(Integer restrictType) {

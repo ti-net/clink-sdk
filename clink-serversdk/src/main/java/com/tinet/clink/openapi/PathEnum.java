@@ -28,8 +28,8 @@ public enum PathEnum {
      * 置忙状态
      */
     ListEnterprisePauses("list_enterprise_pauses"),
-    AddEnterprisePauses("create_enterprise_pause"),
-    DelEnterprisePauses("delete_enterprise_pause"),
+    CreateEnterprisePauses("create_enterprise_pause"),
+    DeleteEnterprisePauses("delete_enterprise_pause"),
     UpdateEnterprisePauses("update_enterprise_pause"),
 
     //  话机设置
@@ -229,7 +229,7 @@ public enum PathEnum {
      * 黑白名单相关请求
      */
     CreateTelRestrict("create_restrict_tel"),
-    DelTelRestrict("delete_restrict_tel"),
+    DeleteTelRestrict("delete_restrict_tel"),
     ListTelRestrict("list_restrict_tel"),
     ListTelRestrictSetting("describe_restrict_tel_setting"),
     UpdateTelRestrictSetting("update_restrict_tel_setting");
