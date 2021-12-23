@@ -21,38 +21,15 @@ enterpriseId  //企业ID
 ### 2.接入Online SDK
 
 
-1. 在根目录build.gradle中添加maven仓库地址
 
-
-
-```java
-allprojects {
-    repositories {
-        ...
-        //客服SDK maven 仓库地址
-        maven {
-            url 'https://maven.aliyun.com/repository/public'
-        }
-        maven {
-            credentials {
-                username '61965416dd32cb6444a19056'
-                password 'VptyuwI3QX3j'
-            }
-            url 'https://packages.aliyun.com/maven/repository/2157415-release-qzT0Ka/'
-        }
-    }
-}
-```
-
-
-2.  在app/build.gradle中添加库依赖，推送[依赖包](https://github.com/ti-net/clink-sdk/tree/master/clink-appsdk/android/lib/libs.zip)
+1.  在app/build.gradle中添加库依赖，推送[依赖包](https://github.com/ti-net/clink-sdk/tree/master/clink-appsdk/android/lib/libs.zip)
 
 
 
 ```java
 dependencies {
 	//客服基础库，必须依赖
-	implementation 'com.tinet.oskit:online:1.2.5'
+	implementation 'com.ti-net.oskit:online:1.1.9'
 	//客服Push依赖
 	//华为 push
     implementation(name: 'hms-base-2.6.3.301', ext: 'aar')
@@ -64,8 +41,10 @@ dependencies {
 }
 ```
 
-3.  初始化SDK
-3.1. 在自定义Application类的onCreate()中初始化SDK ，[OnlineInitOption参数配置](https://github.com/ti-net/clink-sdk/tree/master/clink-appsdk/android/接入文档/初始化参数说明.md)。
+2.  初始化SDK
+
+2.1. 在自定义Application类的onCreate()中初始化SDK ，[OnlineInitOption参数配置](https://github.com/ti-net/clink-sdk/tree/master/clink-appsdk/android/接入文档/初始化参数说明.md)。
+
 ```java
    public class MyApplication extends Application {
 
@@ -112,7 +91,7 @@ dependencies {
 
    }
 ```
-3.2.  在AndroidManifest.xml中添加Online SDK所需要的权限  
+2.2.  在AndroidManifest.xml中添加Online SDK所需要的权限  
 ```java
 <!--网络通信权限-->
 <uses-permission android:name="android.permission.INTERNET" />
