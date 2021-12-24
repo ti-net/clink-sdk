@@ -22,6 +22,8 @@ public class ZbTicketResultModel {
 
     private Integer level;
 
+    private String ticketNumber;
+
     public Integer getId() {
         return id;
     }
@@ -68,5 +70,13 @@ public class ZbTicketResultModel {
 
     public void setCustomerTel(String customerTel) {
         this.customerTel = customerTel;
+    }
+
+    public String getTicketNumber() {
+        return ticketNumber;
+    }
+
+    public void setTicketNumber(String ticketNumber) {
+        this.ticketNumber = ticketNumber;
     }
 }

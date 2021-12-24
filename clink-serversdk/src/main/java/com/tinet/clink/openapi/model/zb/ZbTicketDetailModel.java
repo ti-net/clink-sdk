@@ -29,6 +29,8 @@ public class ZbTicketDetailModel {
 
     private String sCode;
 
+    private String ticketNumber;
+
     public Integer getId() {
         return id;
     }
@@ -107,5 +109,13 @@ public class ZbTicketDetailModel {
 
     public void setsCode(String sCode) {
         this.sCode = sCode;
+    }
+
+    public String getTicketNumber() {
+        return ticketNumber;
+    }
+
+    public void setTicketNumber(String ticketNumber) {
+        this.ticketNumber = ticketNumber;
     }
 }

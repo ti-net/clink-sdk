@@ -77,6 +77,8 @@ public class ZbListTicketRequest extends AbstractRequestModel<ZbListTicketRespon
      */
     private String customerTel;
 
+    private String ticketNumber;
+
     /**
      * 偏移量，范围 0-10000，默认值为 0
      */
@@ -240,6 +242,17 @@ public class ZbListTicketRequest extends AbstractRequestModel<ZbListTicketRespon
         this.limit = limit;
         if (limit != null) {
             putQueryParameter("limit", limit);
+        }
+    }
+
+    public String getTicketNumber() {
+        return ticketNumber;
+    }
+
+    public void setTicketNumber(String ticketNumber) {
+        this.ticketNumber = ticketNumber;
+        if (ticketNumber != null) {
+            putQueryParameter("ticketNumber", ticketNumber);
         }
     }
 

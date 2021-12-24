@@ -19,6 +19,11 @@ public class ZbTicketDetailRequest extends AbstractRequestModel<ZbTicketDetailRe
      */
     private Integer id;
 
+    /**
+     * 工单id
+     */
+    private String ticketNumber;
+
     public Integer getId() {
         return id;
     }
@@ -27,6 +32,17 @@ public class ZbTicketDetailRequest extends AbstractRequestModel<ZbTicketDetailRe
         this.id = id;
         if (id != null) {
             putQueryParameter("id", id);
+        }
+    }
+
+    public String getTicketNumber() {
+        return ticketNumber;
+    }
+
+    public void setTicketNumber(String ticketNumber) {
+        this.ticketNumber = ticketNumber;
+        if (ticketNumber != null) {
+            putQueryParameter("ticketNumber", ticketNumber);
         }
     }
 
