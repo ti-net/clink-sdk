@@ -1,6 +1,7 @@
 package com.tinet.clink.openapi.model;
 
 import java.io.File;
+import java.util.Date;
 
 /**
  * 访客发送消息model参数
@@ -53,7 +54,7 @@ public class ChatMessageSyncModel {
     /**
      * 创建时间
      */
-    private Long createTime;
+    private Date createTime;
 
     private File file;
 
@@ -121,11 +122,11 @@ public class ChatMessageSyncModel {
         this.fileUrl = fileUrl;
     }
 
-    public Long getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Long createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 }
