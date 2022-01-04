@@ -29,7 +29,7 @@ enterpriseId  //企业ID
 ```java
 dependencies {
 	//客服基础库，必须依赖
-	implementation 'com.ti-net.oskit:online:1.1.9'
+	implementation 'com.ti-net.oskit:online:1.1.18'
 	//客服Push依赖
 	//华为 push
     implementation(name: 'hms-base-2.6.3.301', ext: 'aar')
