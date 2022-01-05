@@ -93,7 +93,7 @@ dependencies {
 ```
 2.2.  在AndroidManifest.xml中添加Online SDK所需要的权限  
 ```java
-<!--1、SD卡读写权限，发送文件、保存文件。-->
+<!--SD卡读写权限，发送文件、保存文件。-->
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
