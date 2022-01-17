@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -35,7 +36,7 @@ public class ChatVisitorOpenSessionTest {
         ObjectMapper mapper = new ObjectMapper();
         ChatVisitorOpenSessionRequest request = new ChatVisitorOpenSessionRequest();
         request.setAppId("5d2e6ab7-3c79-4fe1-b83d-44cbb2e47a46");
-        request.setCreateTime(System.currentTimeMillis());
+        request.setCreateTime(new Date());
 
         ChatMessageSyncModel chatMessageSyncModel = new ChatMessageSyncModel();
         chatMessageSyncModel.setSenderType(4);
@@ -43,7 +44,7 @@ public class ChatVisitorOpenSessionTest {
         chatMessageSyncModel.setSenderName("啄木鸟机器人");
         chatMessageSyncModel.setMessageType(5);
         chatMessageSyncModel.setContent("sdk测试消息同步");
-        chatMessageSyncModel.setCreateTime(System.currentTimeMillis());
+        chatMessageSyncModel.setCreateTime(new Date());
         List<ChatMessageSyncModel> messages = new ArrayList<>();
         messages.add(chatMessageSyncModel);
 
