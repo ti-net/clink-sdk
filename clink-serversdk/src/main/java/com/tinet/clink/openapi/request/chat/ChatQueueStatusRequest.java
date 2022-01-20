@@ -2,7 +2,7 @@ package com.tinet.clink.openapi.request.chat;
 
 import com.tinet.clink.openapi.PathEnum;
 import com.tinet.clink.openapi.request.AbstractRequestModel;
-import com.tinet.clink.openapi.response.chat.ChatQueueAgentStatusResponse;
+import com.tinet.clink.openapi.response.chat.ChatQueueStatusResponse;
 import com.tinet.clink.openapi.utils.HttpMethodType;
 
 import java.util.List;
@@ -11,17 +11,17 @@ import java.util.List;
  * @author dengsx
  * @create 2022/01/17
  **/
-public class ChatQueueAgentStatusRequest extends AbstractRequestModel<ChatQueueAgentStatusResponse> {
+public class ChatQueueStatusRequest extends AbstractRequestModel<ChatQueueStatusResponse> {
 
     private List<String> qnos;
 
-    public ChatQueueAgentStatusRequest(){
+    public ChatQueueStatusRequest(){
         super(PathEnum.ChatQueueAgentStatus.value(), HttpMethodType.GET);
     }
 
     @Override
-    public Class<ChatQueueAgentStatusResponse> getResponseClass() {
-        return ChatQueueAgentStatusResponse.class;
+    public Class<ChatQueueStatusResponse> getResponseClass() {
+        return ChatQueueStatusResponse.class;
     }
 
     public List<String> getQnos() {

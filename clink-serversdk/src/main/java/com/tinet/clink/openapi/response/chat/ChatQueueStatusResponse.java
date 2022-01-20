@@ -9,7 +9,7 @@ import java.util.List;
  * @author dengsx
  * @create 2022/01/17
  **/
-public class ChatQueueAgentStatusResponse extends ResponseModel {
+public class ChatQueueStatusResponse extends ResponseModel {
     private List<ChatQueueStatus> data;
 
     public List<ChatQueueStatus> getData() {
