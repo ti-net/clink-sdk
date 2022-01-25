@@ -2,7 +2,6 @@ package com.tinet.clink.openapi.model;
 
 
 import java.util.List;
-import java.util.StringJoiner;
 
 /**
  * 座席详情对象
@@ -118,6 +117,11 @@ public class ClientDetailModel {
      * 队列信息
      */
     private List<QueueResultModel> queues;
+
+    /**
+     * 座席crm id
+     */
+    private String crmId;
 
 
     public String getCno() {
@@ -288,30 +292,39 @@ public class ClientDetailModel {
         this.queues = queues;
     }
 
+    public String getCrmId() {
+        return crmId;
+    }
+
+    public void setCrmId(String crmId) {
+        this.crmId = crmId;
+    }
+
     @Override
     public String toString() {
-        return new StringJoiner(", ", ClientDetailModel.class.getSimpleName() + "[", "]")
-                .add("cno='" + cno + "'")
-                .add("name='" + name + "'")
-                .add("areaCode='" + areaCode + "'")
-                .add("bindTel='" + bindTel + "'")
-                .add("telType=" + telType)
-                .add("role=" + role)
-                .add("active=" + active)
-                .add("status=" + status)
-                .add("hiddenTel=" + hiddenTel)
-                .add("permission=" + permission)
-                .add("qnos=" + qnos)
-                .add("clid=" + clid)
-                .add("clidType=" + clidType)
-                .add("clidArea=" + clidArea)
-                .add("clidRule=" + clidRule)
-                .add("recurrentselectionType=" + recurrentselectionType)
-                .add("recurrentselectionValue=" + recurrentselectionValue)
-                .add("type=" + type)
-                .add("chatLimit=" + chatLimit)
-                .add("chatLimitNum=" + chatLimitNum)
-                .add("queues=" + queues)
-                .toString();
+        return "ClientDetailModel{" +
+                "cno='" + cno + '\'' +
+                ", name='" + name + '\'' +
+                ", areaCode='" + areaCode + '\'' +
+                ", bindTel='" + bindTel + '\'' +
+                ", telType=" + telType +
+                ", role=" + role +
+                ", active=" + active +
+                ", status=" + status +
+                ", hiddenTel=" + hiddenTel +
+                ", permission=" + permission +
+                ", qnos=" + qnos +
+                ", clid=" + clid +
+                ", clidType=" + clidType +
+                ", clidArea=" + clidArea +
+                ", clidRule=" + clidRule +
+                ", recurrentselectionType=" + recurrentselectionType +
+                ", recurrentselectionValue=" + recurrentselectionValue +
+                ", type=" + type +
+                ", chatLimit=" + chatLimit +
+                ", chatLimitNum=" + chatLimitNum +
+                ", queues=" + queues +
+                ", crmId='" + crmId + '\'' +
+                '}';
     }
 }

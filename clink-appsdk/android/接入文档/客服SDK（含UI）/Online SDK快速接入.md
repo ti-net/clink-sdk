@@ -93,13 +93,14 @@ dependencies {
 ```
 2.2.  在AndroidManifest.xml中添加Online SDK所需要的权限  
 ```java
-<!--网络通信权限-->
-<uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-<!--录音权限-->
+<!--SD卡读写权限，发送文件、保存文件。-->
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+<!--录音权限，用于录音。-->
 <uses-permission android:name="android.permission.RECORD_AUDIO"/>
-<!--拍照权限-->
+
+<!--拍照权限，用于拍照（发送照片）-->
 <uses-permission android:name="android.permission.CAMERA"/>
 ```
 

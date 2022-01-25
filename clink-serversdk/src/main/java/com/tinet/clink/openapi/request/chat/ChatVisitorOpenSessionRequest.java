@@ -6,6 +6,7 @@ import com.tinet.clink.openapi.request.AbstractRequestModel;
 import com.tinet.clink.openapi.response.chat.ChatVisitorOpenSessionResponse;
 import com.tinet.clink.openapi.utils.HttpMethodType;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -73,7 +74,7 @@ public class ChatVisitorOpenSessionRequest extends AbstractRequestModel<ChatVisi
     /**
      * 会话创建时间
      */
-    private Long createTime;
+    private Date createTime;
 
     public void setAppId(String appId) {
         this.appId = appId;
@@ -129,7 +130,7 @@ public class ChatVisitorOpenSessionRequest extends AbstractRequestModel<ChatVisi
         putQueryParameter("messages", messages);
     }
 
-    public void setCreateTime(Long createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
         putQueryParameter("createTime", createTime);
     }
@@ -178,7 +179,7 @@ public class ChatVisitorOpenSessionRequest extends AbstractRequestModel<ChatVisi
         return messages;
     }
 
-    public Long getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
