@@ -27,6 +27,8 @@ public class ListTelRestrictRequest extends AbstractRequestModel<ListTelRestrict
 
     private String description;
 
+    private Integer expirationFlag;
+
     public ListTelRestrictRequest() {
         super(PathEnum.ListTelRestrict.value(), HttpMethodType.GET);
     }
@@ -83,6 +85,17 @@ public class ListTelRestrictRequest extends AbstractRequestModel<ListTelRestrict
         if (Objects.nonNull(description)) {
             putQueryParameter("description", description);
         }
+    }
+
+    public void setExpirationFlag(Integer expirationFlag) {
+        this.expirationFlag = expirationFlag;
+        if (Objects.nonNull(expirationFlag)) {
+            putQueryParameter("expirationFlag", expirationFlag);
+        }
+    }
+
+    public Integer getExpirationFlag() {
+        return expirationFlag;
     }
 
     public Integer getOffset() {
