@@ -23,6 +23,7 @@ public enum PathEnum {
     DeleteQueue("delete_queue"),
     ListQueues("list_queues"),
     DescribeQueue("describe_queue"),
+    ListQueuesWithAgentAction("list_queues_with_agent_action"),
 
     /**
      * 置忙状态
