@@ -3,7 +3,7 @@
 ```java
 dependencies {
   //客服基础库，必须依赖
-  implementation 'com.ti-net.oskit:online:1.1.9'
+  implementation 'com.ti-net.oskit:online:latest.release'
 }
 ```
 ## 2、 在AndroidManifest.xml中添加Online SDK所需要的权限。

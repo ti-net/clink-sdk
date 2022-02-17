@@ -59,6 +59,11 @@ public class AgentStatusModel {
     private Integer incomingCallCount;
 
     /**
+     * 座席来电接听次数
+     */
+    private Integer bridgeCallCount;
+
+    /**
      * 队列来电接听数
      */
     private Integer queueIncomingCallCount;
@@ -72,7 +77,6 @@ public class AgentStatusModel {
      * 登录时长
      */
     private Long loginDuration;
-
 
     public String getCno() {
         return cno;
@@ -184,5 +188,13 @@ public class AgentStatusModel {
 
     public void setCustomerNumberEncrypt(String customerNumberEncrypt) {
         this.customerNumberEncrypt = customerNumberEncrypt;
+    }
+
+    public Integer getBridgeCallCount() {
+        return bridgeCallCount;
+    }
+
+    public void setBridgeCallCount(Integer bridgeCallCount) {
+        this.bridgeCallCount = bridgeCallCount;
     }
 }
