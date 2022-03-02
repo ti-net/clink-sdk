@@ -151,6 +151,12 @@ public class TicketDetailModel {
      */
     private String callId;
 
+
+    /**
+     * 历史表单
+     */
+    private TicketHistoryForm[] forms;
+
     public Integer getId() {
         return id;
     }
@@ -373,5 +379,13 @@ public class TicketDetailModel {
 
     public void setCallId(String callId) {
         this.callId = callId;
+    }
+
+    public TicketHistoryForm[] getForms() {
+        return forms;
+    }
+
+    public void setForms(TicketHistoryForm[] forms) {
+        this.forms = forms;
     }
 }
