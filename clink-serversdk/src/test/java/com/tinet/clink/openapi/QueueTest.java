@@ -9,15 +9,18 @@ import com.tinet.clink.openapi.exceptions.ClientException;
 import com.tinet.clink.openapi.exceptions.ServerException;
 import com.tinet.clink.openapi.model.QueueMemberModel;
 import com.tinet.clink.openapi.model.QueueSearchResultModel;
+import com.tinet.clink.openapi.model.QueueWithAgentActionModel;
 import com.tinet.clink.openapi.request.config.queue.CreateQueueRequest;
 import com.tinet.clink.openapi.request.config.queue.DeleteQueueRequest;
 import com.tinet.clink.openapi.request.config.queue.DescribeQueueRequest;
 import com.tinet.clink.openapi.request.config.queue.ListQueuesRequest;
+import com.tinet.clink.openapi.request.config.queue.ListQueuesWithAgentActionRequest;
 import com.tinet.clink.openapi.request.config.queue.UpdateQueueRequest;
 import com.tinet.clink.openapi.response.config.queue.CreateQueueResponse;
 import com.tinet.clink.openapi.response.config.queue.DeleteQueueResponse;
 import com.tinet.clink.openapi.response.config.queue.DescribeQueueResponse;
 import com.tinet.clink.openapi.response.config.queue.ListQueuesResponse;
+import com.tinet.clink.openapi.response.config.queue.ListQueuesWithAgentActionResponse;
 import com.tinet.clink.openapi.response.config.queue.UpdateQueueResponse;
 
 import org.junit.Test;
@@ -120,5 +123,20 @@ public class QueueTest extends AbstractTest {
 
     }
 
+    @Test
+    public void listQueuesWithAgentAction() throws ServerException, ClientException{
+
+        ListQueuesWithAgentActionRequest request = new ListQueuesWithAgentActionRequest();
+        request.setCno("10010");
+        ListQueuesWithAgentActionResponse response = client.getResponseModel(request);
+        List<QueueWithAgentActionModel> queues = response.getQueues();
+        for (QueueWithAgentActionModel model:queues) {
+            System.out.println(model.getQno() + "/" + model.getName() + " " + model.getIdle() + "/" + model.getTotal());
+            for (int i = 0; i < model.getClientLists().size(); i++) {
+                System.out.println("座席" + i + ":" + model.getClientLists().get(i).getName() + "/"
+                        + model.getClientLists().get(i).getCno() + "/" + model.getClientLists().get(i).getDuration());
+            }
+        }
+    }
 
 }
