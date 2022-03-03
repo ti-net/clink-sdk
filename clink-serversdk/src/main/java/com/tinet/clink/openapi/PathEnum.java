@@ -85,6 +85,8 @@ public enum PathEnum {
     DescribeCdrObDetails("describe_cdr_ob_details"),
     CopyCdrObs("copy_cdr_obs"),
     CopyCdrObDetails("copy_cdr_ob_details"),
+    // 下载从话单录音文件
+    DownloadDetailRecordFile("download_detail_record_file"),
     // sqc asr
     sqcAsr("sqc_asr"),
 
