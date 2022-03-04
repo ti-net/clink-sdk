@@ -5,6 +5,7 @@ import com.tinet.clink.openapi.request.AbstractRequestModel;
 import com.tinet.clink.openapi.response.config.tel.restrict.CreateTelRestrictResponse;
 import com.tinet.clink.openapi.utils.HttpMethodType;
 
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -36,6 +37,11 @@ public class CreateTelRestrictRequest extends AbstractRequestModel<CreateTelRest
      * 电话号码
      */
     private String tel;
+
+    /**
+     * 黑白名单到期时间，为空则永久有效
+     */
+    private Date expirationTime;
 
 
     public CreateTelRestrictRequest() {
@@ -76,6 +82,12 @@ public class CreateTelRestrictRequest extends AbstractRequestModel<CreateTelRest
         }
     }
 
+    public void setExpirationTime(Date expirationTime) {
+        this.expirationTime = expirationTime;
+        if (Objects.nonNull(expirationTime) ) {
+            putBodyParameter("expirationTime", expirationTime);
+        }
+    }
 
     public Integer getRestrictType() {
         return restrictType;
@@ -91,5 +103,9 @@ public class CreateTelRestrictRequest extends AbstractRequestModel<CreateTelRest
 
     public String getTel() {
         return tel;
+    }
+
+    public Date getExpirationTime() {
+        return expirationTime;
     }
 }

@@ -199,7 +199,7 @@ public enum PathEnum {
     ChatClientWithdraw("chat_client_withdraw"),
     ChatClientLogin("chat_client_login"),
     ChatClientLogout("chat_client_logout"),
-    ChatQueueAgentStatus("chat_queue_agent_status"),
+    ChatQueueAgentStatus("chat_queue_status"),
     //-------------------在线客服API--------
 
 
