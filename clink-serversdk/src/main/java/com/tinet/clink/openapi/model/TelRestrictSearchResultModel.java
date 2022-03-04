@@ -2,6 +2,8 @@ package com.tinet.clink.openapi.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.Date;
+
 /**
  * @author libin
  * @date 2021-12-15 3:36 下午
@@ -33,6 +35,16 @@ public class TelRestrictSearchResultModel {
      * 描述
      */
     private String description;
+
+    /**
+     * 创建时间
+     */
+    private Date createTime;
+
+    /**
+     * 到期时间
+     */
+    private Date expirationTime;
 
 
     public Integer getRestrictType() {
@@ -73,5 +85,21 @@ public class TelRestrictSearchResultModel {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getExpirationTime() {
+        return expirationTime;
+    }
+
+    public void setExpirationTime(Date expirationTime) {
+        this.expirationTime = expirationTime;
     }
 }

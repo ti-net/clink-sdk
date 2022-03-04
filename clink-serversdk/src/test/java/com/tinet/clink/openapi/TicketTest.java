@@ -1,10 +1,13 @@
 package com.tinet.clink.openapi;
 
+import com.tinet.clink.openapi.model.TicketHistoryForm;
 import com.tinet.clink.openapi.request.ticket.GetTicketDetailRequest;
 import com.tinet.clink.openapi.request.ticket.ListTicketRequest;
 import com.tinet.clink.openapi.response.ticket.GetTicketDetailResponse;
 import com.tinet.clink.openapi.response.ticket.ListTicketResponse;
 import org.junit.Test;
+
+import java.util.Objects;
 
 /**
  *
@@ -38,13 +41,18 @@ public class TicketTest extends AbstractTest{
     public void getTicketDeatil() {
         GetTicketDetailRequest getTicketDetailRequest = new GetTicketDetailRequest();
 
-        getTicketDetailRequest.setId(162879);
+        getTicketDetailRequest.setId(1470);
         try {
             GetTicketDetailResponse response = client.getResponseModel(getTicketDetailRequest);
 
-            System.out.println(response);
+            TicketHistoryForm[] forms = response.getTicketDetail().getForms();
+            if(Objects.nonNull( response.getTicketDetail()) && Objects.nonNull(response.getTicketDetail().getForms())){
+                Integer formId = forms[0].getFormId();
+                String formName = forms[0].getFormName();
+                System.out.println(formId + "-----" + formName);
 
-            System.out.println(111);
+                System.out.println(111);
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
