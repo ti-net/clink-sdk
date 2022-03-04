@@ -1,11 +1,14 @@
 package com.tinet.clink.openapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * 呼入通话记录明细详情返回对象
  *
  * @author huwk
  * @date 2018/09/12
  **/
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CdrIbDetailModel {
 
     /**
@@ -72,6 +75,11 @@ public class CdrIbDetailModel {
      * 是否开启主叫记忆
      */
     private String remember;
+
+    /**
+     * 队列号
+     */
+    private String qno;
 
     public String getMainUniqueId() {
         return mainUniqueId;
@@ -175,5 +183,13 @@ public class CdrIbDetailModel {
 
     public void setRemember(String remember) {
         this.remember = remember;
+    }
+
+    public String getQno() {
+        return qno;
+    }
+
+    public void setQno(String qno) {
+        this.qno = qno;
     }
 }
