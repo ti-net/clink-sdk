@@ -1,0 +1,15 @@
+//
+//  PrefixHeader.pch
+//  TIMClientKitDemo
+//
+//  Created by YanBo on 2020/5/26.
+//  Copyright © 2020 YanBo. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "TIMKitHeader.h"
+#import "TIMKitConstants.h"
+
+#endif /* PrefixHeader_pch */
