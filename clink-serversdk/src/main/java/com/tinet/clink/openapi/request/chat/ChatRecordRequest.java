@@ -12,6 +12,7 @@ import com.tinet.clink.openapi.utils.HttpMethodType;
 public class ChatRecordRequest extends AbstractRequestModel<ChatRecordResponse> {
 
     private String scrollId;
+    private String mainUniqueId;
     private String date;
     private Integer limit;
 
@@ -34,6 +35,13 @@ public class ChatRecordRequest extends AbstractRequestModel<ChatRecordResponse> 
         this.date = date;
         if (date != null) {
             putQueryParameter("date", date);
+        }
+    }
+
+    public void setMainUniqueId(String mainUniqueId) {
+        this.mainUniqueId = mainUniqueId;
+        if (mainUniqueId != null) {
+            putQueryParameter("mainUniqueId", mainUniqueId);
         }
     }
 
