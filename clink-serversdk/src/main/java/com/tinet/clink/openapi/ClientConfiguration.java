@@ -6,7 +6,7 @@ import com.tinet.clink.openapi.auth.Credentials;
  * @author houfc
  */
 public class ClientConfiguration {
-    private String host = "api-bj.clink.cn";
+    private String host = "api-beinbot.countrygarden.com.cn";
 
     private int port = 80;
 
@@ -19,6 +19,7 @@ public class ClientConfiguration {
         this.accessKeyId = accessKeyId;
         this.accessKeySecret = accessKeySecret;
     }
+
 
     public Credentials getCredentials() {
         return new Credentials(accessKeyId, accessKeySecret);
