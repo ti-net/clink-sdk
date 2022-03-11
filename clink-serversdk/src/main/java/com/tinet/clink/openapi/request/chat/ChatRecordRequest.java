@@ -13,8 +13,57 @@ public class ChatRecordRequest extends AbstractRequestModel<ChatRecordResponse> 
 
     private String scrollId;
     private String mainUniqueId;
-    private String date;
+    private String startDate;
+    private String endDate;
+    private String cno;
+    private String cname;
     private Integer limit;
+    private Integer offset;
+
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+        if (endDate != null) {
+            putQueryParameter("endDate", endDate);
+        }
+    }
+
+    public String getCno() {
+        return cno;
+    }
+
+    public void setCno(String cno) {
+        this.cno = cno;
+        if (cno != null) {
+            putQueryParameter("cno", cno);
+        }
+    }
+
+    public String getCname() {
+        return cname;
+    }
+
+    public void setCname(String cname) {
+        this.cname = cname;
+        if (cname != null) {
+            putQueryParameter("cname", cname);
+        }
+    }
+
+    public Integer getOffset() {
+        return offset;
+    }
+
+    public void setOffset(Integer offset) {
+        this.offset = offset;
+        if (offset != null) {
+            putQueryParameter("offset", offset);
+        }
+    }
 
     public String getScrollId() {
         return scrollId;
@@ -27,15 +76,19 @@ public class ChatRecordRequest extends AbstractRequestModel<ChatRecordResponse> 
         }
     }
 
-    public String getDate() {
-        return date;
+    public String getStartDate() {
+        return startDate;
     }
 
-    public void setDate(String date) {
-        this.date = date;
-        if (date != null) {
-            putQueryParameter("date", date);
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+        if (startDate != null) {
+            putQueryParameter("startDate", startDate);
         }
+    }
+
+    public String getMainUniqueId() {
+        return mainUniqueId;
     }
 
     public void setMainUniqueId(String mainUniqueId) {

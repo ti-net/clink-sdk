@@ -7,8 +7,10 @@ public class ChatRecord {
 
     private String mainUniqueId;                // 主会话唯一标识
     private String visitorId;                   // visitor 访客id，此时用系统生成的uuid进行标识，关联唯一的访客
+    private String visitorBip;
     private String visitorName;                 // 访客姓名
     private String cno;                         // 座席号
+    private String clientBip;                   // 座席bip
     private String clientName;                  // 座席姓名
     private String qno;                         // 队列号
     private String qname;                       // 队列名
@@ -184,5 +186,21 @@ public class ChatRecord {
 
     public void setAppType(Integer appType) {
         this.appType = appType;
+    }
+
+    public String getVisitorBip() {
+        return visitorBip;
+    }
+
+    public void setVisitorBip(String visitorBip) {
+        this.visitorBip = visitorBip;
+    }
+
+    public String getClientBip() {
+        return clientBip;
+    }
+
+    public void setClientBip(String clientBip) {
+        this.clientBip = clientBip;
     }
 }
