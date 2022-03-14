@@ -1,0 +1,24 @@
+package com.tinet.clink.openapi.response;
+
+import com.tinet.clink.openapi.model.ClientSearchResultModel;
+
+import java.util.List;
+
+/**
+ * 查询座席列表响应
+ *
+ * @author lizy
+ * @date 2018/10/29
+ */
+public class ListClientsResponse extends ResponseModel {
+
+    List<ClientSearchResultModel> clients;
+
+    public List<ClientSearchResultModel> getClients() {
+        return clients;
+    }
+
+    public void setClients(List<ClientSearchResultModel> clients) {
+        this.clients = clients;
+    }
+}

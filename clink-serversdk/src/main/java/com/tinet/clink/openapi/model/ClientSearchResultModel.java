@@ -24,39 +24,10 @@ public class ClientSearchResultModel {
     private String name;
 
     /**
-     * 区号
+     * bip
      */
-    private String areaCode;
+    private String bip;
 
-    /**
-     * 绑定电话
-     */
-    private String bindTel;
-
-    /**
-     * 座席角色，0普通座席 1班长座席。
-     */
-    private Integer role;
-
-    /**
-     * 启用状态 0停用 1启用。
-     */
-    private Integer active;
-
-    /**
-     * 座席状态 0离线 1离线
-     */
-    private Integer status;
-
-    /**
-     * 号码隐藏类型，0不隐藏 1全局。
-     */
-    private Integer hiddenTel;
-
-    /**
-     * 座席类型，1：全渠道、2：呼叫中心、3：在线客服
-     */
-    private Integer type;
 
     public Integer getId() {
         return id;
@@ -82,63 +53,13 @@ public class ClientSearchResultModel {
         this.name = name;
     }
 
-    public String getAreaCode() {
-        return areaCode;
+    public String getBip() {
+        return bip;
     }
 
-    public void setAreaCode(String areaCode) {
-        this.areaCode = areaCode;
+    public void setBip(String bip) {
+        this.bip = bip;
     }
-
-    public String getBindTel() {
-        return bindTel;
-    }
-
-    public void setBindTel(String bindTel) {
-        this.bindTel = bindTel;
-    }
-
-    public Integer getRole() {
-        return role;
-    }
-
-    public void setRole(Integer role) {
-        this.role = role;
-    }
-
-    public Integer getActive() {
-        return active;
-    }
-
-    public void setActive(Integer active) {
-        this.active = active;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public Integer getHiddenTel() {
-        return hiddenTel;
-    }
-
-    public void setHiddenTel(Integer hiddenTel) {
-        this.hiddenTel = hiddenTel;
-    }
-
-    public Integer getType() {
-        return type;
-    }
-
-    public void setType(Integer type) {
-        this.type = type;
-    }
-
-
 
     @Override
     public String toString() {
@@ -146,13 +67,7 @@ public class ClientSearchResultModel {
                 "id='" + id + '\'' +
                 "cno='" + cno + '\'' +
                 ", name='" + name + '\'' +
-                ", areaCode='" + areaCode + '\'' +
-                ", bindTel='" + bindTel + '\'' +
-                ", role=" + role +
-                ", active=" + active +
-                ", status=" + status +
-                ", hiddenTel=" + hiddenTel +
-                ", type=" + type +
+                ", bip='" + bip +
                 '}';
     }
 }
