@@ -13,10 +13,35 @@ public class ChatRecordResponse extends ResponseModel {
 
     List<ChatRecord> records;
 
-    /**
-     * 游标 id
-     */
-    private String scrollId;
+    private Integer offset;
+
+    private Integer limit;
+
+    private Long total;
+
+    public Long getTotal() {
+        return total;
+    }
+
+    public void setTotal(Long total) {
+        this.total = total;
+    }
+
+    public Integer getOffset() {
+        return offset;
+    }
+
+    public void setOffset(Integer offset) {
+        this.offset = offset;
+    }
+
+    public Integer getLimit() {
+        return limit;
+    }
+
+    public void setLimit(Integer limit) {
+        this.limit = limit;
+    }
 
     public List<ChatRecord> getRecords() {
         return records;
@@ -26,11 +51,4 @@ public class ChatRecordResponse extends ResponseModel {
         this.records = records;
     }
 
-    public String getScrollId() {
-        return scrollId;
-    }
-
-    public void setScrollId(String scrollId) {
-        this.scrollId = scrollId;
-    }
 }
