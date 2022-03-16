@@ -11,19 +11,19 @@ import com.tinet.clink.openapi.utils.HttpMethodType;
  */
 public class ListChatMessageRequest extends AbstractRequestModel<ChatMessageResponse> {
 
-    private String scrollId;
     private String date;
     private Integer limit;
     private String mainUniqueId;
+    private Integer offset;
 
-    public String getScrollId() {
-        return scrollId;
+    public Integer getOffset() {
+        return offset;
     }
 
-    public void setScrollId(String scrollId) {
-        this.scrollId = scrollId;
-        if (scrollId != null) {
-            putQueryParameter("scrollId", scrollId);
+    public void setOffset(Integer offset) {
+        this.offset = offset;
+        if (offset != null) {
+            putQueryParameter("offset", offset);
         }
     }
 
