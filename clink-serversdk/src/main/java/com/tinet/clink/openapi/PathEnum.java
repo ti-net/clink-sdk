@@ -237,7 +237,15 @@ public enum PathEnum {
     DeleteTelRestrict("delete_restrict_tel"),
     ListTelRestrict("list_restrict_tel"),
     ListTelRestrictSetting("describe_restrict_tel_setting"),
-    UpdateTelRestrictSetting("update_restrict_tel_setting");
+    UpdateTelRestrictSetting("update_restrict_tel_setting"),
+
+    /**
+     * 日志
+     */
+    ListLogOperation("list_log_operation"),
+    ListLogAgent("list_log_agent"),
+    ListLogAgentDuration("list_log_agent_duration"),
+    ListLogLogin("list_log_login");
 
     private String value;
 

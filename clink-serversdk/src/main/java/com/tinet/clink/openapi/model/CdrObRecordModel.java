@@ -9,6 +9,11 @@ package com.tinet.clink.openapi.model;
 public class CdrObRecordModel {
 
     /**
+     * callId
+     */
+    private String callId;
+
+    /**
      * 通话记录唯一标识
      */
     private String uniqueId;
@@ -133,6 +138,65 @@ public class CdrObRecordModel {
      */
     private String[] tags;
 
+    /**
+     * 来电队列
+     */
+    private String qno;
+
+    /**
+     * 来电队列名称
+     */
+    private String qname;
+
+    /**
+     * 备注
+     */
+    private String markData;
+
+    /**
+     * 客户响铃时间
+     */
+    private Long customerRingingTime;
+
+    public String getCallId() {
+        return callId;
+    }
+
+    public void setCallId(String callId) {
+        this.callId = callId;
+    }
+
+    public String getMarkData() {
+        return markData;
+    }
+
+    public void setMarkData(String markData) {
+        this.markData = markData;
+    }
+
+    public Long getCustomerRingingTime() {
+        return customerRingingTime;
+    }
+
+    public void setCustomerRingingTime(Long customerRingingTime) {
+        this.customerRingingTime = customerRingingTime;
+    }
+
+    public String getQno() {
+        return qno;
+    }
+
+    public void setQno(String qno) {
+        this.qno = qno;
+    }
+
+    public String getQname() {
+        return qname;
+    }
+
+    public void setQname(String qname) {
+        this.qname = qname;
+    }
 
     public String getUniqueId() {
         return uniqueId;
