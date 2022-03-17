@@ -82,6 +82,19 @@ public class BusinessDetailModel {
      */
     private Date updateTime;
 
+    /**
+     * 通话记录id
+     */
+    private String callId;
+
+    public String getCallId() {
+        return callId;
+    }
+
+    public void setCallId(String callId) {
+        this.callId = callId;
+    }
+
     public Integer getId() {
         return id;
     }
