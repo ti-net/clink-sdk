@@ -201,7 +201,7 @@ public enum PathEnum {
     ChatClientWithdraw("chat_client_withdraw"),
     ChatClientLogin("chat_client_login"),
     ChatClientLogout("chat_client_logout"),
-    ChatQueueAgentStatus("chat_queue_agent_status"),
+    ChatQueueAgentStatus("chat_queue_status"),
     //-------------------在线客服API--------
 
 
@@ -237,7 +237,15 @@ public enum PathEnum {
     DeleteTelRestrict("delete_restrict_tel"),
     ListTelRestrict("list_restrict_tel"),
     ListTelRestrictSetting("describe_restrict_tel_setting"),
-    UpdateTelRestrictSetting("update_restrict_tel_setting");
+    UpdateTelRestrictSetting("update_restrict_tel_setting"),
+
+    /**
+     * 日志
+     */
+    ListLogOperation("list_log_operation"),
+    ListLogAgent("list_log_agent"),
+    ListLogAgentDuration("list_log_agent_duration"),
+    ListLogLogin("list_log_login");
 
     private String value;
 

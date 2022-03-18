@@ -72,6 +72,58 @@ public class CdrInvestigationModel {
      */
     private Integer keys;
 
+    /**
+     * 录音地址
+     */
+    private String recordFile;
+
+    /**
+     * 客户号码所在城市
+     */
+    private String customerCity;
+
+    /**
+     * 客户号码所在省份
+     */
+    private String customerProvince;
+
+    /**
+     * 通话时长
+     */
+    private Integer bridgeDuration;
+
+    public String getRecordFile() {
+        return recordFile;
+    }
+
+    public void setRecordFile(String recordFile) {
+        this.recordFile = recordFile;
+    }
+
+    public String getCustomerCity() {
+        return customerCity;
+    }
+
+    public void setCustomerCity(String customerCity) {
+        this.customerCity = customerCity;
+    }
+
+    public String getCustomerProvince() {
+        return customerProvince;
+    }
+
+    public void setCustomerProvince(String customerProvince) {
+        this.customerProvince = customerProvince;
+    }
+
+    public Integer getBridgeDuration() {
+        return bridgeDuration;
+    }
+
+    public void setBridgeDuration(Integer bridgeDuration) {
+        this.bridgeDuration = bridgeDuration;
+    }
+
     public String getMainUniqueId() {
         return mainUniqueId;
     }

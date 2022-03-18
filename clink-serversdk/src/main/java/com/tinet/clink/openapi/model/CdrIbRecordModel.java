@@ -10,6 +10,11 @@ package com.tinet.clink.openapi.model;
 public class CdrIbRecordModel {
 
     /**
+     * callId
+     */
+    private String callId;
+
+    /**
      * 通话记录唯一标识
      */
     private String uniqueId;
@@ -134,6 +139,78 @@ public class CdrIbRecordModel {
      */
     private String[] tags;
 
+    /**
+     * 来电队列名称
+     */
+    private String qname;
+
+    /**
+     * 备注
+     */
+    private String markData;
+
+    /**
+     * 加入队列时间
+     */
+    private Long joinQueueTime;
+
+    /**
+     * 离开队列时间
+     */
+    private Long leaveQueueTime;
+
+    /**
+     * 排队时长
+     */
+    private Long ibWaitDuration;
+
+    public String getCallId() {
+        return callId;
+    }
+
+    public void setCallId(String callId) {
+        this.callId = callId;
+    }
+
+    public String getMarkData() {
+        return markData;
+    }
+
+    public void setMarkData(String markData) {
+        this.markData = markData;
+    }
+
+    public Long getJoinQueueTime() {
+        return joinQueueTime;
+    }
+
+    public void setJoinQueueTime(Long joinQueueTime) {
+        this.joinQueueTime = joinQueueTime;
+    }
+
+    public Long getLeaveQueueTime() {
+        return leaveQueueTime;
+    }
+
+    public void setLeaveQueueTime(Long leaveQueueTime) {
+        this.leaveQueueTime = leaveQueueTime;
+    }
+
+    public Long getIbWaitDuration() {
+        return ibWaitDuration;
+    }
+
+    public void setIbWaitDuration(Long ibWaitDuration) {
+        this.ibWaitDuration = ibWaitDuration;
+    }
+
+    public String getQname() {
+        return qname;
+    }
+
+    public void setQname(String qname) {
+        this.qname = qname;
+    }
 
     public String getUniqueId() {
         return uniqueId;
