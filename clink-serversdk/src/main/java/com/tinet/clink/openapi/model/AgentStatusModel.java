@@ -1,11 +1,14 @@
 package com.tinet.clink.openapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * 座席状态监控返回对象
  *
  * @author wangll
  * @date 2019/09/11
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AgentStatusModel {
     /**
      * 座席号

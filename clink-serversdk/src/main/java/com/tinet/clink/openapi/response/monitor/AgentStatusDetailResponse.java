@@ -1,6 +1,6 @@
 package com.tinet.clink.openapi.response.monitor;
 
-import com.tinet.clink.openapi.model.AgentStatusModel;
+import com.tinet.clink.openapi.model.AgentStatusDetailModel;
 import com.tinet.clink.openapi.response.ResponseModel;
 
 /**
@@ -11,13 +11,13 @@ import com.tinet.clink.openapi.response.ResponseModel;
  **/
 public class AgentStatusDetailResponse extends ResponseModel {
 
-    private AgentStatusModel agentStatusDetail;
+    private AgentStatusDetailModel agentStatusDetail;
 
-    public AgentStatusModel getAgentStatusDetail() {
+    public AgentStatusDetailModel getAgentStatusDetail() {
         return agentStatusDetail;
     }
 
-    public void setAgentStatusDetail(AgentStatusModel agentStatusDetail) {
+    public void setAgentStatusDetail(AgentStatusDetailModel agentStatusDetail) {
         this.agentStatusDetail = agentStatusDetail;
     }
 

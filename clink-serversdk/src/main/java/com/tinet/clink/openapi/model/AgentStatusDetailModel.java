@@ -41,4 +41,59 @@ public class AgentStatusDetailModel {
      */
     private String statusDetail;
 
+    public String getCno() {
+        return cno;
+    }
+
+    public void setCno(String cno) {
+        this.cno = cno;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getLoginType() {
+        return loginType;
+    }
+
+    public void setLoginType(Integer loginType) {
+        this.loginType = loginType;
+    }
+
+    public Integer getBindType() {
+        return bindType;
+    }
+
+    public void setBindType(Integer bindType) {
+        this.bindType = bindType;
+    }
+
+    public String getBindTel() {
+        return bindTel;
+    }
+
+    public void setBindTel(String bindTel) {
+        this.bindTel = bindTel;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getStatusDetail() {
+        return statusDetail;
+    }
+
+    public void setStatusDetail(String statusDetail) {
+        this.statusDetail = statusDetail;
+    }
 }
