@@ -172,6 +172,8 @@ public enum PathEnum {
 
     // 在线客服 - 获取会话记录
     ChatRecord("copy_chat_records"),
+    // 在线客服 - 查询会话详情
+    ChatRecordInfo("get_chat_record_info"),
     // 在线客服 - 获取会话详情
     ChatDetail("copy_chat_details"),
     // 在线客服 - 获取聊天记录
