@@ -145,9 +145,9 @@ TIMRTCMediaMessageDelegate>
 
 
     } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
-
+        NSLog(@"getUserInfoWithUserId Error = %@",errorDes);
     } tokenIncorrect:^{
-
+        NSLog(@"getUserInfoWithUserId tokenIncorrect ");
     }];
     
 //    本地kit一些配置
