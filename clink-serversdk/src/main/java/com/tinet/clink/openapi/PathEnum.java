@@ -245,7 +245,12 @@ public enum PathEnum {
     ListLogOperation("list_log_operation"),
     ListLogAgent("list_log_agent"),
     ListLogAgentDuration("list_log_agent_duration"),
-    ListLogLogin("list_log_login");
+    ListLogLogin("list_log_login"),
+
+    /**
+     * rasr转写记录
+     */
+    BotAsr("bot_asr");
 
     private String value;
 
