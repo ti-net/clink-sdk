@@ -123,6 +123,11 @@ public class ClientDetailModel {
      */
     private String crmId;
 
+    /**
+     * 座席满意度自动执行，1：开启；0：关闭，默认开启
+     */
+    private Integer autoInvestigation;
+
 
     public String getCno() {
         return cno;
@@ -300,6 +305,14 @@ public class ClientDetailModel {
         this.crmId = crmId;
     }
 
+    public Integer getAutoInvestigation() {
+        return autoInvestigation;
+    }
+
+    public void setAutoInvestigation(Integer autoInvestigation) {
+        this.autoInvestigation = autoInvestigation;
+    }
+
     @Override
     public String toString() {
         return "ClientDetailModel{" +
@@ -325,6 +338,7 @@ public class ClientDetailModel {
                 ", chatLimitNum=" + chatLimitNum +
                 ", queues=" + queues +
                 ", crmId='" + crmId + '\'' +
+                ", autoInvestigation=" + autoInvestigation +
                 '}';
     }
 }
