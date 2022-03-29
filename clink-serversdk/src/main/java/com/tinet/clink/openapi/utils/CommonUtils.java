@@ -1,6 +1,7 @@
 package com.tinet.clink.openapi.utils;
 
 
+import com.tinet.clink.openapi.constant.CallType;
 import com.tinet.clink.openapi.constant.CdrStatus;
 
 import java.util.Objects;
@@ -100,6 +101,181 @@ public class CommonUtils {
                     result = "双方接听";
                     break;
                 default:
+            }
+        }
+        return result;
+    }
+
+    public static String getCallType(Integer type) {
+        String result = "";
+        if (Objects.nonNull(type)) {
+            switch (type) {
+                case CallType.IB:
+                    result = "呼入";
+                    break;
+                case CallType.OB_WEBCALL:
+                    result = "webCall";
+                    break;
+                case CallType.OB:
+                    result = "点击外呼";
+                    break;
+                case CallType.PREVIEW_OB:
+                    result = "预览外呼";
+                    break;
+                case CallType.PREDICTIVE_OB:
+                    result = "预测外呼";
+                    break;
+                case CallType.DIRECT_OB:
+                    result = "直接外呼";
+                    break;
+                case CallType.SELF_RECORD_OB:
+                    result = "自助录音";
+                    break;
+                case CallType.SEND_FAX_OB:
+                    result = "发送传真";
+                    break;
+                case CallType.INTERNAL_CALL:
+                    result = "内部呼叫";
+                    break;
+                case CallType.ORDER_CALL_BACK:
+                    result = "预约回呼";
+                    break;
+
+                case CallType.OB_CALL_CLIENT:
+                case CallType.IB_CALL_CLIENT:
+                    result = "呼转座席";
+                    break;
+                case CallType.IB_TRANSFER:
+                    result = "转移";
+                    break;
+                case CallType.IB_CONSULT:
+                    result = "咨询";
+                    break;
+                case CallType.IB_THREEWAY:
+                    result = "三方";
+                    break;
+                case CallType.IB_SPY:
+                    result = "监听";
+                    break;
+                case CallType.IB_WHISPER:
+                    result = "耳语";
+                    break;
+                case CallType.IB_BARGE:
+                    result = "强插";
+                    break;
+                case CallType.IB_PICKUP:
+                    result = "抢线";
+                    break;
+                case CallType.OB_TRANSFER:
+                    result = "转移";
+                    break;
+                case CallType.OB_CONSULT:
+                    result = "咨询";
+                    break;
+                case CallType.OB_THREEWAY:
+                    result = "三方";
+                    break;
+                case CallType.OB_SPY:
+                    result = "监听";
+                    break;
+                case CallType.OB_WHISPER:
+                    result = "耳语";
+                    break;
+                case CallType.OB_BARGE:
+                    result = "强插";
+                    break;
+                case CallType.CALL_CUSTOMER:
+                    result = "呼转客户";
+                    break;
+                case CallType.OB_CALL_EXTEN:
+                    result = "呼转分机";
+                    break;
+                case CallType.OB_CALL_TEL:
+                case CallType.IB_CALL_TEL:
+                    result = "呼转电话";
+                    break;
+                default:
+                    break;
+            }
+        }
+        return result;
+    }
+
+    /**
+     * 标记值转换中文
+     * @param mark
+     * @return
+     */
+    public static String getMark(Integer mark) {
+        String result = "";
+        if (Objects.nonNull(mark)) {
+            switch (mark) {
+                case 1:
+                    result = "留言";
+                    break;
+                case 2:
+                    result = "转移";
+                    break;
+                case 3:
+                    result = "咨询";
+                    break;
+                case 4:
+                    result = "三方";
+                    break;
+                case 5:
+                    result = "传真接收";
+                    break;
+                case 6:
+                    result = "会议";
+                    break;
+                case 7:
+                    result = "交互";
+                    break;
+                case 8:
+                    result = "IVR中放弃";
+                    break;
+                case 9:
+                    result = "已进入IVR";
+                    break;
+                case 10:
+                    result = "未进入IVR";
+                    break;
+                case 11:
+                    result = "队列中放弃";
+                    break;
+                case 12:
+                    result = "队列中溢出";
+                    break;
+                default:
+                    break;
+            }
+        }
+        return result;
+    }
+
+    /**
+     * 置忙类型
+     * @param pauseType
+     * @return
+     */
+    public static  String getPauseType(Integer pauseType) {
+        String result = "";
+        if (Objects.nonNull(pauseType)) {
+            switch (pauseType) {
+                case 1:
+                    result = "普通";
+                    break;
+                case 2:
+                    result = "休息";
+                    break;
+                case 3:
+                    result = "IM";
+                    break;
+                case 4:
+                    result = "强制";
+                    break;
+                default:
+                    break;
             }
         }
         return result;
