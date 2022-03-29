@@ -1,7 +1,7 @@
 package com.tinet.clink.openapi.response.rasr;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.tinet.clink.openapi.model.RasrDialog;
+import com.tinet.clink.openapi.model.RasrDialogModel;
 import com.tinet.clink.openapi.response.ResponseModel;
 
 import java.util.List;
@@ -14,13 +14,13 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ListRasrResponse extends ResponseModel {
 
-    private List<RasrDialog> botDialogs;
+    private List<RasrDialogModel> botDialogs;
 
-    public List<RasrDialog> getBotDialogs() {
+    public List<RasrDialogModel> getBotDialogs() {
         return botDialogs;
     }
 
-    public void setBotDialogs(List<RasrDialog> botDialogs) {
+    public void setBotDialogs(List<RasrDialogModel> botDialogs) {
         this.botDialogs = botDialogs;
     }
 }
