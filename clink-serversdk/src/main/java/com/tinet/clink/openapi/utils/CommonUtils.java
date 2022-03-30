@@ -3,6 +3,7 @@ package com.tinet.clink.openapi.utils;
 
 import com.tinet.clink.openapi.constant.CallType;
 import com.tinet.clink.openapi.constant.CdrStatus;
+import com.tinet.clink.openapi.enums.SipCauseEnum;
 
 import java.util.Objects;
 
@@ -279,6 +280,85 @@ public class CommonUtils {
             }
         }
         return result;
+    }
+
+    public static String getSipCause(Integer sip) {
+        if (!Objects.isNull(sip)) {
+            SipCauseEnum sipCauseEnum = SipCauseEnum.desc(sip);
+            if (Objects.nonNull(sipCauseEnum)) {
+                return sipCauseEnum.desc();
+            }
+        }
+        return "";
+    }
+
+    public static String getEndReason(Integer reason) {
+        String str = "";
+        if (!Objects.isNull(reason)) {
+            switch (reason) {
+                case 1000:
+                    str = "主通道挂机";
+                    break;
+                case 1001:
+                    str = "非主通道挂机";
+                    break;
+                case 1002:
+                    str = "被强拆";
+                    break;
+                default:
+            }
+        }
+        return str;
+    }
+
+    public static String getLoginStatus(Integer loginStatus) {
+        String str = "";
+        if (!Objects.isNull(loginStatus)) {
+            switch (loginStatus) {
+                case 0:
+                    str = "离线";
+                    break;
+                case 1:
+                    str = "在线空闲";
+                    break;
+                case 2:
+                    str = "在线置忙";
+                    break;
+                case 3:
+                    str = "在线整理";
+                    break;
+                default:
+            }
+        }
+        return str;
+    }
+
+    public static String getDeviceStatus(Integer deviceStatus) {
+        String str = "";
+        if (!Objects.isNull(deviceStatus)) {
+            switch (deviceStatus) {
+                case 0:
+                    str = "空闲";
+                    break;
+                case 1:
+                    str = "锁定，锁定将要使用的设备";
+                    break;
+                case 2:
+                    str = "请求，尝试呼叫设备";
+                    break;
+                case 3:
+                    str = "响铃，设备正在响铃";
+                    break;
+                case 4:
+                    str = "使用中，设备正在通话中";
+                    break;
+                case 9:
+                    str = "离线";
+                    break;
+                default:
+            }
+        }
+        return str;
     }
 
 }
