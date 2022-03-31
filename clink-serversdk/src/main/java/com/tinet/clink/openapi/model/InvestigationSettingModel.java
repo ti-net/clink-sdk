@@ -1,12 +1,15 @@
 package com.tinet.clink.openapi.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * 满意度设置模型
  *
  * @author wangll
  * @date 2018/08/27
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class InvestigationSettingModel {
     /**
      * 自动执行开关，0：关闭、1：开启

@@ -1,6 +1,8 @@
 package com.tinet.clink.openapi.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
 /**
@@ -9,6 +11,7 @@ import java.util.List;
  * @author lizy
  * @date 2018/09/12
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ClientDetailModel {
 
     /**
