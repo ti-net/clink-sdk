@@ -1,5 +1,8 @@
 package com.tinet.clink.openapi.model;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * 用于封装返回的ChatRecord记录数据model
  */
@@ -25,6 +28,86 @@ public class ChatRecord {
     private String province;                    //省份
     private String city;                        //城市
     private Integer appType;                    // 渠道类型
+
+    /**
+     * 机器人客服id
+     */
+    private String robotId;
+
+    /**
+     * 机器人客服名称
+     */
+    private String robotName;
+
+    /**
+     * 机器人客服接入时间
+     */
+    private Long robotStartTime;
+
+    /**
+     * 机器人客服关闭时间
+     */
+    private Long robotEndTime;
+
+    /**
+     * 渠道名称
+     */
+    private String appName;
+
+    /**
+     * 访问地区
+     */
+    private String customerRegion;
+
+    /**
+     * 会话渠道
+     */
+    private Integer contactType;
+
+    /**
+     * 接入来源（访客来源）
+     */
+    private String refererName;
+
+    /**
+     * 访客轨迹
+     */
+    private List<Map<String, Object>> visitTracks;
+
+    /**
+     * 自定义参数
+     */
+    private Map<String,Object> visitorExtraInfo;
+
+    /**
+     * 搜索词
+     */
+    private String searchWord;
+
+    /**
+     * 满意度评价
+     */
+    private Integer keys;
+
+    /**
+     * 满意度备注
+     */
+    private String remark;
+
+    /**
+     * 来源页
+     */
+    private String refererUrl;
+
+    /**
+     * 会话次数
+     */
+    private Long chatTimes;
+
+    /**
+     * 被邀请
+     */
+    private Long invitedTimes;
 
     public String getMainUniqueId() {
         return mainUniqueId;
@@ -185,4 +268,133 @@ public class ChatRecord {
     public void setAppType(Integer appType) {
         this.appType = appType;
     }
+
+    public String getRobotId() {
+        return robotId;
+    }
+
+    public void setRobotId(String robotId) {
+        this.robotId = robotId;
+    }
+
+    public String getRobotName() {
+        return robotName;
+    }
+
+    public void setRobotName(String robotName) {
+        this.robotName = robotName;
+    }
+
+    public Long getRobotStartTime() {
+        return robotStartTime;
+    }
+
+    public void setRobotStartTime(Long robotStartTime) {
+        this.robotStartTime = robotStartTime;
+    }
+
+    public Long getRobotEndTime() {
+        return robotEndTime;
+    }
+
+    public void setRobotEndTime(Long robotEndTime) {
+        this.robotEndTime = robotEndTime;
+    }
+
+    public String getAppName() {
+        return appName;
+    }
+
+    public void setAppName(String appName) {
+        this.appName = appName;
+    }
+
+    public String getCustomerRegion() {
+        return customerRegion;
+    }
+
+    public void setCustomerRegion(String customerRegion) {
+        this.customerRegion = customerRegion;
+    }
+
+    public Integer getContactType() {
+        return contactType;
+    }
+
+    public void setContactType(Integer contactType) {
+        this.contactType = contactType;
+    }
+
+    public String getRefererName() {
+        return refererName;
+    }
+
+    public void setRefererName(String refererName) {
+        this.refererName = refererName;
+    }
+
+    public List<Map<String, Object>> getVisitTracks() {
+        return visitTracks;
+    }
+
+    public void setVisitTracks(List<Map<String, Object>> visitTracks) {
+        this.visitTracks = visitTracks;
+    }
+
+    public Map<String, Object> getVisitorExtraInfo() {
+        return visitorExtraInfo;
+    }
+
+    public void setVisitorExtraInfo(Map<String, Object> visitorExtraInfo) {
+        this.visitorExtraInfo = visitorExtraInfo;
+    }
+
+    public String getSearchWord() {
+        return searchWord;
+    }
+
+    public void setSearchWord(String searchWord) {
+        this.searchWord = searchWord;
+    }
+
+    public Integer getKeys() {
+        return keys;
+    }
+
+    public void setKeys(Integer keys) {
+        this.keys = keys;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public String getRefererUrl() {
+        return refererUrl;
+    }
+
+    public void setRefererUrl(String refererUrl) {
+        this.refererUrl = refererUrl;
+    }
+
+    public Long getChatTimes() {
+        return chatTimes;
+    }
+
+    public void setChatTimes(Long chatTimes) {
+        this.chatTimes = chatTimes;
+    }
+
+    public Long getInvitedTimes() {
+        return invitedTimes;
+    }
+
+    public void setInvitedTimes(Long invitedTimes) {
+        this.invitedTimes = invitedTimes;
+    }
+
 }
