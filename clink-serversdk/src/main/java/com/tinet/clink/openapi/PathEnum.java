@@ -172,6 +172,8 @@ public enum PathEnum {
 
     // 在线客服 - 获取会话记录
     ChatRecord("copy_chat_records"),
+    // 在线客服 - 查询会话详情
+    ChatRecordInfo("get_chat_record_info"),
     // 在线客服 - 获取会话详情
     ChatDetail("copy_chat_details"),
     // 在线客服 - 获取聊天记录
@@ -245,7 +247,15 @@ public enum PathEnum {
     ListLogOperation("list_log_operation"),
     ListLogAgent("list_log_agent"),
     ListLogAgentDuration("list_log_agent_duration"),
-    ListLogLogin("list_log_login");
+    ListLogLogin("list_log_login"),
+    /**
+     * rasr转写记录
+     */
+    BotAsr("bot_asr"),
+    /**
+     * 满意度配置
+     */
+    investigationSetting("investigation_setting");
 
     private String value;
 
