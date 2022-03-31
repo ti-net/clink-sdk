@@ -1,6 +1,8 @@
 package com.tinet.clink.openapi.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
 /**
@@ -9,6 +11,7 @@ import java.util.List;
  * @author lizy
  * @date 2018/09/12
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ClientDetailModel {
 
     /**
@@ -122,6 +125,11 @@ public class ClientDetailModel {
      * 座席crm id
      */
     private String crmId;
+
+    /**
+     * 座席满意度自动执行，1：开启；0：关闭，默认开启
+     */
+    private Integer autoInvestigation;
 
 
     public String getCno() {
@@ -300,6 +308,14 @@ public class ClientDetailModel {
         this.crmId = crmId;
     }
 
+    public Integer getAutoInvestigation() {
+        return autoInvestigation;
+    }
+
+    public void setAutoInvestigation(Integer autoInvestigation) {
+        this.autoInvestigation = autoInvestigation;
+    }
+
     @Override
     public String toString() {
         return "ClientDetailModel{" +
@@ -325,6 +341,7 @@ public class ClientDetailModel {
                 ", chatLimitNum=" + chatLimitNum +
                 ", queues=" + queues +
                 ", crmId='" + crmId + '\'' +
+                ", autoInvestigation=" + autoInvestigation +
                 '}';
     }
 }
