@@ -61,7 +61,7 @@ TIMRTCMediaMessageDelegate>
        [self addChildViewController:nav];
    }];
     
-    [self configIM];
+//    [self configIM];
 }
 
 - (void)configIM {

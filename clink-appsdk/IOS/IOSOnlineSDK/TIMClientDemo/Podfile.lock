@@ -6,8 +6,8 @@ PODS:
   - AFNetworking/Reachability (3.2.1)
   - AFNetworking/Security (3.2.1)
   - AFNetworking/Serialization (3.2.1)
-  - Bugly (2.5.71)
-  - DoraemonKit/Core (3.0.6):
+  - Bugly (2.5.90)
+  - DoraemonKit/Core (3.0.7):
     - FMDB
     - GCDWebServer
     - GCDWebServer/WebDAV
@@ -29,11 +29,11 @@ PODS:
   - RTRootNavigationController (0.7.2):
     - RTRootNavigationController/Core (= 0.7.2)
   - RTRootNavigationController/Core (0.7.2)
-  - SDWebImage (5.9.1):
-    - SDWebImage/Core (= 5.9.1)
-  - SDWebImage/Core (5.9.1)
-  - TTGTagCollectionView (1.11.1)
-  - TZImagePickerController (3.4.2)
+  - SDWebImage (5.11.0):
+    - SDWebImage/Core (= 5.11.0)
+  - SDWebImage/Core (5.11.0)
+  - TTGTagCollectionView (1.11.2)
+  - TZImagePickerController (3.6.0)
   - WMPageController (2.5.2)
   - WZLBadge (1.2.6)
   - YBImageBrowser (3.0.9):
@@ -41,7 +41,7 @@ PODS:
   - YBImageBrowser/Core (3.0.9):
     - SDWebImage (>= 5.0.0)
     - YYImage
-  - YBPopupMenu (1.1.5)
+  - YBPopupMenu (1.1.9)
   - YTKNetwork (2.1.4):
     - AFNetworking/NSURLSession (~> 3.0)
   - YYCache (1.0.4)
@@ -69,7 +69,7 @@ DEPENDENCIES:
   - MJRefresh
   - ReactiveObjC
   - RTRootNavigationController
-  - SDWebImage
+  - SDWebImage (>= 5.0.0)
   - TTGTagCollectionView
   - TZImagePickerController
   - WMPageController
@@ -111,8 +111,8 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
-  Bugly: fd066c75c4a0eca1440f9b6a84bd37d51bfc85ac
-  DoraemonKit: 919709427c30af94e265532a879ac41797d296d1
+  Bugly: 88bc32c0acc6fef7b74d610f0319ee7560d6b9fe
+  DoraemonKit: 32fb97f3aa82efa133111d193080ca5462cef135
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   GCDWebServer: 2c156a56c8226e2d5c0c3f208a3621ccffbe3ce4
   IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
@@ -120,13 +120,13 @@ SPEC CHECKSUMS:
   MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
   RTRootNavigationController: 8344c2352d6d40fa370d0366efae2c84a945213f
-  SDWebImage: a990c053fff71e388a10f3357edb0be17929c9c5
-  TTGTagCollectionView: 86fcbfa6a7493c9e860b01c2e693cffc8acf6de1
-  TZImagePickerController: cc0b74d5f01ab4cddcc24dcdfc3c7d68e6261056
+  SDWebImage: 7acbb57630ac7db4a495547fb73916ff3e432f6b
+  TTGTagCollectionView: 949030356ed27954f39dd29d78978c0f5c35a745
+  TZImagePickerController: a37d7eec87c54436e896a67947033ad2178d498b
   WMPageController: 0c7624d2b48e4f1ab92371688cf6744ed701575d
   WZLBadge: 9ec779dcfd94c825518b395e8315fccaabff1bfa
   YBImageBrowser: 7ecc8bf33ffa5f3b94c397c29b4f3638dd37f527
-  YBPopupMenu: 12452dec37bdd9b33df25ae89050dfbd695ebdd0
+  YBPopupMenu: 3a02e89860bb0568ba477aee609bc3f25e5bd339
   YTKNetwork: 19be749c30f0512ada07180f4637b4b67bc8ddc2
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
@@ -135,6 +135,6 @@ SPEC CHECKSUMS:
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
   ZYCornerRadius: f0af817be7805b5c63d793042ca7a03f81e14069
 
-PODFILE CHECKSUM: 453f5741c72bd85df1781392d8c7e8119260dbb0
+PODFILE CHECKSUM: aef79c0efe09f59a6a823e22f7216d822c55f100
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.10.1
