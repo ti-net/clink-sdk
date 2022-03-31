@@ -23,7 +23,7 @@ static DomainNameSave *domainName = nil;
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         // 默认正式环境
         domainName.loginDomainName = [userDefaults objectForKey:kLoginDomainName]?:@"http://appserver-1.octopus.video";
-        domainName.IMloginDomainName = [userDefaults objectForKey:kIMLoginDomainName]?:@"https://octopus-api-1.vlink.cn/api/sdk/v1";
+        domainName.IMloginDomainName = [userDefaults objectForKey:kIMLoginDomainName]?:@"http://api-1.octopus.video/api/sdk/v1";
         domainName.domainName = [userDefaults objectForKey:kDomainName]?:@"";
     });
     return domainName;

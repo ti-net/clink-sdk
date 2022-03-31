@@ -34,19 +34,19 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     //初始化
-//    [[OnlineInitOption shareOnlineInitOption] initWithOptionIsDebug:YES
-//                                                                 apiUrl:@"https://octopus-api-1.vlink.cn/api/sdk/v1"
-//                                                              onlineUrl:@"https://chat-app-bj.clink.cn"
-//                                                           accessSecret:@"72EBF29CB4614F7AB404EEC07BFF0B1B"
-//                                                               accessId:@"8758096679544ff189d4a9457747f109"
-//                                                           enterpriseId:@"8000002"];
-    
     [[OnlineInitOption shareOnlineInitOption] initWithOptionIsDebug:YES
-                                                             apiUrl:@"https://octopus-api-1.vlink.cn/api/sdk/v1"
-                                                          onlineUrl:@"https://chat-app-sh.clink.cn"
-                                                       accessSecret:@"50ECA889F8F04EF29EE53FAEB009FBAE"
-                                                           accessId:@"b9a4b617017f4316bb567e69fa5e685b"
-                                                       enterpriseId:@"8003846"];
+                                                                 apiUrl:@"https://octopus-api-1.vlink.cn/api/sdk/v1"
+                                                              onlineUrl:@"https://chat-app-bj.clink.cn"
+                                                           accessSecret:@"0B2A488841FC44C899FC76C5EBEF6491"
+                                                               accessId:@"56ab9623cf2840a88aa0897f6da6ef25"
+                                                           enterpriseId:@"8004022"];
+    
+//    [[OnlineInitOption shareOnlineInitOption] initWithOptionIsDebug:YES
+//                                                             apiUrl:@"https://octopus-api-1.vlink.cn/api/sdk/v1"
+//                                                          onlineUrl:@"https://chat-app-sh.clink.cn"
+//                                                       accessSecret:@"07871659F8E144BDB9B72D667E06D175"
+//                                                           accessId:@"b7a28d0409d44b1c830810c84028bdef"
+//                                                       enterpriseId:@"8005713"];
     
     [application ignoreSnapshotOnNextApplicationLaunch];
     if (@available(iOS 10.0,*)){
