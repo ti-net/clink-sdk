@@ -231,6 +231,10 @@ public enum PathEnum {
 
     SaveTicket("save_ticket"),
     UpdateTicket("update_ticket"),
+    // 获取表单详情
+    GetFormDetail("get_form_detail"),
+    //流转工单
+    FlowTicket("flow_ticket"),
 
     /**
      * 黑白名单相关请求
