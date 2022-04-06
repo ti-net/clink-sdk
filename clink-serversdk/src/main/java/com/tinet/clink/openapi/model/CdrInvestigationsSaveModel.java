@@ -1,9 +1,12 @@
 package com.tinet.clink.openapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * @author libin
  * @date 2022-04-06 6:04 下午
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CdrInvestigationsSaveModel {
 
     /**
