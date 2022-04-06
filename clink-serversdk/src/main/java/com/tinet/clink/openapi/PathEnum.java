@@ -95,6 +95,8 @@ public enum PathEnum {
     ListComments("list_comments"),
     // 满意度记录
     ListInvestigations("list_investigations"),
+    // 添加满意度记录
+    CreateInvestigations("create_investigations"),
     // 下载通话录音文件
     DownloadRecordFile("download_record_file"),
     // 查询通话录音url
