@@ -19,6 +19,20 @@ public class GetTicketDetailRequest extends AbstractRequestModel<GetTicketDetail
      */
     private Integer id;
 
+    /**
+     * 外部工单id
+     */
+    private String externalId;
+
+    public String getExternalId() { return externalId; }
+
+    public void setExternalId(String externalId) {
+        this.externalId = externalId;
+        if (externalId != null) {
+            putQueryParameter("externalId", externalId);
+        }
+    }
+
     public Integer getId() {
         return id;
     }

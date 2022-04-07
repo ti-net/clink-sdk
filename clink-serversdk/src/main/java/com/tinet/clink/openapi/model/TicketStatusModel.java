@@ -31,12 +31,25 @@ public class TicketStatusModel {
     /**
      * 工作流任务 Id
      */
-    private Integer taskId;
+    private String taskId;
 
     /**
      * 任务名称
      */
     private String taskName;
+
+    /**
+     * 表单 Id
+     */
+    private Integer formId;
+
+    public String getTaskId() { return taskId; }
+
+    public void setTaskId(String taskId) { this.taskId = taskId; }
+
+    public Integer getFormId() { return formId; }
+
+    public void setFormId(Integer formId) { this.formId = formId; }
 
     public Integer getHandleStatus() {
         return handleStatus;
@@ -68,14 +81,6 @@ public class TicketStatusModel {
 
     public void setHandlerId(Integer handlerId) {
         this.handlerId = handlerId;
-    }
-
-    public Integer getTaskId() {
-        return taskId;
-    }
-
-    public void setTaskId(Integer taskId) {
-        this.taskId = taskId;
     }
 
     public String getTaskName() {
