@@ -28,7 +28,7 @@ public class CreateInvestigationsRequest extends AbstractRequestModel<CreateInve
     public void setMainUniqueId(String mainUniqueId) {
         this.mainUniqueId = mainUniqueId;
         if (mainUniqueId != null) {
-            putQueryParameter("mainUniqueId", mainUniqueId);
+            putBodyParameter("mainUniqueId", mainUniqueId);
         }
     }
 
@@ -39,12 +39,12 @@ public class CreateInvestigationsRequest extends AbstractRequestModel<CreateInve
     public void setKeys(String keys) {
         this.keys = keys;
         if (keys != null) {
-            putQueryParameter("keys", keys);
+            putBodyParameter("keys", keys);
         }
     }
 
     public CreateInvestigationsRequest() {
-        super(PathEnum.CreateInvestigations.value(), HttpMethodType.GET);
+        super(PathEnum.CreateInvestigations.value(), HttpMethodType.POST);
     }
 
     @Override
