@@ -33,7 +33,7 @@ pod 'YBPopupMenu'
 pod "TTGTagCollectionView"
 
 #pod 'SDWebImage'
-pod 'SDWebImage', :path => '../SDWebImagePlugin'
+pod 'SDWebImage', '>= 5.0.0'
 
 pod 'RTRootNavigationController'
 
