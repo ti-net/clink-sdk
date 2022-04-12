@@ -261,8 +261,17 @@ public enum PathEnum {
     /**
      * 满意度配置
      */
-    investigationSetting("investigation_setting");
+    investigationSetting("investigation_setting"),
 
+    /**
+     * 工具条authToken获取
+     */
+    wsAuthToken("ws_auth_token"),
+
+    /**
+     * 工具条agentToken获取
+     */
+    wsAgentToken("ws_agent_token");
     private String value;
 
     PathEnum(String value) {
