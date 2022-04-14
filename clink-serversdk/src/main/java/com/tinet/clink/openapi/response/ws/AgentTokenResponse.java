@@ -1,14 +1,14 @@
 package com.tinet.clink.openapi.response.ws;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.tinet.clink.openapi.response.PagedResponse;
+import com.tinet.clink.openapi.response.ResponseModel;
 
 /**
  * @author libin
  * @date 2022-04-12 6:30 下午
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class AgentTokenResponse extends PagedResponse {
+public class AgentTokenResponse extends ResponseModel {
 
     private String agentToken;
 

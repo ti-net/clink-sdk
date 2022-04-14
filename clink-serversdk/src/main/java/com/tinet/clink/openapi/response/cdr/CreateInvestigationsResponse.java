@@ -1,21 +1,21 @@
 package com.tinet.clink.openapi.response.cdr;
 
-import com.tinet.clink.openapi.model.CdrInvestigationsSaveModel;
-import com.tinet.clink.openapi.response.PagedResponse;
+import com.tinet.clink.openapi.model.CreateInvestigationsSaveModel;
+import com.tinet.clink.openapi.response.ResponseModel;
 
 /**
  * @author libin
  * @date 2022-04-06 11:01 上午
  */
-public class CreateInvestigationsResponse extends PagedResponse {
+public class CreateInvestigationsResponse extends ResponseModel {
 
-    private CdrInvestigationsSaveModel data;
+    private CreateInvestigationsSaveModel investigation;
 
-    public CdrInvestigationsSaveModel getData() {
-        return data;
+    public CreateInvestigationsSaveModel getInvestigation() {
+        return investigation;
     }
 
-    public void setData(CdrInvestigationsSaveModel data) {
-        this.data = data;
+    public void setInvestigation(CreateInvestigationsSaveModel investigation) {
+        this.investigation = investigation;
     }
 }

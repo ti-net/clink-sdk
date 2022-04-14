@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @date 2022-04-06 6:04 下午
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CdrInvestigationsSaveModel {
+public class CreateInvestigationsSaveModel {
 
     /**
      * 唯一标识
