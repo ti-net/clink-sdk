@@ -323,4 +323,5 @@ public class Test {
 1、数据-满意度记录-添加满意度调查记录
 2、工具条token登录-获取authToken
 3、工具条token登录-获取agentToken
+4、座席监控查询接口——返回结果追加queuesMap (队列信息)
 ```
