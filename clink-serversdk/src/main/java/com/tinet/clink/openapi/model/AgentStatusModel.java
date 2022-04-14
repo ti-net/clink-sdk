@@ -2,6 +2,8 @@ package com.tinet.clink.openapi.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.Map;
+
 /**
  * 座席状态监控返回对象
  *
@@ -65,6 +67,11 @@ public class AgentStatusModel {
      * 座席来电接听次数
      */
     private Integer bridgeCallCount;
+
+    /**
+     * qno，qname 映射
+     */
+    private Map<String, String> queuesMap;
 
     /**
      * 队列来电接听数
@@ -199,5 +206,13 @@ public class AgentStatusModel {
 
     public void setBridgeCallCount(Integer bridgeCallCount) {
         this.bridgeCallCount = bridgeCallCount;
+    }
+
+    public Map<String, String> getQueuesMap() {
+        return queuesMap;
+    }
+
+    public void setQueuesMap(Map<String, String> queuesMap) {
+        this.queuesMap = queuesMap;
     }
 }
