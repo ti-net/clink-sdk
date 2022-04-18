@@ -190,5 +190,14 @@ public class CdrRecordTest extends AbstractTest {
         System.out.println(mapper.writeValueAsString(response.getCdrInvestigations()));
     }
 
+    @Test
+    public void createInvestigationTest() throws ServerException, ClientException, JsonProcessingException {
+        CreateInvestigationsRequest request = new CreateInvestigationsRequest();
+        request.setMainUniqueId("");
+        request.setKeys("12");
+        CreateInvestigationsResponse response = client.getResponseModel(request);
+        System.out.println(mapper.writeValueAsString(response.getRequestId()));
+    }
+
 }
 

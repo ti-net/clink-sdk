@@ -8,7 +8,7 @@ import com.tinet.clink.openapi.utils.HttpMethodType;
 import java.util.Objects;
 
 /**
- * 创建黑白名单请求
+ * 查询rasr转写记录请求
  *
  * @author libin
  * @date 2021-12-13 10:31 上午
@@ -17,7 +17,7 @@ import java.util.Objects;
 public class ListRasrRequest extends AbstractRequestModel<ListRasrResponse> {
 
     /**
-     * 电话号码
+     * 唯一标识
      */
     private String mainUniqueId;
 
