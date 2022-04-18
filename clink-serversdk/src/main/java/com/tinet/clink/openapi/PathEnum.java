@@ -245,7 +245,15 @@ public enum PathEnum {
     ListLogOperation("list_log_operation"),
     ListLogAgent("list_log_agent"),
     ListLogAgentDuration("list_log_agent_duration"),
-    ListLogLogin("list_log_login");
+    ListLogLogin("list_log_login"),
+
+    /**
+     * 登录
+     */
+    GetHotline("get_hotline"),
+    GetCustomerStatus("get_customer_status"),
+    GetOnlineClient("get_online_client"),
+    LoginToken("login_token");
 
     private String value;
 
