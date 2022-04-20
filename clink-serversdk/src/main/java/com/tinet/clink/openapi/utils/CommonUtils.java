@@ -2,9 +2,10 @@ package com.tinet.clink.openapi.utils;
 
 
 import com.tinet.clink.openapi.constant.CallType;
-import com.tinet.clink.openapi.constant.CdrStatus;
 import com.tinet.clink.openapi.enums.SipCauseEnum;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -13,6 +14,37 @@ import java.util.Objects;
  * @date 2022/02/24
  **/
 public class CommonUtils {
+
+    /**
+     * 呼入-人工接听
+     */
+    private static List<Integer> IB_ANSWER = Arrays.asList(1);
+    /**
+     * 呼入-人工未接听
+     */
+    private static List<Integer> IB_NO_ANSWER = Arrays.asList(2);
+    /**
+     * 呼入-系统应答
+     */
+    private static List<Integer> IB_SYSTEM_ANSWER = Arrays.asList(3);
+    /**
+     * 呼入-系统未应答
+     */
+    private static List<Integer> IB_SYSTEM_NO_ANSWER = Arrays.asList(4, 5, 6, 7, 8, 9, 10, 11, 12, 13);
+
+    /**
+     * 外呼-客户未接听
+     */
+    private static List<Integer> OB_CUSTOMER_NO_ANSWER = Arrays.asList(31, 32, 40, 50, 51, 20, 21, 25, 26, 27, 61, 62);
+    /**
+     * 外呼-座席未接听
+     */
+    private static List<Integer> OB_AGENT_NO_ANSWER = Arrays.asList(30, 42, 41, 22, 23, 60);
+
+    /**
+     * 外呼-双方接听
+     */
+    private static List<Integer> OB_BRIDGED = Arrays.asList(33, 43, 52, 28, 24, 63);
 
     /**
      * 根据话单接听状态返回对应的中文描述
@@ -24,84 +56,26 @@ public class CommonUtils {
 
         String result = "";
         if (!Objects.isNull(status)) {
-            switch (status) {
-                case CdrStatus.IB_BRIDGED:
-                    result = "座席接听";
-                    break;
-                case CdrStatus.IB_CALLED:
-                    result = "座席未接听";
-                    break;
-                case CdrStatus.IB_SYSTEM_ANSWER:
-                    result = "系统接听";
-                    break;
-                case CdrStatus.IB_BAD_IVR:
-                    result = "系统未接-IVR配置错误";
-                    break;
-                case CdrStatus.IB_ENTERPRISE_STOP:
-                    result = "系统未接-停机";
-                    break;
-                case CdrStatus.IB_ENTERPRISE_PAUSED:
-                    result = "系统未接-欠费";
-                    break;
-                case CdrStatus.IB_BLACK:
-                    result = "系统未接-黑名单";
-                    break;
-                case CdrStatus.IB_ENTERPRISE_NO_REG:
-                    result = "系统未接-未注册";
-                    break;
-                case CdrStatus.IB_NOANSWER_COLORRING:
-                    result = "系统未接-彩铃";
-                    break;
-                case CdrStatus.IB_NO_ANSWER_WEB400_UNACCEPT:
-                    result = "网上400未接受";
-                    break;
-                case CdrStatus.IB_OVER_LIMIT:
-                    result = "呼叫超出营帐中设置的最大限制";
-                    break;
-                case CdrStatus.IB_SYSTEM_NOANSWER:
-                    result = "客户呼入系统后在系统未应答前挂机";
-                    break;
-                case CdrStatus.IB_FAILED_OTHER:
-                    result = "其他错误";
-                    break;
-                case CdrStatus.OB_WEBCALL_CUSTOMER_TTS_FAIL:
-                    result = "webcall客户TTS失败";
-                    break;
-                case CdrStatus.OB_WEBCALL_ANSWER:
-                    result = "webcall客户接听";
-                    break;
-
-                case CdrStatus.OB_INTERNAL_AGENT_ANSWER:
-                    result = "内部呼叫座席接听";
-                    break;
-                case CdrStatus.OB_PREVIEW_AGENT_ANSWER:
-                case CdrStatus.OB_PREDICTIVE_CUSTOMER_NO_ANSWER:
-                case CdrStatus.OB_DIRECT_ANSWER:
-                case CdrStatus.OB_DIRECT_CALLED:
-                case CdrStatus.OB_PREVIEW_CALLED:
-                case CdrStatus.OB_WEBCALL_NOANSWER:
-                case CdrStatus.OB_INTERNAL_CALLED:
-                case CdrStatus.OB_CUSTOMER_NO_ANSWER:
-                case CdrStatus.OB_CUSTOMER_CONGESTION:
-                case CdrStatus.OB_DIRECT_CUSTOMER_NO_ANSWER:
-                    result = "客户未接听";
-                    break;
-                case CdrStatus.OB_PREVIEW_AGENT_NO_ANSWER:
-                case CdrStatus.OB_PREDICTIVE_CALLED:
-                case CdrStatus.OB_PREDICTIVE_ANSWER:
-                case CdrStatus.OB_WEBCALL_CALLED:
-                case CdrStatus.OB_INTERNAL_AGENT_NO_ANSWER:
-                    result = "座席未接听";
-                    break;
-                case CdrStatus.OB_PREVIEW_BRIDGED:
-                case CdrStatus.OB_PREDICTIVE_BRIDGED:
-                case CdrStatus.OB_DIRECT_BRIDGED:
-                case CdrStatus.OB_WEBCALL_BRIDGED:
-                case CdrStatus.OB_INTERNAL_BRIDGED:
-                case CdrStatus.OB_BRIDGED:
-                    result = "双方接听";
-                    break;
-                default:
+            if (IB_ANSWER.contains(status)) {
+                result = "人工接听";
+            }
+            if (IB_NO_ANSWER.contains(status)) {
+                result = "人工未接听";
+            }
+            if (IB_SYSTEM_ANSWER.contains(status)) {
+                result = "系统应答";
+            }
+            if (IB_SYSTEM_NO_ANSWER.contains(status)) {
+                result = "系统未应答";
+            }
+            if (OB_CUSTOMER_NO_ANSWER.contains(status)) {
+                result = "客户未接听";
+            }
+            if (OB_AGENT_NO_ANSWER.contains(status)) {
+                result = "座席未接听";
+            }
+            if (OB_BRIDGED.contains(status)) {
+                result = "双方接听";
             }
         }
         return result;
@@ -204,6 +178,7 @@ public class CommonUtils {
 
     /**
      * 标记值转换中文
+     *
      * @param mark
      * @return
      */
@@ -256,10 +231,11 @@ public class CommonUtils {
 
     /**
      * 置忙类型
+     *
      * @param pauseType
      * @return
      */
-    public static  String getPauseType(Integer pauseType) {
+    public static String getPauseType(Integer pauseType) {
         String result = "";
         if (Objects.nonNull(pauseType)) {
             switch (pauseType) {
