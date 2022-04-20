@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Objects;
 
 /**
  * @author Wangyl
@@ -25,7 +26,7 @@ public class RecordFileTest extends AbstractTest {
     String obUniqueId = "medias_1-1604542113.9";
     String ibUniqueId = "medias_1-1609221606.6";
     String MainUniqueId = "medias_1-1645776905.37";
-//    String MainUniqueId = "medias_1-1645685191.126";
+    //    String MainUniqueId = "medias_1-1645685191.126";
     String uniqueId = "medias_1-1645685239.128";
 
     @Test
@@ -45,8 +46,9 @@ public class RecordFileTest extends AbstractTest {
             e.printStackTrace();
         }
     }
+
     @Test
-    public void describeDetailRecordFileUrl(){
+    public void describeDetailRecordFileUrl() {
         DescribeDetailRecordFileUrlRequest request = new DescribeDetailRecordFileUrlRequest();
         request.setMainUniqueId(ibUniqueId);
         request.setUniqueId(ibUniqueId);
@@ -63,31 +65,45 @@ public class RecordFileTest extends AbstractTest {
         }
 
     }
+
     @Test
     public void downloadRecordFile() {
         DownloadRecordFileRequest request = new DownloadRecordFileRequest();
-        request.setMainUniqueId(MainUniqueId);
-//        request.setRecordSide(2);
+        request.setMainUniqueId("medias_7-1650035747.183349");
         InputStream inputStream = null;
-        String filename;
+        FileOutputStream outputStream = null;
 
         try {
             HttpResponse response = client.doAction(request);
             inputStream = response.getEntity().getContent();
-            filename = response.getHeaders("Content-Disposition")[0].getValue().substring(21);
 
-            File f = new File(filename);
-            FileOutputStream os = new FileOutputStream(f);
+            String filename = response.getHeaders("Content-Disposition")[0].getValue().substring(21);
+            File file = new File("/var/log/" + filename);
+
+            outputStream = new FileOutputStream(file);
+
+            int len;
             byte[] buffer = new byte[4096];
-            int r;
-            while ((r = inputStream.read(buffer)) != -1) {
-                os.write(buffer, 0, r);
+            while ((len = inputStream.read(buffer)) != -1) {
+                outputStream.write(buffer, 0, len);
             }
-            os.flush();
-        } catch (ClientException e) {
+
+            outputStream.flush();
+
+        } catch (Exception e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } finally {
+            try {
+                if (Objects.nonNull(outputStream)) {
+                    outputStream.close();
+                }
+
+                if (Objects.nonNull(inputStream)) {
+                    inputStream.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
