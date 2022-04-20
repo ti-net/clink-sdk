@@ -69,7 +69,7 @@ public class RecordFileTest extends AbstractTest {
     @Test
     public void downloadRecordFile() {
         DownloadRecordFileRequest request = new DownloadRecordFileRequest();
-        request.setMainUniqueId("medias_7-1650035747.183349");
+        request.setMainUniqueId("medias_0-1650035747.183349");
         InputStream inputStream = null;
         FileOutputStream outputStream = null;
 
