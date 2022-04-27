@@ -34,7 +34,7 @@ public class TicketCommentTest extends AbstractTest {
         ticketCommentModel.setId(1);
         ticketCommentModel.setContent("content22222");
 
-        //附件信息
+        // 附件信息
         List<File> fileList = new ArrayList<>();
         File file = new File("51915.xlsx");
         fileList.add(file);
@@ -44,7 +44,7 @@ public class TicketCommentTest extends AbstractTest {
 
         ticketCommentRequest.setModel(ticketCommentModel);
         try {
-            //将请求参数赋值到 request中
+            // 将请求参数赋值到 request中
             TicketCommentResponse ticketCommentResponse = client.getResponseModel(ticketCommentRequest);
             System.out.println(ticketCommentResponse.getRequestId());
         } catch (Exception e) {
