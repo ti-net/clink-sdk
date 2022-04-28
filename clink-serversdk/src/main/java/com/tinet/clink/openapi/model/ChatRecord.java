@@ -109,6 +109,26 @@ public class ChatRecord {
      */
     private Long invitedTimes;
 
+    /**
+     * 结束原因 ChatCloseReasonEnum
+     */
+    private Integer closeReason;
+
+    /**
+     * 结束时的会话状态 ChatSessionStatus
+     */
+    private Integer closeStatus;
+
+    /**
+     * 设备类型
+     */
+    private String deviceType;
+
+    /**
+     * 接到类型 ChatDurationTypeEnum
+     */
+    private Integer chatDurationType;
+
     public String getMainUniqueId() {
         return mainUniqueId;
     }
@@ -397,4 +417,35 @@ public class ChatRecord {
         this.invitedTimes = invitedTimes;
     }
 
+    public Integer getCloseReason() {
+        return closeReason;
+    }
+
+    public void setCloseReason(Integer closeReason) {
+        this.closeReason = closeReason;
+    }
+
+    public Integer getCloseStatus() {
+        return closeStatus;
+    }
+
+    public void setCloseStatus(Integer closeStatus) {
+        this.closeStatus = closeStatus;
+    }
+
+    public String getDeviceType() {
+        return deviceType;
+    }
+
+    public void setDeviceType(String deviceType) {
+        this.deviceType = deviceType;
+    }
+
+    public Integer getChatDurationType() {
+        return chatDurationType;
+    }
+
+    public void setChatDurationType(Integer chatDurationType) {
+        this.chatDurationType = chatDurationType;
+    }
 }

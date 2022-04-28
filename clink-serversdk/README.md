@@ -317,3 +317,11 @@ public class Test {
 2、设置-座席设置-新增返回字段-满意度自动执行
 3、在线客服-会话记录-查询会话详情
 ```
+
+### V 2.0.63
+```
+1、在线客户-会话记录-查询会话详情-新增字段 
+    （设备类型:deviceType 接待类:chatDurationType 会话结束原因:closeReason 会话结束前置状态:closeStatus）
+2、在线客户-会话记录-同步会话详情-新增字段
+     (最后一条消息发送者:lastSenderMessageType 机器人有效会话:botChatValid 机器人会话轮数:botRound 访客消息数:visitorChatCount 座席消息数:agentChatCount 机器人消息数:botChatCount 访客发送第一条消息的时间:visitorFirstMsgTime 访客发送最后一条消息的时间:visitorLastMsgTime 座席发送第一条消息的时间:agentFirstMsgTime 座席发送最后一条消息的时间:agentLastMsgTime)
+```
