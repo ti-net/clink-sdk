@@ -39,7 +39,7 @@ public class TicketCommentTest extends AbstractTest {
         File file = new File("51915.xlsx");
         fileList.add(file);
         Map<String, List<File>> fileMap = new HashMap<>();
-        fileMap.put("fileKey", fileList);
+        fileMap.put("fileName", fileList);
         ticketCommentRequest.setFileMap(fileMap);
 
         ticketCommentRequest.setModel(ticketCommentModel);
