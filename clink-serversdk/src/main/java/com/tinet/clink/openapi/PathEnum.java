@@ -95,6 +95,8 @@ public enum PathEnum {
     ListComments("list_comments"),
     // 满意度记录
     ListInvestigations("list_investigations"),
+    // 添加满意度记录
+    CreateInvestigations("create_investigations"),
     // 下载通话录音文件
     DownloadRecordFile("download_record_file"),
     // 查询通话录音url
@@ -233,9 +235,11 @@ public enum PathEnum {
     UpdateTicket("update_ticket"),
     // 获取表单详情
     GetFormDetail("get_form_detail"),
-    //流转工单
+    // 流转工单
     FlowTicket("flow_ticket"),
-    //获取工单文件url
+    // 评论工单
+    CommentTicket("comment_ticket"),
+    // 获取工单文件 url
     GetTicketFileUrl("get_ticket_file_url"),
 
     /**
@@ -261,8 +265,17 @@ public enum PathEnum {
     /**
      * 满意度配置
      */
-    investigationSetting("investigation_setting");
+    investigationSetting("investigation_setting"),
 
+    /**
+     * 工具条authToken获取
+     */
+    wsAuthToken("ws_auth_token"),
+
+    /**
+     * 工具条agentToken获取
+     */
+    wsAgentToken("ws_agent_token");
     private String value;
 
     PathEnum(String value) {
