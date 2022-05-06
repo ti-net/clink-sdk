@@ -22,13 +22,13 @@ enterpriseId  //企业ID
 
 
 
-1.  在app/build.gradle中添加库依赖，推送[依赖包](https://github.com/ti-net/clink-sdk/tree/master/clink-appsdk/android/lib/libs.zip)
+1.  在app/build.gradle中添加库依赖，推送[依赖包](https://github.com/ti-net/clink-sdk/tree/master/clink-appsdk/android/lib/libs.zip)，[点击查看com.ti-net.oskit:online最新版本](https://search.maven.org/search?q=g:com.ti-net.oskit)
 
 
 
 ```java
 dependencies {
-	//客服基础库，必须依赖[点击查看最新版本](https://search.maven.org/search?q=g:com.ti-net.oskit)
+	//客服基础库，必须依赖
 	implementation 'com.ti-net.oskit:online:latest.release'
 	//客服Push依赖
 	//华为 push
