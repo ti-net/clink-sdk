@@ -28,7 +28,7 @@ enterpriseId  //企业ID
 
 ```java
 dependencies {
-	//客服基础库，必须依赖
+	//客服基础库，必须依赖[点击查看最新版本](https://search.maven.org/search?q=g:com.ti-net.oskit)
 	implementation 'com.ti-net.oskit:online:latest.release'
 	//客服Push依赖
 	//华为 push
