@@ -22,13 +22,13 @@ enterpriseId  //企业ID
 
 
 
-1.  在app/build.gradle中添加库依赖，推送[依赖包](https://github.com/ti-net/clink-sdk/tree/master/clink-appsdk/android/lib/libs.zip)
+1.  在app/build.gradle中添加库依赖，推送[依赖包](https://github.com/ti-net/clink-sdk/tree/master/clink-appsdk/android/lib/libs.zip)，[点击查看com.ti-net.oskit:online最新版本](https://search.maven.org/search?q=g:com.ti-net.oskit)
 
 
 
 ```java
 dependencies {
-	//客服基础库，必须依赖[点击查看最新版本](https://search.maven.org/search?q=g:com.ti-net.oskit)
+	//客服基础库，必须依赖
 	implementation 'com.ti-net.oskit:online:latest.release'
 	//客服Push依赖
 	//华为 push
@@ -60,19 +60,11 @@ dependencies {
    	 * 初始化客服SDK
    	 */
    	private void initOnlineSDK(){
-   		OnlineInitOption option = new OnlineInitOption();
-   		option.setAccessId(accessId);
-   		option.setAccessSecret(accessSecret);
-   		option.setEnterpriseId(enterpriseId);
-        // 请注意北京平台/上海平台
-   		option.setApiUrl("https://octopus-api-1.vlink.cn/api/sdk/v1");
-        // 测试环境
-   		option.setOnlineUrl("http://chat-app-bj-test3.clink.cn");
-		// 正式环境
-   		// option.setOnlineUrl("https://chat-app-bj.clink.cn");
-   		option.setDebug(BuildConfig.DEBUG);
-
-   		OnlineKitManager.init(this, option, new TImageLoader() {
+   		OnlineKitManager.init(this,
+                accessId ,
+                accessSecret,
+                enterpriseId,
+                PlatformDefine.Beijing, new TImageLoader() {
        			@Override
        			public void loadImage(ImageView imageView, Object uri) {
    				//TODO 加载图片
@@ -86,7 +78,7 @@ dependencies {
        			@Override
        			public void loadImage(ImageView imageView, Object uri, int originalWidth, int originalHeight, TImageLoaderListener listener) {
    				//TODO 加载图片
-   			});
+   			},BuildConfig.DEBUG);
    	}		
 
    }
