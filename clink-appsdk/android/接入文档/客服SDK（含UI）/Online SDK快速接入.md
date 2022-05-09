@@ -61,9 +61,9 @@ dependencies {
    	 */
    	private void initOnlineSDK(){
    		OnlineKitManager.init(this,
-                Constant.accessId ,
-                Constant.accessSecret,
-                Constant.enterpriseId,
+                accessId ,
+                accessSecret,
+                enterpriseId,
                 PlatformDefine.Beijing, new TImageLoader() {
        			@Override
        			public void loadImage(ImageView imageView, Object uri) {
