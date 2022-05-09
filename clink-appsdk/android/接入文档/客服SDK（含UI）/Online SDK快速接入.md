@@ -60,19 +60,11 @@ dependencies {
    	 * 初始化客服SDK
    	 */
    	private void initOnlineSDK(){
-   		OnlineInitOption option = new OnlineInitOption();
-   		option.setAccessId(accessId);
-   		option.setAccessSecret(accessSecret);
-   		option.setEnterpriseId(enterpriseId);
-        // 请注意北京平台/上海平台
-   		option.setApiUrl("https://octopus-api-1.vlink.cn/api/sdk/v1");
-        // 测试环境
-   		option.setOnlineUrl("http://chat-app-bj-test3.clink.cn");
-		// 正式环境
-   		// option.setOnlineUrl("https://chat-app-bj.clink.cn");
-   		option.setDebug(BuildConfig.DEBUG);
-
-   		OnlineKitManager.init(this, option, new TImageLoader() {
+   		OnlineKitManager.init(this,
+                Constant.accessId ,
+                Constant.accessSecret,
+                Constant.enterpriseId,
+                PlatformDefine.Beijing, new TImageLoader() {
        			@Override
        			public void loadImage(ImageView imageView, Object uri) {
    				//TODO 加载图片
@@ -86,7 +78,7 @@ dependencies {
        			@Override
        			public void loadImage(ImageView imageView, Object uri, int originalWidth, int originalHeight, TImageLoaderListener listener) {
    				//TODO 加载图片
-   			});
+   			},BuildConfig.DEBUG);
    	}		
 
    }
