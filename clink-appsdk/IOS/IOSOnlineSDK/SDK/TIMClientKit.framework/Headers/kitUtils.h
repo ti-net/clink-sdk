@@ -83,6 +83,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 + (UIImage *)imageNamed:(NSString *)name ofBundle:(NSString *)bundleName;
+
++ (NSString *)mimeTypeForFileAtPath:(NSString *)path;
 @end
 
 NS_ASSUME_NONNULL_END

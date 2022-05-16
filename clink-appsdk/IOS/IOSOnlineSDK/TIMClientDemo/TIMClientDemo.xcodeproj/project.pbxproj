@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -65,10 +65,9 @@
 		01F550EF2487B353008FDFCA /* IFMMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F550EB2487B353008FDFCA /* IFMMenu.m */; };
 		181EABEB26EE30910061B7F2 /* kefuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 181EABE926EE30910061B7F2 /* kefuVC.m */; };
 		181EABF426F02C810061B7F2 /* ChatInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181EABF226F02C810061B7F2 /* ChatInfoViewController.m */; };
-		22B15D4D280EADD900DA46CD /* TIMClientKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C4F2FBD2681F0360085AF85 /* TIMClientKit.framework */; };
-		22B15D4E280EADD900DA46CD /* TIMClientKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C4F2FBD2681F0360085AF85 /* TIMClientKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		22B15D4F280EADDB00DA46CD /* TIMClientLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C4F2FBC2681F0350085AF85 /* TIMClientLib.framework */; };
-		22B15D50280EADDB00DA46CD /* TIMClientLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C4F2FBC2681F0350085AF85 /* TIMClientLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3C15E31328320184001CC233 /* TIMClientLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C15E31028320184001CC233 /* TIMClientLib.framework */; platformFilter = ios; };
+		3C15E31428320184001CC233 /* TIMClient.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3C15E31128320184001CC233 /* TIMClient.bundle */; };
+		3C15E31528320184001CC233 /* TIMClientKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C15E31228320184001CC233 /* TIMClientKit.framework */; platformFilter = ios; };
 		3C2B5127251C8F9100C47227 /* UIButton+EnlargeEdge.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2B5126251C8F9100C47227 /* UIButton+EnlargeEdge.m */; };
 		3C2B5144251DCAD700C47227 /* SCIndexViewConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2B513E251DCAD700C47227 /* SCIndexViewConfiguration.m */; };
 		3C2B5145251DCAD700C47227 /* SCIndexView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2B5140251DCAD700C47227 /* SCIndexView.m */; };
@@ -85,7 +84,6 @@
 		3C2B5168251DCD4E00C47227 /* HCSortString.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2B515C251DCD4E00C47227 /* HCSortString.m */; };
 		3C2B5169251DCD4E00C47227 /* UIAlertController+HCAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2B515D251DCD4E00C47227 /* UIAlertController+HCAdd.m */; };
 		3C2B516D251DD51600C47227 /* UIImageView+LoadImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2B516C251DD51500C47227 /* UIImageView+LoadImage.m */; };
-		3C4F2FC12681F03B0085AF85 /* TIMClient.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3C4F2FBE2681F03A0085AF85 /* TIMClient.bundle */; };
 		3CD0B1BC2521ED24000DD9C1 /* CustomSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD0B1BB2521ED24000DD9C1 /* CustomSearchBar.m */; };
 		3CF0FC2325370127003114AE /* BaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF0FC2125370127003114AE /* BaseCollectionViewCell.m */; };
 		6906943819C6569AD86CD15A /* Pods_TIMClientKitDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82E3CD0CE097C8220EABDD8 /* Pods_TIMClientKitDemo.framework */; };
@@ -115,8 +113,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				22B15D50280EADDB00DA46CD /* TIMClientLib.framework in Embed Frameworks */,
-				22B15D4E280EADD900DA46CD /* TIMClientKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,6 +256,9 @@
 		181EABF326F02C810061B7F2 /* ChatInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatInfoViewController.h; sourceTree = "<group>"; };
 		18EF3AEB27392930005387D2 /* WebP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WebP.framework; sourceTree = "<group>"; };
 		22B9F0232639895C00CB8EA3 /* TIMClientLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TIMClientLib.framework; sourceTree = "<group>"; };
+		3C15E31028320184001CC233 /* TIMClientLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TIMClientLib.framework; path = ../../SDK/TIMClientLib.framework; sourceTree = "<group>"; };
+		3C15E31128320184001CC233 /* TIMClient.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TIMClient.bundle; path = ../../SDK/TIMClient.bundle; sourceTree = "<group>"; };
+		3C15E31228320184001CC233 /* TIMClientKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TIMClientKit.framework; path = ../../SDK/TIMClientKit.framework; sourceTree = "<group>"; };
 		3C2B5125251C8F9100C47227 /* UIButton+EnlargeEdge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+EnlargeEdge.h"; sourceTree = "<group>"; };
 		3C2B5126251C8F9100C47227 /* UIButton+EnlargeEdge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+EnlargeEdge.m"; sourceTree = "<group>"; };
 		3C2B513E251DCAD700C47227 /* SCIndexViewConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCIndexViewConfiguration.m; sourceTree = "<group>"; };
@@ -291,9 +290,6 @@
 		3C2B515E251DCD4E00C47227 /* HCSortString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCSortString.h; sourceTree = "<group>"; };
 		3C2B516B251DD51500C47227 /* UIImageView+LoadImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+LoadImage.h"; sourceTree = "<group>"; };
 		3C2B516C251DD51500C47227 /* UIImageView+LoadImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+LoadImage.m"; sourceTree = "<group>"; };
-		3C4F2FBC2681F0350085AF85 /* TIMClientLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TIMClientLib.framework; sourceTree = "<group>"; };
-		3C4F2FBD2681F0360085AF85 /* TIMClientKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TIMClientKit.framework; sourceTree = "<group>"; };
-		3C4F2FBE2681F03A0085AF85 /* TIMClient.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TIMClient.bundle; sourceTree = "<group>"; };
 		3CD0B1BA2521ED24000DD9C1 /* CustomSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSearchBar.h; sourceTree = "<group>"; };
 		3CD0B1BB2521ED24000DD9C1 /* CustomSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSearchBar.m; sourceTree = "<group>"; };
 		3CF0FC1C2536EEB6003114AE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -310,9 +306,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				01493D7B24E1219100C37981 /* libc++.tbd in Frameworks */,
-				22B15D4F280EADDB00DA46CD /* TIMClientLib.framework in Frameworks */,
-				22B15D4D280EADD900DA46CD /* TIMClientKit.framework in Frameworks */,
+				3C15E31328320184001CC233 /* TIMClientLib.framework in Frameworks */,
 				6906943819C6569AD86CD15A /* Pods_TIMClientKitDemo.framework in Frameworks */,
+				3C15E31528320184001CC233 /* TIMClientKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -565,9 +561,9 @@
 		01EA8607247CFFE300CD92F2 /* TIMClientKitDemo */ = {
 			isa = PBXGroup;
 			children = (
-				3C4F2FBE2681F03A0085AF85 /* TIMClient.bundle */,
-				3C4F2FBD2681F0360085AF85 /* TIMClientKit.framework */,
-				3C4F2FBC2681F0350085AF85 /* TIMClientLib.framework */,
+				3C15E31128320184001CC233 /* TIMClient.bundle */,
+				3C15E31228320184001CC233 /* TIMClientKit.framework */,
+				3C15E31028320184001CC233 /* TIMClientLib.framework */,
 				014012EB24894394000AC4DC /* Base */,
 				0112324F2486518C00FFAD59 /* Categories */,
 				0112324A2486500E00FFAD59 /* Config */,
@@ -962,10 +958,10 @@
 			files = (
 				01EA8618247CFFE600CD92F2 /* LaunchScreen.storyboard in Resources */,
 				01EA8615247CFFE600CD92F2 /* Assets.xcassets in Resources */,
-				3C4F2FC12681F03B0085AF85 /* TIMClient.bundle in Resources */,
 				01EA8613247CFFE300CD92F2 /* Main.storyboard in Resources */,
 				3C2B5160251DCD4E00C47227 /* unicode_to_hanyu_pinyin.txt in Resources */,
 				01123230248649DE00FFAD59 /* LoginViewController.xib in Resources */,
+				3C15E31428320184001CC233 /* TIMClient.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

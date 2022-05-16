@@ -1,6 +1,0 @@
-framework module TIMClientKit {
-  umbrella header "TIMClientKit.h"
-
-  export *
-  module * { export * }
-}

@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy,readonly) NSString *content;
 @property (nonatomic, copy,readonly) NSString *fileUrlPath;
-
+@property (nonatomic, copy,readonly) NSString *type;
 
 - (instancetype)initMessageWithContent:(NSString *)content;
 

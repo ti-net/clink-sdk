@@ -54,6 +54,12 @@ NS_ASSUME_NONNULL_BEGIN
                              success:(void (^)(void))successBlock
                                error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
 
+#pragma mark  发送文件消息
+-(void)sendFileMessageWithFileData:(NSData *)fileData
+                          fileType:(NSString *)fileType
+                             success:(void (^)(void))successBlock
+                               error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
+
 #pragma mark  获取客服信息
 -(void)getClientInfoWithSender:(NSString *)sender
                     senderType:(NSString *)senderType

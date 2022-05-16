@@ -1,6 +1,6 @@
 # Online SDK 快速集成
 
-版本 v1.1.0
+版本 v1.1.32
 
 ---
 
@@ -28,7 +28,7 @@
 
 ​		enterpriseld	// 企业ID
 
-### **2. 接入Online SDk**
+### 2. 接入Online SDk
 
 1. 在工程项目中添加以下包
 
@@ -40,7 +40,17 @@
 
 ​		另外需要增加libc++.tbd来支持c++环境
 
-2. 在AppDelegate中添加以下代码
+2. 配置iCloud文件访问权限和证书
+
+   在info.plist中添加如下两个配置
+   Supports opening documents in place
+   Application supports iTunes file sharing
+   
+   结果均为YES
+   
+   证书配置详见：图片1
+   
+3. 在AppDelegate中添加以下代码
 
    ```objective-c
    AppDelegate.h
@@ -62,7 +72,7 @@
    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
    ```
 
-3. 初始化SDK
+4. 初始化SDK
 
    3.1 初始化
 
@@ -171,7 +181,7 @@ typedef NS_ENUM(NSUInteger, TinetClickTextMessageEventType) {
 - (void)disconnect:(TIMDisConnectOption*)option success:(void (^)(void))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
 ```
 
-### **7. 资源下载**
+### 7. 资源下载
 
 demo详⻅online-demo.zip
 
