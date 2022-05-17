@@ -32,6 +32,16 @@ public class Investigation {
      */
     private Integer keys;
 
+    /**
+     * 按键
+     */
+    private String pressKey;
+
+    /**
+     * 按键时间
+     */
+    private Long pressTime;
+
     public Long getStartTime() {
         return startTime;
     }
@@ -70,5 +80,22 @@ public class Investigation {
 
     public void setKeys(Integer keys) {
         this.keys = keys;
+    }
+
+
+    public String getPressKey() {
+        return pressKey;
+    }
+
+    public void setPressKey(String pressKey) {
+        this.pressKey = pressKey;
+    }
+
+    public Long getPressTime() {
+        return pressTime;
+    }
+
+    public void setPressTime(Long pressTime) {
+        this.pressTime = pressTime;
     }
 }
