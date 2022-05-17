@@ -174,6 +174,11 @@ public class CdrIbRecordDetailModel {
      */
     private Long ibWaitDuration;
 
+    /**
+     * 客户速挂
+     */
+    private Boolean fastHangUp;
+
     public String getCallId() {
         return callId;
     }
@@ -437,6 +442,14 @@ public class CdrIbRecordDetailModel {
 
     public void setMark(Integer mark) {
         this.mark = mark;
+    }
+
+    public Boolean getFastHangUp() {
+        return fastHangUp;
+    }
+
+    public void setFastHangUp(Boolean fastHangUp) {
+        this.fastHangUp = fastHangUp;
     }
 }
 

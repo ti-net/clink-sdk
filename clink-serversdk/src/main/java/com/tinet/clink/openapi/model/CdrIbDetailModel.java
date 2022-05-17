@@ -81,6 +81,51 @@ public class CdrIbDetailModel {
      */
     private String qno;
 
+    /**
+     * 咨询开始时间
+     */
+    private Long consultStartTime;
+
+    /**
+     * 咨询接通时间
+     */
+    private Long consultLinkTime;
+
+    /**
+     * 咨询结束时间
+     */
+    private Long consultEndTime;
+
+    /**
+     * 咨询接回时间
+     */
+    private Long consultUnconsultTime;
+
+    /**
+     * 咨询三方时间
+     */
+    private Long consultThreewayTime;
+
+    /**
+     * 咨询转移时间
+     */
+    private Long consultTransferTime;
+
+    /**
+     * 被咨询座席振铃时长
+     */
+    private Integer consultRingingTime;
+
+    /**
+     * 咨询座席双方通话时长
+     */
+    private Integer consultBridgeTime;
+
+    /**
+     * 座席与客户双方通话时长
+     */
+    private Integer clientCustomerBridgeTime;
+
     public String getMainUniqueId() {
         return mainUniqueId;
     }
@@ -191,5 +236,77 @@ public class CdrIbDetailModel {
 
     public void setQno(String qno) {
         this.qno = qno;
+    }
+
+    public Long getConsultStartTime() {
+        return consultStartTime;
+    }
+
+    public void setConsultStartTime(Long consultStartTime) {
+        this.consultStartTime = consultStartTime;
+    }
+
+    public Long getConsultLinkTime() {
+        return consultLinkTime;
+    }
+
+    public void setConsultLinkTime(Long consultLinkTime) {
+        this.consultLinkTime = consultLinkTime;
+    }
+
+    public Long getConsultEndTime() {
+        return consultEndTime;
+    }
+
+    public void setConsultEndTime(Long consultEndTime) {
+        this.consultEndTime = consultEndTime;
+    }
+
+    public Long getConsultUnconsultTime() {
+        return consultUnconsultTime;
+    }
+
+    public void setConsultUnconsultTime(Long consultUnconsultTime) {
+        this.consultUnconsultTime = consultUnconsultTime;
+    }
+
+    public Long getConsultThreewayTime() {
+        return consultThreewayTime;
+    }
+
+    public void setConsultThreewayTime(Long consultThreewayTime) {
+        this.consultThreewayTime = consultThreewayTime;
+    }
+
+    public Long getConsultTransferTime() {
+        return consultTransferTime;
+    }
+
+    public void setConsultTransferTime(Long consultTransferTime) {
+        this.consultTransferTime = consultTransferTime;
+    }
+
+    public Integer getConsultRingingTime() {
+        return consultRingingTime;
+    }
+
+    public void setConsultRingingTime(Integer consultRingingTime) {
+        this.consultRingingTime = consultRingingTime;
+    }
+
+    public Integer getConsultBridgeTime() {
+        return consultBridgeTime;
+    }
+
+    public void setConsultBridgeTime(Integer consultBridgeTime) {
+        this.consultBridgeTime = consultBridgeTime;
+    }
+
+    public Integer getClientCustomerBridgeTime() {
+        return clientCustomerBridgeTime;
+    }
+
+    public void setClientCustomerBridgeTime(Integer clientCustomerBridgeTime) {
+        this.clientCustomerBridgeTime = clientCustomerBridgeTime;
     }
 }
