@@ -4,7 +4,6 @@
 
 ---
 
-[TOC]
 
 ### **使用说明**
 
@@ -20,7 +19,7 @@
 - 开发工具：Xcode 13
 - macOS: 11.6.1
 
-### **1. 申请Appkey**
+### 1. 申请Appkey
 
 ​		accessId		// 移动端唯一标识，对应座席端渠道ID
 
@@ -30,7 +29,7 @@
 
 ### 2. 接入Online SDk
 
-1. 在工程项目中添加以下包
+#### 2.1. 在工程项目中添加以下包
 
 ​		TIMCilentLib.framework(Embed & Sign)
 
@@ -40,76 +39,76 @@
 
 ​		另外需要增加libc++.tbd来支持c++环境
 
-2. 配置iCloud文件访问权限和证书
+#### 2.2. 配置iCloud文件访问权限和证书
 
    在info.plist中添加如下两个配置
    Supports opening documents in place
    Application supports iTunes file sharing
-   
+
    结果均为YES
-   
-   证书配置详见：图片1
-   
-3. 在AppDelegate中添加以下代码
 
-   ```objective-c
-   AppDelegate.h
-   
-   @interface AppDelegate : UIResponder <UIApplicationDelegate>
-   
-   @property (strong, nonatomic) UIWindow *window;
-   
-   + (AppDelegate *) shareAppDelegate;
-   
-   @end
-   
-   AppDelegate.m
-   
-   + (AppDelegate *)shareAppDelegate {
-   		 return (AppDelegate *)[UIApplication sharedApplication].delegate;
-   }
-   
-   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-   ```
+   证书配置详见：
 
-4. 初始化SDK
+   ![图片1](./图片1.png)
 
-   3.1 初始化
-
-   ```objective-c
-   - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-     [[OnlineInitOption shareOnlineInitOption] initWithOptionIsDebug:YES
-                                                                apiUrl:@"IM 服务器地址"
-                                                             onlineUrl:@"客服地址"
-                                                          accessSecret:@"在座席端管理平台创建渠道时生成"
-                                                              accessId:@"移动端唯一标识，对应座席端渠道ID"
-                                                          enterpriseId:@"企业ID"]
-   }
-   
-   ```
-
-   3.2 在info.plist中添加Online SDK所需要的杈限
-
-   ```objective-c
-   Privacy - Camera Usage Description
-   Privacy - Microphone Usage Description
-   Privacy - Photo Library Additions Usage Description
-   Privacy - Photo Library Usage Description
-   ```
-
-### **3. 接入Online Push，获取deviceToken上传到IM服务器。并且把苹果推送的p12证书放入后台服务器根目录**
+#### 2.3 在AppDelegate中添加以下代码
 
 ```objective-c
-#pragma mark - 注册推送回调获取 DeviceToken
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {        
-  NSLog(@"注册推送成功 %@",deviceToken);    
-  [[TIMKit sharedTIMKit] setDeviceTokenData:deviceToken];
+AppDelegate.h
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
+
+@property (strong, nonatomic) UIWindow *window;
+
++ (AppDelegate *) shareAppDelegate;
+
+@end
+
+AppDelegate.m
+
++ (AppDelegate *)shareAppDelegate {
+		 return (AppDelegate *)[UIApplication sharedApplication].delegate;
 }
+
+self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 ```
 
-### **4. 客服会话⻚面继承TIMCustomerChatVC类**
+### 3.初始化SDK
 
-1. 客服会话⻚面
+#### 3.1 初始化
+
+> IsDebug: 是否在控制台打印内部调试信息
+>
+> apiUrl: IM 服务器地址        ex: @"https://octopus-api-1.vlink.cn/api/sdk/v1"
+>
+> onlineUrl: 客服服务地址     ex: 北京平台为 @"https://chat-app-bj.clink.cn"
+>
+> 其他：参见 1.申请Appkey
+
+```objective-c
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  [[OnlineInitOption shareOnlineInitOption] initWithOptionIsDebug:YES
+                                                             apiUrl:@"IM 服务器地址"
+                                                          onlineUrl:@"客服服务地址"
+                                                       accessSecret:@"在座席端管理平台创建渠道时生成"
+                                                           accessId:@"移动端唯一标识，对应座席端渠道ID"
+                                                       enterpriseId:@"企业ID"]
+}
+
+```
+
+#### 3.2 在info.plist中添加Online SDK所需要的杈限
+
+```objective-c
+Privacy - Camera Usage Description
+Privacy - Microphone Usage Description
+Privacy - Photo Library Additions Usage Description
+Privacy - Photo Library Usage Description
+```
+
+### 4. 客服会话⻚面继承TIMCustomerChatVC类
+
+#### 4.1 客服会话⻚面
 
 ```objective-c
 #import <TIMClientKit/TIMClientKit.h>
@@ -121,9 +120,9 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 ```
 
-2. 文本类型消息中关于链接、单号和手机号的相关点击回调 （更新于 v1.1.0）
+#### 4.2 文本类型消息中关于链接、单号和手机号的相关点击回调 （更新于 v1.1.0）
 
-   > 注：此方法需要在TIMCustomerChatVC类的子类中实现
+> 注：此方法需要在TIMCustomerChatVC类的子类中实现
 
 ```objective-c
 typedef NS_ENUM(NSUInteger, TinetClickTextMessageEventType) {
@@ -138,11 +137,17 @@ typedef NS_ENUM(NSUInteger, TinetClickTextMessageEventType) {
 - (void)tinet_textMessageClickAction:(TinetClickTextMessageEventType)eventType userInfo:(NSDictionary *)userInfo;
 ```
 
+### 5. 接通客服并创建会话
 
-
-### **5. 接通客服并创建会话**
-
-连接在线客服，同一用户多次调用connect不会触发多次连接，id为用户侧的用户ID（可为空，为空的情况下，系统默认为UUID去除-号，不可包含中文或特殊符号，建议使用用户系统ID方便APP拓展功能），nickname为用户昵称（可为空）,phoneNum为手机号（可为空），headUrl用户头像全链接地址（可为空）。
+> 连接在线客服，同一用户多次调用connect不会触发多次连接
+>
+> id为用户侧的用户ID（可为空，为空的情况下，系统默认为UUID去除-号，不可包含中文或特殊符号，建议使用用户系统ID方便APP拓展功能）
+>
+> nickname为用户昵称（可为空）
+>
+> phoneNum为手机号（可为空）
+>
+> headUrl用户头像全链接地址（可为空）
 
 ```objective-c
 //连接客服
@@ -154,7 +159,7 @@ typedef NS_ENUM(NSUInteger, TinetClickTextMessageEventType) {
   NSLog(@"链接成功");
 } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {																						[self showMBErrorView:@"网络请求错误，请检查网络"];
 } tokenIncorrect:^{    
-  [self showMBErrorView:@"accessToken不正确"];
+  [self showMBErrorView:@"accessSecret不正确"];
 }];
 
 
@@ -183,47 +188,4 @@ typedef NS_ENUM(NSUInteger, TinetClickTextMessageEventType) {
 
 ### 7. 资源下载
 
-demo详⻅online-demo.zip
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+demo详⻅clink-appsdk/IOS/IOSOnlineSDK/TIMClientDemo

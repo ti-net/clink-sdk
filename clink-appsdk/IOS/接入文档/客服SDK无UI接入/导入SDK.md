@@ -1,3 +1,10 @@
+版本 v1.1.32
+
+---
+
+
+### 
+
 1. 在工程项目中添加以下包:
 
 TIMClientLib.framework(Embed & Sign)

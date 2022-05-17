@@ -1,4 +1,9 @@
-# 
+版本 v1.1.32
+
+---
+
+ 
+
 ## 使用说明
 欢迎使用“智慧服务平台”的在线客服移动端开发者工具套件（SDK）。本文针对安卓端使用做详细说明，通过SDK，可以在您的APP中快速集成访客端在线聊天的功能，以具备文本、图片、视频等类型消息收发及消息通知能力。
 ## 开发环境
@@ -136,5 +141,5 @@ OnlineServiceClient.connect(id,nickname,headerUrl,mobile,extraInfo,new OnlineCon
 ```java
 OnlineServiceClient.disConnect(boolean isReceivePush,null)
 ```
-### 7. 资源下载
+### 6. 资源下载
 demo详见[online-demo.zip](https://github.com/ti-net/clink-sdk/tree/master/clink-appsdk/android/demo/online-sdk.zip)
