@@ -52,6 +52,11 @@ public class CreateTaskPropertyRequest extends AbstractRequestModel<CreateTaskPr
     private Integer start;
 
     /**
+     * 表单模板名称
+     */
+    private String formName;
+
+    /**
      * 任务详情
      */
     private CreateTaskInventoryModel[] taskInventory;
@@ -123,6 +128,17 @@ public class CreateTaskPropertyRequest extends AbstractRequestModel<CreateTaskPr
         }
     }
 
+    public String getFormName() {
+        return formName;
+    }
+
+    public void setFormName(String formName) {
+        this.formName = formName;
+        if (formName != null) {
+            putBodyParameter("formName", formName);
+        }
+    }
+
     public Integer getStart() {
         return start;
     }
@@ -165,6 +181,7 @@ public class CreateTaskPropertyRequest extends AbstractRequestModel<CreateTaskPr
                 ", duplicateStrategy=" + duplicateStrategy +
                 ", creatorName='" + creatorName + '\'' +
                 ", start=" + start +
+                ", formName='" + formName + '\'' +
                 ", taskInventory=" + Arrays.toString(taskInventory) +
                 "} " + super.toString();
     }

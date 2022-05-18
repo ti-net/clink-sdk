@@ -18,7 +18,7 @@ public class CreateTaskPropertyRequestTest extends AbstractTest {
     public void createTaskPropertyTest() throws Exception {
         CreateTaskPropertyRequest request = new CreateTaskPropertyRequest();
         //外呼任务名称
-        request.setName("任务名称000");
+        request.setName("任务名称111");
         //是否分配，0：不分配；1：分配
         request.setAssignation(1);
         //分配规则 0：顺序分配 ，1： 随机分配
