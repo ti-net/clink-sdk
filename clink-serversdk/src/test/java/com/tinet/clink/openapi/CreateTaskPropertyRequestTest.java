@@ -1,9 +1,6 @@
 package com.tinet.clink.openapi;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tinet.clink.openapi.exceptions.ClientException;
-import com.tinet.clink.openapi.exceptions.ServerException;
 import com.tinet.clink.openapi.model.CreateTaskInventoryModel;
 import com.tinet.clink.openapi.model.TaskInventoryCustomizeFieldModel;
 import com.tinet.clink.openapi.request.call.task.CreateTaskPropertyRequest;
@@ -22,10 +19,6 @@ public class CreateTaskPropertyRequestTest extends AbstractTest {
         CreateTaskPropertyRequest request = new CreateTaskPropertyRequest();
         //外呼任务名称
         request.setName("任务名称000");
-        //新建外呼任务整理时长
-        request.setWrapupTime(10);
-        //座席私有优先，0：关闭；1：开启；
-        request.setPrivatePreferred(0);
         //是否分配，0：不分配；1：分配
         request.setAssignation(1);
         //分配规则 0：顺序分配 ，1： 随机分配
@@ -37,6 +30,7 @@ public class CreateTaskPropertyRequestTest extends AbstractTest {
         request.setDuplicateStrategy(1);
         //创建人姓名
         request.setCreatorName("wangpw");
+        request.setStart(1);
         //任务详情
         CreateTaskInventoryModel[] taskInventory = new CreateTaskInventoryModel[1];
         taskInventory[0] = new CreateTaskInventoryModel();
@@ -55,55 +49,5 @@ public class CreateTaskPropertyRequestTest extends AbstractTest {
         System.out.println("request-" + mapper.writeValueAsString(request));
         CreateTaskPropertyResponse response = client.getResponseModel(request);
         System.out.println("response-" + mapper.writeValueAsString(response));
-    }
-
-    public static void main(String[] args) {
-        // 创建访问服务的client实例并初始化
-        ClientConfiguration configuration = new ClientConfiguration(
-                "<your-access-key-id>",          // AccessKeyId
-                "<your-access-key-secret>");     // AccessKeySecret
-
-        Client client = new Client(configuration);
-
-        // 创建API请求并设置参数
-        CreateTaskPropertyRequest request = new CreateTaskPropertyRequest();
-        request.setName("任务名称");
-        request.setWrapupTime(10);
-        request.setPrivatePreferred(0);
-        request.setAssignation(1);
-        request.setAssignationType(1);
-        String[] cnos = new String[]{"0000"};
-        request.setCnos(cnos);
-        request.setDuplicateStrategy(1);
-        request.setCreatorName("admin");
-
-        CreateTaskInventoryModel[] taskInventory = new CreateTaskInventoryModel[1];
-        taskInventory[0] = new CreateTaskInventoryModel();
-        taskInventory[0].setCustomerName("客户名称");
-        taskInventory[0].setCustomerTel("13688889999");
-        taskInventory[0].setRemark("备注");
-
-        TaskInventoryCustomizeFieldModel[] customize = new TaskInventoryCustomizeFieldModel[1];
-        customize[0] = new TaskInventoryCustomizeFieldModel();
-        customize[0].setName("字段名称");
-        customize[0].setValue("字段内容");
-        taskInventory[0].setCustomize(customize);
-        request.setTaskInventory(taskInventory);
-
-        // 发起请求并处理应答或异常
-        ObjectMapper mapper = new ObjectMapper();
-        CreateTaskPropertyResponse responseModel = null;
-        try {
-            responseModel = client.getResponseModel(request);
-            try {
-                System.out.println(mapper.writeValueAsString(responseModel));
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
-            }
-        } catch (ClientException e) {
-            e.printStackTrace();
-        } catch (ServerException e) {
-            e.printStackTrace();
-        }
     }
 }
