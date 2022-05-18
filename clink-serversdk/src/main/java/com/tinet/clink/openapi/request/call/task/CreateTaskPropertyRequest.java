@@ -22,16 +22,6 @@ public class CreateTaskPropertyRequest extends AbstractRequestModel<CreateTaskPr
     private String name;
 
     /**
-     * 外呼任务整理时长
-     */
-    private Integer wrapupTime;
-
-    /**
-     * 座席私有优先，0：关闭；1：开启；
-     */
-    private Integer privatePreferred;
-
-    /**
      * 是否分配，0：不分配；1：分配
      */
     private Integer assignation;
@@ -57,6 +47,11 @@ public class CreateTaskPropertyRequest extends AbstractRequestModel<CreateTaskPr
     private String creatorName;
 
     /**
+     * 是否自动启用 1：启动 0：不启动，默认不启动
+     */
+    private Integer start;
+
+    /**
      * 任务详情
      */
     private CreateTaskInventoryModel[] taskInventory;
@@ -70,28 +65,6 @@ public class CreateTaskPropertyRequest extends AbstractRequestModel<CreateTaskPr
         this.name = name;
         if (name != null) {
             putBodyParameter("name", name);
-        }
-    }
-
-    public Integer getWrapupTime() {
-        return wrapupTime;
-    }
-
-    public void setWrapupTime(Integer wrapupTime) {
-        this.wrapupTime = wrapupTime;
-        if (wrapupTime != null) {
-            putBodyParameter("wrapupTime", wrapupTime);
-        }
-    }
-
-    public Integer getPrivatePreferred() {
-        return privatePreferred;
-    }
-
-    public void setPrivatePreferred(Integer privatePreferred) {
-        this.privatePreferred = privatePreferred;
-        if (privatePreferred != null) {
-            putBodyParameter("privatePreferred", privatePreferred);
         }
     }
 
@@ -150,6 +123,17 @@ public class CreateTaskPropertyRequest extends AbstractRequestModel<CreateTaskPr
         }
     }
 
+    public Integer getStart() {
+        return start;
+    }
+
+    public void setStart(Integer start) {
+        this.start = start;
+        if (start != null) {
+            putBodyParameter("start", start);
+        }
+    }
+
     public CreateTaskInventoryModel[] getTaskInventory() {
         return taskInventory;
     }
@@ -175,13 +159,12 @@ public class CreateTaskPropertyRequest extends AbstractRequestModel<CreateTaskPr
     public String toString() {
         return "CreateTaskPropertyRequest{" +
                 "name='" + name + '\'' +
-                ", wrapupTime=" + wrapupTime +
-                ", privatePreferred=" + privatePreferred +
                 ", assignation=" + assignation +
                 ", assignationType=" + assignationType +
                 ", cnos=" + Arrays.toString(cnos) +
                 ", duplicateStrategy=" + duplicateStrategy +
                 ", creatorName='" + creatorName + '\'' +
+                ", start=" + start +
                 ", taskInventory=" + Arrays.toString(taskInventory) +
                 "} " + super.toString();
     }
