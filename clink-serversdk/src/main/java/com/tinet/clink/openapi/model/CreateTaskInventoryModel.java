@@ -1,7 +1,5 @@
 package com.tinet.clink.openapi.model;
 
-import java.util.Arrays;
-
 /**
  * 外呼任务详情创建model
  *
@@ -63,13 +61,4 @@ public class CreateTaskInventoryModel {
         this.customize = customize;
     }
 
-    @Override
-    public String toString() {
-        return "CreateTaskInventoryModel{" +
-                "customerName='" + customerName + '\'' +
-                ", customerTel='" + customerTel + '\'' +
-                ", remark='" + remark + '\'' +
-                ", customize=" + Arrays.toString(customize) +
-                '}';
-    }
 }
