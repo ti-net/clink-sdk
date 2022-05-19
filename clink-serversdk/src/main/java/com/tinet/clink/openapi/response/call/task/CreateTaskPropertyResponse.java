@@ -24,11 +24,4 @@ public class CreateTaskPropertyResponse extends ResponseModel {
     public void setTaskProperty(CreateTaskPropertyResponseModel taskProperty) {
         this.taskProperty = taskProperty;
     }
-
-    @Override
-    public String toString() {
-        return "CreateTaskPropertyResponse{" +
-                "taskProperty=" + taskProperty +
-                "} " + super.toString();
-    }
 }

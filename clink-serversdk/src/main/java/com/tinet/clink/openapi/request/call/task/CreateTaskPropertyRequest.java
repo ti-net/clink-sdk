@@ -6,8 +6,6 @@ import com.tinet.clink.openapi.request.AbstractRequestModel;
 import com.tinet.clink.openapi.response.call.task.CreateTaskPropertyResponse;
 import com.tinet.clink.openapi.utils.HttpMethodType;
 
-import java.util.Arrays;
-
 /**
  * 外呼任务创建请求
  *
@@ -30,6 +28,11 @@ public class CreateTaskPropertyRequest extends AbstractRequestModel<CreateTaskPr
      * 分配规则 0：顺序分配 ，1： 随机分配
      */
     private Integer assignationType;
+
+    /**
+     * 选定外呼任务类型，1：已有外呼任务；2：新建外呼任务
+     */
+    private Integer taskType;
 
     /**
      * 分配座席号
@@ -59,7 +62,7 @@ public class CreateTaskPropertyRequest extends AbstractRequestModel<CreateTaskPr
     /**
      * 任务详情
      */
-    private CreateTaskInventoryModel[] taskInventory;
+    private CreateTaskInventoryModel[] taskInventories;
 
 
     public String getName() {
@@ -92,6 +95,17 @@ public class CreateTaskPropertyRequest extends AbstractRequestModel<CreateTaskPr
         this.assignationType = assignationType;
         if (assignationType != null) {
             putBodyParameter("assignationType", assignationType);
+        }
+    }
+
+    public Integer getTaskType() {
+        return taskType;
+    }
+
+    public void setTaskType(Integer taskType) {
+        this.taskType = taskType;
+        if (taskType != null) {
+            putBodyParameter("taskType", taskType);
         }
     }
 
@@ -150,16 +164,17 @@ public class CreateTaskPropertyRequest extends AbstractRequestModel<CreateTaskPr
         }
     }
 
-    public CreateTaskInventoryModel[] getTaskInventory() {
-        return taskInventory;
+    public CreateTaskInventoryModel[] getTaskInventories() {
+        return taskInventories;
     }
 
-    public void setTaskInventory(CreateTaskInventoryModel[] taskInventory) {
-        this.taskInventory = taskInventory;
-        if (taskInventory != null) {
-            putBodyParameter("taskInventory", taskInventory);
+    public void setTaskInventories(CreateTaskInventoryModel[] taskInventories) {
+        this.taskInventories = taskInventories;
+        if (taskInventories != null) {
+            putBodyParameter("taskInventories", taskInventories);
         }
     }
+
 
     public CreateTaskPropertyRequest() {
         super(PathEnum.CreateTaskProperty.value(), HttpMethodType.POST);
@@ -171,18 +186,4 @@ public class CreateTaskPropertyRequest extends AbstractRequestModel<CreateTaskPr
         return CreateTaskPropertyResponse.class;
     }
 
-    @Override
-    public String toString() {
-        return "CreateTaskPropertyRequest{" +
-                "name='" + name + '\'' +
-                ", assignation=" + assignation +
-                ", assignationType=" + assignationType +
-                ", cnos=" + Arrays.toString(cnos) +
-                ", duplicateStrategy=" + duplicateStrategy +
-                ", creatorName='" + creatorName + '\'' +
-                ", start=" + start +
-                ", formName='" + formName + '\'' +
-                ", taskInventory=" + Arrays.toString(taskInventory) +
-                "} " + super.toString();
-    }
 }
