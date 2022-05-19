@@ -65,6 +65,10 @@
 		01F550EF2487B353008FDFCA /* IFMMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F550EB2487B353008FDFCA /* IFMMenu.m */; };
 		181EABEB26EE30910061B7F2 /* kefuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 181EABE926EE30910061B7F2 /* kefuVC.m */; };
 		181EABF426F02C810061B7F2 /* ChatInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181EABF226F02C810061B7F2 /* ChatInfoViewController.m */; };
+		22B15D4D280EADD900DA46CD /* TIMClientKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C4F2FBD2681F0360085AF85 /* TIMClientKit.framework */; };
+		22B15D4E280EADD900DA46CD /* TIMClientKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C4F2FBD2681F0360085AF85 /* TIMClientKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		22B15D4F280EADDB00DA46CD /* TIMClientLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C4F2FBC2681F0350085AF85 /* TIMClientLib.framework */; };
+		22B15D50280EADDB00DA46CD /* TIMClientLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C4F2FBC2681F0350085AF85 /* TIMClientLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3C2B5127251C8F9100C47227 /* UIButton+EnlargeEdge.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2B5126251C8F9100C47227 /* UIButton+EnlargeEdge.m */; };
 		3C2B5144251DCAD700C47227 /* SCIndexViewConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2B513E251DCAD700C47227 /* SCIndexViewConfiguration.m */; };
 		3C2B5145251DCAD700C47227 /* SCIndexView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2B5140251DCAD700C47227 /* SCIndexView.m */; };
@@ -81,12 +85,10 @@
 		3C2B5168251DCD4E00C47227 /* HCSortString.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2B515C251DCD4E00C47227 /* HCSortString.m */; };
 		3C2B5169251DCD4E00C47227 /* UIAlertController+HCAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2B515D251DCD4E00C47227 /* UIAlertController+HCAdd.m */; };
 		3C2B516D251DD51600C47227 /* UIImageView+LoadImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2B516C251DD51500C47227 /* UIImageView+LoadImage.m */; };
-		3C4F2FBF2681F03B0085AF85 /* TIMClientLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C4F2FBC2681F0350085AF85 /* TIMClientLib.framework */; };
-		3C4F2FC02681F03B0085AF85 /* TIMClientKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C4F2FBD2681F0360085AF85 /* TIMClientKit.framework */; };
 		3C4F2FC12681F03B0085AF85 /* TIMClient.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3C4F2FBE2681F03A0085AF85 /* TIMClient.bundle */; };
 		3CD0B1BC2521ED24000DD9C1 /* CustomSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD0B1BB2521ED24000DD9C1 /* CustomSearchBar.m */; };
 		3CF0FC2325370127003114AE /* BaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF0FC2125370127003114AE /* BaseCollectionViewCell.m */; };
-		8C8FEF24ED3948A6E633C49E /* Pods_TIMClientKitDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82E3CD0CE097C8220EABDD8 /* Pods_TIMClientKitDemo.framework */; };
+		6906943819C6569AD86CD15A /* Pods_TIMClientKitDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82E3CD0CE097C8220EABDD8 /* Pods_TIMClientKitDemo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +115,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				22B15D50280EADDB00DA46CD /* TIMClientLib.framework in Embed Frameworks */,
+				22B15D4E280EADD900DA46CD /* TIMClientKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,10 +309,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C4F2FBF2681F03B0085AF85 /* TIMClientLib.framework in Frameworks */,
 				01493D7B24E1219100C37981 /* libc++.tbd in Frameworks */,
-				8C8FEF24ED3948A6E633C49E /* Pods_TIMClientKitDemo.framework in Frameworks */,
-				3C4F2FC02681F03B0085AF85 /* TIMClientKit.framework in Frameworks */,
+				22B15D4F280EADDB00DA46CD /* TIMClientLib.framework in Frameworks */,
+				22B15D4D280EADD900DA46CD /* TIMClientKit.framework in Frameworks */,
+				6906943819C6569AD86CD15A /* Pods_TIMClientKitDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

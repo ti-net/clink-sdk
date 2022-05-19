@@ -63,6 +63,7 @@ FOUNDATION_EXPORT const unsigned char TIMClientVersionString[];
 #import <TIMClientLib/RobotRichMessage.h>
 #import <TIMClientLib/ChatLeaveMessage.h>
 #import <TIMClientLib/ChatLeaveReceiveMessage.h>
+#import <TIMClientLib/ChatInvestigationMessage.h>
 
 #import <TIMClientLib/OnlineEventSendManager.h>
 #import <TIMClientLib/OnlineMessageSendManager.h>

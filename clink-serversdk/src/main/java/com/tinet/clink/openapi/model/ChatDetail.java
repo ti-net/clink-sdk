@@ -58,6 +58,56 @@ public class ChatDetail {
      */
     private String robotName;
 
+    /**
+     * 最后一条消息发送者
+     */
+    private Integer lastSenderMessageType;
+
+    /**
+     * 机器人有效会话
+     */
+    private Integer botChatValid;
+
+    /**
+     * 机器人会话轮数
+     */
+    private Integer botRound;
+
+    /**
+     * 访客消息数
+     */
+    private Integer visitorChatCount = 0;
+
+    /**
+     * 座席消息数
+     */
+    private Integer agentChatCount = 0;
+
+    /**
+     * 机器人消息数
+     */
+    private Integer botChatCount = 0;
+
+    /**
+     * 访客发送第一条消息的时间
+     */
+    private Long visitorFirstMsgTime;
+
+    /**
+     * 访客发送最后一条消息的时间
+     */
+    private Long visitorLastMsgTime;
+
+    /**
+     * 座席发送第一条消息的时间
+     */
+    private Long agentFirstMsgTime;
+
+    /**
+     * 座席发送最后一条消息的时间
+     */
+    private Long agentLastMsgTime;
+
     public String getMainUniqueId() {
         return mainUniqueId;
     }
@@ -144,5 +194,85 @@ public class ChatDetail {
 
     public void setRobotName(String robotName) {
         this.robotName = robotName;
+    }
+
+    public Integer getLastSenderMessageType() {
+        return lastSenderMessageType;
+    }
+
+    public void setLastSenderMessageType(Integer lastSenderMessageType) {
+        this.lastSenderMessageType = lastSenderMessageType;
+    }
+
+    public Integer getBotChatValid() {
+        return botChatValid;
+    }
+
+    public void setBotChatValid(Integer botChatValid) {
+        this.botChatValid = botChatValid;
+    }
+
+    public Integer getBotRound() {
+        return botRound;
+    }
+
+    public void setBotRound(Integer botRound) {
+        this.botRound = botRound;
+    }
+
+    public Integer getVisitorChatCount() {
+        return visitorChatCount;
+    }
+
+    public void setVisitorChatCount(Integer visitorChatCount) {
+        this.visitorChatCount = visitorChatCount;
+    }
+
+    public Integer getAgentChatCount() {
+        return agentChatCount;
+    }
+
+    public void setAgentChatCount(Integer agentChatCount) {
+        this.agentChatCount = agentChatCount;
+    }
+
+    public Integer getBotChatCount() {
+        return botChatCount;
+    }
+
+    public void setBotChatCount(Integer botChatCount) {
+        this.botChatCount = botChatCount;
+    }
+
+    public Long getVisitorFirstMsgTime() {
+        return visitorFirstMsgTime;
+    }
+
+    public void setVisitorFirstMsgTime(Long visitorFirstMsgTime) {
+        this.visitorFirstMsgTime = visitorFirstMsgTime;
+    }
+
+    public Long getVisitorLastMsgTime() {
+        return visitorLastMsgTime;
+    }
+
+    public void setVisitorLastMsgTime(Long visitorLastMsgTime) {
+        this.visitorLastMsgTime = visitorLastMsgTime;
+    }
+
+    public Long getAgentFirstMsgTime() {
+        return agentFirstMsgTime;
+    }
+
+    public void setAgentFirstMsgTime(Long agentFirstMsgTime) {
+        this.agentFirstMsgTime = agentFirstMsgTime;
+    }
+
+    public Long getAgentLastMsgTime() {
+        return agentLastMsgTime;
+    }
+
+    public void setAgentLastMsgTime(Long agentLastMsgTime) {
+        this.agentLastMsgTime = agentLastMsgTime;
     }
 }
