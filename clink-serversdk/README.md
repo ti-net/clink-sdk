@@ -340,7 +340,7 @@ public class Test {
      (最后一条消息发送者:lastSenderMessageType 机器人有效会话:botChatValid 机器人会话轮数:botRound 访客消息数:visitorChatCount 座席消息数:agentChatCount 机器人消息数:botChatCount 访客发送第一条消息的时间:visitorFirstMsgTime 访客发送最后一条消息的时间:visitorLastMsgTime 座席发送第一条消息的时间:agentFirstMsgTime 座席发送最后一条消息的时间:agentLastMsgTime)
 ```
 
-### V 2.0.64
+### V 2.0.65
 
 ```
 1、数据-呼入通话记录-查询呼入通话记录列表，补充返回字段“坐席响铃时间”
