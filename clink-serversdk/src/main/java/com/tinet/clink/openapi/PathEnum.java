@@ -275,7 +275,12 @@ public enum PathEnum {
     /**
      * 工具条agentToken获取
      */
-    wsAgentToken("ws_agent_token");
+    wsAgentToken("ws_agent_token"),
+
+    /**
+     * 外呼任务创建
+     */
+    CreateTaskProperty("create_task_property");
     private String value;
 
     PathEnum(String value) {

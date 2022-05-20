@@ -53,6 +53,16 @@ public class IvrFlow {
      */
     private Long endTime;
 
+    /**
+     * 按键值
+     */
+    private String pressKey;
+
+    /**
+     * 按键时间
+     */
+    private Long pressTime;
+
     public String getPathName() {
         return pathName;
     }
@@ -123,5 +133,22 @@ public class IvrFlow {
 
     public void setEndTime(Long endTime) {
         this.endTime = endTime;
+    }
+
+
+    public String getPressKey() {
+        return pressKey;
+    }
+
+    public void setPressKey(String pressKey) {
+        this.pressKey = pressKey;
+    }
+
+    public Long getPressTime() {
+        return pressTime;
+    }
+
+    public void setPressTime(Long pressTime) {
+        this.pressTime = pressTime;
     }
 }

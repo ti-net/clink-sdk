@@ -326,10 +326,26 @@ public class Test {
 4、座席监控查询接口——返回结果追加queuesMap (队列信息)
 ```
 
+### V 2.0.61
+
+```
+监控-座席状态查询接口，补充返回字段队列信息
+```
+
 ### V 2.0.63
 ```
 1、在线客户-会话记录-查询会话详情-新增字段 
     （设备类型:deviceType 接待类:chatDurationType 会话结束原因:closeReason 会话结束前置状态:closeStatus）
 2、在线客户-会话记录-同步会话详情-新增字段
      (最后一条消息发送者:lastSenderMessageType 机器人有效会话:botChatValid 机器人会话轮数:botRound 访客消息数:visitorChatCount 座席消息数:agentChatCount 机器人消息数:botChatCount 访客发送第一条消息的时间:visitorFirstMsgTime 访客发送最后一条消息的时间:visitorLastMsgTime 座席发送第一条消息的时间:agentFirstMsgTime 座席发送最后一条消息的时间:agentLastMsgTime)
+```
+
+### V 2.0.65
+
+```
+1、数据-呼入通话记录-查询呼入通话记录列表，补充返回字段“坐席响铃时间”
+2、数据-呼入通话记录-查询呼入通话记录详情，补充返回字段“坐席响铃时间”
+3、数据-呼入通话记录-查询呼入通话记录明细详情，补充返回字段“坐席响铃时间”
+4、数据-呼入通话记录-查看呼入通话记录
+5、新增 外呼任务-新增外呼任务
 ```
