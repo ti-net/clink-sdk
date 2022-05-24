@@ -37,6 +37,11 @@ public class CdrIbDetailModel {
     private String clientNumber;
 
     /**
+     * 座席响铃时间
+     */
+    private Long clientRingingTime;
+
+    /**
      * 接起时间
      */
     private Long startTime;
@@ -80,6 +85,14 @@ public class CdrIbDetailModel {
      * 队列号
      */
     private String qno;
+
+    public Long getClientRingingTime() {
+        return clientRingingTime;
+    }
+
+    public void setClientRingingTime(Long clientRingingTime) {
+        this.clientRingingTime = clientRingingTime;
+    }
 
     public String getMainUniqueId() {
         return mainUniqueId;

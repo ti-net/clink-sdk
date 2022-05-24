@@ -65,6 +65,11 @@ public class CdrIbRecordDetailModel {
     private String clientNumber;
 
     /**
+     * 座席响铃时间
+     */
+    private Long clientRingingTime;
+
+    /**
      * 呼入类型
      */
     private String callType;
@@ -173,6 +178,19 @@ public class CdrIbRecordDetailModel {
      * 排队时长
      */
     private Long ibWaitDuration;
+
+    /**
+     * 客户速挂
+     */
+    private Boolean fastHangUp;
+
+    public Long getClientRingingTime() {
+        return clientRingingTime;
+    }
+
+    public void setClientRingingTime(Long clientRingingTime) {
+        this.clientRingingTime = clientRingingTime;
+    }
 
     public String getCallId() {
         return callId;
@@ -437,6 +455,14 @@ public class CdrIbRecordDetailModel {
 
     public void setMark(Integer mark) {
         this.mark = mark;
+    }
+
+    public Boolean getFastHangUp() {
+        return fastHangUp;
+    }
+
+    public void setFastHangUp(Boolean fastHangUp) {
+        this.fastHangUp = fastHangUp;
     }
 }
 
