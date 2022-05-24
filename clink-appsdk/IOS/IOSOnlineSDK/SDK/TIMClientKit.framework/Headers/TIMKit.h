@@ -361,6 +361,9 @@ messageId:消息的ID]
 */
 @property (nonatomic, strong) NSNumber *totalUnreadCount;
 
+/// 消息未读数
+@property (nonatomic, assign) NSInteger                unReadCount;
+
 /**
  其他
  

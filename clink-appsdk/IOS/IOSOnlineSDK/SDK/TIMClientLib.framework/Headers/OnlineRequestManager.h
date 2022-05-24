@@ -41,7 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark  发送图片消息
 -(void)sendImgMessageWithImageData:(NSData *)imageData
-                           success:(void (^)(void))successBlock
+                           success:(void (^)(NSDictionary * result))successBlock
                              error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
 
 #pragma mark  发送语音消息
@@ -65,6 +65,20 @@ NS_ASSUME_NONNULL_BEGIN
                     senderType:(NSString *)senderType
                          success:(void (^)(OnlineClientInfoModel * model))successBlock
                          error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
+
+/**
+ 未读消息获取
+@param visitorId          当前用户ID
+@param mainUniqueId    会话ID （如果为空字符串就是获取总的未读消息数）
+*/
+- (void)sessionInfoUnreadCountCurrentVisitorId:(NSString *)visitorId WithMainUniqueId:(NSString *)mainUniqueId withSuccess:(void (^)(NSString *lastMessage , NSString * unreadCount))successBlock withError:(void (^)(NSString *errorStr))errorBlock;
+
+/*
+ 进入会话发送已读
+@param mainUniqueId    会话ID     (内部 OnlineRequestManager 类调用)
+ **/
+- (void)sessionInfoReadWithMainUniqueId:(NSString *)mainUniqueId;
+
 
 @end
 

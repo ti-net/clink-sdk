@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "用户头像.png",
+      "filename" : "编组备份.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "用户头像@2x.png",
+      "filename" : "编组备份@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "用户头像@3x.png",
+      "filename" : "编组备份@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

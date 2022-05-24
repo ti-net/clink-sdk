@@ -7,8 +7,6 @@
 //
 
 #import "appUtils.h"
-#import "HDeviceIdentifier.h"
-#import <CommonCrypto/CommonHMAC.h>
 
 @implementation appUtils
 
@@ -44,7 +42,7 @@
                                                         options:NSJSONReadingMutableContainers
                                                           error:&err];
     if(err) {
-        NSLog(@"json解析失败：%@",err);
+        NSLog(@"json解析失败5：%@",err);
         return nil;
     }
     return dic;
@@ -80,11 +78,6 @@
     return NO;
 }
 
-+(NSString *)getDeviceUDID{
-    NSString *identifierStr = [HDeviceIdentifier deviceIdentifier];
-    return identifierStr;
-}
-
 + (NSString *)RandomString{
     //随机字符串kRandomLength位
     int kRandomLength = 10;
@@ -109,18 +102,5 @@
     return timeSp;
 }
 
-+ (NSString*)sha256HashFor:(NSString*)input{
-    const char* str = [input UTF8String];
-    unsigned char result[CC_SHA256_DIGEST_LENGTH];
-    CC_SHA256(str, (CC_LONG)strlen(str), result);
-    
-    NSMutableString *ret = [NSMutableString stringWithCapacity:CC_SHA256_DIGEST_LENGTH*2];
-    for(int i = 0; i<CC_SHA256_DIGEST_LENGTH; i++)
-    {
-        [ret appendFormat:@"%02x",result[i]];
-    }
-    ret = (NSMutableString *)[ret lowercaseString];
-    return ret;
-}
 
 @end

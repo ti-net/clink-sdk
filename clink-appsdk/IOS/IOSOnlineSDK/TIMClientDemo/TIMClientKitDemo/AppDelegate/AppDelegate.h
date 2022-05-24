@@ -14,7 +14,7 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, retain) MainTabBarController *tabbarVC;
 
-+ (AppDelegate* )getShareAppDelegate;
++ (AppDelegate* )shareAppDelegate;
 
 @end
 

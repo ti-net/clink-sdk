@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MainTabBarController : UITabBarController <UITabBarDelegate>
+@interface MainTabBarController : UITabBarController<UITabBarDelegate>
 
 
 @end

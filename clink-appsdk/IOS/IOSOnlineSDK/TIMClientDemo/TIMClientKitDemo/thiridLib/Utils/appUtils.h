@@ -15,9 +15,6 @@
 #define WeakObj(o) autoreleasepool{} __weak typeof(o) o##Weak = o;  //宏定义self
 #define StrongObj(o) autoreleasepool{} __strong typeof(o) o = o##Weak;
 
-//初始化xib文件
-#define kInitXibName(nibName) [[UINib nibWithNibName:nibName bundle:nil] instantiateWithOwner:nil options:nil].firstObject
-
 NS_ASSUME_NONNULL_BEGIN
 
 @interface appUtils : NSObject
@@ -33,16 +30,10 @@ NS_ASSUME_NONNULL_BEGIN
 // 字符串判空
 + (BOOL)isBlankString:(NSString *)str;
 
-// deviceId
-+(NSString *)getDeviceUDID;
-
 // 随机字符串 默认10位
 + (NSString *)RandomString;
 
 +(NSString *)getNowTimestampWithSec;
-
-+(NSString*)sha256HashFor:(NSString*)input;
-
 @end
 
 NS_ASSUME_NONNULL_END

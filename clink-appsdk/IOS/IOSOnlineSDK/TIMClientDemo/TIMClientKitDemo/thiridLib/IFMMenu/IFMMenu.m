@@ -26,11 +26,11 @@
         self.arrowHight = 8.f;
         self.menuCornerRadiu = 5.f;
         self.edgeInsets = UIEdgeInsetsMake(1, 10, 1, 10);
-        self.minMenuItemHeight = 47.f; //item的最小高度
-        self.minMenuItemWidth = 120.f; //item的最小宽度
+        self.minMenuItemHeight = 40.f; //item的最小高度
+        self.minMenuItemWidth = 32.f; //item的最小宽度
         self.gapBetweenImageTitle = 5.f;
         self.menuSegmenteLineStyle = IFMMenuSegmenteLineStylefollowContent;
-        self.menuBackgroundStyle = IFMMenuBackgroundStyleLight;
+        self.menuBackgroundStyle = IFMMenuBackgroundStyleDark;
         self.showShadow = YES;
     }
     return self;

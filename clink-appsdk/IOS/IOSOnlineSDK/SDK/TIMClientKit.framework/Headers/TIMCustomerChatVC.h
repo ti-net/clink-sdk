@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <TIMClientLib/TIMSession.h>
+#import <TIMClientLib/TIMCommodityCardOption.h>
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -15,10 +16,13 @@ NS_ASSUME_NONNULL_BEGIN
 typedef NS_ENUM(NSUInteger, TinetClickTextMessageEventType) {
     TinetClickEventTypeUrl,
     TinetClickEventTypeOrderNumber,
-    TinetClickEventTypePhone
+    TinetClickEventTypePhone,
+    TinetClickCommodityCard,
 };
 
 @interface TIMCustomerChatVC : UIViewController
+
+@property (nonatomic, strong) TIMCommodityCardOption *commodityCardOption;
 
 // 会话
 @property (nonatomic, strong) TIMSession *session;
@@ -46,6 +50,8 @@ typedef NS_ENUM(NSUInteger, TinetClickTextMessageEventType) {
 //接入号名称
 @property(nonatomic, copy) NSString *appName;
 
+/// 快捷入口的数据
+@property (nonatomic, strong) NSArray                * barItemDataArray;
 
 @end
 

@@ -44,7 +44,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// TextField限制字符数ƒ
 /// @param textField textField
-- (void)tr_TextFieldDidChange:(UITextField *)textField;
+/// @param maxLength 字数限制
+- (void)tr_TextFieldDidChange:(UITextField *)textField maxLength:(NSInteger)maxLength;
 
 @end
 

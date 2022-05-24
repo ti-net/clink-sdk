@@ -1,63 +1,40 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
 platform:ios,'10.0'
-use_frameworks!
-target "TIMClientKitDemo" do
+#use_frameworks!
 
-pod 'Bugly'
+  def  commonsPods
+    use_frameworks!
+    pod 'Realm', '~> 5.3.3'
+  end
 
-pod 'DoraemonKit/Core', '~> 3.0.4', :configurations => ['Debug'] #必选
-#pod 'DoraemonKit/WithLoad', '~> 3.0.4', :configurations => ['Debug'] #可选
-#pod 'DoraemonKit/WithLogger', '~> 3.0.4', :configurations => ['Debug'] #可选
-#pod 'DoraemonKit/WithDatabase', '~> 3.0.4', :configurations => ['Debug'] #可选
-#pod 'DoraemonKit/WithMLeaksFinder', '~> 3.0.4', :configurations => ['Debug'] #可选
-  
-#网络请求https://github.com/yuantiku/YTKNetwork
-pod 'YTKNetwork'
-#pod 'AFNetworking'
-pod 'AFNetworking', '~> 3.0', :subspecs => ['Reachability', 'Serialization', 'Security', 'NSURLSession']
+  target "TIMClientKitDemo" do
 
-pod 'YYModel'
-pod 'YYCategories'
-pod 'YYWebImage'
-pod 'MJRefresh'
+  commonsPods
+  pod 'SDWebImage', '>= 5.0.0'
 
-#RAC
-pod 'ReactiveObjC'
-pod 'MBProgressHUD', '~> 1.1.0'
+  #网络请求https://github.com/yuantiku/YTKNetwork
+  pod 'YTKNetwork'
+  pod 'AFNetworking', '~> 3.0', :subspecs => ['Reachability', 'Serialization', 'Security', 'NSURLSession']
 
-#弹出菜单  https://github.com/lyb5834/YBPopupMenu
-pod 'YBPopupMenu'
+  pod 'MJRefresh'
 
-#标签https://github.com/zekunyan/TTGTagCollectionView
-pod "TTGTagCollectionView"
+  #RAC
+  pod 'ReactiveObjC'
+  #pod 'MBProgressHUD'
 
-#pod 'SDWebImage'
-pod 'SDWebImage', '>= 5.0.0'
+  #弹出菜单  https://github.com/lyb5834/YBPopupMenu
+  pod 'YBPopupMenu'
 
-pod 'RTRootNavigationController'
+  #标签https://github.com/zekunyan/TTGTagCollectionView
+  pod "TTGTagCollectionView",'1.11.1'
 
-#圆角处理
-pod 'ZYCornerRadius'
+  end
 
-#图片选择器
-pod 'TZImagePickerController'
-pod 'WZLBadge'
-
-#键盘管理
-pod 'IQKeyboardManager'
-
-#UISegmentedControl
-pod 'WMPageController'
-
-#pod 'Realm', '~> 5.3.3'
-#pod 'MLeaksFinder'
-
-#图片浏览https://github.com/indulgeIn/YBImageBrowser
-pod 'YBImageBrowser'
-
-#pod 'AliyunOSSiOS', '>= 2.10.8'
-
-#pod 'mobile-ffmpeg-full', '4.4.LTS'
-
-end
+  post_install do |installer|
+      installer.pods_project.targets.each do |target|
+          target.build_configurations.each do |config|
+              config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
+          end
+      end
+  end

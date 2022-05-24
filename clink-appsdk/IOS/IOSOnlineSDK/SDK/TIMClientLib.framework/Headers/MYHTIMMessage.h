@@ -56,6 +56,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, assign, readonly) TIMMessageStatus status;
 
+
+@property (nonatomic, assign, readonly) int messageType;
+
 /**
  创建时间
  */
@@ -82,6 +85,8 @@ NS_ASSUME_NONNULL_BEGIN
  @return               参数对象
  */
 - (instancetype)initWithOption:(NSString *)messageUUID msg_id:(NSString *)msg_id type:(NSString *)type senderId:(NSString *)senderId receiverId:(NSString *)receiverId content:(TIMMessageContent *)content msg_from:(TIMSessionType)msg_from status:(TIMMessageStatus)status timestamp:(NSTimeInterval)timestamp;
+
+- (void)updateMessageType:(int)messageType;
 
 @end
 

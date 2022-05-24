@@ -10,8 +10,7 @@
 #import "ChatInfoViewController.h"
 
 
-
-@interface kefuVC ()
+@interface kefuVC ()<UIAlertViewDelegate>
 
 @end
 
@@ -20,11 +19,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
     if (@available(iOS 13.0, *)) {
         self.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;    //关闭暗黑模式
     }
     self.modalPresentationStyle = UIModalPresentationFullScreen;
-    
     //              👇
     /* 1. 在baseVC设置如下代码，更改导航栏属性
      * 2. 当前页面隐藏 或者 显示导航栏 都是在viewWillAppear方法里面
@@ -57,32 +56,44 @@
     [kefuBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [kefuBtn addTarget:self action:@selector(kefuAction) forControlEvents:UIControlEventTouchDown];
     [self.view addSubview:kefuBtn];
+    
+    
+//    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+//    NSString *app_Name = [infoDictionary objectForKey:@"CFBundleDisplayName"];
+//    NSString *str = [NSString stringWithFormat:@"无法录制声音 请在iPhone的“设置>%@”中打开麦克风权限",app_Name];
+//    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:str message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"前往设置", nil];
+//    [alert show];
 }
 
+//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+//    if (buttonIndex == 1) { // 去设置界面，开启相机访问权限
+//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+//    }
+//}
+
+
+
 -(void)kefuAction{
-    
     /*访客初始化回调
      当APP端IM mqtt 连接就绪，主动通知服务端，APP端调用该接口后服务端
      就开始会话流程逻辑创建会话*/
-
     
     [[OnlineRequestManager sharedCustomerManager]visitorReadyWithDict:@{}
                                                               success:^(NSString * _Nonnull mainUniqueId) {
-        
-        //创建会话成功，进入聊天页面
-        ChatInfoViewController *chatVC = [[ChatInfoViewController alloc] init];
-        chatVC.titleName = @"客服";
-        chatVC.appName = @"客服SDK";
-        self.hidesBottomBarWhenPushed  = YES;
-        [self.navigationController pushViewController:chatVC animated:YES];
-        
-    } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
-        
+       
+        } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
     }];
+
     
-
-
+    //创建会话成功，进入聊天页面
+    ChatInfoViewController *chatVC = [[ChatInfoViewController alloc] init];
+    chatVC.titleName = @"客服";
+    chatVC.appName = @"客服SDK";
+    self.hidesBottomBarWhenPushed  = YES;
+    [self.navigationController pushViewController:chatVC animated:YES];
+    
 }
+
 
 
 @end

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>RlmUnReadSessionModel</key>
+	<string>会话中未读数实体</string>
+	<key>RlmNeedProcessModel</key>
+	<string>待处理实体</string>
+	<key>RlmContactModel</key>
+	<string>联系人实体</string>
+	<key>RlmSessionModel</key>
+	<string>会话实体</string>
+	<key>RlmMessageModel</key>
+	<string>消息实体</string>
+	<key>RlmUserGroupModel</key>
+	<string>用户群组实体</string>
+	<key>RlmGroupMemberModel</key>
+	<string>用户群组成员实体</string>
+</dict>
+</plist>
