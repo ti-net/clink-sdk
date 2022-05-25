@@ -5,9 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tinet.clink.openapi.AbstractTest;
 import com.tinet.clink.openapi.exceptions.ClientException;
 import com.tinet.clink.openapi.exceptions.ServerException;
-import com.tinet.clink.openapi.request.log.ListOperationLogsRequest;
 import com.tinet.clink.openapi.request.stat.StatCallIbAreaRequest;
-import com.tinet.clink.openapi.response.log.ListOperationLogsResponse;
 import com.tinet.clink.openapi.response.stat.StatCallIbAreaResponse;
 import org.junit.Test;
 
