@@ -1,8 +1,7 @@
 package com.tinet.clink.openapi.request.stat;
 
 import com.tinet.clink.openapi.PathEnum;
-import com.tinet.clink.openapi.response.stat.StatHotlineIbResponse;
-import com.tinet.clink.openapi.response.stat.StatQueueResponse;
+import com.tinet.clink.openapi.response.stat.StatCallIbAreaResponse;
 import com.tinet.clink.openapi.utils.HttpMethodType;
 
 
