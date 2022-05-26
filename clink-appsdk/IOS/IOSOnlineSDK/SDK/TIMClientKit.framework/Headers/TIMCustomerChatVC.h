@@ -20,13 +20,18 @@ typedef NS_ENUM(NSUInteger, TinetClickTextMessageEventType) {
     TinetClickCommodityCard,
 };
 
+typedef NS_ENUM(NSUInteger, TinetChatStatusType) {
+    TinetChatStatusTypeOutline,   // 不在线或结束会话
+    TinetChatStatusTypeRobot,     // 机器人在线
+    TinetChatStatusTypeOnline,    // 客服在线
+};
+
 @interface TIMCustomerChatVC : UIViewController
 
 @property (nonatomic, strong) TIMCommodityCardOption *commodityCardOption;
 
 // 会话
 @property (nonatomic, strong) TIMSession *session;
-
 
 /// 自定义欢迎语
 @property(nonatomic, copy) NSString *welcomsString;
@@ -52,6 +57,12 @@ typedef NS_ENUM(NSUInteger, TinetClickTextMessageEventType) {
 
 /// 快捷入口的数据
 @property (nonatomic, strong) NSArray                * barItemDataArray;
+
+/// 快捷入口的点击回调    index    点击索引从0开始
+- (void)bariItemDidTouchIndex:(NSInteger)index;
+
+/// 当前会话状态监听
+- (void)chatStatusChanged:(TinetChatStatusType)status;
 
 @end
 

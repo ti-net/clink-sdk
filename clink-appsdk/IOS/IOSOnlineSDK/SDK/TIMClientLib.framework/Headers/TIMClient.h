@@ -225,6 +225,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)disconnect:(TIMDisConnectOption*)option success:(void (^)(void))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
 
 
+/**
+ 发送Mqtt的ping事件
+ */
+- (void)sendMQTTMessagePing;
+
 #pragma mark - 离线推送
 /**
 注册了推送后 会从APNs返回设备ID,

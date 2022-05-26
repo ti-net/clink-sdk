@@ -62,6 +62,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)saveAppId:(NSString*)saveStr;
 -(NSString*)getAppId;
 
+// 存储会话状态
+- (void)saveMainUniqueIdRunningStatus:(NSString*)saveStr runningStatus:(NSString*)runningStatus;
+-(NSString*)getMainUniqueIdRunningStatus:(NSString*)mainUniqueId;
 
 @end
 
