@@ -2,7 +2,7 @@
 
 ## 天润在线客服SDK-iOS接口文档
 
-> 版本号: v1.2.2
+> 版本号: v1.2.3
 
 ## <font color=LightGreen size=4>一、概述</font> <div id="一"></div>
 
