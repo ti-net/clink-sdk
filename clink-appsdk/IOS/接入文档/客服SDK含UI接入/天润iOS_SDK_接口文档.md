@@ -58,6 +58,14 @@
  - Privacy - Photo Library Additions Usage Description
  - Privacy - Photo Library Usage Description
 
+#### 2.7 注意事项<div id="2.7"></div>    
+
+> 注意：
+>
+> 1. 增加在APP的 Info.plist 文件中增加 CFBundleDisplayName，value值为APP名称
+> 2. 在会话页面中关闭键盘管理的第三方控件，如：IQKeyboardManager
+> 3. 如有需要，可在跳转会话页面前设置会话页面的titleName属性，修改顶部标题
+
 ## <font color=LightSeaGreen size=4>三、快速集成</font><div id="二"></div>  
 #### 3.1 启动SDK<div id="3.1"></div>  
 天润SDK提供了一套开源的聊天界面，帮助开发者快速集成，并提供自定义接口，以实现定制需求。只需以下几行代码便可快速启动天润SDK应用。
