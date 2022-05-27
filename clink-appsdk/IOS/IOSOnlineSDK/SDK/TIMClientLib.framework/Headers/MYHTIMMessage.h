@@ -56,7 +56,16 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, assign, readonly) TIMMessageStatus status;
 
-
+/**
+ 消息子类型
+ messageType    =   1       文本消息
+ messageType    =   2       图片消息
+ messageType    =   3       文件消息
+ messageType    =   4       视频消息
+ messageType    =   5       机器人富文本消息
+ messageType    =   7       语音消息
+ messageType    =   10      卡片消息
+ */
 @property (nonatomic, assign, readonly) int messageType;
 
 /**
