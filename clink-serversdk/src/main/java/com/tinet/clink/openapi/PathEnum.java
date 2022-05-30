@@ -237,6 +237,8 @@ public enum PathEnum {
     GetFormDetail("get_form_detail"),
     // 流转工单
     FlowTicket("flow_ticket"),
+    // 保存工单
+    StoreTicket("store_ticket"),
     // 评论工单
     CommentTicket("comment_ticket"),
     // 获取工单文件 url
