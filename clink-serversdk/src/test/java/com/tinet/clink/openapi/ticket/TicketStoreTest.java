@@ -4,12 +4,9 @@ import com.tinet.clink.openapi.AbstractTest;
 import com.tinet.clink.openapi.Client;
 import com.tinet.clink.openapi.ClientConfiguration;
 import com.tinet.clink.openapi.model.Field;
-import com.tinet.clink.openapi.model.TicketFlowModel;
 import com.tinet.clink.openapi.model.TicketFormModel;
 import com.tinet.clink.openapi.model.TicketStoreModel;
-import com.tinet.clink.openapi.request.ticket.TicketFlowRequest;
 import com.tinet.clink.openapi.request.ticket.TicketStoreRequest;
-import com.tinet.clink.openapi.response.ticket.TicketFlowResponse;
 import com.tinet.clink.openapi.response.ticket.TicketStoreResponse;
 import org.junit.Test;
 
