@@ -12,41 +12,67 @@ import java.util.List;
 public class ClientObClidModel {
 
     /**
-     * 外显号码类型，0-全部,1-本地优先,2-座席指定,3-智能外显
-     */
-    private Integer obClidLeftRule;
-
-    /**
-     * 外显规则：1，随机 2，轮选
-     */
-    private Integer obClidChooseRule;
-
-    /**
      * 外显号
      */
-    private List<TrunkModel> obClids;
+    private List<String> clid;
 
-    public Integer getObClidLeftRule() {
-        return obClidLeftRule;
+    /**
+     * 外显号配置
+     */
+    private List<ClidArea> clidArea;
+
+    /**
+     * 外显规则
+     */
+    private Integer clidRule;
+
+    /**
+     * 轮选类型
+     */
+    private Integer recurrentselectionType;
+
+    /**
+     * 轮选值
+     */
+    private Integer recurrentselectionValue;
+
+    public List<String> getClid() {
+        return clid;
     }
 
-    public void setObClidLeftRule(Integer obClidLeftRule) {
-        this.obClidLeftRule = obClidLeftRule;
+    public void setClid(List<String> clid) {
+        this.clid = clid;
     }
 
-    public Integer getObClidChooseRule() {
-        return obClidChooseRule;
+    public List<ClidArea> getClidArea() {
+        return clidArea;
     }
 
-    public void setObClidChooseRule(Integer obClidChooseRule) {
-        this.obClidChooseRule = obClidChooseRule;
+    public void setClidArea(List<ClidArea> clidArea) {
+        this.clidArea = clidArea;
     }
 
-    public List<TrunkModel> getObClids() {
-        return obClids;
+    public Integer getClidRule() {
+        return clidRule;
     }
 
-    public void setObClids(List<TrunkModel> obClids) {
-        this.obClids = obClids;
+    public void setClidRule(Integer clidRule) {
+        this.clidRule = clidRule;
+    }
+
+    public Integer getRecurrentselectionType() {
+        return recurrentselectionType;
+    }
+
+    public void setRecurrentselectionType(Integer recurrentselectionType) {
+        this.recurrentselectionType = recurrentselectionType;
+    }
+
+    public Integer getRecurrentselectionValue() {
+        return recurrentselectionValue;
+    }
+
+    public void setRecurrentselectionValue(Integer recurrentselectionValue) {
+        this.recurrentselectionValue = recurrentselectionValue;
     }
 }
