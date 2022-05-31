@@ -17,6 +17,11 @@ public class ClientObClidModel {
     private List<String> clid;
 
     /**
+     * 外显类型
+     */
+    private Integer clidType;
+
+    /**
      * 外显号配置
      */
     private List<ClidArea> clidArea;
@@ -74,5 +79,13 @@ public class ClientObClidModel {
 
     public void setRecurrentselectionValue(Integer recurrentselectionValue) {
         this.recurrentselectionValue = recurrentselectionValue;
+    }
+
+    public Integer getClidType() {
+        return clidType;
+    }
+
+    public void setClidType(Integer clidType) {
+        this.clidType = clidType;
     }
 }
