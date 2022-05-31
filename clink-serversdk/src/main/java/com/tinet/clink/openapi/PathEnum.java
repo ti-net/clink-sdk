@@ -157,6 +157,8 @@ public enum PathEnum {
     StatInvestigationByCno("stat_investigation_by_cno"),
     //满意度报表-按热线号码
     StatInvestigationByHotlines("stat_investigation_by_hotlines"),
+    //呼入报表-按地区统计
+    StatCallIbArea("stat_call_ib_area"),
     //----------------------------------------------↑呼叫中心-报表↑----------------------------------------------//
 
 
