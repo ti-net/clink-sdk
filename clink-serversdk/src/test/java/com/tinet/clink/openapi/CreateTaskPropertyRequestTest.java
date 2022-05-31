@@ -43,7 +43,7 @@ public class CreateTaskPropertyRequestTest extends AbstractTest {
         customize[0].setName("来源渠道");
         customize[0].setValue("企知道");
         taskInventory[0].setCustomize(customize);
-        request.setTaskInventory(taskInventory);
+        // request.setTaskInventory(taskInventory);
 
         ObjectMapper mapper = new ObjectMapper();
         System.out.println("request-" + mapper.writeValueAsString(request));
