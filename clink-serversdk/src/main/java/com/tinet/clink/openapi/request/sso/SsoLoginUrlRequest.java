@@ -17,6 +17,8 @@ public class SsoLoginUrlRequest extends AbstractRequestModel<SsoLoginUrlResponse
 
     private String username;
 
+    private String staticUrl;
+
     public SsoLoginUrlRequest() {
         super(PathEnum.SsoLoginToken.value(), HttpMethodType.GET);
     }
@@ -30,6 +32,16 @@ public class SsoLoginUrlRequest extends AbstractRequestModel<SsoLoginUrlResponse
         putQueryParameter("username", username);
         this.username = username;
     }
+
+    public void setStaticUrl(String staticUrl){
+        putQueryParameter("staticUrl",staticUrl);
+        this.staticUrl = staticUrl;
+    }
+
+    public String getStaticUrl(){
+        return staticUrl;
+    }
+
 
     public Integer getLoginType() {
         return loginType;
@@ -51,6 +63,7 @@ public class SsoLoginUrlRequest extends AbstractRequestModel<SsoLoginUrlResponse
         return "SsoLoginUrlRequest{" +
                 "loginType=" + loginType +
                 ", username='" + username + '\'' +
+                ", staticUrl='"+ staticUrl + '\'' +
                 "} " + super.toString();
     }
 }

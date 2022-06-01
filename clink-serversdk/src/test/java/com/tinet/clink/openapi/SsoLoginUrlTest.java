@@ -16,7 +16,7 @@ public class SsoLoginUrlTest {
     @Before
     public void init() {
         System.out.println("----------------------------->");
-        configuration = new ClientConfiguration("a4db0f9336cdcdab09dec3f8dcea9377", "B61Z0h1UuBsr9376LR43");
+        configuration = new ClientConfiguration("627c7ce009d4210f2ba56969660e17e3", "65Z1Os89DWZ062U809D2");
         configuration.setScheme("http");
         configuration.setHost("api-bj-test0.clink.cn");
 
@@ -30,7 +30,8 @@ public class SsoLoginUrlTest {
         SsoLoginUrlRequest request = new SsoLoginUrlRequest();
         //管理员
         request.setLoginType(1);
-        request.setUsername("0611");
+        request.setUsername("1188");
+        request.setStaticUrl("mail");
 //        //座席
 //        request.setLoginType(1);
 //        request.setUsername("0611");
