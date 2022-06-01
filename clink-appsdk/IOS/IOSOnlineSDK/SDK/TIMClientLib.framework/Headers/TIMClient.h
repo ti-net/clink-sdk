@@ -126,6 +126,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)onReceived:(MYHTIMMessage *)message left:(int)nLeft;
 
+/*
+ 获取未读消息数量/最后一条消息的信息
+ **/
+- (void)onReceived:(MYHTIMMessage *)message withMessageType:(int)messageType;
+
 @optional
 /**
  消息被删除的回调方法
@@ -219,6 +224,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)disconnect:(TIMDisConnectOption*)option success:(void (^)(void))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
 
+
+/**
+ 发送Mqtt的ping事件
+ */
+- (void)sendMQTTMessagePing;
 
 #pragma mark - 离线推送
 /**

@@ -14,12 +14,7 @@
 
 - (void)setupMBProgress {
     self.contentColor = [UIColor whiteColor];
-    if (@available(iOS 11.0, *)) {
-        self.bezelView.color = [UIColor colorNamed:@"TR333333Color"];
-    } else {
-        self.bezelView.color = kHexColor(0x333333);
-    }
-    self.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+    self.bezelView.color = [UIColor colorNamed:@"TR333333Color"];
     self.minShowTime = 0;
     self.userInteractionEnabled = NO;
     self.detailsLabel.font = [UIFont fontWithName:kFontNameLight size:14.f];

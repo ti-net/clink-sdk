@@ -22,6 +22,7 @@ static NSString * const kTIMIOnDataSynced = @"kTIMIOnDataSynced";
 static NSString * kSendPushExtra_CUSTOMER_TINET = @"customer_tinet";
 
 #pragma mark - 消息事件字串定义
+static NSString * kMQTTMessage_EVENT_MESSAGE_ARRIVED = @"[MESSAGE ARRIVED]";
 static NSString * kMQTTMessage_EVENT_GROUP_JOIN = @"[GROUP JOIN]";      // 加入群组事件
 static NSString * kMQTTMessage_EVENT_GROUP_QUIT = @"[GROUP QUIT]";      // 退出群组事件
 static NSString * kMQTTMessage_EVENT_GROUP_DELETE = @"[GROUP DELETE]";   // 删除群组事件
@@ -63,6 +64,42 @@ typedef NS_ENUM(NSInteger, TIMMessageLocalStatus) {
 
 TIMMessageLocalStatus TIMMessageLocalStatusWithString(NSString *commandString);
 NSString *TIMMessageLocalStatusString(TIMMessageLocalStatus timSessionType);
+
+#pragma mark TIMMessageSenderType - 消息发送人类型
+/*
+ 消息发送人类型
+ 
+ */
+typedef NS_ENUM(NSInteger, TIMMessageSenderType) {
+    /*
+    未知
+     */
+    TIMMessageSenderType_Unkwon = 0,
+    /*
+    坐席
+     */
+    TIMMessageSenderType_Online = 1,
+    /*
+     访客
+
+     */
+    TIMMessageSenderType_Visitor = 2,
+    /*
+    系统
+
+    */
+    TIMMessageSenderType_System = 3,
+    /*
+    机器人
+
+    */
+    TIMMessageSenderType_Robot = 4,
+    /*
+    系统通知
+
+    */
+    TIMMessageSenderType_Notify = 5,
+};
 
 #pragma mark TIMMessageStatus - 消息状态枚举
 /*

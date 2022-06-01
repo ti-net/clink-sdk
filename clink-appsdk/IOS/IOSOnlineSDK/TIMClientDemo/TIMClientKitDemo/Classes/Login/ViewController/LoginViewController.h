@@ -6,11 +6,12 @@
 //  Copyright © 2019 赵言. All rights reserved.
 //
 
-#import "BaseViewController.h"
+//#import "BaseViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LoginViewController : BaseViewController
+@interface LoginViewController : UIViewController
+
 
 @end
 

@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #define     IFMColor(r, g, b, a)   [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:a]
 #define     BlackForMenu     IFMColor(71, 70, 73, 1.0)
-#define     BlackForMenuHL   IFMColor(245, 248, 249, 1.0)
+#define     BlackForMenuHL   IFMColor(65, 64, 67, 1.0)
 #define     GrayLine         [UIColor colorWithWhite:0.5 alpha:0.3]
 
 typedef NS_ENUM(NSInteger, IFMMenuBackgroundStyle) {

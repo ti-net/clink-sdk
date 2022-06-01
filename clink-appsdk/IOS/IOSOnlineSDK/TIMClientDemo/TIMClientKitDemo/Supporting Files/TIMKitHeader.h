@@ -9,31 +9,27 @@
 #ifndef TIMKitHeader_h
 #define TIMKitHeader_h
 
-#import <MBProgressHUD/MBProgressHUD.h>
-#import <YYModel/YYModel.h>
-#import <YYCategories/YYCategories.h>
+#import "YYKit.h"
 #import <MJRefresh.h>
-#import <YYWebImage/YYWebImage.h>
+#import <TIMClientKit/TIMClientKit.h>
 
-#import "TIMURLDefine.h"
-#import "DomainNameSave.h"
+//#import "TIMURLDefine.h"
+//#import "DomainNameSave.h"
 #import "NSDictionary+TRTool.h"
 #import "TRLocalizeHelper.h"
-#import <ReactiveObjC/ReactiveObjC.h>
+//#import <ReactiveObjC/ReactiveObjC.h>
 #import "appUtils.h"
 #import "NSObject+Common.h"
 #import "NSObject+MBShowError.h"
 
 #import "UIViewExt.h"
-#import "UIView+Creat.h"
 
-#import "BaseView.h"
-#import "BaseTableView.h"
-#import "BaseTableViewCell.h"
-#import "TRCommonTool.h"
-#import "TRLoadingView.h"
-#import "UIImageView+LoadImage.h"
+//#import "BaseView.h"
+//#import "BaseTableView.h"
+//#import "BaseTableViewCell.h"
+//#import "TRCommonTool.h"
+//#import "TRLoadingView.h"
 
-#import <TIMClientKit/TIMClientKit.h>
+
 
 #endif /* TIMKitHeader_h */

@@ -61,7 +61,8 @@
 
 /// TextField限制字符数
 /// @param textField textField
-- (void)tr_TextFieldDidChange:(UITextField *)textField {
+/// @param maxLength 字数限制
+- (void)tr_TextFieldDidChange:(UITextField *)textField maxLength:(NSInteger)maxLength {
     NSString *toBeString = textField.text;
     
     //获取高亮部分
@@ -70,12 +71,12 @@
     
     // 没有高亮选择的字，则对已输入的文字进行字数统计和限制
     if (!position) {
-        if (toBeString.length > 40) {
-            NSRange rangeIndex = [toBeString rangeOfComposedCharacterSequenceAtIndex:40];
+        if (toBeString.length > maxLength) {
+            NSRange rangeIndex = [toBeString rangeOfComposedCharacterSequenceAtIndex:maxLength];
             if (rangeIndex.length == 1) {
-                textField.text = [toBeString substringToIndex:40];
+                textField.text = [toBeString substringToIndex:maxLength];
             } else {
-                NSRange rangeRange = [toBeString rangeOfComposedCharacterSequencesForRange:NSMakeRange(0, 40)];
+                NSRange rangeRange = [toBeString rangeOfComposedCharacterSequencesForRange:NSMakeRange(0, maxLength)];
                 textField.text = [toBeString substringWithRange:rangeRange];
             }
         }

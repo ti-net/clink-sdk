@@ -29,6 +29,7 @@ FOUNDATION_EXPORT const unsigned char TIMClientVersionString[];
 // 会话类
 #import <TIMClientLib/TIMSessionListOption.h>
 #import <TIMClientLib/TIMSession.h>
+#import <TIMClientLib/TIMCommodityCardOption.h>
 
 // 消息类
 //#import <TIMClientLib/TIMMessageHistoryOption.h>
@@ -64,6 +65,7 @@ FOUNDATION_EXPORT const unsigned char TIMClientVersionString[];
 #import <TIMClientLib/ChatLeaveMessage.h>
 #import <TIMClientLib/ChatLeaveReceiveMessage.h>
 #import <TIMClientLib/ChatInvestigationMessage.h>
+
 
 #import <TIMClientLib/OnlineEventSendManager.h>
 #import <TIMClientLib/OnlineMessageSendManager.h>

@@ -361,6 +361,13 @@ messageId:消息的ID]
 */
 @property (nonatomic, strong) NSNumber *totalUnreadCount;
 
+/// 消息未读数
+@property (nonatomic, assign) NSInteger                unReadCount;
+
+/// 最后一条消息
+@property (nonatomic, strong, readonly) MYHTIMMessage                * lastMessage;
+
+
 /**
  其他
  

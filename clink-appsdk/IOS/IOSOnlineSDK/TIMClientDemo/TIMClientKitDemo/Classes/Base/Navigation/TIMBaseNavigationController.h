@@ -6,7 +6,7 @@
 //  Copyright © 2020 YanBo. All rights reserved.
 //
 
-#import "RTRootNavigationController.h"
+#import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

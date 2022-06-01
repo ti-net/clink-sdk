@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <TIMClientLib/TIMSession.h>
+#import <TIMClientLib/TIMCommodityCardOption.h>
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -15,14 +16,22 @@ NS_ASSUME_NONNULL_BEGIN
 typedef NS_ENUM(NSUInteger, TinetClickTextMessageEventType) {
     TinetClickEventTypeUrl,
     TinetClickEventTypeOrderNumber,
-    TinetClickEventTypePhone
+    TinetClickEventTypePhone,
+    TinetClickCommodityCard,
+};
+
+typedef NS_ENUM(NSUInteger, TinetChatStatusType) {
+    TinetChatStatusTypeOutline,   // 不在线或结束会话
+    TinetChatStatusTypeRobot,     // 机器人在线
+    TinetChatStatusTypeOnline,    // 客服在线
 };
 
 @interface TIMCustomerChatVC : UIViewController
 
+@property (nonatomic, strong) TIMCommodityCardOption *commodityCardOption;
+
 // 会话
 @property (nonatomic, strong) TIMSession *session;
-
 
 /// 自定义欢迎语
 @property(nonatomic, copy) NSString *welcomsString;
@@ -46,6 +55,14 @@ typedef NS_ENUM(NSUInteger, TinetClickTextMessageEventType) {
 //接入号名称
 @property(nonatomic, copy) NSString *appName;
 
+/// 快捷入口的数据
+@property (nonatomic, strong) NSArray                * barItemDataArray;
+
+/// 快捷入口的点击回调    index    点击索引从0开始
+- (void)bariItemDidTouchIndex:(NSInteger)index;
+
+/// 当前会话状态监听
+- (void)chatStatusChanged:(TinetChatStatusType)status;
 
 @end
 

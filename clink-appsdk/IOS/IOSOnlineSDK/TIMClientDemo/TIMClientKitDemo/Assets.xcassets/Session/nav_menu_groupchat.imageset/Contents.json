@@ -1,17 +1,16 @@
 {
   "images" : [
     {
-      "filename" : "发起群聊.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "发起群聊@2x.png",
+      "filename" : "contacts_add_newmessage@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "发起群聊@3x.png",
+      "filename" : "contacts_add_newmessage@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

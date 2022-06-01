@@ -83,6 +83,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 + (UIImage *)imageNamed:(NSString *)name ofBundle:(NSString *)bundleName;
+
++ (NSString *)mimeTypeForFileAtPath:(NSString *)path;
+
++ (NSDictionary *)getPlistFile:(NSString *)plistName;
 @end
 
 NS_ASSUME_NONNULL_END

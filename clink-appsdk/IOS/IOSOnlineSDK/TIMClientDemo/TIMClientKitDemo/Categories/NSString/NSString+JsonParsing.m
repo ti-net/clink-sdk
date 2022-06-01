@@ -15,7 +15,7 @@
         NSError *error;
         id dic = [NSJSONSerialization JSONObjectWithData:[self dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:&error];
         if (error) {
-            NSLog(@"%@ JSON解析失败 %@",self,error);
+            NSLog(@"%@ JSON解析失败4 %@",self,error);
             return nil;
         } else {
             return dic;

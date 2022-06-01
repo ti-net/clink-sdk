@@ -25,8 +25,6 @@ static NSString * const kLoginInfoDic = @"kLoginInfoDic";
 static NSString * const kLoginDomainName = @"kLoginDomainName";
 /// IM登录域名保存
 static NSString * const kIMLoginDomainName = @"kIMLoginDomainName";
-/// 项目域名保存
-static NSString * const kDomainName = @"kDomainName";
 
 static NSString * const kFontNameRegular = @"PingFangSC-Regular";      //常规
 static NSString * const kFontNameMedium = @"PingFangSC-Medium";        //中黑体
@@ -42,7 +40,6 @@ static NSString * const kTRLocalizeLanguageDescriptionKey = @"LangDescription";
 static NSString * const kUserDefaultLanguageKey = @"kUserDefaultLanguageKey";
 
 static CGFloat const kNetworkRequestTimeout = 30.f;
-static NSInteger const kBackgroundColor = 0xF5F8F9;
 
 //获取语言
 #define TRLocalizedString(key) [[TRLocalizeHelper sharedInstance] localizedStringForKey:key]
