@@ -14,11 +14,11 @@ public class DescribeClientObClidResponse extends ResponseModel {
      */
     private ClientObClidModel clientObClid;
 
-    public ClientObClidModel getClientObClidModel() {
+    public ClientObClidModel getClientObClid() {
         return clientObClid;
     }
 
-    public void setClientObClidModel(ClientObClidModel clientObClid) {
+    public void setClientObClid(ClientObClidModel clientObClid) {
         this.clientObClid = clientObClid;
     }
 

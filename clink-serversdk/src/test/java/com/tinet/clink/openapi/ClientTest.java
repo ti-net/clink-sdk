@@ -115,7 +115,7 @@ public class ClientTest extends AbstractTest{
         describeClientObClidRequest.setCno("2029");
         DescribeClientObClidResponse response = client.getResponseModel(describeClientObClidRequest);
 
-        ClientObClidModel obClid =  response.getClientObClidModel();
+        ClientObClidModel obClid =  response.getClientObClid();
         System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(obClid));
 
     }
