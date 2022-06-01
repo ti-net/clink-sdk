@@ -11,6 +11,7 @@ public enum PathEnum {
     DeleteClient("delete_client"),
     ListClients("list_clients"),
     DescribeClient("describe_client"),
+    DescribeClientObClid("describe_client_ob_clid"),
     BindClientTel("bind_client_tel"),
     BindClientTelVerification("bind_client_tel_verification"),
     BindClientTelConfirmed("bind_client_tel_confirmed"),
