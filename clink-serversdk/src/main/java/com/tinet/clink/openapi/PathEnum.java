@@ -11,6 +11,7 @@ public enum PathEnum {
     DeleteClient("delete_client"),
     ListClients("list_clients"),
     DescribeClient("describe_client"),
+    DescribeClientObClid("describe_client_ob_clid"),
     BindClientTel("bind_client_tel"),
     BindClientTelVerification("bind_client_tel_verification"),
     BindClientTelConfirmed("bind_client_tel_confirmed"),
@@ -157,6 +158,8 @@ public enum PathEnum {
     StatInvestigationByCno("stat_investigation_by_cno"),
     //满意度报表-按热线号码
     StatInvestigationByHotlines("stat_investigation_by_hotlines"),
+    //呼入报表-按地区统计
+    StatCallIbArea("stat_call_ib_area"),
     //----------------------------------------------↑呼叫中心-报表↑----------------------------------------------//
 
 
@@ -237,6 +240,8 @@ public enum PathEnum {
     GetFormDetail("get_form_detail"),
     // 流转工单
     FlowTicket("flow_ticket"),
+    // 保存工单
+    StoreTicket("store_ticket"),
     // 评论工单
     CommentTicket("comment_ticket"),
     // 获取工单文件 url

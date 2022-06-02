@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.tinet.clink.openapi.exceptions.ClientException;
 import com.tinet.clink.openapi.exceptions.ServerException;
 import com.tinet.clink.openapi.model.ClientDetailModel;
+import com.tinet.clink.openapi.model.ClientObClidModel;
 import com.tinet.clink.openapi.model.ClientPermission;
 import com.tinet.clink.openapi.model.ClientSearchResultModel;
 import com.tinet.clink.openapi.request.config.client.*;
@@ -105,6 +106,17 @@ public class ClientTest extends AbstractTest{
 
         ClientDetailModel client =  response.getClient();
         System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(client));
+
+    }
+
+    @Test
+    public void describeClientObClid() throws ServerException, ClientException, JsonProcessingException {
+        DescribeClientObClidRequest describeClientObClidRequest = new DescribeClientObClidRequest();
+        describeClientObClidRequest.setCno("2029");
+        DescribeClientObClidResponse response = client.getResponseModel(describeClientObClidRequest);
+
+        ClientObClidModel obClid =  response.getClientObClidModel();
+        System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(obClid));
 
     }
 
