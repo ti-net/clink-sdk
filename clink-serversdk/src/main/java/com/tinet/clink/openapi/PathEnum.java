@@ -209,6 +209,8 @@ public enum PathEnum {
     ChatClientLogin("chat_client_login"),
     ChatClientLogout("chat_client_logout"),
     ChatQueueAgentStatus("chat_queue_status"),
+    // 在线客服 - 获取访客未读消息数
+    ChatVisitorUnreadCount("chat_visitor_unread_count"),
     //-------------------在线客服API--------
 
 
