@@ -1,5 +1,7 @@
 package com.tinet.clink.openapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
 /**
@@ -8,6 +10,7 @@ import java.util.List;
  * @author huwk
  * @date 2018/09/09
  **/
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CdrIbRecordDetailModel {
 
     /**
@@ -183,6 +186,21 @@ public class CdrIbRecordDetailModel {
      * 客户速挂
      */
     private Boolean fastHangUp;
+
+    /**
+     * 座席接起时间
+     */
+    private Long clientOffhookTime;
+
+    /**
+     * 语音播报时长
+     */
+    private Integer sayVoiceDuration;
+
+    /**
+     * 客户呼入座席振铃时长
+     */
+    private Integer ibRingingDuration;
 
     public Long getClientRingingTime() {
         return clientRingingTime;
@@ -463,6 +481,30 @@ public class CdrIbRecordDetailModel {
 
     public void setFastHangUp(Boolean fastHangUp) {
         this.fastHangUp = fastHangUp;
+    }
+
+    public Long getClientOffhookTime() {
+        return clientOffhookTime;
+    }
+
+    public void setClientOffhookTime(Long clientOffhookTime) {
+        this.clientOffhookTime = clientOffhookTime;
+    }
+
+    public Integer getSayVoiceDuration() {
+        return sayVoiceDuration;
+    }
+
+    public void setSayVoiceDuration(Integer sayVoiceDuration) {
+        this.sayVoiceDuration = sayVoiceDuration;
+    }
+
+    public Integer getIbRingingDuration() {
+        return ibRingingDuration;
+    }
+
+    public void setIbRingingDuration(Integer ibRingingDuration) {
+        this.ibRingingDuration = ibRingingDuration;
     }
 }
 
