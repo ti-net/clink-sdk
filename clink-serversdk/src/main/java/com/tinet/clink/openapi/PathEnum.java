@@ -222,6 +222,18 @@ public enum PathEnum {
     ListDirectories("list_directories"),
     //-------------------知识库API--------
 
+    //-------------------机器人知识库API--------
+    CreateStandardQuestion("create_standard_question"),
+    UpdateStandardQuestion("update_standard_question"),
+    DeleteStandardQuestion("delete_standard_question"),
+    CreateAnswer("create_answer"),
+    UpdateAnswer("update_answer"),
+    DeleteAnswer("delete_answer"),
+    CreateCorpus("create_corpus"),
+    UpdateCorpus("update_corpus"),
+    DeleteCorpus("delete_corpus"),
+    //-------------------机器人知识库API--------
+
 //    -----工单记录-------
 
     //查询工单记录
