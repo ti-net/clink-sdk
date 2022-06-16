@@ -22,7 +22,7 @@ public class ChatVisitorInfoTest extends AbstractTest {
     @Before
     public void init() {
         System.out.println("----------------------------->");
-        configuration = new ClientConfiguration("d8a0213a66aa9ff4fab60aa5ea99a40e", "70f8a39fcc822d2e52088614cf7aaa51b2d28d3d2ee8f7096eecf4dc6e71c970");
+        configuration = new ClientConfiguration("6579a76bec561954ae1ad346c312d862", "K37z0S685347hryiudXa");
         configuration.setScheme("http");
         configuration.setHost("api-bj-test0.clink.cn");
         client = new Client(configuration);
@@ -32,8 +32,8 @@ public class ChatVisitorInfoTest extends AbstractTest {
     @Test
     public void testOpenSession() throws Exception {
         ChatVisitorInfoRequest request = new ChatVisitorInfoRequest();
-        request.setAccessId("350cf26b-2a83-4c95-b214-85ad6a22bad4");
-        request.setVisitorId("0b0bd5dc-490c-450a-baaf-44d8de01a978");
+        request.setVisitorId("8609c4cf-fcf9-4efa-bc3d-02dc888a8443");
+        request.setAccessId("ac89d543-30ff-4d15-b5c4-6e1a9cc80c25");
         ChatVisitorInfoResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response));
         System.out.println(response.getUnreadCount());
