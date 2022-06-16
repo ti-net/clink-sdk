@@ -6,6 +6,7 @@ import com.tinet.clink.openapi.Client;
 import com.tinet.clink.openapi.ClientConfiguration;
 import com.tinet.clink.openapi.exceptions.ClientException;
 import com.tinet.clink.openapi.exceptions.ServerException;
+import com.tinet.clink.openapi.request.chat.StatChatClientWorkloadNewRequest;
 import com.tinet.clink.openapi.request.chat.StatChatClientWorkloadRequest;
 import com.tinet.clink.openapi.request.chat.StatChatQueueWorkloadRequest;
 import com.tinet.clink.openapi.response.chat.StatChatClientWorkloadResponse;
@@ -41,6 +42,20 @@ public class ChatClientWorkloadTest {
         Client client = new Client(clientConfiguration);
         StatChatQueueWorkloadResponse response2 = client.getResponseModel(request2);
         System.out.println(mapper.writeValueAsString(response2.getStatChatQueueWorkload()));
+
+    }
+
+    @Test
+    public void statClientWorkloadNewTest() throws ServerException, ClientException, JsonProcessingException {
+        StatChatClientWorkloadNewRequest request = new StatChatClientWorkloadNewRequest();
+        request.setDate("20220524");
+
+        ClientConfiguration clientConfiguration = new ClientConfiguration("6579a76bec561954ae1ad346c312d862", "K37z0S685347hryiudXa");
+        clientConfiguration.setScheme("http");
+        clientConfiguration.setHost("api-bj-test0.clink.cn");
+        Client client = new Client(clientConfiguration);
+        StatChatClientWorkloadResponse response = client.getResponseModel(request);
+        System.out.println(mapper.writeValueAsString(response.getStatChatClientWorkload()));
 
     }
 

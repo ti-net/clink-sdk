@@ -191,6 +191,8 @@ public enum PathEnum {
     ChatComment("copy_chat_comments"),
     //在线客服 - 座席工作量报表
     StatChatClientWorkload("stat_chat_client_workload"),
+    //在线客服 - 座席工作量报表（新）
+    StatChatClientWorkloadNew("stat_chat_client_workload_new"),
     //队列报表
     StatChatQueueWorkload("stat_chat_queue_workload"),
 
