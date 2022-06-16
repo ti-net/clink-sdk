@@ -28,10 +28,12 @@ public class SsoLoginUrlTest {
     public void testSsoLoginUrl() throws Exception {
         ObjectMapper mapper = new ObjectMapper();
         SsoLoginUrlRequest request = new SsoLoginUrlRequest();
-        //管理员
+        //坐席
         request.setLoginType(1);
         request.setUsername("1188");
         request.setStaticUrl("mail");
+        request.setSidebarDisplay(1);
+        request.setTopbarDisplay(1);
 //        //座席
 //        request.setLoginType(1);
 //        request.setUsername("0611");
