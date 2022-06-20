@@ -15,9 +15,9 @@ public class KbAbstractTest {
 
     @Before
     public void init() {
-        configuration = new ClientConfiguration("aad8aa23e7d5c53181180aab0d4d404e", "1x005imcSLnB2JrO8fg4");
+        configuration = new ClientConfiguration("3b4afbf79cc3ad7bb8c6d831d78625de", "318MlMFg4JnTXovlJCT7");
         configuration.setScheme("http");
-        configuration.setHost("api-bj-test0.clink.cn");
+        configuration.setHost("clink2-openapi-dev.clink.cn");
 
         client = new Client(configuration);
     }

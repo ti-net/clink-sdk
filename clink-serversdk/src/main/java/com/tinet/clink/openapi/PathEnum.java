@@ -236,6 +236,9 @@ public enum PathEnum {
     CreateCorpus("create_corpus"),
     UpdateCorpus("update_corpus"),
     DeleteCorpus("delete_corpus"),
+    CreateCategory("create_category"),
+    UpdateCategory("update_category"),
+    DeleteCategory("delete_category"),
     //-------------------机器人知识库API--------
 
 //    -----工单记录-------
