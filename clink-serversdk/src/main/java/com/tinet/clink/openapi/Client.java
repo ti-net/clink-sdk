@@ -1,23 +1,16 @@
 package com.tinet.clink.openapi;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URISyntaxException;
-import java.nio.charset.StandardCharsets;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.TimeUnit;
-
-import org.apache.http.Consts;
-import org.apache.http.HttpHost;
-import org.apache.http.HttpResponse;
-import org.apache.http.NoHttpResponseException;
-import org.apache.http.StatusLine;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.tinet.clink.openapi.auth.Signer;
+import com.tinet.clink.openapi.exceptions.ClientException;
+import com.tinet.clink.openapi.exceptions.ServerException;
+import com.tinet.clink.openapi.model.ErrorCode;
+import com.tinet.clink.openapi.model.OpenapiError;
+import com.tinet.clink.openapi.request.AbstractRequestModel;
+import com.tinet.clink.openapi.response.ResponseModel;
+import org.apache.http.*;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpRequestRetryHandler;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -32,16 +25,14 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicHttpEntityEnclosingRequest;
 import org.apache.http.protocol.HttpContext;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tinet.clink.openapi.auth.Signer;
-import com.tinet.clink.openapi.exceptions.ClientException;
-import com.tinet.clink.openapi.exceptions.ServerException;
-import com.tinet.clink.openapi.model.ErrorCode;
-import com.tinet.clink.openapi.model.OpenapiError;
-import com.tinet.clink.openapi.request.AbstractRequestModel;
-import com.tinet.clink.openapi.response.ResponseModel;
+import java.io.*;
+import java.net.URISyntaxException;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author houfc
@@ -51,7 +42,7 @@ public class Client {
     private static final ObjectMapper mapper = new ObjectMapper();
 
     private static CloseableHttpClient httpClient = null;
-    
+
     private HttpHost httpHost = null;
 
     private static int maxRetryNumber = 3;
@@ -61,8 +52,8 @@ public class Client {
     private static Signer signer = Signer.getSigner();
 
     private static final ObjectMapper CONTENT_OBJECT_MAPPER = new ObjectMapper();
-    
-    private static ConcurrentHashMap<String,HttpHost> httpHostMap = new ConcurrentHashMap();
+
+    private static ConcurrentHashMap<String, HttpHost> httpHostMap = new ConcurrentHashMap();
 
     static {
         CONTENT_OBJECT_MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
@@ -97,7 +88,7 @@ public class Client {
                 }
             }
         }
-        
+
         if (configuration.getPort() == 80) {
             httpHost = createHttpHost(configuration.getHost(), Integer.toString(-1), configuration.getScheme());
         } else {
@@ -105,7 +96,7 @@ public class Client {
                     configuration.getScheme());
         }
     }
-    
+
     private HttpHost createHttpHost(String host, String port, String scheme) {
         HttpHost httpHostTemp = httpHostMap.get(host + "_" + port + "_" + scheme);
         if (httpHostTemp == null) {
@@ -236,7 +227,7 @@ public class Client {
             if (response.getStatusLine().getStatusCode() == 503) {
                 throw new ServerException("ServiceUnavailable", "服务暂时不可用，请稍后再试");
             } else {
-                throw new ServerException("InternalError", "服务返回错误码异常");
+                throw new ClientException(String.valueOf(response.getStatusLine().getStatusCode()), "服务返回错误码异常", e);
             }
         }
         error.setHttpStatus(response.getStatusLine().getStatusCode());
