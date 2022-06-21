@@ -227,7 +227,8 @@ public class Client {
             if (response.getStatusLine().getStatusCode() == 503) {
                 throw new ServerException("ServiceUnavailable", "服务暂时不可用，请稍后再试");
             } else {
-                throw new ClientException(String.valueOf(response.getStatusLine().getStatusCode()), "服务返回错误码异常", e);
+                throw new ServerException("ServiceUnavailable",
+                        "服务返回错误码异常，[" + response.getStatusLine().getStatusCode() + "]", e);
             }
         }
         error.setHttpStatus(response.getStatusLine().getStatusCode());
