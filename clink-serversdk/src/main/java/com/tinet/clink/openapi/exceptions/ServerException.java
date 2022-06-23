@@ -1,7 +1,5 @@
 package com.tinet.clink.openapi.exceptions;
 
-import com.tinet.clink.openapi.model.OpenapiError;
-
 /**
  * @author houfc
  */
@@ -18,6 +16,12 @@ public class ServerException extends Exception {
 
     public ServerException(String code, String message) {
         super(code + " : " + message);
+        this.code = code;
+        this.message = message;
+    }
+
+    public ServerException(String code, String message, Throwable cause) {
+        super(code + " : " + message,cause);
         this.code = code;
         this.message = message;
     }
