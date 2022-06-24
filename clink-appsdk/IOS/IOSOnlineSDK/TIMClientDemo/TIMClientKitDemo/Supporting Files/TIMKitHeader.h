@@ -11,7 +11,7 @@
 
 #import "YYKit.h"
 #import <MJRefresh.h>
-#import <TIMClientKit/TIMClientKit.h>
+#import <TOSClientKit/TOSClientKit.h>
 
 //#import "TIMURLDefine.h"
 //#import "DomainNameSave.h"

@@ -164,7 +164,7 @@
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
     NSLog(@"注册推送成功 %@",deviceToken);
-    [[TIMKit sharedTIMKit] setDeviceTokenData:deviceToken];
+    [[TOSClientKit sharedTOSKit] setDeviceTokenData:deviceToken];
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
