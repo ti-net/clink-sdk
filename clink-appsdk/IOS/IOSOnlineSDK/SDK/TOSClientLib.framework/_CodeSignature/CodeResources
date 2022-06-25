@@ -4,6 +4,10 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>.DS_Store</key>
+		<data>
+		rc+vbz06zMwsWuJ3i6k/DRT4/N8=
+		</data>
 		<key>.gitignore</key>
 		<data>
 		w8cmGpehgSqHlGrQEbVqNYPZ5b0=
@@ -126,7 +130,7 @@
 		</data>
 		<key>Headers/TIMClient.h</key>
 		<data>
-		yMKkKhM0AwnoG87B8rGecHgC6Fo=
+		dsMO7OvzWk9JwRWR8NJAa1mzt6I=
 		</data>
 		<key>Headers/TIMConnectOption.h</key>
 		<data>
@@ -151,10 +155,6 @@
 		<key>Headers/TIMCustomizeMessage.h</key>
 		<data>
 		BWytNT4LPI4WIsw5JWm+TXasu5g=
-		</data>
-		<key>Headers/TIMDisConnectOption.h</key>
-		<data>
-		/zpYOW95WaUS8frXC7166Uir2B8=
 		</data>
 		<key>Headers/TIMImageMessage.h</key>
 		<data>
@@ -280,6 +280,10 @@
 		<data>
 		O9DLqD6QX1ukj+gpJuCMKwziz9Y=
 		</data>
+		<key>Headers/TOSDisConnectOption.h</key>
+		<data>
+		j0VSy+YsjVKit9MQpUfxgFIq4CM=
+		</data>
 		<key>Headers/TOSInitOption.h</key>
 		<data>
 		Yqf2x3YjjwAuH9uu+68X/OoS33I=
@@ -306,7 +310,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		sqCmq4BrXxFkJZYk/iZLKSEwdLA=
+		C8xl80BjnYLuk193LPiV09wrMgg=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -529,7 +533,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			7KhgDxwMQiInBh831wchTJPG7rDIFqn9eedSUaFShNg=
+			XIUEH+inUQHyH5cla7Iol6oHyPwsFw5h7abGDBUiRQo=
 			</data>
 		</dict>
 		<key>Headers/TIMConnectOption.h</key>
@@ -572,13 +576,6 @@
 			<key>hash2</key>
 			<data>
 			aI/QJZBL2/3dQ2H0+s4hXHkKe7UtGPrscBdhwVjPICc=
-			</data>
-		</dict>
-		<key>Headers/TIMDisConnectOption.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			nWNH+Vo0Y80ctSTlnxHmnPqcAudqM3ufrrP5uiavX0I=
 			</data>
 		</dict>
 		<key>Headers/TIMImageMessage.h</key>
@@ -796,6 +793,13 @@
 			<key>hash2</key>
 			<data>
 			Iba3wVNdZJWxj82+3IMV36mXvxlQoJQqW1bZglfycyU=
+			</data>
+		</dict>
+		<key>Headers/TOSDisConnectOption.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			SjkkErWed4BxtNabGigfVciuA+4ZyQJvxMoDucoCD/w=
 			</data>
 		</dict>
 		<key>Headers/TOSInitOption.h</key>

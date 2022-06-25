@@ -179,7 +179,7 @@ TIMKit核心类
  所以除非您的App逻辑需要登出，否则一般不需要调用此方法进行手动断开。
  */
 
-- (void)disconnect:(TIMDisConnectOption*)option success:(void (^)(void))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
+- (void)disconnect:(TOSDisConnectOption*)option success:(void (^)(void))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
 
 /**
 注册了推送后 会从APNs返回设备ID,

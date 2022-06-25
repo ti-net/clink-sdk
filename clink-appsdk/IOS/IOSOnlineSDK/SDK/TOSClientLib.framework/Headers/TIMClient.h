@@ -26,7 +26,7 @@
 #import "TIMCreateGroupOption.h"
 #import "TIMUserGroup.h"
 #import "TIMUserGroupMember.h"
-#import "TIMDisConnectOption.h"
+#import "TOSDisConnectOption.h"
 #import "TIMMessageDeleteOption.h"
 #import "TIMMessageUpdateContentOption.h"
 #import "TIMJoinGroupOption.h"
@@ -222,7 +222,7 @@ NS_ASSUME_NONNULL_BEGIN
  所以除非您的App逻辑需要登出，否则一般不需要调用此方法进行手动断开。
  */
 
-- (void)disconnect:(TIMDisConnectOption*)option success:(void (^)(void))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
+- (void)disconnect:(TOSDisConnectOption*)option success:(void (^)(void))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
 
 
 /**

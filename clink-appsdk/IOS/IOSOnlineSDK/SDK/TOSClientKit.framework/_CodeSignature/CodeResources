@@ -4,6 +4,10 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>.DS_Store</key>
+		<data>
+		PhqQzl7mWFPuEoZ/t8lSsiG5Tn8=
+		</data>
 		<key>Headers/ICChatMessageRevokeCell.h</key>
 		<data>
 		yhjnsZ58fkiRSUIo1onkGwfqZbE=
@@ -62,7 +66,7 @@
 		</data>
 		<key>Headers/TOSKit.h</key>
 		<data>
-		ZuKXlKgYHJvfzphRt+byi67FPS0=
+		9V4wuwPKJfA45bUZToc9NrCsnjg=
 		</data>
 		<key>Headers/UITableView+TIMAutoTableViewCellHeight.h</key>
 		<data>
@@ -90,7 +94,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		hL+s3rPyrF+adSRfhzBD3zizmkU=
+		yPiyWrWHuLayxlKN/+94K/Gfm/c=
 		</data>
 		<key>LICENSE</key>
 		<data>
@@ -331,7 +335,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			kYjD4YHI6z9CHVqNDwN2V/8OP2HsUVtrsiZj2QqzMIU=
+			pKMlvLMwhO37CadPfu/9rX7VCJwN7id4nxd8K4CRM+M=
 			</data>
 		</dict>
 		<key>Headers/UITableView+TIMAutoTableViewCellHeight.h</key>

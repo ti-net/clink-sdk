@@ -1,5 +1,5 @@
 //
-//  TIMDisConnectOption.h
+//  TOSDisConnectOption.h
 //  TIMClientLib
 //
 //  Created by YanBo on 2020/4/26.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TIMDisConnectOption : NSObject
+@interface TOSDisConnectOption : NSObject
 
 /**
  App 在断开连接之后，是否还接收远程推送 只读
