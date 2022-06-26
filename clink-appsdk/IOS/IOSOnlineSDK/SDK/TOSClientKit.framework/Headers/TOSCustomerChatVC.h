@@ -1,5 +1,5 @@
 //
-//  TIMCustomerChatVC.h
+//  TOSCustomerChatVC.h
 //  TIMClientKit
 //
 //  Created by apple on 2021/8/23.
@@ -26,7 +26,7 @@ typedef NS_ENUM(NSUInteger, TinetChatStatusType) {
     TinetChatStatusTypeOnline,    // 客服在线
 };
 
-@interface TIMCustomerChatVC : UIViewController
+@interface TOSCustomerChatVC : UIViewController
 
 @property (nonatomic, strong) TOSClientKitCommodityCardOption *commodityCardOption;
 

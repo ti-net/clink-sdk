@@ -1,5 +1,5 @@
 //
-//  MYHTIMMessage.h
+//  TOSMessage.h
 //  TIMClient
 //
 //  Created by YanBo on 2020/3/30.
@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MYHTIMMessage : NSObject
+@interface TOSMessage : NSObject
 
 /**
  本地生成的消息唯一ID

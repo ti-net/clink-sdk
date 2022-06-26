@@ -67,12 +67,12 @@
 		1882137726D656BE00F0757D /* kefuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1882137626D656BE00F0757D /* kefuVC.m */; };
 		31C079006735213EC473B824 /* Pods_TIMClientKitDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F5AF04A2FE99588EFDBFC76 /* Pods_TIMClientKitDemo.framework */; };
 		3C787FED258A0C7300E33D64 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C787FEC258A0C7300E33D64 /* MBProgressHUD.m */; };
-		3C99B22D2865A8DD00703C34 /* TOSClient.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3C99B22A2865A8DD00703C34 /* TOSClient.bundle */; };
-		3C99B22E2865A8E200703C34 /* TOSClientKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C99B2282865A8DC00703C34 /* TOSClientKit.framework */; };
-		3C99B22F2865A8E200703C34 /* TOSClientKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C99B2282865A8DC00703C34 /* TOSClientKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3C99B2302865A8E300703C34 /* TOSClientLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C99B2292865A8DC00703C34 /* TOSClientLib.framework */; };
-		3C99B2312865A8E300703C34 /* TOSClientLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C99B2292865A8DC00703C34 /* TOSClientLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3C99DFA7263AB0D8009BABB7 /* ChatInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C99DFA6263AB0D8009BABB7 /* ChatInfoViewController.m */; };
+		3CD9B48B28683FDD00CA8E90 /* TOSClient.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3CD9B48828683FDD00CA8E90 /* TOSClient.bundle */; };
+		3CD9B48C2868402900CA8E90 /* TOSClientKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD9B48728683FDC00CA8E90 /* TOSClientKit.framework */; };
+		3CD9B48D2868402900CA8E90 /* TOSClientKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD9B48728683FDC00CA8E90 /* TOSClientKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3CD9B48E2868402A00CA8E90 /* TOSClientLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD9B48628683FDB00CA8E90 /* TOSClientLib.framework */; };
+		3CD9B48F2868402A00CA8E90 /* TOSClientLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD9B48628683FDB00CA8E90 /* TOSClientLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3CE51596256D4E7500302D62 /* YYDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE514E7256D4E7300302D62 /* YYDiskCache.m */; };
 		3CE51597256D4E7500302D62 /* YYCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE514E9256D4E7300302D62 /* YYCache.m */; };
 		3CE51598256D4E7500302D62 /* YYKVStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE514ED256D4E7300302D62 /* YYKVStorage.m */; };
@@ -181,8 +181,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3C99B2312865A8E300703C34 /* TOSClientLib.framework in Embed Frameworks */,
-				3C99B22F2865A8E200703C34 /* TOSClientKit.framework in Embed Frameworks */,
+				3CD9B48F2868402A00CA8E90 /* TOSClientLib.framework in Embed Frameworks */,
+				3CD9B48D2868402900CA8E90 /* TOSClientKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,11 +316,11 @@
 		1AB87F397BADBF8DE020158C /* Pods-TIMClientLibDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TIMClientLibDemo.release.xcconfig"; path = "Target Support Files/Pods-TIMClientLibDemo/Pods-TIMClientLibDemo.release.xcconfig"; sourceTree = "<group>"; };
 		3C787FEB258A0C7200E33D64 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		3C787FEC258A0C7300E33D64 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		3C99B2282865A8DC00703C34 /* TOSClientKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TOSClientKit.framework; sourceTree = "<group>"; };
-		3C99B2292865A8DC00703C34 /* TOSClientLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TOSClientLib.framework; sourceTree = "<group>"; };
-		3C99B22A2865A8DD00703C34 /* TOSClient.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TOSClient.bundle; sourceTree = "<group>"; };
 		3C99DFA5263AB0D8009BABB7 /* ChatInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatInfoViewController.h; sourceTree = "<group>"; };
 		3C99DFA6263AB0D8009BABB7 /* ChatInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatInfoViewController.m; sourceTree = "<group>"; };
+		3CD9B48628683FDB00CA8E90 /* TOSClientLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TOSClientLib.framework; sourceTree = "<group>"; };
+		3CD9B48728683FDC00CA8E90 /* TOSClientKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TOSClientKit.framework; sourceTree = "<group>"; };
+		3CD9B48828683FDD00CA8E90 /* TOSClient.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TOSClient.bundle; sourceTree = "<group>"; };
 		3CE514E7256D4E7300302D62 /* YYDiskCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYDiskCache.m; sourceTree = "<group>"; };
 		3CE514E8256D4E7300302D62 /* YYKVStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYKVStorage.h; sourceTree = "<group>"; };
 		3CE514E9256D4E7300302D62 /* YYCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYCache.m; sourceTree = "<group>"; };
@@ -509,8 +509,8 @@
 			files = (
 				01401478248BCEEC000AC4DC /* libc++.tbd in Frameworks */,
 				31C079006735213EC473B824 /* Pods_TIMClientKitDemo.framework in Frameworks */,
-				3C99B2302865A8E300703C34 /* TOSClientLib.framework in Frameworks */,
-				3C99B22E2865A8E200703C34 /* TOSClientKit.framework in Frameworks */,
+				3CD9B48E2868402A00CA8E90 /* TOSClientLib.framework in Frameworks */,
+				3CD9B48C2868402900CA8E90 /* TOSClientKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -700,9 +700,9 @@
 		01EA8607247CFFE300CD92F2 /* TIMClientKitDemo */ = {
 			isa = PBXGroup;
 			children = (
-				3C99B22A2865A8DD00703C34 /* TOSClient.bundle */,
-				3C99B2282865A8DC00703C34 /* TOSClientKit.framework */,
-				3C99B2292865A8DC00703C34 /* TOSClientLib.framework */,
+				3CD9B48828683FDD00CA8E90 /* TOSClient.bundle */,
+				3CD9B48728683FDC00CA8E90 /* TOSClientKit.framework */,
+				3CD9B48628683FDB00CA8E90 /* TOSClientLib.framework */,
 				5A3EDA952833B49A00868F0B /* DomainNameSave.h */,
 				5A3EDA942833B49A00868F0B /* DomainNameSave.m */,
 				3CE514E5256D4E7300302D62 /* YYKit */,
@@ -1389,7 +1389,7 @@
 				01EA8613247CFFE300CD92F2 /* Main.storyboard in Resources */,
 				01123230248649DE00FFAD59 /* LoginViewController.xib in Resources */,
 				18544A542774676F00F83DD5 /* IQKeyboardManager.xcassets in Resources */,
-				3C99B22D2865A8DD00703C34 /* TOSClient.bundle in Resources */,
+				3CD9B48B28683FDD00CA8E90 /* TOSClient.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

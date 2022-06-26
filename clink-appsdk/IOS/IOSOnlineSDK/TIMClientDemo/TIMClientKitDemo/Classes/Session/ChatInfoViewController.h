@@ -8,7 +8,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ChatInfoViewController : TIMCustomerChatVC//TIMChatViewController
+@interface ChatInfoViewController : TOSCustomerChatVC//TIMChatViewController
 
 @end
 
