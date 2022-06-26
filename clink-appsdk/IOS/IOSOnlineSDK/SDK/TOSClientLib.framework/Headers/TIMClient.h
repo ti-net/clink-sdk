@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "TIMStatusDefine.h"
 #import "TIMSessionListOption.h"
-#import "MYHTIMMessage.h"
+#import "TOSMessage.h"
 //#import "TIMMessageHistoryOption.h"
 #import "TIMMessageSendOption.h"
 #import "TIMMessageRevokeOption.h"
@@ -124,12 +124,12 @@ NS_ASSUME_NONNULL_BEGIN
  其中，left为还剩余的、还未接收的消息数量。比如刚上线一口气收到多条消息时，通过此方法，您可以获取到每条消息，left会依次递减直到0。
  您可以根据left数量来优化您的App体验和性能，比如收到大量消息时等待left为0再刷新UI。
  */
-- (void)onReceived:(MYHTIMMessage *)message left:(int)nLeft;
+- (void)onReceived:(TOSMessage *)message left:(int)nLeft;
 
 /*
  获取未读消息数量/最后一条消息的信息
  **/
-- (void)onReceived:(MYHTIMMessage *)message withMessageType:(int)messageType;
+- (void)onReceived:(TOSMessage *)message withMessageType:(int)messageType;
 
 @optional
 /**
@@ -155,7 +155,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  @discussion 被撤回的消息会变更为TIMRecallNotificationMessage，App需要在UI上刷新这条消息。
  */
-- (void)onMessageRecalled:(MYHTIMMessage *)message;
+- (void)onMessageRecalled:(TOSMessage *)message;
 
 
 /**
@@ -348,7 +348,7 @@ SDK内置的消息类型，如果您将pushOption置为nil，会使用默认的�
 
  */
 
-- (void)sendMessage:(TIMMessageSendOption *)option progress:(void(^)(float progress))progressBlock success:(void (^)(MYHTIMMessage * timMessage))successBlock error:(void (^)(MYHTIMMessage * message,TIMConnectErrorCode nErrorCode, NSString *errorDes))errorBlock;
+- (void)sendMessage:(TIMMessageSendOption *)option progress:(void(^)(float progress))progressBlock success:(void (^)(TOSMessage * timMessage))successBlock error:(void (^)(TOSMessage * message,TIMConnectErrorCode nErrorCode, NSString *errorDes))errorBlock;
 
 
 /**
@@ -360,18 +360,18 @@ SDK内置的消息类型，如果您将pushOption置为nil，会使用默认的�
  @param errorBlock             消息发送失败的回调
  */
 
-- (void)revokeMessage:(TIMMessageRevokeOption *)option progress:(void(^)(float progress))progressBlock success:(void (^)(MYHTIMMessage * timMessage))successBlock error:(void (^)(MYHTIMMessage * message,TIMConnectErrorCode nErrorCode, NSString *errorDes))errorBlock;
+- (void)revokeMessage:(TIMMessageRevokeOption *)option progress:(void(^)(float progress))progressBlock success:(void (^)(TOSMessage * timMessage))successBlock error:(void (^)(TOSMessage * message,TIMConnectErrorCode nErrorCode, NSString *errorDes))errorBlock;
 
 /**
  取消发送中的信息(较大的文件)
 
- @param message                   消息体MYHTIMMessage
+ @param message                   消息体TOSMessage
  @param successBlock        消息取消成功的回调 [messageId:消息的ID]
  @param errorBlock             消息取消失败的回调 [nErrorCode:发送失败的错误码,
 
  @return YES表示取消成功，NO表示取消失败，即已经发送完成或者消息不存在。
  */
-- (BOOL)cancelSendMessage:(MYHTIMMessage *)message success:(void(^)(void))successBlock error:(void(^)(TIMConnectErrorCode nErrorCode, NSString *errorDes))errorBlock;
+- (BOOL)cancelSendMessage:(TOSMessage *)message success:(void(^)(void))successBlock error:(void(^)(TIMConnectErrorCode nErrorCode, NSString *errorDes))errorBlock;
 
 #pragma mark - 获取历史消息
 /**
@@ -385,7 +385,7 @@ SDK内置的消息类型，如果您将pushOption置为nil，会使用默认的�
 此方法会获取该会话中，oldestMessageId之前的、指定数量的最新消息实体，返回的消息实体按照时间从新到旧排列。
 返回的消息中不包含oldestMessageId对应那条消息，如果会话中的消息数量小于参数count的值，会将该会话中的所有消息返回。
 如：
-oldestMessageId为10，count为2，会返回messageId为9和8的MYHTIMMessage对象列表。
+oldestMessageId为10，count为2，会返回messageId为9和8的TOSMessage对象列表。
 */
 //- (void)getMessageHistory:(TIMMessageHistoryOption*)option success:(void (^)(NSArray *messageList))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
 

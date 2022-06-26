@@ -19,9 +19,7 @@
 #import "DomainNameSave.h"
 
 @interface LoginViewController () <YBPopupMenuDelegate,
-TIMAuditMessageSuccessDelegate,
-TIMCustomMessageClickDelegate,
-TIMRTCMediaMessageDelegate>
+TIMCustomMessageClickDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *loginLogo;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *logoTapGesture;
@@ -129,11 +127,11 @@ TIMRTCMediaMessageDelegate>
 }
 
 // 点击自定义消息
-- (void)onClickCustomMessage:(MYHTIMMessage *)timMessage{
-
-    TIMCustomizeMessage * custMessage = (TIMCustomizeMessage *)timMessage.content;
-    NSLog(@"点击自定义消息");
-}
+//- (void)onClickCustomMessage:(MYHTIMMessage *)timMessage{
+//
+//    TIMCustomizeMessage * custMessage = (TIMCustomizeMessage *)timMessage.content;
+//    NSLog(@"点击自定义消息");
+//}
 
 //登录按钮
 - (IBAction)didClickLoginBtnAction:(UIButton *)sender {
@@ -183,9 +181,9 @@ TIMRTCMediaMessageDelegate>
 //    本地kit一些配置
     [TOSClientKit sharedTOSKit].disableMessageNotificaiton = YES;  // 取消本地推送
     [TOSClientKit sharedTOSKit].disableMessageAlertSound = YES;  // 取消本地推送声音
-    [TOSClientKit sharedTOSKit].auditMessageSuccessDelagate = self;
+//    [TOSClientKit sharedTOSKit].auditMessageSuccessDelagate = self;
     [TOSClientKit sharedTOSKit].customMessageClickDelagate = self;
-    [TOSClientKit sharedTOSKit].rtcMediaMessageDelagate = self;
+//    [TOSClientKit sharedTOSKit].rtcMediaMessageDelagate = self;
 //    [TIMKit sharedTIMKit].customerKitUIType = TIMKitUIRDSA20Type;
 
 }

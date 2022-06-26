@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param msgId                   消息ID
  @return                参数对象
  */
-- (instancetype)initWithTargetId:(NSString *)targetId content:(MYHTIMMessage *)content msgId:(NSString *)msgId;
+- (instancetype)initWithTargetId:(NSString *)targetId content:(TOSMessage *)content msgId:(NSString *)msgId;
 
 @end
 

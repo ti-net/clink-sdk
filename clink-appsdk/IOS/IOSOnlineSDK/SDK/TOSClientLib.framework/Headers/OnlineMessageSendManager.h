@@ -18,13 +18,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark  发送商品卡片消息
 - (void)sendCommodityCardMessageWithMessageStr:(NSDictionary *)messageStr
-                              success:(void (^)(MYHTIMMessage * timMessage))successBlock
+                              success:(void (^)(TOSMessage * timMessage))successBlock
                                 error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
 
 
 #pragma mark  发送文字消息
 - (void)sendTextMessageWithMessageStr:(NSString*)messageStr
-                              success:(void (^)(MYHTIMMessage * timMessage))successBlock
+                              success:(void (^)(TOSMessage * timMessage))successBlock
                                 error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
 
 #pragma mark  发送图片消息

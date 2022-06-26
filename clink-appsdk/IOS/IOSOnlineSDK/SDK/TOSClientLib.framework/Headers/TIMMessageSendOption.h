@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TIMMessageContent.h"
-#import "MYHTIMMessage.h"
+#import "TOSMessage.h"
 #import "TIMStatusDefine.h"
 #import "TIMMessagePushOption.h"
 
@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  消息内容
  */
-@property (nonatomic, strong, readonly) MYHTIMMessage* content;
+@property (nonatomic, strong, readonly) TOSMessage* content;
 
 
 /**
@@ -40,7 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param content                   消息内容
  @return               参数对象
  */
-- (instancetype)initWithOption:(NSString *)targetId content:(MYHTIMMessage *)content;
+- (instancetype)initWithOption:(NSString *)targetId content:(TOSMessage *)content;
 
 /**
  参数对象初始化方法
@@ -50,7 +50,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param pushOption             推送参数对象
  @return                参数对象
  */
-- (instancetype)initWithOption:(NSString *)targetId content:(MYHTIMMessage *)content pushOption:(nullable TIMMessagePushOption *)pushOption;
+- (instancetype)initWithOption:(NSString *)targetId content:(TOSMessage *)content pushOption:(nullable TIMMessagePushOption *)pushOption;
 
 @end
 

@@ -36,17 +36,13 @@
 		<data>
 		oAZwxuZlyNXjdNybQQAp7xRPitE=
 		</data>
-		<key>Headers/TIMCustomerChatVC.h</key>
-		<data>
-		kihofAD+SlFVwXWCWnHYTVeH+UM=
-		</data>
 		<key>Headers/TIMRefresh.h</key>
 		<data>
 		eaLhWaKN/1ocrRps47c6awpTMew=
 		</data>
 		<key>Headers/TIMSendMultiMedia.h</key>
 		<data>
-		vGuKSOo3jckDp5YzMSbNilTkyUo=
+		Qz408oY8HeNtCpBaBFfWnWfNcg4=
 		</data>
 		<key>Headers/TIMSessionBaseCell.h</key>
 		<data>
@@ -62,11 +58,15 @@
 		</data>
 		<key>Headers/TOSClientKit.h</key>
 		<data>
-		pH/Qt5kEhgrxKl3tS7hJM05DcHk=
+		J7oSBq13u7ivgGZ1LjU4HjIl0+A=
+		</data>
+		<key>Headers/TOSCustomerChatVC.h</key>
+		<data>
+		8aL2cyhqCZRL1IGmsax0ZbpcsVo=
 		</data>
 		<key>Headers/TOSKit.h</key>
 		<data>
-		9V4wuwPKJfA45bUZToc9NrCsnjg=
+		83HmvrqWxviHrnXGSnmcpK1vnSc=
 		</data>
 		<key>Headers/UITableView+TIMAutoTableViewCellHeight.h</key>
 		<data>
@@ -282,13 +282,6 @@
 			pT16L9aPqMnpjb4WqbhcTxsDBEACqySIFZMSmGjbWcQ=
 			</data>
 		</dict>
-		<key>Headers/TIMCustomerChatVC.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			ktZIBogsazfE7atwV1rmxNY8u4f19nqqxuA9OYQsVrY=
-			</data>
-		</dict>
 		<key>Headers/TIMRefresh.h</key>
 		<dict>
 			<key>hash2</key>
@@ -300,7 +293,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			zvRGLSB4pq16zSuGsmB/e2IPlZpaTy3VlUEXPoMbzrw=
+			9LzZPATcirTl0dSSyqgl8ZBTzHb7eAEsnwzExVOysUg=
 			</data>
 		</dict>
 		<key>Headers/TIMSessionBaseCell.h</key>
@@ -328,14 +321,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			gNhF5FyrclEXNx6QrzQUG9shPQhbTACO3FH3ISpFXkM=
+			x+3Awmg5Ijg2KXNZjeoZCiuTEfdP9ykkoYXmlJ4UnWY=
+			</data>
+		</dict>
+		<key>Headers/TOSCustomerChatVC.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			lfYfqjvDogx+ahwj8qp5T5VO6GeaJCgXSzOrWnFlcYs=
 			</data>
 		</dict>
 		<key>Headers/TOSKit.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			pKMlvLMwhO37CadPfu/9rX7VCJwN7id4nxd8K4CRM+M=
+			PISYriqnj7o1695zewCSs5FHiWuWIFSvkNy8kWDdVt0=
 			</data>
 		</dict>
 		<key>Headers/UITableView+TIMAutoTableViewCellHeight.h</key>
