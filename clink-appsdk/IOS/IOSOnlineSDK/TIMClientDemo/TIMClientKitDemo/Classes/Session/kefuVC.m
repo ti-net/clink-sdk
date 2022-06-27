@@ -74,23 +74,12 @@
 
 
 -(void)kefuAction{
-    /*访客初始化回调
-     当APP端IM mqtt 连接就绪，主动通知服务端，APP端调用该接口后服务端
-     就开始会话流程逻辑创建会话*/
-//    [[OnlineRequestManager sharedCustomerManager] visitorReadyWithDict:@{} success:^(TOSSessionInfoModel * _Nonnull sessModel) {
-//
-//    } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
-//
-//    }];
-
-    
-    //创建会话成功，进入聊天页面
+    //进入聊天页面
     ChatInfoViewController *chatVC = [[ChatInfoViewController alloc] init];
     chatVC.titleName = @"客服";
     chatVC.appName = @"客服SDK";
     self.hidesBottomBarWhenPushed  = YES;
     [self.navigationController pushViewController:chatVC animated:YES];
-    
 }
 
 
