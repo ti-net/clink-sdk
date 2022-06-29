@@ -30,7 +30,7 @@ public class CategoryTest extends KbAbstractTest{
         // 创建请求的request
         CreateCategoryRequest request = new CreateCategoryRequest();
         request.setBotId("581926");
-        request.setName("分类名称");
+        request.setName("分类名称123");
         request.setParentId(0);
 
         try {
@@ -55,8 +55,8 @@ public class CategoryTest extends KbAbstractTest{
         // 创建请求的request
         UpdateCategoryRequest request = new UpdateCategoryRequest();
         request.setBotId("581926");
-        request.setId(201625);
-        request.setName("分类名称修改");
+        request.setId(11024);
+        request.setName("分类名称123修改");
 
         try {
             UpdateCategoryResponse response = client.getResponseModel(request);
@@ -80,7 +80,7 @@ public class CategoryTest extends KbAbstractTest{
         // 创建请求的request
         DeleteCategoryRequest request = new DeleteCategoryRequest();
         request.setBotId("581926");
-        request.setId(123);
+        request.setId(11024);
 
         try {
             DeleteCategoryResponse response = client.getResponseModel(request);
