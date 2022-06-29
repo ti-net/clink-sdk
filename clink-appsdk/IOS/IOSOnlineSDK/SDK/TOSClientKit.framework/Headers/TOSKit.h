@@ -168,7 +168,7 @@ TIMKit核心类
 
  @warning 如果您使用TIMKit，可以设置并实现此Delegate监听消息接收；
  */
--(void)setTIMKitConnectionChangeDelegate:(id<TIMConnectionStatusChangeDelegate>)delegate;
+-(void)setTOSKitConnectionChangeDelegate:(id<TIMConnectionStatusChangeDelegate>)delegate;
 
 #pragma mark 消息接收监听
 
@@ -236,6 +236,13 @@ SDK内置的消息类型，如果您将pushOption置为nil，会使用默认的�
  @discussion 当App处于前台时，默认会播放消息提示音，您可以通过将此属性设置为YES，关闭所有的前台消息提示音。
  */
 @property (nonatomic, assign) BOOL disableMessageAlertSound;
+
+/**
+ 获取当前底层链接的状态
+
+ @discussion YES 已连接 NO 未链接。
+ */
+@property (nonatomic, assign) BOOL bMqttConnected;
 
 /**
 当前AppId
