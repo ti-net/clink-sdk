@@ -28,6 +28,7 @@ import org.apache.http.conn.ssl.TrustStrategy;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.conn.BasicHttpClientConnectionManager;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.message.BasicHttpEntityEnclosingRequest;
 import org.apache.http.ssl.SSLContexts;
@@ -184,11 +185,8 @@ public class SmartlinkClient {
                                     .register("http", new PlainConnectionSocketFactory())
                                     .build();
 
-                    // 调整为连接池管理器 add by qianjin on 2021年10月15日17:38:44
-                    PoolingHttpClientConnectionManager connectionManager
-                            = new PoolingHttpClientConnectionManager(socketFactoryRegistry);
-                    connectionManager.setDefaultMaxPerRoute(configuration.getMaxConnectionsPerRoute());
-                    connectionManager.setMaxTotal(configuration.getMaxConnections());
+                    BasicHttpClientConnectionManager connectionManager =
+                            new BasicHttpClientConnectionManager(socketFactoryRegistry);
 
                     httpClientBuilder.setSSLSocketFactory(sslsf);
                     httpClientBuilder.setConnectionManager(connectionManager);
