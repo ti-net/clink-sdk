@@ -49,7 +49,7 @@
             self.loginBtn.backgroundColor = kHexColor(0xBDD5FF);
         }
     }];
-    
+    self.view.backgroundColor = [UIColor whiteColor];
     [self.accessSecretBtn setEnlargeEdge:10.f];
 }
 

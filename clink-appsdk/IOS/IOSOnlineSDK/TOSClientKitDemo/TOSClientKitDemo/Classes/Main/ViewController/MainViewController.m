@@ -45,7 +45,7 @@
     NSString *visitorsID = [NSString stringWithFormat:@"%ld",[[NSDate date] timeSwitchTimestamp]];
     if (self.visitorsID.text &&
         self.visitorsID.text.length > 0) {
-        visitorsID = self.visitorsID;
+        visitorsID = self.visitorsID.text;
     }
     
     TOSConnectOption * connectOption = [[TOSConnectOption alloc] initWithOption:visitorsID nickname:@"客户" headUrl:@"https://image.baidu.com/search/index?ct=201326592&z=undefined&tn=baiduimage&ipn=d&word=%E5%A4%B4%E5%83%8F&step_word=&ie=utf-8&in=&cl=2&lm=-1&st=undefined&hd=undefined&latest=undefined&copyright=undefined&cs=3627913612,1944792156&os=13889901,1672538297&simid=3627913612,1944792156&pn=11&di=7108135681917976577&ln=1972&fr=&fmq=1657034284813_R&fm=&ic=undefined&s=undefined&se=&sme=&tab=0&width=undefined&height=undefined&face=undefined&is=0,0&istype=0&ist=&jit=&bdtype=0&spn=0&pi=0&gsm=0&objurl=https%3A%2F%2Fgimg2.baidu.com%2Fimage_search%2Fsrc%3Dhttp%253A%252F%252Fup.enterdesk.com%252Fedpic%252F4d%252F63%252Fbd%252F4d63bd0b3bf8cc9aa0dc3e1111646b1c.jpeg%26refer%3Dhttp%253A%252F%252Fup.enterdesk.com%26app%3D2002%26size%3Df9999%2C10000%26q%3Da80%26n%3D0%26g%3D0n%26fmt%3Dauto%3Fsec%3D1659626284%26t%3Dce69786ee9e6adc81303fc40fb461d55&rpstart=0&rpnum=0&adpicid=0&nojc=undefined&tt=1&dyTabStr=MCwzLDEsNSwyLDcsOCw2LDQsOQ%3D%3D" mobile:@"123219321" advanceParams:@{}];
