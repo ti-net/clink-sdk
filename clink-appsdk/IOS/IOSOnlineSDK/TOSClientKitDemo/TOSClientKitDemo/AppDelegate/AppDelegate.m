@@ -37,7 +37,7 @@
     } else {
         [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     }
-    [Bugly startWithAppId:@"7b47c04b52"];
+    [Bugly startWithAppId:@"f09601e1ba"];
     
     //监控App第一次加载时的网络状态
     [ZYNetworkAccessibity start];
