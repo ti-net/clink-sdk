@@ -29,4 +29,6 @@ pod 'RTRootNavigationController'
 pod 'TZImagePickerController'
 pod 'WZLBadge'
 
+pod 'Masonry'
+
 end

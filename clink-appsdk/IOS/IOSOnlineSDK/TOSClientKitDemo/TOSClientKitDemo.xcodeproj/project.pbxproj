@@ -7,6 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C9CE7BA2874538B00163770 /* CustomStylesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9CE7B82874538B00163770 /* CustomStylesViewController.m */; };
+		3C9CE7BB2874538C00163770 /* CustomStylesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C9CE7B92874538B00163770 /* CustomStylesViewController.xib */; };
+		3C9CE7BF287453E800163770 /* CustomStylesDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9CE7BD287453E800163770 /* CustomStylesDetailsViewController.m */; };
+		3C9CE7C0287453E800163770 /* CustomStylesDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C9CE7BE287453E800163770 /* CustomStylesDetailsViewController.xib */; };
+		3C9CE7C4287457E700163770 /* CustomStylesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9CE7C2287457E700163770 /* CustomStylesTableViewCell.m */; };
+		3C9CE7C5287457E700163770 /* CustomStylesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C9CE7C3287457E700163770 /* CustomStylesTableViewCell.xib */; };
+		3C9CE7C82874668400163770 /* CustomStylesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9CE7C72874668400163770 /* CustomStylesModel.m */; };
+		3C9CE7CA28746C7E00163770 /* CustomStylesDataSource.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C9CE7C928746C7E00163770 /* CustomStylesDataSource.plist */; };
+		3C9CE7CD2874760400163770 /* CustomStylesDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9CE7CC2874760400163770 /* CustomStylesDetailsModel.m */; };
+		3C9CE7D12874766200163770 /* CustomStylesDetailsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9CE7CF2874766200163770 /* CustomStylesDetailsTableViewCell.m */; };
+		3C9CE7D22874766200163770 /* CustomStylesDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C9CE7D02874766200163770 /* CustomStylesDetailsTableViewCell.xib */; };
+		3C9CE7D6287476F400163770 /* CustomStylesSaveTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9CE7D4287476F400163770 /* CustomStylesSaveTableViewCell.m */; };
+		3C9CE7D7287476F400163770 /* CustomStylesSaveTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C9CE7D5287476F400163770 /* CustomStylesSaveTableViewCell.xib */; };
+		3C9CE7D928747A2000163770 /* CustomStylesDetailsDataSource.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C9CE7D828747A2000163770 /* CustomStylesDetailsDataSource.plist */; };
+		3C9CE7DC2874941900163770 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9CE7DB2874941900163770 /* MessageViewController.m */; };
+		3C9CE7E128749CA400163770 /* document.html in Resources */ = {isa = PBXBuildFile; fileRef = 3C9CE7E028749CA400163770 /* document.html */; };
+		3C9CE7E42874A07700163770 /* ProtocolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9CE7E32874A07700163770 /* ProtocolViewController.m */; };
 		3CB72A72286AD38400F2A780 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB72A71286AD38400F2A780 /* AppDelegate.m */; };
 		3CB72A7B286AD38400F2A780 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CB72A79286AD38400F2A780 /* Main.storyboard */; };
 		3CB72A7D286AD38600F2A780 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CB72A7C286AD38600F2A780 /* Assets.xcassets */; };
@@ -111,6 +128,32 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3C9CE7B72874538B00163770 /* CustomStylesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomStylesViewController.h; sourceTree = "<group>"; };
+		3C9CE7B82874538B00163770 /* CustomStylesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomStylesViewController.m; sourceTree = "<group>"; };
+		3C9CE7B92874538B00163770 /* CustomStylesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomStylesViewController.xib; sourceTree = "<group>"; };
+		3C9CE7BC287453E800163770 /* CustomStylesDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomStylesDetailsViewController.h; sourceTree = "<group>"; };
+		3C9CE7BD287453E800163770 /* CustomStylesDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomStylesDetailsViewController.m; sourceTree = "<group>"; };
+		3C9CE7BE287453E800163770 /* CustomStylesDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomStylesDetailsViewController.xib; sourceTree = "<group>"; };
+		3C9CE7C1287457E700163770 /* CustomStylesTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomStylesTableViewCell.h; sourceTree = "<group>"; };
+		3C9CE7C2287457E700163770 /* CustomStylesTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomStylesTableViewCell.m; sourceTree = "<group>"; };
+		3C9CE7C3287457E700163770 /* CustomStylesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomStylesTableViewCell.xib; sourceTree = "<group>"; };
+		3C9CE7C62874668400163770 /* CustomStylesModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomStylesModel.h; sourceTree = "<group>"; };
+		3C9CE7C72874668400163770 /* CustomStylesModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomStylesModel.m; sourceTree = "<group>"; };
+		3C9CE7C928746C7E00163770 /* CustomStylesDataSource.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = CustomStylesDataSource.plist; sourceTree = "<group>"; };
+		3C9CE7CB2874760400163770 /* CustomStylesDetailsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomStylesDetailsModel.h; sourceTree = "<group>"; };
+		3C9CE7CC2874760400163770 /* CustomStylesDetailsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomStylesDetailsModel.m; sourceTree = "<group>"; };
+		3C9CE7CE2874766200163770 /* CustomStylesDetailsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomStylesDetailsTableViewCell.h; sourceTree = "<group>"; };
+		3C9CE7CF2874766200163770 /* CustomStylesDetailsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomStylesDetailsTableViewCell.m; sourceTree = "<group>"; };
+		3C9CE7D02874766200163770 /* CustomStylesDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomStylesDetailsTableViewCell.xib; sourceTree = "<group>"; };
+		3C9CE7D3287476F400163770 /* CustomStylesSaveTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomStylesSaveTableViewCell.h; sourceTree = "<group>"; };
+		3C9CE7D4287476F400163770 /* CustomStylesSaveTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomStylesSaveTableViewCell.m; sourceTree = "<group>"; };
+		3C9CE7D5287476F400163770 /* CustomStylesSaveTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomStylesSaveTableViewCell.xib; sourceTree = "<group>"; };
+		3C9CE7D828747A2000163770 /* CustomStylesDetailsDataSource.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = CustomStylesDetailsDataSource.plist; sourceTree = "<group>"; };
+		3C9CE7DA2874941900163770 /* MessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
+		3C9CE7DB2874941900163770 /* MessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
+		3C9CE7E028749CA400163770 /* document.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = document.html; sourceTree = "<group>"; };
+		3C9CE7E22874A07700163770 /* ProtocolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolViewController.h; sourceTree = "<group>"; };
+		3C9CE7E32874A07700163770 /* ProtocolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProtocolViewController.m; sourceTree = "<group>"; };
 		3CB72A6D286AD38400F2A780 /* TOSClientKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TOSClientKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CB72A70286AD38400F2A780 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3CB72A71286AD38400F2A780 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -282,6 +325,66 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		3C9CE7B2287451A000163770 /* CustomStyles */ = {
+			isa = PBXGroup;
+			children = (
+				3C9CE7B6287451CA00163770 /* ViewController */,
+				3C9CE7B5287451C300163770 /* ViewModel */,
+				3C9CE7B4287451BE00163770 /* Model */,
+				3C9CE7B3287451B800163770 /* View */,
+			);
+			path = CustomStyles;
+			sourceTree = "<group>";
+		};
+		3C9CE7B3287451B800163770 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3C9CE7C1287457E700163770 /* CustomStylesTableViewCell.h */,
+				3C9CE7C2287457E700163770 /* CustomStylesTableViewCell.m */,
+				3C9CE7C3287457E700163770 /* CustomStylesTableViewCell.xib */,
+				3C9CE7D3287476F400163770 /* CustomStylesSaveTableViewCell.h */,
+				3C9CE7D4287476F400163770 /* CustomStylesSaveTableViewCell.m */,
+				3C9CE7D5287476F400163770 /* CustomStylesSaveTableViewCell.xib */,
+				3C9CE7CE2874766200163770 /* CustomStylesDetailsTableViewCell.h */,
+				3C9CE7CF2874766200163770 /* CustomStylesDetailsTableViewCell.m */,
+				3C9CE7D02874766200163770 /* CustomStylesDetailsTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3C9CE7B4287451BE00163770 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3C9CE7C62874668400163770 /* CustomStylesModel.h */,
+				3C9CE7C72874668400163770 /* CustomStylesModel.m */,
+				3C9CE7CB2874760400163770 /* CustomStylesDetailsModel.h */,
+				3C9CE7CC2874760400163770 /* CustomStylesDetailsModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3C9CE7B5287451C300163770 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3C9CE7B6287451CA00163770 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3C9CE7B72874538B00163770 /* CustomStylesViewController.h */,
+				3C9CE7B82874538B00163770 /* CustomStylesViewController.m */,
+				3C9CE7B92874538B00163770 /* CustomStylesViewController.xib */,
+				3C9CE7BC287453E800163770 /* CustomStylesDetailsViewController.h */,
+				3C9CE7BD287453E800163770 /* CustomStylesDetailsViewController.m */,
+				3C9CE7BE287453E800163770 /* CustomStylesDetailsViewController.xib */,
+				3C9CE7C928746C7E00163770 /* CustomStylesDataSource.plist */,
+				3C9CE7D828747A2000163770 /* CustomStylesDetailsDataSource.plist */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		3CB72A64286AD38400F2A780 = {
 			isa = PBXGroup;
 			children = (
@@ -307,6 +410,9 @@
 		3CB72A6F286AD38400F2A780 /* TOSClientKitDemo */ = {
 			isa = PBXGroup;
 			children = (
+				3C9CE7E028749CA400163770 /* document.html */,
+				3C9CE7E22874A07700163770 /* ProtocolViewController.h */,
+				3C9CE7E32874A07700163770 /* ProtocolViewController.m */,
 				3CB72BAB286D89CA00F2A780 /* SDK */,
 				3CB72AA6286AE42C00F2A780 /* AppDelegate */,
 				3CB72AA5286AE41100F2A780 /* Classes */,
@@ -342,6 +448,7 @@
 		3CB72AA5286AE41100F2A780 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3C9CE7B2287451A000163770 /* CustomStyles */,
 				3CB72B9D286BF55700F2A780 /* Main */,
 				3CB72B8D286B017400F2A780 /* Login */,
 			);
@@ -711,6 +818,8 @@
 				3CB72BA2286BF5FD00F2A780 /* MainViewController.h */,
 				3CB72BA3286BF5FD00F2A780 /* MainViewController.m */,
 				3CB72BA4286BF5FD00F2A780 /* MainViewController.xib */,
+				3C9CE7DA2874941900163770 /* MessageViewController.h */,
+				3C9CE7DB2874941900163770 /* MessageViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -848,11 +957,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CB72B9C286BF35600F2A780 /* LoginViewController.xib in Resources */,
+				3C9CE7D7287476F400163770 /* CustomStylesSaveTableViewCell.xib in Resources */,
 				3CB72A80286AD38600F2A780 /* LaunchScreen.storyboard in Resources */,
+				3C9CE7D22874766200163770 /* CustomStylesDetailsTableViewCell.xib in Resources */,
+				3C9CE7E128749CA400163770 /* document.html in Resources */,
+				3C9CE7CA28746C7E00163770 /* CustomStylesDataSource.plist in Resources */,
+				3C9CE7C0287453E800163770 /* CustomStylesDetailsViewController.xib in Resources */,
+				3C9CE7C5287457E700163770 /* CustomStylesTableViewCell.xib in Resources */,
 				3CB72A7D286AD38600F2A780 /* Assets.xcassets in Resources */,
+				3C9CE7BB2874538C00163770 /* CustomStylesViewController.xib in Resources */,
 				3CB72BB0286D89CA00F2A780 /* TOSClient.bundle in Resources */,
 				3CB72BA6286BF5FD00F2A780 /* MainViewController.xib in Resources */,
 				3CB72A7B286AD38400F2A780 /* Main.storyboard in Resources */,
+				3C9CE7D928747A2000163770 /* CustomStylesDetailsDataSource.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -920,10 +1037,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CB72B85286AE98300F2A780 /* BaseViewController.m in Sources */,
+				3C9CE7BF287453E800163770 /* CustomStylesDetailsViewController.m in Sources */,
 				3CB72B73286AE98300F2A780 /* NSString+TimeFormatting.m in Sources */,
 				3CB72B74286AE98300F2A780 /* NSString+ChatTextManage.m in Sources */,
 				3CB72BA5286BF5FD00F2A780 /* MainViewController.m in Sources */,
 				3CB72ADA286AE8A400F2A780 /* ZYNetworkAccessibity.m in Sources */,
+				3C9CE7DC2874941900163770 /* MessageViewController.m in Sources */,
+				3C9CE7C82874668400163770 /* CustomStylesModel.m in Sources */,
 				3CB72AF3286AE95700F2A780 /* TRCookieManagement.m in Sources */,
 				3CB72B6A286AE98300F2A780 /* UIView+RoundedCorner.m in Sources */,
 				3CB72B86286AE98300F2A780 /* BaseNavigationController.m in Sources */,
@@ -934,14 +1054,18 @@
 				3CB72AF8286AE95700F2A780 /* TRLoadingView.m in Sources */,
 				3CB72B68286AE98300F2A780 /* UIViewExt.m in Sources */,
 				3CB72B7A286AE98300F2A780 /* NSNumber+TRTimeString.m in Sources */,
+				3C9CE7D6287476F400163770 /* CustomStylesSaveTableViewCell.m in Sources */,
 				3CB72B67286AE98300F2A780 /* UIView+ScaleMethod.m in Sources */,
 				3CB72B97286BF0E500F2A780 /* LoginModel.m in Sources */,
+				3C9CE7CD2874760400163770 /* CustomStylesDetailsModel.m in Sources */,
 				3CB72B88286AE98300F2A780 /* PagingInfoModel.m in Sources */,
 				3CB72B7F286AE98300F2A780 /* UITextField+ExtenRange.m in Sources */,
 				3CB72B7B286AE98300F2A780 /* NSObject+ShowError.m in Sources */,
 				3CB72B62286AE98300F2A780 /* UIImage+ImageTool.m in Sources */,
 				3CB72B72286AE98300F2A780 /* NSString+TRTool.m in Sources */,
 				3CB72B66286AE98300F2A780 /* UIButton+EnlargeEdge.m in Sources */,
+				3C9CE7C4287457E700163770 /* CustomStylesTableViewCell.m in Sources */,
+				3C9CE7D12874766200163770 /* CustomStylesDetailsTableViewCell.m in Sources */,
 				3CB72A72286AD38400F2A780 /* AppDelegate.m in Sources */,
 				3CB72AAA286AE85900F2A780 /* AppDelegate+OtherFunction.m in Sources */,
 				3CB72B79286AE98300F2A780 /* NSArray+Log.m in Sources */,
@@ -964,6 +1088,8 @@
 				3CB72B96286BF0E500F2A780 /* LoginInfoSave.m in Sources */,
 				3CB72B80286AE98300F2A780 /* NSDate+Calculation.m in Sources */,
 				3CB72B70286AE98300F2A780 /* NSString+UrlChineseCoding.m in Sources */,
+				3C9CE7E42874A07700163770 /* ProtocolViewController.m in Sources */,
+				3C9CE7BA2874538B00163770 /* CustomStylesViewController.m in Sources */,
 				3CB72B64286AE98300F2A780 /* NSDictionary+Log.m in Sources */,
 				3CB72B78286AE98300F2A780 /* NSArray+TRTool.m in Sources */,
 				3CB72B87286AE98300F2A780 /* BaseModel.m in Sources */,

@@ -55,6 +55,23 @@
 
 - (IBAction)didClickLoginBtnAction:(UIButton *)sender {
     
+    TOSInitOption * initOption = [[TOSInitOption alloc] initWithOption:YES apiUrl:@"https://octopus-api-1.vlink.cn/api/sdk/v1" onlineUrl:@"https://chat-app-bj.clink.cn" accessId:self.accessIdTextF.text accessSecret:self.accessSecretTextF.text enterpriseId:self.enterpriseIdTextF.text advanceParams:@{}];
+    [[TOSClientKit sharedTOSKit] initSDK:initOption];
+    
+    LoginModel *model = [LoginModel loginModel];
+    TOSConnectOption * connectOption = [[TOSConnectOption alloc] initWithOption:@"" nickname:@"" headUrl:@"" mobile:@"" advanceParams:@{}];
+    [[TOSClientKit sharedTOSKit] connect:connectOption success:^{
+        //创建会话成功，进入聊天页面
+        TOSCustomerChatVC *chatVC = [[TOSCustomerChatVC alloc] init];
+        chatVC.titleName = @"西瓜客服";
+        chatVC.appName = @"客服SDK";
+        self.hidesBottomBarWhenPushed  = YES;
+        [self.navigationController pushViewController:chatVC animated:YES];
+    } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+        [self showErrorView:errorDes?:@"登录失败"];
+    } tokenIncorrect:^{
+        NSLog(@"tokenIncorrect");
+    }];
 }
 
 - (IBAction)didClickAccessSecretBtnAction:(UIButton *)sender {

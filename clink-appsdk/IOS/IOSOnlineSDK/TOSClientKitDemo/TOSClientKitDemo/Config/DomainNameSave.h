@@ -14,19 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (DomainNameSave *)shareDomainNameSave;
 
-- (void)saveData;
-
-/// 登录域名
-@property (nonatomic, copy) NSString *loginDomainName;
-
-/// 项目域名
-@property (nonatomic, copy) NSString *domainName;
-
-/// 融云AppKey
-@property (nonatomic, copy) NSString *rcimAppKey;
-
-/// 推送Token临时保存，不会存储在本地
-@property (nonatomic, strong) NSData *deviceToken;
+/// 保存选择的自定义UI样式
+@property (nonatomic, assign) NSInteger index;
 
 @end
 

@@ -7,6 +7,7 @@ PODS:
   - AFNetworking/Security (4.0.1)
   - AFNetworking/Serialization (4.0.1)
   - Bugly (2.5.91)
+  - Masonry (1.1.0)
   - MBProgressHUD (1.2.0)
   - MJRefresh (3.7.5)
   - Reachability (3.2)
@@ -28,6 +29,7 @@ PODS:
 
 DEPENDENCIES:
   - Bugly
+  - Masonry
   - MBProgressHUD
   - MJRefresh
   - Reachability
@@ -46,6 +48,7 @@ SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - AFNetworking
     - Bugly
+    - Masonry
     - MBProgressHUD
     - MJRefresh
     - Reachability
@@ -63,6 +66,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   Bugly: afe841bba2ea6de6d432a3c125240a5e75949c55
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
@@ -77,6 +81,6 @@ SPEC CHECKSUMS:
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
   ZYCornerRadius: f0af817be7805b5c63d793042ca7a03f81e14069
 
-PODFILE CHECKSUM: bf328b1772400722b8525272577a2b9ef59ee7e3
+PODFILE CHECKSUM: 91071060dff32e67d7751128f0bc027a3b527a5d
 
 COCOAPODS: 1.11.3
