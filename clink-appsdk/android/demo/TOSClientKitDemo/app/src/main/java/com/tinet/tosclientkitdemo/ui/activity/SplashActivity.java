@@ -15,6 +15,9 @@ import com.tinet.oslib.listener.OnlineConnectResultCallback;
 import com.tinet.tosclientkitdemo.R;
 import com.tinet.tosclientkitdemo.common.base.BaseActivity;
 import com.tinet.tosclientkitdemo.ui.fragment.ChatFragment;
+import com.tinet.tosclientkitdemo.utils.TLogUtils;
+import com.tinet.tosclientkitdemo.utils.ToastUtils;
+import com.zp.customdialoglib.loading.ProgressDialogHandler;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -74,24 +77,24 @@ public class SplashActivity extends BaseActivity implements View.OnClickListener
         TOSConnectOption tOSConnectOption = new TOSConnectOption();
         tOSConnectOption.setNickname("快速接入测试名称");
         tOSConnectOption.setHeadUrl("https://img2.baidu.com/it/u=1229468480,2938819374&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=500");
-        tOSConnectOption.setMobile("13521049206");
+        tOSConnectOption.setMobile("135xxxx9206");
         tOSConnectOption.setAdvanceParams(extraInfo);
 
+        ProgressDialogHandler progressDialogHandler = new ProgressDialogHandler(SplashActivity.this, true);
+        progressDialogHandler.obtainMessage(ProgressDialogHandler.SHOW_PROGRESS_DIALOG).sendToTarget();
         TOSClientKit.connect(tOSConnectOption, new OnlineConnectResultCallback() {
             @Override
             public void onSuccess() {
-
+                progressDialogHandler.obtainMessage(ProgressDialogHandler.DISMISS_PROGRESS_DIALOG).sendToTarget();
+                startActivity(new Intent(SplashActivity.this, SessionActivity.class));
             }
 
             @Override
             public void onError(int errorCode, String errorDesc) {
+                TLogUtils.e(errorDesc);
+                ToastUtils.showShortToast(SplashActivity.this,errorDesc);
+                progressDialogHandler.obtainMessage(ProgressDialogHandler.DISMISS_PROGRESS_DIALOG).sendToTarget();
             }
         });
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                startActivity(new Intent(SplashActivity.this, SessionActivity.class));
-            }
-        }, 4000);
     }
 }

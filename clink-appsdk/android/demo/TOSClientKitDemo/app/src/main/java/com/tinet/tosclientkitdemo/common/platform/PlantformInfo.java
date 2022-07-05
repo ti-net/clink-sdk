@@ -60,7 +60,7 @@ public class PlantformInfo {
   }
 
   public PlatformDefine getPlatform(){
-    PlatformDefine define = PlatformDefine.Beijing;
+    PlatformDefine define = PlatformDefine.Kt;
 
     if(!TextUtils.isEmpty(type)){
       if("Shanghai".equals(type)){

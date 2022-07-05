@@ -1,6 +1,6 @@
 <h1 id="tosclientkit_android_开发文档">TOSClientKit_Android_开发文档</h1>
 <blockquote>
-    <p>版本: 1.3.7</p>
+    <p>版本: 1.3.9</p>
 </blockquote>
 <h2 id="目录">目录</h2>
 <ul>
@@ -61,7 +61,7 @@
 <h4 id="maven依赖方式">Maven依赖方式</h4>
 <p>在主app的 build.gradle 文件中添加如下依赖配置</p>
 <pre>
-	<code>implementation &quot;com.ti-net.oskit:online:1.3.7&quot;
+	<code>implementation &quot;com.ti-net.oskit:online:1.3.9&quot;
 </code>
 </pre>
 <h3 id="混淆配置">混淆配置</h3>
@@ -445,6 +445,28 @@ android:theme=&quot;@style/Theme.TIMSDK.LEAVE.chat&quot;
     &lt;!--  头像圆角大小  --&gt;
     &lt;item name=&quot;chatHeadRadius&quot;&gt;20dp&lt;/item&gt;
 &lt;/style&gt;
+</code>
+</pre>
+<p>style文件中可添加更多可修改项：如下</p>
+<pre>
+	<code>        &lt;!--超链接地址颜色--&gt;
+    &lt;color name=&quot;super_line_text&quot;&gt;@color/ti_blue&lt;/color&gt;
+    &lt;!--聊天发送字体颜色--&gt;
+    &lt;color name=&quot;message_send_text&quot;&gt;@color/ti_white&lt;/color&gt;
+    &lt;!--聊天接收文字颜色--&gt;
+    &lt;color name=&quot;message_receive_msg_text&quot;&gt;@color/ti_dark&lt;/color&gt;
+    &lt;!--聊天文件名颜色--&gt;
+    &lt;color name=&quot;message_receive_filename_text&quot;&gt;@color/message_send_bg&lt;/color&gt;
+    &lt;!--聊天人名文字的颜色--&gt;
+    &lt;color name=&quot;message_username_text&quot;&gt;@color/ti_99&lt;/color&gt;
+    &lt;!--富文本视频播放器的背景--&gt;
+    &lt;color name=&quot;rich_video_bg&quot;&gt;#80000000&lt;/color&gt;
+    &lt;!--富文本视频播放器进度条的背景色--&gt;
+    &lt;color name=&quot;rich_video_progress_bg&quot;&gt;#4D000000&lt;/color&gt;
+    &lt;!--富文本视频播放器进度条的前景色--&gt;
+    &lt;color name=&quot;rich_video_foreground&quot;&gt;@color/ti_white&lt;/color&gt;
+    &lt;!--聊天背景色--&gt;
+    &lt;color name=&quot;session_bg&quot;&gt;#FFF2F6FD&lt;/color&gt;
 </code>
 </pre>
 <h3 id="会话界面相关操作">会话界面相关操作</h3>

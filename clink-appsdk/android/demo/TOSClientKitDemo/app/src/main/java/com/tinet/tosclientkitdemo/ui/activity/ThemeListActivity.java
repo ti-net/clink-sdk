@@ -63,7 +63,7 @@ public class ThemeListActivity extends BaseActivity implements View.OnClickListe
                     viewHolder.setSrc(R.id.iv_choose_tag_icon, R.mipmap.choose_grey);
                 }
 
-                viewHolder.getView(R.id.iv_choose_tag_icon).setOnClickListener(new View.OnClickListener() {
+                View.OnClickListener onClickListener = new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         if (mCurrentChooseIndex != position) {
@@ -71,7 +71,10 @@ public class ThemeListActivity extends BaseActivity implements View.OnClickListe
                             notifyDataSetChanged();
                         }
                     }
-                });
+                };
+                viewHolder.getView(R.id.iv_choose_tag_icon).setOnClickListener(onClickListener);
+                viewHolder.getView(R.id.tv_theme_title).setOnClickListener(onClickListener);
+
 
                 viewHolder.getView(R.id.tv_show_theme_detail).setOnClickListener(new View.OnClickListener() {
                     @Override

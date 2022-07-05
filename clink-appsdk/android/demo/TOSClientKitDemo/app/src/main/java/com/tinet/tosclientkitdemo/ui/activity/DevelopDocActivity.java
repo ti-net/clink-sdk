@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import com.tinet.tosclientkitdemo.R;
 import com.tinet.tosclientkitdemo.common.base.BaseActivity;
@@ -47,5 +48,12 @@ public class DevelopDocActivity extends BaseActivity {
         mWebView.getSettings().setJavaScriptEnabled(true);
         // 是否⽀持缩放
         mWebView.getSettings().setSupportZoom(true);
+        mWebView.setWebViewClient(new WebViewClient(){
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+
+            }
+        });
     }
 }

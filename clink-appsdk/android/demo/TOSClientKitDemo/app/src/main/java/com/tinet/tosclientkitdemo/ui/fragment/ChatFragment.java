@@ -38,10 +38,6 @@ public class ChatFragment extends SessionFragment {
     @Override
     public void onResume() {
         super.onResume();
-
-        int currentOnlineStatus = OnlineMessageManager.getCurrentOnlineStatus();
-
-        Log.d("tstatus", "获取当前状态：" + currentOnlineStatus);
     }
 
     @Override
@@ -49,22 +45,20 @@ public class ChatFragment extends SessionFragment {
         return new SessionClickListenerImpl(this) {
             @Override
             public void onLinkClick(String url) {
-//                super.onLinkClick(url);
-                //TODO 自定义超链接事件
+                // 自定义超链接事件
                 Toast.makeText(requireContext(), "超链接地址：" + url, Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void videoPlay(String url) {
                 super.videoPlay(url);
-                //TODO 自定义视频播放，如果需要自己实现视频播放，则需要屏蔽super.videoPlay(url);父类的实现方式
-//                Toast.makeText(requireContext(), "视频播放地址：" + url, Toast.LENGTH_SHORT).show();
+                // 自定义视频播放，如果需要自己实现视频播放，则需要屏蔽super.videoPlay(url);父类的实现方式
+                Toast.makeText(requireContext(), "视频播放地址：" + url, Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void downloadFile(String url, String name) {
                 super.downloadFile(url, name);
-
                 TLogUtils.d("下载链接为：" + url);
             }
 
@@ -94,18 +88,12 @@ public class ChatFragment extends SessionFragment {
 
     @Override
     protected FuncListener getFuncListener() {
-        //TODO 自定义底部功能栏
-
+        //ODO 自定义底部功能栏
         return new FuncListenerImpl(this) {
             @Override
             public void onFuncClick(Function func) {
                 super.onFuncClick(func);
-                if ("机器人".equals(func.getTitle())) {
-                    getPresent().sendText("发送文本：机器人");
-                }
             }
-
-
         };
     }
 
@@ -125,15 +113,11 @@ public class ChatFragment extends SessionFragment {
     @Override
     public void chatLeaveMessage(ChatLeaveMessage message) {
         super.chatLeaveMessage(message);//自定义实现留言
-        //TODO 自定义实现标题栏样式
-//        Intent intent = new Intent(requireContext(), ChatLeaveMessageAty.class);
-//        intent.putExtra(ChatLeaveMessageFragment.CHAT_LEAVE_MESSAGE_KEY,message.getBodyJson());
-//        startActivity(intent);
+        // 自定义实现标题栏样式
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-//        OnlineServiceClient.disConnect(false,null);
     }
 }

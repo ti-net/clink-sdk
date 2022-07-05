@@ -43,7 +43,7 @@ public class ThemeDetailActivity extends BaseActivity implements View.OnClickLis
     protected void initData() {
         ThemeItemBean themeItemBean = (ThemeItemBean) getIntent().getSerializableExtra("ThemeItemBean");
         if (themeItemBean != null) {
-            title.setText(getIntent().getStringExtra("title"));
+            title.setText(themeItemBean.getThemeName());
             ThemePropertyBean themePropertyBean = themeItemBean.getThemePropertyBean();
             chatBackground.setText(String.valueOf(themePropertyBean.getChatBackground()));
             portraitCornerRadius.setText(String.valueOf(themePropertyBean.getPortraitCornerRadius()));

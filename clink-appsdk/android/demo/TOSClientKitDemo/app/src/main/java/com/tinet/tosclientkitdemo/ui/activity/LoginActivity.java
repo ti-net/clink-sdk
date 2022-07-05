@@ -32,7 +32,10 @@ import com.tinet.tosclientkitdemo.common.base.BaseActivity;
 import com.tinet.tosclientkitdemo.common.constants.PlatformDefaultInfo;
 import com.tinet.tosclientkitdemo.common.platform.PlantformInfo;
 import com.tinet.tosclientkitdemo.common.platform.PlantformUtil;
+import com.tinet.tosclientkitdemo.utils.TLogUtils;
+import com.tinet.tosclientkitdemo.utils.ToastUtils;
 import com.tinet.tosclientkitdemo.widget.EditTextWithDelete;
+import com.zp.customdialoglib.loading.ProgressDialogHandler;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -144,25 +147,25 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         TOSConnectOption tOSConnectOption = new TOSConnectOption();
         tOSConnectOption.setNickname("快速接入测试名称");
         tOSConnectOption.setHeadUrl("https://img2.baidu.com/it/u=1229468480,2938819374&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=500");
-        tOSConnectOption.setMobile("13521049206");
+        tOSConnectOption.setMobile("135xxxx9206");
         tOSConnectOption.setAdvanceParams(extraInfo);
 
+        ProgressDialogHandler progressDialogHandler = new ProgressDialogHandler(LoginActivity.this, true);
+        progressDialogHandler.obtainMessage(ProgressDialogHandler.SHOW_PROGRESS_DIALOG).sendToTarget();
         TOSClientKit.connect(tOSConnectOption, new OnlineConnectResultCallback() {
             @Override
             public void onSuccess() {
-
+                progressDialogHandler.obtainMessage(ProgressDialogHandler.DISMISS_PROGRESS_DIALOG).sendToTarget();
+                startActivity(new Intent(LoginActivity.this, SessionActivity.class));
             }
 
             @Override
             public void onError(int errorCode, String errorDesc) {
+                TLogUtils.e(errorDesc);
+                ToastUtils.showShortToast(LoginActivity.this, errorDesc);
+                progressDialogHandler.obtainMessage(ProgressDialogHandler.DISMISS_PROGRESS_DIALOG).sendToTarget();
             }
         });
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                startActivity(new Intent(LoginActivity.this, SessionActivity.class));
-            }
-        }, 4000);
     }
 
 
@@ -182,6 +185,19 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         tOSInitOption.setApiUrl(define.getApiUrl());
         tOSInitOption.setOnlineUrl(define.getOnlineUrl());
         tOSInitOption.setDebug(true);
+
+        //  此处添加环境标识参数等可配参数
+        if (info != null)
+            if ("Kt".equals(info.getType())) {
+                Map<String, Object> headers = new HashMap<>();
+                headers.put("deBugEnv", "ktTest");
+                tOSInitOption.setAdvanceParams(headers);
+            }
+        if (info == null && PlatformDefaultInfo.define == PlatformDefine.Kt) {
+            Map<String, Object> headers = new HashMap<>();
+            headers.put("deBugEnv", "ktTest");
+            tOSInitOption.setAdvanceParams(headers);
+        }
 
         TOSClientKit.initSDK(this, tOSInitOption, new TImageLoader() {
             @Override

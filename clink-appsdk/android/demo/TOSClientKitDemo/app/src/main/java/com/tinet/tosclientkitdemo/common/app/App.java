@@ -18,6 +18,7 @@ import com.tinet.tosclientkitdemo.R;
 import com.tinet.tosclientkitdemo.common.constants.PlatformDefaultInfo;
 import com.tinet.tosclientkitdemo.common.platform.PlantformInfo;
 import com.tinet.tosclientkitdemo.common.platform.PlantformUtil;
+import com.tinet.tosclientkitdemo.utils.TLogUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -62,6 +63,19 @@ public class App extends Application {
         tOSInitOption.setApiUrl(define.getApiUrl());
         tOSInitOption.setOnlineUrl(define.getOnlineUrl());
         tOSInitOption.setDebug(true);
+
+        //此处添加环境标识参数等可配参数
+        if (info != null)
+            if ("Kt".equals(info.getType())) {
+                Map<String, Object> headers = new HashMap<>();
+                headers.put("deBugEnv", "ktTest");
+                tOSInitOption.setAdvanceParams(headers);
+            }
+        if (info == null && PlatformDefaultInfo.define == PlatformDefine.Kt) {
+            Map<String, Object> headers = new HashMap<>();
+            headers.put("deBugEnv", "ktTest");
+            tOSInitOption.setAdvanceParams(headers);
+        }
 
         TOSClientKit.initSDK(this, tOSInitOption, new TImageLoader() {
             @Override
