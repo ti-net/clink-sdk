@@ -100,6 +100,19 @@
             </FrameLayout>
         </FrameLayout>
 
+        <com.tinet.tosclientkitdemo.widget.EditTextWithDelete
+            android:id="@+id/et_visitor_id"
+            style="@style/EditTextWithDelete"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginRight="32dp"
+            android:hint="请输入 Visitor ID"
+            android:inputType="text"
+            android:singleLine="true"
+            app:drawableFocus="@drawable/user"
+            app:drawableUnFocus="@drawable/user"
+            app:isShowLeftIcon="true" />
+
         <TextView
             android:id="@+id/tv_enter"
             android:layout_width="match_parent"

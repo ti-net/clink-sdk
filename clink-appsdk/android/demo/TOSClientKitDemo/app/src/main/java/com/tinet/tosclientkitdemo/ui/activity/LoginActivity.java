@@ -27,6 +27,7 @@ import com.tinet.oslib.common.PlatformDefine;
 import com.tinet.oslib.config.TOSConnectOption;
 import com.tinet.oslib.config.TOSInitOption;
 import com.tinet.oslib.listener.OnlineConnectResultCallback;
+import com.tinet.timclientlib.utils.TStringUtils;
 import com.tinet.tosclientkitdemo.R;
 import com.tinet.tosclientkitdemo.common.base.BaseActivity;
 import com.tinet.tosclientkitdemo.common.constants.PlatformDefaultInfo;
@@ -46,6 +47,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     private EditTextWithDelete etEnterpriseId;
     private EditTextWithDelete etAccessId;
     private EditTextWithDelete etAccessSecret;
+    private EditTextWithDelete etVisitorId;
     private View tvEnter;
     private ImageView ivTogglePassword;
     private boolean isShowAccessSecret = false;
@@ -74,6 +76,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         etEnterpriseId = findViewById(R.id.et_enterprise_id);
         etAccessId = findViewById(R.id.et_access_id);
         etAccessSecret = findViewById(R.id.et_access_secret);
+        etVisitorId = findViewById(R.id.et_visitor_id);
 
         TextWatcher textWatcher = new TextWatcher() {
             @Override
@@ -135,7 +138,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         }
     }
 
-
     private void enterSession() {
         Map<String, Object> extraInfo = new HashMap<>();
         extraInfo.put("tinetAddress", "江苏南京");
@@ -145,6 +147,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
         // : 2022/6/23 改版后直接连接，无需点击登录按钮再连接
         TOSConnectOption tOSConnectOption = new TOSConnectOption();
+        if (TStringUtils.isNotEmpty(etVisitorId.getText().toString())) {
+            tOSConnectOption.setVisitorId(etVisitorId.getText().toString());
+        }
         tOSConnectOption.setNickname("快速接入测试名称");
         tOSConnectOption.setHeadUrl("https://img2.baidu.com/it/u=1229468480,2938819374&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=500");
         tOSConnectOption.setMobile("135xxxx9206");
