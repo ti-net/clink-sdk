@@ -1,0 +1,53 @@
+//该文档与SDK接入无关，无需关注
+[
+  {
+    "name": "企知道-正式",
+    "enterpriseId": 8006597,
+    "accessId": "25b1fdb74cfc43a8b53e11fe1b8cfdae",
+    "accessSecret": "5B7D78BD409B464D93742ADF754720B1",
+    "type": "Beijing"
+  },
+  {
+    "name": "企知道-测试",
+    "enterpriseId": 8006638,
+    "accessId": "8ededc2efa82426790af86c055bbd8e3",
+    "accessSecret": "53FFAECE8D7E4EA8813F35E42F28A8CD",
+    "type": "Beijing"
+  },
+  {
+    "name": "海南仙麦",
+    "enterpriseId": 8006574,
+    "accessId": "7ef95ee5fe404142b9c25ebb68aba3ab",
+    "accessSecret": "C70F081A42D748539B21075CB402E7D2",
+    "type": "Beijing"
+  },
+  {
+    "name": "天润北京",
+    "enterpriseId": 8000002,
+    "accessId": "8758096679544ff189d4a9457747f109",
+    "accessSecret": "72EBF29CB4614F7AB404EEC07BFF0B1B",
+    "type": "Beijing"
+  },
+  {
+    "name": "天润上海",
+    "enterpriseId": 8003846,
+    "accessId": "f8f7d2be61ce4b8ba272b35647ac1eb2",
+    "accessSecret": "D5B70DD63C4848B6824C0233D2FC201F",
+    "type": "Shanghai"
+  },
+  {
+    "name": "天润Test3",
+    "enterpriseId": 8000581,
+    "accessId": "80a71b366026406f83b672a66bdd59ce",
+    "accessSecret": "B6F2A2125B2C476ABBA230F22B8B5D79",
+    "type": "Test3"
+  },
+  {
+    "name": "KT环境",
+    "enterpriseId": 8000376,
+    "accessId": "ad3046061c94444999a083acd7d34ae3",
+    "accessSecret": "D3127C4EC8B942BEB8D69E32DB0FF83D",
+    "type": "Kt"
+  }
+
+]

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@mipmap/splash_bg"
+    android:orientation="vertical"
+    tools:context=".ui.activity.SplashActivity">
+
+    <ImageView
+        android:layout_width="64dp"
+        android:src="@mipmap/logo"
+        android:layout_height="64dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="访客端 APP SDK"
+        android:textColor="#ff595959"
+        android:textSize="24sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="让客户联络效率更高，体验更好"
+        android:textColor="#ff8c8c8c"
+        android:textSize="12sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="162dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_theme_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="自定义样式"
+            android:drawableTop="@mipmap/custom_style_icon"
+            android:textColor="#ff4385ff"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_android_doc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:text="接入文档"
+            android:drawableTop="@mipmap/docx_icon"
+            android:textColor="#ff4385ff"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_enter_session"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="126dp"
+        android:layout_marginRight="32dp"
+        android:background="@drawable/shape_blue_round_btn"
+        android:gravity="center"
+        android:text="立即体验"
+        android:textColor="#ffffffff"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_enter_login"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="32dp"
+        android:background="@drawable/shape_white_round_btn"
+        android:gravity="center"
+        android:text="接入"
+        android:textColor="#ff4385ff"
+        android:textSize="16sp" />
+
+</LinearLayout>
