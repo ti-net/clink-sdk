@@ -7,6 +7,7 @@ import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.TextView;
 
 import com.tinet.tosclientkitdemo.R;
 import com.tinet.tosclientkitdemo.common.base.BaseActivity;
@@ -22,6 +23,7 @@ public class DevelopDocActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        ((TextView) findViewById(R.id.toolbar_title)).setText("Android 集成文档");
 
         findViewById(R.id.toolbar_back).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +50,7 @@ public class DevelopDocActivity extends BaseActivity {
         mWebView.getSettings().setJavaScriptEnabled(true);
         // 是否⽀持缩放
         mWebView.getSettings().setSupportZoom(true);
-        mWebView.setWebViewClient(new WebViewClient(){
+        mWebView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
