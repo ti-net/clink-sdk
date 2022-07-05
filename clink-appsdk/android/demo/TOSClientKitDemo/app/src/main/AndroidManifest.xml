@@ -23,16 +23,24 @@
         android:theme="@style/Theme.TOSClientKitDemo">
         <activity
             android:name=".ui.activity.SessionActivity"
-            android:exported="false" />
-        <activity android:name=".ui.activity.ThemeDetailActivity" />
-        <activity android:name=".ui.activity.ThemeListActivity" />
-        <activity android:name=".ui.activity.DevelopDocActivity" />
+            android:exported="false"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.activity.ThemeDetailActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.activity.ThemeListActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.activity.DevelopDocActivity"
+            android:launchMode="singleTask" />
         <activity
             android:name=".ui.activity.LoginActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ui.activity.SplashActivity"
-            android:exported="true">
+            android:exported="true"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
