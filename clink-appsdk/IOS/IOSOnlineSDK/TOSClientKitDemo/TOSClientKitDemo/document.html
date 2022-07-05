@@ -3,7 +3,7 @@
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
 
-<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
 .mac-os-11 { --title-bar-height: 28px; }
 html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
 body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit; background-repeat: inherit; }
@@ -283,1204 +283,417 @@ span.cm-strikethrough { text-decoration: line-through; }
 
 
 :root {
-  --mermaid-theme: night;
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
 }
 
-[lang='mermaid'] .label {
-  color: #333;
-}
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
 
-/* CSS Document */
-
-/** code highlight */
-
-.cm-s-inner .cm-variable,
-.cm-s-inner .cm-operator,
-.cm-s-inner .cm-property {
-    color: #b8bfc6;
-}
-
-.cm-s-inner .cm-keyword {
-    color: #C88FD0;
-}
-
-.cm-s-inner .cm-tag {
-    color: #7DF46A;
-}
-
-.cm-s-inner .cm-attribute {
-    color: #7575E4;
-}
-
-.CodeMirror div.CodeMirror-cursor {
-    border-left: 1px solid #b8bfc6;
-    z-index: 3;
-}
-
-.cm-s-inner .cm-string {
-    color: #D26B6B;
-}
-
-.cm-s-inner .cm-comment,
-.cm-s-inner.cm-comment {
-    color: #DA924A;
-}
-
-.cm-s-inner .cm-header,
-.cm-s-inner .cm-def,
-.cm-s-inner.cm-header,
-.cm-s-inner.cm-def {
-    color: #8d8df0;
-}
-
-.cm-s-inner .cm-quote,
-.cm-s-inner.cm-quote {
-    color: #57ac57;
-}
-
-.cm-s-inner .cm-hr {
-    color: #d8d5d5;
-}
-
-.cm-s-inner .cm-link {
-    color: #d3d3ef;
-}
-
-.cm-s-inner .cm-negative {
-    color: #d95050;
-}
-
-.cm-s-inner .cm-positive {
-    color: #50e650;
-}
-
-.cm-s-inner .cm-string-2 {
-    color: #f50;
-}
-
-.cm-s-inner .cm-meta,
-.cm-s-inner .cm-qualifier {
-    color: #b7b3b3;
-}
-
-.cm-s-inner .cm-builtin {
-    color: #f3b3f8;
-}
-
-.cm-s-inner .cm-bracket {
-    color: #997;
-}
-
-.cm-s-inner .cm-atom,
-.cm-s-inner.cm-atom {
-    color: #84B6CB;
-}
-
-.cm-s-inner .cm-number {
-    color: #64AB8F;
-}
-
-.cm-s-inner .cm-variable {
-    color: #b8bfc6;
-}
-
-.cm-s-inner .cm-variable-2 {
-    color: #9FBAD5;
-}
-
-.cm-s-inner .cm-variable-3 {
-    color: #1cc685;
-}
-
-.CodeMirror-selectedtext,
-.CodeMirror-selected {
-    background: #4a89dc;
-    color: #fff !important;
-    text-shadow: none;
-}
-
-.CodeMirror-gutters {
-    border-right: none;
-}
-
-/* CSS Document */
-
-/** markdown source **/
-.cm-s-typora-default .cm-header, 
-.cm-s-typora-default .cm-property
-{
-    color: #cebcca;
-}
-
-.CodeMirror.cm-s-typora-default div.CodeMirror-cursor{
-    border-left: 3px solid #b8bfc6;
-}
-
-.cm-s-typora-default .cm-comment {
-    color: #9FB1FF;
-}
-
-.cm-s-typora-default .cm-string {
-    color: #A7A7D9
-}
-
-.cm-s-typora-default .cm-atom, .cm-s-typora-default .cm-number {
-    color: #848695;
-    font-style: italic;
-}
-
-.cm-s-typora-default .cm-link {
-    color: #95B94B;
-}
-
-.cm-s-typora-default .CodeMirror-activeline-background {
-    background: rgba(51, 51, 51, 0.72);
-}
-
-.cm-s-typora-default .cm-comment, .cm-s-typora-default .cm-code {
-	color: #8aa1e1;
-}@import "";
-@import "";
-@import "";
-
-:root {
-    --bg-color:  #363B40;
-    --side-bar-bg-color: #2E3033;
-    --text-color: #b8bfc6;
-
-    --select-text-bg-color:#4a89dc;
-
-    --item-hover-bg-color: #0a0d16;
-    --control-text-color: #b7b7b7;
-    --control-text-hover-color: #eee;
-    --window-border: 1px solid #555;
-
-    --active-file-bg-color: rgb(34, 34, 34);
-    --active-file-border-color: #8d8df0;
-
-    --primary-color: #a3d5fe;
-
-    --active-file-text-color: white;
-    --item-hover-bg-color: #70717d;
-    --item-hover-text-color: white;
-    --primary-color: #6dc1e7;
-
-    --rawblock-edit-panel-bd: #333;
-
-    --search-select-bg-color: #428bca;
-}
-
-html {
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
 }
 
-html,
 body {
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-    background: #363B40;
-    background: var(--bg-color);
-    fill: currentColor;
-    line-height: 1.625rem;
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
 }
 
 #write {
-    max-width: 914px;
+    max-width: 860px;
+      margin: 0 auto;
+      padding: 30px;
+    padding-bottom: 100px;
 }
 
-
 @media only screen and (min-width: 1400px) {
-	#write {
-		max-width: 1024px;
-	}
+    #write {
+        max-width: 1024px;
+    }
 }
 
 @media only screen and (min-width: 1800px) {
-	#write {
-		max-width: 1200px;
-	}
+    #write {
+        max-width: 1200px;
+    }
 }
 
-html,
-body,
-button,
-input,
-select,
-textarea,
-div.code-tooltip-content {
-    color: #b8bfc6;
-    border-color: transparent;
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
 }
 
-div.code-tooltip,
-.md-hover-tip .md-arrow:after {
-    background: #333;
+a {
+    color: #4183C4;
 }
-
-.native-window #md-notification {
-    border: 1px solid #70717d;
-}
-
-.popover.bottom > .arrow:after {
-    border-bottom-color: #333;
-}
-
-html,
-body,
-button,
-input,
-select,
-textarea {
-    font-family: "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
-}
-
-hr {
-    height: 2px;
-    border: 0;
-    margin: 24px 0 !important;
-}
-
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-    font-family: "Lucida Grande", "Corbel", sans-serif;
-    font-weight: normal;
-    clear: both;
-    -ms-word-wrap: break-word;
-    word-wrap: break-word;
-    margin: 0;
-    padding: 0;
-    color: #DEDEDE
-}
-
-h1 {
-    font-size: 2.5rem;
-    /* 36px */
-    line-height: 2.75rem;
-    /* 40px */
-    margin-bottom: 1.5rem;
-    /* 24px */
-    letter-spacing: -1.5px;
-}
-
-h2 {
-    font-size: 1.63rem;
-    /* 24px */
-    line-height: 1.875rem;
-    /* 30px */
-    margin-bottom: 1.5rem;
-    /* 24px */
-    letter-spacing: -1px;
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
 }
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
 
 h3 {
-    font-size: 1.17rem;
-    /* 18px */
-    line-height: 1.5rem;
-    /* 24px */
-    margin-bottom: 1.5rem;
-    /* 24px */
-    letter-spacing: -1px;
-    font-weight: bold;
-}
-
-h4 {
-    font-size: 1.12rem;
-    /* 16px */
-    line-height: 1.375rem;
-    /* 22px */
-    margin-bottom: 1.5rem;
-    /* 24px */
-    color: white;
-}
-
-h5 {
-    font-size: 0.97rem;
-    /* 16px */
-    line-height: 1.25rem;
-    /* 22px */
-    margin-bottom: 1.5rem;
-    /* 24px */
-    font-weight: bold;
-}
-
-h6 {
-    font-size: 0.93rem;
-    /* 16px */
-    line-height: 1rem;
-    /* 16px */
-    margin-bottom: 0.75rem;
-    color: white;
-}
-
-@media (min-width: 980px) {
-    h3.md-focus:before,
-    h4.md-focus:before,
-    h5.md-focus:before,
-    h6.md-focus:before {
-        color: #ddd;
-        border: 1px solid #ddd;
-        border-radius: 3px;
-        position: absolute;
-        left: -1.642857143rem;
-        top: .357142857rem;
-        float: left;
-        font-size: 9px;
-        padding-left: 2px;
-        padding-right: 2px;
-        vertical-align: bottom;
-        font-weight: normal;
-        line-height: normal;
-    }
-
-    h3.md-focus:before {
-        content: 'h3';
-    }
-
-    h4.md-focus:before {
-        content: 'h4';
-    }
-
-    h5.md-focus:before {
-        content: 'h5';
-        top: 0px;
-    }
-
-    h6.md-focus:before {
-        content: 'h6';
-        top: 0px;
-    }
-}
-
-a {
-    text-decoration: none;
-    outline: 0;
-}
-
-a:hover {
-    outline: 0;
-}
-
-a:focus {
-    outline: thin dotted;
-}
-
-sup.md-footnote {
-    background-color: #555;
-    color: #ddd;
-}
-
-p {
-    -ms-word-wrap: break-word;
-    word-wrap: break-word;
-}
-
-p,
-ul,
-dd,
-ol,
-hr,
-address,
-pre,
-table,
-iframe,
-.wp-caption,
-.wp-audio-shortcode,
-.wp-video-shortcode {
-    margin-top: 0;
-    margin-bottom: 1.5rem;
-    /* 24px */
-}
-
-audio:not([controls]) {
-    display: none;
-}
-
-[hidden] {
-    display: none;
-}
-
-::-moz-selection {
-    background: #4a89dc;
-    color: #fff;
-    text-shadow: none;
-}
-
-*.in-text-selection,
-::selection {
-    background: #4a89dc;
-    color: #fff;
-    text-shadow: none;
-}
-
-ul,
-ol {
-    padding: 0 0 0 1.875rem;
-    /* 30px */
-}
-
-ul {
-    list-style: square;
-}
-
-ol {
-    list-style: decimal;
-}
-
-ul ul,
-ol ol,
-ul ol,
-ol ul {
-    margin: 0;
-}
-
-b,
-th,
-dt,
-strong {
-    font-weight: bold;
-}
-
-i,
-em,
-dfn,
-cite {
-    font-style: italic;
-}
-
-blockquote {
-    padding-left: 1.875rem;
-    margin: 0 0 1.875rem 1.875rem;
-    border-left: solid 2px #474d54;
-    padding-left: 30px;
-    margin-top: 35px;
-}
-
-pre,
-code,
-kbd,
-tt,
-var {
-    font-size: 0.875em;
-    font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
-}
-
-code,
-tt,
-var {
-    background: rgba(0, 0, 0, 0.05);
-}
-
-kbd {
-    padding: 2px 4px;
-    font-size: 90%;
-    color: #fff;
-    background-color: #333;
-    border-radius: 3px;
-    box-shadow: inset 0 -1px 0 rgba(0,0,0,.25);
-}
-
-pre.md-fences {
-    padding: 10px 10px 10px 30px;
-    margin-bottom: 20px;
-    background: #333;
-}
-
-.CodeMirror-gutters {
-    background: #333;
-    border-right: 1px solid transparent;
-}
-
-.enable-diagrams pre.md-fences[lang="sequence"] .code-tooltip,
-.enable-diagrams pre.md-fences[lang="flow"] .code-tooltip,
-.enable-diagrams pre.md-fences[lang="mermaid"] .code-tooltip {
-    bottom: -2.2em;
-    right: 4px;
-}
-
-code,
-kbd,
-tt,
-var {
-    padding: 2px 5px;
-}
-
-table {
-    max-width: 100%;
-    width: 100%;
-    border-collapse: collapse;
-    border-spacing: 0;
-}
-
-th,
-td {
-    padding: 5px 10px;
-    vertical-align: top;
-}
-
-a {
-    -webkit-transition: all .2s ease-in-out;
-    transition: all .2s ease-in-out;
-}
-
-hr {
-    background: #474d54;
-    /* variable */
-}
-
-h1 {
-    margin-top: 2em;
-}
-
-a {
-    color: #e0e0e0;
-    text-decoration: underline;
-}
-
-a:hover {
-    color: #fff;
-}
-
-.md-inline-math script {
-    color: #81b1db;
-}
-
-b,
-th,
-dt,
-strong {
-    color: #DEDEDE;
-    /* variable */
-}
-
-mark {
-    background: #D3D40E;
-}
-
-blockquote {
-    color: #9DA2A6;
-}
-
-table a {
-    color: #DEDEDE;
-    /* variable */
-}
-
-th,
-td {
-    border: solid 1px #474d54;
-    /* variable */
-}
-
-.task-list {
-    padding-left: 0;
-}
-
-.md-task-list-item {
-    padding-left: 1.25rem;
-}
-
-.md-task-list-item > input {
-    top: auto;
-}
-
-.md-task-list-item > input:before {
-    content: "";
-    display: inline-block;
-    width: 0.875rem;
-    height: 0.875rem;
-    vertical-align: middle;
-    text-align: center;
-    border: 1px solid #b8bfc6;
-    background-color: #363B40;
-    margin-top: -0.4rem;
-}
-
-.md-task-list-item > input:checked:before,
-.md-task-list-item > input[checked]:before {
-    content: '\221A';
-    /*◘*/
-    font-size: 0.625rem;
-    line-height: 0.625rem;
-    color: #DEDEDE;
-}
-
-/** quick open **/
-.auto-suggest-container {
-    border: 0px;
-    background-color: #525C65;
-}
-
-#typora-quick-open {
-    background-color: #525C65;
-}
-
-#typora-quick-open input{
-    background-color: #525C65;
-    border: 0;
-    border-bottom: 1px solid grey;
-}
-
-.typora-quick-open-item {
-    background-color: inherit;
-    color: inherit;
-}
-
-.typora-quick-open-item.active,
-.typora-quick-open-item:hover {
-    background-color: #4D8BDB;
-    color: white;
-}
-
-.typora-quick-open-item:hover {
-    background-color: rgba(77, 139, 219, 0.8);
-}
-
-.typora-search-spinner > div {
-  background-color: #fff;
-}
-
-#write pre.md-meta-block {
-    border-bottom: 1px dashed #ccc;
-    background: transparent;
-    padding-bottom: 0.6em;
-    line-height: 1.6em;
-}
-
-.btn,
-.btn .btn-default {
-    background: transparent;
-    color: #b8bfc6;
-}
-
-.ty-table-edit {
-    border-top: 1px solid gray;
-    background-color: #363B40;
-}
-
-.popover-title {
-    background: transparent;
-}
-
-.md-image>.md-meta {
-    color: #BBBBBB;
-    background: transparent;
-}
-
-.md-expand.md-image>.md-meta {
-    color: #DDD;
-}
-
-#write>h3:before,
-#write>h4:before,
-#write>h5:before,
-#write>h6:before {
-    border: none;
-    border-radius: 0px;
-    color: #888;
-    text-decoration: underline;
-    left: -1.4rem;
-    top: 0.2rem;
-}
-
-#write>h3.md-focus:before {
-    top: 2px;
-}
-
-#write>h4.md-focus:before {
-    top: 2px;
-}
-
-.md-toc-item {
-    color: #A8C2DC;
-}
-
-#write div.md-toc-tooltip {
-    background-color: #363B40;
-}
-
-.dropdown-menu .btn:hover,
-.dropdown-menu .btn:focus,
-.md-toc .btn:hover,
-.md-toc .btn:focus {
-    color: white;
-    background: black;
-}
-
-#toc-dropmenu {
-    background: rgba(50, 54, 59, 0.93);
-    border: 1px solid rgba(253, 253, 253, 0.15);
-}
-
-#toc-dropmenu .divider {
-    background-color: #9b9b9b;
-}
-
-.outline-expander:before {
-    top: 2px;
-}
-
-#typora-sidebar {
-    box-shadow: none;
-    border-right: 1px dashed;
-    border-right: none;
-}
-
-.sidebar-tabs {
-    border-bottom:0;
-}
-
-#typora-sidebar:hover .outline-title-wrapper {
-    border-left: 1px dashed;
-}
-
-.outline-title-wrapper .btn {
-    color: inherit;
-}
-
-.outline-item:hover {
-    border-color: #363B40;
-    background-color: #363B40;
-    color: white;
-}
-
-h1.md-focus .md-attr,
-h2.md-focus .md-attr,
-h3.md-focus .md-attr,
-h4.md-focus .md-attr,
-h5.md-focus .md-attr,
-h6.md-focus .md-attr,
-.md-header-span .md-attr {
-    color: #8C8E92;
-    display: inline;
-}
-
-.md-comment {
-    color: #5a95e3;
-    opacity: 0.8;
-}
-
-.md-inline-math svg {
-    color: #b8bfc6;
-}
-
-#math-inline-preview .md-arrow:after {
-    background: black;
-}
-
-.modal-content {
-    background: var(--bg-color);
-    border: 0;
-}
-
-.modal-title {
     font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
 }
 
-.modal-content input {
-    background-color: rgba(26, 21, 21, 0.51);
-    color: white;
+li p.first {
+    display: inline-block;
 }
-
-.modal-content .input-group-addon {
-    color: white;
+ul,
+ol {
+    padding-left: 30px;
 }
-
-.modal-backdrop {
-    background-color: rgba(174, 174, 174, 0.7);
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
 }
-
-.modal-content .btn-primary {
-    border-color: var(--primary-color);
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
 }
-
-.md-table-resize-popover {
-    background-color: #333;
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
 }
-
-.form-inline .input-group .input-group-addon {
-    color: white;
+blockquote blockquote {
+    padding-right: 0;
 }
-
-#md-searchpanel {
-    border-bottom: 1px dashed grey;
+table {
+    padding: 0;
+    word-break: initial;
 }
-
-/** UI for electron */
-
-.context-menu,
-#spell-check-panel,
-#footer-word-count-info {
-    background-color: #42464A;
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
 }
-
-.context-menu.dropdown-menu .divider,
-.dropdown-menu .divider {
-    background-color: #777777;
-    opacity: 1;
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
 }
-
-footer {
-    color: inherit;
-}
-
-@media (max-width: 1000px) {
-    footer {
-        border-top: none;
-    }
-    footer:hover {
-        color: inherit;
-    }
-}
-
-#file-info-file-path .file-info-field-value:hover {
-    background-color: #555;
-    color: #dedede;
-}
-
-.megamenu-content,
-.megamenu-opened header {
-    background: var(--bg-color);
-}
-
-.megamenu-menu-panel h2,
-.megamenu-menu-panel h1,
-.long-btn {
-    color: inherit;
-}
-
-.megamenu-menu-panel input[type='text'] {
-    background: inherit;
-    border: 0;
-    border-bottom: 1px solid;
-}
-
-#recent-file-panel-action-btn {
-    background: inherit;
-    border: 1px grey solid;
-}
-
-.megamenu-menu-panel .dropdown-menu > li > a {
-    color: inherit;
-    background-color: #2F353A;
-    text-decoration: none;
-}
-
-.megamenu-menu-panel table td:nth-child(1) {
-    color: inherit;
+table th {
     font-weight: bold;
-}
-
-.megamenu-menu-panel tbody tr:hover td:nth-child(1) {
-    color: white;
-}
-
-.modal-footer .btn-default, 
-.modal-footer .btn-primary,
-.modal-footer .btn-default:not(:hover) {
-    border: 1px solid;
-    border-color: transparent;
-}
-
-.btn-primary {
-    color: white;
-}
-
-.btn-default:hover, .btn-default:focus, .btn-default.focus, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default {
-    color: white;
-    border: 1px solid #ddd;
-    background-color: inherit;
-}
-
-.modal-header {
+    border: 1px solid #dfe2e5;
     border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
 }
-
-.modal-footer {
-    border-top: 0;
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
 }
-
-#recent-file-panel tbody tr:nth-child(2n-1) {
-    background-color: transparent !important;
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
 }
-
-.megamenu-menu-panel tbody tr:hover td:nth-child(2) {
-    color: inherit;
-}
-
-.megamenu-menu-panel .btn {
-    border: 1px solid #eee;
-    background: transparent;
-}
-
-.mouse-hover .toolbar-icon.btn:hover,
-#w-full.mouse-hover,
-#w-pin.mouse-hover {
-    background-color: inherit;
-}
-
-.typora-node::-webkit-scrollbar {
-    width: 5px;
-}
-
-.typora-node::-webkit-scrollbar-thumb:vertical {
-    background: rgba(250, 250, 250, 0.3);
-}
-
-.typora-node::-webkit-scrollbar-thumb:vertical:active {
-    background: rgba(250, 250, 250, 0.5);
-}
-
-#w-unpin {
-    background-color: #4182c4;
-}
-
-#top-titlebar, #top-titlebar * {
-    color: var(--item-hover-text-color);
-}
-
-.typora-sourceview-on #toggle-sourceview-btn,
-#footer-word-count:hover,
-.ty-show-word-count #footer-word-count {
-    background: #333333;
-}
-
-#toggle-sourceview-btn:hover {
-    color: #eee;
-    background: #333333;
-}
-
-/** focus mode */
-.on-focus-mode .md-end-block:not(.md-focus):not(.md-focus-container) * {
-    color: #686868 !important;
-}
-
-.on-focus-mode .md-end-block:not(.md-focus) img,
-.on-focus-mode .md-task-list-item:not(.md-focus-container)>input {
-    opacity: #686868 !important;
-}
-
-.on-focus-mode li[cid]:not(.md-focus-container){
-    color: #686868;
-}
-
-.on-focus-mode .md-fences.md-focus .CodeMirror-code>*:not(.CodeMirror-activeline) *,
-.on-focus-mode .CodeMirror.cm-s-inner:not(.CodeMirror-focused) * {
-    color: #686868 !important;
-}
-
-.on-focus-mode .md-focus,
-.on-focus-mode .md-focus-container {
-    color: #fff;
-}
-
-.on-focus-mode #typora-source .CodeMirror-code>*:not(.CodeMirror-activeline) * {
-    color: #686868 !important;
-}
-
-
-/*diagrams*/
-#write .md-focus .md-diagram-panel {
-    border: 1px solid #ddd;
-    margin-left: -1px;
-    width: calc(100% + 2px);
-}
-
-/*diagrams*/
-#write .md-focus.md-fences-with-lineno .md-diagram-panel {
-    margin-left: auto;
-}
-
-.md-diagram-panel-error {
-    color: #f1908e;
-}
-
-.active-tab-files #info-panel-tab-file,
-.active-tab-files #info-panel-tab-file:hover,
-.active-tab-outline #info-panel-tab-outline,
-.active-tab-outline #info-panel-tab-outline:hover {
-    color: #eee;
-}
-
-.sidebar-footer-item:hover,
-.footer-item:hover {
-    background: inherit;
-    color: white;
-}
-
-.ty-side-sort-btn.active,
-.ty-side-sort-btn:hover,
-.selected-folder-menu-item a:after {
-    color: white;
-}
-
-#sidebar-files-menu {
-    border:solid 1px;
-    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.79);
-    background-color: var(--bg-color);
-}
-
-.file-list-item {
-    border-bottom:none;
-}
-
-.file-list-item-summary {
-    opacity: 1;
-}
-
-.file-list-item.active:first-child {
-    border-top: none;
-}
-
-.file-node-background {
-    height: 32px;
-}
-
-.file-library-node.active>.file-node-content,
-.file-list-item.active {
-    color: white;
-    color: var(--active-file-text-color);
-}
-
-.file-library-node.active>.file-node-background{
-    background-color: rgb(34, 34, 34);
-    background-color: var(--active-file-bg-color);
-}
-.file-list-item.active {
-    background-color: rgb(34, 34, 34);
-    background-color: var(--active-file-bg-color);
-}
-
-#ty-tooltip {
-    background-color: black;
-    color: #eee;
-}
-
-.md-task-list-item>input {
-    margin-left: -1.3em;
-    margin-top: 0.3rem;
-    -webkit-appearance: none;
-}
-
-.md-mathjax-midline {
-    background-color: #57616b;
-    border-bottom: none;
-}
-
-footer.ty-footer {
-    border-color: #656565;
-}
-
-.ty-preferences .btn-default {
-    background: transparent;
-}
-.ty-preferences .btn-default:hover {
-    background: #57616b;
-}
-
-.ty-preferences select {
-    border: 1px solid #989698;
-    height: 21px;
-}
-
-.ty-preferences .nav-group-item.active,
-.export-item.active,
-.export-items-list-control,
-.export-detail {
-    background: var(--item-hover-bg-color);
-}
-
-.ty-preferences input[type="search"] {
-    border-color: #333;
-    background: #333;
-    line-height: 22px;
-    border-radius: 6px;
-    color: white;
-}
-
-.ty-preferences input[type="search"]:focus {
-    box-shadow: none;
-}
-
-[data-is-directory="true"] .file-node-content {
+table th:last-child,
+table td:last-child {
     margin-bottom: 0;
 }
 
-.file-node-title {
-    line-height: 22px;
+.CodeMirror-lines {
+    padding-left: 4px;
 }
 
-.html-for-mac .file-node-open-state, .html-for-mac .file-node-icon {
-    line-height: 26px;
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
 }
 
-::-webkit-scrollbar-thumb {
-    background: rgba(230, 230, 230, 0.30);
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
 }
 
-::-webkit-scrollbar-thumb:active {
-    background: rgba(230, 230, 230, 0.50);
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
 }
 
-#typora-sidebar:hover div.sidebar-content-content::-webkit-scrollbar-thumb:horizontal {
-    background: rgba(230, 230, 230, 0.30);
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
 }
 
-.nav-group-item:active {
-    background-color: #474d54 !important;
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
 }
 
-.md-search-hit {
-    background: rgba(199, 140, 60, 0.81);
-    color: #eee;
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
 }
 
-.md-search-hit * {
-    color: #eee;
+.md-fences {
+    background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
 }
 
-#md-searchpanel input {
-    color: white;
+.mathjax-block>.code-tooltip {
+    bottom: .375rem;
 }
 
-.modal-backdrop.in {
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+    left: -1.5625rem;
+    top: .375rem;
+}
+#write>h4.md-focus:before{
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+#write>h5.md-focus:before{
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+#write>h6.md-focus:before{
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
     opacity: 1;
-    backdrop-filter: blur(1px);
 }
 
-.clear-btn-icon {
-    top: 8px;
+.md-toc {
+    margin-top:20px;
+    padding-bottom:20px;
 }
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0));
+}
+
 
  @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
 </style><title>天润iOS_SDK_接口文档</title>
 </head>
 <body class='typora-export'><div class='typora-export-content'>
 <div id='write'  class=''><p>&nbsp;</p><h2 id='tosclinetkitios开发文档'><span>TOSClinetKit_iOS_开发文档</span></h2><blockquote><p><span>版本号: v1.3.9</span></p></blockquote><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n2"><a class="md-toc-inner" href="#tosclinetkitios开发文档">TOSClinetKit_iOS_开发文档</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n7"><a class="md-toc-inner" href="#概述">概述</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n10"><a class="md-toc-inner" href="#集成准备">集成准备</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n11"><a class="md-toc-inner" href="#注册账号">注册账号</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n13"><a class="md-toc-inner" href="#开发环境">开发环境</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n18"><a class="md-toc-inner" href="#下载天润在线客服sdk">下载天润在线客服SDK    </a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n21"><a class="md-toc-inner" href="#sdk文件说明">SDK文件说明</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n37"><a class="md-toc-inner" href="#手动导入sdk和添加依赖库">手动导入SDK和添加依赖库</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n48"><a class="md-toc-inner" href="#配置需要的权限">配置需要的权限</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n60"><a class="md-toc-inner" href="#注意事项">注意事项</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n70"><a class="md-toc-inner" href="#快速集成">快速集成</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n71"><a class="md-toc-inner" href="#启动sdk">启动SDK</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n118"><a class="md-toc-inner" href="#链接服务">链接服务</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n119"><a class="md-toc-inner" href="#功能描述-1">功能描述</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n154"><a class="md-toc-inner" href="#断开链接">断开链接</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n155"><a class="md-toc-inner" href="#功能描述-2">功能描述</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n170"><a class="md-toc-inner" href="#全局自定义配置">全局自定义配置</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n172"><a class="md-toc-inner" href="#获取版本号">获取版本号</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n174"><a class="md-toc-inner" href="#会话相关">会话相关</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n175"><a class="md-toc-inner" href="#获取会话信息">获取会话信息</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n209"><a class="md-toc-inner" href="#客服会话页面">客服会话页面</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n211"><a class="md-toc-inner" href="#文本类型消息中关于链接单号和手机号的相关点击回调">文本类型消息中关于链接、单号和手机号的相关点击回调</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n215"><a class="md-toc-inner" href="#会话状态监听">会话状态监听</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n219"><a class="md-toc-inner" href="#获取未读数和最后一条消息">获取未读数和最后一条消息</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n221"><a class="md-toc-inner" href="#自定义ui配置">自定义UI配置</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n223"><a class="md-toc-inner" href="#详细参数说明">详细参数说明</a></span></p></div><p>&nbsp;</p><h2 id='概述'><span>概述</span></h2><blockquote><p><span>欢迎使用“智慧服务平台”的在线客服移动端开发者工具套件(SDK)。本文针对iOS端使用做详细说明，通过SDK，可以在您的APP中快速集成访客端在线聊天的功能，以具备文本，图片、视频等类型消息收发及消息通知能力，</span></p></blockquote><h2 id='集成准备'><span>集成准备</span></h2><h4 id='注册账号'><span>注册账号</span></h4><p><span>请先确保已注册天润在线客服账号</span></p><h4 id='开发环境'><span>开发环境</span></h4><ul><li><span>适配iOS 12.0以上</span></li><li><span>开发工具：Xcode 13</span></li></ul><h4 id='下载天润在线客服sdk'><span>下载天润在线客服SDK    </span></h4><p><span>最新SDK包链接地址:</span>
-<a href='https://github.com/ti-net/clink-sdk/tree/master/clink-appsdk/IOS/IOSOnlineSDK/SDK'><span>iOS_SDK</span></a><span>     </span></p><h4 id='sdk文件说明'><span>SDK文件说明</span></h4><p><span>解压下载【iOS_SDK】,下载完为一个压缩包，包含（</span><font color=Crimson size=2><span>TOSCilentLib.framework</span></font><span>、</span><font color=Crimson size=2><span>TOSCilentKit.framework</span></font><span>、</span><font color=Crimson size=2><span>TOSClinet.bundle</span></font><span>)和相关说明文档。</span></p><figure><table><thead><tr><th><span>文件名</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><font color=Crimson size=2><span>TOSClinetKit.framework</span></font></td><td><span>SDK UI Kit</span></td></tr><tr><td><font color=Crimson size=2><span>TOSClient.bundle</span></font></td><td><span>图片资源文件 表情资源文件</span></td></tr><tr><td><font color=Crimson size=2><span>TOSCilentLib.framework</span><span>	</span></font></td><td><span>SDK Lib</span></td></tr></tbody></table></figure><h4 id='手动导入sdk和添加依赖库'><span>手动导入SDK和添加依赖库</span></h4><p><span>把下载的TOSClinetKit.framework 、TOSClientLib.framework、TOSClient.bundle文件夹中的文件拖入你的工程里。</span>
-<span>天润iOS_SDK 的实现，依赖了一些系统的框架，在开发应用时需要在工程里加入这些框架 ( TOSClientLib不包含UI界面，可根据接口自行开发功能 ) 。开发者首先点击工程右边的工程名，然后在工程名右边依次选择</span><font color= orange size=2><span>TARGETS -&gt; BuiLd Phases -&gt; Link Binary With Libraries</span></font><span>，展开 </span><font color= orange size=2><span>LinkBinary With Libraries</span></font><span> 后点击展开后下面的 + 来添加下面的依赖项:  </span></p><ul><li><span>TOSClientLib.framework(Embed &amp; Sign)</span></li><li><span>TOSClientKit.framework(Embed &amp; Sign)</span></li><li><span>TOSClient.bundle</span></li><li><span>另外需要增加libc++.tbd来支持c++环境</span></li></ul><h4 id='配置需要的权限'><span>配置需要的权限</span></h4><blockquote><p><span>相机、麦克风、相册等权限</span></p></blockquote><ul><li><span>Privacy - Camera Usage Description</span></li><li><span>Privacy - Microphone Usage Description</span></li><li><span>Privacy - Photo Library Additions Usage Description</span></li><li><span>Privacy - Photo Library Usage Description</span></li></ul><h4 id='注意事项'><span>注意事项</span></h4><blockquote><p><span>注意：</span></p><ol start='' ><li><span>在APP的 Info.plist 文件中增加 CFBundleDisplayName，value值为APP名称</span></li><li><span>在会话页面中关闭键盘管理的第三方控件，如：IQKeyboardManager</span></li><li><span>如有需要，可在跳转会话页面前设置会话页面的titleName属性，修改顶部标题</span></li></ol></blockquote><h2 id='快速集成'><span>快速集成</span></h2><h4 id='启动sdk'><span>启动SDK</span></h4><p><span>天润SDK提供了一套完整的聊天界面，帮助开发者快速集成，并提供自定义接口，以实现定制需求。只需以下几行代码便可快速启动天润SDK应用。</span></p><blockquote><p><span>注: 请在链接客服服务成功后再调起会话页面</span></p></blockquote><p><span>TOSInitOption 参数说明</span></p><figure><table><thead><tr><th><span>参数</span></th><th><span>类型</span></th><th><span>必填</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><span>accessId</span></td><td><span>NSString</span></td><td><span>是</span></td><td><span>访问标识(后台创建账号时获取,移动端唯一标识，对应座席端渠道ID)</span></td></tr><tr><td><span>accessSecret</span></td><td><span>NSString</span></td><td><span>是</span></td><td><span>访问秘钥(后台创建账号时获取,在座席端管理平台创建渠道时生成)</span></td></tr><tr><td><span>enterpriseId</span></td><td><span>NSString</span></td><td><span>是</span></td><td><span>企业号(后台创建账号时获取,企业ID)</span></td></tr><tr><td><span>apiUrl</span></td><td><span>NSString</span></td><td><span>是</span></td><td><span>平台apiUrl(接口环境平台,目前仅有正式1平台，即:</span><a href='https://octopus-api-1.vlink.cn/api/sdk/v1' target='_blank' class='url'>https://octopus-api-1.vlink.cn/api/sdk/v1</a><span>)</span></td></tr><tr><td><span>onlineUrl</span></td><td><span>NSString</span></td><td><span>是</span></td><td><span>平台onlineUrl(客服环境平台,目前有上海和北京2个平台，即:</span><a href='https://chat-app-sh.clink.cn' target='_blank' class='url'>https://chat-app-sh.clink.cn</a><span>、 </span><a href='https://chat-app-bj.clink.cn' target='_blank' class='url'>https://chat-app-bj.clink.cn</a><span>)</span></td></tr><tr><td><span>debug</span></td><td><span>BOOL</span></td><td><span>否</span></td><td><span>是否开启debug模式</span></td></tr><tr><td><span>advanceParams</span></td><td><span>NSDictionary</span></td><td><span>否</span></td><td><span>自定义可配参数,可为空</span></td></tr></tbody></table></figure><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="objective-c"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="objective-c"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 11px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">首先在AppDelegate中初始化SDK的Option</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">TOSInitOption</span> <span class="cm-operator">*</span> <span class="cm-variable">initOption</span> <span class="cm-operator">=</span> [[<span class="cm-variable">TOSInitOption</span> <span class="cm-variable">alloc</span>] <span class="cm-variable">initWithOption</span>:<span class="cm-atom">YES</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-tab" role="presentation" cm-text="	"> </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>  <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">apiUrl</span>:<span class="cm-keyword">@</span><span class="cm-string">"平台apiUrl"</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-tab" role="presentation" cm-text="	"> </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-variable">onlineUrl</span>:<span class="cm-keyword">@</span><span class="cm-string">"平台onlineUrl"</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">accessId</span>:<span class="cm-keyword">@</span><span class="cm-string">"移动端唯一标识，对应座席端渠道ID"</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">accessSecret</span>:<span class="cm-keyword">@</span><span class="cm-string">"在座席端管理平台创建渠道时生成"</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-tab" role="presentation" cm-text="	"> </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">enterpriseId</span>:<span class="cm-keyword">@</span><span class="cm-string">"企业ID"</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-variable">advanceParams</span>:<span class="cm-keyword">@</span>{}];</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[[<span class="cm-variable">TOSClientKit</span> <span class="cm-variable">sharedTOSKit</span>] <span class="cm-variable">initSDK</span>:<span class="cm-variable">initOption</span>];</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 234px;"></div><div class="CodeMirror-gutters" style="display: none; height: 234px;"></div></div></div></pre><h4 id='链接服务'><span>链接服务</span></h4><h5 id='功能描述-1'><span>功能描述</span></h5><p><span>连接在线客服，同一用户多次调用connect不会触发多次连接</span></p><p><span>TOSConnectOption 参数说明</span></p><figure><table><thead><tr><th><span>参数</span></th><th><span>类型</span></th><th><span>必填</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><span>visitorId</span></td><td><span>NSString</span></td><td><span>否</span></td><td><span>用户App的userID（为空的情况下，系统默认为UUID去除-号，不可包含中文或特殊符号(-)，建议使用用户系统ID方便APP拓展功能）</span></td></tr><tr><td><span>nickname</span></td><td><span>NSString</span></td><td><span>否</span></td><td><span>昵称</span></td></tr><tr><td><span>headUrl</span></td><td><span>NSString</span></td><td><span>否</span></td><td><span>头像地址</span></td></tr><tr><td><span>mobile</span></td><td><span>NSString</span></td><td><span>否</span></td><td><span>手机号</span></td></tr><tr><td><span>advanceParams</span></td><td><span>NSDictionary</span></td><td><span>否</span></td><td><span>自定义可配参数</span></td></tr></tbody></table></figure><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="objective-c"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="objective-c"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 11px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">TOSConnectOption</span> <span class="cm-operator">*</span> <span class="cm-variable">connectOption</span> <span class="cm-operator">=</span> [[<span class="cm-variable">TOSConnectOption</span> <span class="cm-variable">alloc</span>] <span class="cm-variable">initWithOption</span>:<span class="cm-keyword">@</span><span class="cm-string">"用户App的userID"</span> </span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span> <span class="cm-variable">nickname</span>:<span class="cm-keyword">@</span><span class="cm-string">"昵称"</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span> &nbsp;<span class="cm-variable">headUrl</span>:<span class="cm-keyword">@</span><span class="cm-string">"头像地址"</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>  <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span> <span class="cm-variable">mobile</span>:<span class="cm-keyword">@</span><span class="cm-string">"手机号"</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span> &nbsp;<span class="cm-variable">advanceParams</span>:<span class="cm-keyword">@</span>{}];</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[[<span class="cm-variable">TOSClientKit</span> <span class="cm-variable">sharedTOSKit</span>] <span class="cm-variable">connect</span>:<span class="cm-variable">connectOption</span> <span class="cm-variable">success</span>:<span class="cm-variable">^</span>{</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  } <span class="cm-variable">error</span>:<span class="cm-variable">^</span>(<span class="cm-variable">TIMConnectErrorCode</span> <span class="cm-variable">errCode</span>, <span class="cm-variable">NSString</span> <span class="cm-operator">*</span> <span class="cm-variable">_Nonnull</span> <span class="cm-variable">errorDes</span>) {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  } <span class="cm-variable">tokenIncorrect</span>:<span class="cm-variable">^</span>{</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}];</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 312px;"></div><div class="CodeMirror-gutters" style="display: none; height: 312px;"></div></div></div></pre><h4 id='断开链接'><span>断开链接</span></h4><h5 id='功能描述-2'><span>功能描述</span></h5><p><span>断开连接在线客服，当用户退出登录时调用</span></p><p><span>TOSDisConnectOption 参数说明</span></p><figure><table><thead><tr><th><span>参数</span></th><th><span>类型</span></th><th><span>必填</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><span>isReceivePush</span></td><td><span>BOOL</span></td><td><span>是</span></td><td><span>是否需要推送</span></td></tr></tbody></table></figure><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="objective-c"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="objective-c"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 11px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">TOSDisConnectOption</span> <span class="cm-operator">*</span><span class="cm-variable">disOption</span> <span class="cm-operator">=</span> [[<span class="cm-variable">TOSDisConnectOption</span> <span class="cm-variable">alloc</span>] <span class="cm-variable">initWithOption</span>:<span class="cm-atom">YES</span>];</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[[<span class="cm-variable">TIMClient</span> <span class="cm-variable">sharedTIMClient</span>] <span class="cm-variable">disconnect</span>:<span class="cm-variable">disOption</span> <span class="cm-variable">success</span>:<span class="cm-variable">^</span>{</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">} <span class="cm-variable">error</span>:<span class="cm-variable">^</span>(<span class="cm-variable">TIMConnectErrorCode</span> <span class="cm-variable">errCode</span>, <span class="cm-variable">NSString</span> <span class="cm-operator">*</span> <span class="cm-variable">_Nonnull</span> <span class="cm-variable">errorDes</span>) {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}];</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 156px;"></div><div class="CodeMirror-gutters" style="display: none; height: 156px;"></div></div></div></pre><h4 id='全局自定义配置'><span>全局自定义配置</span></h4><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="objective-c"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="objective-c"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 11px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">// 本地kit一些配置</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  [<span class="cm-variable">TOSClientKit</span> <span class="cm-variable">sharedClientKit</span>].<span class="cm-variable">disableMessageNotificaiton</span> <span class="cm-operator">=</span> <span class="cm-atom">YES</span>; &nbsp;<span class="cm-comment">// 取消本地推送</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  [<span class="cm-variable">TOSClientKit</span> <span class="cm-variable">sharedClientKit</span>].<span class="cm-variable">disableMessageAlertSound</span> <span class="cm-operator">=</span> <span class="cm-atom">YES</span>; &nbsp; &nbsp;<span class="cm-comment">// 取消本地推送声音</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  [<span class="cm-variable">TOSClientKit</span> <span class="cm-variable">sharedClientKit</span>].<span class="cm-variable">customMessageClickDelagate</span> <span class="cm-operator">=</span> <span class="cm-keyword">self</span>; <span class="cm-comment">// 自定义消息点击事件回调</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 104px;"></div><div class="CodeMirror-gutters" style="display: none; height: 104px;"></div></div></div></pre><h4 id='获取版本号'><span>获取版本号</span></h4><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="objective-c"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="objective-c"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 11px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// 获取版本号</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-variable">TOSClientKit</span> <span class="cm-variable">getSDKVersion</span>];</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 52px;"></div><div class="CodeMirror-gutters" style="display: none; height: 52px;"></div></div></div></pre><h2 id='会话相关'><span>会话相关</span></h2><h4 id='获取会话信息'><span>获取会话信息</span></h4><p><span>TOSSessionInfoModel 参数说明</span></p><figure><table><thead><tr><th><span>参数</span></th><th><span>类型</span></th><th><span>必填</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><span>enterpriseId</span></td><td><span>NSString</span></td><td><span>是</span></td><td><span>企业号</span></td></tr><tr><td><span>mainUniqueId</span></td><td><span>NSString</span></td><td><span>是</span></td><td><span>会话ID</span></td></tr><tr><td><span>startTime</span></td><td><span>NSNumber</span></td><td><span>是</span></td><td><span>时间戳</span></td></tr><tr><td><span>status</span></td><td><span>NSNumber</span></td><td><span>是</span></td><td><span>会话状态，详情见TinetChatStatusType说明</span></td></tr><tr><td><span>visitorId</span></td><td><span>NSString</span></td><td><span>是</span></td><td><span>当前用户ID</span></td></tr></tbody></table></figure><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="objective-c"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="objective-c"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 11px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">TOSSessionInfoModel</span> <span class="cm-operator">*</span><span class="cm-variable">model</span> <span class="cm-operator">=</span> [[<span class="cm-variable">TOSClientKit</span> <span class="cm-variable">sharedTOSKit</span>] <span class="cm-variable">getCurrentSessionInfo</span>];</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 26px;"></div><div class="CodeMirror-gutters" style="display: none; height: 26px;"></div></div></div></pre><h4 id='客服会话页面'><span>客服会话页面</span></h4><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="objective-c"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="objective-c"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 11px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">NS_ASSUME_NONNULL_BEGIN</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+<a href='https://github.com/ti-net/clink-sdk/tree/master/clink-appsdk/IOS/IOSOnlineSDK/SDK'><span>iOS_SDK</span></a><span>     </span></p><h4 id='sdk文件说明'><span>SDK文件说明</span></h4><p><span>解压下载【iOS_SDK】,下载完为一个压缩包，包含（</span><font color=Crimson size=2><span>TOSCilentLib.framework</span></font><span>、</span><font color=Crimson size=2><span>TOSCilentKit.framework</span></font><span>、</span><font color=Crimson size=2><span>TOSClinet.bundle</span></font><span>)和相关说明文档。</span></p><figure><table><thead><tr><th><span>文件名</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><font color=Crimson size=2><span>TOSClinetKit.framework</span></font></td><td><span>SDK UI Kit</span></td></tr><tr><td><font color=Crimson size=2><span>TOSClient.bundle</span></font></td><td><span>图片资源文件 表情资源文件</span></td></tr><tr><td><font color=Crimson size=2><span>TOSCilentLib.framework</span><span>    </span></font></td><td><span>SDK Lib</span></td></tr></tbody></table></figure><h4 id='手动导入sdk和添加依赖库'><span>手动导入SDK和添加依赖库</span></h4><p><span>把下载的TOSClinetKit.framework 、TOSClientLib.framework、TOSClient.bundle文件夹中的文件拖入你的工程里。</span>
+<span>天润iOS_SDK 的实现，依赖了一些系统的框架，在开发应用时需要在工程里加入这些框架 ( TOSClientLib不包含UI界面，可根据接口自行开发功能 ) 。开发者首先点击工程右边的工程名，然后在工程名右边依次选择</span><font color= orange size=2><span>TARGETS -&gt; BuiLd Phases -&gt; Link Binary With Libraries</span></font><span>，展开 </span><font color= orange size=2><span>LinkBinary With Libraries</span></font><span> 后点击展开后下面的 + 来添加下面的依赖项:  </span></p><ul><li><span>TOSClientLib.framework(Embed &amp; Sign)</span></li><li><span>TOSClientKit.framework(Embed &amp; Sign)</span></li><li><span>TOSClient.bundle</span></li><li><span>另外需要增加libc++.tbd来支持c++环境</span></li></ul><h4 id='配置需要的权限'><span>配置需要的权限</span></h4><blockquote><p><span>相机、麦克风、相册等权限</span></p></blockquote><ul><li><span>Privacy - Camera Usage Description</span></li><li><span>Privacy - Microphone Usage Description</span></li><li><span>Privacy - Photo Library Additions Usage Description</span></li><li><span>Privacy - Photo Library Usage Description</span></li></ul><h4 id='注意事项'><span>注意事项</span></h4><blockquote><p><span>注意：</span></p><ol start='' ><li><span>在APP的 Info.plist 文件中增加 CFBundleDisplayName，value值为APP名称</span></li><li><span>在会话页面中关闭键盘管理的第三方控件，如：IQKeyboardManager</span></li><li><span>如有需要，可在跳转会话页面前设置会话页面的titleName属性，修改顶部标题</span></li></ol></blockquote><h2 id='快速集成'><span>快速集成</span></h2><h4 id='启动sdk'><span>启动SDK</span></h4><p><span>天润SDK提供了一套完整的聊天界面，帮助开发者快速集成，并提供自定义接口，以实现定制需求。只需以下几行代码便可快速启动天润SDK应用。</span></p><blockquote><p><span>注: 请在链接客服服务成功后再调起会话页面</span></p></blockquote><p><span>TOSInitOption 参数说明</span></p><figure><table><thead><tr><th><span>参数</span></th><th><span>类型</span></th><th><span>必填</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><span>accessId</span></td><td><span>NSString</span></td><td><span>是</span></td><td><span>访问标识(后台创建账号时获取,移动端唯一标识，对应座席端渠道ID)</span></td></tr><tr><td><span>accessSecret</span></td><td><span>NSString</span></td><td><span>是</span></td><td><span>访问秘钥(后台创建账号时获取,在座席端管理平台创建渠道时生成)</span></td></tr><tr><td><span>enterpriseId</span></td><td><span>NSString</span></td><td><span>是</span></td><td><span>企业号(后台创建账号时获取,企业ID)</span></td></tr><tr><td><span>apiUrl</span></td><td><span>NSString</span></td><td><span>是</span></td><td><span>平台apiUrl(接口环境平台,目前仅有正式1平台，即:</span><a href='https://octopus-api-1.vlink.cn/api/sdk/v1' target='_blank' class='url'>https://octopus-api-1.vlink.cn/api/sdk/v1</a><span>)</span></td></tr><tr><td><span>onlineUrl</span></td><td><span>NSString</span></td><td><span>是</span></td><td><span>平台onlineUrl(客服环境平台,目前有上海和北京2个平台，即:</span><a href='https://chat-app-sh.clink.cn' target='_blank' class='url'>https://chat-app-sh.clink.cn</a><span>、 </span><a href='https://chat-app-bj.clink.cn' target='_blank' class='url'>https://chat-app-bj.clink.cn</a><span>)</span></td></tr><tr><td><span>debug</span></td><td><span>BOOL</span></td><td><span>否</span></td><td><span>是否开启debug模式</span></td></tr><tr><td><span>advanceParams</span></td><td><span>NSDictionary</span></td><td><span>否</span></td><td><span>自定义可配参数,可为空</span></td></tr></tbody></table></figure><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="objective-c"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="objective-c"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">首先在AppDelegate中初始化SDK的Option</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">TOSInitOption</span> <span class="cm-operator">*</span> <span class="cm-variable">initOption</span> <span class="cm-operator">=</span> [[<span class="cm-variable">TOSInitOption</span> <span class="cm-variable">alloc</span>] <span class="cm-variable">initWithOption</span>:<span class="cm-atom">YES</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-tab" role="presentation" cm-text="    "> </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span>  <span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-variable">apiUrl</span>:<span class="cm-keyword">@</span><span class="cm-string">"平台apiUrl"</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-tab" role="presentation" cm-text="    "> </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-variable">onlineUrl</span>:<span class="cm-keyword">@</span><span class="cm-string">"平台onlineUrl"</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  <span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">accessId</span>:<span class="cm-keyword">@</span><span class="cm-string">"移动端唯一标识，对应座席端渠道ID"</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  <span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">accessSecret</span>:<span class="cm-keyword">@</span><span class="cm-string">"在座席端管理平台创建渠道时生成"</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-tab" role="presentation" cm-text="    "> </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">enterpriseId</span>:<span class="cm-keyword">@</span><span class="cm-string">"企业ID"</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  <span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-variable">advanceParams</span>:<span class="cm-keyword">@</span>{}];</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[[<span class="cm-variable">TOSClientKit</span> <span class="cm-variable">sharedTOSKit</span>] <span class="cm-variable">initSDK</span>:<span class="cm-variable">initOption</span>];</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 198px;"></div><div class="CodeMirror-gutters" style="display: none; height: 198px;"></div></div></div></pre><h4 id='链接服务'><span>链接服务</span></h4><h5 id='功能描述-1'><span>功能描述</span></h5><p><span>连接在线客服，同一用户多次调用connect不会触发多次连接</span></p><p><span>TOSConnectOption 参数说明</span></p><figure><table><thead><tr><th><span>参数</span></th><th><span>类型</span></th><th><span>必填</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><span>visitorId</span></td><td><span>NSString</span></td><td><span>否</span></td><td><span>用户App的userID（为空的情况下，系统默认为UUID去除-号，不可包含中文或特殊符号(-)，建议使用用户系统ID方便APP拓展功能）</span></td></tr><tr><td><span>nickname</span></td><td><span>NSString</span></td><td><span>否</span></td><td><span>昵称</span></td></tr><tr><td><span>headUrl</span></td><td><span>NSString</span></td><td><span>否</span></td><td><span>头像地址</span></td></tr><tr><td><span>mobile</span></td><td><span>NSString</span></td><td><span>否</span></td><td><span>手机号</span></td></tr><tr><td><span>advanceParams</span></td><td><span>NSDictionary</span></td><td><span>否</span></td><td><span>自定义可配参数</span></td></tr></tbody></table></figure><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="objective-c"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="objective-c"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">TOSConnectOption</span> <span class="cm-operator">*</span> <span class="cm-variable">connectOption</span> <span class="cm-operator">=</span> [[<span class="cm-variable">TOSConnectOption</span> <span class="cm-variable">alloc</span>] <span class="cm-variable">initWithOption</span>:<span class="cm-keyword">@</span><span class="cm-string">"用户App的userID"</span> </span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span> <span class="cm-variable">nickname</span>:<span class="cm-keyword">@</span><span class="cm-string">"昵称"</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span> &nbsp;<span class="cm-variable">headUrl</span>:<span class="cm-keyword">@</span><span class="cm-string">"头像地址"</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span>  <span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span> <span class="cm-variable">mobile</span>:<span class="cm-keyword">@</span><span class="cm-string">"手机号"</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span> &nbsp;<span class="cm-variable">advanceParams</span>:<span class="cm-keyword">@</span>{}];</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[[<span class="cm-variable">TOSClientKit</span> <span class="cm-variable">sharedTOSKit</span>] <span class="cm-variable">connect</span>:<span class="cm-variable">connectOption</span> <span class="cm-variable">success</span>:<span class="cm-variable">^</span>{</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  } <span class="cm-variable">error</span>:<span class="cm-variable">^</span>(<span class="cm-variable">TIMConnectErrorCode</span> <span class="cm-variable">errCode</span>, <span class="cm-variable">NSString</span> <span class="cm-operator">*</span> <span class="cm-variable">_Nonnull</span> <span class="cm-variable">errorDes</span>) {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  } <span class="cm-variable">tokenIncorrect</span>:<span class="cm-variable">^</span>{</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}];</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 264px;"></div><div class="CodeMirror-gutters" style="display: none; height: 264px;"></div></div></div></pre><h4 id='断开链接'><span>断开链接</span></h4><h5 id='功能描述-2'><span>功能描述</span></h5><p><span>断开连接在线客服，当用户退出登录时调用</span></p><p><span>TOSDisConnectOption 参数说明</span></p><figure><table><thead><tr><th><span>参数</span></th><th><span>类型</span></th><th><span>必填</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><span>isReceivePush</span></td><td><span>BOOL</span></td><td><span>是</span></td><td><span>是否需要推送</span></td></tr></tbody></table></figure><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="objective-c"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="objective-c"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">TOSDisConnectOption</span> <span class="cm-operator">*</span><span class="cm-variable">disOption</span> <span class="cm-operator">=</span> [[<span class="cm-variable">TOSDisConnectOption</span> <span class="cm-variable">alloc</span>] <span class="cm-variable">initWithOption</span>:<span class="cm-atom">YES</span>];</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[[<span class="cm-variable">TIMClient</span> <span class="cm-variable">sharedTIMClient</span>] <span class="cm-variable">disconnect</span>:<span class="cm-variable">disOption</span> <span class="cm-variable">success</span>:<span class="cm-variable">^</span>{</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">} <span class="cm-variable">error</span>:<span class="cm-variable">^</span>(<span class="cm-variable">TIMConnectErrorCode</span> <span class="cm-variable">errCode</span>, <span class="cm-variable">NSString</span> <span class="cm-operator">*</span> <span class="cm-variable">_Nonnull</span> <span class="cm-variable">errorDes</span>) {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}];</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 132px;"></div><div class="CodeMirror-gutters" style="display: none; height: 132px;"></div></div></div></pre><h4 id='全局自定义配置'><span>全局自定义配置</span></h4><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="objective-c"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="objective-c"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">// 本地kit一些配置</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  [<span class="cm-variable">TOSClientKit</span> <span class="cm-variable">sharedClientKit</span>].<span class="cm-variable">disableMessageNotificaiton</span> <span class="cm-operator">=</span> <span class="cm-atom">YES</span>; &nbsp;<span class="cm-comment">// 取消本地推送</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  [<span class="cm-variable">TOSClientKit</span> <span class="cm-variable">sharedClientKit</span>].<span class="cm-variable">disableMessageAlertSound</span> <span class="cm-operator">=</span> <span class="cm-atom">YES</span>; &nbsp; &nbsp;<span class="cm-comment">// 取消本地推送声音</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  [<span class="cm-variable">TOSClientKit</span> <span class="cm-variable">sharedClientKit</span>].<span class="cm-variable">customMessageClickDelagate</span> <span class="cm-operator">=</span> <span class="cm-keyword">self</span>; <span class="cm-comment">// 自定义消息点击事件回调</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 88px;"></div><div class="CodeMirror-gutters" style="display: none; height: 88px;"></div></div></div></pre><h4 id='获取版本号'><span>获取版本号</span></h4><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="objective-c"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="objective-c"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// 获取版本号</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[<span class="cm-variable">TOSClientKit</span> <span class="cm-variable">getSDKVersion</span>];</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 44px;"></div><div class="CodeMirror-gutters" style="display: none; height: 44px;"></div></div></div></pre><h2 id='会话相关'><span>会话相关</span></h2><h4 id='获取会话信息'><span>获取会话信息</span></h4><p><span>TOSSessionInfoModel 参数说明</span></p><figure><table><thead><tr><th><span>参数</span></th><th><span>类型</span></th><th><span>必填</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><span>enterpriseId</span></td><td><span>NSString</span></td><td><span>是</span></td><td><span>企业号</span></td></tr><tr><td><span>mainUniqueId</span></td><td><span>NSString</span></td><td><span>是</span></td><td><span>会话ID</span></td></tr><tr><td><span>startTime</span></td><td><span>NSNumber</span></td><td><span>是</span></td><td><span>时间戳</span></td></tr><tr><td><span>status</span></td><td><span>NSNumber</span></td><td><span>是</span></td><td><span>会话状态，详情见TinetChatStatusType说明</span></td></tr><tr><td><span>visitorId</span></td><td><span>NSString</span></td><td><span>是</span></td><td><span>当前用户ID</span></td></tr></tbody></table></figure><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="objective-c"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="objective-c"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">TOSSessionInfoModel</span> <span class="cm-operator">*</span><span class="cm-variable">model</span> <span class="cm-operator">=</span> [[<span class="cm-variable">TOSClientKit</span> <span class="cm-variable">sharedTOSKit</span>] <span class="cm-variable">getCurrentSessionInfo</span>];</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 22px;"></div><div class="CodeMirror-gutters" style="display: none; height: 22px;"></div></div></div></pre><h4 id='客服会话页面'><span>客服会话页面</span></h4><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="objective-c"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="objective-c"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">NS_ASSUME_NONNULL_BEGIN</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">@interface</span> <span class="cm-variable">ChatInfoViewController</span> : <span class="cm-variable">TOSCustomerChatVC</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">@end</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 130px;"></div><div class="CodeMirror-gutters" style="display: none; height: 130px;"></div></div></div></pre><h4 id='文本类型消息中关于链接单号和手机号的相关点击回调'><span>文本类型消息中关于链接、单号和手机号的相关点击回调</span></h4><blockquote><p><span>注：此方法需要在TOSCustomerChatVC类的子类中实现</span></p></blockquote><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="objective-c"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="objective-c"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 11px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">typedef</span> <span class="cm-variable">NS_ENUM</span>(<span class="cm-variable">NSUInteger</span>, <span class="cm-variable">TinetClickTextMessageEventType</span>) {</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">TinetClickEventTypeUrl</span>,<span class="cm-tab" role="presentation" cm-text="	"> </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span> &nbsp; &nbsp; &nbsp;<span class="cm-comment">// 链接</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">TinetClickEventTypeOrderNumber</span>,<span class="cm-tab" role="presentation" cm-text="	"> </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">// 订单号</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">TinetClickEventTypePhone，</span><span class="cm-tab" role="presentation" cm-text="	"> </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>  <span class="cm-tab" role="presentation" cm-text="	">  </span> &nbsp; <span class="cm-comment">// 手机号</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">TinetClickCommodityCard，</span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span> <span class="cm-comment">// 商品卡片</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">};</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">@end</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 110px;"></div><div class="CodeMirror-gutters" style="display: none; height: 110px;"></div></div></div></pre><h4 id='文本类型消息中关于链接单号和手机号的相关点击回调'><span>文本类型消息中关于链接、单号和手机号的相关点击回调</span></h4><blockquote><p><span>注：此方法需要在TOSCustomerChatVC类的子类中实现</span></p></blockquote><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="objective-c"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="objective-c"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">typedef</span> <span class="cm-variable">NS_ENUM</span>(<span class="cm-variable">NSUInteger</span>, <span class="cm-variable">TinetClickTextMessageEventType</span>) {</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">TinetClickEventTypeUrl</span>,<span class="cm-tab" role="presentation" cm-text="    "> </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span> &nbsp; &nbsp; &nbsp;<span class="cm-comment">// 链接</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">TinetClickEventTypeOrderNumber</span>,<span class="cm-tab" role="presentation" cm-text="    "> </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-comment">// 订单号</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">TinetClickEventTypePhone，</span><span class="cm-tab" role="presentation" cm-text="    "> </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span>  <span class="cm-tab" role="presentation" cm-text="    ">  </span> &nbsp; <span class="cm-comment">// 手机号</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">TinetClickCommodityCard，</span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span> <span class="cm-comment">// 商品卡片</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">};</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">/// 文本类型消息中关于链接、商品卡片、订单号和手机号的相关点击回调</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">/// @param eventType 事件类型</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">/// @param userInfo  详细信息</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">-</span> (<span class="cm-variable-3">void</span>)<span class="cm-variable">tinet_textMessageClickAction</span>:(<span class="cm-variable">TinetClickTextMessageEventType</span>)<span class="cm-variable">eventType</span> <span class="cm-variable">userInfo</span>:(<span class="cm-variable">NSDictionary</span> <span class="cm-operator">*</span>)<span class="cm-variable">userInfo</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 338px;"></div><div class="CodeMirror-gutters" style="display: none; height: 338px;"></div></div></div></pre><h4 id='会话状态监听'><span>会话状态监听</span></h4><blockquote><p><span>注：此方法需要在TOSClientKitCustomerChatVC类的子类中实现</span></p></blockquote><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="objective-c"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="objective-c"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 11px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">typedef</span> <span class="cm-variable">NS_ENUM</span>(<span class="cm-variable">NSUInteger</span>, <span class="cm-variable">TinetChatStatusType</span>) {</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">TinetChatStatusTypeOutline</span>, &nbsp; <span class="cm-comment">// 不在线或结束会话</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">TinetChatStatusTypeRobot</span>, &nbsp; &nbsp; <span class="cm-comment">// 机器人在线</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">TinetChatStatusTypeOnline</span>, &nbsp; &nbsp;<span class="cm-comment">// 客服在线</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">};</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 286px;"></div><div class="CodeMirror-gutters" style="display: none; height: 286px;"></div></div></div></pre><h4 id='会话状态监听'><span>会话状态监听</span></h4><blockquote><p><span>注：此方法需要在TOSClientKitCustomerChatVC类的子类中实现</span></p></blockquote><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="objective-c"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="objective-c"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">typedef</span> <span class="cm-variable">NS_ENUM</span>(<span class="cm-variable">NSUInteger</span>, <span class="cm-variable">TinetChatStatusType</span>) {</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">TinetChatStatusTypeOutline</span>, &nbsp; <span class="cm-comment">// 不在线或结束会话</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">TinetChatStatusTypeRobot</span>, &nbsp; &nbsp; <span class="cm-comment">// 机器人在线</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">TinetChatStatusTypeOnline</span>, &nbsp; &nbsp;<span class="cm-comment">// 客服在线</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">};</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">/// @param status  会话状态</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">/// 当前会话状态监听</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">-</span> (<span class="cm-variable-3">void</span>)<span class="cm-variable">chatStatusChanged</span>:(<span class="cm-variable">TinetChatStatusType</span>)<span class="cm-variable">status</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 260px;"></div><div class="CodeMirror-gutters" style="display: none; height: 260px;"></div></div></div></pre><h4 id='获取未读数和最后一条消息'><span>获取未读数和最后一条消息</span></h4><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="objective-c" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="objective-c"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 11px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">/**</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-comment">未读消息获取</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">@param visitorId &nbsp; &nbsp; &nbsp; &nbsp;  当前用户ID</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">@param mainUniqueId &nbsp; &nbsp; &nbsp; 会话ID （如果为空字符串就是获取总的未读消息数）</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">*/</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  [[<span class="cm-variable">TOSClientKit</span> <span class="cm-variable">sharedClientKit</span>] <span class="cm-variable">sessionInfoUnreadCountCurrentVisitorId</span>:<span class="cm-keyword">@</span><span class="cm-string">"当前用户ID"</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-tab" role="presentation" cm-text="	"> </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">WithMainUniqueId</span>:<span class="cm-keyword">@</span><span class="cm-string">"会话ID"</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span> &nbsp; <span class="cm-variable">withSuccess</span>:<span class="cm-variable">^</span>(<span class="cm-variable">NSString</span> <span class="cm-operator">*</span> <span class="cm-variable">_Nonnull</span> <span class="cm-variable">lastMessage</span>, <span class="cm-variable">NSString</span> <span class="cm-operator">*</span> <span class="cm-variable">_Nonnull</span> <span class="cm-variable">unreadCount</span>) {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; <span class="cm-tab" role="presentation" cm-text="	"> </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span> <span class="cm-variable">NSLog</span>(<span class="cm-keyword">@</span><span class="cm-string">"未读数：%@, 最后一条消息：%@"</span>, <span class="cm-variable">unreadCount</span>, <span class="cm-variable">lastMessage</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  } <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span> <span class="cm-variable">withError</span>:<span class="cm-variable">^</span>(<span class="cm-variable">NSString</span> <span class="cm-operator">*</span> <span class="cm-variable">_Nonnull</span> <span class="cm-variable">errorStr</span>) {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-comment">/// 错误提示</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  }];</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">// 未读数的更新  接收通知</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  [[<span class="cm-variable">NSNotificationCenter</span> <span class="cm-variable">defaultCenter</span>] <span class="cm-variable">addObserver</span>:<span class="cm-keyword">self</span> <span class="cm-variable">selector</span>:<span class="cm-keyword">@selector</span>(<span class="cm-variable">unreadMessage</span>:) <span class="cm-variable">name</span>:<span class="cm-variable">KTOSClientLibLastMessageReceivedNotification</span> <span class="cm-variable">object</span>:<span class="cm-keyword">nil</span>];</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 442px;"></div><div class="CodeMirror-gutters" style="display: none; height: 442px;"></div></div></div></pre><h2 id='自定义ui配置'><span>自定义UI配置</span></h2><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="objective-c" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="objective-c"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 11px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">修改自定义的参数在TOSClient</span>.<span class="cm-variable">bundle中的customInfo</span>.<span class="cm-variable">plist</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 220px;"></div><div class="CodeMirror-gutters" style="display: none; height: 220px;"></div></div></div></pre><h4 id='获取未读数和最后一条消息'><span>获取未读数和最后一条消息</span></h4><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="objective-c" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="objective-c"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">/**</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-comment">未读消息获取</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">@param visitorId &nbsp; &nbsp; &nbsp; &nbsp;  当前用户ID</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">@param mainUniqueId &nbsp; &nbsp; &nbsp; 会话ID （如果为空字符串就是获取总的未读消息数）</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">*/</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  [[<span class="cm-variable">TOSClientKit</span> <span class="cm-variable">sharedClientKit</span>] <span class="cm-variable">sessionInfoUnreadCountCurrentVisitorId</span>:<span class="cm-keyword">@</span><span class="cm-string">"当前用户ID"</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-tab" role="presentation" cm-text="    "> </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-variable">WithMainUniqueId</span>:<span class="cm-keyword">@</span><span class="cm-string">"会话ID"</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span> &nbsp; <span class="cm-variable">withSuccess</span>:<span class="cm-variable">^</span>(<span class="cm-variable">NSString</span> <span class="cm-operator">*</span> <span class="cm-variable">_Nonnull</span> <span class="cm-variable">lastMessage</span>, <span class="cm-variable">NSString</span> <span class="cm-operator">*</span> <span class="cm-variable">_Nonnull</span> <span class="cm-variable">unreadCount</span>) {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; <span class="cm-tab" role="presentation" cm-text="    "> </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span> <span class="cm-variable">NSLog</span>(<span class="cm-keyword">@</span><span class="cm-string">"未读数：%@, 最后一条消息：%@"</span>, <span class="cm-variable">unreadCount</span>, <span class="cm-variable">lastMessage</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  } <span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-tab" role="presentation" cm-text="    ">  </span> <span class="cm-variable">withError</span>:<span class="cm-variable">^</span>(<span class="cm-variable">NSString</span> <span class="cm-operator">*</span> <span class="cm-variable">_Nonnull</span> <span class="cm-variable">errorStr</span>) {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;<span class="cm-comment">/// 错误提示</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  }];</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">// 未读数的更新  接收通知</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  [[<span class="cm-variable">NSNotificationCenter</span> <span class="cm-variable">defaultCenter</span>] <span class="cm-variable">addObserver</span>:<span class="cm-keyword">self</span> <span class="cm-variable">selector</span>:<span class="cm-keyword">@selector</span>(<span class="cm-variable">unreadMessage</span>:) <span class="cm-variable">name</span>:<span class="cm-variable">KTOSClientLibLastMessageReceivedNotification</span> <span class="cm-variable">object</span>:<span class="cm-keyword">nil</span>];</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 374px;"></div><div class="CodeMirror-gutters" style="display: none; height: 374px;"></div></div></div></pre><h2 id='自定义ui配置'><span>自定义UI配置</span></h2><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="objective-c" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="objective-c"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">修改自定义的参数在TOSClient</span>.<span class="cm-variable">bundle中的customInfo</span>.<span class="cm-variable">plist</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">1.</span> <span class="cm-variable">聊天背景色修改</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">ChatBackGround字典中使用RGBA的参数设置</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-variable">ColorR</span> &nbsp; &nbsp;  (<span class="cm-number">0</span> <span class="cm-variable">~</span> <span class="cm-number">255.f</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-variable">ColorG</span> &nbsp; &nbsp;  (<span class="cm-number">0</span> <span class="cm-variable">~</span> <span class="cm-number">255.f</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-variable">ColorB</span> &nbsp; &nbsp;  (<span class="cm-number">0</span> <span class="cm-variable">~</span> <span class="cm-number">255.f</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-variable">ColorA</span> &nbsp; &nbsp;  (<span class="cm-number">0.0</span> <span class="cm-variable">~</span> <span class="cm-number">1.0f</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">2.</span><span class="cm-variable">头像</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">Portrait字典中</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-variable">cornerRadius</span> &nbsp; &nbsp; &nbsp; <span class="cm-variable">圆角弧度</span> (<span class="cm-number">0</span> <span class="cm-variable">~</span> <span class="cm-number">10.f</span>) &nbsp;<span class="cm-variable">默认5</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">3.</span><span class="cm-variable">气泡颜色</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">SenderBubbleBackGround字典中</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">使用RGBA的参数设置</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-variable">ColorR</span> &nbsp; &nbsp;  (<span class="cm-number">0</span> <span class="cm-variable">~</span> <span class="cm-number">255.f</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-variable">ColorG</span> &nbsp; &nbsp;  (<span class="cm-number">0</span> <span class="cm-variable">~</span> <span class="cm-number">255.f</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-variable">ColorB</span> &nbsp; &nbsp;  (<span class="cm-number">0</span> <span class="cm-variable">~</span> <span class="cm-number">255.f</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-variable">ColorA</span> &nbsp; &nbsp;  (<span class="cm-number">0.0</span> <span class="cm-variable">~</span> <span class="cm-number">1.0f</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">圆角弧度</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-variable">cornerRadius</span> &nbsp; &nbsp; &nbsp; &nbsp;  (<span class="cm-number">0</span> <span class="cm-variable">~</span> <span class="cm-number">10.f</span>) &nbsp;<span class="cm-variable">默认5</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">ReceiveBubbleBackGround字典中</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">使用RGBA的参数设置</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-variable">ColorR</span> &nbsp; &nbsp;  (<span class="cm-number">0</span> <span class="cm-variable">~</span> <span class="cm-number">255.f</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-variable">ColorG</span> &nbsp; &nbsp;  (<span class="cm-number">0</span> <span class="cm-variable">~</span> <span class="cm-number">255.f</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-variable">ColorB</span> &nbsp; &nbsp;  (<span class="cm-number">0</span> <span class="cm-variable">~</span> <span class="cm-number">255.f</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-variable">ColorA</span> &nbsp; &nbsp;  (<span class="cm-number">0.0</span> <span class="cm-variable">~</span> <span class="cm-number">1.0f</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">圆角弧度</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-variable">cornerRadius</span> &nbsp; &nbsp; &nbsp; &nbsp;  (<span class="cm-number">0</span> <span class="cm-variable">~</span> <span class="cm-number">10.f</span>) &nbsp;<span class="cm-variable">默认5</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">4.</span><span class="cm-variable">商品卡片示例</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">// TOSClientKitCommodityCardOption 详情见 商品卡片参数说明</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">TOSClientKitCommodityCardOption</span> <span class="cm-operator">*</span><span class="cm-variable">option</span> <span class="cm-operator">=</span> [[<span class="cm-variable">TOSClientKitCommodityCardOption</span> <span class="cm-variable">alloc</span>] <span class="cm-variable">init</span>];</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">option</span>.<span class="cm-variable">subTitle</span> <span class="cm-operator">=</span> <span class="cm-keyword">@</span><span class="cm-string">"华为P40麒麟990 5G SoC芯片 5000万超感知徕卡三摄 30倍数字变焦"</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">option</span>.<span class="cm-variable">descriptions</span> <span class="cm-operator">=</span> <span class="cm-keyword">@</span><span class="cm-string">"这是商品描述，啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦"</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">option</span>.<span class="cm-variable">price</span> <span class="cm-operator">=</span> <span class="cm-keyword">@</span><span class="cm-string">"100.99"</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">option</span>.<span class="cm-variable">time</span> <span class="cm-operator">=</span> <span class="cm-keyword">@</span><span class="cm-string">"2022/05/24 18:32"</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">option</span>.<span class="cm-variable">img</span> <span class="cm-operator">=</span> <span class="cm-keyword">@</span><span class="cm-string">"https://img2.baidu.com/it/u=3019548648,4204913203&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=500&amp;h=500"</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">option</span>.<span class="cm-variable">status</span> <span class="cm-operator">=</span> <span class="cm-keyword">@</span><span class="cm-string">"已到货"</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">option</span>.<span class="cm-variable">extraInfo</span> <span class="cm-operator">=</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">@</span>[<span class="cm-keyword">@</span>{<span class="cm-keyword">@</span><span class="cm-string">"name"</span>: <span class="cm-keyword">@</span><span class="cm-string">"订单号"</span>, <span class="cm-keyword">@</span><span class="cm-string">"value"</span>: <span class="cm-keyword">@</span><span class="cm-string">"1234567890"</span>},</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">@</span>{<span class="cm-keyword">@</span><span class="cm-string">"name"</span>: <span class="cm-keyword">@</span><span class="cm-string">"产品类型"</span>, <span class="cm-keyword">@</span><span class="cm-string">"value"</span>: <span class="cm-keyword">@</span><span class="cm-string">"电子产品"</span>},</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">@</span>{<span class="cm-keyword">@</span><span class="cm-string">"name"</span>: <span class="cm-keyword">@</span><span class="cm-string">"师傅"</span> &nbsp; , <span class="cm-keyword">@</span><span class="cm-string">"value"</span>: <span class="cm-keyword">@</span><span class="cm-string">"金师傅"</span>},</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">@</span>{<span class="cm-keyword">@</span><span class="cm-string">"name"</span>: <span class="cm-keyword">@</span><span class="cm-string">"服务地区"</span>, <span class="cm-keyword">@</span><span class="cm-string">"value"</span>: <span class="cm-keyword">@</span><span class="cm-string">"北京市"</span>},</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">@</span>{<span class="cm-keyword">@</span><span class="cm-string">"name"</span>: <span class="cm-keyword">@</span><span class="cm-string">"服务"</span> &nbsp; , <span class="cm-keyword">@</span><span class="cm-string">"value"</span>: <span class="cm-keyword">@</span><span class="cm-string">"满意"</span>},</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">@</span>{<span class="cm-keyword">@</span><span class="cm-string">"name"</span>: <span class="cm-keyword">@</span><span class="cm-string">"师傅电话"</span>, <span class="cm-keyword">@</span><span class="cm-string">"value"</span>: <span class="cm-keyword">@</span><span class="cm-string">"12345678900"</span>},</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">@</span>{<span class="cm-keyword">@</span><span class="cm-string">"name"</span>: <span class="cm-keyword">@</span><span class="cm-string">"订单状态"</span>, <span class="cm-keyword">@</span><span class="cm-string">"value"</span>: <span class="cm-keyword">@</span><span class="cm-string">"已完成"</span>}];</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">4.</span><span class="cm-variable">商品卡片示例</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  <span class="cm-tab" role="presentation" cm-text="    ">  </span><span class="cm-comment">// TOSClientKitCommodityCardOption 详情见 商品卡片参数说明</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">TOSClientKitCommodityCardOption</span> <span class="cm-operator">*</span><span class="cm-variable">option</span> <span class="cm-operator">=</span> [[<span class="cm-variable">TOSClientKitCommodityCardOption</span> <span class="cm-variable">alloc</span>] <span class="cm-variable">init</span>];</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">option</span>.<span class="cm-variable">subTitle</span> <span class="cm-operator">=</span> <span class="cm-keyword">@</span><span class="cm-string">"华为P40麒麟990 5G SoC芯片 5000万超感知徕卡三摄 30倍数字变焦"</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">option</span>.<span class="cm-variable">descriptions</span> <span class="cm-operator">=</span> <span class="cm-keyword">@</span><span class="cm-string">"这是商品描述，啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦"</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">option</span>.<span class="cm-variable">price</span> <span class="cm-operator">=</span> <span class="cm-keyword">@</span><span class="cm-string">"100.99"</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">option</span>.<span class="cm-variable">time</span> <span class="cm-operator">=</span> <span class="cm-keyword">@</span><span class="cm-string">"2022/05/24 18:32"</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">option</span>.<span class="cm-variable">img</span> <span class="cm-operator">=</span> <span class="cm-keyword">@</span><span class="cm-string">"https://img2.baidu.com/it/u=3019548648,4204913203&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=500&amp;h=500"</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">option</span>.<span class="cm-variable">status</span> <span class="cm-operator">=</span> <span class="cm-keyword">@</span><span class="cm-string">"已到货"</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">option</span>.<span class="cm-variable">extraInfo</span> <span class="cm-operator">=</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">@</span>[<span class="cm-keyword">@</span>{<span class="cm-keyword">@</span><span class="cm-string">"name"</span>: <span class="cm-keyword">@</span><span class="cm-string">"订单号"</span>, <span class="cm-keyword">@</span><span class="cm-string">"value"</span>: <span class="cm-keyword">@</span><span class="cm-string">"1234567890"</span>},</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">@</span>{<span class="cm-keyword">@</span><span class="cm-string">"name"</span>: <span class="cm-keyword">@</span><span class="cm-string">"产品类型"</span>, <span class="cm-keyword">@</span><span class="cm-string">"value"</span>: <span class="cm-keyword">@</span><span class="cm-string">"电子产品"</span>},</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">@</span>{<span class="cm-keyword">@</span><span class="cm-string">"name"</span>: <span class="cm-keyword">@</span><span class="cm-string">"师傅"</span> &nbsp; , <span class="cm-keyword">@</span><span class="cm-string">"value"</span>: <span class="cm-keyword">@</span><span class="cm-string">"金师傅"</span>},</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">@</span>{<span class="cm-keyword">@</span><span class="cm-string">"name"</span>: <span class="cm-keyword">@</span><span class="cm-string">"服务地区"</span>, <span class="cm-keyword">@</span><span class="cm-string">"value"</span>: <span class="cm-keyword">@</span><span class="cm-string">"北京市"</span>},</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">@</span>{<span class="cm-keyword">@</span><span class="cm-string">"name"</span>: <span class="cm-keyword">@</span><span class="cm-string">"服务"</span> &nbsp; , <span class="cm-keyword">@</span><span class="cm-string">"value"</span>: <span class="cm-keyword">@</span><span class="cm-string">"满意"</span>},</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">@</span>{<span class="cm-keyword">@</span><span class="cm-string">"name"</span>: <span class="cm-keyword">@</span><span class="cm-string">"师傅电话"</span>, <span class="cm-keyword">@</span><span class="cm-string">"value"</span>: <span class="cm-keyword">@</span><span class="cm-string">"12345678900"</span>},</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">@</span>{<span class="cm-keyword">@</span><span class="cm-string">"name"</span>: <span class="cm-keyword">@</span><span class="cm-string">"订单状态"</span>, <span class="cm-keyword">@</span><span class="cm-string">"value"</span>: <span class="cm-keyword">@</span><span class="cm-string">"已完成"</span>}];</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">chatVC</span>.<span class="cm-variable">commodityCardOption</span> <span class="cm-operator">=</span> <span class="cm-variable">option</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-number">5.</span><span class="cm-variable">快捷入口配置</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">chatVC</span>.<span class="cm-variable">barItemDataArray</span> <span class="cm-operator">=</span> <span class="cm-keyword">@</span>[<span class="cm-keyword">@</span><span class="cm-string">"快捷入口1"</span>,<span class="cm-keyword">@</span><span class="cm-string">"快捷入口2"</span>,<span class="cm-keyword">@</span><span class="cm-string">"快捷入口3"</span>];</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">/// 快捷入口的点击回调 &nbsp;  index &nbsp;  点击索引从0开始（需要在子类实现这个方法）</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">-</span> (<span class="cm-variable-3">void</span>)<span class="cm-variable">bariItemDidTouchIndex</span>:(<span class="cm-variable">NSInteger</span>)<span class="cm-variable">index</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 1534px;"></div><div class="CodeMirror-gutters" style="display: none; height: 1534px;"></div></div></div></pre><h2 id='详细参数说明'><span>详细参数说明</span></h2><blockquote><p><span>会话状态监听</span></p></blockquote><figure><table><thead><tr><th><span>参数名</span></th><th><span>参数值</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><span>TinetChatStatusTypeOutline</span></td><td><span>0</span></td><td><span>离线或结束会话</span></td></tr><tr><td><span>TinetChatStatusTypeRobot</span></td><td><span>1</span></td><td><span>机器人</span></td></tr><tr><td><span>TinetChatStatusTypeOnline</span></td><td><span>2</span></td><td><span>客服</span></td></tr></tbody></table></figure><blockquote><p><span>TOSClientKitCommodityCardOption 商品卡片参数说明</span></p></blockquote><figure><table><thead><tr><th><span>参数名</span></th><th><span>参数类型</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><span>subTitle</span></td><td><span>NSString</span></td><td><span>卡片消息副标题</span></td></tr><tr><td><span>descriptions</span></td><td><span>NSString</span></td><td><span>卡片消息的描述，例如商品的简单描述</span></td></tr><tr><td><span>price</span></td><td><span>NSString</span></td><td><span>商品卡片的价格</span></td></tr><tr><td><span>time</span></td><td><span>NSString</span></td><td><span>卡片消息的时间，例如订单的生成时间</span></td></tr><tr><td><span>img</span></td><td><span>NSString</span></td><td><span>卡片消息的图片地址，例如商品的图片地址</span></td></tr><tr><td><span>status</span></td><td><span>NSString</span></td><td><span>商品状态</span></td></tr><tr><td><span>extraInfo</span></td><td><span>NSDictionary</span></td><td><span>额外信息</span></td></tr></tbody></table></figure></div></div>
+</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 1298px;"></div><div class="CodeMirror-gutters" style="display: none; height: 1298px;"></div></div></div></pre><h2 id='详细参数说明'><span>详细参数说明</span></h2><blockquote><p><span>会话状态监听</span></p></blockquote><figure><table><thead><tr><th><span>参数名</span></th><th><span>参数值</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><span>TinetChatStatusTypeOutline</span></td><td><span>0</span></td><td><span>离线或结束会话</span></td></tr><tr><td><span>TinetChatStatusTypeRobot</span></td><td><span>1</span></td><td><span>机器人</span></td></tr><tr><td><span>TinetChatStatusTypeOnline</span></td><td><span>2</span></td><td><span>客服</span></td></tr></tbody></table></figure><blockquote><p><span>TOSClientKitCommodityCardOption 商品卡片参数说明</span></p></blockquote><figure><table><thead><tr><th><span>参数名</span></th><th><span>参数类型</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><span>subTitle</span></td><td><span>NSString</span></td><td><span>卡片消息副标题</span></td></tr><tr><td><span>descriptions</span></td><td><span>NSString</span></td><td><span>卡片消息的描述，例如商品的简单描述</span></td></tr><tr><td><span>price</span></td><td><span>NSString</span></td><td><span>商品卡片的价格</span></td></tr><tr><td><span>time</span></td><td><span>NSString</span></td><td><span>卡片消息的时间，例如订单的生成时间</span></td></tr><tr><td><span>img</span></td><td><span>NSString</span></td><td><span>卡片消息的图片地址，例如商品的图片地址</span></td></tr><tr><td><span>status</span></td><td><span>NSString</span></td><td><span>商品状态</span></td></tr><tr><td><span>extraInfo</span></td><td><span>NSDictionary</span></td><td><span>额外信息</span></td></tr></tbody></table></figure></div></div>
 </body>
 </html>

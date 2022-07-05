@@ -34,6 +34,10 @@ NS_ASSUME_NONNULL_BEGIN
                     success:(void (^)(TOSSessionInfoModel * sessModel))successBlock
                       error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
 
+#pragma mark  获取全局配置信息
+-(void)getAppSettings:(void (^)(void))successBlock
+                      error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
+
 #pragma mark  获取历史消息
 -(void)getChatRecordListLastTime:(NSString *)lastTime
                            limit:(NSString *)limit
