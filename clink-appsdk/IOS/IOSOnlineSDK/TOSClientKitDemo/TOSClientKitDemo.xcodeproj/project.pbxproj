@@ -1282,6 +1282,11 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/TOSClientKitDemo/AppDelegate/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TOSClientKitDemo/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "需要您的相机权限，以便于拍摄照片发送使用";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "需要定位";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "需要您的麦克风权限，以便于发送语音时录音使用";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "需要您的相册权限，以便于发送相册中图片时使用";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "需要您的相册保存权限，以便于发送相册中图片时使用";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1319,6 +1324,11 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/TOSClientKitDemo/AppDelegate/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TOSClientKitDemo/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "需要您的相机权限，以便于拍摄照片发送使用";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "需要定位";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "需要您的麦克风权限，以便于发送语音时录音使用";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "需要您的相册权限，以便于发送相册中图片时使用";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "需要您的相册保存权限，以便于发送相册中图片时使用";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
