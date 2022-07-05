@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="EditTextWithDelete">
+        <attr name="drawableFocus" format="reference"/>
+        <attr name="drawableUnFocus" format="reference"/>
+        <attr name="drawableError" format="reference"/>
+        <attr name="isShowLeftIcon" format="boolean"/>
+        <attr name="isHideLine" format="boolean"/>
+        <attr name="isHideDelIcon" format="boolean"/>
+    </declare-styleable>
+
+
+</resources>

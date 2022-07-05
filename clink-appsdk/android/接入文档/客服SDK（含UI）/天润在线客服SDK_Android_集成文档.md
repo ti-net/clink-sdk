@@ -1,6 +1,6 @@
 
 # TOSClientKit_Android_开发文档
-> 版本: 1.3.7
+> 版本: 1.3.10
 
 
 ## 目录
@@ -30,7 +30,7 @@ Gradle | 3.0 及以上版本
 在主app的 build.gradle 文件中添加如下依赖配置
 
 ```
-implementation "com.ti-net.oskit:online:1.3.7"
+implementation "com.ti-net.oskit:online:1.3.10"
 ```
 
 ### 混淆配置
@@ -291,10 +291,33 @@ android:theme="@style/Theme.TIMSDK.LEAVE.chat"
     <!--  头像圆角大小  -->
     <item name="chatHeadRadius">20dp</item>
 </style>
+```
 
-``` 
+
+style文件中可添加更多可修改项：如下
+
+
+    		<!--超链接地址颜色-->
+        <color name="super_line_text">@color/ti_blue</color>
+        <!--聊天发送字体颜色-->
+        <color name="message_send_text">@color/ti_white</color>
+        <!--聊天接收文字颜色-->
+        <color name="message_receive_msg_text">@color/ti_dark</color>
+        <!--聊天文件名颜色-->
+        <color name="message_receive_filename_text">@color/message_send_bg</color>
+        <!--聊天人名文字的颜色-->
+        <color name="message_username_text">@color/ti_99</color>
+        <!--富文本视频播放器的背景-->
+        <color name="rich_video_bg">#80000000</color>
+        <!--富文本视频播放器进度条的背景色-->
+        <color name="rich_video_progress_bg">#4D000000</color>
+        <!--富文本视频播放器进度条的前景色-->
+        <color name="rich_video_foreground">@color/ti_white</color>
+        <!--聊天背景色-->
+        <color name="session_bg">#FFF2F6FD</color>
 
 ### 会话界面相关操作
+
 #### 会话内事件监听
 ##### 会话状态监听
 

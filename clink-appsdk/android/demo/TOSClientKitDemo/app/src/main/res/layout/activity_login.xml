@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".ui.activity.LoginActivity">
+
+    <include layout="@layout/layout_common_toolbar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@mipmap/logo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="访客端 APP SDK"
+            android:textColor="#ff595959"
+            android:textSize="24sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="让客户联络效率更高，体验更好"
+            android:textColor="#ff8c8c8c"
+            android:textSize="12sp" />
+
+        <com.tinet.tosclientkitdemo.widget.EditTextWithDelete
+            android:id="@+id/et_enterprise_id"
+            style="@style/EditTextWithDelete"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="46dp"
+            android:layout_marginRight="32dp"
+            android:hint="请输入企业 ID"
+            android:inputType="number"
+            android:singleLine="true"
+            app:drawableFocus="@drawable/enterprise_id"
+            app:drawableUnFocus="@drawable/enterprise_id"
+            app:isShowLeftIcon="true" />
+
+        <com.tinet.tosclientkitdemo.widget.EditTextWithDelete
+            android:id="@+id/et_access_id"
+            style="@style/EditTextWithDelete"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginRight="32dp"
+            android:hint="请输入 Access ID"
+            android:inputType="text"
+            android:singleLine="true"
+            app:drawableFocus="@drawable/user"
+            app:drawableUnFocus="@drawable/user"
+            app:isShowLeftIcon="true" />
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp">
+
+            <com.tinet.tosclientkitdemo.widget.EditTextWithDelete
+                android:id="@+id/et_access_secret"
+                style="@style/EditTextWithDelete"
+                android:layout_marginTop="24dp"
+                android:hint="请输入 Access Secret"
+                android:inputType="textPassword"
+                android:paddingEnd="46dp"
+                android:singleLine="true"
+                app:drawableFocus="@drawable/lock_on"
+                app:drawableUnFocus="@drawable/lock_on"
+                app:isShowLeftIcon="true" />
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:id="@+id/iv_toggle_password"
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="bottom"
+                    android:paddingStart="12dp"
+                    android:visibility="gone"
+                    android:paddingEnd="12dp"
+                    android:src="@mipmap/browse" />
+            </FrameLayout>
+        </FrameLayout>
+
+        <com.tinet.tosclientkitdemo.widget.EditTextWithDelete
+            android:id="@+id/et_visitor_id"
+            style="@style/EditTextWithDelete"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginRight="32dp"
+            android:hint="请输入 Visitor ID"
+            android:inputType="text"
+            android:singleLine="true"
+            app:drawableFocus="@drawable/user"
+            app:drawableUnFocus="@drawable/user"
+            app:isShowLeftIcon="true" />
+
+        <TextView
+            android:id="@+id/tv_enter"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginRight="32dp"
+            android:background="@drawable/shape_blue_round_btn"
+            android:gravity="center"
+            android:text="接入"
+            android:textColor="#ffffffff"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+</RelativeLayout>
