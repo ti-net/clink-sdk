@@ -80,6 +80,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)saveMainUniqueIdRunningStatus:(NSString*)saveStr runningStatus:(NSString*)runningStatus;
 -(NSString*)getMainUniqueIdRunningStatus:(NSString*)mainUniqueId;
 
+// 存储AppSetting全局配置信息
+- (void)saveAppSetting:(NSString*)appSetting;
+- (NSString *)getAppSetting;
+// 获取配置的上传文件的限制大小
+-(NSNumber *)getAppSettingFileSize;
+
 @end
 
 NS_ASSUME_NONNULL_END

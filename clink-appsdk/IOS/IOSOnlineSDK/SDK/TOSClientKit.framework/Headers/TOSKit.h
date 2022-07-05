@@ -242,7 +242,7 @@ SDK内置的消息类型，如果您将pushOption置为nil，会使用默认的�
 
  @discussion YES 已连接 NO 未链接。
  */
-@property (nonatomic, assign) BOOL bMqttConnected;
+@property (nonatomic, strong) NSNumber* mqttConnected;
 
 /**
 当前AppId

@@ -4,6 +4,10 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>.DS_Store</key>
+		<data>
+		05vidHOm+ois5PDYFj42vgSH0MM=
+		</data>
 		<key>Headers/ICChatMessageRevokeCell.h</key>
 		<data>
 		yhjnsZ58fkiRSUIo1onkGwfqZbE=
@@ -62,7 +66,11 @@
 		</data>
 		<key>Headers/TOSKit.h</key>
 		<data>
-		29a07Br/8ofRmHbow67Wucli80g=
+		MrRmrzbkgV1J7NCy31HPfzjN5Fs=
+		</data>
+		<key>Headers/TOSKitCustomInfo.h</key>
+		<data>
+		JnDjmnx4J79vW6O3R80r6rIae7A=
 		</data>
 		<key>Headers/UITableView+TIMAutoTableViewCellHeight.h</key>
 		<data>
@@ -74,7 +82,7 @@
 		</data>
 		<key>Headers/kitUtils.h</key>
 		<data>
-		6C5tinQ2bG/x9bMOs+gB8Shcpv8=
+		EQ/dtkTOKCE0bFBd/3HEW1NF+/0=
 		</data>
 		<key>ICChatMessageCommodityCardCell.nib</key>
 		<data>
@@ -90,7 +98,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		bbhJJ+8eEFgqcaZNKGYor4T9sjs=
+		iFvtlaZRbatrvmhW/g/7pCUiMNo=
 		</data>
 		<key>LICENSE</key>
 		<data>
@@ -331,7 +339,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			EXKZiS7k27sbY01Bsd30t2EYlqpKNaouHVXkuasTZ7c=
+			W/6uFFp/wp/cbB1w+0mothm9zoIY2tKlW/UwsqpXkss=
+			</data>
+		</dict>
+		<key>Headers/TOSKitCustomInfo.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			CIJtK33J6OZnscT58imLqeEveCKsU0GiQIfz7RrK7O4=
 			</data>
 		</dict>
 		<key>Headers/UITableView+TIMAutoTableViewCellHeight.h</key>
@@ -352,7 +367,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			9cS9+aYGfKw839KTpyl8n3dmr8ttcgvwerYXFO3fjGg=
+			tiJNBc1JWQLE1tiMEc82b/WpKbHO3uDRa02VybJ4AGY=
 			</data>
 		</dict>
 		<key>ICChatMessageCommodityCardCell.nib</key>
