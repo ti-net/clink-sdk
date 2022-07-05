@@ -8,6 +8,8 @@
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
 
+#import <TOSClientKit/TOSClientKit.h>
+
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 

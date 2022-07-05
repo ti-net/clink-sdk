@@ -31,7 +31,7 @@ static NSString * const kTRLocalizeLanguageDescriptionKey = @"LangDescription";
 static NSString * const kUserDefaultLanguageKey = @"kUserDefaultLanguageKey";
 
 static NSInteger const kStateBarColor = 0xFFFFFF;
-static NSInteger const kBackgroundColor = 0xF5F8F9;
+static NSInteger const kBackgroundColor = 0xF3F6F9;
 static NSInteger const kThemeColor = 0x2397FF;
 static NSInteger const kDefaultBlue = 0x007AFF;
 

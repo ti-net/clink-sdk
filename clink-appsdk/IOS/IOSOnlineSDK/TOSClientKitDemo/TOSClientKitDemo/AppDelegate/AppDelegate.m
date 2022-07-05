@@ -58,11 +58,8 @@
         return dic;
     }];
     
-    //猿题库网络框架，设置url的域名
-    YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
-    config.baseUrl = [DomainNameSave shareDomainNameSave].domainName;
     MainViewController *mainVC = [[MainViewController alloc] initWithNibName:[MainViewController className] bundle:nil];
-    self.window.rootViewController = [[BaseNavigationController alloc] initWithRootViewController:mainVC];
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:mainVC];
     return YES;
 }
 

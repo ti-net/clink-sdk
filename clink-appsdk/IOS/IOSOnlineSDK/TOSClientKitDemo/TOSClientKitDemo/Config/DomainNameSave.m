@@ -11,10 +11,6 @@
 static DomainNameSave *domainName = nil;
 
 static NSString * const kLoginDomainName = @"kLoginDomainName";
-/// 项目域名保存
-static NSString * const kDomainName = @"kDomainName";
-/// 融云AppKey保存
-static NSString * const kRCIMAppKey = @"kRCIMAppKey";
 
 @implementation DomainNameSave
 
@@ -26,16 +22,7 @@ static NSString * const kRCIMAppKey = @"kRCIMAppKey";
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         domainName = [super init];
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        #ifdef DEBUG
-                domainName.loginDomainName = [userDefaults objectForKey:kLoginDomainName]?:@"https://bj-test0.clink.cn";
-                domainName.domainName = [userDefaults objectForKey:kDomainName]?:@"http://app-bj-test0.clink.cn";
-                domainName.rcimAppKey = [userDefaults objectForKey:kRCIMAppKey]?:@"cpj2xarlctxbn";
-        #else
-                domainName.loginDomainName = [userDefaults objectForKey:kLoginDomainName]?:@"https://bj.clink.cn";
-                domainName.domainName = [userDefaults objectForKey:kDomainName]?:@"https://app-bj.clink.cn";
-                domainName.rcimAppKey = [userDefaults objectForKey:kRCIMAppKey]?:@"pgyu6atqp56lu";
-        #endif
+        domainName.index = 0;
     });
     return domainName;
 }
@@ -54,15 +41,6 @@ static NSString * const kRCIMAppKey = @"kRCIMAppKey";
 
 - (id)mutableCopyWithZone:(NSZone *)zone {
     return domainName;
-}
-
-
-- (void)saveData {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:[domainName.loginDomainName?:@"" verifyString] forKey:kLoginDomainName];
-    [userDefaults setObject:[domainName.domainName?:@"" verifyString] forKey:kDomainName];
-    [userDefaults setObject:[domainName.rcimAppKey?:@"" verifyString] forKey:kRCIMAppKey];
-    [userDefaults synchronize];
 }
 
 @end
