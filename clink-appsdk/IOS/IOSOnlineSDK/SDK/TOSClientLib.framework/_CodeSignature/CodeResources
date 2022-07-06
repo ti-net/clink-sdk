@@ -4,6 +4,10 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>.DS_Store</key>
+		<data>
+		HVwTBafaZMknllQ26Yv/QAfvi9o=
+		</data>
 		<key>.gitignore</key>
 		<data>
 		w8cmGpehgSqHlGrQEbVqNYPZ5b0=
@@ -306,7 +310,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		dPbC0LqiKVH58jLjnPG0JL4XK4A=
+		H6NMxd6AsoZeY7UIHqIEZZvT9xc=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
