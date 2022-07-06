@@ -23,6 +23,11 @@ public class SsoLoginUrlRequest extends AbstractRequestModel<SsoLoginUrlResponse
 
     private Integer topbarDisplay;
 
+    private Integer autoLoginCc;
+
+    private Integer autoLoginLiveChat;
+
+
     public SsoLoginUrlRequest() {
         super(PathEnum.SsoLoginToken.value(), HttpMethodType.GET);
     }
@@ -50,6 +55,24 @@ public class SsoLoginUrlRequest extends AbstractRequestModel<SsoLoginUrlResponse
     public void setTopbarDisplay(Integer topbarDisplay) {
         putQueryParameter("topbarDisplay",topbarDisplay);
         this.topbarDisplay = topbarDisplay;
+    }
+
+    public void setAutoLoginCc(Integer autoLoginCc) {
+        putQueryParameter("autoLoginCc",autoLoginCc);
+        this.autoLoginCc = autoLoginCc;
+    }
+
+    public void setAutoLoginLiveChat(Integer autoLoginLiveChat) {
+        putQueryParameter("autoLoginLiveChat",autoLoginLiveChat);
+        this.autoLoginLiveChat = autoLoginLiveChat;
+    }
+
+    public Integer getAutoLoginLiveChat() {
+        return autoLoginLiveChat;
+    }
+
+    public Integer getAutoLoginCc() {
+        return autoLoginCc;
     }
 
     public Integer getSidebarDisplay() {
@@ -88,6 +111,8 @@ public class SsoLoginUrlRequest extends AbstractRequestModel<SsoLoginUrlResponse
                 ", staticUrl='" + staticUrl + '\'' +
                 ", sidebarDisplay=" + sidebarDisplay +
                 ", topbarDisplay=" + topbarDisplay +
+                ", autoLoginCc=" + autoLoginCc +
+                ", autoLoginLiveChat=" + autoLoginLiveChat +
                 '}';
     }
 }
