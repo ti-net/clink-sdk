@@ -44,7 +44,7 @@ android {
         variant ->
             variant.outputs.all {
                 //在这里修改apk文件名
-                outputFileName = "TOSKitDemo_${defaultConfig.versionName}_${releaseTime()}.apk"
+                outputFileName = "天润客服SDK_${defaultConfig.versionName}_${releaseTime()}.apk"
             }
     }
 
