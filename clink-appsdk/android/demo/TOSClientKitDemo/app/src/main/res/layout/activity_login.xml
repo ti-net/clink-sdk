@@ -94,9 +94,9 @@
                     android:layout_height="30dp"
                     android:layout_gravity="bottom"
                     android:paddingStart="12dp"
-                    android:visibility="gone"
                     android:paddingEnd="12dp"
-                    android:src="@mipmap/browse" />
+                    android:src="@mipmap/browse"
+                    android:visibility="gone" />
             </FrameLayout>
         </FrameLayout>
 
@@ -109,6 +109,7 @@
             android:hint="请输入 Visitor ID"
             android:inputType="text"
             android:singleLine="true"
+            android:visibility="gone"
             app:drawableFocus="@drawable/user"
             app:drawableUnFocus="@drawable/user"
             app:isShowLeftIcon="true" />
