@@ -38,6 +38,11 @@ public class UpdateExtenRequest extends AbstractRequestModel<UpdateExtenResponse
      */
     private Integer allow;
 
+    /**
+     * 是否允许主叫外呼，1：允许，0：不允许
+     */
+    private Integer isDirect;
+
     public String getExtenNumber() {
         return extenNumber;
     }
@@ -90,6 +95,17 @@ public class UpdateExtenRequest extends AbstractRequestModel<UpdateExtenResponse
         this.allow = allow;
         if (allow != null) {
             putQueryParameter("allow", allow);
+        }
+    }
+
+    public Integer getIsDirect() {
+        return isDirect;
+    }
+
+    public void setIsDirect(Integer isDirect) {
+        this.isDirect = isDirect;
+        if (isDirect != null) {
+            putQueryParameter("isDirect", isDirect);
         }
     }
 
