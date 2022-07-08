@@ -242,63 +242,66 @@ typedef NS_ENUM(NSUInteger, TinetChatStatusType) {
 ## 自定义UI配置
 
 ```objective-c
-修改自定义的参数在TOSClient.bundle中的customInfo.plist
+1.TOSKitCustomInfo 自定义UI类说明
 
-1. 聊天背景色修改
-ChatBackGround字典中使用RGBA的参数设置
-   ColorR      (0 ~ 255.f)
-   ColorG      (0 ~ 255.f)
-   ColorB      (0 ~ 255.f)
-   ColorA      (0.0 ~ 1.0f)
+/// 初始化
++ (TOSKitCustomInfo *)shareCustomInfo;
 
-2.头像
-Portrait字典中
-   cornerRadius       圆角弧度 (0 ~ 10.f)  默认5
+/// 快速入口Item的圆角弧度
+@property (nonatomic, assign) CGFloat quickEntryItem_cornerRadius;
 
-3.气泡颜色
-SenderBubbleBackGround字典中
-使用RGBA的参数设置
-   ColorR      (0 ~ 255.f)
-   ColorG      (0 ~ 255.f)
-   ColorB      (0 ~ 255.f)
-   ColorA      (0.0 ~ 1.0f)
-圆角弧度
-   cornerRadius          (0 ~ 10.f)  默认5
+/// 发送方气泡的颜色
+@property (nonatomic, strong) UIColor *senderBubble_backGround;
+/// 发送方气泡的圆角弧度
+@property (nonatomic, assign) CGFloat senderBubble_cornerRadius;
 
-ReceiveBubbleBackGround字典中
-使用RGBA的参数设置
-   ColorR      (0 ~ 255.f)
-   ColorG      (0 ~ 255.f)
-   ColorB      (0 ~ 255.f)
-   ColorA      (0.0 ~ 1.0f)
-圆角弧度
-   cornerRadius          (0 ~ 10.f)  默认5
+/// 头像的圆角弧度
+@property (nonatomic, assign) CGFloat portrait_cornerRadius;
 
-4.商品卡片示例 
-  	// TOSClientKitCommodityCardOption 详情见 商品卡片参数说明
-    TOSClientKitCommodityCardOption *option = [[TOSClientKitCommodityCardOption alloc] init];
-    option.subTitle = @"华为P40麒麟990 5G SoC芯片 5000万超感知徕卡三摄 30倍数字变焦";
-    option.descriptions = @"这是商品描述，啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦";
-    option.price = @"100.99";
-    option.time = @"2022/05/24 18:32";
-    option.img = @"https://img2.baidu.com/it/u=3019548648,4204913203&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500";
-    option.status = @"已到货";
-    option.extraInfo =
-    @[@{@"name": @"订单号", @"value": @"1234567890"},
-    @{@"name": @"产品类型", @"value": @"电子产品"},
-    @{@"name": @"师傅"   , @"value": @"金师傅"},
-    @{@"name": @"服务地区", @"value": @"北京市"},
-    @{@"name": @"服务"   , @"value": @"满意"},
-    @{@"name": @"师傅电话", @"value": @"12345678900"},
-    @{@"name": @"订单状态", @"value": @"已完成"}];
+/// 聊天背景颜色
+@property (nonatomic, strong) UIColor *chat_backGround;
 
-    chatVC.commodityCardOption = option;
+/// 快速入口Item的背景颜色
+@property (nonatomic, strong) UIColor *quickEntryItem_backgroundColor;
 
- 5.快捷入口配置
-    chatVC.barItemDataArray = @[@"快捷入口1",@"快捷入口2",@"快捷入口3"];
+/// 接收方气泡的颜色
+@property (nonatomic, strong) UIColor *receiveBubble_backGround;
+/// 接收方气泡的圆角弧度
+@property (nonatomic, assign) CGFloat receiveBubble_cornerRadius;
 
-/// 快捷入口的点击回调    index    点击索引从0开始（需要在子类实现这个方法）
-- (void)bariItemDidTouchIndex:(NSInteger)index;
+/// 快速入口底部的背景颜色
+@property (nonatomic, strong) UIColor *quickEntryBottom_backgroundColor;
+
+示例代码：
+  [TOSKitCustomInfo shareCustomInfo].senderBubble_backGround = [UIColor redColor];
+
+
+2.商品卡片示例 
+ // TOSClientKitCommodityCardOption 详情见 商品卡片参数说明
+  TOSClientKitCommodityCardOption *option = [[TOSClientKitCommodityCardOption alloc] init];
+  option.subTitle = @"华为P40麒麟990 5G SoC芯片 5000万超感知徕卡三摄 30倍数字变焦";
+  option.descriptions = @"这是商品描述，啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦";
+  option.price = @"100.99";
+  option.time = @"2022/05/24 18:32";
+  option.img = @"https://img2.baidu.com/it/u=3019548648,4204913203&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500";
+  option.status = @"已到货";
+  option.extraInfo =
+  @[@{@"name": @"订单号", @"value": @"1234567890"},
+  @{@"name": @"产品类型", @"value": @"电子产品"},
+  @{@"name": @"师傅"   , @"value": @"金师傅"},
+  @{@"name": @"服务地区", @"value": @"北京市"},
+  @{@"name": @"服务"   , @"value": @"满意"},
+  @{@"name": @"师傅电话", @"value": @"12345678900"},
+  @{@"name": @"订单状态", @"value": @"已完成"}];
+  
+  chatVC.commodityCardOption = option;
+
+
+ 3.快捷入口配置
+  chatVC.barItemDataArray = @[@"快捷入口1",@"快捷入口2",@"快捷入口3"];
+
+  /// 快捷入口的点击回调    index    点击索引从0开始（需要在子类实现这个方法）
+  - (void)bariItemDidTouchIndex:(NSInteger)index;
 
 ```
 
