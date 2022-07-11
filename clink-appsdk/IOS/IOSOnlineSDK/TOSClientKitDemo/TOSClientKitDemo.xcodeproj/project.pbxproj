@@ -92,6 +92,7 @@
 		3CB72B9C286BF35600F2A780 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CB72B9A286BF35600F2A780 /* LoginViewController.xib */; };
 		3CB72BA5286BF5FD00F2A780 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB72BA3286BF5FD00F2A780 /* MainViewController.m */; };
 		3CB72BA6286BF5FD00F2A780 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CB72BA4286BF5FD00F2A780 /* MainViewController.xib */; };
+		C0CB3AAA3B2237433AF51F73 /* Pods_TOSClientKitDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B06F037C60C28EA36437331 /* Pods_TOSClientKitDemo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -295,6 +296,7 @@
 			files = (
 				3C9CE7E62874B6D100163770 /* TOSClientKit.framework in Frameworks */,
 				3C9CE7E82874B6D100163770 /* TOSClientLib.framework in Frameworks */,
+				C0CB3AAA3B2237433AF51F73 /* Pods_TOSClientKitDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
