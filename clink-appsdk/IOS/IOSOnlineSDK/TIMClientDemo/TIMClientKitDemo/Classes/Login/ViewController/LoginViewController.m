@@ -181,11 +181,11 @@ TIMRTCMediaMessageDelegate>
     }];
     
 //    本地kit一些配置
-    [TIMKit sharedTIMKit].disableMessageNotificaiton = YES;  // 取消本地推送
-    [TIMKit sharedTIMKit].disableMessageAlertSound = YES;  // 取消本地推送声音
-    [TIMKit sharedTIMKit].auditMessageSuccessDelagate = self;
-    [TIMKit sharedTIMKit].customMessageClickDelagate = self;
-    [TIMKit sharedTIMKit].rtcMediaMessageDelagate = self;
+    [TOSClientKit sharedTOSKit].disableMessageNotificaiton = YES;  // 取消本地推送
+    [TOSClientKit sharedTOSKit].disableMessageAlertSound = YES;  // 取消本地推送声音
+    [TOSClientKit sharedTOSKit].auditMessageSuccessDelagate = self;
+    [TOSClientKit sharedTOSKit].customMessageClickDelagate = self;
+    [TOSClientKit sharedTOSKit].rtcMediaMessageDelagate = self;
 //    [TIMKit sharedTIMKit].customerKitUIType = TIMKitUIRDSA20Type;
 
 }

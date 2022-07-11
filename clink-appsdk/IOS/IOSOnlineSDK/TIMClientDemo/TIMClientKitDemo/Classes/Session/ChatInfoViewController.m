@@ -49,8 +49,8 @@
     }];
     
     //本地kit一些配置
-    [TIMKit sharedTIMKit].disableMessageNotificaiton = YES;  // 取消本地推送
-    [TIMKit sharedTIMKit].disableMessageAlertSound = YES;  // 取消本地推送声音
+    [TOSClientKit sharedTOSKit].disableMessageNotificaiton = YES;  // 取消本地推送
+    [TOSClientKit sharedTOSKit].disableMessageAlertSound = YES;  // 取消本地推送声音
 //    [TIMKit sharedTIMKit].auditMessageSuccessDelagate = self;
 //    [TIMKit sharedTIMKit].customMessageClickDelagate = self;
 //    [TIMKit sharedTIMKit].rtcMediaMessageDelagate = self;
@@ -64,14 +64,13 @@
      就开始会话流程逻辑创建会话*/
     __weak typeof(self) weakSelf = self;
     
-    [[OnlineRequestManager sharedCustomerManager]visitorReadyWithDict:@{@"ctiy":@"深圳市"}
-                                                              success:^(NSString * _Nonnull mainUniqueId) {
-            //创建会话成功，进入聊天页面
-            weakSelf.titleName = @"客服";
-            weakSelf.appName = @"客服SDK";
-        } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
-            
-        }];
+    [[OnlineRequestManager sharedCustomerManager] visitorReadyWithDict:@{@"ctiy":@"深圳市"} success:^(TOSSessionInfoModel * _Nonnull sessModel) {
+        //创建会话成功，进入聊天页面
+        weakSelf.titleName = @"客服";
+        weakSelf.appName = @"客服SDK";
+    } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+        
+    }];
 }
 
 

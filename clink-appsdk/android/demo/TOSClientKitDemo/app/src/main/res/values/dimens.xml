@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--    字体-->
+    <dimen name="text_size_huge">18sp</dimen>
+    <dimen name="text_size_big">16sp</dimen>
+    <dimen name="text_size_normal">14sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
+
+    <dimen name="login_input_icon_size">20sp</dimen>
+</resources>

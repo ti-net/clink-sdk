@@ -65,13 +65,13 @@
 		186F4FF227140EBD00755EAC /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 186F4FEF27140EBC00755EAC /* XPathQuery.m */; };
 		186F4FFF271554B600755EAC /* Testhtml.html in Resources */ = {isa = PBXBuildFile; fileRef = 186F4FFE271554B500755EAC /* Testhtml.html */; };
 		1882137726D656BE00F0757D /* kefuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1882137626D656BE00F0757D /* kefuVC.m */; };
-		22EAE7AA283DA1D2007CCE70 /* TIMClientLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A047ABD2833AD7C00A64342 /* TIMClientLib.framework */; };
-		22EAE7AB283DA1D2007CCE70 /* TIMClientLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5A047ABD2833AD7C00A64342 /* TIMClientLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		22EAE7AD283DA1D6007CCE70 /* TIMClientKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A047ABE2833AD7C00A64342 /* TIMClientKit.framework */; };
-		22EAE7AE283DA1D6007CCE70 /* TIMClientKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5A047ABE2833AD7C00A64342 /* TIMClientKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		22EAE7B0283DA3F7007CCE70 /* TIMClient.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 22EAE7AF283DA3F6007CCE70 /* TIMClient.bundle */; };
 		31C079006735213EC473B824 /* Pods_TIMClientKitDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F5AF04A2FE99588EFDBFC76 /* Pods_TIMClientKitDemo.framework */; };
 		3C787FED258A0C7300E33D64 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C787FEC258A0C7300E33D64 /* MBProgressHUD.m */; };
+		3C99B22D2865A8DD00703C34 /* TOSClient.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3C99B22A2865A8DD00703C34 /* TOSClient.bundle */; };
+		3C99B22E2865A8E200703C34 /* TOSClientKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C99B2282865A8DC00703C34 /* TOSClientKit.framework */; };
+		3C99B22F2865A8E200703C34 /* TOSClientKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C99B2282865A8DC00703C34 /* TOSClientKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3C99B2302865A8E300703C34 /* TOSClientLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C99B2292865A8DC00703C34 /* TOSClientLib.framework */; };
+		3C99B2312865A8E300703C34 /* TOSClientLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C99B2292865A8DC00703C34 /* TOSClientLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3C99DFA7263AB0D8009BABB7 /* ChatInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C99DFA6263AB0D8009BABB7 /* ChatInfoViewController.m */; };
 		3CE51596256D4E7500302D62 /* YYDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE514E7256D4E7300302D62 /* YYDiskCache.m */; };
 		3CE51597256D4E7500302D62 /* YYCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE514E9256D4E7300302D62 /* YYCache.m */; };
@@ -181,8 +181,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				22EAE7AB283DA1D2007CCE70 /* TIMClientLib.framework in Embed Frameworks */,
-				22EAE7AE283DA1D6007CCE70 /* TIMClientKit.framework in Embed Frameworks */,
+				3C99B2312865A8E300703C34 /* TOSClientLib.framework in Embed Frameworks */,
+				3C99B22F2865A8E200703C34 /* TOSClientKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,9 +314,11 @@
 		1890916C26DF21E000923B42 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		18FEA47C26DC6E7300BFD814 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
 		1AB87F397BADBF8DE020158C /* Pods-TIMClientLibDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TIMClientLibDemo.release.xcconfig"; path = "Target Support Files/Pods-TIMClientLibDemo/Pods-TIMClientLibDemo.release.xcconfig"; sourceTree = "<group>"; };
-		22EAE7AF283DA3F6007CCE70 /* TIMClient.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TIMClient.bundle; sourceTree = "<group>"; };
 		3C787FEB258A0C7200E33D64 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		3C787FEC258A0C7300E33D64 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		3C99B2282865A8DC00703C34 /* TOSClientKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TOSClientKit.framework; sourceTree = "<group>"; };
+		3C99B2292865A8DC00703C34 /* TOSClientLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TOSClientLib.framework; sourceTree = "<group>"; };
+		3C99B22A2865A8DD00703C34 /* TOSClient.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TOSClient.bundle; sourceTree = "<group>"; };
 		3C99DFA5263AB0D8009BABB7 /* ChatInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatInfoViewController.h; sourceTree = "<group>"; };
 		3C99DFA6263AB0D8009BABB7 /* ChatInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatInfoViewController.m; sourceTree = "<group>"; };
 		3CE514E7256D4E7300302D62 /* YYDiskCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYDiskCache.m; sourceTree = "<group>"; };
@@ -483,8 +485,6 @@
 		3CE51593256D4E7400302D62 /* YYThreadSafeArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYThreadSafeArray.m; sourceTree = "<group>"; };
 		3CE51594256D4E7400302D62 /* YYReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYReachability.m; sourceTree = "<group>"; };
 		3CE51595256D4E7400302D62 /* YYSentinel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYSentinel.h; sourceTree = "<group>"; };
-		5A047ABD2833AD7C00A64342 /* TIMClientLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TIMClientLib.framework; sourceTree = "<group>"; };
-		5A047ABE2833AD7C00A64342 /* TIMClientKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TIMClientKit.framework; sourceTree = "<group>"; };
 		5A3EDA942833B49A00868F0B /* DomainNameSave.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DomainNameSave.m; sourceTree = "<group>"; };
 		5A3EDA952833B49A00868F0B /* DomainNameSave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DomainNameSave.h; sourceTree = "<group>"; };
 		5B9B320AF63144B751237221 /* Pods-TIMClientLibDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TIMClientLibDemo.debug.xcconfig"; path = "Target Support Files/Pods-TIMClientLibDemo/Pods-TIMClientLibDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -508,9 +508,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				01401478248BCEEC000AC4DC /* libc++.tbd in Frameworks */,
-				22EAE7AA283DA1D2007CCE70 /* TIMClientLib.framework in Frameworks */,
 				31C079006735213EC473B824 /* Pods_TIMClientKitDemo.framework in Frameworks */,
-				22EAE7AD283DA1D6007CCE70 /* TIMClientKit.framework in Frameworks */,
+				3C99B2302865A8E300703C34 /* TOSClientLib.framework in Frameworks */,
+				3C99B22E2865A8E200703C34 /* TOSClientKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -700,11 +700,11 @@
 		01EA8607247CFFE300CD92F2 /* TIMClientKitDemo */ = {
 			isa = PBXGroup;
 			children = (
-				22EAE7AF283DA3F6007CCE70 /* TIMClient.bundle */,
+				3C99B22A2865A8DD00703C34 /* TOSClient.bundle */,
+				3C99B2282865A8DC00703C34 /* TOSClientKit.framework */,
+				3C99B2292865A8DC00703C34 /* TOSClientLib.framework */,
 				5A3EDA952833B49A00868F0B /* DomainNameSave.h */,
 				5A3EDA942833B49A00868F0B /* DomainNameSave.m */,
-				5A047ABD2833AD7C00A64342 /* TIMClientLib.framework */,
-				5A047ABE2833AD7C00A64342 /* TIMClientKit.framework */,
 				3CE514E5256D4E7300302D62 /* YYKit */,
 				0112324F2486518C00FFAD59 /* Categories */,
 				01EA8660247D0DF300CD92F2 /* thiridLib */,
@@ -1387,9 +1387,9 @@
 				186F4FFF271554B600755EAC /* Testhtml.html in Resources */,
 				01EA8615247CFFE600CD92F2 /* Assets.xcassets in Resources */,
 				01EA8613247CFFE300CD92F2 /* Main.storyboard in Resources */,
-				22EAE7B0283DA3F7007CCE70 /* TIMClient.bundle in Resources */,
 				01123230248649DE00FFAD59 /* LoginViewController.xib in Resources */,
 				18544A542774676F00F83DD5 /* IQKeyboardManager.xcassets in Resources */,
+				3C99B22D2865A8DD00703C34 /* TOSClient.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
