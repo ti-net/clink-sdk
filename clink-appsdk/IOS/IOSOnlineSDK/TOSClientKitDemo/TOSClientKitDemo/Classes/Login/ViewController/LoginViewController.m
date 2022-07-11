@@ -63,7 +63,7 @@
     [[TOSClientKit sharedTOSKit] connect:connectOption success:^{
         //创建会话成功，进入聊天页面
         TOSCustomerChatVC *chatVC = [[TOSCustomerChatVC alloc] init];
-        chatVC.titleName = @"西瓜客服";
+        chatVC.titleName = @"在线客服";
         chatVC.appName = @"客服SDK";
         self.hidesBottomBarWhenPushed  = YES;
         [self.navigationController pushViewController:chatVC animated:YES];

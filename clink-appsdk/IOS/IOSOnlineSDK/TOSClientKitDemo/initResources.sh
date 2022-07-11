@@ -2,5 +2,7 @@
 
 echo "copy sdk to xcode"
 
-cp -r ../SDK TOSClientKitDemo
+cd `dirname $0`
+
+cp -R ../SDK ./TOSClientKitDemo
 echo "copy finish"
