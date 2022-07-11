@@ -32,17 +32,13 @@
 		<data>
 		oAZwxuZlyNXjdNybQQAp7xRPitE=
 		</data>
-		<key>Headers/TIMCustomerChatVC.h</key>
-		<data>
-		kihofAD+SlFVwXWCWnHYTVeH+UM=
-		</data>
 		<key>Headers/TIMRefresh.h</key>
 		<data>
 		eaLhWaKN/1ocrRps47c6awpTMew=
 		</data>
 		<key>Headers/TIMSendMultiMedia.h</key>
 		<data>
-		vGuKSOo3jckDp5YzMSbNilTkyUo=
+		Qz408oY8HeNtCpBaBFfWnWfNcg4=
 		</data>
 		<key>Headers/TIMSessionBaseCell.h</key>
 		<data>
@@ -58,11 +54,19 @@
 		</data>
 		<key>Headers/TOSClientKit.h</key>
 		<data>
-		pH/Qt5kEhgrxKl3tS7hJM05DcHk=
+		J7oSBq13u7ivgGZ1LjU4HjIl0+A=
+		</data>
+		<key>Headers/TOSCustomerChatVC.h</key>
+		<data>
+		8aL2cyhqCZRL1IGmsax0ZbpcsVo=
 		</data>
 		<key>Headers/TOSKit.h</key>
 		<data>
-		ZuKXlKgYHJvfzphRt+byi67FPS0=
+		MrRmrzbkgV1J7NCy31HPfzjN5Fs=
+		</data>
+		<key>Headers/TOSKitCustomInfo.h</key>
+		<data>
+		nEWijHYoo6QIRxbjRsqTA++twTA=
 		</data>
 		<key>Headers/UITableView+TIMAutoTableViewCellHeight.h</key>
 		<data>
@@ -74,23 +78,27 @@
 		</data>
 		<key>Headers/kitUtils.h</key>
 		<data>
-		6C5tinQ2bG/x9bMOs+gB8Shcpv8=
+		EQ/dtkTOKCE0bFBd/3HEW1NF+/0=
 		</data>
 		<key>ICChatMessageCommodityCardCell.nib</key>
 		<data>
-		Mikr4jfUiZlNet8H5HmVDk5fJws=
+		44roDNbFd2Ncph37lqCuHgW/mAs=
 		</data>
-		<key>ICChatMessageCommodityCardDetailsCell.nib</key>
+		<key>ICChatMessageCommodityCardDetailsCell.nib/objects-11.0+.nib</key>
 		<data>
 		4eNc/YSk0jt0/U9+Z4Ko2ZYkuSw=
 		</data>
+		<key>ICChatMessageCommodityCardDetailsCell.nib/runtime.nib</key>
+		<data>
+		ziODiZcToYWElnSVot+Rt8BwBVY=
+		</data>
 		<key>ICTransportDetailsTableCell.nib</key>
 		<data>
-		3Ab4q4XOlrPgYnlOfj5JBblzgXo=
+		o1MN3KgZvohvTJmOGOymY3PZEYc=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		hL+s3rPyrF+adSRfhzBD3zizmkU=
+		rgNu3sl61i+EY4beGi/O/hSHA1k=
 		</data>
 		<key>LICENSE</key>
 		<data>
@@ -231,6 +239,10 @@
 	<dict>
 		<key>Headers/ICChatMessageRevokeCell.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			yhjnsZ58fkiRSUIo1onkGwfqZbE=
+			</data>
 			<key>hash2</key>
 			<data>
 			HoZx6lyuA8qhzTqG4XSX38bIqOQxSWzemU89I/VuApk=
@@ -238,6 +250,10 @@
 		</dict>
 		<key>Headers/TIMAutoLayout.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			dTM1lplmYU04UOgyr8pj4R6AUb8=
+			</data>
 			<key>hash2</key>
 			<data>
 			GLVixMfwqqb+JaGnkfOJR176UCwNf1gYJdXaJd4wF0s=
@@ -245,6 +261,10 @@
 		</dict>
 		<key>Headers/TIMBaseModel.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			btBs8JXxBqi37EXG1Abxafz05w8=
+			</data>
 			<key>hash2</key>
 			<data>
 			kvTr/qlIQHqj5H4zEYH/8A8KjMuB6p2y/Di4dVwk6y4=
@@ -252,6 +272,10 @@
 		</dict>
 		<key>Headers/TIMBaseTableView.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			1XfKh5YFNu5lk5SZ+bPW13qmaaI=
+			</data>
 			<key>hash2</key>
 			<data>
 			ZGeoKhbBCwTApI4jv9AUo//1MiAv1/xeYHZ6rSHDhj8=
@@ -259,6 +283,10 @@
 		</dict>
 		<key>Headers/TIMBaseTableViewCell.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			eUBpjoOqqfoeVS+Gm29dDBrBsw4=
+			</data>
 			<key>hash2</key>
 			<data>
 			uIYe3ea/zx74Oe/dzI3fIYB8f+1ZSOzTaIGNj97KJp4=
@@ -266,6 +294,10 @@
 		</dict>
 		<key>Headers/TIMBaseView.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			H5vjoXO4iTg8tm5Y+9Ete6hpY10=
+			</data>
 			<key>hash2</key>
 			<data>
 			MqxflpCVYmjemqAU9FYK8lAcn7NlCX6WUddHouxS10o=
@@ -273,20 +305,21 @@
 		</dict>
 		<key>Headers/TIMBaseViewController.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			oAZwxuZlyNXjdNybQQAp7xRPitE=
+			</data>
 			<key>hash2</key>
 			<data>
 			pT16L9aPqMnpjb4WqbhcTxsDBEACqySIFZMSmGjbWcQ=
 			</data>
 		</dict>
-		<key>Headers/TIMCustomerChatVC.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			ktZIBogsazfE7atwV1rmxNY8u4f19nqqxuA9OYQsVrY=
-			</data>
-		</dict>
 		<key>Headers/TIMRefresh.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			eaLhWaKN/1ocrRps47c6awpTMew=
+			</data>
 			<key>hash2</key>
 			<data>
 			jCYf6RZg7vhmMeANlHQ6Na3R9+UYi55nL2BT+YQmfPY=
@@ -294,13 +327,21 @@
 		</dict>
 		<key>Headers/TIMSendMultiMedia.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			Qz408oY8HeNtCpBaBFfWnWfNcg4=
+			</data>
 			<key>hash2</key>
 			<data>
-			zvRGLSB4pq16zSuGsmB/e2IPlZpaTy3VlUEXPoMbzrw=
+			9LzZPATcirTl0dSSyqgl8ZBTzHb7eAEsnwzExVOysUg=
 			</data>
 		</dict>
 		<key>Headers/TIMSessionBaseCell.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			yGfmwqJEASAHaasZY+sqNxVimzU=
+			</data>
 			<key>hash2</key>
 			<data>
 			lJn9cba/Q5dSOLg6xXGP904ZI6h5oNKVhkX5l+PLnIY=
@@ -308,6 +349,10 @@
 		</dict>
 		<key>Headers/TIMSessionBaseTableViewCell.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			DAvNhuvgRHWzX0fvQmlGAfwYATY=
+			</data>
 			<key>hash2</key>
 			<data>
 			DnsK2KlAzBc3NuOqQ5WPtICldHyhC1CPnFf7hDeAJFY=
@@ -315,6 +360,10 @@
 		</dict>
 		<key>Headers/TIMSessionListViewController.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			7hq4p2L3tBU/lBKZcu701NAeA4Y=
+			</data>
 			<key>hash2</key>
 			<data>
 			VanBNLCY3uSyhdjgCGpEBVeU/3r2fdNgVp1r9Fczs1Y=
@@ -322,20 +371,54 @@
 		</dict>
 		<key>Headers/TOSClientKit.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			J7oSBq13u7ivgGZ1LjU4HjIl0+A=
+			</data>
 			<key>hash2</key>
 			<data>
-			gNhF5FyrclEXNx6QrzQUG9shPQhbTACO3FH3ISpFXkM=
+			x+3Awmg5Ijg2KXNZjeoZCiuTEfdP9ykkoYXmlJ4UnWY=
+			</data>
+		</dict>
+		<key>Headers/TOSCustomerChatVC.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			8aL2cyhqCZRL1IGmsax0ZbpcsVo=
+			</data>
+			<key>hash2</key>
+			<data>
+			lfYfqjvDogx+ahwj8qp5T5VO6GeaJCgXSzOrWnFlcYs=
 			</data>
 		</dict>
 		<key>Headers/TOSKit.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			MrRmrzbkgV1J7NCy31HPfzjN5Fs=
+			</data>
 			<key>hash2</key>
 			<data>
-			kYjD4YHI6z9CHVqNDwN2V/8OP2HsUVtrsiZj2QqzMIU=
+			W/6uFFp/wp/cbB1w+0mothm9zoIY2tKlW/UwsqpXkss=
+			</data>
+		</dict>
+		<key>Headers/TOSKitCustomInfo.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			nEWijHYoo6QIRxbjRsqTA++twTA=
+			</data>
+			<key>hash2</key>
+			<data>
+			pYW5iAyfB0pZjqVKMc4ReN5eov2BjNkg5pe9suiHWWc=
 			</data>
 		</dict>
 		<key>Headers/UITableView+TIMAutoTableViewCellHeight.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			byJ2BZt25GCW6iKpU4oQ7mTQ4eQ=
+			</data>
 			<key>hash2</key>
 			<data>
 			oJeoF/3Lupmodzn9ck9mvuXrfoRG+4Osa+5oeyMEY+s=
@@ -343,6 +426,10 @@
 		</dict>
 		<key>Headers/UIView+TIMAutoLayout.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			nw2m+FQ/G0aqWUtGxQ9+8HCz+hs=
+			</data>
 			<key>hash2</key>
 			<data>
 			gi4mMox3jVte4yz1QKpnsoUs6T/OheQ0gXzBZMh1Sc4=
@@ -350,34 +437,65 @@
 		</dict>
 		<key>Headers/kitUtils.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			EQ/dtkTOKCE0bFBd/3HEW1NF+/0=
+			</data>
 			<key>hash2</key>
 			<data>
-			9cS9+aYGfKw839KTpyl8n3dmr8ttcgvwerYXFO3fjGg=
+			tiJNBc1JWQLE1tiMEc82b/WpKbHO3uDRa02VybJ4AGY=
 			</data>
 		</dict>
 		<key>ICChatMessageCommodityCardCell.nib</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			44roDNbFd2Ncph37lqCuHgW/mAs=
+			</data>
 			<key>hash2</key>
 			<data>
-			C8ucM77xGbJIWBjcVmNCqOpQP04VWmdadC8FFBTOcis=
+			JSN20fmeu0SWYaeHCyUdjRUlSDeasVpPVE181YsVta4=
 			</data>
 		</dict>
-		<key>ICChatMessageCommodityCardDetailsCell.nib</key>
+		<key>ICChatMessageCommodityCardDetailsCell.nib/objects-11.0+.nib</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			4eNc/YSk0jt0/U9+Z4Ko2ZYkuSw=
+			</data>
 			<key>hash2</key>
 			<data>
 			C456UFGZcQMQmy60r+YayrDO3AEkiynAt6MoFsMAJv4=
 			</data>
 		</dict>
-		<key>ICTransportDetailsTableCell.nib</key>
+		<key>ICChatMessageCommodityCardDetailsCell.nib/runtime.nib</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			ziODiZcToYWElnSVot+Rt8BwBVY=
+			</data>
 			<key>hash2</key>
 			<data>
-			jF3vZxJpoH15IYK99PQgiv0ancEovDHO4sMDRzm33go=
+			3Yg31a+WLlsK6i4FLA8RRDWVe3CUAuLFF0oB69h7+Xw=
+			</data>
+		</dict>
+		<key>ICTransportDetailsTableCell.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			o1MN3KgZvohvTJmOGOymY3PZEYc=
+			</data>
+			<key>hash2</key>
+			<data>
+			5wklPAouBqYn4xE/D8KkHwMIX6yWyYYgXDs+Pzsx7vI=
 			</data>
 		</dict>
 		<key>LICENSE</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			+SZLc2IHVvAuSGQmrqnoUX+CzGY=
+			</data>
 			<key>hash2</key>
 			<data>
 			DLM8QUOszd3xjloa1pEUC7Dz21qx0QrUrZG/Fw4CHFc=
@@ -385,6 +503,10 @@
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			xEfMQ+Ku701VhU0/YDX8pjNnuwE=
+			</data>
 			<key>hash2</key>
 			<data>
 			m8dvx+JQmLFKM0AafcuWUP37rSxJaBVjud6O4fTs7Ho=
@@ -392,6 +514,10 @@
 		</dict>
 		<key>TIMMJRefresh.bundle/arrow@2x.png</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			5ZENFuDcEgHjDuL7tn7h97HeuSE=
+			</data>
 			<key>hash2</key>
 			<data>
 			5pZTVM6xOoz5TmObI4Nq10XxwWgOr9sM2We8r8FZAYg=
@@ -399,6 +525,10 @@
 		</dict>
 		<key>TIMMJRefresh.bundle/en.lproj/Localizable.strings</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			7bISz0bhloirjdZnLESYEv9pWHA=
+			</data>
 			<key>hash2</key>
 			<data>
 			aNuP/arRviRYlG5MZ7uH9g4oXSWFuq8EkVRHVdCiC68=
@@ -408,6 +538,10 @@
 		</dict>
 		<key>TIMMJRefresh.bundle/ko.lproj/Localizable.strings</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			HlQTgD96vdwvNFwCCXYwug5vWq0=
+			</data>
 			<key>hash2</key>
 			<data>
 			Xlf+q1uxWuvZYubG/vIYmehX5T7lPlNQUb+PHjh0pBk=
@@ -417,6 +551,10 @@
 		</dict>
 		<key>TIMMJRefresh.bundle/ru.lproj/Localizable.strings</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			70BSSD6lfS6qEPkBPHpXEOoxUIA=
+			</data>
 			<key>hash2</key>
 			<data>
 			hQQ+DGRSVAaRkE2qWx6AODZqelJGdZg8S4HVsbh1QTk=
@@ -426,6 +564,10 @@
 		</dict>
 		<key>TIMMJRefresh.bundle/trail_arrow@2x.png</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			KfAX0A+8/u1P+jcT/bKjj/2Pi0o=
+			</data>
 			<key>hash2</key>
 			<data>
 			v3Uhjz0ZG3GCG2TJYT4RAJFMIVhVQ5/Ft1wbCPiah3E=
@@ -433,6 +575,10 @@
 		</dict>
 		<key>TIMMJRefresh.bundle/uk.lproj/Localizable.strings</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			QnBORt5FLsanCSC7PJvOGZ6Aozg=
+			</data>
 			<key>hash2</key>
 			<data>
 			xjxPnS1XFtO6+C9vBGY8MQBJtBGFNJflXSB/tFgPKKQ=
@@ -442,6 +588,10 @@
 		</dict>
 		<key>TIMMJRefresh.bundle/zh-Hans.lproj/Localizable.strings</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			fgFTbZJNbt3ouDC7sdMTtRG9uyI=
+			</data>
 			<key>hash2</key>
 			<data>
 			BiAuyTLNbjOIaZgype6/rABR5HpJmzMThVVMK/V70Sk=
@@ -451,6 +601,10 @@
 		</dict>
 		<key>TIMMJRefresh.bundle/zh-Hant.lproj/Localizable.strings</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			8IcH8yXVM4n1o8c1d/+MBkCjiW4=
+			</data>
 			<key>hash2</key>
 			<data>
 			Dwc2mfzOLCviJLKivmWBBtSxcAETd1rTrO0dgvnN384=
@@ -460,6 +614,10 @@
 		</dict>
 		<key>YBImageBrowser.bundle/ybib_loading@2x.png</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			j+y9WpjM4DlZLrTxd1m8tYd68/A=
+			</data>
 			<key>hash2</key>
 			<data>
 			1ZHc32gdAeL1eNlaojYf+AJeBH0d1Y1WVguyOnGKYVI=
@@ -467,6 +625,10 @@
 		</dict>
 		<key>YBImageBrowser.bundle/ybib_loading@3x.png</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			yx5VWDO/0Mr4V5qiyyDxLkBK3Hc=
+			</data>
 			<key>hash2</key>
 			<data>
 			oLMDdqk44X4mtL+zJXCH9x0GXU0qmiPFSt6xNSSWx1w=
@@ -474,6 +636,10 @@
 		</dict>
 		<key>YBImageBrowser.bundle/ybib_more@2x.png</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			0nOM4NtEe00Gin8jdVOjERLL3xQ=
+			</data>
 			<key>hash2</key>
 			<data>
 			HYUAOub7o5AmYXCYVYeQ+zuQEUwQihzEC1MEIrc0CNk=
@@ -481,6 +647,10 @@
 		</dict>
 		<key>YBImageBrowser.bundle/ybib_more@3x.png</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			RIdwiqkTnYDLaDz/auDfagU6hg8=
+			</data>
 			<key>hash2</key>
 			<data>
 			NCvX7De98h2gzpC+46/TvDYvd4I+mybkKL0Z/DIHKx4=
@@ -488,6 +658,10 @@
 		</dict>
 		<key>YBImageBrowser.bundle/ybib_save@2x.png</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			D3iWUpIQwHR1xLaD9cHiKhmUiJI=
+			</data>
 			<key>hash2</key>
 			<data>
 			anAZDdXcPl4olaeapMbzekhGbHUhpytb8jRh/CGnl/I=
@@ -495,6 +669,10 @@
 		</dict>
 		<key>YBImageBrowser.bundle/ybib_save@3x.png</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			B74ZX6kujek9Ixf5KW/EJFCLDI4=
+			</data>
 			<key>hash2</key>
 			<data>
 			TuakxPslfD+wLni3h6G779b5hULv+anE+YF1wzvueNA=
@@ -502,6 +680,10 @@
 		</dict>
 		<key>YBImageBrowserVideo.bundle/ybib_bigPlay@2x.png</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			DwxN5cTTnusJ0oefDfc7irPHVW8=
+			</data>
 			<key>hash2</key>
 			<data>
 			oSNmr7nu/0l+CuzMpobSxEx8xVF1+Kbq4AXGvwPdPlM=
@@ -509,6 +691,10 @@
 		</dict>
 		<key>YBImageBrowserVideo.bundle/ybib_bigPlay@3x.png</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			HOT0rBXDZb6YgNo65rQe7Oi0QWU=
+			</data>
 			<key>hash2</key>
 			<data>
 			jlgRzz+FvMZWI+PwTzMpZU8y25m9uotEhtezOVV3ViE=
@@ -516,6 +702,10 @@
 		</dict>
 		<key>YBImageBrowserVideo.bundle/ybib_cancel@2x.png</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			VYRmBGtPGCV4ww4BEatu8v5J8UI=
+			</data>
 			<key>hash2</key>
 			<data>
 			Bw9AeZHzdjSMpWM6mnYeUdOoUavkyec9da7FXm36C2M=
@@ -523,6 +713,10 @@
 		</dict>
 		<key>YBImageBrowserVideo.bundle/ybib_cancel@3x.png</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			i/D1o2XZMCssVPaONznqw2Gx+mc=
+			</data>
 			<key>hash2</key>
 			<data>
 			L3GNI5nUT38+jkELeZPGtIsvGSj4ZjT/S4wuZWPXq9A=
@@ -530,6 +724,10 @@
 		</dict>
 		<key>YBImageBrowserVideo.bundle/ybib_circlePoint@2x.png</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			iB7SjC9TgAfUyWMvkhRL3kUUvUI=
+			</data>
 			<key>hash2</key>
 			<data>
 			wEsHN18tFx9hI9HlH/7BwvvjHvo5m0mYbACVws4KHOU=
@@ -537,6 +735,10 @@
 		</dict>
 		<key>YBImageBrowserVideo.bundle/ybib_circlePoint@3x.png</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			Sza7FlUNoeT68VGeTbMNFS5vfM0=
+			</data>
 			<key>hash2</key>
 			<data>
 			yQADjTh3dMyBXF+jBh/1iGmN4QhcOnUfLVCqAynDKXg=
@@ -544,6 +746,10 @@
 		</dict>
 		<key>YBImageBrowserVideo.bundle/ybib_pause@2x.png</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			4BUmRPuOjlXywP4UjOnMfhiaTac=
+			</data>
 			<key>hash2</key>
 			<data>
 			ipfUUb+Xwm8VUbjqnR4gdiEWsvxOHbIcTmd4zj9hl14=
@@ -551,6 +757,10 @@
 		</dict>
 		<key>YBImageBrowserVideo.bundle/ybib_pause@3x.png</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			rnAEVUvgTdGZ8W6QfyhcMWxSyt4=
+			</data>
 			<key>hash2</key>
 			<data>
 			qZvjCRcEAgg54QQbh3Hx0L3fuhnn61LUDNLU1d26XPQ=
@@ -558,6 +768,10 @@
 		</dict>
 		<key>YBImageBrowserVideo.bundle/ybib_play@2x.png</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			AKLZrOW26qPK8TLkEZ92mYL2hfA=
+			</data>
 			<key>hash2</key>
 			<data>
 			yAhKL/0yG5z7e2fEhcdxMDkUvIxmLPGvlM/apKonPRY=
@@ -565,6 +779,10 @@
 		</dict>
 		<key>YBImageBrowserVideo.bundle/ybib_play@3x.png</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			jJFTHGyuOoyqBU2ca4O8GDxYZoQ=
+			</data>
 			<key>hash2</key>
 			<data>
 			664bVCGEZuSuk8kbXz6xZ5BeWWMuo9Egzl/mcWp3bXs=

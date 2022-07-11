@@ -1,6 +1,8 @@
 package com.tinet.clink.openapi.model;
 
 
+import java.util.List;
+
 /**
  * @author liuhy
  * @date: 2020/11/19
@@ -47,6 +49,11 @@ public class Field {
      *子表单对象
      */
     private TicketFormModel childrenForm;
+
+    /**
+     *子表单属性（提交时使用）
+     */
+    private List<Field> children;
 
     public Integer getId() {
         return id;
@@ -103,4 +110,8 @@ public class Field {
     public void setChildrenForm(TicketFormModel childrenForm) {
         this.childrenForm = childrenForm;
     }
+
+    public List<Field> getChildren() { return children; }
+
+    public void setChildren(List<Field> children) { this.children = children; }
 }

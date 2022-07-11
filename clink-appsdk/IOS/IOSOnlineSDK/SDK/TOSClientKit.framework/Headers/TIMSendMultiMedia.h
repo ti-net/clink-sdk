@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import <TOSClientLib/MYHTIMMessage.h>
+#import <TOSClientLib/TOSMessage.h>
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param progressBlock 图片上传进度回调
 /// @param successBlock 发送成功回调
 /// @param errorBlock 发送失败回调
-+ (void)TIMSendImageWithPath:(NSString *)imagePath senderID:(NSString *)senderId receiverID:(NSString *)receiverId progress:(void(^)(float progress))progressBlock success:(void (^)(MYHTIMMessage * timMessage))successBlock error:(void (^)(MYHTIMMessage * message, TIMConnectErrorCode nErrorCode, NSString * messageUuId))errorBlock;
++ (void)TIMSendImageWithPath:(NSString *)imagePath senderID:(NSString *)senderId receiverID:(NSString *)receiverId progress:(void(^)(float progress))progressBlock success:(void (^)(TOSMessage * timMessage))successBlock error:(void (^)(TOSMessage * message, TIMConnectErrorCode nErrorCode, NSString * messageUuId))errorBlock;
 
 
 @end

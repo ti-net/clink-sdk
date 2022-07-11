@@ -19,10 +19,7 @@
 #import "kefuVC.h"
 
 
-@interface MainTabBarController ()<TIMAuditMessageSuccessDelegate,
-//TIMCustomMessageWillSendDelegate,
-TIMCustomMessageClickDelegate,
-TIMRTCMediaMessageDelegate>
+@interface MainTabBarController ()<TIMCustomMessageClickDelegate>
 
 @end
 

@@ -36,7 +36,7 @@ FOUNDATION_EXPORT const unsigned char TIMClientVersionString[];
 // 消息类
 //#import <TOSClientLib/TIMMessageHistoryOption.h>
 #import <TOSClientLib/TIMMessageSendOption.h>
-#import <TOSClientLib/MYHTIMMessage.h>
+#import <TOSClientLib/TOSMessage.h>
 #import <TOSClientLib/TIMMessageContent.h>
 #import <TOSClientLib/TIMTextMessage.h>
 #import <TOSClientLib/TIMImageMessage.h>

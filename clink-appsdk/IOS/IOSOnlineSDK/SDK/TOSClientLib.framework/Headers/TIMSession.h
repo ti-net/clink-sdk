@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TIMStatusDefine.h"
-#import "MYHTIMMessage.h"
+#import "TOSMessage.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

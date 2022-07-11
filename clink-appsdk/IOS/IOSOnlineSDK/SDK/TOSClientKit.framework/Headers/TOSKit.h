@@ -31,23 +31,8 @@ typedef NS_ENUM(NSInteger, ICChatBoxItem){
 /*
  点击自定义消息的回调
  */
-- (void)onClickCustomMessage:(MYHTIMMessage *)timMessage;
+- (void)onClickCustomMessage:(TOSMessage *)timMessage;
 @end
-
-/*
- rtcMedia回调
-
- */
-@protocol TIMRTCMediaMessageDelegate <NSObject>
-
-/*
- 回调
- */
-- (void)onRtcMediaMessage:(BOOL)onlyAudio receiveId:(NSString*)receiveId;
-
-@end
-
-
 
 /*
  TIMKit发送自定义消息前的监听器
@@ -59,22 +44,6 @@ typedef NS_ENUM(NSInteger, ICChatBoxItem){
  发送自定义消息前的回调
  */
 - (void)onWillSend:(ICChatBoxItem)item;
-
-@end
-
-/*
- TIMKit发送监听消息成功的监听器
-
- @discussion
- 设置TIMKit的发送监听消息成功监听器
-
- */
-@protocol TIMAuditMessageSuccessDelegate <NSObject>
-
-/*
- 发送审核消息成功之后的回调
- */
-- (void)onSuccess:(NSString *)groupId;
 
 @end
 
@@ -100,7 +69,7 @@ typedef NS_ENUM(NSInteger, ICChatBoxItem){
  其中，left为还剩余的、还未接收的消息数量。比如刚上线一口气收到多条消息时，通过此方法，您可以获取到每条消息，left会依次递减直到0。
  您可以根据left数量来优化您的App体验和性能，比如收到大量消息时等待left为0再刷新UI。
  */
-- (void)onTIMReceiveMessage:(MYHTIMMessage *)message left:(int)left;
+- (void)onTIMReceiveMessage:(TOSMessage *)message left:(int)left;
 
 /**
  消息被撤回的回调方法
@@ -109,7 +78,7 @@ typedef NS_ENUM(NSInteger, ICChatBoxItem){
 
  @discussion 被撤回的消息会变更为TIMRecallNotificationMessage，App需要在UI上刷新这条消息。
  */
-- (void)onMessageRecalled:(MYHTIMMessage *)message;
+- (void)onMessageRecalled:(TOSMessage *)message;
 
 @end
 
@@ -179,7 +148,7 @@ TIMKit核心类
  所以除非您的App逻辑需要登出，否则一般不需要调用此方法进行手动断开。
  */
 
-- (void)disconnect:(TIMDisConnectOption*)option success:(void (^)(void))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
+- (void)disconnect:(TOSDisConnectOption*)option success:(void (^)(void))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
 
 /**
 注册了推送后 会从APNs返回设备ID,
@@ -192,11 +161,6 @@ TIMKit核心类
 */
 - (void)setDeviceTokenData:(NSData *)deviceTokenData;
 
-/**
- 上传用户头像
- */
-- (void)uploadUserAvatar:(NSString *)userId avatarImage:(UIImage *)localImage success:(void (^)(NSString * avatarUrl))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
-
 #pragma mark 连接状态监听
 
 /**
@@ -204,7 +168,7 @@ TIMKit核心类
 
  @warning 如果您使用TIMKit，可以设置并实现此Delegate监听消息接收；
  */
--(void)setTIMKitConnectionChangeDelegate:(id<TIMConnectionStatusChangeDelegate>)delegate;
+-(void)setTOSKitConnectionChangeDelegate:(id<TIMConnectionStatusChangeDelegate>)delegate;
 
 #pragma mark 消息接收监听
 
@@ -247,53 +211,7 @@ SDK内置的消息类型，如果您将pushOption置为nil，会使用默认的�
 
  */
 
-- (void)sendMessage:(TIMMessageSendOption *)option progress:(void(^)(float progress))progressBlock success:(void (^)(MYHTIMMessage * timMessage))successBlock error:(void (^)(MYHTIMMessage * message,TIMConnectErrorCode nErrorCode, NSString *errorDes))errorBlock;
-
-#pragma mark 群组
-/**
-创建群组
- 
- @param option                      创建群组参数对象实例
- @param successBlock        接口调用发送成功的回调 [TIMUserGroup:群组实体]
- @param errorBlock             接口调用失败的回调 [nErrorCode:发送失败的错误码,
- messageId:消息的ID]
-*/
-- (void)createUserGroup:(TIMCreateGroupOption*)option success:(void (^)(TIMUserGroup * userGroup))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
-/**
-主动进群
-
-@param option                      主动进群参数对象实例
-@param successBlock        接口调用发送成功的回调 [messageId:消息的ID]
-@param errorBlock             接口调用失败的回调 [nErrorCode:发送失败的错误码,
-messageId:消息的ID]
-
- */
-
--(void)joinGroup:(TIMJoinGroupOption *)option success:(void (^)(void))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
-
-/**
-拉人进群
-
-@param groupId                    群组Id
-@param memberList             所要拉进群的userId数组
-@param successBlock        接口调用发送成功的回调 [messageId:消息的ID]
-@param errorBlock             接口调用失败的回调 [nErrorCode:发送失败的错误码,
-messageId:消息的ID]
-
- */
--(void)inviteUserToGroup:(NSString *)groupId memberList:(NSArray *)memberList success:(void (^)(void))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
-
-/**
-主动退出群聊
-
-@param groupId                   群组Id
-@param successBlock        接口调用发送成功的回调 [messageId:消息的ID]
-@param errorBlock             接口调用失败的回调 [nErrorCode:发送失败的错误码,
-messageId:消息的ID]
-
- */
--(void)quitGroup:(NSString *)groupId success:(void (^)(void))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
-
+- (void)sendMessage:(TIMMessageSendOption *)option progress:(void(^)(float progress))progressBlock success:(void (^)(TOSMessage * timMessage))successBlock error:(void (^)(TOSMessage * message,TIMConnectErrorCode nErrorCode, NSString *errorDes))errorBlock;
 
 /**
  是否关闭所有的本地通知，默认值是NO
@@ -301,11 +219,6 @@ messageId:消息的ID]
  @discussion 当App处于后台时，默认会弹出本地通知提示，您可以通过将此属性设置为YES，关闭所有的本地通知。
  */
 @property (nonatomic, assign) BOOL disableMessageNotificaiton;
-
-/**
-设置发送待审核消息的回调 含图片和视频
-*/
-@property (nonatomic, weak) id<TIMAuditMessageSuccessDelegate> auditMessageSuccessDelagate;
 
 /**
 设置发送前自定义消息的回调
@@ -318,17 +231,18 @@ messageId:消息的ID]
 @property (nonatomic, weak) id<TIMCustomMessageClickDelegate> customMessageClickDelagate;
 
 /**
-设置rtcMedia回调
-*/
-@property (nonatomic, weak) id<TIMRTCMediaMessageDelegate> rtcMediaMessageDelagate;
-
-
-/**
  是否关闭所有的前台消息提示音，默认值是NO
 
  @discussion 当App处于前台时，默认会播放消息提示音，您可以通过将此属性设置为YES，关闭所有的前台消息提示音。
  */
 @property (nonatomic, assign) BOOL disableMessageAlertSound;
+
+/**
+ 获取当前底层链接的状态
+
+ @discussion YES 已连接 NO 未链接。
+ */
+@property (nonatomic, strong) NSNumber* mqttConnected;
 
 /**
 当前AppId
@@ -358,7 +272,7 @@ messageId:消息的ID]
 @property (nonatomic, assign) NSInteger unReadCount;
 
 /// 最后一条消息
-@property (nonatomic, strong, readonly) MYHTIMMessage  * lastMessage;
+@property (nonatomic, strong, readonly) TOSMessage  * lastMessage;
 
 /**
  其他
@@ -366,12 +280,9 @@ messageId:消息的ID]
  生成临时的文件地址
  */
 -(NSString *)genFileUrlWithFileId:(NSString * )strFileId;
-
-- (UIViewController*)topViewController;
-
 /// TOSClientKit 改版新增接口
 
-// 静态方法
+// 获取版本号
 + (NSString *)getSDKVersion;
 
 /**

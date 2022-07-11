@@ -24,7 +24,7 @@ FOUNDATION_EXPORT const unsigned char TIMClientKitVersionString[];
 #import <TOSClientKit/TIMSessionBaseTableViewCell.h>
 
 /// Chat相关
-#import <TOSClientKit/TIMCustomerChatVC.h>
+#import <TOSClientKit/TOSCustomerChatVC.h>
 
 
 // Base

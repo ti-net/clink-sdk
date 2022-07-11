@@ -19,9 +19,7 @@
 #import "DomainNameSave.h"
 
 @interface LoginViewController () <YBPopupMenuDelegate,
-TIMAuditMessageSuccessDelegate,
-TIMCustomMessageClickDelegate,
-TIMRTCMediaMessageDelegate>
+TIMCustomMessageClickDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *loginLogo;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *logoTapGesture;
@@ -56,7 +54,7 @@ TIMRTCMediaMessageDelegate>
 - (void)logoTapGestureTouch:(UIGestureRecognizer *)gesture {
 
     @weakify(self);
-    [YBPopupMenu showRelyOnView:self.loginLogo titles:@[ @"天润上海",@"天润北京",@"企知道"] icons:@[] menuWidth:100.f otherSettings:^(YBPopupMenu *popupMenu) {
+    [YBPopupMenu showRelyOnView:self.loginLogo titles:@[ @"天润上海",@"天润北京"] icons:@[] menuWidth:100.f otherSettings:^(YBPopupMenu *popupMenu) {
         @strongify(self);
         popupMenu.arrowWidth = 0;
         popupMenu.arrowHeight = 0;
@@ -99,16 +97,6 @@ TIMRTCMediaMessageDelegate>
         }
             break;
 
-        case 2: {
-            self.platformNameLabel.text = @"(企知道)";
-            domainName.domainName = @"企知道";
-            domainName.apiUrlDomainName = @"https://octopus-api-1.vlink.cn/api/sdk/v1";
-            domainName.onlineUrlDomainName = @"https://chat-app-bj.clink.cn";
-            domainName.accessSecretDomainName = @"29B4DE90061641B2866DB0A000A7A329";
-            domainName.accessIdDomainName = @"d3b73cb51a85499f80a337331bbed100";
-            domainName.enterpriseIdDomainName = @"8000002";
-        }
-            break;
         default:
             break;
     }
@@ -129,11 +117,11 @@ TIMRTCMediaMessageDelegate>
 }
 
 // 点击自定义消息
-- (void)onClickCustomMessage:(MYHTIMMessage *)timMessage{
-
-    TIMCustomizeMessage * custMessage = (TIMCustomizeMessage *)timMessage.content;
-    NSLog(@"点击自定义消息");
-}
+//- (void)onClickCustomMessage:(MYHTIMMessage *)timMessage{
+//
+//    TIMCustomizeMessage * custMessage = (TIMCustomizeMessage *)timMessage.content;
+//    NSLog(@"点击自定义消息");
+//}
 
 //登录按钮
 - (IBAction)didClickLoginBtnAction:(UIButton *)sender {
@@ -165,15 +153,14 @@ TIMRTCMediaMessageDelegate>
         [AppDelegate shareAppDelegate].window.rootViewController = tabBarC;
     }
     
+    // 初始化
+    DomainNameSave *domainName = [DomainNameSave shareDomainNameSave];
+    TOSInitOption * initOption = [[TOSInitOption alloc] initWithOption:NO apiUrl:domainName.apiUrlDomainName onlineUrl:domainName.onlineUrlDomainName accessId:domainName.accessIdDomainName accessSecret:domainName.accessSecretDomainName enterpriseId:domainName.enterpriseIdDomainName advanceParams:@{}];
+    [[TOSClientKit sharedTOSKit] initSDK:initOption];
     
- //连接客服
-    [[OnlineRequestManager sharedCustomerManager] getUserInfoWithUserId:visitorId
-                                                               nickname:name
-                                                               phoneNum:@"14107240003"
-                                                              headerUrl:headerUrl
-                                                         connectSuccess:^{
-
-
+    //连接客服
+    TOSConnectOption * connectOption = [[TOSConnectOption alloc] initWithOption:visitorId nickname:name headUrl:headerUrl mobile:@"14107240003" advanceParams:@{}];
+    [[TOSClientKit sharedTOSKit] connect:connectOption success:^{
     } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
 
     } tokenIncorrect:^{
@@ -183,11 +170,7 @@ TIMRTCMediaMessageDelegate>
 //    本地kit一些配置
     [TOSClientKit sharedTOSKit].disableMessageNotificaiton = YES;  // 取消本地推送
     [TOSClientKit sharedTOSKit].disableMessageAlertSound = YES;  // 取消本地推送声音
-    [TOSClientKit sharedTOSKit].auditMessageSuccessDelagate = self;
     [TOSClientKit sharedTOSKit].customMessageClickDelagate = self;
-    [TOSClientKit sharedTOSKit].rtcMediaMessageDelagate = self;
-//    [TIMKit sharedTIMKit].customerKitUIType = TIMKitUIRDSA20Type;
-
 }
 
 //显示隐藏密码
