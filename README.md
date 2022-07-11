@@ -16,7 +16,7 @@
 ##### 下载地址
 https://tinet-sdk-release.s3.cn-north-1.amazonaws.com.cn/TOSClientKitDemo/app/latest/%E5%A4%A9%E6%B6%A6%E5%AE%A2%E6%9C%8DSDK.apk
 ##### 二维码
-![image.png](https://raw.githubusercontent.com/ti-net/clink-sdk/zhangping/develop/clink-appsdk/android/demo/download_qrcode.png)
+<img src="https://raw.githubusercontent.com/ti-net/clink-sdk/master/clink-appsdk/android/demo/download_qrcode.png" alt="image.png" style="zoom:30%;" />
 
 ### iOS接入
 #### [客服SDK（含UI）接入](https://github.com/ti-net/clink-sdk/blob/master/clink-appsdk/IOS/%E6%8E%A5%E5%85%A5%E6%96%87%E6%A1%A3/%E5%AE%A2%E6%9C%8DSDK%E5%90%ABUI%E6%8E%A5%E5%85%A5/%E5%A4%A9%E6%B6%A6iOS_SDK_%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3.md)
@@ -25,4 +25,4 @@ https://tinet-sdk-release.s3.cn-north-1.amazonaws.com.cn/TOSClientKitDemo/app/la
 ##### 下载地址
 https://apps.apple.com/cn/app/%E5%AE%A2%E6%9C%8Dsdk/id1584932176
 ##### 二维码
-![image.png](https://raw.githubusercontent.com/ti-net/clink-sdk/zhangping/develop/clink-appsdk/IOS/IOSOnlineSDK/download_qrcode_ios.png)
+<img src="https://raw.githubusercontent.com/ti-net/clink-sdk/master/clink-appsdk/IOS/IOSOnlineSDK/download_qrcode_ios.png" alt="image.png" style="zoom:30%;" />
