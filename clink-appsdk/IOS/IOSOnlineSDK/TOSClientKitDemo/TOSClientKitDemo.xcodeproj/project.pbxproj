@@ -23,12 +23,12 @@
 		3C9CE7D7287476F400163770 /* CustomStylesSaveTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C9CE7D5287476F400163770 /* CustomStylesSaveTableViewCell.xib */; };
 		3C9CE7D928747A2000163770 /* CustomStylesDetailsDataSource.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C9CE7D828747A2000163770 /* CustomStylesDetailsDataSource.plist */; };
 		3C9CE7DC2874941900163770 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9CE7DB2874941900163770 /* MessageViewController.m */; };
-		3C9CE7E128749CA400163770 /* document.html in Resources */ = {isa = PBXBuildFile; fileRef = 3C9CE7E028749CA400163770 /* document.html */; };
 		3C9CE7E42874A07700163770 /* ProtocolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9CE7E32874A07700163770 /* ProtocolViewController.m */; };
 		3C9CE7E62874B6D100163770 /* TOSClientKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 223CB9F32874A90E00FEE0AF /* TOSClientKit.framework */; };
 		3C9CE7E72874B6D100163770 /* TOSClientKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 223CB9F32874A90E00FEE0AF /* TOSClientKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3C9CE7E82874B6D100163770 /* TOSClientLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 223CB9F52874A90E00FEE0AF /* TOSClientLib.framework */; };
 		3C9CE7E92874B6D100163770 /* TOSClientLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 223CB9F52874A90E00FEE0AF /* TOSClientLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3C9F5B6128784C1000F13CAD /* document.html in Resources */ = {isa = PBXBuildFile; fileRef = 3C9F5B6028784C1000F13CAD /* document.html */; };
 		3CB72A72286AD38400F2A780 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB72A71286AD38400F2A780 /* AppDelegate.m */; };
 		3CB72A7B286AD38400F2A780 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CB72A79286AD38400F2A780 /* Main.storyboard */; };
 		3CB72A7D286AD38600F2A780 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CB72A7C286AD38600F2A780 /* Assets.xcassets */; };
@@ -155,9 +155,9 @@
 		3C9CE7D828747A2000163770 /* CustomStylesDetailsDataSource.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = CustomStylesDetailsDataSource.plist; sourceTree = "<group>"; };
 		3C9CE7DA2874941900163770 /* MessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
 		3C9CE7DB2874941900163770 /* MessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
-		3C9CE7E028749CA400163770 /* document.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = document.html; sourceTree = "<group>"; };
 		3C9CE7E22874A07700163770 /* ProtocolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolViewController.h; sourceTree = "<group>"; };
 		3C9CE7E32874A07700163770 /* ProtocolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProtocolViewController.m; sourceTree = "<group>"; };
+		3C9F5B6028784C1000F13CAD /* document.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = document.html; sourceTree = "<group>"; };
 		3CB72A6D286AD38400F2A780 /* TOSClientKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TOSClientKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CB72A70286AD38400F2A780 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3CB72A71286AD38400F2A780 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -400,7 +400,7 @@
 		3CB72A6F286AD38400F2A780 /* TOSClientKitDemo */ = {
 			isa = PBXGroup;
 			children = (
-				3C9CE7E028749CA400163770 /* document.html */,
+				3C9F5B6028784C1000F13CAD /* document.html */,
 				3C9CE7E22874A07700163770 /* ProtocolViewController.h */,
 				3C9CE7E32874A07700163770 /* ProtocolViewController.m */,
 				3CB72BAB286D89CA00F2A780 /* SDK */,
@@ -959,7 +959,7 @@
 				3C9CE7D7287476F400163770 /* CustomStylesSaveTableViewCell.xib in Resources */,
 				3CB72A80286AD38600F2A780 /* LaunchScreen.storyboard in Resources */,
 				3C9CE7D22874766200163770 /* CustomStylesDetailsTableViewCell.xib in Resources */,
-				3C9CE7E128749CA400163770 /* document.html in Resources */,
+				3C9F5B6128784C1000F13CAD /* document.html in Resources */,
 				3C9CE7CA28746C7E00163770 /* CustomStylesDataSource.plist in Resources */,
 				3C9CE7C0287453E800163770 /* CustomStylesDetailsViewController.xib in Resources */,
 				3C9CE7C5287457E700163770 /* CustomStylesTableViewCell.xib in Resources */,
@@ -1315,13 +1315,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ti-net.TOSClientKitDemo";
+				MARKETING_VERSION = 1.7.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tionlineservice.cn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_WORKSPACE = YES;
+				VALIDATE_WORKSPACE = NO;
 				WARNING_CFLAGS = "-Wno-ambiguous-macro";
 			};
 			name = Debug;
@@ -1360,13 +1360,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ti-net.TOSClientKitDemo";
+				MARKETING_VERSION = 1.7.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tionlineservice.cn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_WORKSPACE = YES;
+				VALIDATE_WORKSPACE = NO;
 				WARNING_CFLAGS = "-Wno-ambiguous-macro";
 			};
 			name = Release;
