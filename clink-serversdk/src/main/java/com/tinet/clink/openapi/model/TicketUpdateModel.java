@@ -55,6 +55,11 @@ public class TicketUpdateModel {
      */
     private Date updateTime;
 
+    /**
+     * 自定义系统字段
+     */
+    private Field[] customizeSystemFields;
+
     public Integer getId() {
         return id;
     }
@@ -126,4 +131,8 @@ public class TicketUpdateModel {
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
+
+    public Field[] getCustomizeSystemFields() { return customizeSystemFields; }
+
+    public void setCustomizeSystemFields(Field[] customizeSystemFields) { this.customizeSystemFields = customizeSystemFields; }
 }

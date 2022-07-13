@@ -86,6 +86,11 @@ public class TicketSaveModel {
      */
     private Integer close;
 
+    /**
+     * 自定义系统字段
+     */
+    private Field[] customizeSystemFields;
+
     public Integer getWorkflowId() {
         return workflowId;
     }
@@ -205,4 +210,8 @@ public class TicketSaveModel {
     public void setClose(Integer close) {
         this.close = close;
     }
+
+    public Field[] getCustomizeSystemFields() { return customizeSystemFields; }
+
+    public void setCustomizeSystemFields(Field[] customizeSystemFields) { this.customizeSystemFields = customizeSystemFields; }
 }

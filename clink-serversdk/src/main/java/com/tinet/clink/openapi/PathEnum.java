@@ -257,6 +257,8 @@ public enum PathEnum {
     UpdateTicket("update_ticket"),
     // 获取表单详情
     GetFormDetail("get_form_detail"),
+    // 获取表单详情
+    GetSysFormDetail("get_sys_form_detail"),
     // 流转工单
     FlowTicket("flow_ticket"),
     // 保存工单
