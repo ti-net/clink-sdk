@@ -115,6 +115,11 @@ public class ListCdrIbsRequest extends AbstractRequestModel<ListCdrIbsResponse> 
      */
     private String clientNumber;
 
+    /**
+     * 队列及时应答
+     */
+    private Integer queueAnswerInTime;
+
 
     public ListCdrIbsRequest() {
         super(PathEnum.ListCdrIbs.value(), HttpMethodType.GET);
@@ -304,6 +309,17 @@ public class ListCdrIbsRequest extends AbstractRequestModel<ListCdrIbsResponse> 
         this.clientNumber = clientNumber;
         if (clientNumber != null) {
             putQueryParameter("clientNumber", clientNumber);
+        }
+    }
+
+    public Integer getQueueAnswerInTime() {
+        return queueAnswerInTime;
+    }
+
+    public void setQueueAnswerInTime(Integer queueAnswerInTime) {
+        this.queueAnswerInTime = queueAnswerInTime;
+        if (queueAnswerInTime != null) {
+            putQueryParameter("queueAnswerInTime", queueAnswerInTime);
         }
     }
 
