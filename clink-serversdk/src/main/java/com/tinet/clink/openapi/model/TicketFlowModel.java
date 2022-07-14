@@ -31,35 +31,29 @@ public class TicketFlowModel {
      */
     private TicketFormModel form;
 
-    public Integer getTicketId() {
-        return ticketId;
-    }
+    /**
+     * 自定义系统字段
+     */
+    private Field[] customizeSystemFields;
 
-    public void setTicketId(Integer ticketId) {
-        this.ticketId = ticketId;
-    }
 
-    public Integer getHandlerId() {
-        return handlerId;
-    }
+    public Integer getTicketId() { return ticketId; }
 
-    public void setHandlerId(Integer handlerId) {
-        this.handlerId = handlerId;
-    }
+    public void setTicketId(Integer ticketId) { this.ticketId = ticketId; }
 
-    public String getTaskId() {
-        return taskId;
-    }
+    public Integer getHandlerId() { return handlerId; }
 
-    public void setTaskId(String taskId) {
-        this.taskId = taskId;
-    }
+    public void setHandlerId(Integer handlerId) { this.handlerId = handlerId; }
 
-    public TicketFormModel getForm() {
-        return form;
-    }
+    public String getTaskId() { return taskId; }
 
-    public void setForm(TicketFormModel form) {
-        this.form = form;
-    }
+    public void setTaskId(String taskId) { this.taskId = taskId; }
+
+    public TicketFormModel getForm() { return form; }
+
+    public void setForm(TicketFormModel form) { this.form = form; }
+
+    public Field[] getCustomizeSystemFields() { return customizeSystemFields; }
+
+    public void setCustomizeSystemFields(Field[] customizeSystemFields) { this.customizeSystemFields = customizeSystemFields; }
 }
