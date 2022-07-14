@@ -18,18 +18,17 @@ public class ListTicketTest extends AbstractTest {
     @Test
     public void listTicket(){
 
-        // 创建访问服务的client实例并初始化
         ClientConfiguration configuration = new ClientConfiguration(
-                "b521465079b08d07b73f54e2f5845f95",          // AccessKeyId
-                "8Qe3qaN322Vp3260i288");     // AccessKeySecret
+                "a307c59f2e9e95b236aaded45806366c",          // AccessKeyId
+                "55xWk0s47070pZK82e0w");     // AccessKeySecret
         configuration.setHost("api-bj-test0.clink.cn");
         configuration.setScheme("http");
         Client client = new Client(configuration);
 
         ListTicketRequest listTicketRequest = new ListTicketRequest();
 
-        listTicketRequest.setStartTime("2020-05-01 00:00:00");
-        listTicketRequest.setEndTime("2020-08-10 23:59:59");
+        listTicketRequest.setStartTime("2022-07-14 00:00:00");
+        listTicketRequest.setEndTime("2022-07-14 23:59:59");
         listTicketRequest.setOffset(0);
         listTicketRequest.setLimit(10);
         try {
