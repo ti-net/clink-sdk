@@ -22,31 +22,22 @@ public class GetTicketDetailTest extends AbstractTest {
     @Test
     public void getTicketDetail() {
 
-        /*ClientConfiguration configuration = new ClientConfiguration(
+        ClientConfiguration configuration = new ClientConfiguration(
                 "b521465079b08d07b73f54e2f5845f95",          // AccessKeyId
                 "8Qe3qaN322Vp3260i288");     // AccessKeySecret
         configuration.setHost("api-bj-test0.clink.cn");
         configuration.setScheme("http");
-        Client client = new Client(configuration);*/
-        ClientConfiguration configuration = new ClientConfiguration(
-                "a76986f63cc7e3789a64f018877b153d",          // AccessKeyId
-                "37A81jup30K2L710R2L1");     // AccessKeySecret
-        configuration.setHost("clink2-openapi-dev.clink.cn");
-        configuration.setScheme("http");
         Client client = new Client(configuration);
-
 
         // 创建请求request
         GetTicketDetailRequest getTicketDetailRequest = new GetTicketDetailRequest();
-        getTicketDetailRequest.setId(2100);
+        getTicketDetailRequest.setId(171269);
 
         GetTicketDetailResponse getTicketDetailResponse;
 
         try {
             getTicketDetailResponse = client.getResponseModel(getTicketDetailRequest);
-            System.out.println(getTicketDetailResponse.getTicketDetail().toString());
             ObjectMapper objectMapper = new ObjectMapper();
-
             System.out.println(objectMapper.writeValueAsString(getTicketDetailResponse));
         } catch (Exception e) {
             e.printStackTrace();

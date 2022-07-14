@@ -17,23 +17,16 @@ public class GetFormDetailTest extends AbstractTest {
 
     @Test
     public void getFormDetail() {
-        /*ClientConfiguration configuration = new ClientConfiguration(
+        ClientConfiguration configuration = new ClientConfiguration(
                 "b521465079b08d07b73f54e2f5845f95",          // AccessKeyId
                 "8Qe3qaN322Vp3260i288");     // AccessKeySecret
         configuration.setHost("api-bj-test0.clink.cn");
         configuration.setScheme("http");
-        Client client = new Client(configuration);*/
-        ClientConfiguration configuration = new ClientConfiguration(
-                "a76986f63cc7e3789a64f018877b153d",          // AccessKeyId
-                "37A81jup30K2L710R2L1");     // AccessKeySecret
-        configuration.setHost("clink2-openapi-dev.clink.cn");
-        configuration.setScheme("http");
         Client client = new Client(configuration);
-
 
         // 创建请求request
         GetFormDetailRequest getFormDetailRequest = new GetFormDetailRequest();
-        getFormDetailRequest.setId(5090);
+        getFormDetailRequest.setId(5881);
 
         try {
             GetFormDetailResponse getFormDetailResponse = client.getResponseModel(getFormDetailRequest);

@@ -1,5 +1,6 @@
 package com.tinet.clink.openapi.ticket;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tinet.clink.openapi.AbstractTest;
 import com.tinet.clink.openapi.Client;
 import com.tinet.clink.openapi.ClientConfiguration;
@@ -29,7 +30,8 @@ public class GetSysFormDetailTest extends AbstractTest {
 
         try {
             GetSysFormDetailResponse getSysFormDetailResponse = client.getResponseModel(getSysFormDetailRequest);
-            System.out.println(getSysFormDetailResponse.getForm());
+            ObjectMapper objectMapper = new ObjectMapper();
+            System.out.println(objectMapper.writeValueAsString(getSysFormDetailResponse));
         } catch (Exception e) {
             e.printStackTrace();
         }
