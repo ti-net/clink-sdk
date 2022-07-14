@@ -38,7 +38,7 @@ public class GetTicketDetailTest extends AbstractTest {
 
         // 创建请求request
         GetTicketDetailRequest getTicketDetailRequest = new GetTicketDetailRequest();
-        getTicketDetailRequest.setId(2094);
+        getTicketDetailRequest.setId(2100);
 
         GetTicketDetailResponse getTicketDetailResponse;
 
