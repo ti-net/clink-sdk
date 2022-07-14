@@ -15,6 +15,18 @@ public class ChatInvestigationRequest extends AbstractRequestModel<ChatInvestiga
     private String scrollId;
     private String date;
     private Integer limit;
+    private String mainUniqueId;
+
+    public String getMainUniqueId() {
+        return mainUniqueId;
+    }
+
+    public void setMainUniqueId(String mainUniqueId) {
+        this.mainUniqueId = mainUniqueId;
+        if (mainUniqueId != null) {
+            putQueryParameter("mainUniqueId", mainUniqueId);
+        }
+    }
 
     public String getScrollId() {
         return scrollId;
