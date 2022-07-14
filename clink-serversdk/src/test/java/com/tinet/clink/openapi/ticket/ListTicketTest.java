@@ -1,5 +1,6 @@
 package com.tinet.clink.openapi.ticket;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tinet.clink.openapi.AbstractTest;
 import com.tinet.clink.openapi.Client;
 import com.tinet.clink.openapi.ClientConfiguration;
@@ -19,8 +20,8 @@ public class ListTicketTest extends AbstractTest {
 
         // 创建访问服务的client实例并初始化
         ClientConfiguration configuration = new ClientConfiguration(
-                "AK",          // AccessKeyId
-                "SK");     // AccessKeySecret
+                "b521465079b08d07b73f54e2f5845f95",          // AccessKeyId
+                "8Qe3qaN322Vp3260i288");     // AccessKeySecret
         configuration.setHost("api-bj-test0.clink.cn");
         configuration.setScheme("http");
         Client client = new Client(configuration);
@@ -34,9 +35,9 @@ public class ListTicketTest extends AbstractTest {
         try {
             ListTicketResponse response= client.getResponseModel(listTicketRequest);
 
-            System.out.println(response);
+            ObjectMapper objectMapper = new ObjectMapper();
 
-            System.out.println(111);
+            System.out.println(objectMapper.writeValueAsString(response));
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -1,5 +1,6 @@
 package com.tinet.clink.openapi.ticket;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tinet.clink.openapi.AbstractTest;
 import com.tinet.clink.openapi.Client;
 import com.tinet.clink.openapi.ClientConfiguration;
@@ -16,12 +17,16 @@ public class GetFormDetailTest extends AbstractTest {
 
     @Test
     public void getFormDetail() {
-
-        // 创建访问服务的client实例并初始化
+        /*ClientConfiguration configuration = new ClientConfiguration(
+                "b521465079b08d07b73f54e2f5845f95",          // AccessKeyId
+                "8Qe3qaN322Vp3260i288");     // AccessKeySecret
+        configuration.setHost("api-bj-test0.clink.cn");
+        configuration.setScheme("http");
+        Client client = new Client(configuration);*/
         ClientConfiguration configuration = new ClientConfiguration(
-        "AK",          // AccessKeyId
-        "SK");     // AccessKeySecret
-        configuration.setHost("host");
+                "a76986f63cc7e3789a64f018877b153d",          // AccessKeyId
+                "37A81jup30K2L710R2L1");     // AccessKeySecret
+        configuration.setHost("clink2-openapi-dev.clink.cn");
         configuration.setScheme("http");
         Client client = new Client(configuration);
 
@@ -32,7 +37,8 @@ public class GetFormDetailTest extends AbstractTest {
 
         try {
             GetFormDetailResponse getFormDetailResponse = client.getResponseModel(getFormDetailRequest);
-            System.out.println(getFormDetailResponse.getForm());
+            ObjectMapper objectMapper = new ObjectMapper();
+            System.out.println(objectMapper.writeValueAsString(getFormDetailResponse));
         } catch (Exception e) {
             e.printStackTrace();
         }
