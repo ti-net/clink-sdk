@@ -1,9 +1,11 @@
 package com.tinet.clink.openapi.ticket;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tinet.clink.openapi.AbstractTest;
 import com.tinet.clink.openapi.Client;
 import com.tinet.clink.openapi.ClientConfiguration;
 import com.tinet.clink.openapi.model.Field;
+import com.tinet.clink.openapi.model.Tag;
 import com.tinet.clink.openapi.model.TicketFormModel;
 import com.tinet.clink.openapi.model.TicketSaveModel;
 import com.tinet.clink.openapi.request.ticket.TicketSaveRequest;
@@ -24,11 +26,11 @@ public class TicketSaveTest extends AbstractTest {
     public void saveTicket() {
 
 
-        // 创建访问服务的client实例并初始化
         ClientConfiguration configuration = new ClientConfiguration(
-                "AK",          // AccessKeyId
-                "SK");     // AccessKeySecret
-        configuration.setHost("host");
+                "b521465079b08d07b73f54e2f5845f95",          // AccessKeyId
+                "8Qe3qaN322Vp3260i288");     // AccessKeySecret
+        configuration.setHost("api-bj-test0.clink.cn");
+        configuration.setScheme("http");
         Client client = new Client(configuration);
 
         // 创建请求的request
@@ -36,49 +38,54 @@ public class TicketSaveTest extends AbstractTest {
 
         // 请求参数
         TicketSaveModel ticketSaveModel = new TicketSaveModel();
-        ticketSaveModel.setWorkflowId(707);
+        ticketSaveModel.setWorkflowId(1827);
         ticketSaveModel.setClose(0);
         ticketSaveModel.setCreateTime(new Date());
-        ticketSaveModel.setHandlerType(1);
-        ticketSaveModel.setHandlerId(32939);
-        ticketSaveModel.setLevel(1);
-        ticketSaveModel.setTopic("测试创建工单");
-        ticketSaveModel.setStateSelected("9");
+        ticketSaveModel.setHandlerType(0);
+        ticketSaveModel.setHandlerId(156263);
+        ticketSaveModel.setLevel(3);
+        ticketSaveModel.setTopic("lize测接口创建工单");
+        ticketSaveModel.setCreatorId(156263);
 
         // 需要保存的工单的表单对象
         TicketFormModel ticketFormModel = new TicketFormModel();
-        ticketFormModel.setId(1890);
+        ticketFormModel.setId(5881);
+        ticketFormModel.setName("lize测接口");
 
         // 需要保存的字段集合
         List<Field> fieldList = new ArrayList<>();
 
         Field field = new Field();
-        field.setId(33929);
-        field.setName("kk_串号");
+        field.setId(83466);
+        field.setName("lize测多行文本");
         field.setRequired(0);
-        field.setType(1);
-        field.setValue("100");
+        field.setType(5);
+        field.setValue("1234");
 
         Field field1 = new Field();
-        field1.setId(33930);
-        field1.setName("kk_产品名称");
+        field1.setId(85482);
+        field1.setName("ize测单行文本");
         field1.setRequired(0);
         field1.setType(1);
-        field1.setValue("复选1,复选2,复选3");
+        field1.setValue("4321");
 
-        Field field2 = new Field();
-        field2.setId(31075);
-        field2.setName("gq文件1");
-        field2.setType(14);
-        field2.setRequired(0);
-//
         fieldList.add(field);
         fieldList.add(field1);
-        fieldList.add(field2);
 
         ticketFormModel.setFields(fieldList);
 
+
+        Field sysField1 = new Field();
+        sysField1.setId(86686);
+        sysField1.setName("lize自定义属性");
+        sysField1.setRequired(0);
+        sysField1.setType(1);
+        sysField1.setValue("4321");
         ticketSaveModel.setForm(ticketFormModel);
+
+
+        Field[] customizeSystemFields = new Field[]{sysField1};
+        ticketSaveModel.setCustomizeSystemFields(customizeSystemFields);
 
         List<File> fileList = new ArrayList<>();
 
@@ -89,7 +96,6 @@ public class TicketSaveTest extends AbstractTest {
         Map<String, List<File>> fileMap = new HashMap<>();
 
         fileMap.put("31075", fileList);
-
         //将请求参数赋值到 request中
         ticketSaveRequest.setModel(ticketSaveModel);
         ticketSaveRequest.setFileMap(fileMap);
@@ -98,7 +104,8 @@ public class TicketSaveTest extends AbstractTest {
 
         try {
             ticketSaveResponse = client.getResponseModel(ticketSaveRequest);
-            System.out.println(111);
+            ObjectMapper objectMapper = new ObjectMapper();
+            System.out.println(objectMapper.writeValueAsString(ticketSaveResponse));
         } catch (Exception e) {
             e.printStackTrace();
         }
