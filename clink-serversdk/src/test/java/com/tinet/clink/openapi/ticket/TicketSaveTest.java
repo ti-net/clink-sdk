@@ -1,5 +1,6 @@
 package com.tinet.clink.openapi.ticket;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tinet.clink.openapi.AbstractTest;
 import com.tinet.clink.openapi.Client;
@@ -23,12 +24,12 @@ import java.util.*;
 public class TicketSaveTest extends AbstractTest {
 
     @Test
-    public void saveTicket() {
+    public void saveTicket() throws JsonProcessingException {
 
 
         ClientConfiguration configuration = new ClientConfiguration(
-                "b521465079b08d07b73f54e2f5845f95",          // AccessKeyId
-                "8Qe3qaN322Vp3260i288");     // AccessKeySecret
+                "a307c59f2e9e95b236aaded45806366c",          // AccessKeyId
+                "55xWk0s47070pZK82e0w");     // AccessKeySecret
         configuration.setHost("api-bj-test0.clink.cn");
         configuration.setScheme("http");
         Client client = new Client(configuration);
@@ -38,7 +39,7 @@ public class TicketSaveTest extends AbstractTest {
 
         // 请求参数
         TicketSaveModel ticketSaveModel = new TicketSaveModel();
-        ticketSaveModel.setWorkflowId(1827);
+        ticketSaveModel.setWorkflowId(1934);
         ticketSaveModel.setClose(0);
         ticketSaveModel.setCreateTime(new Date());
         ticketSaveModel.setHandlerType(0);
@@ -69,8 +70,27 @@ public class TicketSaveTest extends AbstractTest {
         field1.setType(1);
         field1.setValue("4321");
 
+        Field childField = new Field();
+        childField.setId(4483);
+        childField.setName("lize测试子表单");
+        childField.setRequired(0);
+        childField.setType(99);
+        childField.setValue("lize子表单分类1");
+
+        List<Field> childFieldList = new ArrayList<>();
+        Field field2 = new Field();
+        field2.setId(27164);
+        field2.setName("yy单选框");
+        field2.setRequired(0);
+        field2.setType(9);
+        field2.setValue("1234");
+        childFieldList.add(field2);
+
+        childField.setChildren(childFieldList);
+
         fieldList.add(field);
         fieldList.add(field1);
+        fieldList.add(childField);
 
         ticketFormModel.setFields(fieldList);
 
@@ -87,6 +107,11 @@ public class TicketSaveTest extends AbstractTest {
         Field[] customizeSystemFields = new Field[]{sysField1};
         ticketSaveModel.setCustomizeSystemFields(customizeSystemFields);
 
+        ticketSaveModel.setFocus(new Integer[]{});
+        ticketSaveModel.setTags(new Tag[]{});
+        ticketSaveModel.setRelateTicketId(new Integer[]{});
+        ticketSaveModel.setStateSelected("yuxr自定义状态");
+
         List<File> fileList = new ArrayList<>();
 
         File file = new File("E:\\工单信息 - 副本.xlsx");
@@ -98,13 +123,14 @@ public class TicketSaveTest extends AbstractTest {
         fileMap.put("31075", fileList);
         //将请求参数赋值到 request中
         ticketSaveRequest.setModel(ticketSaveModel);
-        ticketSaveRequest.setFileMap(fileMap);
+//        ticketSaveRequest.setFileMap(fileMap);
 
+        ObjectMapper objectMapper = new ObjectMapper();
+        System.out.println(objectMapper.writeValueAsString(ticketSaveModel));
         TicketSaveResponse ticketSaveResponse;
 
         try {
             ticketSaveResponse = client.getResponseModel(ticketSaveRequest);
-            ObjectMapper objectMapper = new ObjectMapper();
             System.out.println(objectMapper.writeValueAsString(ticketSaveResponse));
         } catch (Exception e) {
             e.printStackTrace();

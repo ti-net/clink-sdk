@@ -19,8 +19,8 @@ public class GetSysFormDetailTest extends AbstractTest {
     public void getSysFormDetail() {
 
         ClientConfiguration configuration = new ClientConfiguration(
-                "b521465079b08d07b73f54e2f5845f95",          // AccessKeyId
-                "8Qe3qaN322Vp3260i288");     // AccessKeySecret
+                "a307c59f2e9e95b236aaded45806366c",          // AccessKeyId
+                "55xWk0s47070pZK82e0w");     // AccessKeySecret
         configuration.setHost("api-bj-test0.clink.cn");
         configuration.setScheme("http");
         Client client = new Client(configuration);

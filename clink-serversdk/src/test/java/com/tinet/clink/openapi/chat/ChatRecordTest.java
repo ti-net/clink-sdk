@@ -90,8 +90,8 @@ public class ChatRecordTest extends AbstractTest {
         ChatInvestigationRequest request = new ChatInvestigationRequest();
 
         request.setLimit(10);
-        request.setDate("20200813");
-
+        request.setDate("20220714");
+        request.setMainUniqueId("26bbaa41-180e-4fc7-aafa-a165506b28e7.1657786082");
         ChatInvestigationResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response));
     }
