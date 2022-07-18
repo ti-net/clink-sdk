@@ -26,57 +26,79 @@ public class TicketFlowTest extends AbstractTest {
 
     @Test
     public void flowTicket() {
-        // 创建访问服务的client实例并初始化
         ClientConfiguration configuration = new ClientConfiguration(
-        "AK",          // AccessKeyId
-        "SK");     // AccessKeySecret
-        configuration.setHost("host");
+                "a307c59f2e9e95b236aaded45806366c",          // AccessKeyId
+                "55xWk0s47070pZK82e0w");     // AccessKeySecret
+        configuration.setHost("api-bj-test0.clink.cn");
+        configuration.setScheme("http");
         Client client = new Client(configuration);
 
         // 创建请求的request
         TicketFlowRequest ticketFlowRequest = new TicketFlowRequest();
         // 请求参数
         TicketFlowModel ticketFlowModel = new TicketFlowModel();
-        ticketFlowModel.setTicketId(1839);
-        ticketFlowModel.setHandlerId(158059);
-        ticketFlowModel.setTaskId("9f2e5c11-b4f7-11ec-b31e-5a8af5d6432f");
+        ticketFlowModel.setTicketId(171360);
+        ticketFlowModel.setHandlerId(156263);
+        ticketFlowModel.setTaskId("cfe34066-037f-11ed-8b90-8a9093819d2f");
 
-        TicketFormModel form = new TicketFormModel();
-        form.setId(5090);
-        form.setName("lize测试流转（预制）");
+        // 需要保存的工单的表单对象
+        TicketFormModel ticketFormModel = new TicketFormModel();
+        ticketFormModel.setId(5881);
+        ticketFormModel.setName("lize测接口");
 
-        List<Field> fields = new ArrayList<>();
+        // 需要保存的字段集合
+        List<Field> fieldList = new ArrayList<>();
+
+        Field field = new Field();
+        field.setId(83466);
+        field.setName("lize测多行文本");
+        field.setRequired(0);
+        field.setType(5);
+        field.setValue("1234");
+
         Field field1 = new Field();
-        field1.setId(84276);
-        field1.setName("lize单行文本1");
+        field1.setId(85482);
+        field1.setName("lize测单行文本");
+        field1.setRequired(0);
         field1.setType(1);
-        field1.setValue("11");
-        fields.add(field1);
+        field1.setValue("4321");
 
+        Field childField = new Field();
+        childField.setId(4483);
+        childField.setName("lize测试子表单");
+        childField.setRequired(0);
+        childField.setType(99);
+        childField.setValue("lize子表单分类1");
+
+        List<Field> childFieldList = new ArrayList<>();
         Field field2 = new Field();
-        field2.setId(84277);
-        field2.setName("lize多行文本");
-        field2.setType(5);
-        field2.setValue("11");
-        fields.add(field2);
+        field2.setId(27164);
+        field2.setName("yy单选框");
+        field2.setRequired(0);
+        field2.setType(9);
+        field2.setValue("1234");
+        childFieldList.add(field2);
 
-        Field field3 = new Field();
-        field3.setId(83668);
-        field3.setName("0038附件");
-        field3.setType(14);
-        field3.setValue(null);
-        fields.add(field3);
+        childField.setChildren(childFieldList);
 
-        Field field4 = new Field();
-        field4.setId(83663);
-        field4.setName("0038单选框");
-        field4.setType(9);
-        field4.setValue("单选4");
-        fields.add(field4);
+        fieldList.add(field);
+        fieldList.add(field1);
+        fieldList.add(childField);
 
-        form.setFields(fields);
-        ticketFlowModel.setForm(form);
-        System.out.println(form.toString());
+        ticketFormModel.setFields(fieldList);
+
+
+        Field sysField1 = new Field();
+        sysField1.setId(86686);
+        sysField1.setName("lize自定义属性");
+        sysField1.setRequired(0);
+        sysField1.setType(1);
+        sysField1.setValue("12111134");
+        ticketFlowModel.setForm(ticketFormModel);
+
+
+        Field[] customizeSystemFields = new Field[]{sysField1};
+        ticketFlowModel.setCustomizeSystemFields(customizeSystemFields);
 
         List<File> fileList = new ArrayList<>();
 

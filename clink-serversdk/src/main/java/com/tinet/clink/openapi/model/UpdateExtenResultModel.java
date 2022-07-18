@@ -33,6 +33,11 @@ public class UpdateExtenResultModel {
      */
     private Integer allow;
 
+    /**
+     * 是否允许主叫外呼，1：允许，0：不允许
+     */
+    private Integer isDirect;
+
     public String getExtenNumber() {
         return extenNumber;
     }
@@ -71,5 +76,13 @@ public class UpdateExtenResultModel {
 
     public void setAllow(Integer allow) {
         this.allow = allow;
+    }
+
+    public Integer getIsDirect() {
+        return isDirect;
+    }
+
+    public void setIsDirect(Integer isDirect) {
+        this.isDirect = isDirect;
     }
 }

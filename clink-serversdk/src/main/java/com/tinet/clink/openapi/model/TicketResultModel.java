@@ -150,6 +150,12 @@ public class TicketResultModel {
      */
     private String customerModifierName;
 
+    /**
+     * 工单的系统表单
+     */
+    private TicketSystemForm systemForm;
+
+
     public Integer getId() {
         return id;
     }
@@ -370,7 +376,9 @@ public class TicketResultModel {
         return customerModifierName;
     }
 
-    public void setCustomerModifierName(String customerModifierName) {
-        this.customerModifierName = customerModifierName;
-    }
+    public void setCustomerModifierName(String customerModifierName) { this.customerModifierName = customerModifierName; }
+
+    public TicketSystemForm getSystemForm() { return systemForm; }
+
+    public void setSystemForm(TicketSystemForm systemForm) { this.systemForm = systemForm; }
 }

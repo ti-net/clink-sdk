@@ -38,6 +38,11 @@ public class CreateExtenRequest extends AbstractRequestModel<CreateExtenResponse
      */
     private Integer allow;
 
+    /**
+     * 是否允许主叫外呼，1：允许，0：不允许
+     */
+    private Integer isDirect;
+
     public CreateExtenRequest() {
         super(PathEnum.CreateExten.value(), HttpMethodType.POST);
     }
@@ -94,6 +99,17 @@ public class CreateExtenRequest extends AbstractRequestModel<CreateExtenResponse
         this.allow = allow;
         if (allow != null) {
             putQueryParameter("allow", allow);
+        }
+    }
+
+    public Integer getIsDirect() {
+        return isDirect;
+    }
+
+    public void setIsDirect(Integer isDirect) {
+        this.isDirect = isDirect;
+        if (isDirect != null) {
+            putQueryParameter("isDirect", isDirect);
         }
     }
 

@@ -157,9 +157,12 @@ public class TicketDetailModel {
      */
     private TicketHistoryForm[] forms;
 
-    public Integer getId() {
-        return id;
-    }
+    /**
+     * 工单的系统表单
+     */
+    private TicketSystemForm systemForm;
+
+    public Integer getId() { return id; }
 
     public void setId(Integer id) {
         this.id = id;
@@ -388,4 +391,8 @@ public class TicketDetailModel {
     public void setForms(TicketHistoryForm[] forms) {
         this.forms = forms;
     }
+
+    public TicketSystemForm getSystemForm() { return systemForm; }
+
+    public void setSystemForm(TicketSystemForm systemForm) { this.systemForm = systemForm; }
 }
