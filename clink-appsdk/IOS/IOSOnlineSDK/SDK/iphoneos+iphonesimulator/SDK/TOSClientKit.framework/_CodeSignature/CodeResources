@@ -54,19 +54,27 @@
 		</data>
 		<key>Headers/TOSClientKit.h</key>
 		<data>
-		J7oSBq13u7ivgGZ1LjU4HjIl0+A=
+		lYMmfo+GTe8qQQGqhNKD48JG19Q=
 		</data>
 		<key>Headers/TOSCustomerChatVC.h</key>
 		<data>
-		8aL2cyhqCZRL1IGmsax0ZbpcsVo=
+		609qTrl1EIZj1zvFrpeoPKYLjJM=
 		</data>
 		<key>Headers/TOSKit.h</key>
 		<data>
-		MrRmrzbkgV1J7NCy31HPfzjN5Fs=
+		Vqucqvf04VW6UIJqhNssKFQpb4I=
+		</data>
+		<key>Headers/TOSKitChatBoxExtendBoard.h</key>
+		<data>
+		3V4P/txEr7OgBMdNOS5vvI/y5KM=
 		</data>
 		<key>Headers/TOSKitCustomInfo.h</key>
 		<data>
-		nEWijHYoo6QIRxbjRsqTA++twTA=
+		DWrmj+KkoUeyK/3/2ug31bDYCcw=
+		</data>
+		<key>Headers/TOSKitExtendBoardItemModel.h</key>
+		<data>
+		YrCDQVb58NslFIF8uMuq0KZhslo=
 		</data>
 		<key>Headers/UITableView+TIMAutoTableViewCellHeight.h</key>
 		<data>
@@ -98,7 +106,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		hKS9w+tG86UxTBHzHf5eGPA/oUc=
+		pSjc89hnVUzeH2C76ZroM9bG5pg=
 		</data>
 		<key>LICENSE</key>
 		<data>
@@ -373,44 +381,66 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			J7oSBq13u7ivgGZ1LjU4HjIl0+A=
+			lYMmfo+GTe8qQQGqhNKD48JG19Q=
 			</data>
 			<key>hash2</key>
 			<data>
-			x+3Awmg5Ijg2KXNZjeoZCiuTEfdP9ykkoYXmlJ4UnWY=
+			mBtoLgAnAsNUlEcenU3XOZ7Zk+FqSEGwK7DlVCApmNM=
 			</data>
 		</dict>
 		<key>Headers/TOSCustomerChatVC.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			8aL2cyhqCZRL1IGmsax0ZbpcsVo=
+			609qTrl1EIZj1zvFrpeoPKYLjJM=
 			</data>
 			<key>hash2</key>
 			<data>
-			lfYfqjvDogx+ahwj8qp5T5VO6GeaJCgXSzOrWnFlcYs=
+			luSytrpYO3vXf2T0evd4yOuCeiBNFNGH21f860f4EaE=
 			</data>
 		</dict>
 		<key>Headers/TOSKit.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			MrRmrzbkgV1J7NCy31HPfzjN5Fs=
+			Vqucqvf04VW6UIJqhNssKFQpb4I=
 			</data>
 			<key>hash2</key>
 			<data>
-			W/6uFFp/wp/cbB1w+0mothm9zoIY2tKlW/UwsqpXkss=
+			bjLzuiDyo9lMitW19xxQkAAmQU3knHTaKrn3tJHHM5g=
+			</data>
+		</dict>
+		<key>Headers/TOSKitChatBoxExtendBoard.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			3V4P/txEr7OgBMdNOS5vvI/y5KM=
+			</data>
+			<key>hash2</key>
+			<data>
+			rxhjHfjcISVmLxAx/Iam57pS51pAVQ2VHQitFelynQU=
 			</data>
 		</dict>
 		<key>Headers/TOSKitCustomInfo.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			nEWijHYoo6QIRxbjRsqTA++twTA=
+			DWrmj+KkoUeyK/3/2ug31bDYCcw=
 			</data>
 			<key>hash2</key>
 			<data>
-			pYW5iAyfB0pZjqVKMc4ReN5eov2BjNkg5pe9suiHWWc=
+			aEF7buJuCcnqphRqNMDS5nWQ2Qa/N81q9zuaYp+EtMY=
+			</data>
+		</dict>
+		<key>Headers/TOSKitExtendBoardItemModel.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			YrCDQVb58NslFIF8uMuq0KZhslo=
+			</data>
+			<key>hash2</key>
+			<data>
+			7YxdZmAetCHS/ZieBEfq9VrYPwk0m7OmwQu6daB+4QQ=
 			</data>
 		</dict>
 		<key>Headers/UITableView+TIMAutoTableViewCellHeight.h</key>

@@ -10,7 +10,7 @@
 		</data>
 		<key>Headers/ChatBridgeMessage.h</key>
 		<data>
-		fgH9pHIgP0t2kAEhbN5MvYsxgD8=
+		35OMJ45lzGrUYtBA2HD/DLRk2uU=
 		</data>
 		<key>Headers/ChatCloseMessage.h</key>
 		<data>
@@ -306,7 +306,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		uLmvld+43FaJ+v0G5kY+kpAaUMY=
+		phcp0XuZuABcEkW5QqrEVDbRO3c=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -330,11 +330,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			fgH9pHIgP0t2kAEhbN5MvYsxgD8=
+			35OMJ45lzGrUYtBA2HD/DLRk2uU=
 			</data>
 			<key>hash2</key>
 			<data>
-			1Qfy0qqbHPM5/8MJzqeiUk5EYqu4CiCYldA0XqVw4V8=
+			gI4X80mij1ugh7aBSNAiIMQBvgSvcPsSPXvly+uZbFs=
 			</data>
 		</dict>
 		<key>Headers/ChatCloseMessage.h</key>

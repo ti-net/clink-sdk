@@ -24,6 +24,7 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"";
+    NSLog(@"+++++++ %@",[TOSKitCustomInfo shareCustomInfo].receiveBubble_backGround);
 }
 
 - (void)viewWillAppear:(BOOL)animated {

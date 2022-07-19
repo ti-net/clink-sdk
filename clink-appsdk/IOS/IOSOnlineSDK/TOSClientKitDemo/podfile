@@ -33,6 +33,4 @@ pod 'WZLBadge'
 
 pod 'Masonry'
 
-pod 'TOSClientKit'
-
 end
