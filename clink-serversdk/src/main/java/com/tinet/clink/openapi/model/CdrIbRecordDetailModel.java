@@ -202,6 +202,19 @@ public class CdrIbRecordDetailModel {
      */
     private Integer ibRingingDuration;
 
+    /**
+     * 队列及时应答
+     */
+    private Integer queueAnswerInTime;
+
+    public Integer getQueueAnswerInTime() {
+        return queueAnswerInTime;
+    }
+
+    public void setQueueAnswerInTime(Integer queueAnswerInTime) {
+        this.queueAnswerInTime = queueAnswerInTime;
+    }
+
     public Long getClientRingingTime() {
         return clientRingingTime;
     }

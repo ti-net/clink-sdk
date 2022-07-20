@@ -4,6 +4,8 @@ platform:ios,'10.0'
 use_frameworks!
 target "TOSClientKitDemo" do
 
+pod 'TOSClientKit','~>1.4.1'
+
 pod 'Bugly'
 pod 'MBProgressHUD'
 

@@ -1,6 +1,6 @@
 
 # TOSClientKit_Android_开发文档
-> 版本: 1.3.12
+> 版本: 1.4.1
 
 
 ## 目录
@@ -30,7 +30,7 @@ Gradle | 3.0 及以上版本
 在主app的 build.gradle 文件中添加如下依赖配置
 
 ```
-implementation "com.ti-net.oskit:online:1.3.10"
+implementation "com.ti-net.oskit:online:1.4.1"
 ```
 
 ### 混淆配置

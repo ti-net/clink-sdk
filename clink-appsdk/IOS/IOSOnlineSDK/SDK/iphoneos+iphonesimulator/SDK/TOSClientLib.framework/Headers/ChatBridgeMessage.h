@@ -19,8 +19,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy,readonly) NSString *sender;
 @property (nonatomic, copy,readonly) NSString *clientIntroduce;
 @property (nonatomic, copy,readonly) NSString *welcomStr;
-@property (nonatomic, assign,readonly) BOOL *noImage;
-@property (nonatomic, assign,readonly) int  imageNum;
 
 /**
  初始化文本消息
