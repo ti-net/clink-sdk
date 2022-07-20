@@ -65,8 +65,6 @@ public class PlantformInfo {
     if(!TextUtils.isEmpty(type)){
       if("Shanghai".equals(type)){
         define = PlatformDefine.Shanghai;
-      }else if ("Test3".equals(type)){
-        define = PlatformDefine.Test3;
       }else if ("Kt".equals(type)){
           define = PlatformDefine.Kt;
       }
