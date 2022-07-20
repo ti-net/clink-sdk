@@ -24,6 +24,7 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"";
+    NSLog(@"+++++++ %@",[TOSKitCustomInfo shareCustomInfo].receiveText_Color);
 }
 
 - (void)viewWillAppear:(BOOL)animated {

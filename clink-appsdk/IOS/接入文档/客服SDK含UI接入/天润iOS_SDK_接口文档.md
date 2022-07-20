@@ -2,7 +2,7 @@
 
 ## TOSClinetKit_iOS_开发文档
 
-> 版本号: v1.3.10
+> 版本号: v1.4.1
 
 [TOC]
 
@@ -34,7 +34,22 @@
 <font color=Crimson size=2>TOSClient.bundle</font>|	图片资源文件 表情资源文件
 <font color=Crimson size=2>TOSCilentLib.framework	</font>|SDK Lib
 
+#### 自动导入
+
+1. `cd` 至项目根目录。
+
+2. 执行 `vim podfile`。
+
+3. 在 `Podfile` 文件中，添加以下内容
+
+   ```objective-c
+   pod 'TOSClientKit'
+   ```
+
+4. 执行 `pod install`。如果出现找不到相关版本的问题，可先执行 `pod repo update` ，再执行 `pod install`。
+
 #### 手动导入SDK和添加依赖库
+
 把下载的TOSClinetKit.framework 、TOSClientLib.framework、TOSClient.bundle文件夹中的文件拖入你的工程里。
 天润iOS_SDK 的实现，依赖了一些系统的框架，在开发应用时需要在工程里加入这些框架 ( TOSClientLib不包含UI界面，可根据接口自行开发功能 ) 。开发者首先点击工程右边的工程名，然后在工程名右边依次选择<font color= orange size=2>TARGETS -> BuiLd Phases -> Link Binary With Libraries</font>，展开 <font color= orange size=2>LinkBinary With Libraries</font> 后点击展开后下面的 + 来添加下面的依赖项:  
 
@@ -241,9 +256,9 @@ typedef NS_ENUM(NSUInteger, TinetChatStatusType) {
 
 ## 自定义UI配置
 
-```objective-c
-1.TOSKitCustomInfo 自定义UI类说明
+#### TOSKitCustomInfo 自定义UI类说明
 
+```objective-c
 /// 初始化
 + (TOSKitCustomInfo *)shareCustomInfo;
 
@@ -272,11 +287,19 @@ typedef NS_ENUM(NSUInteger, TinetChatStatusType) {
 /// 快速入口底部的背景颜色
 @property (nonatomic, strong) UIColor *quickEntryBottom_backgroundColor;
 
+/// 接收方字体颜色
+@property (nonatomic, strong) UIColor *receiveText_Color;
+
+/// 发送方字体颜色
+@property (nonatomic, strong) UIColor *senderText_Color;
+
 示例代码：
-  [TOSKitCustomInfo shareCustomInfo].senderBubble_backGround = [UIColor redColor];
+[TOSKitCustomInfo shareCustomInfo].senderBubble_backGround = [UIColor redColor];
+```
 
+#### 商品卡片示例
 
-2.商品卡片示例 
+```objective-c
  // TOSClientKitCommodityCardOption 详情见 商品卡片参数说明
   TOSClientKitCommodityCardOption *option = [[TOSClientKitCommodityCardOption alloc] init];
   option.subTitle = @"华为P40麒麟990 5G SoC芯片 5000万超感知徕卡三摄 30倍数字变焦";
@@ -295,15 +318,63 @@ typedef NS_ENUM(NSUInteger, TinetChatStatusType) {
   @{@"name": @"订单状态", @"value": @"已完成"}];
   
   chatVC.commodityCardOption = option;
-
-
- 3.快捷入口配置
-  chatVC.barItemDataArray = @[@"快捷入口1",@"快捷入口2",@"快捷入口3"];
-
-  /// 快捷入口的点击回调    index    点击索引从0开始（需要在子类实现这个方法）
-  - (void)bariItemDidTouchIndex:(NSInteger)index;
-
 ```
+
+#### 快捷入口配置
+
+```objective-c
+chatVC.quickEntryAllItems = @[@"快捷入口1",@"快捷入口2",@"快捷入口3"];
+
+/// 快捷入口的点击回调    index    点击索引从0开始（需要在子类实现这个方法）
+- (void)quickEntryItemDidTouchIndex:(NSInteger)index;
+```
+
+#### 扩展面板配置
+
+```objective-c
+TOSKitExtendBoardItemModel类说明
+
++ (TOSKitChatBoxExtendBoard *)shareChatBoxExtendBoard;
+/// 扩展项
+@property (nonatomic, strong) NSArray <TOSKitExtendBoardItemModel *>*allItems;
+
+/// 示例代码
+TOSKitExtendBoardItemModel *model1 = [[TOSKitExtendBoardItemModel alloc] init];
+model1.type = TOSChatBoxExtendBoardTypePhotos;	//除自定义类型外，其他类型不填即为默认UI
+    
+TOSKitExtendBoardItemModel *model2 = [[TOSKitExtendBoardItemModel alloc] init];
+model2.type = TOSChatBoxExtendBoardTypeTakePicture;
+    
+TOSKitExtendBoardItemModel *model3 = [[TOSKitExtendBoardItemModel alloc] init];
+model3.type = TOSChatBoxExtendBoardTypeCustom;
+model3.title = @"按钮3";
+model3.image = @"image";
+model3.index = 3;
+[TOSKitChatBoxExtendBoard shareChatBoxExtendBoard].allItems = @[model1,model2,model3]; 
+
+/// 扩展面板，自定义按钮事件 （需要在子类实现这个方法）
+- (void)didClinkCustomExtendBoardItemAction:(TOSKitExtendBoardItemModel *)item;
+```
+
+> TOSKitExtendBoardItemModel参数说明
+
+| 参数名 | 参数值                    | 说明                                             |
+| ------ | ------------------------- | ------------------------------------------------ |
+| title  | NSString                  | 标题                                             |
+| image  | NSString                  | 图片名                                           |
+| index  | NSInteger                 | 扩展项的唯一标示符                               |
+| type   | TOSChatBoxExtendBoardType | 枚举类型，除自定义类型外，其他类型不填即为默认UI |
+
+> TOSChatBoxExtendBoardType参数说明
+
+| 参数名                               | 参数值 | 说明     |
+| ------------------------------------ | ------ | -------- |
+| TOSChatBoxExtendBoardTypePhotos      | 0      | 相册     |
+| TOSChatBoxExtendBoardTypeTakePicture | 1      | 相机     |
+| TOSChatBoxExtendBoardTypeCustomFile  | 2      | 文件     |
+| TOSChatBoxExtendBoardTypeArtificial  | 3      | 转人工   |
+| TOSChatBoxExtendBoardTypeCloseChat   | 4      | 结束会话 |
+| TOSChatBoxExtendBoardTypeCustom      | 5      | 自定义   |
 
 ## 详细参数说明
 

@@ -25,6 +25,8 @@ FOUNDATION_EXPORT const unsigned char TIMClientKitVersionString[];
 
 /// Chat相关
 #import <TOSClientKit/TOSCustomerChatVC.h>
+#import <TOSClientKit/TOSKitChatBoxExtendBoard.h>
+#import <TOSClientKit/TOSKitExtendBoardItemModel.h>
 
 
 // Base

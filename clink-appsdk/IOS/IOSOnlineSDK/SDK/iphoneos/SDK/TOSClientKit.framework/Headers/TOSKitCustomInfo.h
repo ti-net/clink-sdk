@@ -39,6 +39,12 @@ NS_ASSUME_NONNULL_BEGIN
 /// 快速入口底部的背景颜色
 @property (nonatomic, strong) UIColor *quickEntryBottom_backgroundColor;
 
+/// 接收方字体颜色
+@property (nonatomic, strong) UIColor *receiveText_Color;
+
+/// 发送方字体颜色
+@property (nonatomic, strong) UIColor *senderText_Color;
+
 @end
 
 NS_ASSUME_NONNULL_END

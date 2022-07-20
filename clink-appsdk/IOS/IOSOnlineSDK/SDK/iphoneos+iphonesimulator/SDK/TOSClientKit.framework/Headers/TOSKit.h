@@ -11,42 +11,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef NS_ENUM(NSInteger, ICChatBoxItem){
-    ICChatBoxItemAlbum = 0,    // Album 相册
-    ICChatBoxItemCamera,       // Camera 拍摄
-    ICChatBoxItemAuditAlbum,   // auditAlbum 审核相册
-    ICChatBoxItemAuditCamera,  // auditCamera 审核拍摄
-    ICChatBoxItemForm,         // 表单
-    ICChatBoxItemCommodity,    // 商品
-    ICChatBoxItemBrochure,     // 企业宣传单
-    ICChatBoxItemCustomFile,     // 自定义文件
-};
-
-/*
- TIMKit点击自定义消息的监听器
-
- */
-@protocol TIMCustomMessageClickDelegate <NSObject>
-
-/*
- 点击自定义消息的回调
- */
-- (void)onClickCustomMessage:(TOSMessage *)timMessage;
-@end
-
-/*
- TIMKit发送自定义消息前的监听器
-
- */
-@protocol TIMCustomMessageWillSendDelegate <NSObject>
-
-/*
- 发送自定义消息前的回调
- */
-- (void)onWillSend:(ICChatBoxItem)item;
-
-@end
-
 #pragma mark - 消息接收监听器
 
 /*
@@ -219,16 +183,6 @@ SDK内置的消息类型，如果您将pushOption置为nil，会使用默认的�
  @discussion 当App处于后台时，默认会弹出本地通知提示，您可以通过将此属性设置为YES，关闭所有的本地通知。
  */
 @property (nonatomic, assign) BOOL disableMessageNotificaiton;
-
-/**
-设置发送前自定义消息的回调
-*/
-@property (nonatomic, weak) id<TIMCustomMessageWillSendDelegate> customMessageWillSendDelagate;
-
-/**
-设置点击自定义消息的回调
-*/
-@property (nonatomic, weak) id<TIMCustomMessageClickDelegate> customMessageClickDelagate;
 
 /**
  是否关闭所有的前台消息提示音，默认值是NO
