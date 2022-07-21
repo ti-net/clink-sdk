@@ -14,12 +14,14 @@ import com.tinet.oskit.listener.TImageLoader;
 import com.tinet.oskit.listener.TImageLoaderListener;
 import com.tinet.oslib.common.PlatformDefine;
 import com.tinet.oslib.config.TOSInitOption;
+import com.tinet.oslib.model.bean.LabeInfo;
 import com.tinet.tosclientkitdemo.R;
 import com.tinet.tosclientkitdemo.common.constants.PlatformDefaultInfo;
 import com.tinet.tosclientkitdemo.common.platform.PlantformInfo;
 import com.tinet.tosclientkitdemo.common.platform.PlantformUtil;
 import com.tinet.tosclientkitdemo.utils.TLogUtils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -77,6 +79,9 @@ public class App extends Application {
             tOSInitOption.setAdvanceParams(headers);
         }
 
+        // : 2022/7/21 设置快捷入口
+        quickEnter(true);
+
         TOSClientKit.initSDK(this, tOSInitOption, new TImageLoader() {
             @Override
             public void loadImage(ImageView imageView, Object uri) {
@@ -126,5 +131,26 @@ public class App extends Application {
                 });
             }
         });
+    }
+
+    /**
+     * 快捷入口测试数据
+     *
+     * @param enable
+     */
+    private void quickEnter(boolean enable) {
+        if (enable) {
+            ArrayList message = new ArrayList<>();
+            message.add(new LabeInfo("订单号", "1234567890"));
+            message.add(new LabeInfo("服务地区", "北京市"));
+            message.add(new LabeInfo("服务", "满意"));
+            message.add(new LabeInfo("师傅", "金师傅"));
+            message.add(new LabeInfo("产品类型", "电子产品"));
+            message.add(new LabeInfo("师傅电话", "12345678900"));
+            message.add(new LabeInfo("订单状态", "已完成"));
+            TOSClientKit.updateSessionWindowQuickEntrys(message);
+        } else {
+            TOSClientKit.clearSessionWindowQuickEntrys();
+        }
     }
 }

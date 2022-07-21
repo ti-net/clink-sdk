@@ -61,10 +61,45 @@ public class SessionActivity extends BaseActivity implements View.OnClickListene
         findViewById(R.id.toolbar_back).setOnClickListener(this);
 
         ChatFragment chatFragment = new ChatFragment();
+
+        // : 2022/7/21 此处通过bundle添加商品卡片数据
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(ChatFragment.ARGS_CARD, cardInfo());
+        chatFragment.setArguments(bundle);
+
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.container, chatFragment);
         transaction.commitAllowingStateLoss();
+    }
+
+
+    /**
+     * 卡片消息
+     *
+     * @return
+     */
+    private CardInfo cardInfo() {
+        CardInfo message = new CardInfo();
+        message.setSubTitle("华为P40麒麟990 5G SoC芯片 5000万超感知徕卡三摄 30倍数字变焦");
+        message.setDescription("这是商品描述，啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦");
+        message.setImg(
+                "https://img1.baidu.com/it/u=1963848283,2056721126&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=500");
+        message.setPrice("￥ 100.99");
+        message.setTime(TimeUtils.getDate(System.currentTimeMillis()));
+        message.setStatus("已到货");
+
+        HashMap<String, String> extraInfo = new HashMap<>();
+        extraInfo.put("订单号", "1234567890");
+        extraInfo.put("服务地区", "北京市");
+        extraInfo.put("服务", "满意");
+        extraInfo.put("师傅", "金师傅");
+        extraInfo.put("产品类型", "电子产品");
+        extraInfo.put("师傅电话", "12345678900");
+        extraInfo.put("订单状态", "已完成");
+        message.setExtraInfo(extraInfo);
+
+        return message;
     }
 
     @Override
