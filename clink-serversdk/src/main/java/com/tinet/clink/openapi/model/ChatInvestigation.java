@@ -27,7 +27,22 @@ public class ChatInvestigation {
      */
     private String description;
 
+
     private Long createTime;
+
+    /**
+     * 满意度发起方式 1：座席主动发起、2：系统邀评、3: 访客主动发起
+     */
+    private Integer invitationInitiator;
+
+
+    public Integer getInvitationInitiator() {
+        return invitationInitiator;
+    }
+
+    public void setInvitationInitiator(Integer invitationInitiator) {
+        this.invitationInitiator = invitationInitiator;
+    }
 
     public String getMainUniqueId() {
         return mainUniqueId;
