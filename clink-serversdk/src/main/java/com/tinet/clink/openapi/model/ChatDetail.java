@@ -108,13 +108,19 @@ public class ChatDetail {
      */
     private Long agentLastMsgTime;
 
-    public String getMainUniqueId() {
-        return mainUniqueId;
-    }
+    /**
+     * 满意度发起方式 1：座席主动发起、2：系统邀评、3: 访客主动发起
+     */
+    private Integer invitationInitiator;
 
-    public void setMainUniqueId(String mainUniqueId) {
-        this.mainUniqueId = mainUniqueId;
-    }
+
+    public Integer getInvitationInitiator() { return invitationInitiator; }
+
+    public void setInvitationInitiator(Integer invitationInitiator) { this.invitationInitiator = invitationInitiator; }
+
+    public String getMainUniqueId() { return mainUniqueId; }
+
+    public void setMainUniqueId(String mainUniqueId) { this.mainUniqueId = mainUniqueId; }
 
     public String getUniqueId() {
         return uniqueId;
