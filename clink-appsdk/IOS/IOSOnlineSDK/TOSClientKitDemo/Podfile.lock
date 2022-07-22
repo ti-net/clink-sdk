@@ -15,7 +15,7 @@ PODS:
   - RTRootNavigationController (0.8.0):
     - RTRootNavigationController/Core (= 0.8.0)
   - RTRootNavigationController/Core (0.8.0)
-  - TOSClientKit (1.4.1)
+  - TOSClientKit (1.4.3)
   - TTGTagCollectionView (2.1.0)
   - TZImagePickerController (3.8.1)
   - WMPageController (2.5.2)
@@ -36,7 +36,7 @@ DEPENDENCIES:
   - Reachability
   - ReactiveObjC
   - RTRootNavigationController
-  - TOSClientKit (~> 1.4.1)
+  - TOSClientKit (~> 1.4.3)
   - TTGTagCollectionView
   - TZImagePickerController
   - WMPageController
@@ -75,7 +75,7 @@ SPEC CHECKSUMS:
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
   RTRootNavigationController: 36c6301870f0467f89d69f4286795340b537d473
-  TOSClientKit: 2b106c4a4a1a75c071ceee0d4b718d3eebef3017
+  TOSClientKit: 2d9762783deab2421abfa05ad37e729f6d0b4663
   TTGTagCollectionView: a2a8668c659b39e7a6ffd6590475ea53a7ae95f7
   TZImagePickerController: 943511626019431372cf908f24c114521e484f0e
   WMPageController: 0c7624d2b48e4f1ab92371688cf6744ed701575d
@@ -85,6 +85,6 @@ SPEC CHECKSUMS:
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
   ZYCornerRadius: f0af817be7805b5c63d793042ca7a03f81e14069
 
-PODFILE CHECKSUM: 8b8d13daaf638fe03de7f87c9b10fc88a09d9b86
+PODFILE CHECKSUM: 485ad293dab46225eb844629afbb4abf38e5bbfc
 
 COCOAPODS: 1.11.3

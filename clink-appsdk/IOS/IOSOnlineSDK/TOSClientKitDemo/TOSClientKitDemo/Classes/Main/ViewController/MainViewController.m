@@ -24,7 +24,39 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"";
-    NSLog(@"+++++++ %@",[TOSKitCustomInfo shareCustomInfo].receiveText_Color);
+    [TOSKitCustomInfo shareCustomInfo].senderText_Color = kHexColor(0x262626);
+    
+    TOSKitExtendBoardItemModel *model1 = [[TOSKitExtendBoardItemModel alloc] init];
+    model1.type = TOSChatBoxExtendBoardTypePhotos;
+    model1.title = @"";
+    model1.image = @"";
+    model1.index = 1;
+    
+    TOSKitExtendBoardItemModel *model2 = [[TOSKitExtendBoardItemModel alloc] init];
+    model2.type = TOSChatBoxExtendBoardTypeTakePicture;
+    model2.title = @"";
+    model2.image = @"login_user";
+    model2.index = 2;
+    
+    TOSKitExtendBoardItemModel *model3 = [[TOSKitExtendBoardItemModel alloc] init];
+    model3.type = TOSChatBoxExtendBoardTypeCustomFile;
+    model3.title = @"文件";
+    model3.image = @"";
+    model3.index = 3;
+    
+    TOSKitExtendBoardItemModel *model4 = [[TOSKitExtendBoardItemModel alloc] init];
+    model4.type = TOSChatBoxExtendBoardTypeArtificial;
+    model4.title = @"转人工";
+    model4.image = @"login_user";
+    model4.index = 4;
+    
+    TOSKitExtendBoardItemModel *model5 = [[TOSKitExtendBoardItemModel alloc] init];
+    model5.type = TOSChatBoxExtendBoardTypeCloseChat;
+    model5.title = @"结束会话";
+    model5.image = @"login_user";
+    model5.index = 5;
+    
+    [TOSKitChatBoxExtendBoard shareChatBoxExtendBoard].allItems = @[model1,model2,model3,model4,model5];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

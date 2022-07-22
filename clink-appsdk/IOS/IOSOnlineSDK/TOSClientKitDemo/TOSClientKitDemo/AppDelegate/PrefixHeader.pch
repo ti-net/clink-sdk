@@ -53,6 +53,7 @@
 #import "NSObject+ShowError.h"
 #import "NSDictionary+TRTool.h"
 #import "NSString+JsonParsing.h"
+#import "UIResponder+TOSRouter.h"
 #import "UITableView+EmptyData.h"
 #import "UIImageView+LoadImage.h"
 #import "NSString+RegexValidation.h"
