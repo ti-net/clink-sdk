@@ -34,6 +34,26 @@ public class ListClientsRequest extends AbstractRequestModel<ListClientsResponse
     private String bindTel;
 
     /**
+     * 创建时间查询范围-开始时间,秒级时间戳
+     */
+    private Long startTime;
+
+    /**
+     * 创建时间查询范围-结束时间,秒级时间戳
+     */
+    private Long endTime;
+
+    /**
+     * 修改时间查询范围-开始时间,秒级时间戳
+     */
+    private Long updateStartTime;
+
+    /**
+     * 修改时间查询范围-结束时间,秒级时间戳
+     */
+    private Long updateEndTime;
+
+    /**
      * 偏移量，默认值为 0，最大范围 10000
      */
     private Integer offset;
@@ -88,6 +108,50 @@ public class ListClientsRequest extends AbstractRequestModel<ListClientsResponse
         this.bindTel = bindTel;
         if (bindTel != null) {
             putQueryParameter("bindTel", bindTel);
+        }
+    }
+
+    public Long getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Long startTime) {
+        this.startTime = startTime;
+        if (startTime != null) {
+            putQueryParameter("startTime", startTime);
+        }
+    }
+
+    public Long getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Long endTime) {
+        this.endTime = endTime;
+        if (endTime != null) {
+            putQueryParameter("endTime", endTime);
+        }
+    }
+
+    public Long getUpdateStartTime() {
+        return updateStartTime;
+    }
+
+    public void setUpdateStartTime(Long updateStartTime) {
+        this.updateStartTime = updateStartTime;
+        if (updateStartTime != null) {
+            putQueryParameter("updateStartTime", updateStartTime);
+        }
+    }
+
+    public Long getUpdateEndTime() {
+        return updateEndTime;
+    }
+
+    public void setUpdateEndTime(Long updateEndTime) {
+        this.updateEndTime = updateEndTime;
+        if (updateEndTime != null) {
+            putQueryParameter("updateEndTime", updateEndTime);
         }
     }
 
