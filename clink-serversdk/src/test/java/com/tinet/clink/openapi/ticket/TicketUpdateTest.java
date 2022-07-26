@@ -43,6 +43,7 @@ public class TicketUpdateTest extends AbstractTest {
         // 需要保存的工单的表单对象
         TicketFormModel ticketFormModel = new TicketFormModel();
         ticketFormModel.setId(5881);
+        ticketFormModel.setTaskId("asdan-agsgdgs-dgjki-i4nn349");
         ticketFormModel.setName("lize测接口");
 
         // 需要保存的字段集合

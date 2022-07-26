@@ -28,6 +28,11 @@ public class TicketFormModel {
     private String taskKey;
 
     /**
+     * 工作流转过程中表单唯一标识
+     */
+    private String taskId;
+
+    /**
      * 节点名称
      */
     private String taskName;
@@ -75,5 +80,13 @@ public class TicketFormModel {
 
     public void setFields(List<Field> fields) {
         this.fields = fields;
+    }
+
+    public String getTaskId() {
+        return taskId;
+    }
+
+    public void setTaskId(String taskId) {
+        this.taskId = taskId;
     }
 }
