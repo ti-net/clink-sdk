@@ -1,12 +1,8 @@
 package com.tinet.clink.openapi.kb;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tinet.clink.openapi.request.kb.CreateAnswerRequest;
-import com.tinet.clink.openapi.request.kb.DeleteAnswerRequest;
-import com.tinet.clink.openapi.request.kb.UpdateAnswerRequest;
-import com.tinet.clink.openapi.response.kb.CreateAnswerResponse;
-import com.tinet.clink.openapi.response.kb.DeleteAnswerResponse;
-import com.tinet.clink.openapi.response.kb.UpdateAnswerResponse;
+import com.tinet.clink.openapi.request.kb.*;
+import com.tinet.clink.openapi.response.kb.*;
 import org.junit.Test;
 
 /**
@@ -16,6 +12,55 @@ import org.junit.Test;
 public class AnswerTest extends KbAbstractTest{
 
     private final ObjectMapper mapper = new ObjectMapper();
+
+    @Test
+    public void mediaUrl() {
+
+        // 创建访问服务的客户端实例并初始化
+        /*ClientConfiguration configuration = new ClientConfiguration(
+                "AK",          // AccessKeyId
+                "SK");     // AccessKeySecret
+        configuration.setHost("host");
+        Client client = new Client(configuration);*/
+
+        // 创建请求的request
+        MediaUrlRequest request = new MediaUrlRequest();
+        request.setFileKey("789742423820489023904|73740274028908203042390890|abc.png");
+
+
+        try {
+            MediaUrlResponse response = client.getResponseModel(request);
+            System.out.println(mapper.writeValueAsString(response.getMediaUrl()));
+            System.out.println(mapper.writeValueAsString(response));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void listAnswer() {
+
+        // 创建访问服务的客户端实例并初始化
+        /*ClientConfiguration configuration = new ClientConfiguration(
+                "AK",          // AccessKeyId
+                "SK");     // AccessKeySecret
+        configuration.setHost("host");
+        Client client = new Client(configuration);*/
+
+        // 创建请求的request
+        ListAnswerRequest request = new ListAnswerRequest();
+        request.setBotId("581926");
+        request.setSqId(167189);
+
+
+        try {
+            ListAnswerResponse response = client.getResponseModel(request);
+            System.out.println(mapper.writeValueAsString(response.getAnswers()));
+            System.out.println(mapper.writeValueAsString(response));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @Test
     public void createAnswer() {

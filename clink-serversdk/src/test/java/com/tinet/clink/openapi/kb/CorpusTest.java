@@ -4,9 +4,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tinet.clink.openapi.model.CorpusRecordModel;
 import com.tinet.clink.openapi.request.kb.CreateCorpusRequest;
 import com.tinet.clink.openapi.request.kb.DeleteCorpusRequest;
+import com.tinet.clink.openapi.request.kb.ListCorporaRequest;
 import com.tinet.clink.openapi.request.kb.UpdateCorpusRequest;
 import com.tinet.clink.openapi.response.kb.CreateCorpusResponse;
 import com.tinet.clink.openapi.response.kb.DeleteCorpusResponse;
+import com.tinet.clink.openapi.response.kb.ListCorporaResponse;
 import com.tinet.clink.openapi.response.kb.UpdateCorpusResponse;
 import org.junit.Test;
 
@@ -20,6 +22,32 @@ import java.util.List;
 public class CorpusTest extends KbAbstractTest{
 
     private final ObjectMapper mapper = new ObjectMapper();
+
+    @Test
+    public void listCorpus() {
+
+        // 创建访问服务的客户端实例并初始化
+        /*ClientConfiguration configuration = new ClientConfiguration(
+                "AK",          // AccessKeyId
+                "SK");     // AccessKeySecret
+        configuration.setHost("host");
+        Client client = new Client(configuration);*/
+
+        // 创建请求的request
+        ListCorporaRequest request = new ListCorporaRequest();
+        request.setBotId("581926");
+        request.setSqId(654321);
+        request.setOffset(0);
+        request.setLimit(100);
+
+        try {
+            ListCorporaResponse response = client.getResponseModel(request);
+            System.out.println(mapper.writeValueAsString(response.getCorpora()));
+            System.out.println(mapper.writeValueAsString(response));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @Test
     public void createCorpus() {
