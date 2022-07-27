@@ -120,6 +120,11 @@ public class ListCdrIbsRequest extends AbstractRequestModel<ListCdrIbsResponse> 
      */
     private Integer queueAnswerInTime;
 
+    /**
+     * 是否邀评
+     */
+    private Integer evaluation;
+
 
     public ListCdrIbsRequest() {
         super(PathEnum.ListCdrIbs.value(), HttpMethodType.GET);
@@ -320,6 +325,17 @@ public class ListCdrIbsRequest extends AbstractRequestModel<ListCdrIbsResponse> 
         this.queueAnswerInTime = queueAnswerInTime;
         if (queueAnswerInTime != null) {
             putQueryParameter("queueAnswerInTime", queueAnswerInTime);
+        }
+    }
+
+    public Integer getEvaluation() {
+        return evaluation;
+    }
+
+    public void setEvaluation(Integer evaluation) {
+        this.evaluation = evaluation;
+        if (evaluation != null) {
+            putQueryParameter("evaluation", evaluation);
         }
     }
 

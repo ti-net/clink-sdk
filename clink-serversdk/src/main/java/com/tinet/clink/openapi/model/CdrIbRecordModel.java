@@ -191,6 +191,11 @@ public class CdrIbRecordModel {
      */
     private Integer queueAnswerInTime;
 
+    /**
+     * 是否邀评
+     */
+    private Integer evaluation;
+
     public Integer getQueueAnswerInTime() {
         return queueAnswerInTime;
     }
@@ -478,6 +483,14 @@ public class CdrIbRecordModel {
 
     public void setIbRingingDuration(Integer ibRingingDuration) {
         this.ibRingingDuration = ibRingingDuration;
+    }
+
+    public Integer getEvaluation() {
+        return evaluation;
+    }
+
+    public void setEvaluation(Integer evaluation) {
+        this.evaluation = evaluation;
     }
 }
 
