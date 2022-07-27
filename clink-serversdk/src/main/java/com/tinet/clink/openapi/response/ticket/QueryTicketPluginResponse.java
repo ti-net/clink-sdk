@@ -9,15 +9,15 @@ import com.tinet.clink.openapi.response.ResponseModel;
  * @Date 2022/7/21
  * @Version 1.0
  **/
-public class QueryTicketPluginByIdOrExternalParameterResponse extends ResponseModel {
+public class QueryTicketPluginResponse extends ResponseModel {
 
-    private TicketPluginModel result;
+    private TicketPluginModel ticketPlugin;
 
-    public TicketPluginModel getResult() {
-        return result;
+    public TicketPluginModel getTicketPlugin() {
+        return ticketPlugin;
     }
 
-    public void setResult(TicketPluginModel result) {
-        this.result = result;
+    public void setTicketPlugin(TicketPluginModel ticketPlugin) {
+        this.ticketPlugin = ticketPlugin;
     }
 }

@@ -268,7 +268,7 @@ public enum PathEnum {
     // 获取工单文件 url
     GetTicketFileUrl("get_ticket_file_url"),
     // 根据外部参数或ID查询工单插件
-    GetTicketPluginByIdOrExternalParameter("get_ticket_plugin_by_id_or_external_parameter"),
+    GetTicketPlugin("get_ticket_plugin"),
 
     /**
      * 黑白名单相关请求
