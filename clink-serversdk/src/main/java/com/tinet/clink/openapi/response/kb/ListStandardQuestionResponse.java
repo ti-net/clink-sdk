@@ -6,6 +6,8 @@ import com.tinet.clink.openapi.response.ResponseModel;
 import java.util.List;
 
 /**
+ * 标准问题列表响应实体
+ *
  * @author feizq
  * @date 2022/07/27
  **/

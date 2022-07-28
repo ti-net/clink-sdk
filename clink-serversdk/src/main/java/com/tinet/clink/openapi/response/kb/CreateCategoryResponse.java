@@ -4,6 +4,8 @@ import com.tinet.clink.openapi.model.CategoryResponseModel;
 import com.tinet.clink.openapi.response.ResponseModel;
 
 /**
+ * 创建分类响应实体
+ *
  * @author feizq
  * @date 2022/06/20
  **/

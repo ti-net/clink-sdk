@@ -6,6 +6,8 @@ import com.tinet.clink.openapi.response.kb.MediaUrlResponse;
 import com.tinet.clink.openapi.utils.HttpMethodType;
 
 /**
+ * 获取文件路径
+ *
  * @author feizq
  * @date 2022/07/27
  **/

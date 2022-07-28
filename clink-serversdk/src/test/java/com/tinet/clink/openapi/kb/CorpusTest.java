@@ -35,8 +35,8 @@ public class CorpusTest extends KbAbstractTest{
 
         // 创建请求的request
         ListCorporaRequest request = new ListCorporaRequest();
-        request.setBotId("581926");
-        request.setSqId(654321);
+        request.setBotId("996712");
+        request.setSqId(270138);
         request.setOffset(0);
         request.setLimit(100);
 

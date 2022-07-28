@@ -10,6 +10,8 @@ import com.tinet.clink.openapi.response.kb.ListStandardQuestionResponse;
 import com.tinet.clink.openapi.response.kb.StandardQuestionResponse;
 import org.junit.Test;
 
+import java.time.Instant;
+
 /**
  * @author feizq
  * @date 2022/06/16
@@ -30,13 +32,18 @@ public class StandardQuestionTest extends KbAbstractTest{
 
         // 创建请求的request
         ListStandardQuestionRequest request = new ListStandardQuestionRequest();
-        request.setBotId("581926");
+        request.setBotId("996712");
 
+        long start = Instant.now().getEpochSecond();
         try {
             ListStandardQuestionResponse response = client.getResponseModel(request);
-            System.out.println(mapper.writeValueAsString(response.getStandardQuestions()));
-            System.out.println(mapper.writeValueAsString(response));
+            long end = Instant.now().getEpochSecond();
+            System.out.println("请求时长：" + (end - start));
+            System.out.println(response.getStandardQuestions().size());
+//            System.out.println(mapper.writeValueAsString(response));
         } catch (Exception e) {
+            long end = Instant.now().getEpochSecond();
+            System.out.println("请求时长：" + (end - start));
             e.printStackTrace();
         }
     }

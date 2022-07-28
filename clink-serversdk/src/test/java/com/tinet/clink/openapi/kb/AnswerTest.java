@@ -25,7 +25,7 @@ public class AnswerTest extends KbAbstractTest{
 
         // 创建请求的request
         MediaUrlRequest request = new MediaUrlRequest();
-        request.setFileKey("789742423820489023904|73740274028908203042390890|abc.png");
+        request.setFileKey("837d6acb29944a4bb9d68de9d0b25bd2|df0b1e440ebf4054b969004c6f68fc64UftyXrqhHDimage(1).png");
 
 
         try {
@@ -50,7 +50,7 @@ public class AnswerTest extends KbAbstractTest{
         // 创建请求的request
         ListAnswerRequest request = new ListAnswerRequest();
         request.setBotId("581926");
-        request.setSqId(167189);
+        request.setSqId(312681);
 
 
         try {

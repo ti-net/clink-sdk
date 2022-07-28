@@ -6,6 +6,8 @@ import com.tinet.clink.openapi.response.kb.ListCorporaResponse;
 import com.tinet.clink.openapi.utils.HttpMethodType;
 
 /**
+ * 获取语料列表请求
+ *
  * @author feizq
  * @date 2022/07/26
  **/

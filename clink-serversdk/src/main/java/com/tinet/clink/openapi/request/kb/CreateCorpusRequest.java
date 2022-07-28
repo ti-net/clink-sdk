@@ -10,6 +10,8 @@ import com.tinet.clink.openapi.utils.HttpMethodType;
 import java.util.List;
 
 /**
+ * 创建语料请求
+ *
  * @author feizq
  * @date 2022/06/15
  **/
