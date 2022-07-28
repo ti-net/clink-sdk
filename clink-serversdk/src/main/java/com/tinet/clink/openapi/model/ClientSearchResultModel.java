@@ -1,5 +1,7 @@
 package com.tinet.clink.openapi.model;
 
+import java.util.List;
+
 /**
  * 座席查询结果对象
  *
@@ -57,6 +59,26 @@ public class ClientSearchResultModel {
      * 座席类型，1：全渠道、2：呼叫中心、3：在线客服
      */
     private Integer type;
+
+    /**
+     * 创建时间
+     */
+    private Long createTime;
+
+    /**
+     * 更新时间
+     */
+    private Long updateTime;
+
+    /**
+     * 座席crm id
+     */
+    private String crmId;
+
+    /**
+     * 队列号
+     */
+    private List<String> qnos;
 
     public Integer getId() {
         return id;
@@ -138,13 +160,43 @@ public class ClientSearchResultModel {
         this.type = type;
     }
 
+    public Long getCreateTime() {
+        return createTime;
+    }
 
+    public void setCreateTime(Long createTime) {
+        this.createTime = createTime;
+    }
+
+    public Long getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Long updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public String getCrmId() {
+        return crmId;
+    }
+
+    public void setCrmId(String crmId) {
+        this.crmId = crmId;
+    }
+
+    public List<String> getQnos() {
+        return qnos;
+    }
+
+    public void setQnos(List<String> qnos) {
+        this.qnos = qnos;
+    }
 
     @Override
     public String toString() {
         return "ClientSearchResultModel{" +
-                "id='" + id + '\'' +
-                "cno='" + cno + '\'' +
+                "id=" + id +
+                ", cno='" + cno + '\'' +
                 ", name='" + name + '\'' +
                 ", areaCode='" + areaCode + '\'' +
                 ", bindTel='" + bindTel + '\'' +
@@ -153,6 +205,10 @@ public class ClientSearchResultModel {
                 ", status=" + status +
                 ", hiddenTel=" + hiddenTel +
                 ", type=" + type +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", crmId='" + crmId + '\'' +
+                ", qnos=" + qnos +
                 '}';
     }
 }

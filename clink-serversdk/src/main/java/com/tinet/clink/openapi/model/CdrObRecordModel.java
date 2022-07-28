@@ -163,6 +163,11 @@ public class CdrObRecordModel {
      */
     private Integer queueAnswerInTime;
 
+    /**
+     * 是否邀评
+     */
+    private Integer evaluation;
+
     public Integer getQueueAnswerInTime() {
         return queueAnswerInTime;
     }
@@ -409,6 +414,14 @@ public class CdrObRecordModel {
 
     public void setTags(String[] tags) {
         this.tags = tags;
+    }
+
+    public Integer getEvaluation() {
+        return evaluation;
+    }
+
+    public void setEvaluation(Integer evaluation) {
+        this.evaluation = evaluation;
     }
 }
 
