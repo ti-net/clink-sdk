@@ -6,6 +6,8 @@ import com.tinet.clink.openapi.response.kb.UpdateCategoryResponse;
 import com.tinet.clink.openapi.utils.HttpMethodType;
 
 /**
+ * 更新分类请求
+ *
  * @author feizq
  * @date 2022/06/20
  **/

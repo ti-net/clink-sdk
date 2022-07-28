@@ -5,6 +5,8 @@ import com.tinet.clink.openapi.model.StandardQuestionResponseModel;
 import com.tinet.clink.openapi.response.ResponseModel;
 
 /**
+ * 标准问响应实体
+ *
  * @author feizq
  * @date 2022/06/15
  **/

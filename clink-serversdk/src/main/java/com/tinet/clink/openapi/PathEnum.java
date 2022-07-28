@@ -227,18 +227,22 @@ public enum PathEnum {
     //-------------------知识库API--------
 
     //-------------------机器人知识库API--------
+    ListStandardQuestion("list_standard_question"),
     CreateStandardQuestion("create_standard_question"),
     UpdateStandardQuestion("update_standard_question"),
     DeleteStandardQuestion("delete_standard_question"),
+    ListAnswer("list_answer"),
     CreateAnswer("create_answer"),
     UpdateAnswer("update_answer"),
     DeleteAnswer("delete_answer"),
+    ListCorpus("list_corpus"),
     CreateCorpus("create_corpus"),
     UpdateCorpus("update_corpus"),
     DeleteCorpus("delete_corpus"),
     CreateCategory("create_category"),
     UpdateCategory("update_category"),
     DeleteCategory("delete_category"),
+    MediaUrl("media_url"),
     //-------------------机器人知识库API--------
 
 //    -----工单记录-------

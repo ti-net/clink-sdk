@@ -6,6 +6,8 @@ import com.tinet.clink.openapi.response.kb.DeleteAnswerResponse;
 import com.tinet.clink.openapi.utils.HttpMethodType;
 
 /**
+ * 删除答案请求
+ *
  * @author feizq
  * @date 2022/06/15
  **/

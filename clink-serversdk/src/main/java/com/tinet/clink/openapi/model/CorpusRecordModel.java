@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
 
 /**
+ * 语料记录返回对象
+ *
  * @author feizq
  * @date 2022/06/15
  **/
