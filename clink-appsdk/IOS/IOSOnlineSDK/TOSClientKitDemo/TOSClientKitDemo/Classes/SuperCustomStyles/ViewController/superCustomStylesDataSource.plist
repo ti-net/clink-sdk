@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>styleName</key>
+		<string>经典样式</string>
+		<key>Chat_time_textColor</key>
+		<string>595959</string>
+		<key>Chat_tosRobotName_enable</key>
+		<true/>
+		<key>Chat_visitorName_enable</key>
+		<true/>
+		<key>Chat_tosRobot_portrait_enable</key>
+		<true/>
+		<key>Chat_visitor_portrait_enable</key>
+		<true/>
+		<key>ChatBox_backGroundColor</key>
+		<string>F3F6F9</string>
+		<key>ChatBox_lineColor</key>
+		<string>E8E8E8</string>
+		<key>VoiceButton_textColor</key>
+		<string>BFBFBF</string>
+		<key>ChatBox_textview_placeholder</key>
+		<string>您好!请输入您要咨询的问题</string>
+		<key>Toast_backGroundColor</key>
+		<string>FFFFFF</string>
+		<key>Toast_textColor</key>
+		<string>BFBFBF</string>
+		<key>imagePicker_naviBgColor</key>
+		<string>FFFFFF</string>
+		<key>imagePicker_barItemTextColor</key>
+		<string>262626</string>
+	</dict>
+</array>
+</plist>
