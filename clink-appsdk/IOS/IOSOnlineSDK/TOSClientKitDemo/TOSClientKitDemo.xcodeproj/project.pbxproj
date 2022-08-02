@@ -19,8 +19,6 @@
 		3C9CE7CD2874760400163770 /* CustomStylesDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9CE7CC2874760400163770 /* CustomStylesDetailsModel.m */; };
 		3C9CE7D12874766200163770 /* CustomStylesDetailsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9CE7CF2874766200163770 /* CustomStylesDetailsTableViewCell.m */; };
 		3C9CE7D22874766200163770 /* CustomStylesDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C9CE7D02874766200163770 /* CustomStylesDetailsTableViewCell.xib */; };
-		3C9CE7D6287476F400163770 /* CustomStylesSaveTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9CE7D4287476F400163770 /* CustomStylesSaveTableViewCell.m */; };
-		3C9CE7D7287476F400163770 /* CustomStylesSaveTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C9CE7D5287476F400163770 /* CustomStylesSaveTableViewCell.xib */; };
 		3C9CE7D928747A2000163770 /* CustomStylesDetailsDataSource.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C9CE7D828747A2000163770 /* CustomStylesDetailsDataSource.plist */; };
 		3C9CE7DC2874941900163770 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9CE7DB2874941900163770 /* MessageViewController.m */; };
 		3C9CE7E42874A07700163770 /* ProtocolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9CE7E32874A07700163770 /* ProtocolViewController.m */; };
@@ -143,9 +141,6 @@
 		3C9CE7CE2874766200163770 /* CustomStylesDetailsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomStylesDetailsTableViewCell.h; sourceTree = "<group>"; };
 		3C9CE7CF2874766200163770 /* CustomStylesDetailsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomStylesDetailsTableViewCell.m; sourceTree = "<group>"; };
 		3C9CE7D02874766200163770 /* CustomStylesDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomStylesDetailsTableViewCell.xib; sourceTree = "<group>"; };
-		3C9CE7D3287476F400163770 /* CustomStylesSaveTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomStylesSaveTableViewCell.h; sourceTree = "<group>"; };
-		3C9CE7D4287476F400163770 /* CustomStylesSaveTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomStylesSaveTableViewCell.m; sourceTree = "<group>"; };
-		3C9CE7D5287476F400163770 /* CustomStylesSaveTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomStylesSaveTableViewCell.xib; sourceTree = "<group>"; };
 		3C9CE7D828747A2000163770 /* CustomStylesDetailsDataSource.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = CustomStylesDetailsDataSource.plist; sourceTree = "<group>"; };
 		3C9CE7DA2874941900163770 /* MessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
 		3C9CE7DB2874941900163770 /* MessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
@@ -330,9 +325,6 @@
 				3C9CE7C1287457E700163770 /* CustomStylesTableViewCell.h */,
 				3C9CE7C2287457E700163770 /* CustomStylesTableViewCell.m */,
 				3C9CE7C3287457E700163770 /* CustomStylesTableViewCell.xib */,
-				3C9CE7D3287476F400163770 /* CustomStylesSaveTableViewCell.h */,
-				3C9CE7D4287476F400163770 /* CustomStylesSaveTableViewCell.m */,
-				3C9CE7D5287476F400163770 /* CustomStylesSaveTableViewCell.xib */,
 				3CD9E88628894E5700CC739C /* CustomStylesSaveView.h */,
 				3CD9E88728894E5700CC739C /* CustomStylesSaveView.m */,
 				3CD9E88928894E6800CC739C /* CustomStylesSaveView.xib */,
@@ -957,7 +949,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CB72B9C286BF35600F2A780 /* LoginViewController.xib in Resources */,
-				3C9CE7D7287476F400163770 /* CustomStylesSaveTableViewCell.xib in Resources */,
 				3CB72A80286AD38600F2A780 /* LaunchScreen.storyboard in Resources */,
 				3C9CE7D22874766200163770 /* CustomStylesDetailsTableViewCell.xib in Resources */,
 				3C9CE7CA28746C7E00163770 /* CustomStylesDataSource.plist in Resources */,
@@ -1089,7 +1080,6 @@
 				3CB72AF8286AE95700F2A780 /* TRLoadingView.m in Sources */,
 				3CB72B68286AE98300F2A780 /* UIViewExt.m in Sources */,
 				3CB72B7A286AE98300F2A780 /* NSNumber+TRTimeString.m in Sources */,
-				3C9CE7D6287476F400163770 /* CustomStylesSaveTableViewCell.m in Sources */,
 				3CB72B67286AE98300F2A780 /* UIView+ScaleMethod.m in Sources */,
 				3CB72B97286BF0E500F2A780 /* LoginModel.m in Sources */,
 				3C9CE7CD2874760400163770 /* CustomStylesDetailsModel.m in Sources */,
