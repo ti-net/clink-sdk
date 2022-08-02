@@ -17,6 +17,8 @@
 		228A1F1B289948590017F197 /* MineSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 228A1F18289948590017F197 /* MineSwitchTableViewCell.m */; };
 		228A1F1F28994BB70017F197 /* MineConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 228A1F1D28994BB70017F197 /* MineConfigViewController.m */; };
 		228A1F2028994BB70017F197 /* MineConfigViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 228A1F1E28994BB70017F197 /* MineConfigViewController.xib */; };
+		228A1F22289962A90017F197 /* superCustomStylesDataSource.plist in Resources */ = {isa = PBXBuildFile; fileRef = 228A1F21289962A90017F197 /* superCustomStylesDataSource.plist */; };
+		228A1F25289963400017F197 /* superCustomStylesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 228A1F23289963400017F197 /* superCustomStylesModel.m */; };
 		23A6F8D3FF69B581D42DAA8A /* Pods_TOSClientKitDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B06F037C60C28EA36437331 /* Pods_TOSClientKitDemo.framework */; };
 		3C9CE7BA2874538B00163770 /* CustomStylesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9CE7B82874538B00163770 /* CustomStylesViewController.m */; };
 		3C9CE7BB2874538C00163770 /* CustomStylesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C9CE7B92874538B00163770 /* CustomStylesViewController.xib */; };
@@ -151,6 +153,9 @@
 		228A1F1C28994BB70017F197 /* MineConfigViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineConfigViewController.h; sourceTree = "<group>"; };
 		228A1F1D28994BB70017F197 /* MineConfigViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineConfigViewController.m; sourceTree = "<group>"; };
 		228A1F1E28994BB70017F197 /* MineConfigViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineConfigViewController.xib; sourceTree = "<group>"; };
+		228A1F21289962A90017F197 /* superCustomStylesDataSource.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = superCustomStylesDataSource.plist; sourceTree = "<group>"; };
+		228A1F23289963400017F197 /* superCustomStylesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = superCustomStylesModel.m; sourceTree = "<group>"; };
+		228A1F24289963400017F197 /* superCustomStylesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = superCustomStylesModel.h; sourceTree = "<group>"; };
 		2B06F037C60C28EA36437331 /* Pods_TOSClientKitDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TOSClientKitDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C9CE7B72874538B00163770 /* CustomStylesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomStylesViewController.h; sourceTree = "<group>"; };
 		3C9CE7B82874538B00163770 /* CustomStylesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomStylesViewController.m; sourceTree = "<group>"; };
@@ -352,6 +357,7 @@
 		228A1F00289945A00017F197 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				228A1F21289962A90017F197 /* superCustomStylesDataSource.plist */,
 				228A1F1C28994BB70017F197 /* MineConfigViewController.h */,
 				228A1F1D28994BB70017F197 /* MineConfigViewController.m */,
 				228A1F1E28994BB70017F197 /* MineConfigViewController.xib */,
@@ -362,6 +368,8 @@
 		228A1F01289945AA0017F197 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				228A1F24289963400017F197 /* superCustomStylesModel.h */,
+				228A1F23289963400017F197 /* superCustomStylesModel.m */,
 				228A1F0F289946E00017F197 /* MineInfoModel.h */,
 				228A1F10289946E00017F197 /* MineInfoModel.m */,
 				228A1F0C289946690017F197 /* MineTextTableCellModel.h */,
@@ -1038,6 +1046,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				228A1F22289962A90017F197 /* superCustomStylesDataSource.plist in Resources */,
 				3CB72B9C286BF35600F2A780 /* LoginViewController.xib in Resources */,
 				228A1F15289947A40017F197 /* MineTextTableCell.xib in Resources */,
 				3C9CE7D7287476F400163770 /* CustomStylesSaveTableViewCell.xib in Resources */,
@@ -1076,23 +1085,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		148783F9A202411438777156 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TOSClientKitDemo/Pods-TOSClientKitDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TOSClientKitDemo/Pods-TOSClientKitDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TOSClientKitDemo/Pods-TOSClientKitDemo-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		3C9CE7E52874A92100163770 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1207,6 +1199,7 @@
 				3C9CE7D12874766200163770 /* CustomStylesDetailsTableViewCell.m in Sources */,
 				3CB72A72286AD38400F2A780 /* AppDelegate.m in Sources */,
 				3CB72AAA286AE85900F2A780 /* AppDelegate+OtherFunction.m in Sources */,
+				228A1F25289963400017F197 /* superCustomStylesModel.m in Sources */,
 				3CB72B79286AE98300F2A780 /* NSArray+Log.m in Sources */,
 				3CB72B6C286AE98300F2A780 /* MBProgressHUD+GeneralConfiguration.m in Sources */,
 				228A1F11289946E00017F197 /* MineInfoModel.m in Sources */,
