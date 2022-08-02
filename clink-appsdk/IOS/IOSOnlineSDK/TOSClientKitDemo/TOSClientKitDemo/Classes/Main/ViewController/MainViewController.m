@@ -7,7 +7,8 @@
 
 #import "MainViewController.h"
 #import "LoginViewController.h"
-#import "CustomStylesViewController.h"
+//#import "CustomStylesViewController.h"
+#import "MineConfigViewController.h"
 #import "MessageViewController.h"
 #import "NSDate+TimeFormatting.h"
 #import "ProtocolViewController.h"
@@ -99,8 +100,8 @@
 
 //自定义样式
 - (IBAction)didClickCustomStylesBtnAction:(UIButton *)sender {
-    CustomStylesViewController *customStylesVC = [[CustomStylesViewController alloc] initWithNibName:[CustomStylesViewController className] bundle:nil];
-    [self.navigationController pushViewController:customStylesVC animated:YES];
+    MineConfigViewController *configVC = [[MineConfigViewController alloc] initWithNibName:[MineConfigViewController className] bundle:nil];
+    [self.navigationController pushViewController:configVC animated:YES];
 }
 
 //接入文档
