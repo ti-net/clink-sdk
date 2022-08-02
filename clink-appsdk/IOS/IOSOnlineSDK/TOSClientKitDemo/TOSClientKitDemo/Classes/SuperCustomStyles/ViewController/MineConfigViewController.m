@@ -15,6 +15,8 @@
 #import "MineTextTableCell.h"
 #import "MineSwitchTableViewCell.h"
 
+#import "MineConfigInputView.h"
+
 
 @interface MineConfigViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -39,6 +41,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(configSwitchChange:) name:kTOSClientDemoConfigSwitchChange object:nil];
     
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoMessageReceiveNotification:) name:KVisitorVideoReady object:nil];
 //
@@ -75,6 +79,24 @@
     
 }
 
+#pragma mark - configSwitchChange
+
+- (void)configSwitchChange:(NSNotification *)notification {
+    
+    MineTextTableCellModel *model = (MineTextTableCellModel *)notification.object;
+    for (int i = 0; i < self.cellDataSource.count; i++) {
+        NSArray * nArray = self.cellDataSource[i];
+        for (MineTextTableCellModel * nModel in nArray) {
+            if ([nModel.title isEqualToString:model.title]) {
+                nModel.value = model.value;
+                break;
+            }
+        }
+    }
+    
+    
+}
+
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.cellDataSource.count;
@@ -106,11 +128,94 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     MineTextTableCellModel *model = self.cellDataSource[indexPath.section][indexPath.row];
-    if ([model.title isEqualToString:@"聊天窗口UI样式"]) {
-        CustomStylesViewController *customStylesVC = [[CustomStylesViewController alloc] initWithNibName:[CustomStylesViewController className] bundle:nil];
-        [self.navigationController pushViewController:customStylesVC animated:YES];
-    } else if ([model.title isEqualToString:@"时间色值"]) {
-
+    switch (indexPath.section) {
+        case 0: {
+            switch (indexPath.row) {
+                case 0: {
+                    CustomStylesViewController *customStylesVC = [[CustomStylesViewController alloc] initWithNibName:[CustomStylesViewController className] bundle:nil];
+                    [self.navigationController pushViewController:customStylesVC animated:YES];
+                    break;
+                }
+                case 1: {
+                    [self showInputViewModel:model];
+                    break;
+                }
+                    
+                default:
+                    break;
+            }
+            break;
+        }
+        case 1: {
+            switch (indexPath.row) {
+                case 0: {
+                    [self showInputViewModel:model];
+                    break;
+                }
+                case 1: {
+                    [self showInputViewModel:model];
+                    break;
+                }
+                case 2: {
+                    [self showInputViewModel:model];
+                    break;
+                }
+                case 3: {
+                    MineConfigInputView * inputView = [[MineConfigInputView alloc] initWithFrame:(CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT))];
+                    inputView.titleString = model.title;
+                    inputView.textString = model.value.length ? model.value : @"";
+                    inputView.tipString = @"不超过 12 个字";
+                    inputView.textMaxLength = 12;
+                    inputView.isRegex = NO;
+                    inputView.tipTextColor = [UIColor colorWithHexString:@"#8C8C8C"];
+                    inputView.action = ^(NSString * _Nonnull string) {
+                        model.value = string;
+                        [self.tableView reloadData];
+                    };
+                    [inputView show];
+                    break;
+                }
+                    
+                default:
+                    break;
+            }
+            break;
+        }
+        case 2: {
+            switch (indexPath.row) {
+                case 1: {
+                    [self showInputViewModel:model];
+                    break;
+                }
+                default:
+                    break;
+            }
+            break;
+        }
+        case 3: {
+            [self showInputViewModel:model];
+            break;
+        }
+            
+            
+        default:
+            break;
+    }
+//    if ([model.title isEqualToString:@"聊天窗口UI样式"]) {
+//        CustomStylesViewController *customStylesVC = [[CustomStylesViewController alloc] initWithNibName:[CustomStylesViewController className] bundle:nil];
+//        [self.navigationController pushViewController:customStylesVC animated:YES];
+//    } else if ([model.title isEqualToString:@"时间色值"]) {
+//        MineConfigInputView * inputView = [[MineConfigInputView alloc] initWithFrame:(CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT))];
+//        inputView.titleString = model.title;
+//        inputView.tipString = @"6 位数色值";
+//        inputView.textMaxLength = 7;
+//        inputView.isRegex = YES;
+//        inputView.tipTextColor = [UIColor colorWithHexString:@"#8C8C8C"];
+//        inputView.action = ^(NSString * _Nonnull string) {
+//            model.value = string;
+//            [self.tableView reloadData];
+//        };
+//        [inputView show];
 //        __weak CustomAlertView *customAlertView = [self addCustomAlertViewWithTitle:@"修改手机号" placeholder:model.value];
 //        @weakify(self);
 //        [customAlertView setDidClickDetermineBtn:^{
@@ -125,11 +230,28 @@
 //                [self showErrorView:@"请输入正确的手机号码"];
 //            }
 //        }];
-    }
+//    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 45.f;
+}
+
+- (void)showInputViewModel:(MineTextTableCellModel *)model {
+    
+    MineConfigInputView * inputView = [[MineConfigInputView alloc] initWithFrame:(CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT))];
+    inputView.titleString = model.title;
+    inputView.textString = model.value.length ? model.value : @"#";
+    inputView.tipString = @"6 位数色值";
+    inputView.textMaxLength = 7;
+    inputView.isRegex = YES;
+    inputView.tipTextColor = [UIColor colorWithHexString:@"#8C8C8C"];
+    inputView.action = ^(NSString * _Nonnull string) {
+        model.value = string;
+        [self.tableView reloadData];
+    };
+    [inputView show];
+    
 }
 
 #pragma mark - 初始化
@@ -165,25 +287,25 @@
                              @{
                                  @"cellType": [MineSwitchTableViewCell className],
                                  @"title": @"客服/机器人昵称显示",
-                                 @"value": @"",
+                                 @"value": @"0",
                                  @"selectionStyle": @(UITableViewCellSelectionStyleNone),
                                  @"accessoryType": @(UITableViewCellAccessoryNone)},
                              @{
                                  @"cellType": [MineSwitchTableViewCell className],
                                  @"title": @"访客昵称显示",
-                                 @"value": @"",
+                                 @"value": @"1",
                                  @"selectionStyle": @(UITableViewCellSelectionStyleNone),
                                  @"accessoryType": @(UITableViewCellAccessoryNone)},
                              @{
                                  @"cellType": [MineSwitchTableViewCell className],
                                  @"title": @"客服/机器人头像显示",
-                                 @"value": @"",
+                                 @"value": @"1",
                                  @"selectionStyle": @(UITableViewCellSelectionStyleNone),
                                  @"accessoryType": @(UITableViewCellAccessoryNone)},
                              @{
                                  @"cellType": [MineSwitchTableViewCell className],
                                  @"title": @"访客头像显示",
-                                 @"value": @"",
+                                 @"value": @"0",
                                  @"selectionStyle": @(UITableViewCellSelectionStyleNone),
                                  @"accessoryType": @(UITableViewCellAccessoryNone)}, nil];
         

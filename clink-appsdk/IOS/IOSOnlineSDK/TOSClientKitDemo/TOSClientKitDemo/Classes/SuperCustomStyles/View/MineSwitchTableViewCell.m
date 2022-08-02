@@ -37,7 +37,7 @@
 
 - (IBAction)didClickSwitchBtnAction:(UISwitch *)sender {
     self.mineModel.value = sender.isOn ? @"1" : @"0";
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kTOSClientDemoConfigSwitchChange object:self.mineModel];
     if ([self.mineModel.title isEqualToString:@"接听来电"]) {
 
     } else if ([self.mineModel.title isEqualToString:@"离线接听"]) {    //离线接听
