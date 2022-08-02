@@ -1,6 +1,6 @@
 
 # TOSClientKit_Android_开发文档
-> 版本: 1.4.1
+> 版本: 1.4.3
 
 
 ## 目录
@@ -30,7 +30,7 @@ Gradle | 3.0 及以上版本
 在主app的 build.gradle 文件中添加如下依赖配置
 
 ```
-implementation "com.ti-net.oskit:online:1.4.1"
+implementation "com.ti-net.oskit:online:1.4.3"
 ```
 
 ### 混淆配置
@@ -257,9 +257,8 @@ TOSClientKit.addOnlineEventListener(new OnlineEventListener() {
 ##  <span id="session">会话界面</span>
 说明：TOSClientKit 已经实现了一个默认的会话视图界面，直接使用此类，即可快速启动和使用聊天界面。
 注：只有TOSClientKit调用connect成功时，才可进入客服会话聊天界面
-### 集成客服会话窗体
+### 集成客服会话窗体 集成客服fragment
 
-#### 集成客服fragment
 集成客服fragment（即SessionFragment），建议实现自己的Fragment继承SessionFragment，可实现高度自定义。
 如下代码：
 
@@ -272,49 +271,235 @@ transaction.replace(R.id.container, sessionFragment);
 transaction.commitAllowingStateLoss();
 ```
 
-#### 设置主题
-集成客服fragment必须设置以下主题
+### 修改UI配置
 
-```
-//application节点下配置theme主题
-android:theme="@style/Theme.TIMSDK.LEAVE.chat"
-
-//style文件添加如下主题
-<style name="Theme.TIMSDK.LEAVE.chat">
-
-    <!--  会话背景色  -->
-    <item name="chatBackground">#feeeed</item>
-    <!--  发送端气泡背景色  -->
-    <item name="sendBubbleColor">@drawable/message_send_bg</item>
-    <!--  接收端泡背景色  -->
-    <item name="receiveBubbleColor">@drawable/message_receive_bg</item>
-    <!--  头像圆角大小  -->
-    <item name="chatHeadRadius">20dp</item>
-</style>
-```
+#### xml修改示例如下：
 
 
-style文件中可添加更多可修改项：如下
+colors.xml可修改项
 
 
-    		<!--超链接地址颜色-->
-        <color name="super_line_text">@color/ti_blue</color>
-        <!--聊天发送字体颜色-->
-        <color name="message_send_text">@color/ti_white</color>
-        <!--聊天接收文字颜色-->
-        <color name="message_receive_msg_text">@color/ti_dark</color>
-        <!--聊天文件名颜色-->
-        <color name="message_receive_filename_text">@color/message_send_bg</color>
-        <!--聊天人名文字的颜色-->
-        <color name="message_username_text">@color/ti_99</color>
+    		<!--  ++++++++++++++ 聊天背景设置 ++++++++++++++  -->
+        <!--聊天背景颜色-->
+        <color name="ti_session_background_color">#FFF2F6FD</color>
+    
+        <!--  ++++++++++++++ 聊天消息样式设置 ++++++++++++++  -->
+        <!--昵称文字颜色-->
+        <color name="ti_nickname_text_color">#FF595959</color>
+        <!--发送端气泡背景颜色-->
+        <color name="ti_send_bubble_background_color">#D5E1F7</color>
+        <!--发送端文字颜色-->
+        <color name="ti_send_msg_text_color">@color/ti_dark</color>
+        <!--发送端超链接文字颜色-->
+        <color name="ti_send_super_line_text_color">#1366dc</color>
+        <!--接收端文字颜色-->
+        <color name="ti_receive_msg_text_color">@color/ti_dark</color>
+        <!--接收端超链接文字颜色-->
+        <color name="ti_receive_super_line_text_color">#1366dc</color>
+        <!--接收端气泡背景颜色-->
+        <color name="ti_receive_bubble_background_color">@android:color/white</color>
+        <!--猜你所想-->
+        <color name="ti_guess_text_color">#FAAD14</color>
+        <!--排队文字颜色-->
+        <color name="ti_line_up_text_color">@color/ti_blue</color>
+        <!--会话提示字体颜色-->
+        <color name="ti_tips_text_color">#fff</color>
+        <!--会话提示气泡颜色-->
+        <color name="ti_tips_bubble_bg_color">#c8cbce</color>
+        <!--时间字体颜色-->
+        <color name="ti_msg_time_color">#999</color>
         <!--富文本视频播放器的背景-->
-        <color name="rich_video_bg">#80000000</color>
+        <color name="ti_rich_video_bg_color">#80000000</color>
         <!--富文本视频播放器进度条的背景色-->
-        <color name="rich_video_progress_bg">#4D000000</color>
+        <color name="ti_rich_video_progress_bg_color">#4D000000</color>
         <!--富文本视频播放器进度条的前景色-->
-        <color name="rich_video_foreground">@color/ti_white</color>
-        <!--聊天背景色-->
-        <color name="session_bg">#FFF2F6FD</color>
+        <color name="ti_rich_video_foreground_color">@color/ti_white</color>
+    
+        <!--  ++++++++++++++  输入栏设置 ++++++++++++++  -->
+        <!--输入区域背景颜色-->
+        <color name="ti_input_area_bg_color">#F5F7F9</color>
+        <!--聊天输入框文字颜色-->
+        <color name="ti_input_box_text_color">#FF262626</color>
+        <!--聊天输入框边框线颜色-->
+        <color name="ti_input_box_border_color">#F3F6F7</color>
+        <!--聊天输入框背景色-->
+        <color name="ti_input_box_bg_color">#ffffff</color>
+        <!--输入区域按住录音按钮文字颜色-->
+        <color name="ti_input_area_voice_press_text_color">#7E7E7E</color>
+        <!--输入区域按住录音按钮背景颜色-->
+        <color name="ti_input_area_voice_press_bg_color">#ffffff</color>
+        <!--输入区发送按钮背景颜色-->
+        <color name="ti_send_btn_bg_color">#FF4385FF</color>
+        <!--输入区发送按钮字体颜色-->
+        <color name="ti_send_btn_text_color">#ffffff</color>
+        <!--拓展面板条目背景颜色-->
+        <color name="ti_session_func_item_bg_color">#ffffff</color>
+        <!--扩展面板条目文字颜色-->
+        <color name="ti_session_func_item_text_color">#8B8F9D</color>
+    
+        <!--  ++++++++++++++ 快捷入口设置 ++++++++++++++  -->
+        <!--快捷入口标签字体颜色-->
+        <color name="ti_quick_entry_text_color">#000000</color>
+        <!--快捷入口标签背景色-->
+        <color name="ti_quick_entry_bg_color">#F3F6F7</color>
+        <!--快捷入口底部背景色-->
+        <color name="ti_quick_entry_rv_bg_color">#ffffff</color>
+    
+        <!--  ++++++++++++++ 商品卡片设置 ++++++++++++++  -->
+        <!--商品卡片一发送按钮背景色-->
+        <color name="ti_commodity_card_bg_color">#299AFF</color>
+        <!--商品卡片一发送文字颜色-->
+        <color name="ti_commodity_card__color">#ffffff</color>
+        <!--聊天接受商品卡片分割线颜色-->
+        <color name="ti_msg_card_receive_dividing_line_color">#80000000</color>
+        <!--聊天发送商品卡片分割线颜色-->
+        <color name="ti_msg_card_send_dividing_line_color">#80000000</color>
+        <!--聊天接受商品卡片描述颜色-->
+        <color name="ti_msg_card_receive_text_color">#80000000</color>
+        <!--聊天发送商品卡片描述颜色-->
+        <color name="ti_msg_card_send_text_color">#80000000</color>
+        <!--聊天文件名颜色-->
+        <color name="ti_msg_receive_filename_text_color">@color/ti_send_bubble_background_color</color>
+        
+        <!--  ++++++++++++++ 选择图片页面 ++++++++++++++  -->
+        <!--相册导航栏背景色-->
+        <color name="album_navigation_bar_background">#ffffff</color>
+        <!--相册导航栏文字颜色-->
+        <color name="album_navigation_bar_ext">#303030</color>
+        <!--相册导航栏确定按钮背景色-->
+        <color name="send_picture_button_bg">#4385ff</color>
+
+dimen可修改项
+
+
+    		<!--  ++++++++++++++ 聊天消息样式设置 ++++++++++++++  -->
+        <!--头像大小-->
+        <dimen name="ti_chat_avatar_size">32dp</dimen>
+        <!--头像与消息气泡的间距-->
+        <dimen name="ti_chat_avatar_message_spacing">5dp</dimen>
+        <!--  头像圆角弧度  -->
+        <dimen name="ti_chat_avatar_radius">4dp</dimen>
+        <!--昵称文字大小-->
+        <dimen name="ti_chat_username_text_size">13sp</dimen>
+        <!--发送端文字大小-->
+        <dimen name="ti_send_bubble_text_size">14sp</dimen>
+        <!--接收端文字大小-->
+        <dimen name="ti_receive_bubble_text_size">14sp</dimen>
+        <!--聊天气泡背景圆角弧度-->
+        <dimen name="ti_msg_bubble_background_corner">10dp</dimen>
+        <!--消息的最大限制宽度-->
+        <dimen name="ti_message_max_width">260dp</dimen>
+        <!--图片消息的默认高度-->
+        <dimen name="ti_msg_img_height">195dp</dimen>
+        <!--富文本视频播放器的宽-->
+        <dimen name="ti_rich_video_width">150dp</dimen>
+        <!--富文本视频播放器的高-->
+        <dimen name="ti_rich_video_height">180dp</dimen>
+        <!--会话提示文字大小-->
+        <dimen name="ti_notification_size">11sp</dimen>
+        <!--时间文字大小-->
+        <dimen name="ti_time_size">12sp</dimen>
+        <!--富文本消息之间的默认空格大小-->
+        <dimen name="ti_msg_html_divider">4dp</dimen>
+    
+        <!--  ++++++++++++++ 输入栏样式设置 ++++++++++++++  -->
+        <!--输入框行高-->
+        <dimen name="ti_input_box_high_line_height">24dp</dimen>
+        <!--输入框文字大小-->
+        <dimen name="ti_input_box_text_size">16sp</dimen>
+        <!--输入框、录音按钮最小高度-->
+        <dimen name="ti_input_box_min_height">40dp</dimen>
+        <!--输入框边框大小-->
+        <dimen name="ti_input_box_border_width">1dp</dimen>
+        <!--输入框边框圆角弧度-->
+        <dimen name="ti_input_box_corner_radius">5dp</dimen>
+        <!--输入区域语音，表情，"+"图标大小-->
+        <dimen name="ti_input_area_icon_size">36dp</dimen>
+        <!--输入区域按住录音按钮文字大小-->
+        <dimen name="ti_input_area_voice_press_text_size">14sp</dimen>
+        <!--输入区域按住录音按钮边框大小-->
+        <dimen name="ti_input_area_voice_press_border_width">1dp</dimen>
+        <!--输入区域按住录音按钮圆角弧度-->
+        <dimen name="ti_input_area_voice_press_corner_radius">5dp</dimen>
+        <!--输入区发送按钮背景圆角弧度-->
+        <dimen name="ti_send_btn_bg_corner_radius">8dp</dimen>
+        <!--拓展面板条目底层背景圆角弧度-->
+        <dimen name="ti_session_func_item_bg_corner_radius">15dp</dimen>
+        <!--扩展面板条目背景大小-->
+        <dimen name="ti_session_func_item_bg_size">64dp</dimen>
+        <!--扩展面板条目图片大小-->
+        <dimen name="ti_session_func_item_img_size">32dp</dimen>
+        <!--扩展面板条目文字大小-->
+        <dimen name="ti_session_func_item_text_size">12dp</dimen>
+        <!--发送按钮高-->
+        <dimen name="ti_send_out_high">40dp</dimen>
+        <!--发送按钮宽-->
+        <dimen name="ti_send_out_wide">62dp</dimen>
+    
+        <!--  ++++++++++++++ 快捷入口设置 ++++++++++++++  -->
+        <!--快捷入口内容距边框区域垂直间距-->
+        <dimen name="ti_quick_entry_vertical_spec">10dp</dimen>
+        <!--快捷入口文字大小-->
+        <dimen name="ti_quick_entry_item_text_size">13sp</dimen>
+        <!--快捷入口标签背景圆角弧度-->
+        <dimen name="ti_quick_entry_item_corner_radius">10dp</dimen>
+        <!--快捷入口标签水平间距-->
+        <dimen name="ti_quick_entry_item_horizontal_spacing">10dp</dimen>
+    
+        <!--  ++++++++++++++ 商品卡片设置 ++++++++++++++  -->
+        <!--商品卡片一图片大小-->
+        <dimen name="ti_msg_img_one">60dp</dimen>
+        <!--商品卡片一发送按钮背景圆角-->
+        <dimen name="ti_commodity_card_file">30dp</dimen>
+        <!--商品卡片一发送文字大小-->
+        <dimen name="ti_commodity_card_size">14sp</dimen>
+        <!--商品卡片订单号、日期文字大小-->
+        <dimen name="ti_message_tv_size">12sp</dimen>
+        <!--商品卡片二图片大小-->
+        <dimen name="ti_message_img">80dp</dimen>
+
+string.xml可修改项
+
+
+    		<!--录音按钮文案-->
+        <string name="ti_pressed_speak">按住说话</string>
+        <!--发送消息按钮文案-->
+        <string name="ti_send">发送</string>
+        <!--会话页面输入框hint文案-->
+        <string name="ti_input_box_hint_text">请输入内容</string>
+        <!--选择图片页面标题-->
+        <string name="ti_camera">相册</string>
+
+#### 代码修改示例如下：
+
+说明：只需要在继承Application类的onCreate初始化一次
+
+
+       TCustomizationUI tCustomizationUI = new TCustomizationUI();//自定义UI对象
+       tCustomizationUI.sendBubbleBackground = R.drawable.ti_bg_color;//发送端气泡背景
+       tCustomizationUI.receiveBubbleBackground = R.drawable.ti_bg_color;//接收端气泡背景
+       tCustomizationUI.sendBubbleBackgroundColor = getResources().getColor(R.color.ti_red);//发送端气泡背景颜色
+       tCustomizationUI.receiveBubbleBackgroundColor = getResources().getColor(R.color.ti_red);//接收端气泡背景颜色
+       //聊天背景颜色
+       tCustomizationUI.sessionBackgroundColor = getResources().getColor(R.color.ti_session_func_item_text_color);
+       tCustomizationUI.msgTimeColor = getResources().getColor(R.color.ti_guess_text_color);//时间字体文字颜色
+       tCustomizationUI.inputAreaBgColor = getResources().getColor(R.color.ti_guess_text_color);//输入区域背景颜色
+       //输入区域按住录音按钮文字颜色
+       tCustomizationUI.inputAreaVoicePressTextColor = getResources().getColor(R.color.ti_guess_text_color);
+       tCustomizationUI.inputBoxHintText = "hint_text";//会话页面输入框hint文案
+       tCustomizationUI.chatAvatarRadius = R.dimen.fab_margin;//头像圆角弧度
+    
+       tCustomizationUI.robotName = true;//机器人昵称
+       tCustomizationUI.visitorName = true;//访客昵称
+       tCustomizationUI.visitorAvatar = true;//访客头像
+       tCustomizationUI.customerServiceName = true;//客服昵称
+       tCustomizationUI.acceptMessageAvatar = true;//客服、机器人头像
+       tCustomizationUI.voiceButton = true;//语音按钮
+       TOSClientKitConfig tosClientKitConfig = new TOSClientKitConfig.Builder()
+                .setTCustomizationUI(tCustomizationUI)//配置自定义UI
+                .build();
+    
+       TOSClientKit.setTosClientKitConfig(tosClientKitConfig);
 
 ### 会话界面相关操作
 

@@ -61,7 +61,7 @@ public class SplashActivity extends BaseActivity implements View.OnClickListener
                 startActivity(new Intent(SplashActivity.this, LoginActivity.class));
                 break;
             case R.id.tv_theme_list:
-                startActivity(new Intent(SplashActivity.this, ThemeListActivity.class));
+                startActivity(new Intent(SplashActivity.this, CustomStyleActivity.class));
                 break;
         }
     }

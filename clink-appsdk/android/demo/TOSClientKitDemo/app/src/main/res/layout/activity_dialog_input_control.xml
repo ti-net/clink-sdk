@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/transparent"
+    android:fitsSystemWindows="true"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@drawable/shape_grey_top_corner_bg"
+        android:paddingLeft="15dp"
+        android:paddingRight="17dp">
+
+        <ImageView
+            android:id="@+id/iv_custom_input_dialog_close"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:src="@mipmap/close_icon" />
+
+        <TextView
+            android:id="@+id/tv_custom_input_dialog_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="这里是标题"
+            android:textColor="#ff333333"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_custom_input_dialog_sure"
+            android:layout_width="56dp"
+            android:layout_height="32dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/shape_blue_sure_bg"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" />
+
+    </RelativeLayout>
+
+    <com.tinet.tosclientkitdemo.widget.EditTextWithDelete
+        android:id="@+id/et_custom_input_dialog_value"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@android:color/white"
+        android:hint="请输入"
+        android:inputType="text"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:singleLine="true"
+        android:textSize="16sp"
+        app:drawableFocus="@drawable/user"
+        app:drawableUnFocus="@drawable/user"
+        app:isShowLeftIcon="false" />
+
+    <TextView
+        android:id="@+id/tv_custom_input_dialog_hint"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="#FFF6F7F8"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:text="6 位数色值"
+        android:textColor="#ff8c8c8c"
+        android:textSize="14sp" />
+
+</LinearLayout>

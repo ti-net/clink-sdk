@@ -7,4 +7,13 @@
     <dimen name="text_size_small">12sp</dimen>
 
     <dimen name="login_input_icon_size">20sp</dimen>
+
+
+    <dimen name="chat_avatar_radius_default">20dp</dimen>
+    <dimen name="chat_avatar_radius_blue">8dp</dimen>
+    <dimen name="chat_avatar_radius_yellow">20dp</dimen>
+    <dimen name="chat_avatar_radius_red">10dp</dimen>
+    <dimen name="chat_avatar_radius_green">16dp</dimen>
+
+
 </resources>
