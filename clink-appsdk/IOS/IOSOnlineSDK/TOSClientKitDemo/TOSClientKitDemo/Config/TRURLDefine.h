@@ -18,4 +18,9 @@ static NSString * const kAppStoreURL = @"itms-apps://itunes.apple.com/app/id1495
 static NSString * const kLogin = @"agent/login";
 
 
+#pragma mark - 点击事件路由
+static NSString * const kRouterEventClickSelectedBox = @"kRouterEventClickSelectedBox_CustomStylesVC";
+static NSString * const kRouterEventClickDetails = @"kRouterEventClickDetails_CustomStylesVC";
+static NSString * const kRouterEventSaveButton = @"kRouterEventSaveButton_CustomStylesVC";
+
 #endif /* TRURLDefine_h */

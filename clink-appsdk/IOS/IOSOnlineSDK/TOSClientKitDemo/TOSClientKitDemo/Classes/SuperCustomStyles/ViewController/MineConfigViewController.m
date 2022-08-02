@@ -11,7 +11,6 @@
 #import "LoginModel.h"
 #import "MineTextTableCellModel.h"
 #import "CustomStylesViewController.h"
-#import <MMPopupView/MMPopupView.h>
 
 #import "MineTextTableCell.h"
 #import "MineSwitchTableViewCell.h"

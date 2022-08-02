@@ -19,6 +19,11 @@
 
 @implementation AppDelegate
 
+- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(nullable UIWindow *)window {
+    
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 + (AppDelegate *)App {
     return (AppDelegate*)[[UIApplication sharedApplication] delegate];
 }

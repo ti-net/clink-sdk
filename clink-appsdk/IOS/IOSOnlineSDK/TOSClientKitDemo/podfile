@@ -4,6 +4,8 @@ platform:ios,'10.0'
 use_frameworks!
 target "TOSClientKitDemo" do
 
+pod 'TOSClientKit','~>1.4.3'
+
 pod 'Bugly'
 pod 'MBProgressHUD'
 
@@ -30,7 +32,5 @@ pod 'TZImagePickerController'
 pod 'WZLBadge'
 
 pod 'Masonry'
-
-pod 'TOSClientKit'
 
 end
