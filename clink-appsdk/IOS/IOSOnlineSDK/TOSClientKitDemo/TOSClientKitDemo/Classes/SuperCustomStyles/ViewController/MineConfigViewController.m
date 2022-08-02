@@ -14,6 +14,7 @@
 
 #import "MineTextTableCell.h"
 #import "MineSwitchTableViewCell.h"
+#import "superCustomStylesModel.h"
 
 #import "MineConfigInputView.h"
 
@@ -24,6 +25,7 @@
 @property (nonatomic, strong) NSMutableArray <NSMutableArray <MineTextTableCellModel *>*>*cellDataSource;
 
 @property (weak, nonatomic) UITextField *textField;
+@property (nonatomic, strong) NSMutableArray <superCustomStylesModel *>*dataSource;
 
 
 @end
@@ -64,6 +66,11 @@
 }
 
 - (void)bindViewModel {
+    UIBarButtonItem *resetConfigButton = [[UIBarButtonItem alloc] initWithTitle:@"恢复默认" style:UIBarButtonItemStylePlain target:self action:@selector(resetConfigClickEvent)];
+    [resetConfigButton setTintColor:[UIColor blueColor]];
+    
+    self.navigationItem.rightBarButtonItem = resetConfigButton;
+    
     self.cellDataSource[0][0].value = @"经典样式";
 //    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
 //    CFShow((__bridge CFTypeRef)(infoDictionary));
@@ -385,5 +392,72 @@
     return _cellDataSource;
 }
 
+- (void)resetConfigClickEvent{
+    NSLog(@"resetConfigClickEvent");
+    //弹窗
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"恢复默认配置" message:@"确认要恢复默认配置吗，恢复后已修改的配置项将不会保存。" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    
+    [alertView show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex//点击弹窗按钮后
+{
+    NSLog(@"buttonIndex:%ld",(long)buttonIndex);
+ 
+    if (buttonIndex == 0) {//取消
+        NSLog(@"取消");
+    }else if (buttonIndex == 1){//确定
+        NSLog(@"确定");
+        [self resetConfigParams];
+    }
+}
+
+-(void)resetConfigParams{
+    // plist 只记录默认值
+    NSArray <NSDictionary *>*array = [NSArray readPlistFileWithFileName:@"superCustomStylesDataSource"];
+    self.dataSource = [[NSArray modelArrayWithClass:[superCustomStylesModel class] json:array] mutableCopy];
+    NSLog(@"data source = %@",self.dataSource);
+    
+    superCustomStylesModel *model = self.dataSource[0];
+    NSLog(@"model = %@", [model yy_modelToJSONObject]);
+    
+//    [TOSKitCustomInfo shareCustomInfo].Chat_time_textColor = [self colorWithHexString:model.Chat_time_textColor alpha:1.f];
+//    [TOSKitCustomInfo shareCustomInfo].Chat_tosRobotName_enable = model.Chat_tosRobotName_enable;
+//    [TOSKitCustomInfo shareCustomInfo].Chat_visitorName_enable = model.Chat_visitorName_enable;
+//    [TOSKitCustomInfo shareCustomInfo].Chat_tosRobot_portrait_enable = model.Chat_tosRobot_portrait_enable;
+//    [TOSKitCustomInfo shareCustomInfo].Chat_visitor_portrait_enable = model.Chat_visitor_portrait_enable;
+//    [TOSKitCustomInfo shareCustomInfo].ChatBox_backGroundColor = [self colorWithHexString:model.ChatBox_backGroundColor alpha:1.0f];
+//    [TOSKitCustomInfo shareCustomInfo].ChatBox_lineColor = [self colorWithHexString:model.ChatBox_lineColor alpha:1.0f];
+//
+//    [TOSKitCustomInfo shareCustomInfo].VoiceButton_textColor = [self colorWithHexString:model.VoiceButton_textColor alpha:1.0f];
+//    [TOSKitCustomInfo shareCustomInfo].ChatBox_textview_placeholder = model.ChatBox_textview_placeholder;
+//    [TOSKitCustomInfo shareCustomInfo].Toast_backGroundColor = [self colorWithHexString:model.Toast_backGroundColor alpha:1.0f];
+//    [TOSKitCustomInfo shareCustomInfo].Toast_textColor = [self colorWithHexString:model.Toast_textColor alpha:1.0f];
+//    [TOSKitCustomInfo shareCustomInfo].imagePicker_naviBgColor = [self colorWithHexString:model.imagePicker_naviBgColor alpha:1.0f];
+//    [TOSKitCustomInfo shareCustomInfo].imagePicker_barItemTextColor = [self colorWithHexString:model.imagePicker_barItemTextColor alpha:1.0f];
+}
+
+- (UIColor *)colorWithHexString:(NSString *)colorStr alpha:(CGFloat)alpha {
+    NSString *cString = [[colorStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
+        
+    NSRange range;
+    range.location = 0;
+    range.length = 2;
+    NSString *rString = [cString substringWithRange:range];
+    
+    range.location = 2;
+    NSString *gString = [cString substringWithRange:range];
+    
+    range.location = 4;
+    NSString *bString = [cString substringWithRange:range];
+    
+    
+    unsigned int r, g, b;
+    [[NSScanner scannerWithString:rString] scanHexInt:&r];
+    [[NSScanner scannerWithString:gString] scanHexInt:&g];
+    [[NSScanner scannerWithString:bString] scanHexInt:&b];
+    
+    return kRGBAColor(r, g, b, alpha);
+}
 
 @end
