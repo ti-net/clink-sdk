@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		228A1F072899462D0017F197 /* MineProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 228A1F042899462D0017F197 /* MineProfileTableViewCell.m */; };
+		228A1F082899462D0017F197 /* MineProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 228A1F052899462D0017F197 /* MineProfileTableViewCell.xib */; };
+		228A1F0E289946690017F197 /* MineTextTableCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 228A1F0D289946690017F197 /* MineTextTableCellModel.m */; };
+		228A1F11289946E00017F197 /* MineInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 228A1F10289946E00017F197 /* MineInfoModel.m */; };
+		228A1F15289947A40017F197 /* MineTextTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 228A1F13289947A40017F197 /* MineTextTableCell.xib */; };
+		228A1F16289947A40017F197 /* MineTextTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 228A1F14289947A40017F197 /* MineTextTableCell.m */; };
+		228A1F1A289948590017F197 /* MineSwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 228A1F17289948590017F197 /* MineSwitchTableViewCell.xib */; };
+		228A1F1B289948590017F197 /* MineSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 228A1F18289948590017F197 /* MineSwitchTableViewCell.m */; };
+		228A1F1F28994BB70017F197 /* MineConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 228A1F1D28994BB70017F197 /* MineConfigViewController.m */; };
+		228A1F2028994BB70017F197 /* MineConfigViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 228A1F1E28994BB70017F197 /* MineConfigViewController.xib */; };
 		23A6F8D3FF69B581D42DAA8A /* Pods_TOSClientKitDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B06F037C60C28EA36437331 /* Pods_TOSClientKitDemo.framework */; };
 		3C9CE7BA2874538B00163770 /* CustomStylesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9CE7B82874538B00163770 /* CustomStylesViewController.m */; };
 		3C9CE7BB2874538C00163770 /* CustomStylesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C9CE7B92874538B00163770 /* CustomStylesViewController.xib */; };
@@ -122,6 +132,22 @@
 
 /* Begin PBXFileReference section */
 		16EE4A2DFDCC9DA1F7B5C242 /* Pods-TOSClientKitDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TOSClientKitDemo.debug.xcconfig"; path = "Target Support Files/Pods-TOSClientKitDemo/Pods-TOSClientKitDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		228A1F042899462D0017F197 /* MineProfileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineProfileTableViewCell.m; sourceTree = "<group>"; };
+		228A1F052899462D0017F197 /* MineProfileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineProfileTableViewCell.xib; sourceTree = "<group>"; };
+		228A1F062899462D0017F197 /* MineProfileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineProfileTableViewCell.h; sourceTree = "<group>"; };
+		228A1F0C289946690017F197 /* MineTextTableCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineTextTableCellModel.h; sourceTree = "<group>"; };
+		228A1F0D289946690017F197 /* MineTextTableCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineTextTableCellModel.m; sourceTree = "<group>"; };
+		228A1F0F289946E00017F197 /* MineInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineInfoModel.h; sourceTree = "<group>"; };
+		228A1F10289946E00017F197 /* MineInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineInfoModel.m; sourceTree = "<group>"; };
+		228A1F12289947A40017F197 /* MineTextTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineTextTableCell.h; sourceTree = "<group>"; };
+		228A1F13289947A40017F197 /* MineTextTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineTextTableCell.xib; sourceTree = "<group>"; };
+		228A1F14289947A40017F197 /* MineTextTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineTextTableCell.m; sourceTree = "<group>"; };
+		228A1F17289948590017F197 /* MineSwitchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineSwitchTableViewCell.xib; sourceTree = "<group>"; };
+		228A1F18289948590017F197 /* MineSwitchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineSwitchTableViewCell.m; sourceTree = "<group>"; };
+		228A1F19289948590017F197 /* MineSwitchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineSwitchTableViewCell.h; sourceTree = "<group>"; };
+		228A1F1C28994BB70017F197 /* MineConfigViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineConfigViewController.h; sourceTree = "<group>"; };
+		228A1F1D28994BB70017F197 /* MineConfigViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineConfigViewController.m; sourceTree = "<group>"; };
+		228A1F1E28994BB70017F197 /* MineConfigViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineConfigViewController.xib; sourceTree = "<group>"; };
 		2B06F037C60C28EA36437331 /* Pods_TOSClientKitDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TOSClientKitDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C9CE7B72874538B00163770 /* CustomStylesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomStylesViewController.h; sourceTree = "<group>"; };
 		3C9CE7B82874538B00163770 /* CustomStylesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomStylesViewController.m; sourceTree = "<group>"; };
@@ -305,6 +331,61 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		228A1EFF289945750017F197 /* SuperCustomStyles */ = {
+			isa = PBXGroup;
+			children = (
+				228A1F02289945B00017F197 /* View */,
+				228A1F01289945AA0017F197 /* Model */,
+				228A1F00289945A00017F197 /* ViewController */,
+			);
+			path = SuperCustomStyles;
+			sourceTree = "<group>";
+		};
+		228A1F00289945A00017F197 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				228A1F1C28994BB70017F197 /* MineConfigViewController.h */,
+				228A1F1D28994BB70017F197 /* MineConfigViewController.m */,
+				228A1F1E28994BB70017F197 /* MineConfigViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		228A1F01289945AA0017F197 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				228A1F0F289946E00017F197 /* MineInfoModel.h */,
+				228A1F10289946E00017F197 /* MineInfoModel.m */,
+				228A1F0C289946690017F197 /* MineTextTableCellModel.h */,
+				228A1F0D289946690017F197 /* MineTextTableCellModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		228A1F02289945B00017F197 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				228A1F19289948590017F197 /* MineSwitchTableViewCell.h */,
+				228A1F18289948590017F197 /* MineSwitchTableViewCell.m */,
+				228A1F17289948590017F197 /* MineSwitchTableViewCell.xib */,
+				228A1F12289947A40017F197 /* MineTextTableCell.h */,
+				228A1F14289947A40017F197 /* MineTextTableCell.m */,
+				228A1F13289947A40017F197 /* MineTextTableCell.xib */,
+				228A1F032899462D0017F197 /* MineProfile */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		228A1F032899462D0017F197 /* MineProfile */ = {
+			isa = PBXGroup;
+			children = (
+				228A1F042899462D0017F197 /* MineProfileTableViewCell.m */,
+				228A1F052899462D0017F197 /* MineProfileTableViewCell.xib */,
+				228A1F062899462D0017F197 /* MineProfileTableViewCell.h */,
+			);
+			path = MineProfile;
+			sourceTree = "<group>";
+		};
 		3C9CE7B2287451A000163770 /* CustomStyles */ = {
 			isa = PBXGroup;
 			children = (
@@ -427,6 +508,7 @@
 		3CB72AA5286AE41100F2A780 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				228A1EFF289945750017F197 /* SuperCustomStyles */,
 				3C9CE7B2287451A000163770 /* CustomStyles */,
 				3CB72B9D286BF55700F2A780 /* Main */,
 				3CB72B8D286B017400F2A780 /* Login */,
@@ -841,7 +923,7 @@
 				3C9CE7E52874A92100163770 /* ShellScript */,
 				3C9CE7EA2874B6D200163770 /* Embed Frameworks */,
 				FC788536F4E6703915E1C1D9 /* [CP] Embed Pods Frameworks */,
-				39266C0A155EE8EC4AB7472C /* [CP] Copy Pods Resources */,
+				F4673C37AF9E797D48A132CB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -936,6 +1018,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CB72B9C286BF35600F2A780 /* LoginViewController.xib in Resources */,
+				228A1F15289947A40017F197 /* MineTextTableCell.xib in Resources */,
 				3C9CE7D7287476F400163770 /* CustomStylesSaveTableViewCell.xib in Resources */,
 				3CB72A80286AD38600F2A780 /* LaunchScreen.storyboard in Resources */,
 				3C9CE7D22874766200163770 /* CustomStylesDetailsTableViewCell.xib in Resources */,
@@ -944,9 +1027,12 @@
 				3C9CE7C0287453E800163770 /* CustomStylesDetailsViewController.xib in Resources */,
 				3C9CE7C5287457E700163770 /* CustomStylesTableViewCell.xib in Resources */,
 				3CB72A7D286AD38600F2A780 /* Assets.xcassets in Resources */,
+				228A1F1A289948590017F197 /* MineSwitchTableViewCell.xib in Resources */,
 				3C9CE7BB2874538C00163770 /* CustomStylesViewController.xib in Resources */,
 				3CB72BA6286BF5FD00F2A780 /* MainViewController.xib in Resources */,
 				3CB72A7B286AD38400F2A780 /* Main.storyboard in Resources */,
+				228A1F082899462D0017F197 /* MineProfileTableViewCell.xib in Resources */,
+				228A1F2028994BB70017F197 /* MineConfigViewController.xib in Resources */,
 				3C9CE7D928747A2000163770 /* CustomStylesDetailsDataSource.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -968,23 +1054,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		39266C0A155EE8EC4AB7472C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TOSClientKitDemo/Pods-TOSClientKitDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TOSClientKitDemo/Pods-TOSClientKitDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TOSClientKitDemo/Pods-TOSClientKitDemo-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		3C9CE7E52874A92100163770 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1024,6 +1093,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F4673C37AF9E797D48A132CB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TOSClientKitDemo/Pods-TOSClientKitDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TOSClientKitDemo/Pods-TOSClientKitDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TOSClientKitDemo/Pods-TOSClientKitDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		FC788536F4E6703915E1C1D9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1061,6 +1147,7 @@
 				3CB72B86286AE98300F2A780 /* BaseNavigationController.m in Sources */,
 				3CB72B77286AE98300F2A780 /* UITableView+EmptyData.m in Sources */,
 				3CB72B83286AE98300F2A780 /* BaseViewModel.m in Sources */,
+				228A1F0E289946690017F197 /* MineTextTableCellModel.m in Sources */,
 				3CB72B84286AE98300F2A780 /* BaseView.m in Sources */,
 				3CB72ACD286AE8A400F2A780 /* ZYAlertView.m in Sources */,
 				3CB72AF8286AE95700F2A780 /* TRLoadingView.m in Sources */,
@@ -1082,7 +1169,9 @@
 				3CB72AAA286AE85900F2A780 /* AppDelegate+OtherFunction.m in Sources */,
 				3CB72B79286AE98300F2A780 /* NSArray+Log.m in Sources */,
 				3CB72B6C286AE98300F2A780 /* MBProgressHUD+GeneralConfiguration.m in Sources */,
+				228A1F11289946E00017F197 /* MineInfoModel.m in Sources */,
 				3CB72B9B286BF35600F2A780 /* LoginViewController.m in Sources */,
+				228A1F072899462D0017F197 /* MineProfileTableViewCell.m in Sources */,
 				3CB72B6F286AE98300F2A780 /* NSString+RegexValidation.m in Sources */,
 				3CB72AF6286AE95700F2A780 /* TRCustomSearchBar.m in Sources */,
 				3CB72B8B286AE98300F2A780 /* BaseCollectionViewCell.m in Sources */,
@@ -1094,6 +1183,7 @@
 				3CB72AF9286AE95700F2A780 /* DomainNameSave.m in Sources */,
 				3CB72B76286AE98300F2A780 /* NSString+Frame.m in Sources */,
 				3CB72B6D286AE98300F2A780 /* CABasicAnimation+TRQuickCreate.m in Sources */,
+				228A1F1B289948590017F197 /* MineSwitchTableViewCell.m in Sources */,
 				3CB72B63286AE98300F2A780 /* UIImage+PureColorImage.m in Sources */,
 				3CB72B65286AE98300F2A780 /* NSDictionary+TRTool.m in Sources */,
 				3CB72B8A286AE98300F2A780 /* ErrorModel.m in Sources */,
@@ -1102,7 +1192,9 @@
 				3CB72B70286AE98300F2A780 /* NSString+UrlChineseCoding.m in Sources */,
 				3C9CE7E42874A07700163770 /* ProtocolViewController.m in Sources */,
 				3C9CE7BA2874538B00163770 /* CustomStylesViewController.m in Sources */,
+				228A1F16289947A40017F197 /* MineTextTableCell.m in Sources */,
 				3CB72B64286AE98300F2A780 /* NSDictionary+Log.m in Sources */,
+				228A1F1F28994BB70017F197 /* MineConfigViewController.m in Sources */,
 				3CB72B78286AE98300F2A780 /* NSArray+TRTool.m in Sources */,
 				3CB72B87286AE98300F2A780 /* BaseModel.m in Sources */,
 				3CB72B71286AE98300F2A780 /* NSString+JsonParsing.m in Sources */,
