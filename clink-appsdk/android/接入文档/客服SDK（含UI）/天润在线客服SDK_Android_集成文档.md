@@ -630,18 +630,6 @@ message.setExtraInfo(extraInfo);
 intent.putExtra(ChatFragment.ARGS_CARD,message);
 ```
 
-#### 聊天主题自定义功能
-会话窗体界面需要实现所有的主题样式。
-##### 1）聊天框界面
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/22245074/1653453178608-3a296c19-72d0-4891-8816-116d8ba61635.png#clientId=u8afb73cf-942a-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=320&id=u701b0c14&name=image.png&originHeight=714&originWidth=402&originalType=binary&ratio=1&rotation=0&showTitle=false&size=63028&status=done&style=none&taskId=u6da8a09c-0757-4f85-96c7-cff418f0a94&title=&width=180)
-##### 2）参数说明
-| **样式名** | **样式类型** | **描述** |
-| --- | --- | --- |
-| chatBackground | color&#124;reference | 聊天背景色 |
-| sendBubbleColor | color&#124;reference | 发送端气泡颜色 |
-| receiveBubbleColor | color&#124;reference | 接收端气泡颜色 |
-| chatHeadRadius     | dp&#124;reference | 头像圆角大小 |
-
 #### 会话相关接口
 
 ##### 获取会话当前在线状态
