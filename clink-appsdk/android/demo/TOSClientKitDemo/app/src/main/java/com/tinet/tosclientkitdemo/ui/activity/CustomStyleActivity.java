@@ -261,10 +261,10 @@ public class CustomStyleActivity extends BaseActivity implements View.OnClickLis
         mCustomDataList.add(new CustomItemBean(CustomItemBean.CUSTOM_ITEM_TYPE_GROUP_TITLE, "对话区域配置"));
         mCustomDataList.add(new CustomItemBean(CustomItemBean.CUSTOM_ITEM_TYPE_CONTENT_VIEW, "聊天窗口UI样式", "sessionStyle", CustomItemBean.CUSTOM_CONTENT_TYPE_CHOOSE_PAGE, getStyleDesc()));
         mCustomDataList.add(new CustomItemBean(CustomItemBean.CUSTOM_ITEM_TYPE_CONTENT_VIEW, "时间文本色值", "msgTimeColor", CustomItemBean.CUSTOM_CONTENT_TYPE_CHOOSE_DIALOG, getHexString(mTCustomizationUI.msgTimeColor)));
-        mCustomDataList.add(new CustomItemBean(CustomItemBean.CUSTOM_ITEM_TYPE_CONTENT_VIEW, "客服/机器人昵称显示", "robotName", CustomItemBean.CUSTOM_CONTENT_TYPE_SWITCH, mTCustomizationUI.robotName));
-        mCustomDataList.add(new CustomItemBean(CustomItemBean.CUSTOM_ITEM_TYPE_CONTENT_VIEW, "访客昵称显示", "visitorName", CustomItemBean.CUSTOM_CONTENT_TYPE_SWITCH, mTCustomizationUI.visitorName));
-        mCustomDataList.add(new CustomItemBean(CustomItemBean.CUSTOM_ITEM_TYPE_CONTENT_VIEW, "客服/机器人头像显示", "acceptMessageAvatar", CustomItemBean.CUSTOM_CONTENT_TYPE_SWITCH, mTCustomizationUI.acceptMessageAvatar));
-        mCustomDataList.add(new CustomItemBean(CustomItemBean.CUSTOM_ITEM_TYPE_CONTENT_VIEW, "访客头像显示", "visitorAvatar", CustomItemBean.CUSTOM_CONTENT_TYPE_SWITCH, mTCustomizationUI.visitorAvatar));
+        mCustomDataList.add(new CustomItemBean(CustomItemBean.CUSTOM_ITEM_TYPE_CONTENT_VIEW, "客服/机器人昵称显示", "robotName", CustomItemBean.CUSTOM_CONTENT_TYPE_SWITCH, mTCustomizationUI.showAgentRobotNickname));
+        mCustomDataList.add(new CustomItemBean(CustomItemBean.CUSTOM_ITEM_TYPE_CONTENT_VIEW, "访客昵称显示", "visitorName", CustomItemBean.CUSTOM_CONTENT_TYPE_SWITCH, mTCustomizationUI.showVisitorNickname));
+        mCustomDataList.add(new CustomItemBean(CustomItemBean.CUSTOM_ITEM_TYPE_CONTENT_VIEW, "客服/机器人头像显示", "acceptMessageAvatar", CustomItemBean.CUSTOM_CONTENT_TYPE_SWITCH, mTCustomizationUI.showAgentRobotAvatar));
+        mCustomDataList.add(new CustomItemBean(CustomItemBean.CUSTOM_ITEM_TYPE_CONTENT_VIEW, "访客头像显示", "visitorAvatar", CustomItemBean.CUSTOM_CONTENT_TYPE_SWITCH, mTCustomizationUI.showVisitAvatar));
         mCustomDataList.add(new CustomItemBean(CustomItemBean.CUSTOM_ITEM_TYPE_SEPARATE));
         mCustomDataList.add(new CustomItemBean(CustomItemBean.CUSTOM_ITEM_TYPE_GROUP_TITLE, "输入框配置"));
         mCustomDataList.add(new CustomItemBean(CustomItemBean.CUSTOM_ITEM_TYPE_CONTENT_VIEW, "输入框背景色值", "inputAreaBgColor", CustomItemBean.CUSTOM_CONTENT_TYPE_CHOOSE_DIALOG, getHexString(mTCustomizationUI.inputAreaBgColor)));
@@ -280,13 +280,11 @@ public class CustomStyleActivity extends BaseActivity implements View.OnClickLis
         mTCustomizationUI.inputAreaVoicePressTextColor = Color.parseColor("#FFBFBFBF");
         mTCustomizationUI.inputBoxHintText = "您好!请输入您要咨询的问题";
 
-        mTCustomizationUI.robotName = true;
-        mTCustomizationUI.visitorName = true;
-        mTCustomizationUI.visitorAvatar = true;
-        mTCustomizationUI.customerServiceName = true;
-        mTCustomizationUI.acceptMessageAvatar = true;
-        mTCustomizationUI.voiceButton = true;
-
+        mTCustomizationUI.showVisitorNickname = false;//访客昵称
+        mTCustomizationUI.showVisitAvatar = false;//访客头像
+        mTCustomizationUI.showAgentRobotNickname = false;//客服、机器人昵称
+        mTCustomizationUI.showAgentRobotAvatar = false;//客服、机器人头像
+        mTCustomizationUI.showVoiceButton = false;//语音按钮
     }
 
     private String getHexString(int color) {
@@ -364,17 +362,16 @@ public class CustomStyleActivity extends BaseActivity implements View.OnClickLis
                         mTCustomizationUI.msgTimeColor = Color.parseColor(customItemBean.getStrValue());
                         break;
                     case "robotName":
-                        mTCustomizationUI.robotName = customItemBean.isBoolValue();
-                        mTCustomizationUI.customerServiceName = customItemBean.isBoolValue();
+                        mTCustomizationUI.showAgentRobotNickname  = customItemBean.isBoolValue();
                         break;
                     case "visitorName":
-                        mTCustomizationUI.visitorName = customItemBean.isBoolValue();
+                        mTCustomizationUI.showVisitorNickname = customItemBean.isBoolValue();
                         break;
                     case "visitorAvatar":
-                        mTCustomizationUI.visitorAvatar = customItemBean.isBoolValue();
+                        mTCustomizationUI.showVisitAvatar = customItemBean.isBoolValue();
                         break;
                     case "acceptMessageAvatar":
-                        mTCustomizationUI.acceptMessageAvatar = customItemBean.isBoolValue();
+                        mTCustomizationUI.showAgentRobotAvatar = customItemBean.isBoolValue();
                         break;
                     case "inputAreaBgColor":
                         mTCustomizationUI.inputAreaBgColor = Color.parseColor(customItemBean.getStrValue());
