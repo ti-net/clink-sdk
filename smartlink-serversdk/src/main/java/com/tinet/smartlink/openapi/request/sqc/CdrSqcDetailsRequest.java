@@ -1,5 +1,6 @@
 package com.tinet.smartlink.openapi.request.sqc;
 
+
 import com.tinet.smartlink.openapi.HttpMethodType;
 import com.tinet.smartlink.openapi.request.BaseRequest;
 import com.tinet.smartlink.openapi.response.sqc.CdrSqcDetailsResponse;
@@ -13,6 +14,10 @@ public class CdrSqcDetailsRequest extends BaseRequest<CdrSqcDetailsResponse> {
 
     private String uniqueId;
     private String userId;
+    /**
+     *结果加密校验字段
+     */
+    private Boolean resultEncrypt;
 
     public String getUniqueId() {
         return uniqueId;
@@ -33,6 +38,17 @@ public class CdrSqcDetailsRequest extends BaseRequest<CdrSqcDetailsResponse> {
         this.userId = userId;
         if (userId != null) {
             putQueryParameter("userId", userId);
+        }
+    }
+
+    public Boolean getResultEncrypt() {
+        return resultEncrypt;
+    }
+
+    public void setResultEncrypt(Boolean resultEncrypt) {
+        this.resultEncrypt = resultEncrypt;
+        if (resultEncrypt != null) {
+            putQueryParameter("resultEncrypt", resultEncrypt);
         }
     }
 

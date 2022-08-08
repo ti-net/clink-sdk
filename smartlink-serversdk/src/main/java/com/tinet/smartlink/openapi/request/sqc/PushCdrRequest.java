@@ -73,7 +73,6 @@ public class PushCdrRequest extends BaseRequest<PushCdrResponse> {
      */
     private Long answerTime;
 
-
     /**
      * 结束时间  (单位：秒)
      */
@@ -253,6 +252,22 @@ public class PushCdrRequest extends BaseRequest<PushCdrResponse> {
      * 悟空租车vnc 自定义信息适配专用字段
      */
     private String userField;
+
+    /**
+     * 声道话者标识：agent/client，数组第一位：左声道，数组第二位：右声道
+     * 目前公有云同程数科客户在用
+     */
+    private String[] channelSpeaker;
+
+    /**
+     * 悟空租车vnc 自定义信息适配专用字段
+     */
+    private Boolean fileUrlEncrypt;
+
+    /**
+     * 过期时间
+     */
+    private Long expirationTime;
 
     public String getUserField() {
         return userField;
@@ -671,6 +686,28 @@ public class PushCdrRequest extends BaseRequest<PushCdrResponse> {
         }
     }
 
+    public String[] getChannelSpeaker() {
+        return channelSpeaker;
+    }
+
+    public void setChannelSpeaker(String[] channelSpeaker) {
+        this.channelSpeaker = channelSpeaker;
+        if (channelSpeaker != null) {
+            putBodyParameter("channelSpeaker", channelSpeaker);
+        }
+    }
+
+    public Boolean getFileUrlEncrypt() {
+        return fileUrlEncrypt;
+    }
+
+    public void setFileUrlEncrypt(Boolean fileUrlEncrypt) {
+        this.fileUrlEncrypt = fileUrlEncrypt;
+        if (fileUrlEncrypt != null) {
+            putBodyParameter("channelSpeaker", fileUrlEncrypt);
+        }
+    }
+
     public PushCdrRequest() {
         super("/sqc/cdr", HttpMethodType.POST,"2019-07-22");
     }
@@ -679,4 +716,15 @@ public class PushCdrRequest extends BaseRequest<PushCdrResponse> {
     public Class<PushCdrResponse> getResponseClass() {
         return PushCdrResponse.class;
     }
+
+    public void setExpirationTime(Long expirationTime) {
+        this.expirationTime = expirationTime;
+        if (expirationTime != null) {
+            putBodyParameter("expirationTime", expirationTime);
+        }
+    }
+    public Long getExpirationTime() {
+        return expirationTime;
+    }
+
 }
