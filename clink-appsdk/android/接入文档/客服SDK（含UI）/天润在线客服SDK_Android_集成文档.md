@@ -1,6 +1,6 @@
 
 # TOSClientKit_Android_开发文档
-> 版本: 1.4.3
+> 版本: 1.4.4
 
 
 ## 目录
@@ -27,12 +27,22 @@ Gradle | 3.0 及以上版本
 
 ## <span id="import">引入 SDK</span>
 #### Maven依赖方式
+在项目根目录的 build.gradle 文件中添加如下配置
+
+```
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
 在主app的 build.gradle 文件中添加如下依赖配置
 
 ```
-implementation "com.ti-net.oskit:online:1.4.3"
+    //implementation "com.ti-net.oskit:online:1.4.4" (不再更新)
+	implementation 'com.github.ti-net-project:OnlineSDK-Android:1.4.4'
 ```
-
 ### 混淆配置
 ```
 -keep class com.tinet.** { *; }
@@ -489,12 +499,11 @@ string.xml可修改项
        tCustomizationUI.inputBoxHintText = "hint_text";//会话页面输入框hint文案
        tCustomizationUI.chatAvatarRadius = R.dimen.fab_margin;//头像圆角弧度
     
-       tCustomizationUI.robotName = true;//机器人昵称
-       tCustomizationUI.visitorName = true;//访客昵称
-       tCustomizationUI.visitorAvatar = true;//访客头像
-       tCustomizationUI.customerServiceName = true;//客服昵称
-       tCustomizationUI.acceptMessageAvatar = true;//客服、机器人头像
-       tCustomizationUI.voiceButton = true;//语音按钮
+    	 tCustomizationUI.showVisitorNickname = false;//访客昵称
+       tCustomizationUI.showVisitAvatar = false;//访客头像
+       tCustomizationUI.showAgentRobotNickname = false;//客服、机器人昵称
+       tCustomizationUI.showAgentRobotAvatar = false;//客服、机器人头像
+       tCustomizationUI.showVoiceButton = false;//语音按钮
        TOSClientKitConfig tosClientKitConfig = new TOSClientKitConfig.Builder()
                 .setTCustomizationUI(tCustomizationUI)//配置自定义UI
                 .build();

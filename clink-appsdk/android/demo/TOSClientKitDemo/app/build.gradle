@@ -22,8 +22,8 @@ android {
         applicationId "com.tinet.tosclientkitdemo"
         minSdk 21
         targetSdk 30
-        versionCode 4
-        versionName "1.4.3"
+        versionCode 5
+        versionName "1.4.4"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -80,6 +80,6 @@ dependencies {
     implementation 'com.tencent.bugly:crashreport:latest.release'
 
     //天润在线客服 SDK
-    implementation "com.ti-net.oskit:online:1.4.4"
+    implementation 'com.github.ti-net-project:OnlineSDK-Android:1.4.4'
 
 }
