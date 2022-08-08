@@ -6,6 +6,8 @@ import com.tinet.clink.openapi.response.kb.DeleteCategoryResponse;
 import com.tinet.clink.openapi.utils.HttpMethodType;
 
 /**
+ * 删除分类请求
+ *
  * @author feizq
  * @date 2022/06/20
  **/

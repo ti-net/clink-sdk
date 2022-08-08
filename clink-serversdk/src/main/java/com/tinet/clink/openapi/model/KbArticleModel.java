@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.List;
 
 /**
+ * 文章返回对象
+ *
  * @author feizq
  * @date 2021/06/25
  **/

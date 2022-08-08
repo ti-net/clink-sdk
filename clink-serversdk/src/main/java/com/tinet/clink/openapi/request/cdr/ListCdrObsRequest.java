@@ -104,6 +104,11 @@ public class ListCdrObsRequest extends AbstractRequestModel<ListCdrObsResponse> 
      */
     private Integer queueAnswerInTime;
 
+    /**
+     * 是否邀评
+     */
+    private Integer evaluation;
+
 
     public ListCdrObsRequest() {
         super(PathEnum.ListCdrObs.value(), HttpMethodType.GET);
@@ -293,6 +298,18 @@ public class ListCdrObsRequest extends AbstractRequestModel<ListCdrObsResponse> 
         this.queueAnswerInTime = queueAnswerInTime;
         if (queueAnswerInTime != null) {
             putQueryParameter("queueAnswerInTime", queueAnswerInTime);
+        }
+    }
+
+
+    public Integer getEvaluation() {
+        return evaluation;
+    }
+
+    public void setEvaluation(Integer evaluation) {
+        this.evaluation = evaluation;
+        if (evaluation != null) {
+            putQueryParameter("evaluation", evaluation);
         }
     }
 

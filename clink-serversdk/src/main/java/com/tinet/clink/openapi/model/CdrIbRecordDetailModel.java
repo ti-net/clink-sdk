@@ -202,6 +202,24 @@ public class CdrIbRecordDetailModel {
      */
     private Integer ibRingingDuration;
 
+    /**
+     * 队列及时应答
+     */
+    private Integer queueAnswerInTime;
+
+    /**
+     * 是否邀评
+     */
+    private Integer evaluation;
+
+    public Integer getQueueAnswerInTime() {
+        return queueAnswerInTime;
+    }
+
+    public void setQueueAnswerInTime(Integer queueAnswerInTime) {
+        this.queueAnswerInTime = queueAnswerInTime;
+    }
+
     public Long getClientRingingTime() {
         return clientRingingTime;
     }
@@ -505,6 +523,14 @@ public class CdrIbRecordDetailModel {
 
     public void setIbRingingDuration(Integer ibRingingDuration) {
         this.ibRingingDuration = ibRingingDuration;
+    }
+
+    public Integer getEvaluation() {
+        return evaluation;
+    }
+
+    public void setEvaluation(Integer evaluation) {
+        this.evaluation = evaluation;
     }
 }
 

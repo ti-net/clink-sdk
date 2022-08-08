@@ -3,10 +3,14 @@ package com.tinet.clink.openapi.kb;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tinet.clink.openapi.request.kb.CreateStandardQuestionRequest;
 import com.tinet.clink.openapi.request.kb.DeleteStandardQuestionRequest;
+import com.tinet.clink.openapi.request.kb.ListStandardQuestionRequest;
 import com.tinet.clink.openapi.request.kb.UpdateStandardQuestionRequest;
 import com.tinet.clink.openapi.response.kb.DeleteStandardQuestionResponse;
+import com.tinet.clink.openapi.response.kb.ListStandardQuestionResponse;
 import com.tinet.clink.openapi.response.kb.StandardQuestionResponse;
 import org.junit.Test;
+
+import java.time.Instant;
 
 /**
  * @author feizq
@@ -15,6 +19,34 @@ import org.junit.Test;
 public class StandardQuestionTest extends KbAbstractTest{
 
     private final ObjectMapper mapper = new ObjectMapper();
+
+    @Test
+    public void listStandardQuestion() {
+
+        // 创建访问服务的客户端实例并初始化
+        /*ClientConfiguration configuration = new ClientConfiguration(
+                "AK",          // AccessKeyId
+                "SK");     // AccessKeySecret
+        configuration.setHost("host");
+        Client client = new Client(configuration);*/
+
+        // 创建请求的request
+        ListStandardQuestionRequest request = new ListStandardQuestionRequest();
+        request.setBotId("996712");
+
+        long start = Instant.now().getEpochSecond();
+        try {
+            ListStandardQuestionResponse response = client.getResponseModel(request);
+            long end = Instant.now().getEpochSecond();
+            System.out.println("请求时长：" + (end - start));
+            System.out.println(response.getStandardQuestions().size());
+//            System.out.println(mapper.writeValueAsString(response));
+        } catch (Exception e) {
+            long end = Instant.now().getEpochSecond();
+            System.out.println("请求时长：" + (end - start));
+            e.printStackTrace();
+        }
+    }
 
     @Test
     public void createStandardQuestion() {

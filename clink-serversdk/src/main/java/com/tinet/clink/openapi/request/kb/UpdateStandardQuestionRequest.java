@@ -6,6 +6,8 @@ import com.tinet.clink.openapi.response.kb.StandardQuestionResponse;
 import com.tinet.clink.openapi.utils.HttpMethodType;
 
 /**
+ * 更新标准问请求
+ *
  * @author feizq
  * @date 2022/06/15
  **/
