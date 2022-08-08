@@ -4,6 +4,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.tinet.oskit.TOSClientKit;
 import com.tinet.oskit.fragment.SessionFragment;
 import com.tinet.oskit.listener.FuncListener;
 import com.tinet.oskit.listener.LabelListener;
@@ -14,10 +15,12 @@ import com.tinet.oskit.listener.impl.SessionClickListenerImpl;
 import com.tinet.oskit.model.Function;
 import com.tinet.oskit.tool.TimeUtils;
 import com.tinet.oslib.common.OnlineMessageType;
+import com.tinet.oslib.listener.OnlineConnectStatusListener;
 import com.tinet.oslib.manager.OnlineMessageManager;
 import com.tinet.oslib.manager.OnlineQuickManager;
 import com.tinet.oslib.model.bean.CardInfo;
 import com.tinet.oslib.model.bean.LabeInfo;
+import com.tinet.oslib.model.bean.SessionInfo;
 import com.tinet.oslib.model.message.OnlineMessage;
 import com.tinet.oslib.model.message.content.ChatLeaveMessage;
 import com.tinet.timclientlib.utils.TLogUtils;
@@ -38,6 +41,18 @@ public class ChatFragment extends SessionFragment {
     @Override
     public void onResume() {
         super.onResume();
+
+
+        TOSClientKit.setOnlineStatusListener(new OnlineMessageManager.OnlineStatusListener() {
+            @Override
+            public void onStatusChanged(int status) {
+                if (status != 0) {
+                    // : 2022/7/21 只有在进入会话页面后，才可获取会话信息
+                    SessionInfo currentSessionInfo = TOSClientKit.getCurrentSessionInfo();
+                    TLogUtils.i("当前会话 mainUniqueId:" + currentSessionInfo.getMainUniqueId());
+                }
+            }
+        });
     }
 
     @Override

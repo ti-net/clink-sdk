@@ -3,6 +3,8 @@ package com.tinet.clink.openapi.response.kb;
 import com.tinet.clink.openapi.response.ResponseModel;
 
 /**
+ * 删除答案响应实体
+ *
  * @author feizq
  * @date 2022/06/15
  **/

@@ -3,6 +3,8 @@ package com.tinet.clink.openapi.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
+ * 分类返回对象
+ *
  * @author feizq
  * @date 2022/06/20
  **/
