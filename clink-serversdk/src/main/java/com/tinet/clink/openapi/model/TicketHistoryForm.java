@@ -36,6 +36,11 @@ public class TicketHistoryForm {
      */
     private String taskName;
 
+    /**
+     * 工作流转过程中表单唯一标识
+     */
+    private String taskId;
+
 
     /**
      * 字段名称及字段值
@@ -127,5 +132,13 @@ public class TicketHistoryForm {
 
     public void setTaskKey(String taskKey) {
         this.taskKey = taskKey;
+    }
+
+    public String getTaskId() {
+        return taskId;
+    }
+
+    public void setTaskId(String taskId) {
+        this.taskId = taskId;
     }
 }
