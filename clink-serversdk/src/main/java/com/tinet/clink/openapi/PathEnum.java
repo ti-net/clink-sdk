@@ -273,6 +273,10 @@ public enum PathEnum {
     GetTicketFileUrl("get_ticket_file_url"),
     // 根据外部参数或ID查询工单插件
     GetTicketPlugin("get_ticket_plugin"),
+    // 获取工单字段列表
+    ListTicketFields("list_ticket_fields"),
+    // 更新工单字段选项值
+    updateTicketFieldProperty("update_ticket_field_property"),
 
     /**
      * 黑白名单相关请求
