@@ -27,6 +27,7 @@
 @property (weak, nonatomic) UITextField *textField;
 @property (nonatomic, strong) NSMutableArray <superCustomStylesModel *>*dataSource;
 
+@property (nonatomic, strong) NSArray                * headDataSource;
 
 @end
 
@@ -34,7 +35,7 @@
 - (void)setupSubviews {
     [super setupSubviews];
     self.navigationItem.title = @"自定义样式";
-    
+    self.headDataSource = @[@"对话区域配置", @"输入框配置", @"吐司提示配置", @"相册导航栏配置"];
     self.tableView = [self setupTableView];
     [self bindViewModel];
     
@@ -244,6 +245,17 @@
     return 45.f;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView * headView = [[UIView alloc] initWithFrame:(CGRectMake(0, 0, SCREEN_WIDTH, 30))];
+    headView.backgroundColor = kHexColor(0xFFFFFF);
+    UILabel * label = [[UILabel alloc] initWithFrame:(CGRectMake(20, 0, headView.width-20, 30))];
+    label.textColor = kHexColor(0x8C8C8C);
+    label.font = [UIFont systemFontOfSize:14];
+    label.text = self.headDataSource[section];
+    [headView addSubview:label];
+    return headView;
+}
+
 - (void)showInputViewModel:(MineTextTableCellModel *)model {
     
     MineConfigInputView * inputView = [[MineConfigInputView alloc] initWithFrame:(CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT))];
@@ -267,7 +279,7 @@
     [self.view addSubview:tableView];
     tableView.delegate = self;
     tableView.dataSource = self;
-    tableView.sectionHeaderHeight = 0.f;
+    tableView.sectionHeaderHeight = 30.f;
     tableView.sectionFooterHeight = 7.f;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     return tableView;
