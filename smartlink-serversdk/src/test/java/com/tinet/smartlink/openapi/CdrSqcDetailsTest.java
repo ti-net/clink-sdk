@@ -8,12 +8,13 @@ import org.junit.Test;
 
 /**
  * Smartlink SDK测试类
+ * 查询话单详情
  *
  * @author Ailos
  * @version 1.0
  * @date 2022/8/8 16:51
  */
-public class MainTest {
+public class CdrSqcDetailsTest {
     @Test
     public void test() {
         SmartlinkClientConfiguration configuration = new SmartlinkClientConfiguration(
@@ -31,8 +32,8 @@ public class MainTest {
 
         // 创建API请求并设置参数
         CdrSqcDetailsRequest request = new CdrSqcDetailsRequest();
-        request.setUserId("12345678");
-        request.setUniqueId("medias_1-1659949560.123");
+        request.setUniqueId("f93902e8e14f4431997dbf72fd39fbf2-1660032894.1238");
+        request.setUserId("1234567");
 
         CdrSqcDetailsResponse response;
         try {
