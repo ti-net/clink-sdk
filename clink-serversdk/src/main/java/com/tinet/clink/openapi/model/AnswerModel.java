@@ -2,6 +2,8 @@ package com.tinet.clink.openapi.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.List;
+
 /**
  * 竹间答案实体
  *
@@ -35,6 +37,39 @@ public class AnswerModel {
      * 类型；1：每天，0：无
      */
     private Integer periodType;
+
+    /**
+     * 相关问集合
+     */
+    private List<RelatedQuestion> relatedQuestionList;
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class RelatedQuestion {
+        /**
+         * 相关问ID
+         */
+        private Integer relatedQuestionId;
+        /**
+         * 相关问标题
+         */
+        private String relatedQuestionTitle;
+
+        public Integer getRelatedQuestionId() {
+            return relatedQuestionId;
+        }
+
+        public void setRelatedQuestionId(Integer relatedQuestionId) {
+            this.relatedQuestionId = relatedQuestionId;
+        }
+
+        public String getRelatedQuestionTitle() {
+            return relatedQuestionTitle;
+        }
+
+        public void setRelatedQuestionTitle(String relatedQuestionTitle) {
+            this.relatedQuestionTitle = relatedQuestionTitle;
+        }
+    }
 
     public Integer getId() {
         return id;
@@ -82,5 +117,13 @@ public class AnswerModel {
 
     public void setPeriodType(Integer periodType) {
         this.periodType = periodType;
+    }
+
+    public List<RelatedQuestion> getRelatedQuestionList() {
+        return relatedQuestionList;
+    }
+
+    public void setRelatedQuestionList(List<RelatedQuestion> relatedQuestionList) {
+        this.relatedQuestionList = relatedQuestionList;
     }
 }
