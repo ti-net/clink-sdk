@@ -282,13 +282,13 @@
                              @{
                                  @"cellType": [MineTextTableCell className],
                                  @"title": @"聊天窗口UI样式",
-                                 @"value": @"",
+                                 @"value": @"经典样式",
                                  @"selectionStyle": @(UITableViewCellSelectionStyleGray),
                                  @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)},
                              @{
                                  @"cellType": [MineTextTableCell className],
                                  @"title": @"时间色值",
-                                 @"value": @"",
+                                 @"value": @"#595959",
                                  @"selectionStyle": @(UITableViewCellSelectionStyleGray),
                                  @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)},
                              @{
@@ -320,25 +320,25 @@
                              @{
                                  @"cellType": [MineTextTableCell className],
                                  @"title": @"输入框背景色值",
-                                 @"value": @"",
+                                 @"value": @"#F3F6F9",
                                  @"selectionStyle": @(UITableViewCellSelectionStyleGray),
                                  @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)},
                              @{
                                  @"cellType": [MineTextTableCell className],
                                  @"title": @"输入区分割线",
-                                 @"value": @"",
+                                 @"value": @"#E8E8E8",
                                  @"selectionStyle": @(UITableViewCellSelectionStyleGray),
                                  @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)},
                              @{
                                  @"cellType": [MineTextTableCell className],
                                  @"title": @"语音按钮色值",
-                                 @"value": @"",
+                                 @"value": @"#BFBFBF",
                                  @"selectionStyle": @(UITableViewCellSelectionStyleGray),
                                  @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)},
                              @{
                                  @"cellType": [MineTextTableCell className],
                                  @"title": @"输入框暗文提示语",
-                                 @"value": @"",
+                                 @"value": @"您好!请输入您要咨询的问题",
                                  @"selectionStyle": @(UITableViewCellSelectionStyleGray),
                                  @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)}, nil];
         
@@ -346,13 +346,13 @@
                              @{
                                  @"cellType": [MineSwitchTableViewCell className],
                                  @"title": @"吐司提示背景色值",
-                                 @"value": @"",
+                                 @"value": @"#FFFFFF",
                                  @"selectionStyle": @(UITableViewCellSelectionStyleNone),
                                  @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)},
                              @{
                                  @"cellType": [MineTextTableCell className],
                                  @"title": @"吐司提示文字色值",
-                                 @"value": @"",
+                                 @"value": @"#BFBFBF",
                                  @"selectionStyle": @(UITableViewCellSelectionStyleNone),
                                  @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)}, nil];
         
@@ -360,13 +360,13 @@
                              @{
                                  @"cellType": [MineTextTableCell className],
                                  @"title": @"相册导航栏背景色值",
-                                 @"value": @"",
+                                 @"value": @"#FFFFFF",
                                  @"selectionStyle": @(UITableViewCellSelectionStyleNone),
                                  @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)},
                              @{
                                  @"cellType": [MineTextTableCell className],
                                  @"title": @"相册导航栏文字色值",
-                                 @"value": @"",
+                                 @"value": @"#262626",
                                  @"selectionStyle": @(UITableViewCellSelectionStyleNone),
                                  @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)}, nil];
         
@@ -418,23 +418,26 @@
     self.dataSource = [[NSArray modelArrayWithClass:[superCustomStylesModel class] json:array] mutableCopy];
     NSLog(@"data source = %@",self.dataSource);
     
+    self.cellDataSource = nil;
+    [self.tableView reloadData];
+    
     superCustomStylesModel *model = self.dataSource[0];
     NSLog(@"model = %@", [model yy_modelToJSONObject]);
     
-//    [TOSKitCustomInfo shareCustomInfo].Chat_time_textColor = [self colorWithHexString:model.Chat_time_textColor alpha:1.f];
-//    [TOSKitCustomInfo shareCustomInfo].Chat_tosRobotName_enable = model.Chat_tosRobotName_enable;
-//    [TOSKitCustomInfo shareCustomInfo].Chat_visitorName_enable = model.Chat_visitorName_enable;
-//    [TOSKitCustomInfo shareCustomInfo].Chat_tosRobot_portrait_enable = model.Chat_tosRobot_portrait_enable;
-//    [TOSKitCustomInfo shareCustomInfo].Chat_visitor_portrait_enable = model.Chat_visitor_portrait_enable;
-//    [TOSKitCustomInfo shareCustomInfo].ChatBox_backGroundColor = [self colorWithHexString:model.ChatBox_backGroundColor alpha:1.0f];
-//    [TOSKitCustomInfo shareCustomInfo].ChatBox_lineColor = [self colorWithHexString:model.ChatBox_lineColor alpha:1.0f];
-//
-//    [TOSKitCustomInfo shareCustomInfo].VoiceButton_textColor = [self colorWithHexString:model.VoiceButton_textColor alpha:1.0f];
-//    [TOSKitCustomInfo shareCustomInfo].ChatBox_textview_placeholder = model.ChatBox_textview_placeholder;
-//    [TOSKitCustomInfo shareCustomInfo].Toast_backGroundColor = [self colorWithHexString:model.Toast_backGroundColor alpha:1.0f];
-//    [TOSKitCustomInfo shareCustomInfo].Toast_textColor = [self colorWithHexString:model.Toast_textColor alpha:1.0f];
-//    [TOSKitCustomInfo shareCustomInfo].imagePicker_naviBgColor = [self colorWithHexString:model.imagePicker_naviBgColor alpha:1.0f];
-//    [TOSKitCustomInfo shareCustomInfo].imagePicker_barItemTextColor = [self colorWithHexString:model.imagePicker_barItemTextColor alpha:1.0f];
+    [TOSKitCustomInfo shareCustomInfo].Chat_time_textColor = [self colorWithHexString:model.Chat_time_textColor alpha:1.f];
+    [TOSKitCustomInfo shareCustomInfo].Chat_tosRobotName_enable = model.Chat_tosRobotName_enable;
+    [TOSKitCustomInfo shareCustomInfo].Chat_visitorName_enable = model.Chat_visitorName_enable;
+    [TOSKitCustomInfo shareCustomInfo].Chat_tosRobot_portrait_enable = model.Chat_tosRobot_portrait_enable;
+    [TOSKitCustomInfo shareCustomInfo].Chat_visitor_portrait_enable = model.Chat_visitor_portrait_enable;
+    [TOSKitCustomInfo shareCustomInfo].ChatBox_backGroundColor = [self colorWithHexString:model.ChatBox_backGroundColor alpha:1.0f];
+    [TOSKitCustomInfo shareCustomInfo].ChatBox_lineColor = [self colorWithHexString:model.ChatBox_lineColor alpha:1.0f];
+
+    [TOSKitCustomInfo shareCustomInfo].VoiceButton_textColor = [self colorWithHexString:model.VoiceButton_textColor alpha:1.0f];
+    [TOSKitCustomInfo shareCustomInfo].ChatBox_textview_placeholder = model.ChatBox_textview_placeholder;
+    [TOSKitCustomInfo shareCustomInfo].Toast_backGroundColor = [self colorWithHexString:model.Toast_backGroundColor alpha:1.0f];
+    [TOSKitCustomInfo shareCustomInfo].Toast_textColor = [self colorWithHexString:model.Toast_textColor alpha:1.0f];
+    [TOSKitCustomInfo shareCustomInfo].imagePicker_naviBgColor = [self colorWithHexString:model.imagePicker_naviBgColor alpha:1.0f];
+    [TOSKitCustomInfo shareCustomInfo].imagePicker_barItemTextColor = [self colorWithHexString:model.imagePicker_barItemTextColor alpha:1.0f];
 }
 
 - (UIColor *)colorWithHexString:(NSString *)colorStr alpha:(CGFloat)alpha {
