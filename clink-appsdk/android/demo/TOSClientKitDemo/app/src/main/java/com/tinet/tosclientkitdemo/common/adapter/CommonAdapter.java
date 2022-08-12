@@ -44,6 +44,12 @@ abstract public class CommonAdapter<T> extends RecyclerView.Adapter<BaseViewHold
         }
     }
 
+    public void setData(List<T> dataList){
+        mDataList.clear();
+        mDataList.addAll(dataList);
+        notifyDataSetChanged();
+    }
+
 
     /**
      * 添加头部方法

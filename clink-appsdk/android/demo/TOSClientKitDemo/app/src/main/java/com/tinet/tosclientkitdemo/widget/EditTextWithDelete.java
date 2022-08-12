@@ -208,7 +208,6 @@ public class EditTextWithDelete extends AppCompatEditText implements TextWatcher
                     left = null;
                     setCompoundDrawables(left, null, null, null);
                     if (!isHideDelIcon && !TextUtils.isEmpty(getText().toString().trim())) {
-                        left.setBounds(0, 0, leftIconSize, leftIconSize);
                         setCompoundDrawables(left, null, del_btn, null);
                     }
                 }
@@ -274,47 +273,77 @@ public class EditTextWithDelete extends AppCompatEditText implements TextWatcher
     @Override
     public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
                                   int arg3) {
-        if (TextUtils.isEmpty(arg0)) {
-            // 如果为空，则不显示删除图标
-            left.setBounds(0, 0, leftIconSize, leftIconSize);
-            setCompoundDrawables(left, null, null, null);
-        } else if (!isHideDelIcon) {
-            // 如果非空，则要显示删除图标
-            left.setBounds(0, 0, leftIconSize, leftIconSize);
-            setCompoundDrawables(left, null, del_btn, null);
+        try {
+            left = getResources().getDrawable(errorDrawableId);
+        } catch (Resources.NotFoundException e) {
+            e.printStackTrace();
+        }
+        if (isShowLeftIcon) {
+            if (TextUtils.isEmpty(arg0)) {
+                // 如果为空，则不显示删除图标
+                left.setBounds(0, 0, leftIconSize, leftIconSize);
+                setCompoundDrawables(left, null, null, null);
+            } else if (!isHideDelIcon) {
+                // 如果非空，则要显示删除图标
+                left.setBounds(0, 0, leftIconSize, leftIconSize);
+                setCompoundDrawables(left, null, del_btn, null);
+            }
+        } else {
+            if (TextUtils.isEmpty(arg0)) {
+                // 如果为空，则不显示删除图标
+                setCompoundDrawables(null, null, null, null);
+            } else if (!isHideDelIcon) {
+                // 如果非空，则要显示删除图标
+                setCompoundDrawables(null, null, del_btn, null);
+            }
         }
     }
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int after) {
 
-        if (hasFocus) {
-            if (TextUtils.isEmpty(s)) {
-                // 如果为空，则不显示删除图标
+        try {
+            left = getResources().getDrawable(errorDrawableId);
+        } catch (Resources.NotFoundException e) {
+            e.printStackTrace();
+        }
+        if (isShowLeftIcon) {
+            if (hasFocus) {
+                if (TextUtils.isEmpty(s)) {
+                    // 如果为空，则不显示删除图标
+                    if (left != null) {
+                        left.setBounds(0, 0, leftIconSize, leftIconSize);
+                    }
+                    setCompoundDrawables(left, null, null, null);
+                } else if (!isHideDelIcon) {
+                    // 如果非空，则要显示删除图标
+                    if (left != null) {
+                        left.setBounds(0, 0, leftIconSize, leftIconSize);
+                    }
+                    setCompoundDrawables(left, null, del_btn, null);
+                }
+            } else {
+                // 如果没有焦点， 则不显示删除图标
                 if (left != null) {
                     left.setBounds(0, 0, leftIconSize, leftIconSize);
                 }
                 setCompoundDrawables(left, null, null, null);
-            } else if (!isHideDelIcon) {
-                // 如果非空，则要显示删除图标
+            }
+            //如果是下拉框类型
+            if (isSelecter) {
                 if (left != null) {
                     left.setBounds(0, 0, leftIconSize, leftIconSize);
                 }
-                setCompoundDrawables(left, null, del_btn, null);
+                setCompoundDrawables(left, null, null, null);
             }
         } else {
-            // 如果没有焦点， 则不显示删除图标
-            if (left != null) {
-                left.setBounds(0, 0, leftIconSize, leftIconSize);
+            if (hasFocus) {
+                if (TextUtils.isEmpty(s)) {
+                    setCompoundDrawables(null, null, null, null);
+                } else if (!isHideDelIcon) {
+                    setCompoundDrawables(null, null, del_btn, null);
+                }
             }
-            setCompoundDrawables(left, null, null, null);
-        }
-        //如果是下拉框类型
-        if (isSelecter) {
-            if (left != null) {
-                left.setBounds(0, 0, leftIconSize, leftIconSize);
-            }
-            setCompoundDrawables(left, null, null, null);
         }
     }
 

@@ -16,42 +16,42 @@
     </style>
 
 
-    <style name="Theme.TIMSDK.LEAVE.default">
-        <item name="chatBackground">#EFF1F5</item>
-        <item name="sendBubbleColor">@drawable/shape_message_send_bg_default</item>
-        <item name="receiveBubbleColor">@drawable/shape_message_receive_bg_default</item>
-        <item name="chatHeadRadius">20dp</item>
-    </style>
+<!--    <style name="Theme.TIMSDK.LEAVE.default">-->
+<!--        <item name="chatBackground">#EFF1F5</item>-->
+<!--        <item name="sendBubbleColor">@drawable/shape_message_send_bg_default</item>-->
+<!--        <item name="receiveBubbleColor">@drawable/shape_message_receive_bg_default</item>-->
+<!--        <item name="chatHeadRadius">20dp</item>-->
+<!--    </style>-->
 
-    <style name="Theme.TIMSDK.LEAVE.blue">
-        <item name="chatBackground">#EFF3F5</item>
-        <item name="sendBubbleColor">@drawable/shape_message_send_bg_blue</item>
-        <item name="receiveBubbleColor">@drawable/shape_message_receive_bg_blue</item>
-        <item name="chatHeadRadius">8dp</item>
-    </style>
-
-
-    <style name="Theme.TIMSDK.LEAVE.yellow">
-        <item name="chatBackground">#FBF9ED</item>
-        <item name="sendBubbleColor">@drawable/shape_message_send_bg_yellow</item>
-        <item name="receiveBubbleColor">@drawable/shape_message_receive_bg_yellow</item>
-        <item name="chatHeadRadius">20dp</item>
-    </style>
+<!--    <style name="Theme.TIMSDK.LEAVE.blue">-->
+<!--        <item name="chatBackground">#EFF3F5</item>-->
+<!--        <item name="sendBubbleColor">@drawable/shape_message_send_bg_blue</item>-->
+<!--        <item name="receiveBubbleColor">@drawable/shape_message_receive_bg_blue</item>-->
+<!--        <item name="chatHeadRadius">8dp</item>-->
+<!--    </style>-->
 
 
-    <style name="Theme.TIMSDK.LEAVE.red">
-        <item name="chatBackground">#F9F3F2</item>
-        <item name="sendBubbleColor">@drawable/shape_message_send_bg_red</item>
-        <item name="receiveBubbleColor">@drawable/shape_message_receive_bg_red</item>
-        <item name="chatHeadRadius">10dp</item>
-    </style>
+<!--    <style name="Theme.TIMSDK.LEAVE.yellow">-->
+<!--        <item name="chatBackground">#FBF9ED</item>-->
+<!--        <item name="sendBubbleColor">@drawable/shape_message_send_bg_yellow</item>-->
+<!--        <item name="receiveBubbleColor">@drawable/shape_message_receive_bg_yellow</item>-->
+<!--        <item name="chatHeadRadius">20dp</item>-->
+<!--    </style>-->
 
 
-    <style name="Theme.TIMSDK.LEAVE.green">
-        <item name="chatBackground">#EFF5F1</item>
-        <item name="sendBubbleColor">@drawable/shape_message_send_bg_green</item>
-        <item name="receiveBubbleColor">@drawable/shape_message_receive_bg_green</item>
-        <item name="chatHeadRadius">16dp</item>
-    </style>
+<!--    <style name="Theme.TIMSDK.LEAVE.red">-->
+<!--        <item name="chatBackground">#F9F3F2</item>-->
+<!--        <item name="sendBubbleColor">@drawable/shape_message_send_bg_red</item>-->
+<!--        <item name="receiveBubbleColor">@drawable/shape_message_receive_bg_red</item>-->
+<!--        <item name="chatHeadRadius">10dp</item>-->
+<!--    </style>-->
+
+
+<!--    <style name="Theme.TIMSDK.LEAVE.green">-->
+<!--        <item name="chatBackground">#EFF5F1</item>-->
+<!--        <item name="sendBubbleColor">@drawable/shape_message_send_bg_green</item>-->
+<!--        <item name="receiveBubbleColor">@drawable/shape_message_receive_bg_green</item>-->
+<!--        <item name="chatHeadRadius">16dp</item>-->
+<!--    </style>-->
 
 </resources>
