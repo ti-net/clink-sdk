@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CustomStylesViewController : BaseViewController
 
+@property (nonatomic, copy) void (^themeClickEvent)(NSString * theme);
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -72,7 +72,7 @@
     
     self.navigationItem.rightBarButtonItem = resetConfigButton;
     
-    self.cellDataSource[0][0].value = @"经典样式";
+//    self.cellDataSource[0][0].value = @"经典样式";
 //    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
 //    CFShow((__bridge CFTypeRef)(infoDictionary));
 //    NSString *app_Version = [infoDictionary by_ObjectForKey:@"CFBundleShortVersionString"];
@@ -101,8 +101,151 @@
             }
         }
     }
+    /// 更新沙盒路径下的配置数据
+    [self upDataPlist];
     
+}
+
+- (void)upDataPlist {
     
+    NSMutableArray * mArray = [NSMutableArray array];
+    for (NSArray * nArray in self.cellDataSource) {
+        NSMutableArray * subArray = [NSMutableArray array];
+        for (MineTextTableCellModel * nModel in nArray) {
+            NSMutableDictionary * dict = [self dicFromObject:nModel];
+            [subArray addObject:dict];
+        }
+        [mArray addObject:subArray];
+    }
+    NSLog(@"解析后的数据：%@", mArray);
+    [self writePlist:[mArray mutableCopy]];
+    
+}
+
+/// model转化为字典
+- (NSMutableDictionary *)dicFromObject:(NSObject *)object {
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    unsigned int count;
+    objc_property_t *propertyList = class_copyPropertyList([object class], &count);
+ 
+    for (int i = 0; i < count; i++) {
+        objc_property_t property = propertyList[i];
+        const char *cName = property_getName(property);
+        NSString *name = [NSString stringWithUTF8String:cName];
+        /// valueForKey返回的数字和字符串都是对象
+        NSObject *value = [object valueForKey:name];
+ 
+        if ([value isKindOfClass:[NSString class]] || [value isKindOfClass:[NSNumber class]]) {
+            /// string , bool, int ,NSinteger
+            [dic setObject:value forKey:name];
+ 
+        } else if ([value isKindOfClass:[NSArray class]] || [value isKindOfClass:[NSDictionary class]]) {
+            /// 字典或字典
+            [dic setObject:[self arrayOrDicWithObject:(NSArray*)value] forKey:name];
+ 
+        } else if (value == nil) {
+            /// null
+            [dic setObject:@"" forKey:name];
+        } else {
+            //model
+            [dic setObject:[self dicFromObject:value] forKey:name];
+        }
+    }
+ 
+    return [dic copy];
+}
+
+/// 将可能存在model数组转化为普通数组
+- (id)arrayOrDicWithObject:(id)origin {
+    if ([origin isKindOfClass:[NSArray class]]) {
+        //数组
+        NSMutableArray *array = [NSMutableArray array];
+        for (NSObject *object in origin) {
+            if ([object isKindOfClass:[NSString class]] || [object isKindOfClass:[NSNumber class]]) {
+                //string , bool, int ,NSinteger
+                [array addObject:object];
+ 
+            } else if ([object isKindOfClass:[NSArray class]] || [object isKindOfClass:[NSDictionary class]]) {
+                //数组或字典
+                [array addObject:[self arrayOrDicWithObject:(NSArray *)object]];
+ 
+            } else {
+                //model
+                [array addObject:[self dicFromObject:object]];
+            }
+        }
+ 
+        return [array copy];
+ 
+    } else if ([origin isKindOfClass:[NSDictionary class]]) {
+        //字典
+        NSDictionary *originDic = (NSDictionary *)origin;
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        for (NSString *key in originDic.allKeys) {
+            id object = [originDic objectForKey:key];
+ 
+            if ([object isKindOfClass:[NSString class]] || [object isKindOfClass:[NSNumber class]]) {
+                //string , bool, int ,NSinteger
+                [dic setObject:object forKey:key];
+ 
+            } else if ([object isKindOfClass:[NSArray class]] || [object isKindOfClass:[NSDictionary class]]) {
+                //数组或字典
+                [dic setObject:[self arrayOrDicWithObject:object] forKey:key];
+ 
+            } else {
+                //model
+                [dic setObject:[self dicFromObject:object] forKey:key];
+            }
+        }
+ 
+        return [dic copy];
+    }
+ 
+    return [NSNull null];
+}
+
+/// 获取沙盒路径
+- (NSString *)customStylesPlist {
+    ///获取本地沙盒Document路径
+    NSArray *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = [documentPath objectAtIndex:0];
+    ///在Document路径下拼接文件名字
+    NSString *plistPath = [path stringByAppendingPathComponent:@"userCustomStyles/userCustomStylesDataSource"];
+    return plistPath;
+}
+
+
+/// 写入字典
+- (void)writePlist:(NSArray *)array {
+    ///在Document路径下拼接文件名字
+    NSString *plistPath = [self customStylesPlist];
+
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    ///检测plistPath路径是否存在
+    BOOL isFile = [fileManager fileExistsAtPath:plistPath];
+    if (isFile) {
+        /// 文件存在 删除之后 写入
+        [fileManager removeItemAtPath:plistPath error:nil];
+    }
+    else {
+        /// 如果文件不存在需要创建文件
+        BOOL isCreatDir = [fileManager createDirectoryAtPath:plistPath withIntermediateDirectories:YES attributes:nil error:nil];
+        if (!isCreatDir) {
+            NSLog(@"create 自定义样式Plist failed");
+        }
+        else {
+            NSLog(@"创建自定义样式Plist成功！");
+        }
+    }
+    NSError * error;
+    BOOL isSuccess = [array writeToURL:[NSURL fileURLWithPath:plistPath] error:&error];
+    
+    if (isSuccess) {
+        NSLog(@"写入成功!");
+    }
+    else {
+        NSLog(@"写入失败! : %@", error);
+    }
 }
 
 #pragma mark - UITableViewDataSource
@@ -140,7 +283,15 @@
         case 0: {
             switch (indexPath.row) {
                 case 0: {
+                    @weakify(self);
                     CustomStylesViewController *customStylesVC = [[CustomStylesViewController alloc] initWithNibName:[CustomStylesViewController className] bundle:nil];
+                    customStylesVC.themeClickEvent = ^(NSString * _Nonnull theme) {
+                        @strongify(self);
+                        model.value = theme;
+                        /// 更新沙盒路径下的配置数据
+                        [self upDataPlist];
+                        [self.tableView reloadData];
+                    };
                     [self.navigationController pushViewController:customStylesVC animated:YES];
                     break;
                 }
@@ -265,8 +416,12 @@
     inputView.textMaxLength = 7;
     inputView.isRegex = YES;
     inputView.tipTextColor = [UIColor colorWithHexString:@"#8C8C8C"];
+    @weakify(self);
     inputView.action = ^(NSString * _Nonnull string) {
+        @strongify(self);
         model.value = string;
+        /// 更新沙盒路径下的配置数据
+        [self upDataPlist];
         [self.tableView reloadData];
     };
     [inputView show];
@@ -288,118 +443,161 @@
 - (NSMutableArray *)cellDataSource {
     if (!_cellDataSource) {
 
-        _cellDataSource = [NSMutableArray arrayWithObjects:[NSMutableArray array], [NSMutableArray array], [NSMutableArray array], nil];
-        
-        NSArray *section0 = [NSArray arrayWithObjects:
-                             @{
-                                 @"cellType": [MineTextTableCell className],
-                                 @"title": @"聊天窗口UI样式",
-                                 @"value": @"",
-                                 @"selectionStyle": @(UITableViewCellSelectionStyleGray),
-                                 @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)},
-                             @{
-                                 @"cellType": [MineTextTableCell className],
-                                 @"title": @"时间色值",
-                                 @"value": @"",
-                                 @"selectionStyle": @(UITableViewCellSelectionStyleGray),
-                                 @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)},
-                             @{
-                                 @"cellType": [MineSwitchTableViewCell className],
-                                 @"title": @"客服/机器人昵称显示",
-                                 @"value": @"0",
-                                 @"selectionStyle": @(UITableViewCellSelectionStyleNone),
-                                 @"accessoryType": @(UITableViewCellAccessoryNone)},
-                             @{
-                                 @"cellType": [MineSwitchTableViewCell className],
-                                 @"title": @"访客昵称显示",
-                                 @"value": @"1",
-                                 @"selectionStyle": @(UITableViewCellSelectionStyleNone),
-                                 @"accessoryType": @(UITableViewCellAccessoryNone)},
-                             @{
-                                 @"cellType": [MineSwitchTableViewCell className],
-                                 @"title": @"客服/机器人头像显示",
-                                 @"value": @"1",
-                                 @"selectionStyle": @(UITableViewCellSelectionStyleNone),
-                                 @"accessoryType": @(UITableViewCellAccessoryNone)},
-                             @{
-                                 @"cellType": [MineSwitchTableViewCell className],
-                                 @"title": @"访客头像显示",
-                                 @"value": @"0",
-                                 @"selectionStyle": @(UITableViewCellSelectionStyleNone),
-                                 @"accessoryType": @(UITableViewCellAccessoryNone)}, nil];
-        
-        NSArray *section1 = [NSArray arrayWithObjects:
-                             @{
-                                 @"cellType": [MineTextTableCell className],
-                                 @"title": @"输入框背景色值",
-                                 @"value": @"",
-                                 @"selectionStyle": @(UITableViewCellSelectionStyleGray),
-                                 @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)},
-                             @{
-                                 @"cellType": [MineTextTableCell className],
-                                 @"title": @"输入区分割线",
-                                 @"value": @"",
-                                 @"selectionStyle": @(UITableViewCellSelectionStyleGray),
-                                 @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)},
-                             @{
-                                 @"cellType": [MineTextTableCell className],
-                                 @"title": @"语音按钮色值",
-                                 @"value": @"",
-                                 @"selectionStyle": @(UITableViewCellSelectionStyleGray),
-                                 @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)},
-                             @{
-                                 @"cellType": [MineTextTableCell className],
-                                 @"title": @"输入框暗文提示语",
-                                 @"value": @"",
-                                 @"selectionStyle": @(UITableViewCellSelectionStyleGray),
-                                 @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)}, nil];
-        
-        NSArray *section2 = [NSArray arrayWithObjects:
-                             @{
-                                 @"cellType": [MineSwitchTableViewCell className],
-                                 @"title": @"吐司提示背景色值",
-                                 @"value": @"",
-                                 @"selectionStyle": @(UITableViewCellSelectionStyleNone),
-                                 @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)},
-                             @{
-                                 @"cellType": [MineTextTableCell className],
-                                 @"title": @"吐司提示文字色值",
-                                 @"value": @"",
-                                 @"selectionStyle": @(UITableViewCellSelectionStyleNone),
-                                 @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)}, nil];
-        
-        NSArray *section3 = [NSArray arrayWithObjects:
-                             @{
-                                 @"cellType": [MineTextTableCell className],
-                                 @"title": @"相册导航栏背景色值",
-                                 @"value": @"",
-                                 @"selectionStyle": @(UITableViewCellSelectionStyleNone),
-                                 @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)},
-                             @{
-                                 @"cellType": [MineTextTableCell className],
-                                 @"title": @"相册导航栏文字色值",
-                                 @"value": @"",
-                                 @"selectionStyle": @(UITableViewCellSelectionStyleNone),
-                                 @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)}, nil];
-        
-        
-        [_cellDataSource addObject:[NSMutableArray array]];
-        
-        for (NSDictionary *dic in section0) {
-            [_cellDataSource[0] addObject:[MineTextTableCellModel yy_modelWithJSON:dic]];
+        _cellDataSource = [NSMutableArray arrayWithObjects:[NSMutableArray array], [NSMutableArray array], [NSMutableArray array], [NSMutableArray array], nil];
+//        _cellDataSource = [NSMutableArray array];
+        NSString * plistPath = [self customStylesPlist];
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        ///检测plistPath路径是否存在
+        BOOL isFile = [fileManager fileExistsAtPath:plistPath];
+        /// 如果存在就读取配置的Plist数据
+        if (isFile) {
+            
+            NSMutableArray * array = [NSMutableArray arrayWithContentsOfURL:[NSURL fileURLWithPath:plistPath]];
+            NSLog(@"读取沙盒配置:%@", array);
+            for (int i = 0; i < array.count; i++) {
+                NSArray * nArray = array[i];
+                for (NSDictionary * dic in nArray) {
+                    [_cellDataSource[i] addObject:[MineTextTableCellModel yy_modelWithJSON:dic]];
+                }
+            }
         }
-        
-        for (NSDictionary *dic in section1) {
-            [_cellDataSource[1] addObject:[MineTextTableCellModel yy_modelWithJSON:dic]];
+        else {
+            /// 获取文件路径
+            NSString *path = [[NSBundle mainBundle] pathForResource:@"superCustomStylesDataSource" ofType:@"plist"];
+            NSMutableArray * array = [NSMutableArray arrayWithContentsOfFile:path];
+            for (int i = 0; i < array.count; i++) {
+                NSArray * nArray = array[i];
+                NSLog(@"每组的数据：%@", nArray);
+                for (NSDictionary * dic in nArray) {
+                    [_cellDataSource[i] addObject:[MineTextTableCellModel yy_modelWithJSON:dic]];
+                }
+            }
+            NSLog(@"读取默认的文件配置：%@", _cellDataSource);
+            
+            /// 如果文件不存在需要创建文件
+            BOOL isCreatDir = [fileManager createDirectoryAtPath:plistPath withIntermediateDirectories:YES attributes:nil error:nil];
+            if (!isCreatDir) {
+                NSLog(@"create 自定义样式Plist failed");
+            }
+            else {
+                NSLog(@"创建自定义样式Plist成功！");
+            }
+            
         }
+//        NSArray *section0 = [NSArray arrayWithObjects:
+//                             @{
+//                                 @"cellType": [MineTextTableCell className],
+//                                 @"title": @"聊天窗口UI样式",
+//                                 @"value": @"",
+//                                 @"selectionStyle": @(UITableViewCellSelectionStyleGray),
+//                                 @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)},
+//                             @{
+//                                 @"cellType": [MineTextTableCell className],
+//                                 @"title": @"时间色值",
+//                                 @"value": @"",
+//                                 @"selectionStyle": @(UITableViewCellSelectionStyleGray),
+//                                 @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)},
+//                             @{
+//                                 @"cellType": [MineSwitchTableViewCell className],
+//                                 @"title": @"客服/机器人昵称显示",
+//                                 @"value": @"0",
+//                                 @"selectionStyle": @(UITableViewCellSelectionStyleNone),
+//                                 @"accessoryType": @(UITableViewCellAccessoryNone)},
+//                             @{
+//                                 @"cellType": [MineSwitchTableViewCell className],
+//                                 @"title": @"访客昵称显示",
+//                                 @"value": @"1",
+//                                 @"selectionStyle": @(UITableViewCellSelectionStyleNone),
+//                                 @"accessoryType": @(UITableViewCellAccessoryNone)},
+//                             @{
+//                                 @"cellType": [MineSwitchTableViewCell className],
+//                                 @"title": @"客服/机器人头像显示",
+//                                 @"value": @"1",
+//                                 @"selectionStyle": @(UITableViewCellSelectionStyleNone),
+//                                 @"accessoryType": @(UITableViewCellAccessoryNone)},
+//                             @{
+//                                 @"cellType": [MineSwitchTableViewCell className],
+//                                 @"title": @"访客头像显示",
+//                                 @"value": @"0",
+//                                 @"selectionStyle": @(UITableViewCellSelectionStyleNone),
+//                                 @"accessoryType": @(UITableViewCellAccessoryNone)}, nil];
+//
+//        NSArray *section1 = [NSArray arrayWithObjects:
+//                             @{
+//                                 @"cellType": [MineTextTableCell className],
+//                                 @"title": @"输入框背景色值",
+//                                 @"value": @"",
+//                                 @"selectionStyle": @(UITableViewCellSelectionStyleGray),
+//                                 @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)},
+//                             @{
+//                                 @"cellType": [MineTextTableCell className],
+//                                 @"title": @"输入区分割线",
+//                                 @"value": @"",
+//                                 @"selectionStyle": @(UITableViewCellSelectionStyleGray),
+//                                 @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)},
+//                             @{
+//                                 @"cellType": [MineTextTableCell className],
+//                                 @"title": @"语音按钮色值",
+//                                 @"value": @"",
+//                                 @"selectionStyle": @(UITableViewCellSelectionStyleGray),
+//                                 @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)},
+//                             @{
+//                                 @"cellType": [MineTextTableCell className],
+//                                 @"title": @"输入框暗文提示语",
+//                                 @"value": @"",
+//                                 @"selectionStyle": @(UITableViewCellSelectionStyleGray),
+//                                 @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)}, nil];
+//
+//        NSArray *section2 = [NSArray arrayWithObjects:
+//                             @{
+//                                 @"cellType": [MineSwitchTableViewCell className],
+//                                 @"title": @"吐司提示背景色值",
+//                                 @"value": @"",
+//                                 @"selectionStyle": @(UITableViewCellSelectionStyleNone),
+//                                 @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)},
+//                             @{
+//                                 @"cellType": [MineTextTableCell className],
+//                                 @"title": @"吐司提示文字色值",
+//                                 @"value": @"",
+//                                 @"selectionStyle": @(UITableViewCellSelectionStyleNone),
+//                                 @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)}, nil];
+//
+//        NSArray *section3 = [NSArray arrayWithObjects:
+//                             @{
+//                                 @"cellType": [MineTextTableCell className],
+//                                 @"title": @"相册导航栏背景色值",
+//                                 @"value": @"",
+//                                 @"selectionStyle": @(UITableViewCellSelectionStyleNone),
+//                                 @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)},
+//                             @{
+//                                 @"cellType": [MineTextTableCell className],
+//                                 @"title": @"相册导航栏文字色值",
+//                                 @"value": @"",
+//                                 @"selectionStyle": @(UITableViewCellSelectionStyleNone),
+//                                 @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)}, nil];
+//
+//
+//        [_cellDataSource addObject:[NSMutableArray array]];
+//
+//        for (NSDictionary *dic in section0) {
+//            [_cellDataSource[0] addObject:[MineTextTableCellModel yy_modelWithJSON:dic]];
+//        }
+//
+//        for (NSDictionary *dic in section1) {
+//            [_cellDataSource[1] addObject:[MineTextTableCellModel yy_modelWithJSON:dic]];
+//        }
+//
+//        for (NSDictionary *dic in section2) {
+//            [_cellDataSource[2] addObject:[MineTextTableCellModel yy_modelWithJSON:dic]];
+//        }
+//
+//        for (NSDictionary *dic in section3) {
+//            [_cellDataSource[3] addObject:[MineTextTableCellModel yy_modelWithJSON:dic]];
+//        }
         
-        for (NSDictionary *dic in section2) {
-            [_cellDataSource[2] addObject:[MineTextTableCellModel yy_modelWithJSON:dic]];
-        }
         
-        for (NSDictionary *dic in section3) {
-            [_cellDataSource[3] addObject:[MineTextTableCellModel yy_modelWithJSON:dic]];
-        }
+        
+        
     }
     return _cellDataSource;
 }
@@ -425,13 +623,34 @@
 }
 
 -(void)resetConfigParams{
-    // plist 只记录默认值
-    NSArray <NSDictionary *>*array = [NSArray readPlistFileWithFileName:@"superCustomStylesDataSource"];
-    self.dataSource = [[NSArray modelArrayWithClass:[superCustomStylesModel class] json:array] mutableCopy];
-    NSLog(@"data source = %@",self.dataSource);
+//    /// 获取文件路径
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"superCustomStylesDataSource" ofType:@"plist"];
+//    // plist 只记录默认值
+//    NSArray <NSArray *>*array = [NSArray arrayWithContentsOfFile:path];
+//    NSLog(@"默认配置文件 : %@", array);
+    [self.cellDataSource removeAllObjects];
+    self.cellDataSource = [NSMutableArray arrayWithObjects:[NSMutableArray array], [NSMutableArray array], [NSMutableArray array], [NSMutableArray array], nil];
+    /// 获取文件路径
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"superCustomStylesDataSource" ofType:@"plist"];
+    NSMutableArray * array = [NSMutableArray arrayWithContentsOfFile:path];
+    for (int i = 0; i < array.count; i++) {
+        NSArray * nArray = array[i];
+        NSLog(@"每组的数据：%@", nArray);
+        for (NSDictionary * dic in nArray) {
+            [_cellDataSource[i] addObject:[MineTextTableCellModel yy_modelWithJSON:dic]];
+        }
+    }
+    /// 更新沙盒路径下的配置数据
+    [self upDataPlist];
+    [DomainNameSave shareDomainNameSave].index = 0;
+    [self.tableView reloadData];
     
-    superCustomStylesModel *model = self.dataSource[0];
-    NSLog(@"model = %@", [model yy_modelToJSONObject]);
+    
+//    self.dataSource = [[NSArray modelArrayWithClass:[superCustomStylesModel class] json:array] mutableCopy];
+//    NSLog(@"data source = %@",self.dataSource);
+//
+//    superCustomStylesModel *model = self.dataSource[0];
+//    NSLog(@"model = %@", [model yy_modelToJSONObject]);
     
 //    [TOSKitCustomInfo shareCustomInfo].Chat_time_textColor = [self colorWithHexString:model.Chat_time_textColor alpha:1.f];
 //    [TOSKitCustomInfo shareCustomInfo].Chat_tosRobotName_enable = model.Chat_tosRobotName_enable;
