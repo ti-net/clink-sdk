@@ -68,14 +68,19 @@ static CGFloat const kSaveViewHeight = 64.f;
         detailsVC.model = model;
         [self.navigationController pushViewController:detailsVC animated:YES];
     } else if ([eventName isEqualToString:kRouterEventSaveButton]) {
-        
+        __block NSString * theme = @"";
         __block CustomStylesModel *model;
         [self.dataSource enumerateObjectsUsingBlock:^(CustomStylesModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if (obj.isSelected.boolValue) {
                 model = obj;
+                theme = obj.styleName;
                 [DomainNameSave shareDomainNameSave].index = idx;
             }
         }];
+        /// 主题名称回调
+        if (self.themeClickEvent) {
+            self.themeClickEvent(theme);
+        }
         
         [TOSKitCustomInfo shareCustomInfo].senderBubble_backGround = [self colorWithHexString:model.senderBubble_backGround alpha:1.f];
         [TOSKitCustomInfo shareCustomInfo].senderBubble_cornerRadius = [model.senderBubble_cornerRadius doubleValue];
