@@ -25,6 +25,8 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"";
+    [TOSKitCustomInfo shareCustomInfo].ChatBox_textview_placeholder = @"您好!请输入您要咨询的问题";
+    
     [TOSKitCustomInfo shareCustomInfo].senderText_Color = kHexColor(0x262626);
     
     TOSKitExtendBoardItemModel *model1 = [[TOSKitExtendBoardItemModel alloc] init];

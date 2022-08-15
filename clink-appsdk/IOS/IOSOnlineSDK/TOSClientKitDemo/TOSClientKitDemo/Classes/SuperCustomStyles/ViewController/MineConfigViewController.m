@@ -38,21 +38,12 @@
     self.headDataSource = @[@"对话区域配置", @"输入框配置", @"吐司提示配置", @"相册导航栏配置"];
     self.tableView = [self setupTableView];
     [self bindViewModel];
-    
-
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(configSwitchChange:) name:kTOSClientDemoConfigSwitchChange object:nil];
-    
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoMessageReceiveNotification:) name:KVisitorVideoReady object:nil];
-//
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(kVideoBothCallHangupNotification:)
-//                                                 name:kVideoBothCallHangup
-//                                               object:nil];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -73,18 +64,6 @@
     self.navigationItem.rightBarButtonItem = resetConfigButton;
     
     self.cellDataSource[0][0].value = @"经典样式";
-//    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-//    CFShow((__bridge CFTypeRef)(infoDictionary));
-//    NSString *app_Version = [infoDictionary by_ObjectForKey:@"CFBundleShortVersionString"];
-//
-//    NSInteger clientType = [LoginModel loginModel].clientType.integerValue;
-//    if (clientType == 1 || clientType == 2) {
-
-//        self.cellDataSource[2][2].value = [LoginModel loginModel].softPhoneSwitch.integerValue == 1 ? @"1" : @"0";
-//    } else {
-//        self.cellDataSource[2][0].value = app_Version?:@"";
-//    }
-    
 }
 
 #pragma mark - configSwitchChange
@@ -101,8 +80,6 @@
             }
         }
     }
-    
-    
 }
 
 #pragma mark - UITableViewDataSource
@@ -178,6 +155,7 @@
                     inputView.tipTextColor = [UIColor colorWithHexString:@"#8C8C8C"];
                     inputView.action = ^(NSString * _Nonnull string) {
                         model.value = string;
+                        [TOSKitCustomInfo shareCustomInfo].ChatBox_textview_placeholder = string;
                         [self.tableView reloadData];
                     };
                     [inputView show];
@@ -275,7 +253,7 @@
 
 #pragma mark - 初始化
 - (BaseTableView *)setupTableView {
-    BaseTableView *tableView = [[BaseTableView alloc] initWithFrame:CGRectMake(0.f, 0, kWindowWidth, kWindowHeight - kBottomBarHeight - kTabBarHeight) style:(UITableViewStyleGrouped)];
+    BaseTableView *tableView = [[BaseTableView alloc] initWithFrame:CGRectMake(0.f, 0.f, kWindowWidth, kWindowHeight - kBottomBarHeight - kNavTop) style:(UITableViewStyleGrouped)];
     [self.view addSubview:tableView];
     tableView.delegate = self;
     tableView.dataSource = self;

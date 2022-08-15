@@ -16,7 +16,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UIImageView *rightArrow;
-//@property (weak, nonatomic) IBOutlet UIImageView *userPic;
 
 @end
 
@@ -25,15 +24,12 @@
 - (void)setWithModel:(id)model {
     MineTextTableCellModel *mineModel = model;
     self.title.text = mineModel.title?:@"";
-//    [self.userPic loadImageWithUrl:[NSString stringWithFormat:@"%@/%@?cno=%@",[DomainNameSave shareDomainNameSave].domainName,kGetMinePic,[LoginModel loginModel].cno?:@"0"] placeholderPic:@"mine_userHeader"];
     self.rightArrow.hidden = mineModel.accessoryType.integerValue == UITableViewCellAccessoryNone;
-    
 }
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-//    [self.userPic zy_cornerRadiusRoundingRect];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

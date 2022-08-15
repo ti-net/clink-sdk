@@ -1,5 +1,5 @@
 //
-//  TIMBaseModel.h
+//  TOSBaseModel.h
 //  TIMClientLib
 //
 //  Created by 赵言 on 2020/12/25.

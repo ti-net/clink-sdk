@@ -38,20 +38,6 @@
 - (IBAction)didClickSwitchBtnAction:(UISwitch *)sender {
     self.mineModel.value = sender.isOn ? @"1" : @"0";
     [[NSNotificationCenter defaultCenter] postNotificationName:kTOSClientDemoConfigSwitchChange object:self.mineModel];
-    if ([self.mineModel.title isEqualToString:@"接听来电"]) {
-
-    } else if ([self.mineModel.title isEqualToString:@"离线接听"]) {    //离线接听
-
-    } else if ([self.mineModel.title isEqualToString:@"分机外呼"]) {
-        LoginModel *model = [LoginModel loginModel];
-        model.softPhoneSwitch = sender.isOn ? @(1) : @(0);
-        [[LoginModel loginModel] saveLoginModel:model];
-        
-        if (sender.isOn) {
-            [TRLoadingView showLoadingAddTo:[AppDelegate App].window animated:YES];
-       
-        }
-    }
 }
 
 - (void)awakeFromNib {

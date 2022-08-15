@@ -58,7 +58,7 @@
 		</data>
 		<key>Headers/CombinationMessage.h</key>
 		<data>
-		cTwwi0e574tGjsFRgPy4u/G1mso=
+		sl7LOe9FeiebyOSl9l+fHjxtmkQ=
 		</data>
 		<key>Headers/FileMessage.h</key>
 		<data>
@@ -126,7 +126,7 @@
 		</data>
 		<key>Headers/TIMClient.h</key>
 		<data>
-		Tbzbqb7bj7tlsiG31MPnmE81Q94=
+		SzIm4f5ihtfg0sY52wS7BL9ISKU=
 		</data>
 		<key>Headers/TIMConnectOption.h</key>
 		<data>
@@ -170,7 +170,7 @@
 		</data>
 		<key>Headers/TIMLibBaseModel.h</key>
 		<data>
-		bB6qOXqwG0chTdnFoR5TCBHMXnE=
+		HI94GrwzDOWr0W6WR5LyWak9IpU=
 		</data>
 		<key>Headers/TIMMessageContent.h</key>
 		<data>
@@ -200,17 +200,9 @@
 		<data>
 		UQ7XNJMYaZCN7IWclsJRuNf8jHw=
 		</data>
-		<key>Headers/TIMMessageSearchOption.h</key>
-		<data>
-		uAPnT1DaOG62Qy8Ky+gt09D1I78=
-		</data>
 		<key>Headers/TIMMessageSendOption.h</key>
 		<data>
 		f1DA9dWgUVH8Zp8iuE88qcw7vms=
-		</data>
-		<key>Headers/TIMMessageUpdateContentOption.h</key>
-		<data>
-		p1eipWxM1cX0W2ANSBTOLHVk9Ec=
 		</data>
 		<key>Headers/TIMNotifyMessage.h</key>
 		<data>
@@ -223,10 +215,6 @@
 		<key>Headers/TIMSessionDeleteOption.h</key>
 		<data>
 		p1uCDMBn4FKgurrOBO2TtlOHTrc=
-		</data>
-		<key>Headers/TIMSessionListOption.h</key>
-		<data>
-		jAUO0oNfCZ50ie9hd7E7xTjAcTk=
 		</data>
 		<key>Headers/TIMSessionPriorityOption.h</key>
 		<data>
@@ -270,7 +258,7 @@
 		</data>
 		<key>Headers/TOSClientLib.h</key>
 		<data>
-		m+Yw9kyXh/1CvPuQ1SG2zRMCVBw=
+		9bLNeN6kRgmFUBzDBeVz0Ooa7rs=
 		</data>
 		<key>Headers/TOSConnectOption.h</key>
 		<data>
@@ -310,7 +298,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		wyVML4AoscINN+Yvcuu87Zku1gM=
+		94DwRUJsPs6hWSRmvwzR8B7tjnI=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -466,11 +454,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			cTwwi0e574tGjsFRgPy4u/G1mso=
+			sl7LOe9FeiebyOSl9l+fHjxtmkQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			BvXIPfiwJMGFdmEvfckGtPcETI4tyTV84Urv11rVP7s=
+			yoTavfbSv22juQp7jadG5egwKB0vAL5H1GkqQJfMWLk=
 			</data>
 		</dict>
 		<key>Headers/FileMessage.h</key>
@@ -653,11 +641,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Tbzbqb7bj7tlsiG31MPnmE81Q94=
+			SzIm4f5ihtfg0sY52wS7BL9ISKU=
 			</data>
 			<key>hash2</key>
 			<data>
-			u6qeAtfqn0gsbXJXYKI1dItKsyVCmqChHuQItkNJdBQ=
+			rGBXJNYnFpvyyKVwIzeHehpIYmyTP1Q+WNqsOniaEss=
 			</data>
 		</dict>
 		<key>Headers/TIMConnectOption.h</key>
@@ -774,11 +762,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			bB6qOXqwG0chTdnFoR5TCBHMXnE=
+			HI94GrwzDOWr0W6WR5LyWak9IpU=
 			</data>
 			<key>hash2</key>
 			<data>
-			CXnm3ilSyF0m0MdnjkWwFAKX0BDNJWfec8933B+4PSY=
+			hw+0g8Wmu5Wk9cLVztX6Pa4Jbyn33cbXx14q/RXANeU=
 			</data>
 		</dict>
 		<key>Headers/TIMMessageContent.h</key>
@@ -858,17 +846,6 @@
 			w5mpNY2P+pQElZLxCDkugxpp+Bkkujz0sMdCLEh8I+o=
 			</data>
 		</dict>
-		<key>Headers/TIMMessageSearchOption.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			uAPnT1DaOG62Qy8Ky+gt09D1I78=
-			</data>
-			<key>hash2</key>
-			<data>
-			s/XKP7X0chW2RM8sQzkpBHh42xfZoOppcLP02Ye+rzQ=
-			</data>
-		</dict>
 		<key>Headers/TIMMessageSendOption.h</key>
 		<dict>
 			<key>hash</key>
@@ -878,17 +855,6 @@
 			<key>hash2</key>
 			<data>
 			qSkIIeHSxxQxq3Lbcwfe90uKvbidhgiEVU8WBTxoX1g=
-			</data>
-		</dict>
-		<key>Headers/TIMMessageUpdateContentOption.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			p1eipWxM1cX0W2ANSBTOLHVk9Ec=
-			</data>
-			<key>hash2</key>
-			<data>
-			WtWPJxmSKVTVzAgOmp5ejC23DBHC/CjqybzhHI4ox7w=
 			</data>
 		</dict>
 		<key>Headers/TIMNotifyMessage.h</key>
@@ -922,17 +888,6 @@
 			<key>hash2</key>
 			<data>
 			ULtWI9Sezc+jLqya3FceykB93fbdxi7sZchpSGxj/Ww=
-			</data>
-		</dict>
-		<key>Headers/TIMSessionListOption.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			jAUO0oNfCZ50ie9hd7E7xTjAcTk=
-			</data>
-			<key>hash2</key>
-			<data>
-			9AO6mBMdEjvLbSZqLSdxvOGEwixsulnQZ6zO8KjCmFs=
 			</data>
 		</dict>
 		<key>Headers/TIMSessionPriorityOption.h</key>
@@ -1049,11 +1004,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			m+Yw9kyXh/1CvPuQ1SG2zRMCVBw=
+			9bLNeN6kRgmFUBzDBeVz0Ooa7rs=
 			</data>
 			<key>hash2</key>
 			<data>
-			zY95R7mUK78PWUcnT7eBFF9DQVoBqMOUcKJdqB1Ml9M=
+			cMJQS46R+loM8fGccnICPbrrkSEfqy1MbWZ287c1Tfw=
 			</data>
 		</dict>
 		<key>Headers/TOSConnectOption.h</key>

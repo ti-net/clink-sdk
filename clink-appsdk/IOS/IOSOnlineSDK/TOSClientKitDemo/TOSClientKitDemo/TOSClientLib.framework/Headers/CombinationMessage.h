@@ -31,7 +31,18 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSArray <NSString *>*cards;
 @property (nonatomic, strong) NSArray <CombinationDataModel *>*data;
 
+/// 文件沙盒存储地址
+@property (nonatomic, copy) NSString *mediaPath;
+/**
+ robotProvider
+ */
+@property (nonatomic, strong) NSString *robotProvider;
+
+/// 选择的问题类型
 @property (nonatomic, assign) NSInteger selectData;
+
+/// 当前展示在哪页
+@property (nonatomic, assign) NSInteger selectPageData;
 
 @property (nonatomic, assign) CGRect contentF;
 

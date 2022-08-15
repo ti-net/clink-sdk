@@ -8,14 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "TIMStatusDefine.h"
-#import "TIMSessionListOption.h"
 #import "TOSMessage.h"
 //#import "TIMMessageHistoryOption.h"
 #import "TIMMessageSendOption.h"
 #import "TIMMessageRevokeOption.h"
 #import "TIMMessageReadOption.h"
 #import "TIMATMessageReadOption.h"
-#import "TIMMessageSearchOption.h"
 #import "TIMInitOption.h"
 #import "TIMConnectOption.h"
 //#import "TIMRole.h"
@@ -28,7 +26,6 @@
 #import "TIMUserGroupMember.h"
 #import "TOSDisConnectOption.h"
 #import "TIMMessageDeleteOption.h"
-#import "TIMMessageUpdateContentOption.h"
 #import "TIMJoinGroupOption.h"
 #import "TIMUpdateGroupOption.h"
 
@@ -271,58 +268,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)getUserInfo:(NSString *)contactId success:(void (^)(TIMContactDetail * detail))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
 
-/**
- 修改用户信息
- 
- @param user               用户实例
- */
-
-//- (void)updateUserInfo:(TIMUserInfo*)user success:(void (^)(void))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
-
-/**
- 上传用户头像
- 
- @param userId               用户实例
- @param localImageData 本地图像实例数据
- */
-
-- (void)uploadUserAvatar:(NSString *)userId avatarImageData:(NSData *)localImageData success:(void (^)(NSString * avatarUrl))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
-
-
-#pragma mark - 会话管理
-
-/**
- 获取会话列表
- 
- @param option                      读取会话列表的参数对象实例
-
- @discussion 此方法会从本地数据库中，读取会话列表。
- 返回的会话列表按照时间从前往后排列，如果有置顶的会话，则置顶的会话会排列在前面。
- */
--(void)getSessionList:(TIMSessionListOption *)option success:(void (^)(NSArray *sessionList))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
-
-
-/**
-删除会话
- 
-@param targetId                      接收方的 userId
-
-@discussion 此方法会从同时从服务器删除和本地数据库删除。
-*/
-
-- (void)deleteSession:(NSString *)targetId success:(void (^)(void))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
-
-/**
-会话置顶
-
-@param targetId                     接收方的 userId
-@param priority                     优先级
-
-@discussion 优先级，大于0的值，越大越优先
-*/
-
-- (void)setSessionPriority:(NSString *)targetId priority:(int)priority success:(void (^)(void))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
-
 #pragma mark - 消息管理
 
 #pragma mark 消息发送
@@ -362,223 +307,13 @@ SDK内置的消息类型，如果您将pushOption置为nil，会使用默认的�
 
 - (void)revokeMessage:(TIMMessageRevokeOption *)option progress:(void(^)(float progress))progressBlock success:(void (^)(TOSMessage * timMessage))successBlock error:(void (^)(TOSMessage * message,TIMConnectErrorCode nErrorCode, NSString *errorDes))errorBlock;
 
-/**
- 取消发送中的信息(较大的文件)
-
- @param message                   消息体TOSMessage
- @param successBlock        消息取消成功的回调 [messageId:消息的ID]
- @param errorBlock             消息取消失败的回调 [nErrorCode:发送失败的错误码,
-
- @return YES表示取消成功，NO表示取消失败，即已经发送完成或者消息不存在。
- */
-- (BOOL)cancelSendMessage:(TOSMessage *)message success:(void(^)(void))successBlock error:(void(^)(TIMConnectErrorCode nErrorCode, NSString *errorDes))errorBlock;
-
-#pragma mark - 获取历史消息
-/**
-获取历史消息内部逻辑:
-
-先从本地获取，当本地数据不足时(如请求50条消息，本地有40条)，记录下本地最早的消息Id,再进行从服务器获取消息(此时需要获取的数量count=10);直到服务器也返回的数据<请求的count为止;此时返回成功的消息数组长度为0
-
-@param option                      查询历史消息的参数对象实例
-
-@discussion
-此方法会获取该会话中，oldestMessageId之前的、指定数量的最新消息实体，返回的消息实体按照时间从新到旧排列。
-返回的消息中不包含oldestMessageId对应那条消息，如果会话中的消息数量小于参数count的值，会将该会话中的所有消息返回。
-如：
-oldestMessageId为10，count为2，会返回messageId为9和8的TOSMessage对象列表。
-*/
-//- (void)getMessageHistory:(TIMMessageHistoryOption*)option success:(void (^)(NSArray *messageList))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
-
-#pragma mark 消息更新
-/**
-更新消息
-
-@param option                     消息更新参数对象实例
-*/
-
-- (void)updateMessageContent:(TIMMessageUpdateContentOption *)option success:(void (^)(void))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
-
 #pragma mark 发送消息已读回执
-
-/**
- 发送某个会话中消息已读的回执
-
- @param option                     消息已读参数对象实例
-
- @discussion 此接口只支持单聊, 如果使用Lib 可以注册监听
- TIMLibDispatchReadReceiptNotification 通知
- */
-
-- (void)sendMessageRead:(TIMMessageReadOption *)option;
-
 
 /// 发送某个会话中AT消息已读的回执
 /// @param option AT消息已读参数对象实例
 - (void)sendATMessageRead:(TIMATMessageReadOption *)option;
 
-#pragma mark 关键字搜索
-
-/**
-关键字搜索 在会话中
-
-@param option            关键字搜索参数对象实例
-
-@warning 目前仅支持单聊。
-*/
-- (void)searchMessage:(TIMMessageSearchOption*)option success:(void (^)(NSArray * sessionList))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
-
 #pragma mark 消息撤回 
-
-/**
-消息撤回
-
-@param messageId            消息ID
-
-@warning 目前仅支持单聊。
-*/
-- (void)recallMessage:(NSString *)messageId success:(void (^)(NSString * messageId))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
-
-/**
-清空历史消息
-
-@param targetId             userId或groupId
-@param pushContent        当下发 push 消息时，在通知栏里会显示这个字段。如果设置该字段为nil或@""，无法接受到 push 推送
-
-@warning 目前仅支持单聊。
-*/
-- (void)cleanMessage:(NSString *)targetId pushContent:(NSString *)pushContent success:(void (^)(NSString * targetId))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
-
-#pragma mark 删除消息
-/**
-删除消息
-
-@param option                     消息删除参数对象实例
-*/
-
-- (void)deleteMessage:(TIMMessageDeleteOption *)option;
-
-#pragma mark - 群组管理
-/**
-创建群组
-*/
-- (void)createUserGroup:(TIMCreateGroupOption*)createUserGroup success:(void (^)(TIMUserGroup * userGroup))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
-
-/**
-删除群组
-*/
-- (void)deleteUserGroup:(NSString *)groupId success:(void (^)(void))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
-
-/**
-更新群组信息
-*/
-- (void)updateUserGroup:(TIMUpdateGroupOption*)updateUserGroup success:(void (^)(void))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
-
-/**
-获取群组信息
-*/
-- (void)getUserGroup:(NSString *)groupId success:(void (^)(TIMUserGroup * userGroup))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
-
-/**
- 获取群组列表
- */
-- (void)getUserGroupList:(void (^)(NSArray<TIMUserGroup *>*))successBlock;
-
-/**
- 获取群组成员列表
- */
-- (void)getGroupMemberList:(NSString *)groupId success:(void (^)(NSArray<TIMUserGroupMember *>*))successBlock;
-
-/**
- 获取群组成员信息
- */
-- (void)getGroupMemberInfo:(NSString *)groupId memberId:(NSString *)memberId success:(void (^)(TIMUserGroupMember *))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
-
-/**
-获取本地群组成员列表
-*/
-- (void)getLocalGroupMemberList:(NSString *)groupId success:(void (^)(NSArray<TIMUserGroupMember *> *))successBlock;
-/**
- 是否在群组中(此接口为本地查询,前提需要创建群组或调用getGroupMemberList之后方可，谨慎使用)
- */
--(BOOL)isMemberFromGroup:(NSString *)groupId;
-
-/**
- 主动退出群聊
- */
--(void)quitGroup:(NSString *)groupId success:(void (^)(void))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
-
-/**
- 拉人进群
- 
- */
--(void)inviteUserToGroup:(NSString *)groupId memberList:(NSArray *)memberList success:(void (^)(void))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
-
-/**
- 自主进群
- 
- */
--(void)joinGroup:(TIMJoinGroupOption *)option success:(void (^)(void))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
-
-
-
-#pragma mark - 联系人模块
-
-/**
-获取联系人列表
-
-*/
-- (void)getContactList:(void (^)(NSArray<TIMContact *>*))successBlock;
-
-
-/**
- 获取联系人详情
- */
-- (void)getContact:(NSString *)contactId success:(void (^)(TIMContactDetail *))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
-
-/**
- 删除联系人
- 
- @param contactUserId            联系人ID
- */
-- (void)deleteContact:(NSString*)contactUserId success:(void (^)(void))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
-
-/**
- 添加联系人
- 
- @param contact               联系人实例
- */
-- (void)addContact:(TIMContact*)contact success:(void (^)(void))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
-
-/**
- 修改联系人
- 
- @param contact               联系人实例
- */
-
-- (void)updateContact:(TIMContact*)contact success:(void (^)(void))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
-
-/**
- 新增联系人组
- 
-  @param contactGroup               联系人组实例
- */
-- (void)createContactGroup:(TIMContactGroup*)contactGroup success:(void (^)(void))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
-
-/**
- 删除联系人组
- 
-  @param contactGroupId               联系人组ID
- */
-
-- (void)deleteContactGroup:(NSString*)contactGroupId success:(void (^)(void))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
-
-/**
- 更新联系人组
- 
- @param contactGroup               联系人组实例
- */
-
-- (void)updateContactGroup:(TIMContactGroup*)contactGroup success:(void (^)(void))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
 
 /**
  其他
@@ -612,9 +347,6 @@ typedef NS_ENUM(NSInteger, TIMSendPushExtraType){
  @warning 如果您使用TIMLib，可以设置并实现此Delegate监听总未读数的改变；
  */
 -(void)setTIMLibTotalUnreadCountChangedDelegate:(id<TIMLibTotalUnreadCountChangedDelegate>)delegate;
-
-// 清零会话未读
-- (void)setZeroUnreadDataWithUreadTable:(NSString *)targetId;
 
 /**
 是否是apiVersion2的版本

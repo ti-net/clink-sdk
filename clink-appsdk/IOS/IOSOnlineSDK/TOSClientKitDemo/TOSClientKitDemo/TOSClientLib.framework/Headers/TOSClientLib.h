@@ -16,25 +16,18 @@ FOUNDATION_EXPORT const unsigned char TIMClientVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <TIMClient/PublicHeader.h>
 
-// TIM核心类
-//#import <TOSClientLib/TIMRole.h>
+// TOS核心类
 #import <TOSClientLib/TIMInitOption.h>
 #import <TOSClientLib/TOSInitOption.h>
 #import <TOSClientLib/TIMConnectOption.h>
 #import <TOSClientLib/TOSConnectOption.h>
 #import <TOSClientLib/TIMClient.h>
 
-// 用户信息类
-//#import <TOSClientLib/TIMUserInfo.h>
-//#import <TOSClientLib/TIMGroup.h>
-
 // 会话类
-#import <TOSClientLib/TIMSessionListOption.h>
 #import <TOSClientLib/TIMSession.h>
 #import <TOSClientLib/TOSClientKitCommodityCardOption.h>
 
 // 消息类
-//#import <TOSClientLib/TIMMessageHistoryOption.h>
 #import <TOSClientLib/TIMMessageSendOption.h>
 #import <TOSClientLib/TOSMessage.h>
 #import <TOSClientLib/TIMMessageContent.h>
@@ -71,19 +64,6 @@ FOUNDATION_EXPORT const unsigned char TIMClientVersionString[];
 
 #import <TOSClientLib/OnlineEventSendManager.h>
 #import <TOSClientLib/OnlineMessageSendManager.h>
-
-
-// 联系人类
-//#import <TOSClientLib/TIMContact.h>
-//#import <TOSClientLib/TIMContactGroup.h>
-//#import <TOSClientLib/TIMContactDetail.h>
-
-// 群组类
-//#import <TOSClientLib/TIMUserGroup.h>
-//#import <TOSClientLib/TIMUserGroupMember.h>
-//#import <TOSClientLib/TIMJoinGroupOption.h>
-//#import <TOSClientLib/TIMInviteUserToGroupOption.h>
-//#import <TOSClientLib/TIMUpdateGroupOption.h>
 
 // 工具类
 #import <TOSClientLib/TIMLibBaseModel.h>
