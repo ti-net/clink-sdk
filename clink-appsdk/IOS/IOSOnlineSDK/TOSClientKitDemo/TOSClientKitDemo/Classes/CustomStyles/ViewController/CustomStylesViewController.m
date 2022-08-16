@@ -27,9 +27,13 @@ static CGFloat const kSaveViewHeight = 64.f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"自定义样式";
+    self.navigationItem.title = @"聊天窗口样式";
     self.tableView = [self setupTableView];
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    UIBarButtonItem *blackButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"customStyles_backBtn"] style:(UIBarButtonItemStylePlain) target:self action:@selector(blackClickEvent)];
+    self.navigationItem.leftBarButtonItem = blackButton;
+    
     
     CustomStylesSaveView *saveView = kInitXibName([CustomStylesSaveView className]);
     saveView.frame = CGRectMake(0, self.tableView.bottom, kWindowWidth, kSaveViewHeight);
@@ -47,6 +51,10 @@ static CGFloat const kSaveViewHeight = 64.f;
     }];
     
     [self.tableView reloadData];
+}
+
+- (void)blackClickEvent {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)routerEventWithName:(NSString *)eventName userInfo:(id)userInfo {

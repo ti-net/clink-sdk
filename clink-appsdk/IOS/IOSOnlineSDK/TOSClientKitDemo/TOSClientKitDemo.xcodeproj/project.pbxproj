@@ -34,11 +34,6 @@
 		3C9CE7D928747A2000163770 /* CustomStylesDetailsDataSource.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C9CE7D828747A2000163770 /* CustomStylesDetailsDataSource.plist */; };
 		3C9CE7DC2874941900163770 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9CE7DB2874941900163770 /* MessageViewController.m */; };
 		3C9CE7E42874A07700163770 /* ProtocolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9CE7E32874A07700163770 /* ProtocolViewController.m */; };
-		3CA46E5028AA480500CB3ED7 /* TOSClient.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3CA46E4D28AA480200CB3ED7 /* TOSClient.bundle */; };
-		3CA46E5528AA485600CB3ED7 /* TOSClientLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CA46E4F28AA480500CB3ED7 /* TOSClientLib.framework */; };
-		3CA46E5628AA485600CB3ED7 /* TOSClientLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3CA46E4F28AA480500CB3ED7 /* TOSClientLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3CA46E5928AA4A3000CB3ED7 /* TOSClientKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CA46E5728AA4A1500CB3ED7 /* TOSClientKit.framework */; };
-		3CA46E5A28AA4A3000CB3ED7 /* TOSClientKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3CA46E5728AA4A1500CB3ED7 /* TOSClientKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3CB72A72286AD38400F2A780 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB72A71286AD38400F2A780 /* AppDelegate.m */; };
 		3CB72A7B286AD38400F2A780 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CB72A79286AD38400F2A780 /* Main.storyboard */; };
 		3CB72A7D286AD38600F2A780 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CB72A7C286AD38600F2A780 /* Assets.xcassets */; };
@@ -133,8 +128,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3CA46E5628AA485600CB3ED7 /* TOSClientLib.framework in Embed Frameworks */,
-				3CA46E5A28AA4A3000CB3ED7 /* TOSClientKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -185,9 +178,6 @@
 		3C9CE7DB2874941900163770 /* MessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
 		3C9CE7E22874A07700163770 /* ProtocolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolViewController.h; sourceTree = "<group>"; };
 		3C9CE7E32874A07700163770 /* ProtocolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProtocolViewController.m; sourceTree = "<group>"; };
-		3CA46E4D28AA480200CB3ED7 /* TOSClient.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TOSClient.bundle; sourceTree = "<group>"; };
-		3CA46E4F28AA480500CB3ED7 /* TOSClientLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TOSClientLib.framework; sourceTree = "<group>"; };
-		3CA46E5728AA4A1500CB3ED7 /* TOSClientKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TOSClientKit.framework; sourceTree = "<group>"; };
 		3CB72A6D286AD38400F2A780 /* TOSClientKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TOSClientKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CB72A70286AD38400F2A780 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3CB72A71286AD38400F2A780 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -331,9 +321,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3CA46E5928AA4A3000CB3ED7 /* TOSClientKit.framework in Frameworks */,
 				23A6F8D3FF69B581D42DAA8A /* Pods_TOSClientKitDemo.framework in Frameworks */,
-				3CA46E5528AA485600CB3ED7 /* TOSClientLib.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,9 +487,6 @@
 		3CB72A6F286AD38400F2A780 /* TOSClientKitDemo */ = {
 			isa = PBXGroup;
 			children = (
-				3CA46E5728AA4A1500CB3ED7 /* TOSClientKit.framework */,
-				3CA46E4D28AA480200CB3ED7 /* TOSClient.bundle */,
-				3CA46E4F28AA480500CB3ED7 /* TOSClientLib.framework */,
 				3CD9E8802887CEAF00CC739C /* document.html */,
 				3C9CE7E22874A07700163770 /* ProtocolViewController.h */,
 				3C9CE7E32874A07700163770 /* ProtocolViewController.m */,
@@ -964,6 +949,7 @@
 				3C9CE7E52874A92100163770 /* ShellScript */,
 				3C9CE7EA2874B6D200163770 /* Embed Frameworks */,
 				FC788536F4E6703915E1C1D9 /* [CP] Embed Pods Frameworks */,
+				F147EDCD593197CE08F55192 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1069,7 +1055,6 @@
 				3CD9E88A28894E6800CC739C /* CustomStylesSaveView.xib in Resources */,
 				3CB72A7D286AD38600F2A780 /* Assets.xcassets in Resources */,
 				228A1F1A289948590017F197 /* MineSwitchTableViewCell.xib in Resources */,
-				3CA46E5028AA480500CB3ED7 /* TOSClient.bundle in Resources */,
 				3C9CE7BB2874538C00163770 /* CustomStylesViewController.xib in Resources */,
 				3CB72BA6286BF5FD00F2A780 /* MainViewController.xib in Resources */,
 				3CB72A7B286AD38400F2A780 /* Main.storyboard in Resources */,
@@ -1133,6 +1118,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F147EDCD593197CE08F55192 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TOSClientKitDemo/Pods-TOSClientKitDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TOSClientKitDemo/Pods-TOSClientKitDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TOSClientKitDemo/Pods-TOSClientKitDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FC788536F4E6703915E1C1D9 /* [CP] Embed Pods Frameworks */ = {
@@ -1428,7 +1430,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UIUserInterfaceStyle = UIUserInterfaceStyleLight;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1476,7 +1478,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UIUserInterfaceStyle = UIUserInterfaceStyleLight;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

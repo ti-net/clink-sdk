@@ -15,8 +15,13 @@ PODS:
   - RTRootNavigationController (0.8.0):
     - RTRootNavigationController/Core (= 0.8.0)
   - RTRootNavigationController/Core (0.8.0)
+  - TOSClientKit (1.5.0)
   - TTGTagCollectionView (2.1.0)
-  - TZImagePickerController (3.8.1)
+  - TZImagePickerController (3.8.3):
+    - TZImagePickerController/Basic (= 3.8.3)
+    - TZImagePickerController/Location (= 3.8.3)
+  - TZImagePickerController/Basic (3.8.3)
+  - TZImagePickerController/Location (3.8.3)
   - WMPageController (2.5.2)
   - WZLBadge (1.2.6)
   - YBPopupMenu (1.1.9)
@@ -35,6 +40,7 @@ DEPENDENCIES:
   - Reachability
   - ReactiveObjC
   - RTRootNavigationController
+  - TOSClientKit (~> 1.5.0)
   - TTGTagCollectionView
   - TZImagePickerController
   - WMPageController
@@ -54,6 +60,7 @@ SPEC REPOS:
     - Reachability
     - ReactiveObjC
     - RTRootNavigationController
+    - TOSClientKit
     - TTGTagCollectionView
     - TZImagePickerController
     - WMPageController
@@ -72,8 +79,9 @@ SPEC CHECKSUMS:
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
   RTRootNavigationController: 36c6301870f0467f89d69f4286795340b537d473
+  TOSClientKit: 3e66e25fbe1cd8291f3c05576e547891e9367da9
   TTGTagCollectionView: a2a8668c659b39e7a6ffd6590475ea53a7ae95f7
-  TZImagePickerController: 943511626019431372cf908f24c114521e484f0e
+  TZImagePickerController: e9909edbadf7381140efc5b5c9f5bdbfd630f7d4
   WMPageController: 0c7624d2b48e4f1ab92371688cf6744ed701575d
   WZLBadge: 9ec779dcfd94c825518b395e8315fccaabff1bfa
   YBPopupMenu: 3a02e89860bb0568ba477aee609bc3f25e5bd339
@@ -81,6 +89,6 @@ SPEC CHECKSUMS:
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
   ZYCornerRadius: f0af817be7805b5c63d793042ca7a03f81e14069
 
-PODFILE CHECKSUM: 5d3d1ebcf64cc730c8ffc685221e05e535bb4485
+PODFILE CHECKSUM: 262c99f5742697782292e4f6959c594e104a68a1
 
 COCOAPODS: 1.11.3

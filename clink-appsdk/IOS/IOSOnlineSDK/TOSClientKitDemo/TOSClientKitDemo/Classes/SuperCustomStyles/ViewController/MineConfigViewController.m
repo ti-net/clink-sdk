@@ -62,6 +62,10 @@
     [resetConfigButton setTintColor:[UIColor colorWithRed:0.263f green:0.522f blue:255.0f alpha:1.0f]];
     
     self.navigationItem.rightBarButtonItem = resetConfigButton;
+    
+    UIBarButtonItem *blackButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"customStyles_backBtn"] style:(UIBarButtonItemStylePlain) target:self action:@selector(blackClickEvent)];
+    self.navigationItem.leftBarButtonItem = blackButton;
+    
 }
 
 #pragma mark - configSwitchChange
@@ -481,6 +485,10 @@
         
     }
     return _cellDataSource;
+}
+
+- (void)blackClickEvent {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)resetConfigClickEvent{

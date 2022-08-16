@@ -24,6 +24,8 @@
     [super viewDidLoad];
     
     self.navigationItem.title = self.model.styleName;
+    UIBarButtonItem *blackButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"customStyles_backBtn"] style:(UIBarButtonItemStylePlain) target:self action:@selector(blackClickEvent)];
+    self.navigationItem.leftBarButtonItem = blackButton;
     
     
     self.tableView = [self setupTableView];
@@ -54,6 +56,10 @@
         obj.value_bottom = valueBottom;
     }];
     [self.tableView reloadData];
+}
+
+- (void)blackClickEvent {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - UITableViewDataSource
