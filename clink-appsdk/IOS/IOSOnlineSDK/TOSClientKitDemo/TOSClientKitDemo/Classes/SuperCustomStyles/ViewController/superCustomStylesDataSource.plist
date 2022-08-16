@@ -33,7 +33,7 @@
 		</dict>
 		<dict>
 			<key>value</key>
-			<string>0</string>
+			<string>1</string>
 			<key>title</key>
 			<string>客服/机器人昵称显示</string>
 			<key>selectionStyle</key>
@@ -75,7 +75,7 @@
 		</dict>
 		<dict>
 			<key>value</key>
-			<string>0</string>
+			<string>1</string>
 			<key>title</key>
 			<string>访客头像显示</string>
 			<key>selectionStyle</key>
@@ -157,7 +157,7 @@
 			<key>cellType</key>
 			<string>MineTextTableCell</string>
 			<key>accessoryType</key>
-			<integer>0</integer>
+			<integer>1</integer>
 			<key>valueHighlighted</key>
 			<string></string>
 		</dict>

@@ -15,7 +15,7 @@
 #import "MineTextTableCell.h"
 #import "MineSwitchTableViewCell.h"
 #import "superCustomStylesModel.h"
-
+#import "CustomStylesModel.h"
 #import "MineConfigInputView.h"
 
 
@@ -59,7 +59,7 @@
 
 - (void)bindViewModel {
     UIBarButtonItem *resetConfigButton = [[UIBarButtonItem alloc] initWithTitle:@"恢复默认" style:UIBarButtonItemStylePlain target:self action:@selector(resetConfigClickEvent)];
-    [resetConfigButton setTintColor:[UIColor blueColor]];
+    [resetConfigButton setTintColor:[UIColor colorWithRed:0.263f green:0.522f blue:255.0f alpha:1.0f]];
     
     self.navigationItem.rightBarButtonItem = resetConfigButton;
 }
@@ -297,6 +297,8 @@
                     inputView.action = ^(NSString * _Nonnull string) {
                         model.value = string;
                         [TOSKitCustomInfo shareCustomInfo].ChatBox_textview_placeholder = string;
+                        /// 更新沙盒路径下的配置数据
+                        [self upDataPlist];
                         [self.tableView reloadData];
                     };
                     [inputView show];
@@ -372,11 +374,10 @@
         [TOSKitCustomInfo shareCustomInfo].Chat_visitorName_show = [value isEqualToString:@"1"] ? YES : NO;
     }
     else if ([title isEqualToString:@"客服/机器人头像显示"]) {
-        [TOSKitCustomInfo shareCustomInfo].Chat_tosRobotName_enable = [value isEqualToString:@"1"] ? YES : NO;
-        NSLog(@"显示的数据 %i", [TOSKitCustomInfo shareCustomInfo].Chat_tosRobotName_enable);
+        [TOSKitCustomInfo shareCustomInfo].Chat_tosRobot_portrait_enable = [value isEqualToString:@"1"] ? YES : NO;
     }
     else if ([title isEqualToString:@"访客头像显示"]) {
-        [TOSKitCustomInfo shareCustomInfo].Chat_visitorName_enable = [value isEqualToString:@"1"] ? YES : NO;
+        [TOSKitCustomInfo shareCustomInfo].Chat_visitor_portrait_enable = [value isEqualToString:@"1"] ? YES : NO;
     }
     else if ([title isEqualToString:@"输入框背景色值"]) {
         [TOSKitCustomInfo shareCustomInfo].ChatBox_backGroundColor = [UIColor colorWithHexString:value];
@@ -401,6 +402,18 @@
     }
     else if ([title isEqualToString:@"相册导航栏文字色值"]) {
         [TOSKitCustomInfo shareCustomInfo].imagePicker_barItemTextColor = [UIColor colorWithHexString:value];
+    }
+    else if ([title isEqualToString:@"聊天窗口UI样式"]) {
+        NSArray <NSDictionary *>*array = [NSArray readPlistFileWithFileName:@"CustomStylesDataSource"];
+        NSArray * modelArray = [[NSArray modelArrayWithClass:[CustomStylesModel class] json:array] mutableCopy];
+        CustomStylesModel * model = modelArray[0];
+        [TOSKitCustomInfo shareCustomInfo].senderBubble_backGround = [self colorWithHexString:model.senderBubble_backGround alpha:1.f];
+        [TOSKitCustomInfo shareCustomInfo].senderBubble_cornerRadius = [model.senderBubble_cornerRadius doubleValue];
+        [TOSKitCustomInfo shareCustomInfo].receiveBubble_backGround = [self colorWithHexString:model.receiveBubble_backGround alpha:1.f];
+        [TOSKitCustomInfo shareCustomInfo].receiveBubble_cornerRadius = [model.receiveBubble_cornerRadius doubleValue];
+        [TOSKitCustomInfo shareCustomInfo].chat_backGround = [self colorWithHexString:model.chat_backGround alpha:1.f];
+        [TOSKitCustomInfo shareCustomInfo].portrait_cornerRadius = [model.portrait_cornerRadius doubleValue];
+        
     }
     
 }
@@ -511,6 +524,14 @@
     self.cellDataSource = nil;
     [self.tableView reloadData];
     
+    for (NSArray * nArray in self.cellDataSource) {
+        for (MineTextTableCellModel * nModel in nArray) {
+            /// 同步设置
+            [self customInfoTitle:nModel.title withValue:nModel.value];
+        }
+    }
+    
+    return;
     superCustomStylesModel *model = self.dataSource[0];
     NSLog(@"model = %@", [model yy_modelToJSONObject]);
     
