@@ -6,6 +6,8 @@ target "TOSClientKitDemo" do
 
 #pod 'TOSClientKit','~>1.4.3'
 
+#pod 'BaiduNaviKit'
+
 pod 'Bugly'
 pod 'MBProgressHUD'
 

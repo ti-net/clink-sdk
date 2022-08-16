@@ -82,23 +82,23 @@
 		</data>
 		<key>ICChatMessageCommodityCardCell.nib</key>
 		<data>
-		GNZQIe0nRkUQnKTYB0vDzCt8n7Q=
+		44roDNbFd2Ncph37lqCuHgW/mAs=
 		</data>
 		<key>ICChatMessageCommodityCardDetailsCell.nib/objects-11.0+.nib</key>
 		<data>
-		0j56w+p3E/UZOEcz0oO11BhJFlM=
+		NOG0cYVUj+ZDBpfjbuR06Vt1BJg=
 		</data>
 		<key>ICChatMessageCommodityCardDetailsCell.nib/runtime.nib</key>
 		<data>
-		+G37w6O0h756DK5ewzg7S9gQyUA=
+		xqyTT4wAaXMj08XitKshaVk4VZ8=
 		</data>
 		<key>ICTransportDetailsTableCell.nib</key>
 		<data>
-		hHKz5cY06qD4w5XZeSl7BvqwWZM=
+		o1MN3KgZvohvTJmOGOymY3PZEYc=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		+2mjePpgVsFl1IB494VaRmopukQ=
+		+WeTZEepwwN+QadDzEs/01w/0JI=
 		</data>
 		<key>LICENSE</key>
 		<data>
@@ -110,7 +110,7 @@
 		</data>
 		<key>OSEventSatisfactionCell.nib</key>
 		<data>
-		YieJE6/YbFaaDwKi6TisUMdpBq0=
+		rLV7/yvcaSMUdO/CQQl7XlrfM0A=
 		</data>
 		<key>YBImageBrowser.bundle/ybib_loading@2x.png</key>
 		<data>
@@ -392,44 +392,44 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			GNZQIe0nRkUQnKTYB0vDzCt8n7Q=
+			44roDNbFd2Ncph37lqCuHgW/mAs=
 			</data>
 			<key>hash2</key>
 			<data>
-			O4YOeh2oTPny/jw+4t2/Teh6JJy4Vs8uTkcklVXeMBs=
+			JSN20fmeu0SWYaeHCyUdjRUlSDeasVpPVE181YsVta4=
 			</data>
 		</dict>
 		<key>ICChatMessageCommodityCardDetailsCell.nib/objects-11.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			0j56w+p3E/UZOEcz0oO11BhJFlM=
+			NOG0cYVUj+ZDBpfjbuR06Vt1BJg=
 			</data>
 			<key>hash2</key>
 			<data>
-			uieBit+kTK7kJTfujKuSaWQALa3rljYnSnw2iboh8ZY=
+			pdQSaqR9Wrxl4CBZ5yt9kWbd+6lB8pSeWMsqeYQNrRo=
 			</data>
 		</dict>
 		<key>ICChatMessageCommodityCardDetailsCell.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			+G37w6O0h756DK5ewzg7S9gQyUA=
+			xqyTT4wAaXMj08XitKshaVk4VZ8=
 			</data>
 			<key>hash2</key>
 			<data>
-			ttmuj0ZOKOPOCPqYlc/ZxDoLTeDaFRZFMIxNqJReAEU=
+			Sfeu1FpejCIJPqgJXOREvoSkpSeY+Zq9mY1tnP0yBVw=
 			</data>
 		</dict>
 		<key>ICTransportDetailsTableCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			hHKz5cY06qD4w5XZeSl7BvqwWZM=
+			o1MN3KgZvohvTJmOGOymY3PZEYc=
 			</data>
 			<key>hash2</key>
 			<data>
-			H5UcM1yOAjeuVnmxp6mGmpadNqiquWCTxiZV/tvn40Q=
+			5wklPAouBqYn4xE/D8KkHwMIX6yWyYYgXDs+Pzsx7vI=
 			</data>
 		</dict>
 		<key>LICENSE</key>
@@ -458,11 +458,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			YieJE6/YbFaaDwKi6TisUMdpBq0=
+			rLV7/yvcaSMUdO/CQQl7XlrfM0A=
 			</data>
 			<key>hash2</key>
 			<data>
-			waDEMvwF28R/FbEWDdbLYr1MbSrKo15GoVMDdVNe4+c=
+			jUsx9bs/H/msge69Qmed2IZTo7P1VbVp46qF4BBQCUQ=
 			</data>
 		</dict>
 		<key>YBImageBrowser.bundle/ybib_loading@2x.png</key>
