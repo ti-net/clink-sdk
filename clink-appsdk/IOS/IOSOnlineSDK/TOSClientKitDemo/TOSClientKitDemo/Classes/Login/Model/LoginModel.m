@@ -11,7 +11,7 @@
 #import "LoginViewController.h"
 
 // 登陆返回保存路径
-#define LoginModelFilePath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"TRLoginModel.arch"]
+#define LoginModelFilePath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"TOSClientKitDemoLoginModel.arch"]
 
 @implementation LoginModel
 
@@ -33,7 +33,6 @@
 // 保存LoginModel
 - (BOOL)saveLoginModelWithDic:(NSDictionary *)dic {
     LoginModel *loginModel = [LoginModel modelWithDictionary:dic];
-    loginModel.isLogin = YES;
     return [self saveLoginModel:loginModel];
 }
 
@@ -45,12 +44,7 @@
 - (void)removeLoginModel {
     NSFileManager *manager = [NSFileManager defaultManager];
     [manager removeItemAtPath:LoginModelFilePath error:nil];
-    self.isLogin = NO;
-    self.cno = @"";
-    self.clientId = @(0);
-    self.clientName = @"";
-    self.rongCloudToken = @"";
-    [AppDelegate App].window.rootViewController = [[LoginViewController alloc] initWithNibName:[LoginViewController className] bundle:nil];
+//    self.nickname = @"";
 }
 
 @end

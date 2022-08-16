@@ -49,10 +49,38 @@
                         <color key="textColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aXx-1Q-fm9">
+                        <rect key="frame" x="16" y="19.5" width="92" height="31"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="31" id="0s5-rs-ZaD"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" title=""/>
+                        <connections>
+                            <action selector="didClickSelectedBoxAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="xL6-DV-HYh"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ADF-fB-ZGd">
+                        <rect key="frame" x="311" y="19.5" width="76" height="31"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="31" id="aOO-4q-SMb"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" title=""/>
+                        <connections>
+                            <action selector="didClickDetailsAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="uK9-be-Nk4"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="mFK-hm-aZQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="27" id="4mb-ZY-OO8"/>
+                    <constraint firstItem="ADF-fB-ZGd" firstAttribute="trailing" secondItem="mFK-hm-aZQ" secondAttribute="trailing" id="Cvj-kq-ljk"/>
+                    <constraint firstItem="mFK-hm-aZQ" firstAttribute="centerY" secondItem="ADF-fB-ZGd" secondAttribute="centerY" id="HFk-9Y-3mM"/>
+                    <constraint firstItem="ADF-fB-ZGd" firstAttribute="leading" secondItem="Vs9-47-GF7" secondAttribute="leading" id="Jp5-y9-RLA"/>
+                    <constraint firstItem="aXx-1Q-fm9" firstAttribute="centerY" secondItem="Xhf-jE-dqB" secondAttribute="centerY" id="K5Z-Hb-HaN"/>
                     <constraint firstAttribute="bottom" secondItem="Pac-Mg-JlG" secondAttribute="bottom" id="Ld1-vH-zTu"/>
+                    <constraint firstItem="aXx-1Q-fm9" firstAttribute="leading" secondItem="Xhf-jE-dqB" secondAttribute="leading" id="a6n-Pu-848"/>
+                    <constraint firstItem="aXx-1Q-fm9" firstAttribute="trailing" secondItem="rbU-SI-85y" secondAttribute="trailing" id="asZ-wA-rdC"/>
                     <constraint firstAttribute="trailing" secondItem="mFK-hm-aZQ" secondAttribute="trailing" constant="16" id="b1m-XE-hjS"/>
                     <constraint firstItem="rbU-SI-85y" firstAttribute="centerY" secondItem="Xhf-jE-dqB" secondAttribute="centerY" id="e2R-wd-Erl"/>
                     <constraint firstItem="Pac-Mg-JlG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="g33-OC-6Hg"/>
