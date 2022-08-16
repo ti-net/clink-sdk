@@ -4,10 +4,6 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>.DS_Store</key>
-		<data>
-		FKFoxtb/8BenqOYn8hMf1I3HD88=
-		</data>
 		<key>.gitkeep</key>
 		<data>
 		2jmj7l5rSw0yVb/vlWAYkK/YBwk=
@@ -86,23 +82,23 @@
 		</data>
 		<key>ICChatMessageCommodityCardCell.nib</key>
 		<data>
-		44roDNbFd2Ncph37lqCuHgW/mAs=
+		GNZQIe0nRkUQnKTYB0vDzCt8n7Q=
 		</data>
 		<key>ICChatMessageCommodityCardDetailsCell.nib/objects-11.0+.nib</key>
 		<data>
-		NOG0cYVUj+ZDBpfjbuR06Vt1BJg=
+		0j56w+p3E/UZOEcz0oO11BhJFlM=
 		</data>
 		<key>ICChatMessageCommodityCardDetailsCell.nib/runtime.nib</key>
 		<data>
-		xqyTT4wAaXMj08XitKshaVk4VZ8=
+		+G37w6O0h756DK5ewzg7S9gQyUA=
 		</data>
 		<key>ICTransportDetailsTableCell.nib</key>
 		<data>
-		o1MN3KgZvohvTJmOGOymY3PZEYc=
+		hHKz5cY06qD4w5XZeSl7BvqwWZM=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		Jp1ixQyiKJ+wPUJzemlZEIMs3FY=
+		+2mjePpgVsFl1IB494VaRmopukQ=
 		</data>
 		<key>LICENSE</key>
 		<data>
@@ -114,7 +110,7 @@
 		</data>
 		<key>OSEventSatisfactionCell.nib</key>
 		<data>
-		rLV7/yvcaSMUdO/CQQl7XlrfM0A=
+		YieJE6/YbFaaDwKi6TisUMdpBq0=
 		</data>
 		<key>YBImageBrowser.bundle/ybib_loading@2x.png</key>
 		<data>
@@ -396,44 +392,44 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			44roDNbFd2Ncph37lqCuHgW/mAs=
+			GNZQIe0nRkUQnKTYB0vDzCt8n7Q=
 			</data>
 			<key>hash2</key>
 			<data>
-			JSN20fmeu0SWYaeHCyUdjRUlSDeasVpPVE181YsVta4=
+			O4YOeh2oTPny/jw+4t2/Teh6JJy4Vs8uTkcklVXeMBs=
 			</data>
 		</dict>
 		<key>ICChatMessageCommodityCardDetailsCell.nib/objects-11.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			NOG0cYVUj+ZDBpfjbuR06Vt1BJg=
+			0j56w+p3E/UZOEcz0oO11BhJFlM=
 			</data>
 			<key>hash2</key>
 			<data>
-			pdQSaqR9Wrxl4CBZ5yt9kWbd+6lB8pSeWMsqeYQNrRo=
+			uieBit+kTK7kJTfujKuSaWQALa3rljYnSnw2iboh8ZY=
 			</data>
 		</dict>
 		<key>ICChatMessageCommodityCardDetailsCell.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			xqyTT4wAaXMj08XitKshaVk4VZ8=
+			+G37w6O0h756DK5ewzg7S9gQyUA=
 			</data>
 			<key>hash2</key>
 			<data>
-			Sfeu1FpejCIJPqgJXOREvoSkpSeY+Zq9mY1tnP0yBVw=
+			ttmuj0ZOKOPOCPqYlc/ZxDoLTeDaFRZFMIxNqJReAEU=
 			</data>
 		</dict>
 		<key>ICTransportDetailsTableCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			o1MN3KgZvohvTJmOGOymY3PZEYc=
+			hHKz5cY06qD4w5XZeSl7BvqwWZM=
 			</data>
 			<key>hash2</key>
 			<data>
-			5wklPAouBqYn4xE/D8KkHwMIX6yWyYYgXDs+Pzsx7vI=
+			H5UcM1yOAjeuVnmxp6mGmpadNqiquWCTxiZV/tvn40Q=
 			</data>
 		</dict>
 		<key>LICENSE</key>
@@ -462,11 +458,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			rLV7/yvcaSMUdO/CQQl7XlrfM0A=
+			YieJE6/YbFaaDwKi6TisUMdpBq0=
 			</data>
 			<key>hash2</key>
 			<data>
-			jUsx9bs/H/msge69Qmed2IZTo7P1VbVp46qF4BBQCUQ=
+			waDEMvwF28R/FbEWDdbLYr1MbSrKo15GoVMDdVNe4+c=
 			</data>
 		</dict>
 		<key>YBImageBrowser.bundle/ybib_loading@2x.png</key>
