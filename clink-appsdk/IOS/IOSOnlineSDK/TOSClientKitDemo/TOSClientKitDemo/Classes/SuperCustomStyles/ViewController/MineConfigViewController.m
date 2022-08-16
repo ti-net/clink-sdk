@@ -288,8 +288,8 @@
                     MineConfigInputView * inputView = [[MineConfigInputView alloc] initWithFrame:(CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT))];
                     inputView.titleString = model.title;
                     inputView.textString = model.value.length ? model.value : @"";
-                    inputView.tipString = @"不超过 12 个字";
-                    inputView.textMaxLength = 12;
+                    inputView.tipString = @"不超过 13 个字";
+                    inputView.textMaxLength = 13;
                     inputView.isRegex = NO;
                     inputView.tipTextColor = [UIColor colorWithHexString:@"#8C8C8C"];
                     inputView.action = ^(NSString * _Nonnull string) {
