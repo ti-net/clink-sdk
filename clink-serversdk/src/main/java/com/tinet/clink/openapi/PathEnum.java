@@ -269,6 +269,10 @@ public enum PathEnum {
     StoreTicket("store_ticket"),
     // 评论工单
     CommentTicket("comment_ticket"),
+    // 关闭工单
+    CloseTicket("close_ticket"),
+    // 完成工单
+    FinishTicket("finish_ticket"),
     // 获取工单文件 url
     GetTicketFileUrl("get_ticket_file_url"),
     // 根据外部参数或ID查询工单插件
