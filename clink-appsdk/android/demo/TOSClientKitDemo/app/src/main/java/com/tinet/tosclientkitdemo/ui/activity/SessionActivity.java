@@ -40,19 +40,6 @@ public class SessionActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     protected void initView() {
-        //因为这是API23之后才能改变的，所以你的判断版本
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            //获取窗口区域
-            Window window = getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-
-            //设置状态栏颜色
-            window.setStatusBarColor(Color.WHITE);
-
-            //设置显示为白色背景，黑色字体
-            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-        }
-
         toolbarTitle = findViewById(R.id.toolbar_title);
         findViewById(R.id.toolbar_back).setOnClickListener(this);
 

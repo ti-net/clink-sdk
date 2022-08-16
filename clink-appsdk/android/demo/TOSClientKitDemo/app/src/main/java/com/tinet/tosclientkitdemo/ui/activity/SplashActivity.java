@@ -5,7 +5,6 @@ import androidx.annotation.Nullable;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 
 import com.gyf.immersionbar.ImmersionBar;
@@ -14,7 +13,6 @@ import com.tinet.oslib.config.TOSConnectOption;
 import com.tinet.oslib.listener.OnlineConnectResultCallback;
 import com.tinet.tosclientkitdemo.R;
 import com.tinet.tosclientkitdemo.common.base.BaseActivity;
-import com.tinet.tosclientkitdemo.ui.fragment.ChatFragment;
 import com.tinet.tosclientkitdemo.utils.TLogUtils;
 import com.tinet.tosclientkitdemo.utils.ToastUtils;
 import com.zp.customdialoglib.loading.ProgressDialogHandler;
@@ -35,10 +33,10 @@ public class SplashActivity extends BaseActivity implements View.OnClickListener
                 .statusBarDarkFont(true)
                 .init();
 
-        findViewById(R.id.tv_android_doc).setOnClickListener(this);
+        findViewById(R.id.ll_android_doc).setOnClickListener(this);
         findViewById(R.id.tv_enter_session).setOnClickListener(this);
         findViewById(R.id.tv_enter_login).setOnClickListener(this);
-        findViewById(R.id.tv_theme_list).setOnClickListener(this);
+        findViewById(R.id.ll_theme_list).setOnClickListener(this);
 
     }
 
@@ -51,7 +49,7 @@ public class SplashActivity extends BaseActivity implements View.OnClickListener
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.tv_android_doc:
+            case R.id.ll_android_doc:
                 startActivity(new Intent(SplashActivity.this, DevelopDocActivity.class));
                 break;
             case R.id.tv_enter_session:
@@ -60,7 +58,7 @@ public class SplashActivity extends BaseActivity implements View.OnClickListener
             case R.id.tv_enter_login:
                 startActivity(new Intent(SplashActivity.this, LoginActivity.class));
                 break;
-            case R.id.tv_theme_list:
+            case R.id.ll_theme_list:
                 startActivity(new Intent(SplashActivity.this, CustomStyleActivity.class));
                 break;
         }
