@@ -68,7 +68,7 @@
 
 - (void)bindViewModel {
     UIBarButtonItem *resetConfigButton = [[UIBarButtonItem alloc] initWithTitle:@"恢复默认" style:UIBarButtonItemStylePlain target:self action:@selector(resetConfigClickEvent)];
-    [resetConfigButton setTintColor:[UIColor blueColor]];
+    [resetConfigButton setTintColor:[UIColor colorWithRed:0.263f green:0.522f blue:255.0f alpha:1.0f]];
     
     self.navigationItem.rightBarButtonItem = resetConfigButton;
     
