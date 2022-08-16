@@ -155,7 +155,7 @@
 			<key>selectionStyle</key>
 			<integer>0</integer>
 			<key>cellType</key>
-			<string>MineSwitchTableViewCell</string>
+			<string>MineTextTableCell</string>
 			<key>accessoryType</key>
 			<integer>0</integer>
 			<key>valueHighlighted</key>

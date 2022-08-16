@@ -74,6 +74,8 @@
         for (MineTextTableCellModel * nModel in nArray) {
             if ([nModel.title isEqualToString:model.title]) {
                 nModel.value = model.value;
+                /// 同步设置SDK的数据
+                [self customInfoTitle:model.title withValue:model.value];
                 break;
             }
         }
@@ -307,14 +309,7 @@
             break;
         }
         case 2: {
-            switch (indexPath.row) {
-                case 1: {
-                    [self showInputViewModel:model];
-                    break;
-                }
-                default:
-                    break;
-            }
+            [self showInputViewModel:model];
             break;
         }
         case 3: {
@@ -354,11 +349,59 @@
     inputView.action = ^(NSString * _Nonnull string) {
         @strongify(self);
         model.value = string;
+        /// 同步设置SDK的数据
+        [self customInfoTitle:model.title withValue:string];
         /// 更新沙盒路径下的配置数据
         [self upDataPlist];
         [self.tableView reloadData];
     };
     [inputView show];
+    
+    
+    
+}
+
+- (void)customInfoTitle:(NSString *)title withValue:(NSString *)value {
+    if ([title isEqualToString:@"时间色值"]) {
+        [TOSKitCustomInfo shareCustomInfo].Chat_time_textColor = [UIColor colorWithHexString:value];
+    }
+    else if ([title isEqualToString:@"客服/机器人昵称显示"]) {
+        [TOSKitCustomInfo shareCustomInfo].Chat_tosRobotName_show = [value isEqualToString:@"1"] ? YES : NO;
+    }
+    else if ([title isEqualToString:@"访客昵称显示"]) {
+        [TOSKitCustomInfo shareCustomInfo].Chat_visitorName_show = [value isEqualToString:@"1"] ? YES : NO;
+    }
+    else if ([title isEqualToString:@"客服/机器人头像显示"]) {
+        [TOSKitCustomInfo shareCustomInfo].Chat_tosRobotName_enable = [value isEqualToString:@"1"] ? YES : NO;
+        NSLog(@"显示的数据 %i", [TOSKitCustomInfo shareCustomInfo].Chat_tosRobotName_enable);
+    }
+    else if ([title isEqualToString:@"访客头像显示"]) {
+        [TOSKitCustomInfo shareCustomInfo].Chat_visitorName_enable = [value isEqualToString:@"1"] ? YES : NO;
+    }
+    else if ([title isEqualToString:@"输入框背景色值"]) {
+        [TOSKitCustomInfo shareCustomInfo].ChatBox_backGroundColor = [UIColor colorWithHexString:value];
+    }
+    else if ([title isEqualToString:@"输入区分割线"]) {
+        [TOSKitCustomInfo shareCustomInfo].ChatBox_lineColor = [UIColor colorWithHexString:value];
+    }
+    else if ([title isEqualToString:@"语音按钮色值"]) {
+        [TOSKitCustomInfo shareCustomInfo].VoiceButton_textColor = [UIColor colorWithHexString:value];
+    }
+    else if ([title isEqualToString:@"输入框暗文提示语"]) {
+        [TOSKitCustomInfo shareCustomInfo].ChatBox_textview_placeholder = value;
+    }
+    else if ([title isEqualToString:@"吐司提示背景色值"]) {
+        [TOSKitCustomInfo shareCustomInfo].Toast_backGroundColor = [UIColor colorWithHexString:value];
+    }
+    else if ([title isEqualToString:@"吐司提示文字色值"]) {
+        [TOSKitCustomInfo shareCustomInfo].Toast_textColor = [UIColor colorWithHexString:value];
+    }
+    else if ([title isEqualToString:@"相册导航栏背景色值"]) {
+        [TOSKitCustomInfo shareCustomInfo].imagePicker_naviBgColor = [UIColor colorWithHexString:value];
+    }
+    else if ([title isEqualToString:@"相册导航栏文字色值"]) {
+        [TOSKitCustomInfo shareCustomInfo].imagePicker_barItemTextColor = [UIColor colorWithHexString:value];
+    }
     
 }
 
@@ -413,6 +456,9 @@
             }
             else {
                 NSLog(@"创建自定义样式Plist成功！");
+                /// 更新沙盒路径下的配置数据
+                [self upDataPlist];
+                [DomainNameSave shareDomainNameSave].index = 0;
             }
             
         }
