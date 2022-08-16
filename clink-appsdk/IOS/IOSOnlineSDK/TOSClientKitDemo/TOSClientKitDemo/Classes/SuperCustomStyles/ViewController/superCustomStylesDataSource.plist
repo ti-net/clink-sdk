@@ -19,7 +19,7 @@
 		</dict>
 		<dict>
 			<key>value</key>
-			<string></string>
+			<string>#595959</string>
 			<key>title</key>
 			<string>时间色值</string>
 			<key>selectionStyle</key>
@@ -33,7 +33,7 @@
 		</dict>
 		<dict>
 			<key>value</key>
-			<string>0</string>
+			<string>1</string>
 			<key>title</key>
 			<string>客服/机器人昵称显示</string>
 			<key>selectionStyle</key>
@@ -75,9 +75,9 @@
 		</dict>
 		<dict>
 			<key>value</key>
-			<string>0</string>
+			<string>1</string>
 			<key>title</key>
-			<string>聊天窗口UI样式</string>
+			<string>访客头像显示</string>
 			<key>selectionStyle</key>
 			<integer>0</integer>
 			<key>cellType</key>
@@ -91,7 +91,7 @@
 	<array>
 		<dict>
 			<key>value</key>
-			<string></string>
+			<string>#F3F6F9</string>
 			<key>title</key>
 			<string>输入框背景色值</string>
 			<key>selectionStyle</key>
@@ -105,7 +105,7 @@
 		</dict>
 		<dict>
 			<key>value</key>
-			<string></string>
+			<string>#E8E8E8</string>
 			<key>title</key>
 			<string>输入区分割线</string>
 			<key>selectionStyle</key>
@@ -119,7 +119,7 @@
 		</dict>
 		<dict>
 			<key>value</key>
-			<string></string>
+			<string>#BFBFBF</string>
 			<key>title</key>
 			<string>语音按钮色值</string>
 			<key>selectionStyle</key>
@@ -133,7 +133,7 @@
 		</dict>
 		<dict>
 			<key>value</key>
-			<string></string>
+			<string>您好!请输入您要咨询的问题</string>
 			<key>title</key>
 			<string>输入框暗文提示语</string>
 			<key>selectionStyle</key>
@@ -149,21 +149,21 @@
 	<array>
 		<dict>
 			<key>value</key>
-			<string>0</string>
+			<string>#FFFFFF</string>
 			<key>title</key>
 			<string>吐司提示背景色值</string>
 			<key>selectionStyle</key>
 			<integer>0</integer>
 			<key>cellType</key>
-			<string>MineSwitchTableViewCell</string>
+			<string>MineTextTableCell</string>
 			<key>accessoryType</key>
-			<integer>0</integer>
+			<integer>1</integer>
 			<key>valueHighlighted</key>
 			<string></string>
 		</dict>
 		<dict>
 			<key>value</key>
-			<string></string>
+			<string>#BFBFBF</string>
 			<key>title</key>
 			<string>吐司提示文字色值</string>
 			<key>selectionStyle</key>
@@ -179,7 +179,7 @@
 	<array>
 		<dict>
 			<key>value</key>
-			<string></string>
+			<string>#FFFFFF</string>
 			<key>title</key>
 			<string>相册导航栏背景色值</string>
 			<key>selectionStyle</key>
@@ -193,7 +193,7 @@
 		</dict>
 		<dict>
 			<key>value</key>
-			<string></string>
+			<string>#262626</string>
 			<key>title</key>
 			<string>相册导航栏文字色值</string>
 			<key>selectionStyle</key>

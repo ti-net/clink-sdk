@@ -15,7 +15,7 @@
 #import "MineTextTableCell.h"
 #import "MineSwitchTableViewCell.h"
 #import "superCustomStylesModel.h"
-
+#import "CustomStylesModel.h"
 #import "MineConfigInputView.h"
 
 
@@ -38,21 +38,12 @@
     self.headDataSource = @[@"对话区域配置", @"输入框配置", @"吐司提示配置", @"相册导航栏配置"];
     self.tableView = [self setupTableView];
     [self bindViewModel];
-    
-
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(configSwitchChange:) name:kTOSClientDemoConfigSwitchChange object:nil];
-    
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoMessageReceiveNotification:) name:KVisitorVideoReady object:nil];
-//
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(kVideoBothCallHangupNotification:)
-//                                                 name:kVideoBothCallHangup
-//                                               object:nil];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -71,20 +62,6 @@
     [resetConfigButton setTintColor:[UIColor colorWithRed:0.263f green:0.522f blue:255.0f alpha:1.0f]];
     
     self.navigationItem.rightBarButtonItem = resetConfigButton;
-    
-//    self.cellDataSource[0][0].value = @"经典样式";
-//    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-//    CFShow((__bridge CFTypeRef)(infoDictionary));
-//    NSString *app_Version = [infoDictionary by_ObjectForKey:@"CFBundleShortVersionString"];
-//
-//    NSInteger clientType = [LoginModel loginModel].clientType.integerValue;
-//    if (clientType == 1 || clientType == 2) {
-
-//        self.cellDataSource[2][2].value = [LoginModel loginModel].softPhoneSwitch.integerValue == 1 ? @"1" : @"0";
-//    } else {
-//        self.cellDataSource[2][0].value = app_Version?:@"";
-//    }
-    
 }
 
 #pragma mark - configSwitchChange
@@ -97,13 +74,14 @@
         for (MineTextTableCellModel * nModel in nArray) {
             if ([nModel.title isEqualToString:model.title]) {
                 nModel.value = model.value;
+                /// 同步设置SDK的数据
+                [self customInfoTitle:model.title withValue:model.value];
                 break;
             }
         }
     }
     /// 更新沙盒路径下的配置数据
     [self upDataPlist];
-    
 }
 
 - (void)upDataPlist {
@@ -119,7 +97,6 @@
     }
     NSLog(@"解析后的数据：%@", mArray);
     [self writePlist:[mArray mutableCopy]];
-    
 }
 
 /// model转化为字典
@@ -259,16 +236,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     BaseTableViewCell *cell = [BaseTableViewCell cellXibWithTableView:tableView reuseIdentifie:self.cellDataSource[indexPath.section][indexPath.row].cellType];
-//    if (indexPath.section == 1) {
-//        MineMenuBarTableCell *menuBarCell = (MineMenuBarTableCell *)cell;
-//        self.menuBarCell = menuBarCell;
-//        @weakify(self);
-//        [menuBarCell setDidClickNoticeBtn:^{
-//            @strongify(self);
-//            NoticeWMPageController *noticeVC = [[NoticeWMPageController alloc] init];
-//            [self.navigationController pushViewController:noticeVC animated:YES];
-//        }];
-//    }
     return cell;
 }
 
@@ -323,12 +290,15 @@
                     MineConfigInputView * inputView = [[MineConfigInputView alloc] initWithFrame:(CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT))];
                     inputView.titleString = model.title;
                     inputView.textString = model.value.length ? model.value : @"";
-                    inputView.tipString = @"不超过 12 个字";
-                    inputView.textMaxLength = 12;
+                    inputView.tipString = @"不超过 13 个字";
+                    inputView.textMaxLength = 13;
                     inputView.isRegex = NO;
                     inputView.tipTextColor = [UIColor colorWithHexString:@"#8C8C8C"];
                     inputView.action = ^(NSString * _Nonnull string) {
                         model.value = string;
+                        [TOSKitCustomInfo shareCustomInfo].ChatBox_textview_placeholder = string;
+                        /// 更新沙盒路径下的配置数据
+                        [self upDataPlist];
                         [self.tableView reloadData];
                     };
                     [inputView show];
@@ -341,55 +311,16 @@
             break;
         }
         case 2: {
-            switch (indexPath.row) {
-                case 1: {
-                    [self showInputViewModel:model];
-                    break;
-                }
-                default:
-                    break;
-            }
+            [self showInputViewModel:model];
             break;
         }
         case 3: {
             [self showInputViewModel:model];
             break;
         }
-            
-            
         default:
             break;
     }
-//    if ([model.title isEqualToString:@"聊天窗口UI样式"]) {
-//        CustomStylesViewController *customStylesVC = [[CustomStylesViewController alloc] initWithNibName:[CustomStylesViewController className] bundle:nil];
-//        [self.navigationController pushViewController:customStylesVC animated:YES];
-//    } else if ([model.title isEqualToString:@"时间色值"]) {
-//        MineConfigInputView * inputView = [[MineConfigInputView alloc] initWithFrame:(CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT))];
-//        inputView.titleString = model.title;
-//        inputView.tipString = @"6 位数色值";
-//        inputView.textMaxLength = 7;
-//        inputView.isRegex = YES;
-//        inputView.tipTextColor = [UIColor colorWithHexString:@"#8C8C8C"];
-//        inputView.action = ^(NSString * _Nonnull string) {
-//            model.value = string;
-//            [self.tableView reloadData];
-//        };
-//        [inputView show];
-//        __weak CustomAlertView *customAlertView = [self addCustomAlertViewWithTitle:@"修改手机号" placeholder:model.value];
-//        @weakify(self);
-//        [customAlertView setDidClickDetermineBtn:^{
-//            @strongify(self);
-//            if ([self.textField.text regexValidate:kPhoneNumber]) {
-//                [customAlertView hidenView];
-//                self.clientBindTelVM.bindTel = self.textField.text;
-//                [self.clientBindTelVM requestData];
-//                [TRLoadingView showLoadingAddTo:self.view animated:YES];
-//            } else {
-//                [customAlertView endEditing:YES];
-//                [self showErrorView:@"请输入正确的手机号码"];
-//            }
-//        }];
-//    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -420,17 +351,76 @@
     inputView.action = ^(NSString * _Nonnull string) {
         @strongify(self);
         model.value = string;
+        /// 同步设置SDK的数据
+        [self customInfoTitle:model.title withValue:string];
         /// 更新沙盒路径下的配置数据
         [self upDataPlist];
         [self.tableView reloadData];
     };
     [inputView show];
     
+    
+    
+}
+
+- (void)customInfoTitle:(NSString *)title withValue:(NSString *)value {
+    if ([title isEqualToString:@"时间色值"]) {
+        [TOSKitCustomInfo shareCustomInfo].Chat_time_textColor = [UIColor colorWithHexString:value];
+    }
+    else if ([title isEqualToString:@"客服/机器人昵称显示"]) {
+        [TOSKitCustomInfo shareCustomInfo].Chat_tosRobotName_show = [value isEqualToString:@"1"] ? YES : NO;
+    }
+    else if ([title isEqualToString:@"访客昵称显示"]) {
+        [TOSKitCustomInfo shareCustomInfo].Chat_visitorName_show = [value isEqualToString:@"1"] ? YES : NO;
+    }
+    else if ([title isEqualToString:@"客服/机器人头像显示"]) {
+        [TOSKitCustomInfo shareCustomInfo].Chat_tosRobot_portrait_enable = [value isEqualToString:@"1"] ? YES : NO;
+    }
+    else if ([title isEqualToString:@"访客头像显示"]) {
+        [TOSKitCustomInfo shareCustomInfo].Chat_visitor_portrait_enable = [value isEqualToString:@"1"] ? YES : NO;
+    }
+    else if ([title isEqualToString:@"输入框背景色值"]) {
+        [TOSKitCustomInfo shareCustomInfo].ChatBox_backGroundColor = [UIColor colorWithHexString:value];
+    }
+    else if ([title isEqualToString:@"输入区分割线"]) {
+        [TOSKitCustomInfo shareCustomInfo].ChatBox_lineColor = [UIColor colorWithHexString:value];
+    }
+    else if ([title isEqualToString:@"语音按钮色值"]) {
+        [TOSKitCustomInfo shareCustomInfo].VoiceButton_textColor = [UIColor colorWithHexString:value];
+    }
+    else if ([title isEqualToString:@"输入框暗文提示语"]) {
+        [TOSKitCustomInfo shareCustomInfo].ChatBox_textview_placeholder = value;
+    }
+    else if ([title isEqualToString:@"吐司提示背景色值"]) {
+        [TOSKitCustomInfo shareCustomInfo].Toast_backGroundColor = [UIColor colorWithHexString:value];
+    }
+    else if ([title isEqualToString:@"吐司提示文字色值"]) {
+        [TOSKitCustomInfo shareCustomInfo].Toast_textColor = [UIColor colorWithHexString:value];
+    }
+    else if ([title isEqualToString:@"相册导航栏背景色值"]) {
+        [TOSKitCustomInfo shareCustomInfo].imagePicker_naviBgColor = [UIColor colorWithHexString:value];
+    }
+    else if ([title isEqualToString:@"相册导航栏文字色值"]) {
+        [TOSKitCustomInfo shareCustomInfo].imagePicker_barItemTextColor = [UIColor colorWithHexString:value];
+    }
+    else if ([title isEqualToString:@"聊天窗口UI样式"]) {
+        NSArray <NSDictionary *>*array = [NSArray readPlistFileWithFileName:@"CustomStylesDataSource"];
+        NSArray * modelArray = [[NSArray modelArrayWithClass:[CustomStylesModel class] json:array] mutableCopy];
+        CustomStylesModel * model = modelArray[0];
+        [TOSKitCustomInfo shareCustomInfo].senderBubble_backGround = [self colorWithHexString:model.senderBubble_backGround alpha:1.f];
+        [TOSKitCustomInfo shareCustomInfo].senderBubble_cornerRadius = [model.senderBubble_cornerRadius doubleValue];
+        [TOSKitCustomInfo shareCustomInfo].receiveBubble_backGround = [self colorWithHexString:model.receiveBubble_backGround alpha:1.f];
+        [TOSKitCustomInfo shareCustomInfo].receiveBubble_cornerRadius = [model.receiveBubble_cornerRadius doubleValue];
+        [TOSKitCustomInfo shareCustomInfo].chat_backGround = [self colorWithHexString:model.chat_backGround alpha:1.f];
+        [TOSKitCustomInfo shareCustomInfo].portrait_cornerRadius = [model.portrait_cornerRadius doubleValue];
+        
+    }
+    
 }
 
 #pragma mark - 初始化
 - (BaseTableView *)setupTableView {
-    BaseTableView *tableView = [[BaseTableView alloc] initWithFrame:CGRectMake(0.f, 0, kWindowWidth, kWindowHeight - kBottomBarHeight - kTabBarHeight) style:(UITableViewStyleGrouped)];
+    BaseTableView *tableView = [[BaseTableView alloc] initWithFrame:CGRectMake(0.f, 0.f, kWindowWidth, kWindowHeight - kBottomBarHeight - kNavTop) style:(UITableViewStyleGrouped)];
     [self.view addSubview:tableView];
     tableView.delegate = self;
     tableView.dataSource = self;
@@ -442,9 +432,7 @@
 
 - (NSMutableArray *)cellDataSource {
     if (!_cellDataSource) {
-
         _cellDataSource = [NSMutableArray arrayWithObjects:[NSMutableArray array], [NSMutableArray array], [NSMutableArray array], [NSMutableArray array], nil];
-//        _cellDataSource = [NSMutableArray array];
         NSString * plistPath = [self customStylesPlist];
         NSFileManager *fileManager = [NSFileManager defaultManager];
         ///检测plistPath路径是否存在
@@ -481,119 +469,12 @@
             }
             else {
                 NSLog(@"创建自定义样式Plist成功！");
+                /// 更新沙盒路径下的配置数据
+                [self upDataPlist];
+                [DomainNameSave shareDomainNameSave].index = 0;
             }
             
         }
-//        NSArray *section0 = [NSArray arrayWithObjects:
-//                             @{
-//                                 @"cellType": [MineTextTableCell className],
-//                                 @"title": @"聊天窗口UI样式",
-//                                 @"value": @"",
-//                                 @"selectionStyle": @(UITableViewCellSelectionStyleGray),
-//                                 @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)},
-//                             @{
-//                                 @"cellType": [MineTextTableCell className],
-//                                 @"title": @"时间色值",
-//                                 @"value": @"",
-//                                 @"selectionStyle": @(UITableViewCellSelectionStyleGray),
-//                                 @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)},
-//                             @{
-//                                 @"cellType": [MineSwitchTableViewCell className],
-//                                 @"title": @"客服/机器人昵称显示",
-//                                 @"value": @"0",
-//                                 @"selectionStyle": @(UITableViewCellSelectionStyleNone),
-//                                 @"accessoryType": @(UITableViewCellAccessoryNone)},
-//                             @{
-//                                 @"cellType": [MineSwitchTableViewCell className],
-//                                 @"title": @"访客昵称显示",
-//                                 @"value": @"1",
-//                                 @"selectionStyle": @(UITableViewCellSelectionStyleNone),
-//                                 @"accessoryType": @(UITableViewCellAccessoryNone)},
-//                             @{
-//                                 @"cellType": [MineSwitchTableViewCell className],
-//                                 @"title": @"客服/机器人头像显示",
-//                                 @"value": @"1",
-//                                 @"selectionStyle": @(UITableViewCellSelectionStyleNone),
-//                                 @"accessoryType": @(UITableViewCellAccessoryNone)},
-//                             @{
-//                                 @"cellType": [MineSwitchTableViewCell className],
-//                                 @"title": @"访客头像显示",
-//                                 @"value": @"0",
-//                                 @"selectionStyle": @(UITableViewCellSelectionStyleNone),
-//                                 @"accessoryType": @(UITableViewCellAccessoryNone)}, nil];
-//
-//        NSArray *section1 = [NSArray arrayWithObjects:
-//                             @{
-//                                 @"cellType": [MineTextTableCell className],
-//                                 @"title": @"输入框背景色值",
-//                                 @"value": @"",
-//                                 @"selectionStyle": @(UITableViewCellSelectionStyleGray),
-//                                 @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)},
-//                             @{
-//                                 @"cellType": [MineTextTableCell className],
-//                                 @"title": @"输入区分割线",
-//                                 @"value": @"",
-//                                 @"selectionStyle": @(UITableViewCellSelectionStyleGray),
-//                                 @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)},
-//                             @{
-//                                 @"cellType": [MineTextTableCell className],
-//                                 @"title": @"语音按钮色值",
-//                                 @"value": @"",
-//                                 @"selectionStyle": @(UITableViewCellSelectionStyleGray),
-//                                 @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)},
-//                             @{
-//                                 @"cellType": [MineTextTableCell className],
-//                                 @"title": @"输入框暗文提示语",
-//                                 @"value": @"",
-//                                 @"selectionStyle": @(UITableViewCellSelectionStyleGray),
-//                                 @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)}, nil];
-//
-//        NSArray *section2 = [NSArray arrayWithObjects:
-//                             @{
-//                                 @"cellType": [MineSwitchTableViewCell className],
-//                                 @"title": @"吐司提示背景色值",
-//                                 @"value": @"",
-//                                 @"selectionStyle": @(UITableViewCellSelectionStyleNone),
-//                                 @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)},
-//                             @{
-//                                 @"cellType": [MineTextTableCell className],
-//                                 @"title": @"吐司提示文字色值",
-//                                 @"value": @"",
-//                                 @"selectionStyle": @(UITableViewCellSelectionStyleNone),
-//                                 @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)}, nil];
-//
-//        NSArray *section3 = [NSArray arrayWithObjects:
-//                             @{
-//                                 @"cellType": [MineTextTableCell className],
-//                                 @"title": @"相册导航栏背景色值",
-//                                 @"value": @"",
-//                                 @"selectionStyle": @(UITableViewCellSelectionStyleNone),
-//                                 @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)},
-//                             @{
-//                                 @"cellType": [MineTextTableCell className],
-//                                 @"title": @"相册导航栏文字色值",
-//                                 @"value": @"",
-//                                 @"selectionStyle": @(UITableViewCellSelectionStyleNone),
-//                                 @"accessoryType": @(UITableViewCellAccessoryDisclosureIndicator)}, nil];
-//
-//
-//        [_cellDataSource addObject:[NSMutableArray array]];
-//
-//        for (NSDictionary *dic in section0) {
-//            [_cellDataSource[0] addObject:[MineTextTableCellModel yy_modelWithJSON:dic]];
-//        }
-//
-//        for (NSDictionary *dic in section1) {
-//            [_cellDataSource[1] addObject:[MineTextTableCellModel yy_modelWithJSON:dic]];
-//        }
-//
-//        for (NSDictionary *dic in section2) {
-//            [_cellDataSource[2] addObject:[MineTextTableCellModel yy_modelWithJSON:dic]];
-//        }
-//
-//        for (NSDictionary *dic in section3) {
-//            [_cellDataSource[3] addObject:[MineTextTableCellModel yy_modelWithJSON:dic]];
-//        }
         
         
         
@@ -623,11 +504,6 @@
 }
 
 -(void)resetConfigParams{
-//    /// 获取文件路径
-//    NSString *path = [[NSBundle mainBundle] pathForResource:@"superCustomStylesDataSource" ofType:@"plist"];
-//    // plist 只记录默认值
-//    NSArray <NSArray *>*array = [NSArray arrayWithContentsOfFile:path];
-//    NSLog(@"默认配置文件 : %@", array);
     [self.cellDataSource removeAllObjects];
     self.cellDataSource = [NSMutableArray arrayWithObjects:[NSMutableArray array], [NSMutableArray array], [NSMutableArray array], [NSMutableArray array], nil];
     /// 获取文件路径
@@ -645,27 +521,34 @@
     [DomainNameSave shareDomainNameSave].index = 0;
     [self.tableView reloadData];
     
+    self.cellDataSource = nil;
+    [self.tableView reloadData];
     
-//    self.dataSource = [[NSArray modelArrayWithClass:[superCustomStylesModel class] json:array] mutableCopy];
-//    NSLog(@"data source = %@",self.dataSource);
-//
-//    superCustomStylesModel *model = self.dataSource[0];
-//    NSLog(@"model = %@", [model yy_modelToJSONObject]);
+    for (NSArray * nArray in self.cellDataSource) {
+        for (MineTextTableCellModel * nModel in nArray) {
+            /// 同步设置
+            [self customInfoTitle:nModel.title withValue:nModel.value];
+        }
+    }
     
-//    [TOSKitCustomInfo shareCustomInfo].Chat_time_textColor = [self colorWithHexString:model.Chat_time_textColor alpha:1.f];
-//    [TOSKitCustomInfo shareCustomInfo].Chat_tosRobotName_enable = model.Chat_tosRobotName_enable;
-//    [TOSKitCustomInfo shareCustomInfo].Chat_visitorName_enable = model.Chat_visitorName_enable;
-//    [TOSKitCustomInfo shareCustomInfo].Chat_tosRobot_portrait_enable = model.Chat_tosRobot_portrait_enable;
-//    [TOSKitCustomInfo shareCustomInfo].Chat_visitor_portrait_enable = model.Chat_visitor_portrait_enable;
-//    [TOSKitCustomInfo shareCustomInfo].ChatBox_backGroundColor = [self colorWithHexString:model.ChatBox_backGroundColor alpha:1.0f];
-//    [TOSKitCustomInfo shareCustomInfo].ChatBox_lineColor = [self colorWithHexString:model.ChatBox_lineColor alpha:1.0f];
-//
-//    [TOSKitCustomInfo shareCustomInfo].VoiceButton_textColor = [self colorWithHexString:model.VoiceButton_textColor alpha:1.0f];
-//    [TOSKitCustomInfo shareCustomInfo].ChatBox_textview_placeholder = model.ChatBox_textview_placeholder;
-//    [TOSKitCustomInfo shareCustomInfo].Toast_backGroundColor = [self colorWithHexString:model.Toast_backGroundColor alpha:1.0f];
-//    [TOSKitCustomInfo shareCustomInfo].Toast_textColor = [self colorWithHexString:model.Toast_textColor alpha:1.0f];
-//    [TOSKitCustomInfo shareCustomInfo].imagePicker_naviBgColor = [self colorWithHexString:model.imagePicker_naviBgColor alpha:1.0f];
-//    [TOSKitCustomInfo shareCustomInfo].imagePicker_barItemTextColor = [self colorWithHexString:model.imagePicker_barItemTextColor alpha:1.0f];
+    return;
+    superCustomStylesModel *model = self.dataSource[0];
+    NSLog(@"model = %@", [model yy_modelToJSONObject]);
+    
+    [TOSKitCustomInfo shareCustomInfo].Chat_time_textColor = [self colorWithHexString:model.Chat_time_textColor alpha:1.f];
+    [TOSKitCustomInfo shareCustomInfo].Chat_tosRobotName_enable = model.Chat_tosRobotName_enable;
+    [TOSKitCustomInfo shareCustomInfo].Chat_visitorName_enable = model.Chat_visitorName_enable;
+    [TOSKitCustomInfo shareCustomInfo].Chat_tosRobot_portrait_enable = model.Chat_tosRobot_portrait_enable;
+    [TOSKitCustomInfo shareCustomInfo].Chat_visitor_portrait_enable = model.Chat_visitor_portrait_enable;
+    [TOSKitCustomInfo shareCustomInfo].ChatBox_backGroundColor = [self colorWithHexString:model.ChatBox_backGroundColor alpha:1.0f];
+    [TOSKitCustomInfo shareCustomInfo].ChatBox_lineColor = [self colorWithHexString:model.ChatBox_lineColor alpha:1.0f];
+
+    [TOSKitCustomInfo shareCustomInfo].VoiceButton_textColor = [self colorWithHexString:model.VoiceButton_textColor alpha:1.0f];
+    [TOSKitCustomInfo shareCustomInfo].ChatBox_textview_placeholder = model.ChatBox_textview_placeholder;
+    [TOSKitCustomInfo shareCustomInfo].Toast_backGroundColor = [self colorWithHexString:model.Toast_backGroundColor alpha:1.0f];
+    [TOSKitCustomInfo shareCustomInfo].Toast_textColor = [self colorWithHexString:model.Toast_textColor alpha:1.0f];
+    [TOSKitCustomInfo shareCustomInfo].imagePicker_naviBgColor = [self colorWithHexString:model.imagePicker_naviBgColor alpha:1.0f];
+    [TOSKitCustomInfo shareCustomInfo].imagePicker_barItemTextColor = [self colorWithHexString:model.imagePicker_barItemTextColor alpha:1.0f];
 }
 
 - (UIColor *)colorWithHexString:(NSString *)colorStr alpha:(CGFloat)alpha {

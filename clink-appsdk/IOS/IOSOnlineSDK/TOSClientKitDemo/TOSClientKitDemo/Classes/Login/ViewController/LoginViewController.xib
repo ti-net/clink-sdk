@@ -16,6 +16,8 @@
                 <outlet property="accessSecretTextF" destination="Bbp-Rj-Mff" id="rFi-Bf-PzR"/>
                 <outlet property="enterpriseIdTextF" destination="uXG-ju-6zZ" id="r1P-Wz-HTL"/>
                 <outlet property="loginBtn" destination="N67-de-NnR" id="Pvw-1G-2tg"/>
+                <outlet property="logoImageView" destination="wLX-6V-ROh" id="LMl-EY-XPK"/>
+                <outlet property="platformNameLabel" destination="Ni9-YK-pnL" id="v5Z-Xu-1Ha"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -24,8 +26,12 @@
             <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_logo" translatesAutoresizingMaskIntoConstraints="NO" id="wLX-6V-ROh">
+                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_logo" translatesAutoresizingMaskIntoConstraints="NO" id="wLX-6V-ROh">
                     <rect key="frame" x="163" y="44" width="64" height="64"/>
+                    <gestureRecognizers/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="Nu9-ky-gDL" appends="YES" id="G1j-6c-NMB"/>
+                    </connections>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="访客端 APP SDK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5n7-YH-evN">
                     <rect key="frame" x="102" y="120" width="186" height="34"/>
@@ -170,13 +176,21 @@
                         <constraint firstItem="qOv-bV-qlW" firstAttribute="top" secondItem="Bbp-Rj-Mff" secondAttribute="bottom" constant="8" id="sMy-Hw-26r"/>
                     </constraints>
                 </view>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="北京" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ni9-YK-pnL">
+                    <rect key="frame" x="237" y="87" width="34.666666666666686" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="sPU-0U-wwY" firstAttribute="top" secondItem="DLr-sL-VtV" secondAttribute="bottom" constant="46" id="1ur-WJ-hWR"/>
                 <constraint firstItem="5n7-YH-evN" firstAttribute="top" secondItem="wLX-6V-ROh" secondAttribute="bottom" constant="12" id="30H-tn-46x"/>
                 <constraint firstItem="GLF-CA-uhs" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="32" id="4M4-Wj-xrI"/>
+                <constraint firstItem="Ni9-YK-pnL" firstAttribute="bottom" secondItem="wLX-6V-ROh" secondAttribute="bottom" id="6g2-Ju-WLH"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="9Wy-Cv-fIF" secondAttribute="trailing" constant="32" id="8q7-6f-FUK"/>
                 <constraint firstItem="9Wy-Cv-fIF" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="32" id="CrM-26-JSa"/>
                 <constraint firstItem="9Wy-Cv-fIF" firstAttribute="top" secondItem="sPU-0U-wwY" secondAttribute="bottom" constant="24" id="DfH-SD-xVW"/>
@@ -187,14 +201,28 @@
                 <constraint firstItem="GLF-CA-uhs" firstAttribute="top" secondItem="9Wy-Cv-fIF" secondAttribute="bottom" constant="24" id="bv9-rB-1rS"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="sPU-0U-wwY" secondAttribute="trailing" constant="32" id="cG6-u2-A6r"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="N67-de-NnR" secondAttribute="trailing" constant="32" id="e3a-PJ-Znm"/>
+                <constraint firstItem="Ni9-YK-pnL" firstAttribute="leading" secondItem="wLX-6V-ROh" secondAttribute="trailing" constant="10" id="f7i-zP-enf"/>
                 <constraint firstItem="sPU-0U-wwY" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="32" id="feS-wo-vuD"/>
                 <constraint firstItem="5n7-YH-evN" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="hUf-0b-BD5"/>
                 <constraint firstItem="N67-de-NnR" firstAttribute="top" secondItem="GLF-CA-uhs" secondAttribute="bottom" constant="24" id="kDS-qy-kn4"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="GLF-CA-uhs" secondAttribute="trailing" constant="32" id="xNx-bL-NuX"/>
                 <constraint firstItem="DLr-sL-VtV" firstAttribute="top" secondItem="5n7-YH-evN" secondAttribute="bottom" id="yTt-Db-gOc"/>
             </constraints>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="1oB-x7-PCb" appends="YES" id="ijG-4j-lhf"/>
+            </connections>
             <point key="canvasLocation" x="138.46153846153845" y="90.995260663507111"/>
         </view>
+        <tapGestureRecognizer id="Nu9-ky-gDL">
+            <connections>
+                <action selector="didClickSwitchServeTapAction:" destination="-1" id="pxq-d1-VWh"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer numberOfTapsRequired="5" id="1oB-x7-PCb">
+            <connections>
+                <action selector="didClickInputUserIdTapAction:" destination="-1" id="hDB-Q6-zAG"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="login_accessId" width="22" height="22"/>
