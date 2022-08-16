@@ -3,24 +3,15 @@ package com.tinet.clink.openapi.ticket;
 import com.tinet.clink.openapi.AbstractTest;
 import com.tinet.clink.openapi.Client;
 import com.tinet.clink.openapi.ClientConfiguration;
-import com.tinet.clink.openapi.model.TicketCommentModel;
 import com.tinet.clink.openapi.request.ticket.TicketCloseRequest;
-import com.tinet.clink.openapi.request.ticket.TicketCommentRequest;
 import com.tinet.clink.openapi.response.ticket.TicketCloseResponse;
-import com.tinet.clink.openapi.response.ticket.TicketCommentResponse;
 import org.junit.Test;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 
 public class TicketCloseTest extends AbstractTest {
 
     @Test
-    public void ticketComment(){
+    public void ticketClose() {
         // 创建访问服务的client实例并初始化
         ClientConfiguration configuration = new ClientConfiguration(
                 "AK",          // AccessKeyId
@@ -32,10 +23,12 @@ public class TicketCloseTest extends AbstractTest {
         // 创建请求的request
         TicketCloseRequest ticketCloseRequest = new TicketCloseRequest();
         // 请求参数
+        // 工单id
+        ticketCloseRequest.setId(3073);
         // 关闭操作备注信息
         ticketCloseRequest.setContent("工单关闭");
-        //关闭人（当前操作人的id）
-        ticketCloseRequest.setOperator("1564");
+        // 关闭人（当前操作人的id）
+        ticketCloseRequest.setOperatorId(1564);
 
         try {
             // 将请求参数赋值到 request中
