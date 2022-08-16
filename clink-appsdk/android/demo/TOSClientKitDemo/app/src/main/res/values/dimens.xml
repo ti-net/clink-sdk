@@ -15,5 +15,7 @@
     <dimen name="chat_avatar_radius_red">10dp</dimen>
     <dimen name="chat_avatar_radius_green">16dp</dimen>
 
+    <dimen name="del_btn_size">16dp</dimen>
+
 
 </resources>

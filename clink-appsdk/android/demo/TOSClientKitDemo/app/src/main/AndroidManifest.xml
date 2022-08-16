@@ -20,11 +20,10 @@
         android:theme="@style/Theme.TOSClientKitDemo">
         <activity
             android:name=".ui.activity.CustomStyleActivity"
-            android:launchMode="singleTask"
-            android:exported="false" />
+            android:exported="false"
+            android:launchMode="singleTask" />
         <activity
             android:name=".ui.activity.SessionActivity"
-            android:windowSoftInputMode="stateVisible|adjustResize"
             android:exported="false"
             android:launchMode="singleTask" />
         <activity

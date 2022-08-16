@@ -8,6 +8,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Gravity;
@@ -23,6 +24,8 @@ import android.widget.TextView;
 import com.tinet.oskit.TOSClientKit;
 import com.tinet.oskit.manager.TCustomizationUI;
 import com.tinet.oskit.manager.TOSClientKitConfig;
+import com.tinet.threepart.tools.TKeyBoardUtils;
+import com.tinet.timclientlib.utils.TLogUtils;
 import com.tinet.tosclientkitdemo.R;
 import com.tinet.tosclientkitdemo.bean.CustomItemBean;
 import com.tinet.tosclientkitdemo.common.adapter.BaseViewHolder;
@@ -152,18 +155,19 @@ public class CustomStyleActivity extends BaseActivity implements View.OnClickLis
         }
         //填充对话框的布局
         View inflate = LayoutInflater.from(this).inflate(R.layout.activity_dialog_input_control, null);
+        TextView tvDialogTitle = inflate.findViewById(R.id.tv_custom_input_dialog_title);
+        tvDialogTitle.setText(item.getTitle());
+        TextView tvDialogHint = inflate.findViewById(R.id.tv_custom_input_dialog_hint);
+        EditTextWithDelete editTextWithDelete = inflate.findViewById(R.id.et_custom_input_dialog_value);
         inflate.findViewById(R.id.iv_custom_input_dialog_close).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mInputDialog.dismiss();
             }
         });
-        TextView tvDialogTitle = inflate.findViewById(R.id.tv_custom_input_dialog_title);
-        tvDialogTitle.setText(item.getTitle());
-        TextView tvDialogHint = inflate.findViewById(R.id.tv_custom_input_dialog_hint);
-        EditTextWithDelete editTextWithDelete = inflate.findViewById(R.id.et_custom_input_dialog_value);
         if (item.getTagName().equals(INPUT_BOX_HINT_TEXT_TAG)) {
             tvDialogHint.setText(INPUT_BOX_HINT);
+            tvDialogHint.setMaxEms(12);
         } else {
             tvDialogHint.setText(COLOR_INPUT_HINT);
         }
@@ -278,13 +282,13 @@ public class CustomStyleActivity extends BaseActivity implements View.OnClickLis
         mTCustomizationUI.msgTimeColor = Color.parseColor("#FF595959");
         mTCustomizationUI.inputAreaBgColor = Color.parseColor("#FFF3F6F9");
         mTCustomizationUI.inputAreaVoicePressTextColor = Color.parseColor("#FFBFBFBF");
-        mTCustomizationUI.inputBoxHintText = "您好!请输入您要咨询的问题";
+        mTCustomizationUI.inputBoxHintText = "请输入您要咨询的问题";
 
-        mTCustomizationUI.showVisitorNickname = false;//访客昵称
-        mTCustomizationUI.showVisitAvatar = false;//访客头像
-        mTCustomizationUI.showAgentRobotNickname = false;//客服、机器人昵称
-        mTCustomizationUI.showAgentRobotAvatar = false;//客服、机器人头像
-        mTCustomizationUI.showVoiceButton = false;//语音按钮
+        mTCustomizationUI.showVisitorNickname = true;//访客昵称
+        mTCustomizationUI.showVisitAvatar = true;//访客头像
+        mTCustomizationUI.showAgentRobotNickname = true;//客服、机器人昵称
+        mTCustomizationUI.showAgentRobotAvatar = true;//客服、机器人头像
+        mTCustomizationUI.showVoiceButton = true;//语音按钮
     }
 
     private String getHexString(int color) {

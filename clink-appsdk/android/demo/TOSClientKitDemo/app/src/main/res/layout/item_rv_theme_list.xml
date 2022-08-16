@@ -32,9 +32,11 @@
             android:id="@+id/tv_show_theme_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="配置详情 >"
+            android:text="配置详情 "
+            android:drawableRight="@mipmap/right_next"
             android:textColor="#ff595959"
             android:textSize="14sp" />
+
     </LinearLayout>
 
     <ImageView

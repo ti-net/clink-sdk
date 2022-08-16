@@ -2,8 +2,12 @@ package com.tinet.tosclientkitdemo.ui.activity;
 
 import androidx.annotation.Nullable;
 
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -23,6 +27,7 @@ public class DevelopDocActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+
         ((TextView) findViewById(R.id.toolbar_title)).setText("Android 集成文档");
 
         findViewById(R.id.toolbar_back).setOnClickListener(new View.OnClickListener() {
