@@ -28,6 +28,11 @@ public class ListExtensResultModel {
      */
     private Integer allow;
 
+    /**
+     * 网络防抖开关 0：关闭；1：开启
+     */
+    private Integer jittBuffer;
+
     public String getExtenNumber() {
         return extenNumber;
     }
@@ -58,5 +63,13 @@ public class ListExtensResultModel {
 
     public void setAllow(Integer allow) {
         this.allow = allow;
+    }
+
+    public Integer getJittBuffer() {
+        return jittBuffer;
+    }
+
+    public void setJittBuffer(Integer jittBuffer) {
+        this.jittBuffer = jittBuffer;
     }
 }

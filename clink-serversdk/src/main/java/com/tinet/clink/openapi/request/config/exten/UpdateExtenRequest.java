@@ -43,6 +43,11 @@ public class UpdateExtenRequest extends AbstractRequestModel<UpdateExtenResponse
      */
     private Integer isDirect;
 
+    /**
+     * 网络防抖开关 0：关闭；1：开启
+     */
+    private Integer jittBuffer;
+
     public String getExtenNumber() {
         return extenNumber;
     }
@@ -111,6 +116,17 @@ public class UpdateExtenRequest extends AbstractRequestModel<UpdateExtenResponse
 
     public UpdateExtenRequest() {
         super(PathEnum.UpdateExten.value(), HttpMethodType.POST);
+    }
+
+    public Integer getJittBuffer() {
+        return jittBuffer;
+    }
+
+    public void setJittBuffer(Integer jittBuffer) {
+        this.jittBuffer = jittBuffer;
+        if (jittBuffer != null) {
+            putQueryParameter("jittBuffer", jittBuffer);
+        }
     }
 
     @Override

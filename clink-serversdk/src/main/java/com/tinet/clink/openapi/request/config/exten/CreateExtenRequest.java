@@ -43,6 +43,11 @@ public class CreateExtenRequest extends AbstractRequestModel<CreateExtenResponse
      */
     private Integer isDirect;
 
+    /**
+     * 网络防抖开关 0：关闭；1：开启
+     */
+    private Integer jittBuffer;
+
     public CreateExtenRequest() {
         super(PathEnum.CreateExten.value(), HttpMethodType.POST);
     }
@@ -110,6 +115,17 @@ public class CreateExtenRequest extends AbstractRequestModel<CreateExtenResponse
         this.isDirect = isDirect;
         if (isDirect != null) {
             putQueryParameter("isDirect", isDirect);
+        }
+    }
+
+    public Integer getJittBuffer() {
+        return jittBuffer;
+    }
+
+    public void setJittBuffer(Integer jittBuffer) {
+        this.jittBuffer = jittBuffer;
+        if (jittBuffer != null) {
+            putQueryParameter("jittBuffer", jittBuffer);
         }
     }
 
