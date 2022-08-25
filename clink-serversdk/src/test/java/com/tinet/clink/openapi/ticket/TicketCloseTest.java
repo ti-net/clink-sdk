@@ -24,7 +24,7 @@ public class TicketCloseTest extends AbstractTest {
         TicketCloseRequest ticketCloseRequest = new TicketCloseRequest();
         // 请求参数
         // 工单id
-        ticketCloseRequest.setId(3073);
+        ticketCloseRequest.setTicketId(3089);
         // 关闭操作备注信息
         ticketCloseRequest.setContent("工单关闭");
         // 关闭人（当前操作人的id）

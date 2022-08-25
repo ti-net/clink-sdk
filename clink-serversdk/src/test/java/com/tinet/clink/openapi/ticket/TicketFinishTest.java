@@ -24,7 +24,7 @@ public class TicketFinishTest extends AbstractTest {
         TicketFinishRequest ticketFinishRequest = new TicketFinishRequest();
         // 请求参数
         // 工单id
-        ticketFinishRequest.setId(3070);
+        ticketFinishRequest.setTicketId(3070);
         // 完成操作备注信息
         ticketFinishRequest.setContent("工单完成");
         // 完成人（当前操作人的id）

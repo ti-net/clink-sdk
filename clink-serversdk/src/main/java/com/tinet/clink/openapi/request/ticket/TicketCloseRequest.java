@@ -5,8 +5,6 @@ import com.tinet.clink.openapi.request.AbstractRequestModel;
 import com.tinet.clink.openapi.response.ticket.TicketCloseResponse;
 import com.tinet.clink.openapi.utils.HttpMethodType;
 
-import java.util.Objects;
-
 /**
  * 工单关闭
  *
@@ -34,17 +32,14 @@ public class TicketCloseRequest extends AbstractRequestModel<TicketCloseResponse
     /**
      * 工单id
      */
-    private Integer id;
+    private Integer ticketId;
 
-    public Integer getId() {
-        return id;
+    public Integer getTicketId() {
+        return ticketId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-        if (Objects.nonNull(id)) {
-            putQueryParameter("id", id);
-        }
+    public void setTicketId(Integer ticketId) {
+        this.ticketId = ticketId;
     }
 
     public Integer getOperatorId() {
