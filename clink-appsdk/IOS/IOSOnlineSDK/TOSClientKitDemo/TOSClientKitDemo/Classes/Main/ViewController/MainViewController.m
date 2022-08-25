@@ -7,7 +7,8 @@
 
 #import "MainViewController.h"
 #import "LoginViewController.h"
-#import "CustomStylesViewController.h"
+//#import "CustomStylesViewController.h"
+#import "MineConfigViewController.h"
 #import "MessageViewController.h"
 #import "NSDate+TimeFormatting.h"
 #import "ProtocolViewController.h"
@@ -24,7 +25,24 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"";
-    NSLog(@"+++++++ %@",[TOSKitCustomInfo shareCustomInfo].receiveText_Color);
+    [TOSKitCustomInfo shareCustomInfo].senderText_Color = kHexColor(0x262626);
+    
+    TOSKitExtendBoardItemModel *model1 = [[TOSKitExtendBoardItemModel alloc] init];
+    model1.type = TOSChatBoxExtendBoardTypePhotos;
+    
+    TOSKitExtendBoardItemModel *model2 = [[TOSKitExtendBoardItemModel alloc] init];
+    model2.type = TOSChatBoxExtendBoardTypeTakePicture;
+    
+    TOSKitExtendBoardItemModel *model3 = [[TOSKitExtendBoardItemModel alloc] init];
+    model3.type = TOSChatBoxExtendBoardTypeCustomFile;
+    
+    TOSKitExtendBoardItemModel *model4 = [[TOSKitExtendBoardItemModel alloc] init];
+    model4.type = TOSChatBoxExtendBoardTypeArtificial;
+    
+    TOSKitExtendBoardItemModel *model5 = [[TOSKitExtendBoardItemModel alloc] init];
+    model5.type = TOSChatBoxExtendBoardTypeCloseChat;
+    
+    [TOSKitChatBoxExtendBoard shareChatBoxExtendBoard].allItems = @[model1,model2,model3,model4,model5];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -67,8 +85,8 @@
 
 //自定义样式
 - (IBAction)didClickCustomStylesBtnAction:(UIButton *)sender {
-    CustomStylesViewController *customStylesVC = [[CustomStylesViewController alloc] initWithNibName:[CustomStylesViewController className] bundle:nil];
-    [self.navigationController pushViewController:customStylesVC animated:YES];
+    MineConfigViewController *configVC = [[MineConfigViewController alloc] initWithNibName:[MineConfigViewController className] bundle:nil];
+    [self.navigationController pushViewController:configVC animated:YES];
 }
 
 //接入文档

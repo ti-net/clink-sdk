@@ -20,7 +20,7 @@
 		<key>chat_backGround</key>
 		<string>EFF1F5</string>
 		<key>portrait_cornerRadius</key>
-		<integer>16</integer>
+		<integer>20</integer>
 	</dict>
 	<dict>
 		<key>styleName</key>
@@ -32,15 +32,15 @@
 		<key>senderBubble_backGround</key>
 		<string>CBF3FF</string>
 		<key>senderBubble_cornerRadius</key>
-		<integer>4</integer>
+		<integer>8</integer>
 		<key>receiveBubble_backGround</key>
 		<string>FFFFFF</string>
 		<key>receiveBubble_cornerRadius</key>
-		<integer>4</integer>
+		<integer>8</integer>
 		<key>chat_backGround</key>
 		<string>EFF3F5</string>
 		<key>portrait_cornerRadius</key>
-		<integer>4</integer>
+		<integer>6</integer>
 	</dict>
 	<dict>
 		<key>styleName</key>
@@ -60,7 +60,7 @@
 		<key>chat_backGround</key>
 		<string>FBF9ED</string>
 		<key>portrait_cornerRadius</key>
-		<integer>16</integer>
+		<integer>20</integer>
 	</dict>
 	<dict>
 		<key>styleName</key>
@@ -80,7 +80,7 @@
 		<key>chat_backGround</key>
 		<string>F9F3F2</string>
 		<key>portrait_cornerRadius</key>
-		<integer>4</integer>
+		<integer>5</integer>
 	</dict>
 	<dict>
 		<key>styleName</key>
@@ -92,15 +92,15 @@
 		<key>senderBubble_backGround</key>
 		<string>BEF6CD</string>
 		<key>senderBubble_cornerRadius</key>
-		<integer>6</integer>
+		<integer>8</integer>
 		<key>receiveBubble_backGround</key>
 		<string>FFFFFF</string>
 		<key>receiveBubble_cornerRadius</key>
-		<integer>6</integer>
+		<integer>8</integer>
 		<key>chat_backGround</key>
 		<string>EFF5F1</string>
 		<key>portrait_cornerRadius</key>
-		<integer>8</integer>
+		<integer>16</integer>
 	</dict>
 </array>
 </plist>

@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:background="@mipmap/splash_bg"
+    android:gravity="center"
     android:orientation="vertical"
     tools:context=".ui.activity.SplashActivity">
 
     <ImageView
         android:layout_width="64dp"
-        android:src="@mipmap/logo"
-        android:layout_height="64dp" />
+        android:layout_height="64dp"
+        android:src="@mipmap/logo" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -36,24 +36,52 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tv_theme_list"
+        <LinearLayout
+            android:id="@+id/ll_theme_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="自定义样式"
-            android:drawableTop="@mipmap/custom_style_icon"
-            android:textColor="#ff4385ff"
-            android:textSize="14sp" />
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_android_doc"
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/custom_style_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="自定义样式"
+                android:textColor="#ff4385ff"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_android_doc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="32dp"
-            android:text="接入文档"
-            android:drawableTop="@mipmap/docx_icon"
-            android:textColor="#ff4385ff"
-            android:textSize="14sp" />
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/docx_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="接入文档"
+                android:textColor="#ff4385ff"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
 
     </LinearLayout>
 

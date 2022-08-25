@@ -5,10 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 
+import com.gyf.immersionbar.ImmersionBar;
 import com.tinet.oskit.TOSClientKit;
 import com.tinet.oskit.tool.TimeUtils;
 import com.tinet.oslib.OnlineServiceClient;
@@ -30,29 +35,7 @@ public class SessionActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     protected int getLayoutId(@Nullable Bundle savedInstanceState) {
-        setTheme(switchTheme());
         return R.layout.activity_session;
-    }
-
-    /**
-     * 切换不同主题
-     *
-     * @return
-     */
-    private int switchTheme() {
-        switch (App.CHOOSE_THEME_INDEX) {
-            case 0:
-                return R.style.Theme_TIMSDK_LEAVE_default;
-            case 1:
-                return R.style.Theme_TIMSDK_LEAVE_blue;
-            case 2:
-                return R.style.Theme_TIMSDK_LEAVE_yellow;
-            case 3:
-                return R.style.Theme_TIMSDK_LEAVE_red;
-            case 4:
-                return R.style.Theme_TIMSDK_LEAVE_green;
-        }
-        return R.style.Theme_TIMSDK_LEAVE_default;
     }
 
     @Override

@@ -36,7 +36,7 @@ public class ThemeListActivity extends BaseActivity implements View.OnClickListe
 
     @Override
     protected void initView() {
-        ((TextView) findViewById(R.id.toolbar_title)).setText("自定义样式");
+        ((TextView) findViewById(R.id.toolbar_title)).setText("聊天窗口UI样式");
         findViewById(R.id.toolbar_back).setOnClickListener(this);
         findViewById(R.id.tv_save_choose).setOnClickListener(this);
 

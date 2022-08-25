@@ -14,3 +14,5 @@
 *.iml
 */*.iml
 Pods/
+.DS_Store
+clink-appsdk/IOS/IOSOnlineSDK/.DS_Store

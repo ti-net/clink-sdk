@@ -7,8 +7,8 @@
 
 #import "CustomStylesViewController.h"
 #import "CustomStylesModel.h"
+#import "CustomStylesSaveView.h"
 #import "CustomStylesTableViewCell.h"
-#import "CustomStylesSaveTableViewCell.h"
 #import "CustomStylesDetailsViewController.h"
 #import "DomainNameSave.h"
 
@@ -20,15 +20,24 @@
 
 @end
 
+static CGFloat const kSaveViewHeight = 64.f;
+
 @implementation CustomStylesViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"自定义样式";
+    self.navigationItem.title = @"聊天窗口样式";
     self.tableView = [self setupTableView];
     self.view.backgroundColor = [UIColor whiteColor];
     
+    UIBarButtonItem *blackButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"customStyles_backBtn"] style:(UIBarButtonItemStylePlain) target:self action:@selector(blackClickEvent)];
+    self.navigationItem.leftBarButtonItem = blackButton;
+    
+    
+    CustomStylesSaveView *saveView = kInitXibName([CustomStylesSaveView className]);
+    saveView.frame = CGRectMake(0, self.tableView.bottom, kWindowWidth, kSaveViewHeight);
+    [self.view addSubview:saveView];
     
     NSArray <NSDictionary *>*array = [NSArray readPlistFileWithFileName:@"CustomStylesDataSource"];
     self.dataSource = [[NSArray modelArrayWithClass:[CustomStylesModel class] json:array] mutableCopy];
@@ -42,36 +51,44 @@
     }];
     
     [self.tableView reloadData];
+}
+
+- (void)blackClickEvent {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)routerEventWithName:(NSString *)eventName userInfo:(id)userInfo {
     
-}
-
-#pragma mark - UITableViewDataSource
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [tableView addByDataSourceCount:self.dataSource.count + 1 noDataImage:@"" describe:@"暂无数据"];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.dataSource.count == indexPath.row) {
-        CustomStylesSaveTableViewCell *cell = [CustomStylesSaveTableViewCell cellXibWithTableView:tableView reuseIdentifie:[CustomStylesSaveTableViewCell className]];
-        return cell;
-    } else {
-        CustomStylesTableViewCell *cell = [CustomStylesTableViewCell cellXibWithTableView:tableView reuseIdentifie:[CustomStylesTableViewCell className]];
-        [cell setWithModel:self.dataSource[indexPath.row]];
-        return cell;
-    }
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (self.dataSource.count == indexPath.row) {
+    if ([eventName isEqualToString:kRouterEventClickSelectedBox]) {
         
+        CustomStylesModel *model = userInfo;
+        [self.dataSource enumerateObjectsUsingBlock:^(CustomStylesModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if (obj.isSelected.boolValue) {
+                obj.isSelected = @(0);
+            }
+        }];
+        model.isSelected = @(1);
+        [self.tableView reloadData];
+    } else if ([eventName isEqualToString:kRouterEventClickDetails]) {
+        
+        CustomStylesModel *model = userInfo;
+        CustomStylesDetailsViewController *detailsVC = [[CustomStylesDetailsViewController alloc] init];
+        detailsVC.model = model;
+        [self.navigationController pushViewController:detailsVC animated:YES];
+    } else if ([eventName isEqualToString:kRouterEventSaveButton]) {
+        __block NSString * theme = @"";
         __block CustomStylesModel *model;
         [self.dataSource enumerateObjectsUsingBlock:^(CustomStylesModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if (obj.isSelected.boolValue) {
                 model = obj;
+                theme = obj.styleName;
                 [DomainNameSave shareDomainNameSave].index = idx;
             }
         }];
+        /// 主题名称回调
+        if (self.themeClickEvent) {
+            self.themeClickEvent(theme);
+        }
         
         [TOSKitCustomInfo shareCustomInfo].senderBubble_backGround = [self colorWithHexString:model.senderBubble_backGround alpha:1.f];
         [TOSKitCustomInfo shareCustomInfo].senderBubble_cornerRadius = [model.senderBubble_cornerRadius doubleValue];
@@ -87,19 +104,18 @@
         [TOSKitCustomInfo shareCustomInfo].portrait_cornerRadius = [model.portrait_cornerRadius doubleValue];
         
         [self.navigationController popViewControllerAnimated:YES];
-        return;
     }
-    [self.dataSource enumerateObjectsUsingBlock:^(CustomStylesModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (obj.isSelected.boolValue) {
-            obj.isSelected = @(0);
-        }
-    }];
-    self.dataSource[indexPath.row].isSelected = @(1);
-    [self.tableView reloadData];
-    
-    CustomStylesDetailsViewController *detailsVC = [[CustomStylesDetailsViewController alloc] init];
-    detailsVC.model = self.dataSource[indexPath.row];
-    [self.navigationController pushViewController:detailsVC animated:YES];
+}
+
+#pragma mark - UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [tableView addByDataSourceCount:self.dataSource.count noDataImage:@"" describe:@"暂无数据"];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CustomStylesTableViewCell *cell = [CustomStylesTableViewCell cellXibWithTableView:tableView reuseIdentifie:[CustomStylesTableViewCell className]];
+    [cell setWithModel:self.dataSource[indexPath.row]];
+    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -112,7 +128,7 @@
 
 #pragma mark - 初始化
 - (BaseTableView *)setupTableView {
-    BaseTableView *tableView = [[BaseTableView alloc] initWithFrame:CGRectMake(0.f, 0.f, kWindowWidth, kWindowHeight - kNavTop - kBottomBarHeight) style:(UITableViewStylePlain)];
+    BaseTableView *tableView = [[BaseTableView alloc] initWithFrame:CGRectMake(0.f, 0.f, kWindowWidth, kWindowHeight - kNavTop - kBottomBarHeight - kSaveViewHeight) style:(UITableViewStylePlain)];
     [self.view addSubview:tableView];
     tableView.delegate = self;
     tableView.dataSource = self;
