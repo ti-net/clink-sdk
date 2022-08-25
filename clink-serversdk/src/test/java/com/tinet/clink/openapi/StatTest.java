@@ -28,7 +28,7 @@ public class StatTest extends AbstractTest {
     @Test
     public void statClientWorkloadTest() throws ServerException, ClientException, JsonProcessingException {
         StatClientWorkloadRequest request = new StatClientWorkloadRequest();
-        request.setDate("20200225");
+        request.setDate("20220824");
       /*  List<String> fields = new LinkedList<String>();
         fields.add("ibTotalCount");
         request.setFields(fields);*/
