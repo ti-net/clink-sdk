@@ -38,6 +38,11 @@ public class UpdateExtenResultModel {
      */
     private Integer isDirect;
 
+    /**
+     * 网络防抖开关 0：关闭；1：开启
+     */
+    private Integer jittBuffer;
+
     public String getExtenNumber() {
         return extenNumber;
     }
@@ -84,5 +89,13 @@ public class UpdateExtenResultModel {
 
     public void setIsDirect(Integer isDirect) {
         this.isDirect = isDirect;
+    }
+
+    public Integer getJittBuffer() {
+        return jittBuffer;
+    }
+
+    public void setJittBuffer(Integer jittBuffer) {
+        this.jittBuffer = jittBuffer;
     }
 }
