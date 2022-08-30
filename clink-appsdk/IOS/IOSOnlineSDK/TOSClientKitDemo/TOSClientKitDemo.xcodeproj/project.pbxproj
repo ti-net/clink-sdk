@@ -110,6 +110,7 @@
 		3CD9E885288931E100CC739C /* UIResponder+TOSRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD9E884288931E100CC739C /* UIResponder+TOSRouter.m */; };
 		3CD9E88828894E5800CC739C /* CustomStylesSaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD9E88728894E5700CC739C /* CustomStylesSaveView.m */; };
 		3CD9E88A28894E6800CC739C /* CustomStylesSaveView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CD9E88928894E6800CC739C /* CustomStylesSaveView.xib */; };
+		3CF0265828B722670051462A /* BaiduMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF0265728B722670051462A /* BaiduMapViewController.m */; };
 		5AAC7CA7289968B8007A3376 /* MineConfigInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AAC7CA6289968B8007A3376 /* MineConfigInputView.m */; };
 /* End PBXBuildFile section */
 
@@ -345,6 +346,8 @@
 		3CD9E88628894E5700CC739C /* CustomStylesSaveView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomStylesSaveView.h; sourceTree = "<group>"; };
 		3CD9E88728894E5700CC739C /* CustomStylesSaveView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomStylesSaveView.m; sourceTree = "<group>"; };
 		3CD9E88928894E6800CC739C /* CustomStylesSaveView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomStylesSaveView.xib; sourceTree = "<group>"; };
+		3CF0265628B722670051462A /* BaiduMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaiduMapViewController.h; sourceTree = "<group>"; };
+		3CF0265728B722670051462A /* BaiduMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaiduMapViewController.m; sourceTree = "<group>"; };
 		49A8FE128E8F204BAE3AF164 /* Pods-TOSClientKitDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TOSClientKitDemo.release.xcconfig"; path = "Target Support Files/Pods-TOSClientKitDemo/Pods-TOSClientKitDemo.release.xcconfig"; sourceTree = "<group>"; };
 		5AAC7CA5289968B8007A3376 /* MineConfigInputView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineConfigInputView.h; sourceTree = "<group>"; };
 		5AAC7CA6289968B8007A3376 /* MineConfigInputView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineConfigInputView.m; sourceTree = "<group>"; };
@@ -941,6 +944,8 @@
 				3CB72BA4286BF5FD00F2A780 /* MainViewController.xib */,
 				3C9CE7DA2874941900163770 /* MessageViewController.h */,
 				3C9CE7DB2874941900163770 /* MessageViewController.m */,
+				3CF0265628B722670051462A /* BaiduMapViewController.h */,
+				3CF0265728B722670051462A /* BaiduMapViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1234,6 +1239,7 @@
 				3CB72B73286AE98300F2A780 /* NSString+TimeFormatting.m in Sources */,
 				3CB72B74286AE98300F2A780 /* NSString+ChatTextManage.m in Sources */,
 				3CB72BA5286BF5FD00F2A780 /* MainViewController.m in Sources */,
+				3CF0265828B722670051462A /* BaiduMapViewController.m in Sources */,
 				3CB72ADA286AE8A400F2A780 /* ZYNetworkAccessibity.m in Sources */,
 				3C9CE7DC2874941900163770 /* MessageViewController.m in Sources */,
 				3C9CE7C82874668400163770 /* CustomStylesModel.m in Sources */,
