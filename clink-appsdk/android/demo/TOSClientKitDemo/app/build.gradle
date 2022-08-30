@@ -23,7 +23,7 @@ android {
         minSdk 21
         targetSdk 30
         versionCode 6
-        versionName "1.5.0"
+        versionName "1.5.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -79,8 +79,10 @@ dependencies {
     // bugly
     implementation 'com.tencent.bugly:crashreport:latest.release'
 
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+
     //天润在线客服 SDK
-    implementation 'com.github.ti-net-project:OnlineSDK-Android:1.5.0'
-//    api files('libs/online_sdk_1.5.0_release.aar')
+    implementation 'com.github.ti-net-project:OnlineSDK-Android:1.5.1'
+//    api files('libs/online_sdk_1.5.1_release.aar')
 
 }

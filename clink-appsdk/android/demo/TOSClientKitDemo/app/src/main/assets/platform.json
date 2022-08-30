@@ -1,13 +1,6 @@
 //该文档与SDK接入无关，无需关注
 [
   {
-    "name": "KT环境",
-    "enterpriseId": 8000376,
-    "accessId": "ad3046061c94444999a083acd7d34ae3",
-    "accessSecret": "D3127C4EC8B942BEB8D69E32DB0FF83D",
-    "type": "Kt"
-  },
-  {
     "name": "天润北京",
     "enterpriseId": 8000002,
     "accessId": "8758096679544ff189d4a9457747f109",
@@ -22,10 +15,17 @@
     "type": "Shanghai"
   },
   {
-    "name": "天润Test3",
+    "name": "天润北京测试",
     "enterpriseId": 8000581,
     "accessId": "80a71b366026406f83b672a66bdd59ce",
     "accessSecret": "B6F2A2125B2C476ABBA230F22B8B5D79",
     "type": "Test3"
+  },
+  {
+    "name": "天润北京测试KT",
+    "enterpriseId": 8000376,
+    "accessId": "ad3046061c94444999a083acd7d34ae3",
+    "accessSecret": "D3127C4EC8B942BEB8D69E32DB0FF83D",
+    "type": "Kt"
   }
 ]
