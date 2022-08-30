@@ -5,7 +5,12 @@ import androidx.annotation.Nullable;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.view.Menu;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.PopupMenu;
+import android.widget.Toast;
 
 import com.gyf.immersionbar.ImmersionBar;
 import com.tinet.oskit.TOSClientKit;
@@ -13,6 +18,8 @@ import com.tinet.oslib.config.TOSConnectOption;
 import com.tinet.oslib.listener.OnlineConnectResultCallback;
 import com.tinet.tosclientkitdemo.R;
 import com.tinet.tosclientkitdemo.common.base.BaseActivity;
+import com.tinet.tosclientkitdemo.common.platform.PlantformInfo;
+import com.tinet.tosclientkitdemo.common.platform.PlantformUtil;
 import com.tinet.tosclientkitdemo.utils.TLogUtils;
 import com.tinet.tosclientkitdemo.utils.ToastUtils;
 import com.zp.customdialoglib.loading.ProgressDialogHandler;
@@ -21,6 +28,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SplashActivity extends BaseActivity implements View.OnClickListener {
+
+    private ImageView mIvLogo;
+
+    final static int COUNTS = 4;// 点击次数
+    final static long DURATION = 1000;// 规定有效时间
+    long[] mHits = new long[COUNTS];
 
     @Override
     protected int getLayoutId(@Nullable Bundle savedInstanceState) {
@@ -37,6 +50,8 @@ public class SplashActivity extends BaseActivity implements View.OnClickListener
         findViewById(R.id.tv_enter_session).setOnClickListener(this);
         findViewById(R.id.tv_enter_login).setOnClickListener(this);
         findViewById(R.id.ll_theme_list).setOnClickListener(this);
+        mIvLogo = findViewById(R.id.iv_logo);
+        mIvLogo.setOnClickListener(this);
 
     }
 
@@ -60,6 +75,9 @@ public class SplashActivity extends BaseActivity implements View.OnClickListener
                 break;
             case R.id.ll_theme_list:
                 startActivity(new Intent(SplashActivity.this, CustomStyleActivity.class));
+                break;
+            case R.id.iv_logo:
+                continuousClick(COUNTS, DURATION);
                 break;
         }
     }
@@ -90,9 +108,48 @@ public class SplashActivity extends BaseActivity implements View.OnClickListener
             @Override
             public void onError(int errorCode, String errorDesc) {
                 TLogUtils.e(errorDesc);
-                ToastUtils.showShortToast(SplashActivity.this,errorDesc);
+                ToastUtils.showShortToast(SplashActivity.this, errorDesc);
                 progressDialogHandler.obtainMessage(ProgressDialogHandler.DISMISS_PROGRESS_DIALOG).sendToTarget();
             }
         });
+    }
+
+    private void continuousClick(int count, long time) {
+        //每次点击时，数组向前移动一位
+        System.arraycopy(mHits, 1, mHits, 0, mHits.length - 1);
+        //为数组最后一位赋值
+        mHits[mHits.length - 1] = SystemClock.uptimeMillis();
+        if (mHits[0] >= (SystemClock.uptimeMillis() - DURATION)) {
+            mHits = new long[COUNTS];//重新初始化数组
+            showPopup();
+        }
+    }
+
+    private void showPopup() {
+        PopupMenu popup = new PopupMenu(this, mIvLogo);
+        Menu menu = popup.getMenu();
+        for (PlantformInfo info : PlantformUtil.getPlantforms(this.getApplicationContext())) {
+            menu.add(info.getName());
+        }
+        popup.setOnMenuItemClickListener(item -> {
+            PlantformUtil.updatePlantform(getApplicationContext(), item.getTitle().toString());
+            restartApp();
+            return false;
+        });
+        popup.show();
+    }
+
+    /**
+     * 重启应用
+     */
+    private void restartApp() {
+
+        Intent intent = new Intent(this, SplashActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        // 杀掉进程
+        android.os.Process.killProcess(android.os.Process.myPid());
+        System.exit(0);
+
     }
 }
