@@ -10,6 +10,7 @@ import org.junit.Test;
 
 /**
  * 客服会话开始
+ * test
  */
 public class ChatClientLoginTest {
     protected Client client = null;
