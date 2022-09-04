@@ -204,6 +204,8 @@ public enum PathEnum {
     StatChatClientWorkload("stat_chat_client_workload"),
     //在线客服 - 座席工作量报表（新）
     StatChatClientWorkloadNew("stat_chat_client_workload_new"),
+    //在线客服 - 座席工作考勤报表
+    StatChatClientAttendance("stat_chat_client_attendance"),
     //队列报表
     StatChatQueueWorkload("stat_chat_queue_workload"),
 
