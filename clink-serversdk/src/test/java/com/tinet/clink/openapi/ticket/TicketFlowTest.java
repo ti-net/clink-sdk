@@ -39,6 +39,7 @@ public class TicketFlowTest extends AbstractTest {
         TicketFlowModel ticketFlowModel = new TicketFlowModel();
         ticketFlowModel.setTicketId(171360);
         ticketFlowModel.setHandlerId(156263);
+        ticketFlowModel.setNextHandlerId(162689);
         ticketFlowModel.setTaskId("cfe34066-037f-11ed-8b90-8a9093819d2f");
 
         // 需要保存的工单的表单对象
