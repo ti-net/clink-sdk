@@ -134,6 +134,63 @@ public class ChatRecord {
      */
     private Integer invitationInitiator;
 
+    /**
+     * 会话发起方式
+     */
+    private Integer openType;
+
+    /**
+     * 排队时间
+     */
+    private Long queueTime;
+
+    /**
+     * 会话类型
+     * 1 接入会话
+     * 2 未接入会话
+     * 3 有效会话
+     * 4 无效会话
+     * 5 留言会话
+     */
+    private Integer sessionType;
+
+    /**
+     * 首次响应时长
+     */
+    private Integer firstResponseDuration;
+
+    public Integer getOpenType() {
+        return openType;
+    }
+
+    public void setOpenType(Integer openType) {
+        this.openType = openType;
+    }
+
+    public Long getQueueTime() {
+        return queueTime;
+    }
+
+    public void setQueueTime(Long queueTime) {
+        this.queueTime = queueTime;
+    }
+
+    public Integer getSessionType() {
+        return sessionType;
+    }
+
+    public void setSessionType(Integer sessionType) {
+        this.sessionType = sessionType;
+    }
+
+    public Integer getFirstResponseDuration() {
+        return firstResponseDuration;
+    }
+
+    public void setFirstResponseDuration(Integer firstResponseDuration) {
+        this.firstResponseDuration = firstResponseDuration;
+    }
+
     public Integer getInvitationInitiator() { return invitationInitiator; }
 
     public void setInvitationInitiator(Integer invitationInitiator) { this.invitationInitiator = invitationInitiator; }
