@@ -163,6 +163,17 @@ public enum PathEnum {
     //----------------------------------------------↑呼叫中心-报表↑----------------------------------------------//
 
 
+    //----------------------------------------------↓工单-报表↓----------------------------------------------//
+    // 工单整体统计报表
+    StatTicket("stat_ticket"),
+    // 座席情况统计报表
+    StatTicketByClient("stat_ticket_client"),
+    // 座席组情况统计报表
+    StatTicketByQueue("stat_ticket_queue"),
+
+    //----------------------------------------------↑工单-报表↑----------------------------------------------//
+
+
     // webcall
     Webcall("webcall"),
 
@@ -193,6 +204,8 @@ public enum PathEnum {
     StatChatClientWorkload("stat_chat_client_workload"),
     //在线客服 - 座席工作量报表（新）
     StatChatClientWorkloadNew("stat_chat_client_workload_new"),
+    //在线客服 - 座席工作考勤报表
+    StatChatClientAttendance("stat_chat_client_attendance"),
     //队列报表
     StatChatQueueWorkload("stat_chat_queue_workload"),
 
