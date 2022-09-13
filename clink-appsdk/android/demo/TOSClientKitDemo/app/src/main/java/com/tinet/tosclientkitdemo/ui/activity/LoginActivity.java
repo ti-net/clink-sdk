@@ -57,6 +57,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     final static int COUNTS = 4;// 点击次数
     final static long DURATION = 1000;// 规定有效时间
     long[] mHits = new long[COUNTS];
+    private boolean isClick;
 
 
     @Override
@@ -167,17 +168,23 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         tOSConnectOption.setMobile("135xxxx9206");
         tOSConnectOption.setAdvanceParams(extraInfo);
 
+        isClick = true;
+
         ProgressDialogHandler progressDialogHandler = new ProgressDialogHandler(LoginActivity.this, true);
         progressDialogHandler.obtainMessage(ProgressDialogHandler.SHOW_PROGRESS_DIALOG).sendToTarget();
         TOSClientKit.connect(tOSConnectOption, new OnlineConnectResultCallback() {
             @Override
             public void onSuccess() {
                 progressDialogHandler.obtainMessage(ProgressDialogHandler.DISMISS_PROGRESS_DIALOG).sendToTarget();
-                startActivity(new Intent(LoginActivity.this, SessionActivity.class));
+                if (isClick) {
+                    startActivity(new Intent(LoginActivity.this, SessionActivity.class));
+                }
+                isClick = false;
             }
 
             @Override
             public void onError(int errorCode, String errorDesc) {
+                isClick = false;
                 TLogUtils.e(errorDesc);
                 ToastUtils.showShortToast(LoginActivity.this, errorDesc);
                 progressDialogHandler.obtainMessage(ProgressDialogHandler.DISMISS_PROGRESS_DIALOG).sendToTarget();

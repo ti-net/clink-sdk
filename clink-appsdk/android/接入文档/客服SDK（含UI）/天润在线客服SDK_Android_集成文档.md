@@ -1,10 +1,10 @@
 
 # TOSClientKit_Android_开发文档
-> 版本: 1.5.2
+> 版本: 1.5.3
 
 
 ## 目录
--  [引入sdk](#import)
+-  [引入SDK](#import)
 -  [初始化](#init)
 -  [连接服务](#connect)
 -  [全局事件监听](#listenter)
@@ -296,7 +296,7 @@ transaction.commitAllowingStateLoss();
 colors.xml可修改项
 
 
-    		
+​    		
         <!--  ++++++++++++++ 聊天背景设置 ++++++++++++++  -->
         <!--聊天背景颜色-->
         <color name="ti_session_background_color">#FFF2F6FD</color>
@@ -414,7 +414,7 @@ colors.xml可修改项
 dimen可修改项
 
 
-        
+​        
         <!--  ++++++++++++++ 聊天消息样式设置 ++++++++++++++  -->
         <!--头像大小-->
         <dimen name="ti_chat_avatar_size">40dp</dimen>

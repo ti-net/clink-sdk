@@ -23,7 +23,7 @@ android {
         minSdk 21
         targetSdk 30
         versionCode 7
-        versionName "1.5.2"
+        versionName "1.5.3"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -82,7 +82,7 @@ dependencies {
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
 
     //天润在线客服 SDK
-    implementation 'com.github.ti-net-project:OnlineSDK-Android:1.5.2'
-//    api files('libs/online_sdk_1.5.2_release.aar')
+    implementation 'com.github.ti-net-project:OnlineSDK-Android:1.5.3'
+//    api files('libs/online_sdk_1.5.3_release.aar')
 
 }
