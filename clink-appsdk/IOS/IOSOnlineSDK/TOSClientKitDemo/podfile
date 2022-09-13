@@ -4,7 +4,7 @@ platform:ios,'10.0'
 use_frameworks!
 target "TOSClientKitDemo" do
 
-pod 'TOSClientKit','~>1.5.2'
+pod 'TOSClientKit'
 
 pod 'BaiduNaviKit-All'
 
