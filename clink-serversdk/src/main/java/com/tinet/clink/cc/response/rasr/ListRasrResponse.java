@@ -1,8 +1,8 @@
 package com.tinet.clink.cc.response.rasr;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.tinet.clink.openapi.model.RasrDialogModel;
-import com.tinet.clink.openapi.response.ResponseModel;
+import com.tinet.clink.cc.model.RasrDialogModel;
+import com.tinet.clink.core.response.ResponseModel;
 
 import java.util.List;
 

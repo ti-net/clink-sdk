@@ -1,7 +1,7 @@
 package com.tinet.clink.ticket.response;
 
-import com.tinet.clink.openapi.model.TicketFieldModel;
-import com.tinet.clink.openapi.response.ResponseModel;
+import com.tinet.clink.ticket.model.TicketFieldModel;
+import com.tinet.clink.core.response.ResponseModel;
 
 import java.util.List;
 

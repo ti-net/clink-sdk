@@ -1,7 +1,7 @@
 package com.tinet.clink.cc.response.monitor;
 
-import com.tinet.clink.openapi.model.AgentStatusDetailModel;
-import com.tinet.clink.openapi.response.ResponseModel;
+import com.tinet.clink.cc.model.AgentStatusDetailModel;
+import com.tinet.clink.core.response.ResponseModel;
 
 /**
  * 查询座席状态详情响应对象

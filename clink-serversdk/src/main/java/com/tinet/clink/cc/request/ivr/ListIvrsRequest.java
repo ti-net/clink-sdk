@@ -1,9 +1,10 @@
 package com.tinet.clink.cc.request.ivr;
 
-import com.tinet.clink.openapi.PathEnum;
-import com.tinet.clink.openapi.request.AbstractRequestModel;
-import com.tinet.clink.openapi.response.ivr.ListIvrsResponse;
-import com.tinet.clink.openapi.utils.HttpMethodType;
+import com.tinet.clink.cc.PathEnum;
+import com.tinet.clink.cc.response.ivr.ListIvrsResponse;
+import com.tinet.clink.core.request.AbstractRequestModel;
+import com.tinet.clink.core.utils.HttpMethodType;
+
 
 /**
  * 查询语音导航列表请求

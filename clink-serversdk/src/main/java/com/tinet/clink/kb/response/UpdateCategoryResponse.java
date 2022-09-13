@@ -1,7 +1,8 @@
 package com.tinet.clink.kb.response;
 
-import com.tinet.clink.openapi.model.CategoryResponseModel;
-import com.tinet.clink.openapi.response.ResponseModel;
+
+import com.tinet.clink.core.response.ResponseModel;
+import com.tinet.clink.kb.model.CategoryResponseModel;
 
 /**
  * 更新分类响应实体

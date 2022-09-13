@@ -1,7 +1,7 @@
 package com.tinet.clink.cc.response.ws;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.tinet.clink.openapi.response.ResponseModel;
+import com.tinet.clink.core.response.ResponseModel;
 
 /**
  * @author libin

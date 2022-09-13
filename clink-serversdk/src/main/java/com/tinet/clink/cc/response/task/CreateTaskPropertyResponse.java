@@ -1,7 +1,7 @@
 package com.tinet.clink.cc.response.task;
 
-import com.tinet.clink.openapi.model.CreateTaskPropertyResponseModel;
-import com.tinet.clink.openapi.response.ResponseModel;
+import com.tinet.clink.cc.model.CreateTaskPropertyResponseModel;
+import com.tinet.clink.core.response.ResponseModel;
 
 /**
  * 外呼任务创建响应

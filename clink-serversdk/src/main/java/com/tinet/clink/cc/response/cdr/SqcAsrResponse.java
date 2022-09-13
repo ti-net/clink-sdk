@@ -1,8 +1,8 @@
 package com.tinet.clink.cc.response.cdr;
 
-import com.tinet.clink.openapi.model.AsrModel;
-import com.tinet.clink.openapi.response.ResponseModel;
 
+import com.tinet.clink.cc.model.AsrModel;
+import com.tinet.clink.core.response.ResponseModel;
 
 /**
  * 数据同步呼入通话记录明细响应

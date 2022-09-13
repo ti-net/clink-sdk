@@ -1,9 +1,7 @@
 package com.tinet.clink.core.utils;
 
-
-import com.tinet.clink.openapi.constant.CallType;
-import com.tinet.clink.openapi.constant.CdrStatus;
-import com.tinet.clink.openapi.enums.SipCauseEnum;
+import com.tinet.clink.core.constant.CallType;
+import com.tinet.clink.core.constant.CdrStatus;
 
 import java.util.Arrays;
 import java.util.List;
@@ -354,12 +352,12 @@ public class CommonUtils {
     }
 
     public static String getSipCause(Integer sip) {
-        if (!Objects.isNull(sip)) {
-            SipCauseEnum sipCauseEnum = SipCauseEnum.desc(sip);
-            if (Objects.nonNull(sipCauseEnum)) {
-                return sipCauseEnum.desc();
-            }
-        }
+//        if (!Objects.isNull(sip)) {
+//            SipCauseEnum sipCauseEnum = SipCauseEnum.desc(sip);
+//            if (Objects.nonNull(sipCauseEnum)) {
+//                return sipCauseEnum.desc();
+//            }
+//        }
         return "";
     }
 

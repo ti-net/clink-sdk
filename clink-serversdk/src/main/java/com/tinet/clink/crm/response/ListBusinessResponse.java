@@ -1,6 +1,6 @@
 package com.tinet.clink.crm.response;
 
-import com.tinet.clink.openapi.response.PagedResponse;
+import com.tinet.clink.core.response.PagedResponse;
 
 import java.util.List;
 import java.util.Map;

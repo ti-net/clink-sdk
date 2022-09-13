@@ -1,7 +1,7 @@
 package com.tinet.clink.livechat.response;
 
-import com.tinet.clink.openapi.model.ChatQueueStatus;
-import com.tinet.clink.openapi.response.ResponseModel;
+import com.tinet.clink.livechat.model.ChatQueueStatus;
+import com.tinet.clink.core.response.ResponseModel;
 
 import java.util.List;
 

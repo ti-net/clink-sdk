@@ -1,7 +1,9 @@
 package com.tinet.clink.cc.response.client;
 
-import com.tinet.clink.openapi.model.ClientSearchResultModel;
-import com.tinet.clink.openapi.response.PagedResponse;
+
+
+import com.tinet.clink.cc.model.ClientSearchResultModel;
+import com.tinet.clink.core.response.PagedResponse;
 
 import java.util.List;
 

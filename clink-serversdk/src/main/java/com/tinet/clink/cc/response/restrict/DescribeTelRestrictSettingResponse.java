@@ -1,7 +1,8 @@
 package com.tinet.clink.cc.response.restrict;
 
-import com.tinet.clink.openapi.model.TelRestrictSettingSearchModel;
-import com.tinet.clink.openapi.response.ResponseModel;
+
+import com.tinet.clink.cc.model.TelRestrictSettingSearchModel;
+import com.tinet.clink.core.response.ResponseModel;
 
 /**
  * @author libin

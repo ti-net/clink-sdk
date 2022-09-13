@@ -1,6 +1,6 @@
 package com.tinet.clink.cc.response.client;
 
-import com.tinet.clink.openapi.response.ResponseModel;
+import com.tinet.clink.core.response.ResponseModel;
 
 /**
  * 起绑定电话验证请求响应

@@ -1,7 +1,7 @@
 package com.tinet.clink.cc.response.queue;
 
-import com.tinet.clink.openapi.model.QueueUpdateModel;
-import com.tinet.clink.openapi.response.ResponseModel;
+import com.tinet.clink.cc.model.QueueUpdateModel;
+import com.tinet.clink.core.response.ResponseModel;
 
 /**
  * 更新队列响应

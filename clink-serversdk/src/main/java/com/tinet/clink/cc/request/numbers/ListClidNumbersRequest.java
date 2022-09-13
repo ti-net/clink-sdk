@@ -1,8 +1,9 @@
 package com.tinet.clink.cc.request.numbers;
 
-import com.tinet.clink.openapi.PathEnum;
-import com.tinet.clink.openapi.request.AbstractRequestModel;
-import com.tinet.clink.openapi.response.config.numbers.ListClidNumbersResponse;
+import com.tinet.clink.cc.PathEnum;
+import com.tinet.clink.cc.response.numbers.ListClidNumbersResponse;
+import com.tinet.clink.core.request.AbstractRequestModel;
+
 
 /**
  * 查询外显号码集合请求

@@ -1,7 +1,7 @@
 package com.tinet.clink.kb.response;
 
-import com.tinet.clink.openapi.model.KbArticleResponseModel;
-import com.tinet.clink.openapi.response.ResponseModel;
+import com.tinet.clink.kb.model.KbArticleResponseModel;
+import com.tinet.clink.core.response.ResponseModel;
 
 /**
  * 删除文章响应实体

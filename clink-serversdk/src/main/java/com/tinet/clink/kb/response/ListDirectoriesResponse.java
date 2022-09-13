@@ -1,7 +1,7 @@
 package com.tinet.clink.kb.response;
 
-import com.tinet.clink.openapi.model.KbDirectoryResponseModel;
-import com.tinet.clink.openapi.response.PagedResponse;
+import com.tinet.clink.kb.model.KbDirectoryResponseModel;
+import com.tinet.clink.core.response.PagedResponse;
 
 import java.util.List;
 

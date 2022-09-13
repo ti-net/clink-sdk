@@ -1,6 +1,6 @@
 package com.tinet.clink.core.client;
 
-import com.tinet.clink.openapi.auth.Credentials;
+import com.tinet.clink.core.auth.Credentials;
 
 /**
  * @author houfc

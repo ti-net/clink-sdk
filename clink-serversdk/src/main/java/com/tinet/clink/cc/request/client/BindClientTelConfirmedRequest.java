@@ -1,9 +1,10 @@
 package com.tinet.clink.cc.request.client;
 
-import com.tinet.clink.openapi.PathEnum;
-import com.tinet.clink.openapi.request.AbstractRequestModel;
-import com.tinet.clink.openapi.response.config.client.BindClientTelConfirmedResponse;
-import com.tinet.clink.openapi.utils.HttpMethodType;
+
+import com.tinet.clink.cc.PathEnum;
+import com.tinet.clink.cc.response.client.BindClientTelConfirmedResponse;
+import com.tinet.clink.core.request.AbstractRequestModel;
+import com.tinet.clink.core.utils.HttpMethodType;
 
 /**
  * 确认绑定电话验证请求

@@ -1,9 +1,9 @@
 package com.tinet.clink.livechat.request;
 
-import com.tinet.clink.openapi.PathEnum;
-import com.tinet.clink.openapi.request.AbstractRequestModel;
-import com.tinet.clink.openapi.response.chat.ChatMessageToClientResponse;
-import com.tinet.clink.openapi.utils.HttpMethodType;
+import com.tinet.clink.livechat.PathEnum;
+import com.tinet.clink.core.request.AbstractRequestModel;
+import com.tinet.clink.core.utils.HttpMethodType;
+import com.tinet.clink.livechat.response.ChatMessageToClientResponse;
 
 import java.io.File;
 import java.util.*;

@@ -1,9 +1,9 @@
 package com.tinet.clink.kb.request;
 
-import com.tinet.clink.openapi.PathEnum;
-import com.tinet.clink.openapi.request.AbstractRequestModel;
-import com.tinet.clink.openapi.response.kb.ListStandardQuestionResponse;
-import com.tinet.clink.openapi.utils.HttpMethodType;
+import com.tinet.clink.kb.PathEnum;
+import com.tinet.clink.core.request.AbstractRequestModel;
+import com.tinet.clink.core.utils.HttpMethodType;
+import com.tinet.clink.kb.response.ListStandardQuestionResponse;
 
 /**
  * 获取标准问列表请求

@@ -1,6 +1,6 @@
 package com.tinet.clink.kb.response;
 
-import com.tinet.clink.openapi.response.ResponseModel;
+import com.tinet.clink.core.response.ResponseModel;
 
 /**
  * 创建语料响应实体

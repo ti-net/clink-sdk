@@ -1,9 +1,9 @@
 package com.tinet.clink.crm.request.customer;
 
-import com.tinet.clink.openapi.PathEnum;
-import com.tinet.clink.openapi.request.AbstractRequestModel;
-import com.tinet.clink.openapi.response.config.customer.DeleteCustomerResponse;
-import com.tinet.clink.openapi.utils.HttpMethodType;
+import com.tinet.clink.crm.PathEnum;
+import com.tinet.clink.core.request.AbstractRequestModel;
+import com.tinet.clink.core.utils.HttpMethodType;
+import com.tinet.clink.crm.response.customer.DeleteCustomerResponse;
 
 /**
  * 删除客户资料请求

@@ -1,9 +1,9 @@
 package com.tinet.clink.ticket.request;
 
-import com.tinet.clink.openapi.PathEnum;
-import com.tinet.clink.openapi.request.AbstractRequestModel;
-import com.tinet.clink.openapi.response.ticket.UpdateFieldPropertyResponse;
-import com.tinet.clink.openapi.utils.HttpMethodType;
+import com.tinet.clink.ticket.PathEnum;
+import com.tinet.clink.core.request.AbstractRequestModel;
+import com.tinet.clink.core.utils.HttpMethodType;
+import com.tinet.clink.ticket.response.UpdateFieldPropertyResponse;
 
 /**
  * 更新工单字段选项值请求

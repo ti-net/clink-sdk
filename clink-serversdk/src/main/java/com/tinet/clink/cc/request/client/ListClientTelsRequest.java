@@ -1,8 +1,9 @@
 package com.tinet.clink.cc.request.client;
 
-import com.tinet.clink.openapi.PathEnum;
-import com.tinet.clink.openapi.request.AbstractRequestModel;
-import com.tinet.clink.openapi.response.config.client.ListClientTelsResponse;
+import com.tinet.clink.cc.PathEnum;
+import com.tinet.clink.cc.response.client.ListClientTelsResponse;
+import com.tinet.clink.core.request.AbstractRequestModel;
+
 
 /**
  * @author lizy

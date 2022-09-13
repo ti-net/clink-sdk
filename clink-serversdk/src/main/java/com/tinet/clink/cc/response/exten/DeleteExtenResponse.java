@@ -1,6 +1,6 @@
 package com.tinet.clink.cc.response.exten;
 
-import com.tinet.clink.openapi.response.ResponseModel;
+import com.tinet.clink.core.response.ResponseModel;
 
 /**
  * 删除话机响应

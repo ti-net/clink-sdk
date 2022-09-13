@@ -1,6 +1,6 @@
 package com.tinet.clink.cc.response.stat;
 
-import com.tinet.clink.openapi.response.PagedResponse;
+import com.tinet.clink.core.response.PagedResponse;
 
 import java.util.List;
 import java.util.Map;

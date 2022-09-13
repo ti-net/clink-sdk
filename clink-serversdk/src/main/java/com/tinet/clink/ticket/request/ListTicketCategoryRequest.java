@@ -1,9 +1,9 @@
 package com.tinet.clink.ticket.request;
 
-import com.tinet.clink.openapi.PathEnum;
-import com.tinet.clink.openapi.request.AbstractRequestModel;
-import com.tinet.clink.openapi.response.ticket.ListTicketCategoryResponse;
-import com.tinet.clink.openapi.utils.HttpMethodType;
+import com.tinet.clink.ticket.PathEnum;
+import com.tinet.clink.core.request.AbstractRequestModel;
+import com.tinet.clink.core.utils.HttpMethodType;
+import com.tinet.clink.ticket.response.ListTicketCategoryResponse;
 
 /**
  * 获取工单模板类别

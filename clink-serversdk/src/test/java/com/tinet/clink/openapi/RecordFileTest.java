@@ -1,13 +1,13 @@
 package com.tinet.clink.openapi;
 
-import com.tinet.clink.openapi.exceptions.ClientException;
-import com.tinet.clink.openapi.exceptions.ServerException;
-import com.tinet.clink.openapi.request.cdr.DescribeDetailRecordFileUrlRequest;
-import com.tinet.clink.openapi.request.cdr.DescribeRecordFileUrlRequest;
-import com.tinet.clink.openapi.request.cdr.DownloadDetailRecordFileRequest;
-import com.tinet.clink.openapi.request.cdr.DownloadRecordFileRequest;
-import com.tinet.clink.openapi.response.cdr.DescribeDetailRecordFileUrlResponse;
-import com.tinet.clink.openapi.response.cdr.DescribeRecordFileUrlResponse;
+import com.tinet.clink.core.exceptions.ClientException;
+import com.tinet.clink.core.exceptions.ServerException;
+import com.tinet.clink.cc.request.cdr.DescribeDetailRecordFileUrlRequest;
+import com.tinet.clink.cc.request.cdr.DescribeRecordFileUrlRequest;
+import com.tinet.clink.cc.request.cdr.DownloadDetailRecordFileRequest;
+import com.tinet.clink.cc.request.cdr.DownloadRecordFileRequest;
+import com.tinet.clink.cc.response.cdr.DescribeDetailRecordFileUrlResponse;
+import com.tinet.clink.cc.response.cdr.DescribeRecordFileUrlResponse;
 import org.apache.http.HttpResponse;
 import org.junit.Test;
 

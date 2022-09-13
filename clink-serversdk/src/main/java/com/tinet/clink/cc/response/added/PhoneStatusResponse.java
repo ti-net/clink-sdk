@@ -1,7 +1,8 @@
 package com.tinet.clink.cc.response.added;
 
-import com.tinet.clink.openapi.model.PhoneStatusModel;
-import com.tinet.clink.openapi.response.ResponseModel;
+
+import com.tinet.clink.cc.model.PhoneStatusModel;
+import com.tinet.clink.core.response.ResponseModel;
 
 /**
  * @author wangll

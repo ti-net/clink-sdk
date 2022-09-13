@@ -2,20 +2,13 @@ package com.tinet.clink.openapi.chat;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.tinet.clink.core.exceptions.ClientException;
+import com.tinet.clink.livechat.request.*;
+import com.tinet.clink.livechat.response.*;
 import com.tinet.clink.openapi.AbstractTest;
-import com.tinet.clink.openapi.exceptions.ClientException;
-import com.tinet.clink.openapi.exceptions.ServerException;
-import com.tinet.clink.openapi.request.chat.ChatCommentRequest;
-import com.tinet.clink.openapi.request.chat.ChatDetailRequest;
-import com.tinet.clink.openapi.request.chat.ChatInvestigationRequest;
-import com.tinet.clink.openapi.request.chat.ListChatMessageRequest;
-import com.tinet.clink.openapi.request.chat.ChatMessageRequest;
-import com.tinet.clink.openapi.request.chat.ChatRecordRequest;
-import com.tinet.clink.openapi.response.chat.ChatCommentResponse;
-import com.tinet.clink.openapi.response.chat.ChatDetailResponse;
-import com.tinet.clink.openapi.response.chat.ChatInvestigationResponse;
-import com.tinet.clink.openapi.response.chat.ChatMessageResponse;
-import com.tinet.clink.openapi.response.chat.ChatRecordResponse;
+
+import com.tinet.clink.core.exceptions.ServerException;
+
 import org.junit.Test;
 
 /**

@@ -1,7 +1,7 @@
 package com.tinet.clink.ticket.response;
 
-import com.tinet.clink.openapi.model.TicketDetailModel;
-import com.tinet.clink.openapi.response.ResponseModel;
+import com.tinet.clink.ticket.model.TicketDetailModel;
+import com.tinet.clink.core.response.ResponseModel;
 
 /**
  * @author liuhy

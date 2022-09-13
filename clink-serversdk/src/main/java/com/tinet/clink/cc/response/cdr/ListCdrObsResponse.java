@@ -1,7 +1,7 @@
 package com.tinet.clink.cc.response.cdr;
 
-import com.tinet.clink.openapi.model.CdrObRecordModel;
-import com.tinet.clink.openapi.response.PagedResponse;
+import com.tinet.clink.cc.model.CdrObRecordModel;
+import com.tinet.clink.core.response.PagedResponse;
 
 import java.util.List;
 

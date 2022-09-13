@@ -3,13 +3,13 @@ package com.tinet.clink.core.client;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tinet.clink.openapi.auth.Signer;
-import com.tinet.clink.openapi.exceptions.ClientException;
-import com.tinet.clink.openapi.exceptions.ServerException;
-import com.tinet.clink.openapi.model.ErrorCode;
-import com.tinet.clink.openapi.model.OpenapiError;
-import com.tinet.clink.openapi.request.AbstractRequestModel;
-import com.tinet.clink.openapi.response.ResponseModel;
+import com.tinet.clink.core.auth.Signer;
+import com.tinet.clink.core.exceptions.ClientException;
+import com.tinet.clink.core.exceptions.ServerException;
+import com.tinet.clink.core.model.ErrorCode;
+import com.tinet.clink.core.model.OpenapiError;
+import com.tinet.clink.core.request.AbstractRequestModel;
+import com.tinet.clink.core.response.ResponseModel;
 import org.apache.http.*;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpRequestRetryHandler;
@@ -194,12 +194,12 @@ public class Client {
             if (isSuccess(response)) {
                 return readResponse(response, request.getResponseClass());
             } else {
-                OpenapiError openapiError = readError(response);
-                ErrorCode errorCode = openapiError.getError();
-                if (500 <= openapiError.getHttpStatus()) {
-                    throw new ServerException(openapiError.getRequestId(), errorCode.getCode(), errorCode.getMessage());
+                OpenapiError openApiError = readError(response);
+                ErrorCode errorCode = openApiError.getError();
+                if (500 <= openApiError.getHttpStatus()) {
+                    throw new ServerException(openApiError.getRequestId(), errorCode.getCode(), errorCode.getMessage());
                 } else {
-                    throw new ClientException(openapiError.getRequestId(), errorCode.getCode(), errorCode.getMessage());
+                    throw new ClientException(openApiError.getRequestId(), errorCode.getCode(), errorCode.getMessage());
                 }
             }
         } finally {

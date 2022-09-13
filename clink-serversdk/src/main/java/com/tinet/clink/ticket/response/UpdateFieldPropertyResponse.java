@@ -1,6 +1,6 @@
 package com.tinet.clink.ticket.response;
 
-import com.tinet.clink.openapi.response.ResponseModel;
+import com.tinet.clink.core.response.ResponseModel;
 
 /**
  * 更新工单字段选项值

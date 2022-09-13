@@ -1,6 +1,6 @@
 package com.tinet.clink.core.auth;
 
-import com.tinet.clink.openapi.utils.RequestConstant;
+import com.tinet.clink.core.utils.RequestConstant;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;

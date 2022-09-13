@@ -1,6 +1,5 @@
 package com.tinet.clink.ticket.model;
 
-
 import java.util.List;
 
 /**

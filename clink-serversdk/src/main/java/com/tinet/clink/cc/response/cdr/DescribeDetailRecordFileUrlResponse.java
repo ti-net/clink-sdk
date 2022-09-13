@@ -1,7 +1,7 @@
 package com.tinet.clink.cc.response.cdr;
 
 
-import com.tinet.clink.openapi.response.ResponseModel;
+import com.tinet.clink.core.response.ResponseModel;
 
 /**
  * 查询外呼通话记录详情响应

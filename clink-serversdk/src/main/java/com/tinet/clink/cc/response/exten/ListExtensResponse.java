@@ -1,7 +1,9 @@
 package com.tinet.clink.cc.response.exten;
 
-import com.tinet.clink.openapi.model.ListExtensResultModel;
-import com.tinet.clink.openapi.response.PagedResponse;
+
+
+import com.tinet.clink.cc.model.ListExtensResultModel;
+import com.tinet.clink.core.response.PagedResponse;
 
 import java.util.List;
 

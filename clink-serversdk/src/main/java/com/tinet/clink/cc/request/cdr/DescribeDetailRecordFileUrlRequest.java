@@ -1,9 +1,9 @@
 package com.tinet.clink.cc.request.cdr;
 
-import com.tinet.clink.openapi.PathEnum;
-import com.tinet.clink.openapi.request.AbstractRequestModel;
-import com.tinet.clink.openapi.response.cdr.DescribeDetailRecordFileUrlResponse;
-import com.tinet.clink.openapi.utils.HttpMethodType;
+import com.tinet.clink.cc.PathEnum;
+import com.tinet.clink.core.request.AbstractRequestModel;
+import com.tinet.clink.cc.response.cdr.DescribeDetailRecordFileUrlResponse;
+import com.tinet.clink.core.utils.HttpMethodType;
 
 /**
  * 获取从通话记录录音地址

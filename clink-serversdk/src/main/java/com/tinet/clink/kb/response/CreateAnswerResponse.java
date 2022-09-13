@@ -1,7 +1,7 @@
 package com.tinet.clink.kb.response;
 
-import com.tinet.clink.openapi.model.AnswerResponseModel;
-import com.tinet.clink.openapi.response.ResponseModel;
+import com.tinet.clink.kb.model.AnswerResponseModel;
+import com.tinet.clink.core.response.ResponseModel;
 
 /**
  * 创建答案响应实体

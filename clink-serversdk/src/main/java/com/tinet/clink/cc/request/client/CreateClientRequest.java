@@ -1,11 +1,13 @@
 package com.tinet.clink.cc.request.client;
 
-import com.tinet.clink.openapi.PathEnum;
-import com.tinet.clink.openapi.model.ClidArea;
-import com.tinet.clink.openapi.model.ClientPermission;
-import com.tinet.clink.openapi.request.AbstractRequestModel;
-import com.tinet.clink.openapi.response.config.client.CreateClientResponse;
-import com.tinet.clink.openapi.utils.HttpMethodType;
+
+
+import com.tinet.clink.cc.PathEnum;
+import com.tinet.clink.cc.model.ClidArea;
+import com.tinet.clink.cc.model.ClientPermission;
+import com.tinet.clink.cc.response.client.CreateClientResponse;
+import com.tinet.clink.core.request.AbstractRequestModel;
+import com.tinet.clink.core.utils.HttpMethodType;
 
 import java.util.List;
 

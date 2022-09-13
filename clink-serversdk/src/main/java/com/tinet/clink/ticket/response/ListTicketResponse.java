@@ -1,7 +1,7 @@
 package com.tinet.clink.ticket.response;
 
-import com.tinet.clink.openapi.model.TicketResultModel;
-import com.tinet.clink.openapi.response.PagedResponse;
+import com.tinet.clink.ticket.model.TicketResultModel;
+import com.tinet.clink.core.response.PagedResponse;
 
 import java.util.List;
 

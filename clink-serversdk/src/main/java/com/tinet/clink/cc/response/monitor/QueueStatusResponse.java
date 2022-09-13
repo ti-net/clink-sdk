@@ -1,7 +1,7 @@
 package com.tinet.clink.cc.response.monitor;
 
-import com.tinet.clink.openapi.model.QueueStatusModel;
-import com.tinet.clink.openapi.response.ResponseModel;
+import com.tinet.clink.cc.model.QueueStatusModel;
+import com.tinet.clink.core.response.ResponseModel;
 
 import java.util.List;
 

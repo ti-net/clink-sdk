@@ -1,7 +1,7 @@
 package com.tinet.clink.cc.response.client;
 
-import com.tinet.clink.openapi.model.ClientTelModel;
-import com.tinet.clink.openapi.response.ResponseModel;
+import com.tinet.clink.cc.model.ClientTelModel;
+import com.tinet.clink.core.response.ResponseModel;
 
 import java.util.List;
 

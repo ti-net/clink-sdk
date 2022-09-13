@@ -1,13 +1,12 @@
 package com.tinet.clink.openapi.chat;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tinet.clink.openapi.Client;
-import com.tinet.clink.openapi.ClientConfiguration;
-import com.tinet.clink.openapi.model.ChatInvestigationOptionModel;
-import com.tinet.clink.openapi.request.chat.ChatSubmitInvestigationRequest;
-import com.tinet.clink.openapi.request.chat.ChatVisitorOpenSessionRequest;
-import com.tinet.clink.openapi.response.chat.ChatSubmitInvestigationResponse;
-import com.tinet.clink.openapi.response.chat.ChatVisitorOpenSessionResponse;
+
+import com.tinet.clink.core.client.Client;
+import com.tinet.clink.core.client.ClientConfiguration;
+import com.tinet.clink.livechat.model.ChatInvestigationOptionModel;
+import com.tinet.clink.livechat.request.ChatSubmitInvestigationRequest;
+import com.tinet.clink.livechat.response.ChatSubmitInvestigationResponse;
 import org.junit.Before;
 import org.junit.Test;
 

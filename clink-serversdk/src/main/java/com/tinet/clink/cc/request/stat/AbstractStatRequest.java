@@ -1,8 +1,10 @@
 package com.tinet.clink.cc.request.stat;
 
-import com.tinet.clink.openapi.request.AbstractRequestModel;
-import com.tinet.clink.openapi.response.ResponseModel;
-import com.tinet.clink.openapi.utils.HttpMethodType;
+
+import com.tinet.clink.core.request.AbstractRequestModel;
+import com.tinet.clink.core.response.ResponseModel;
+import com.tinet.clink.core.utils.HttpMethodType;
+
 
 import java.util.List;
 

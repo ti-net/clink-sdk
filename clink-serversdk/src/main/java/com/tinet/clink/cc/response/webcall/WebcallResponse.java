@@ -1,7 +1,7 @@
 package com.tinet.clink.cc.response.webcall;
 
-import com.tinet.clink.openapi.model.WebcallResultModel;
-import com.tinet.clink.openapi.response.ResponseModel;
+import com.tinet.clink.cc.model.WebcallResultModel;
+import com.tinet.clink.core.response.ResponseModel;
 
 /**
  * webcall响应对象

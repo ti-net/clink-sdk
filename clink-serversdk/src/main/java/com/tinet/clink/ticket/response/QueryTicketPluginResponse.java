@@ -1,7 +1,7 @@
 package com.tinet.clink.ticket.response;
 
-import com.tinet.clink.openapi.model.TicketPluginModel;
-import com.tinet.clink.openapi.response.ResponseModel;
+import com.tinet.clink.ticket.model.TicketPluginModel;
+import com.tinet.clink.core.response.ResponseModel;
 
 /**
  * @Description 根据外部参数或ID查询工单插件的响应model

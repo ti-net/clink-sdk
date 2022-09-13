@@ -1,15 +1,11 @@
 package com.tinet.clink.openapi.ticket;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.tinet.clink.core.client.Client;
+import com.tinet.clink.core.client.ClientConfiguration;
 import com.tinet.clink.openapi.AbstractTest;
-import com.tinet.clink.openapi.Client;
-import com.tinet.clink.openapi.ClientConfiguration;
-import com.tinet.clink.openapi.exceptions.ClientException;
-import com.tinet.clink.openapi.exceptions.ServerException;
-import com.tinet.clink.openapi.request.ticket.GetTicketDetailRequest;
-import com.tinet.clink.openapi.request.ticket.ListTicketCategoryRequest;
-import com.tinet.clink.openapi.response.ticket.GetTicketDetailResponse;
-import com.tinet.clink.openapi.response.ticket.ListTicketCategoryResponse;
+import com.tinet.clink.ticket.request.GetTicketDetailRequest;
+import com.tinet.clink.ticket.response.GetTicketDetailResponse;
 import org.junit.Test;
 
 /**

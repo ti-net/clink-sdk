@@ -1,6 +1,6 @@
 package com.tinet.clink.crm.response.customer;
 
-import com.tinet.clink.openapi.response.ResponseModel;
+import com.tinet.clink.core.response.ResponseModel;
 
 /**
  * 删除客户资料响应

@@ -1,7 +1,7 @@
 package com.tinet.clink.crm.response;
 
-import com.tinet.clink.openapi.model.BusinessCustomizeFields;
-import com.tinet.clink.openapi.response.ResponseModel;
+import com.tinet.clink.crm.model.BusinessCustomizeFields;
+import com.tinet.clink.core.response.ResponseModel;
 
 import java.util.List;
 

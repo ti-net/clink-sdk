@@ -1,8 +1,9 @@
 package com.tinet.clink.cc.request.numbers;
 
-import com.tinet.clink.openapi.PathEnum;
-import com.tinet.clink.openapi.request.AbstractRequestModel;
-import com.tinet.clink.openapi.response.config.numbers.ListHotlineNumbersResponse;
+import com.tinet.clink.cc.PathEnum;
+import com.tinet.clink.cc.response.numbers.ListHotlineNumbersResponse;
+import com.tinet.clink.core.request.AbstractRequestModel;
+
 
 /**
  * 查询热线号码集合请求

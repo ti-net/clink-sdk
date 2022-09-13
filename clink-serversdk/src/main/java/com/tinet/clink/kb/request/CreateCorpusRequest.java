@@ -1,11 +1,11 @@
 package com.tinet.clink.kb.request;
 
 
-import com.tinet.clink.openapi.PathEnum;
-import com.tinet.clink.openapi.model.CorpusRecordModel;
-import com.tinet.clink.openapi.request.AbstractRequestModel;
-import com.tinet.clink.openapi.response.kb.CreateCorpusResponse;
-import com.tinet.clink.openapi.utils.HttpMethodType;
+import com.tinet.clink.kb.PathEnum;
+import com.tinet.clink.kb.model.CorpusRecordModel;
+import com.tinet.clink.core.request.AbstractRequestModel;
+import com.tinet.clink.core.utils.HttpMethodType;
+import com.tinet.clink.kb.response.CreateCorpusResponse;
 
 import java.util.List;
 

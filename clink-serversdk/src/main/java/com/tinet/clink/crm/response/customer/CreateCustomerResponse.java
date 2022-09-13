@@ -1,7 +1,7 @@
 package com.tinet.clink.crm.response.customer;
 
-import com.tinet.clink.openapi.model.CustomerModel;
-import com.tinet.clink.openapi.response.ResponseModel;
+import com.tinet.clink.crm.model.CustomerModel;
+import com.tinet.clink.core.response.ResponseModel;
 
 /**
  * @author lizy

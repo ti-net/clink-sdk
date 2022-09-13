@@ -1,7 +1,8 @@
 package com.tinet.clink.cc.response.cdr;
 
-import com.tinet.clink.openapi.model.CdrIbRecordDetailModel;
-import com.tinet.clink.openapi.response.ResponseModel;
+
+import com.tinet.clink.cc.model.CdrIbRecordDetailModel;
+import com.tinet.clink.core.response.ResponseModel;
 
 /**
  * 查询呼入通话记录详情响应

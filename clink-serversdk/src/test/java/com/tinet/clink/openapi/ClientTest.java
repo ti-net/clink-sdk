@@ -1,15 +1,16 @@
 package com.tinet.clink.openapi;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.tinet.clink.openapi.exceptions.ClientException;
-import com.tinet.clink.openapi.exceptions.ServerException;
-import com.tinet.clink.openapi.model.ClientDetailModel;
-import com.tinet.clink.openapi.model.ClientObClidModel;
-import com.tinet.clink.openapi.model.ClientPermission;
-import com.tinet.clink.openapi.model.ClientSearchResultModel;
-import com.tinet.clink.openapi.request.config.client.*;
-import com.tinet.clink.openapi.response.config.client.*;
-import com.tinet.clink.openapi.utils.AesUtil;
+
+import com.tinet.clink.cc.model.ClientDetailModel;
+import com.tinet.clink.cc.model.ClientObClidModel;
+import com.tinet.clink.cc.model.ClientPermission;
+import com.tinet.clink.cc.model.ClientSearchResultModel;
+import com.tinet.clink.cc.request.client.*;
+import com.tinet.clink.cc.response.client.*;
+import com.tinet.clink.core.exceptions.ClientException;
+import com.tinet.clink.core.exceptions.ServerException;
+import com.tinet.clink.core.utils.AesUtil;
 import org.junit.Test;
 
 import javax.crypto.BadPaddingException;

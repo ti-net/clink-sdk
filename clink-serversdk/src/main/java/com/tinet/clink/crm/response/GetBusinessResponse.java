@@ -1,7 +1,7 @@
 package com.tinet.clink.crm.response;
 
-import com.tinet.clink.openapi.model.BusinessDetailModel;
-import com.tinet.clink.openapi.response.ResponseModel;
+import com.tinet.clink.crm.model.BusinessDetailModel;
+import com.tinet.clink.core.response.ResponseModel;
 
 /**
  * 业务记录详情

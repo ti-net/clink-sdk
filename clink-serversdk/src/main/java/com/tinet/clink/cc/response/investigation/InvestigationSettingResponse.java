@@ -1,7 +1,8 @@
 package com.tinet.clink.cc.response.investigation;
 
-import com.tinet.clink.openapi.model.InvestigationSettingModel;
-import com.tinet.clink.openapi.response.ResponseModel;
+
+import com.tinet.clink.cc.model.InvestigationSettingModel;
+import com.tinet.clink.core.response.ResponseModel;
 
 /**
  * @author: wangpw

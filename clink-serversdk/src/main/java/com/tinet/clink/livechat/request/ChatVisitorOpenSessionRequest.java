@@ -1,10 +1,10 @@
 package com.tinet.clink.livechat.request;
 
-import com.tinet.clink.openapi.PathEnum;
-import com.tinet.clink.openapi.model.ChatMessageSyncModel;
-import com.tinet.clink.openapi.request.AbstractRequestModel;
-import com.tinet.clink.openapi.response.chat.ChatVisitorOpenSessionResponse;
-import com.tinet.clink.openapi.utils.HttpMethodType;
+import com.tinet.clink.livechat.PathEnum;
+import com.tinet.clink.livechat.model.ChatMessageSyncModel;
+import com.tinet.clink.core.request.AbstractRequestModel;
+import com.tinet.clink.core.utils.HttpMethodType;
+import com.tinet.clink.livechat.response.ChatVisitorOpenSessionResponse;
 
 import java.util.Date;
 import java.util.List;

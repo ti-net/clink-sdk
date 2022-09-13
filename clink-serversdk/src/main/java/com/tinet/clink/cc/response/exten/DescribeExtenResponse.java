@@ -1,7 +1,7 @@
 package com.tinet.clink.cc.response.exten;
 
-import com.tinet.clink.openapi.model.DescribeExtenResultModel;
-import com.tinet.clink.openapi.response.ResponseModel;
+import com.tinet.clink.cc.model.DescribeExtenResultModel;
+import com.tinet.clink.core.response.ResponseModel;
 
 /**
  * 查询话机详情响应

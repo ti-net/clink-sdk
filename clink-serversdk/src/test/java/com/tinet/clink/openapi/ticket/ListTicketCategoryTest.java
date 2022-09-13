@@ -1,10 +1,11 @@
 package com.tinet.clink.openapi.ticket;
 
+import com.tinet.clink.core.client.Client;
+import com.tinet.clink.core.client.ClientConfiguration;
 import com.tinet.clink.openapi.AbstractTest;
-import com.tinet.clink.openapi.Client;
-import com.tinet.clink.openapi.ClientConfiguration;
-import com.tinet.clink.openapi.request.ticket.ListTicketCategoryRequest;
-import com.tinet.clink.openapi.response.ticket.ListTicketCategoryResponse;
+
+import com.tinet.clink.ticket.request.ListTicketCategoryRequest;
+import com.tinet.clink.ticket.response.ListTicketCategoryResponse;
 import org.junit.Test;
 
 /**

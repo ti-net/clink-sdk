@@ -1,12 +1,12 @@
 package com.tinet.clink.core.request;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.tinet.clink.openapi.auth.Credentials;
-import com.tinet.clink.openapi.auth.SignatureComposer;
-import com.tinet.clink.openapi.auth.Signer;
-import com.tinet.clink.openapi.response.ResponseModel;
-import com.tinet.clink.openapi.utils.HttpMethodType;
-import com.tinet.clink.openapi.utils.RequestConstant;
+import com.tinet.clink.core.auth.Credentials;
+import com.tinet.clink.core.auth.SignatureComposer;
+import com.tinet.clink.core.auth.Signer;
+import com.tinet.clink.core.response.ResponseModel;
+import com.tinet.clink.core.utils.HttpMethodType;
+import com.tinet.clink.core.utils.RequestConstant;
 import org.apache.http.client.utils.URIBuilder;
 
 import java.io.File;

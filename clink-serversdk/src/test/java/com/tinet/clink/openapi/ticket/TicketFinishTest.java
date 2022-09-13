@@ -1,10 +1,10 @@
 package com.tinet.clink.openapi.ticket;
 
+import com.tinet.clink.core.client.Client;
+import com.tinet.clink.core.client.ClientConfiguration;
 import com.tinet.clink.openapi.AbstractTest;
-import com.tinet.clink.openapi.Client;
-import com.tinet.clink.openapi.ClientConfiguration;
-import com.tinet.clink.openapi.request.ticket.TicketFinishRequest;
-import com.tinet.clink.openapi.response.ticket.TicketFinishResponse;
+import com.tinet.clink.ticket.request.TicketFinishRequest;
+import com.tinet.clink.ticket.response.TicketFinishResponse;
 import org.junit.Test;
 
 

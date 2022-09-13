@@ -1,10 +1,11 @@
 package com.tinet.clink.cc.request.log;
 
 
-import com.tinet.clink.openapi.PathEnum;
-import com.tinet.clink.openapi.request.AbstractRequestModel;
-import com.tinet.clink.openapi.response.log.ListLoginLogsResponse;
-import com.tinet.clink.openapi.utils.HttpMethodType;
+import com.tinet.clink.cc.PathEnum;
+import com.tinet.clink.cc.response.log.ListLoginLogsResponse;
+import com.tinet.clink.core.request.AbstractRequestModel;
+import com.tinet.clink.core.utils.HttpMethodType;
+
 
 /**
  * 查询登录日志列表请求

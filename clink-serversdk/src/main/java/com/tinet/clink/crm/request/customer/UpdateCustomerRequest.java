@@ -1,10 +1,10 @@
 package com.tinet.clink.crm.request.customer;
 
-import com.tinet.clink.openapi.PathEnum;
-import com.tinet.clink.openapi.model.IdValue;
-import com.tinet.clink.openapi.request.AbstractRequestModel;
-import com.tinet.clink.openapi.response.config.customer.UpdateCustomerResponse;
-import com.tinet.clink.openapi.utils.HttpMethodType;
+import com.tinet.clink.crm.PathEnum;
+import com.tinet.clink.crm.model.IdValue;
+import com.tinet.clink.core.request.AbstractRequestModel;
+import com.tinet.clink.core.utils.HttpMethodType;
+import com.tinet.clink.crm.response.customer.UpdateCustomerResponse;
 
 /**
  * @author lizy

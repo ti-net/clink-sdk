@@ -1,12 +1,12 @@
 package com.tinet.clink.openapi;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.tinet.clink.openapi.exceptions.ClientException;
-import com.tinet.clink.openapi.exceptions.ServerException;
-import com.tinet.clink.openapi.request.ws.AgentTokenRequest;
-import com.tinet.clink.openapi.request.ws.AuthTokenRequest;
-import com.tinet.clink.openapi.response.ws.AgentTokenResponse;
-import com.tinet.clink.openapi.response.ws.AuthTokenResponse;
+import com.tinet.clink.cc.request.ws.AgentTokenRequest;
+import com.tinet.clink.cc.request.ws.AuthTokenRequest;
+import com.tinet.clink.cc.response.ws.AgentTokenResponse;
+import com.tinet.clink.cc.response.ws.AuthTokenResponse;
+import com.tinet.clink.core.exceptions.ClientException;
+import com.tinet.clink.core.exceptions.ServerException;
 import org.junit.Test;
 
 /**

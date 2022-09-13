@@ -1,9 +1,9 @@
 package com.tinet.clink.kb.request;
 
-import com.tinet.clink.openapi.PathEnum;
-import com.tinet.clink.openapi.request.AbstractRequestModel;
-import com.tinet.clink.openapi.response.kb.DescribeArticleResponse;
-import com.tinet.clink.openapi.utils.HttpMethodType;
+import com.tinet.clink.kb.PathEnum;
+import com.tinet.clink.core.request.AbstractRequestModel;
+import com.tinet.clink.core.utils.HttpMethodType;
+import com.tinet.clink.kb.response.DescribeArticleResponse;
 
 /**
  * 文章详情请求

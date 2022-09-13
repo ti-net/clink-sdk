@@ -1,9 +1,10 @@
 package com.tinet.clink.cc.request.cdr;
 
-import com.tinet.clink.openapi.PathEnum;
-import com.tinet.clink.openapi.request.AbstractRequestModel;
-import com.tinet.clink.openapi.response.cdr.DescribeCdrIbDetailsResponse;
-import com.tinet.clink.openapi.utils.HttpMethodType;
+
+import com.tinet.clink.cc.PathEnum;
+import com.tinet.clink.cc.response.cdr.DescribeCdrIbDetailsResponse;
+import com.tinet.clink.core.request.AbstractRequestModel;
+import com.tinet.clink.core.utils.HttpMethodType;
 
 /**
  * 查询呼入通话记录明细详情请求

@@ -1,7 +1,8 @@
 package com.tinet.clink.cc.response.cdr;
 
-import com.tinet.clink.openapi.model.CreateInvestigationsSaveModel;
-import com.tinet.clink.openapi.response.ResponseModel;
+
+import com.tinet.clink.cc.model.CreateInvestigationsSaveModel;
+import com.tinet.clink.core.response.ResponseModel;
 
 /**
  * @author libin

@@ -1,8 +1,9 @@
 package com.tinet.clink.cc.request.exten;
 
-import com.tinet.clink.openapi.PathEnum;
-import com.tinet.clink.openapi.request.AbstractRequestModel;
-import com.tinet.clink.openapi.response.config.exten.DescribeExtenResponse;
+import com.tinet.clink.cc.PathEnum;
+import com.tinet.clink.cc.response.exten.DescribeExtenResponse;
+import com.tinet.clink.core.request.AbstractRequestModel;
+
 
 /**
  * 查询话机详情请求

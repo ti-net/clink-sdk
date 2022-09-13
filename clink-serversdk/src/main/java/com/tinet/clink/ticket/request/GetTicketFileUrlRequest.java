@@ -1,9 +1,9 @@
 package com.tinet.clink.ticket.request;
 
-import com.tinet.clink.openapi.PathEnum;
-import com.tinet.clink.openapi.request.AbstractRequestModel;
-import com.tinet.clink.openapi.response.ticket.GetTicketFileUrlResponse;
-import com.tinet.clink.openapi.utils.HttpMethodType;
+import com.tinet.clink.ticket.PathEnum;
+import com.tinet.clink.core.request.AbstractRequestModel;
+import com.tinet.clink.core.utils.HttpMethodType;
+import com.tinet.clink.ticket.response.GetTicketFileUrlResponse;
 import org.apache.http.util.Asserts;
 
 /**

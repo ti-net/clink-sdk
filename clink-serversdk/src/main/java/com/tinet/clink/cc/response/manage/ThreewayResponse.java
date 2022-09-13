@@ -1,6 +1,6 @@
 package com.tinet.clink.cc.response.manage;
 
-import com.tinet.clink.openapi.response.ResponseModel;
+import com.tinet.clink.core.response.ResponseModel;
 
 /**
  * 三方响应

@@ -1,7 +1,7 @@
 package com.tinet.clink.kb.response;
 
-import com.tinet.clink.openapi.model.AnswerModel;
-import com.tinet.clink.openapi.response.ResponseModel;
+import com.tinet.clink.kb.model.AnswerModel;
+import com.tinet.clink.core.response.ResponseModel;
 
 import java.util.List;
 

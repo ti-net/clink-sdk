@@ -1,7 +1,8 @@
 package com.tinet.clink.cc.response.cdr;
 
-import com.tinet.clink.openapi.model.CdrObDetailModel;
-import com.tinet.clink.openapi.response.ResponseModel;
+
+import com.tinet.clink.cc.model.CdrObDetailModel;
+import com.tinet.clink.core.response.ResponseModel;
 
 import java.util.List;
 

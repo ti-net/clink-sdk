@@ -1,10 +1,8 @@
 package com.tinet.clink.openapi.kb;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tinet.clink.openapi.Client;
-import com.tinet.clink.openapi.ClientConfiguration;
-import com.tinet.clink.openapi.request.kb.ListDirectoriesRequest;
-import com.tinet.clink.openapi.response.kb.ListDirectoriesResponse;
+import com.tinet.clink.kb.request.ListDirectoriesRequest;
+import com.tinet.clink.kb.response.ListDirectoriesResponse;
 import org.junit.Test;
 
 /**

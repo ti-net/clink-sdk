@@ -1,9 +1,10 @@
 package com.tinet.clink.cc.request.cdr;
 
-import com.tinet.clink.openapi.PathEnum;
-import com.tinet.clink.openapi.request.AbstractRequestModel;
-import com.tinet.clink.openapi.response.cdr.SqcAsrResponse;
-import com.tinet.clink.openapi.utils.HttpMethodType;
+
+import com.tinet.clink.cc.PathEnum;
+import com.tinet.clink.cc.response.cdr.SqcAsrResponse;
+import com.tinet.clink.core.request.AbstractRequestModel;
+import com.tinet.clink.core.utils.HttpMethodType;
 
 /**
  * 质检转写文本获取
@@ -21,7 +22,7 @@ public class SqcAsrRequest extends AbstractRequestModel<SqcAsrResponse> {
     private String mainUniqueId;
 
     public SqcAsrRequest() {
-        super(PathEnum.sqcAsr.value(),HttpMethodType.GET);
+        super(PathEnum.sqcAsr.value(), HttpMethodType.GET);
     }
 
 

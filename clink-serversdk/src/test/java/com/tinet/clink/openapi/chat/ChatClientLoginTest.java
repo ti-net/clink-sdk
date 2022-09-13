@@ -1,10 +1,10 @@
 package com.tinet.clink.openapi.chat;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tinet.clink.openapi.Client;
-import com.tinet.clink.openapi.ClientConfiguration;
-import com.tinet.clink.openapi.request.chat.ChatClientLoginRequest;
-import com.tinet.clink.openapi.response.chat.ChatClientLoginResponse;
+import com.tinet.clink.core.client.Client;
+import com.tinet.clink.core.client.ClientConfiguration;
+import com.tinet.clink.livechat.request.ChatClientLoginRequest;
+import com.tinet.clink.livechat.response.ChatClientLoginResponse;
 import org.junit.Before;
 import org.junit.Test;
 

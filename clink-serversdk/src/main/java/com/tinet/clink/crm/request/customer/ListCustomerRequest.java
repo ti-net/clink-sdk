@@ -1,9 +1,9 @@
 package com.tinet.clink.crm.request.customer;
 
-import com.tinet.clink.openapi.PathEnum;
-import com.tinet.clink.openapi.request.AbstractRequestModel;
-import com.tinet.clink.openapi.response.config.customer.ListCustomerResponse;
-import com.tinet.clink.openapi.utils.HttpMethodType;
+import com.tinet.clink.crm.PathEnum;
+import com.tinet.clink.core.request.AbstractRequestModel;
+import com.tinet.clink.core.utils.HttpMethodType;
+import com.tinet.clink.crm.response.customer.ListCustomerResponse;
 
 /**
  * 获取客户资料请求

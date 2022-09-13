@@ -1,7 +1,7 @@
 package com.tinet.clink.cc.response.restrict;
 
-import com.tinet.clink.openapi.model.TelRestrictCreateModel;
-import com.tinet.clink.openapi.response.ResponseModel;
+import com.tinet.clink.cc.model.TelRestrictCreateModel;
+import com.tinet.clink.core.response.ResponseModel;
 
 /**
  * 新增黑白名单队列响应

@@ -1,9 +1,9 @@
 package com.tinet.clink.livechat.request;
 
-import com.tinet.clink.openapi.PathEnum;
-import com.tinet.clink.openapi.request.stat.AbstractStatRequest;
-import com.tinet.clink.openapi.response.chat.StatChatClientWorkloadResponse;
-import com.tinet.clink.openapi.utils.HttpMethodType;
+import com.tinet.clink.cc.request.stat.AbstractStatRequest;
+import com.tinet.clink.livechat.PathEnum;
+import com.tinet.clink.core.utils.HttpMethodType;
+import com.tinet.clink.livechat.response.StatChatClientWorkloadResponse;
 
 /**
  * 在线客服-座席工作量报表（新） Request

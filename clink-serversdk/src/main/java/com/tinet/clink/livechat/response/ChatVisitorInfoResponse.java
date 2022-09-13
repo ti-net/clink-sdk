@@ -1,6 +1,6 @@
 package com.tinet.clink.livechat.response;
 
-import com.tinet.clink.openapi.response.PagedResponse;
+import com.tinet.clink.core.response.PagedResponse;
 
 /**
  * @author midong

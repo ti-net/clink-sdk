@@ -1,8 +1,8 @@
 package com.tinet.clink.cc.response.restrict;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.tinet.clink.openapi.model.TelRestrictSettingUpdateModel;
-import com.tinet.clink.openapi.response.ResponseModel;
+import com.tinet.clink.cc.model.TelRestrictSettingUpdateModel;
+import com.tinet.clink.core.response.ResponseModel;
 
 /**
  * @author libin

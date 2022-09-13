@@ -1,11 +1,11 @@
 package com.tinet.clink.openapi.ticket;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.tinet.clink.core.client.Client;
+import com.tinet.clink.core.client.ClientConfiguration;
 import com.tinet.clink.openapi.AbstractTest;
-import com.tinet.clink.openapi.Client;
-import com.tinet.clink.openapi.ClientConfiguration;
-import com.tinet.clink.openapi.request.ticket.ListTicketRequest;
-import com.tinet.clink.openapi.response.ticket.ListTicketResponse;
+import com.tinet.clink.ticket.request.ListTicketRequest;
+import com.tinet.clink.ticket.response.ListTicketResponse;
 import org.junit.Test;
 
 /**
@@ -25,7 +25,7 @@ public class ListTicketTest extends AbstractTest {
         configuration.setScheme("http");
         Client client = new Client(configuration);
 
-        ListTicketRequest listTicketRequest = new ListTicketRequest();
+        ListTicketRequest listTicketRequest= new ListTicketRequest();
 
         listTicketRequest.setStartTime("2022-07-14 00:00:00");
         listTicketRequest.setEndTime("2022-07-14 23:59:59");

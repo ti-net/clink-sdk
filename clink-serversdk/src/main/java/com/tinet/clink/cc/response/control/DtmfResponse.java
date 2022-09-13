@@ -1,6 +1,6 @@
 package com.tinet.clink.cc.response.control;
 
-import com.tinet.clink.openapi.response.ResponseModel;
+import com.tinet.clink.core.response.ResponseModel;
 
 /**
  * 发送按键响应

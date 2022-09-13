@@ -26,10 +26,10 @@ package com.tinet.clink.openapi;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tinet.clink.openapi.exceptions.ClientException;
-import com.tinet.clink.openapi.exceptions.ServerException;
-import com.tinet.clink.openapi.request.config.queue.ListQueuesRequest;
-import com.tinet.clink.openapi.response.config.queue.ListQueuesResponse;
+import com.tinet.clink.core.exceptions.ClientException;
+import com.tinet.clink.core.exceptions.ServerException;
+import com.tinet.clink.cc.request.queue.ListQueuesRequest;
+import com.tinet.clink.cc.response.queue.ListQueuesResponse;
 
 public class Test {
     public static void main(String[] args) {

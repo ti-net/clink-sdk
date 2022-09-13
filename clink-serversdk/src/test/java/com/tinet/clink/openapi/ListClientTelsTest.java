@@ -1,10 +1,13 @@
 package com.tinet.clink.openapi;
 
-import com.tinet.clink.openapi.exceptions.ClientException;
-import com.tinet.clink.openapi.exceptions.ServerException;
-import com.tinet.clink.openapi.model.ClientTelModel;
-import com.tinet.clink.openapi.request.config.client.ListClientTelsRequest;
-import com.tinet.clink.openapi.response.config.client.ListClientTelsResponse;
+import com.tinet.clink.cc.model.ClientTelModel;
+import com.tinet.clink.cc.request.client.ListClientTelsRequest;
+import com.tinet.clink.cc.response.client.ListClientTelsResponse;
+import com.tinet.clink.core.client.Client;
+import com.tinet.clink.core.client.ClientConfiguration;
+import com.tinet.clink.core.exceptions.ClientException;
+import com.tinet.clink.core.exceptions.ServerException;
+
 
 /**
  * @author Wangyl

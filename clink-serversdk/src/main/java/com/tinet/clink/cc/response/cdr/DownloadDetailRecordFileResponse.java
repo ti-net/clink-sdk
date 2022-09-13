@@ -1,6 +1,6 @@
 package com.tinet.clink.cc.response.cdr;
 
-import com.tinet.clink.openapi.response.ResponseModel;
+import com.tinet.clink.core.response.ResponseModel;
 
 /**
  * 下载从话单录音文件响应

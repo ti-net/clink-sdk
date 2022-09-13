@@ -1,9 +1,9 @@
 package com.tinet.clink.livechat.request;
 
-import com.tinet.clink.openapi.PathEnum;
-import com.tinet.clink.openapi.request.AbstractRequestModel;
-import com.tinet.clink.openapi.response.chat.ChatMessageToVisitorResponse;
-import com.tinet.clink.openapi.utils.HttpMethodType;
+import com.tinet.clink.livechat.PathEnum;
+import com.tinet.clink.core.request.AbstractRequestModel;
+import com.tinet.clink.core.utils.HttpMethodType;
+import com.tinet.clink.livechat.response.ChatMessageToVisitorResponse;
 
 /**
  * 发送消息到访客

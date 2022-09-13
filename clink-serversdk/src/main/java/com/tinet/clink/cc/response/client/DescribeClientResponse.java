@@ -1,7 +1,7 @@
 package com.tinet.clink.cc.response.client;
 
-import com.tinet.clink.openapi.model.ClientDetailModel;
-import com.tinet.clink.openapi.response.ResponseModel;
+import com.tinet.clink.cc.model.ClientDetailModel;
+import com.tinet.clink.core.response.ResponseModel;
 
 /**
  * 查询座席详情响应

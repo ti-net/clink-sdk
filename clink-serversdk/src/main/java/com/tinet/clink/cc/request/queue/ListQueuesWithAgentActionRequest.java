@@ -1,9 +1,10 @@
 package com.tinet.clink.cc.request.queue;
 
-import com.tinet.clink.openapi.PathEnum;
-import com.tinet.clink.openapi.request.AbstractRequestModel;
-import com.tinet.clink.openapi.response.config.queue.ListQueuesWithAgentActionResponse;
-import com.tinet.clink.openapi.utils.HttpMethodType;
+import com.tinet.clink.cc.PathEnum;
+import com.tinet.clink.cc.response.queue.ListQueuesWithAgentActionResponse;
+import com.tinet.clink.core.request.AbstractRequestModel;
+import com.tinet.clink.core.utils.HttpMethodType;
+
 
 public class ListQueuesWithAgentActionRequest extends AbstractRequestModel<ListQueuesWithAgentActionResponse> {
 
