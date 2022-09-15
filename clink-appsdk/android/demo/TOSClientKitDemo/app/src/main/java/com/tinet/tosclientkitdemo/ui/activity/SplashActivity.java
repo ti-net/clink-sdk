@@ -34,6 +34,7 @@ public class SplashActivity extends BaseActivity implements View.OnClickListener
     final static int COUNTS = 4;// 点击次数
     final static long DURATION = 1000;// 规定有效时间
     long[] mHits = new long[COUNTS];
+    private boolean isClick;
 
     @Override
     protected int getLayoutId(@Nullable Bundle savedInstanceState) {
@@ -95,6 +96,7 @@ public class SplashActivity extends BaseActivity implements View.OnClickListener
         tOSConnectOption.setHeadUrl("https://img2.baidu.com/it/u=1229468480,2938819374&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=500");
         tOSConnectOption.setMobile("135xxxx9206");
         tOSConnectOption.setAdvanceParams(extraInfo);
+        isClick = true;
 
         ProgressDialogHandler progressDialogHandler = new ProgressDialogHandler(SplashActivity.this, true);
         progressDialogHandler.obtainMessage(ProgressDialogHandler.SHOW_PROGRESS_DIALOG).sendToTarget();
@@ -102,11 +104,15 @@ public class SplashActivity extends BaseActivity implements View.OnClickListener
             @Override
             public void onSuccess() {
                 progressDialogHandler.obtainMessage(ProgressDialogHandler.DISMISS_PROGRESS_DIALOG).sendToTarget();
-                startActivity(new Intent(SplashActivity.this, SessionActivity.class));
+                if (isClick) {
+                    startActivity(new Intent(SplashActivity.this, SessionActivity.class));
+                }
+                isClick = false;
             }
 
             @Override
             public void onError(int errorCode, String errorDesc) {
+                isClick = false;
                 TLogUtils.e(errorDesc);
                 ToastUtils.showShortToast(SplashActivity.this, errorDesc);
                 progressDialogHandler.obtainMessage(ProgressDialogHandler.DISMISS_PROGRESS_DIALOG).sendToTarget();
