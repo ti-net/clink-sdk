@@ -111,7 +111,11 @@
         self.hidesBottomBarWhenPushed  = YES;
         [self.navigationController pushViewController:chatVC animated:YES];
     } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
-        [self showErrorView:errorDes?:@"登录失败"];
+        if(errCode == TIM_API_REQUEST_FAIL) {
+            [self showErrorView:@"请检查您的账号密码或网络问题"];
+        } else {
+            [self showErrorView:errorDes?:@"登录失败"];
+        }
     } tokenIncorrect:^{
         NSLog(@"tokenIncorrect");
     }];

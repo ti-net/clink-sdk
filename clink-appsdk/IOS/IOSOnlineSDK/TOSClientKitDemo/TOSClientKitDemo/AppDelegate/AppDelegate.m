@@ -13,6 +13,8 @@
 #import <Bugly/Bugly.h>
 #import "ZYNetworkAccessibity.h"
 
+#import <BaiduMapAPI_Base/BMKBaseComponent.h>
+
 @interface AppDelegate ()
 
 @end
@@ -43,6 +45,15 @@
         [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     }
     [Bugly startWithAppId:@"f09601e1ba"];
+    
+    
+    // 要使用百度地图，请先启动BaiduMapManager
+    BMKMapManager *mapManager = [[BMKMapManager alloc] init];
+    // 如果要关注网络及授权验证事件，请设定generalDelegate参数
+    BOOL ret = [mapManager start:@"CtaTf9UY8TLnBGehh0RssvHHGYbF2fy1" generalDelegate:nil];
+    if (!ret) {
+        NSLog(@"启动引擎失败");
+    }
     
     //监控App第一次加载时的网络状态
     [ZYNetworkAccessibity start];
