@@ -41,7 +41,7 @@ Gradle | 3.0 及以上版本
 
 ```
     //implementation "com.ti-net.oskit:online:1.4.4" (不再更新)
-	implementation 'com.github.ti-net-project:OnlineSDK-Android:1.5.2'
+	implementation 'com.github.ti-net-project:OnlineSDK-Android:1.5.4'
 ```
 
 其他
