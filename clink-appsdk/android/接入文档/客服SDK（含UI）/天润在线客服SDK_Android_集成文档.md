@@ -1,6 +1,6 @@
 
 # TOSClientKit_Android_开发文档
-> 版本: 1.5.3
+> 版本: 1.5.4
 
 
 ## 目录
@@ -48,6 +48,7 @@ Gradle | 3.0 及以上版本
 ``` 
     //如您的应用内从未使用到以下依赖，则需要在app的 build.gradle 文件中添加如下依赖配置
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
 ```
 
 ### 混淆配置
@@ -121,6 +122,24 @@ advanceParams  | Map<String, Object> |	否 |	自定义可配参数,可为空
             @Override
             public void loadImage(Context context, Object uri, int originalWidth, int originalHeight, TImageLoaderListener listener) {
                 // 加载图片，指定图片加载的大小，用于需要查看大图或详图，且加载控件非ImageView
+            }
+            
+
+            /**
+             *
+             * @param permissions
+             * @param requestCode
+             *   申请语音权限                1661
+             *   申请相机权限                1662
+             *   申请相机、语音权限 -- 拍摄   1663
+             *   申请文件权限 -- 文件        1664
+             *
+             */
+            @Override
+            public void onStartRequestPermissionsCallback(@NonNull String[] permissions, int requestCode) {
+                super.onStartRequestPermissionsCallback(permissions, requestCode);
+                // : 2022/9/19 权限申请回调 
+                TLogUtils.i("onStartRequestPermissionsCallback:" + requestCode);
             }
         });
 ```
@@ -297,10 +316,10 @@ colors.xml可修改项
 
 
 ​    		
-        <!--  ++++++++++++++ 聊天背景设置 ++++++++++++++  -->
-        <!--聊天背景颜色-->
-        <color name="ti_session_background_color">#FFF2F6FD</color>
-    
+​        <!--  ++++++++++++++ 聊天背景设置 ++++++++++++++  -->
+​        <!--聊天背景颜色-->
+​        <color name="ti_session_background_color">#FFF2F6FD</color>
+​    
         <!--  ++++++++++++++ 聊天消息样式设置 ++++++++++++++  -->
         <!--昵称文字颜色-->
         <color name="ti_nickname_text_color">#FF595959</color>
@@ -415,38 +434,38 @@ dimen可修改项
 
 
 ​        
-        <!--  ++++++++++++++ 聊天消息样式设置 ++++++++++++++  -->
-        <!--头像大小-->
-        <dimen name="ti_chat_avatar_size">40dp</dimen>
-        <!--头像与消息气泡的间距-->
-        <dimen name="ti_chat_avatar_message_spacing">8dp</dimen>
-        <!--头像与消息气泡的间距-->
-        <dimen name="ti_chat_avatar_screen_spacing">8dp</dimen>
-        <!--  头像圆角弧度  -->
-        <dimen name="ti_chat_avatar_radius">4dp</dimen>
-        <!--昵称文字大小-->
-        <dimen name="ti_chat_username_text_size">13sp</dimen>
-        <!--发送端文字大小-->
-        <dimen name="ti_send_bubble_text_size">16sp</dimen>
-        <!--接收端文字大小-->
-        <dimen name="ti_receive_bubble_text_size">16sp</dimen>
-        <!--聊天气泡背景圆角弧度-->
-        <dimen name="ti_msg_bubble_background_corner">10dp</dimen>
-        <!--消息的最大限制宽度-->
-        <dimen name="ti_message_max_width">260dp</dimen>
-        <!--图片消息的默认高度-->
-        <dimen name="ti_msg_img_height">195dp</dimen>
-        <!--富文本视频播放器的宽-->
-        <dimen name="ti_rich_video_width">150dp</dimen>
-        <!--富文本视频播放器的高-->
-        <dimen name="ti_rich_video_height">180dp</dimen>
-        <!--会话提示文字大小-->
-        <dimen name="ti_notification_size">12sp</dimen>
-        <!--时间文字大小-->
-        <dimen name="ti_time_size">12sp</dimen>
-        <!--富文本消息之间的默认空格大小-->
-        <dimen name="ti_msg_html_divider">4dp</dimen>
-    
+​        <!--  ++++++++++++++ 聊天消息样式设置 ++++++++++++++  -->
+​        <!--头像大小-->
+​        <dimen name="ti_chat_avatar_size">40dp</dimen>
+​        <!--头像与消息气泡的间距-->
+​        <dimen name="ti_chat_avatar_message_spacing">8dp</dimen>
+​        <!--头像与消息气泡的间距-->
+​        <dimen name="ti_chat_avatar_screen_spacing">8dp</dimen>
+​        <!--  头像圆角弧度  -->
+​        <dimen name="ti_chat_avatar_radius">4dp</dimen>
+​        <!--昵称文字大小-->
+​        <dimen name="ti_chat_username_text_size">13sp</dimen>
+​        <!--发送端文字大小-->
+​        <dimen name="ti_send_bubble_text_size">16sp</dimen>
+​        <!--接收端文字大小-->
+​        <dimen name="ti_receive_bubble_text_size">16sp</dimen>
+​        <!--聊天气泡背景圆角弧度-->
+​        <dimen name="ti_msg_bubble_background_corner">10dp</dimen>
+​        <!--消息的最大限制宽度-->
+​        <dimen name="ti_message_max_width">260dp</dimen>
+​        <!--图片消息的默认高度-->
+​        <dimen name="ti_msg_img_height">195dp</dimen>
+​        <!--富文本视频播放器的宽-->
+​        <dimen name="ti_rich_video_width">150dp</dimen>
+​        <!--富文本视频播放器的高-->
+​        <dimen name="ti_rich_video_height">180dp</dimen>
+​        <!--会话提示文字大小-->
+​        <dimen name="ti_notification_size">12sp</dimen>
+​        <!--时间文字大小-->
+​        <dimen name="ti_time_size">12sp</dimen>
+​        <!--富文本消息之间的默认空格大小-->
+​        <dimen name="ti_msg_html_divider">4dp</dimen>
+​    
         <!--  ++++++++++++++ 输入栏样式设置 ++++++++++++++  -->
         <!--输入框行高-->
         <dimen name="ti_input_box_high_line_height">24dp</dimen>

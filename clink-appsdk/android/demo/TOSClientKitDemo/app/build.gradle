@@ -22,8 +22,8 @@ android {
         applicationId "com.tinet.tosclientkitdemo"
         minSdk 21
         targetSdk 30
-        versionCode 7
-        versionName "1.5.3"
+        versionCode 8
+        versionName "1.5.4"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -79,10 +79,12 @@ dependencies {
     // bugly
     implementation 'com.tencent.bugly:crashreport:latest.release'
 
+    //天润在线客服 SDK内部所需
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
 
     //天润在线客服 SDK
-    implementation 'com.github.ti-net-project:OnlineSDK-Android:1.5.3'
-//    api files('libs/online_sdk_1.5.3_release.aar')
+    implementation 'com.github.ti-net-project:OnlineSDK-Android:1.5.4'
+//    api files('libs/online_sdk_1.5.4_release.aar')
 
 }
