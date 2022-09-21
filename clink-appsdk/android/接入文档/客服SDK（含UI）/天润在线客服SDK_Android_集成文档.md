@@ -123,24 +123,7 @@ advanceParams  | Map<String, Object> |	否 |	自定义可配参数,可为空
             public void loadImage(Context context, Object uri, int originalWidth, int originalHeight, TImageLoaderListener listener) {
                 // 加载图片，指定图片加载的大小，用于需要查看大图或详图，且加载控件非ImageView
             }
-            
 
-            /**
-             *
-             * @param permissions
-             * @param requestCode
-             *   申请语音权限                1661
-             *   申请相机权限                1662
-             *   申请相机、语音权限 -- 拍摄   1663
-             *   申请文件权限 -- 文件        1664
-             *
-             */
-            @Override
-            public void onStartRequestPermissionsCallback(@NonNull String[] permissions, int requestCode) {
-                super.onStartRequestPermissionsCallback(permissions, requestCode);
-                // : 2022/9/19 权限申请回调 
-                TLogUtils.i("onStartRequestPermissionsCallback:" + requestCode);
-            }
         });
 ```
 
@@ -614,6 +597,23 @@ protected SessionClickListener getListener() {
             public void downloadFile(String url, String name) {
                 super.downloadFile(url, name);
                //下载文件回调，屏蔽super可自定义而下载功能
+            }
+            
+            /**
+             *
+             * @param permissions
+             * @param requestCode
+             *   申请语音权限                1661
+             *   申请相机权限                1662
+             *   申请相机、语音权限 -- 拍摄   1663
+             *   申请文件权限 -- 文件        1664
+             *
+             */
+            @Override
+            public void onStartRequestPermissionsCallback(@NonNull String[] permissions, int requestCode) {
+                super.onStartRequestPermissionsCallback(permissions, requestCode);
+                // : 2022/9/19 权限申请回调 
+                TLogUtils.i("onStartRequestPermissionsCallback:" + requestCode);
             }
             
         };
