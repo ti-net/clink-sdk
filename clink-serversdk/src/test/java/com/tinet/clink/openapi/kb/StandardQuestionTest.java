@@ -1,12 +1,10 @@
 package com.tinet.clink.openapi.kb;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tinet.clink.openapi.request.kb.CreateStandardQuestionRequest;
-import com.tinet.clink.openapi.request.kb.DeleteStandardQuestionRequest;
-import com.tinet.clink.openapi.request.kb.ListStandardQuestionRequest;
-import com.tinet.clink.openapi.request.kb.UpdateStandardQuestionRequest;
+import com.tinet.clink.openapi.request.kb.*;
 import com.tinet.clink.openapi.response.kb.DeleteStandardQuestionResponse;
 import com.tinet.clink.openapi.response.kb.ListStandardQuestionResponse;
+import com.tinet.clink.openapi.response.kb.PageStandardQuestionResponse;
 import com.tinet.clink.openapi.response.kb.StandardQuestionResponse;
 import org.junit.Test;
 
@@ -19,6 +17,37 @@ import java.time.Instant;
 public class StandardQuestionTest extends KbAbstractTest{
 
     private final ObjectMapper mapper = new ObjectMapper();
+
+    @Test
+    public void pageStandardQuestion() {
+
+        // 创建访问服务的客户端实例并初始化
+        /*ClientConfiguration configuration = new ClientConfiguration(
+                "AK",          // AccessKeyId
+                "SK");     // AccessKeySecret
+        configuration.setHost("host");
+        Client client = new Client(configuration);*/
+
+        // 创建请求的request
+        PageStandardQuestionRequest request = new PageStandardQuestionRequest();
+        request.setBotId("967209");
+//        request.setUpdateTime("1999/01/01 00:00:00");
+        request.setOffset(0);
+        request.setLimit(10);
+
+        long start = Instant.now().getEpochSecond();
+        try {
+            PageStandardQuestionResponse response = client.getResponseModel(request);
+            long end = Instant.now().getEpochSecond();
+            System.out.println("请求时长：" + (end - start));
+//            System.out.println(response.getStandardQuestions().size());
+            System.out.println(mapper.writeValueAsString(response));
+        } catch (Exception e) {
+            long end = Instant.now().getEpochSecond();
+            System.out.println("请求时长：" + (end - start));
+            e.printStackTrace();
+        }
+    }
 
     @Test
     public void listStandardQuestion() {

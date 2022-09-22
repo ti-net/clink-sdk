@@ -22,6 +22,11 @@ public class KbArticleModel {
     private String enterpriseId;
 
     /**
+     * 所属知识库类型；0：问答库，1：文档库
+     */
+    private Integer kbType;
+
+    /**
      * 标题
      */
     private String title;
@@ -452,5 +457,13 @@ public class KbArticleModel {
 
     public void setBotAction(String[] botAction) {
         this.botAction = botAction;
+    }
+
+    public Integer getKbType() {
+        return kbType;
+    }
+
+    public void setKbType(Integer kbType) {
+        this.kbType = kbType;
     }
 }
