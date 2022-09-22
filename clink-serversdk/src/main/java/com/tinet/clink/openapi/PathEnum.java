@@ -240,6 +240,7 @@ public enum PathEnum {
     //-------------------知识库API--------
 
     //-------------------机器人知识库API--------
+    PageStandardQuestion("page_standard_question"),
     ListStandardQuestion("list_standard_question"),
     CreateStandardQuestion("create_standard_question"),
     UpdateStandardQuestion("update_standard_question"),
