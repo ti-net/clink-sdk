@@ -8,7 +8,11 @@ import java.util.Date;
  * @author lize
  * @date 2022/6/22
  */
-public class TicketSystemForm {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  TicketSystemForm {
 
     /**
      * 表单修改类型

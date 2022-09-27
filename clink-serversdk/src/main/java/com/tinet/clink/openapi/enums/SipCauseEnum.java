@@ -8,6 +8,10 @@ import java.util.Objects;
  * @author wangll
  * @date 2018/05/14
  */
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
 public enum SipCauseEnum {
 
 

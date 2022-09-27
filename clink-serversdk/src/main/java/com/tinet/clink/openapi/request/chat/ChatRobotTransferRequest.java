@@ -11,7 +11,11 @@ import com.tinet.clink.openapi.utils.HttpMethodType;
  * @author wangpw
  * @date 2021年5月14日
  */
-public class ChatRobotTransferRequest extends AbstractRequestModel<ChatRobotTransferResponse> {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  ChatRobotTransferRequest extends AbstractRequestModel<ChatRobotTransferResponse> {
 
     public ChatRobotTransferRequest() {
         super(PathEnum.ChatRobotTransfer.value(), HttpMethodType.POST);

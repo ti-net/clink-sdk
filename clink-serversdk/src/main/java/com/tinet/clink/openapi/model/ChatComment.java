@@ -3,7 +3,11 @@ package com.tinet.clink.openapi.model;
 /**
  * 会话留言记录索引类
  */
-public class ChatComment {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  ChatComment {
 
     /**
      * 主会话唯一标识

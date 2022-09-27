@@ -11,7 +11,11 @@ import com.tinet.clink.openapi.utils.HttpMethodType;
  * @author huwk
  * @date 2018/10/24
  **/
-public class CopyCdrIbsRequest extends AbstractRequestModel<CopyCdrIbsResponse> {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  CopyCdrIbsRequest extends AbstractRequestModel<CopyCdrIbsResponse> {
 
     /**
      * 指定同步某一天的通话记录。格式：yyyyMMdd, 例如：20180816

@@ -11,7 +11,11 @@ import java.util.Objects;
  * @author libin
  * @date 2021-12-13 1:45 下午
  */
-public class ListTelRestrictRequest extends AbstractRequestModel<ListTelRestrictResponse> {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  ListTelRestrictRequest extends AbstractRequestModel<ListTelRestrictResponse> {
 
     private Integer offset;
 

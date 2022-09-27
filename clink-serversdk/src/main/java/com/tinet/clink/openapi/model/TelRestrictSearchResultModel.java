@@ -9,7 +9,11 @@ import java.util.Date;
  * @date 2021-12-15 3:36 下午
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class TelRestrictSearchResultModel {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  TelRestrictSearchResultModel {
 
     /**
      * 呼叫限制类型 1:黑名单 2:白名单

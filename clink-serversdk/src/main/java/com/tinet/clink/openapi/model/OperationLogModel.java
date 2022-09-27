@@ -6,7 +6,11 @@ package com.tinet.clink.openapi.model;
  * @author wangli
  * @date 2022-03-09 5:12 PM
  */
-public class OperationLogModel {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  OperationLogModel {
 
     /**
      * 企业id

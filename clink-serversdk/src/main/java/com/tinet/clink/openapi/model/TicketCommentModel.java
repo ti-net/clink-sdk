@@ -8,7 +8,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @Date 2022/04/21
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class TicketCommentModel {
+/** 
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated  
+public class  TicketCommentModel {
     /**
      *工单 Id (id和externalId 二者必有一个)
      */

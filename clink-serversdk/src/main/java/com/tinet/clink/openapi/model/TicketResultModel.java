@@ -8,7 +8,11 @@ import java.util.Date;
  * @author liuhy
  * @date: 2020/8/25
  **/
-public class TicketResultModel {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  TicketResultModel {
 
     /**
      * 工单 Id

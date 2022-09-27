@@ -4,6 +4,10 @@ package com.tinet.clink.openapi;
  * @author wangll
  * @date 2019/2/19
  */
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
 public enum PathEnum {
     //  座席设置
     CreateClient("cc/create_client"),

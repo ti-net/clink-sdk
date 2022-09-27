@@ -9,7 +9,11 @@ import java.util.Map;
  * @author Chenjf
  * @date 2020/2/24 15:32
  **/
-public class StatHotlineObAnsweredRateResponse extends PagedResponse {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  StatHotlineObAnsweredRateResponse extends PagedResponse {
 
     private List<Map<String,Object>> statHotlineObAnsweredRate;
 

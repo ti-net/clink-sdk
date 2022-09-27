@@ -10,7 +10,11 @@ import com.tinet.clink.openapi.utils.HttpMethodType;
  * @Author DengJie
  * @Date 2022/04/21
  */
-public class TicketCommentRequest extends AbstractRequestModel<TicketCommentResponse> {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  TicketCommentRequest extends AbstractRequestModel<TicketCommentResponse> {
 
     public TicketCommentRequest() {
         super(PathEnum.CommentTicket.value(), HttpMethodType.POST);

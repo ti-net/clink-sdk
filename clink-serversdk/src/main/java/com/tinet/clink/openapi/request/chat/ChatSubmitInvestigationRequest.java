@@ -14,7 +14,11 @@ import java.util.Arrays;
  * @author wangpw
  * @date 2021年5月14日
  */
-public class ChatSubmitInvestigationRequest extends AbstractRequestModel<ChatSubmitInvestigationResponse> {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  ChatSubmitInvestigationRequest extends AbstractRequestModel<ChatSubmitInvestigationResponse> {
 
     public ChatSubmitInvestigationRequest() {
         super(PathEnum.ChatSubmitInvestigation.value(), HttpMethodType.POST);

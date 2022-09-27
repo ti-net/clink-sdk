@@ -11,7 +11,11 @@ import java.util.Objects;
  * @author libin
  * @date 2021-12-14 5:38 下午
  */
-public class UpdateEnterprisePausesRequest extends AbstractRequestModel<UpdateEnterprisePausesResponse> {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  UpdateEnterprisePausesRequest extends AbstractRequestModel<UpdateEnterprisePausesResponse> {
 
     private Integer id;
 

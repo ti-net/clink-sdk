@@ -5,7 +5,11 @@ import java.util.List;
 /**
  * @author houfc
  */
-public class Department {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  Department {
     private String name;
     private String description;
     private List<User> users;

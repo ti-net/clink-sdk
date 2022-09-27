@@ -7,7 +7,11 @@ import com.tinet.clink.openapi.response.ResponseModel;
  * @author libin
  * @date 2021-12-13 11:12 上午
  */
-public class DeleteTelRestrictResponse extends ResponseModel {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  DeleteTelRestrictResponse extends ResponseModel {
 
     private TelRestrictDeleteModel restrictTel;
 

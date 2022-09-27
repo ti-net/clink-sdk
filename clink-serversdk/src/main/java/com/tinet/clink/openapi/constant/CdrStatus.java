@@ -6,7 +6,11 @@ package com.tinet.clink.openapi.constant;
  * @author libin
  * @date 2022/02/24
  */
-public class CdrStatus {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  CdrStatus {
     /**
      * 座席接听
      */

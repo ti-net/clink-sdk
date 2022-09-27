@@ -9,7 +9,11 @@ import com.tinet.clink.openapi.utils.HttpMethodType;
  * @author yuqiang
  * @date 2021/10/20
  */
-public class ListChatMessageRequest extends AbstractRequestModel<ChatMessageResponse> {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  ListChatMessageRequest extends AbstractRequestModel<ChatMessageResponse> {
 
     private String scrollId;
     private String date;

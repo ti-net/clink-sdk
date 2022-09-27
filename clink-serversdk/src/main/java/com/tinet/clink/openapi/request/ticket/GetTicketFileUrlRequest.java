@@ -12,7 +12,11 @@ import org.apache.http.util.Asserts;
  * @author shad0w
  * @date: 2022/4/6
  **/
-public class GetTicketFileUrlRequest extends AbstractRequestModel<GetTicketFileUrlResponse> {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  GetTicketFileUrlRequest extends AbstractRequestModel<GetTicketFileUrlResponse> {
 
     private String fileKey;
 
