@@ -51,6 +51,15 @@ Gradle | 3.0 及以上版本
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
 ```
 
+#### aar 依赖方式
+aar下载地址：https://tinet-sdk-release.s3.cn-north-1.amazonaws.com.cn/online-sdk/sdk/release/online_sdk_1.5.6_release.aar
+
+在主 app 的 build.gradle 文件中添加如下依赖配置
+
+```
+	api files('libs/online_sdk_1.5.6_release.aar')
+```
+
 ### 混淆配置
 ```
 -keep class com.tinet.** { *; }
