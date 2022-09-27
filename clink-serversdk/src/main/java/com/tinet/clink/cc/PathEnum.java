@@ -187,7 +187,7 @@ public enum PathEnum {
     /**
      * 外呼任务创建
      */
-    CreateTaskProperty("create_task_property");
+    CreateTaskProperty("cc/create_task_property");
     private String value;
 
     PathEnum(String value) {
