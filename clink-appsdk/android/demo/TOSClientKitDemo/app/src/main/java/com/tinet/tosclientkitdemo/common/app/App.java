@@ -3,10 +3,15 @@ package com.tinet.tosclientkitdemo.common.app;
 import android.app.Application;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.CustomTarget;
+import com.bumptech.glide.request.target.Target;
 import com.bumptech.glide.request.transition.Transition;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.tinet.oskit.TOSClientKit;
@@ -15,6 +20,7 @@ import com.tinet.oskit.listener.TImageLoaderListener;
 import com.tinet.oslib.common.PlatformDefine;
 import com.tinet.oslib.config.TOSInitOption;
 import com.tinet.oslib.model.bean.LabeInfo;
+import com.tinet.tosclientkitdemo.BuildConfig;
 import com.tinet.tosclientkitdemo.R;
 import com.tinet.tosclientkitdemo.common.constants.PlatformDefaultInfo;
 import com.tinet.tosclientkitdemo.common.platform.PlantformInfo;
@@ -43,8 +49,10 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
 
-        //初始化日志上报
-        CrashReport.initCrashReport(getApplicationContext(), "ebb6b84a11", false);
+        if (!BuildConfig.DEBUG) {
+            //初始化日志上报
+            CrashReport.initCrashReport(getApplicationContext(), "ebb6b84a11", false);
+        }
 
         initTOSSDK();
     }
@@ -84,6 +92,7 @@ public class App extends Application {
         TOSClientKit.initSDK(this, tOSInitOption, new TImageLoader() {
             @Override
             public void loadImage(ImageView imageView, Object uri) {
+                Log.e("TYSG","loadImage1");
                 //以glide为示例
                 Glide.with(imageView.getContext())
                         .load(uri)
@@ -94,6 +103,7 @@ public class App extends Application {
 
             @Override
             public void loadImage(ImageView imageView, Object uri, int placeholderImg, int errorImg) {
+                Log.e("TYSG","loadImage2");
                 Glide.with(imageView.getContext())
                         .load(uri)
                         .override(CustomTarget.SIZE_ORIGINAL, CustomTarget.SIZE_ORIGINAL)
@@ -104,15 +114,18 @@ public class App extends Application {
 
             @Override
             public void loadImage(ImageView imageView, Object uri, int originalWidth, int originalHeight, TImageLoaderListener listener) {
+                Log.e("TYSG","loadImage3");
                 Glide.with(imageView.getContext()).load(uri)
                         .override(originalWidth, originalHeight)
                         .error(R.drawable.ti_ic_load_default_image)
+                        .listener(new ImageRequestListener(listener))
                         .placeholder(R.drawable.ti_ic_load_default_image).into(imageView);
 
             }
 
             @Override
             public void loadImage(Context context, Object uri, int originalWidth, int originalHeight, TImageLoaderListener listener) {
+                Log.e("TYSG","loadImage4");
                 Glide.with(context).load(uri).override(originalWidth, originalHeight).into(new CustomTarget<Drawable>() {
                     @Override
                     public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
@@ -130,6 +143,33 @@ public class App extends Application {
                 });
             }
         });
+    }
+
+
+    class ImageRequestListener implements RequestListener<Drawable> {
+
+        private TImageLoaderListener listener;
+
+        public ImageRequestListener(TImageLoaderListener listener) {
+            this.listener = listener;
+        }
+
+        @Override
+        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+            if (null != listener) {
+                listener.onLoadFailed();
+            }
+
+            return false;
+        }
+
+        @Override
+        public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+            if (null != listener) {
+                listener.onResourceReady(resource);
+            }
+            return false;
+        }
     }
 
     /**

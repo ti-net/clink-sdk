@@ -1,6 +1,6 @@
 
 # TOSClientKit_Android_开发文档
-> 版本: 1.5.4
+> 版本: 1.5.6
 
 
 ## 目录
@@ -67,6 +67,12 @@ AndroidManifest.xml中添加如下所需要的权限
 <uses-permission android:name="android.permission.RECORD_AUDIO"/>
 <!--拍照权限，用于拍照（发送照片）-->
 <uses-permission android:name="android.permission.CAMERA"/>
+
+<!-- 安卓11+选择文件进行发送时查看所有文件必须权限  该权限属敏感权限，如有问题请咨询SDK技术支持 -->
+<uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+<uses-permission
+    android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+    tools:ignore="ProtectedPermissions" />
 ```
 
 ##  <span id="init">初始化</span>
@@ -303,58 +309,58 @@ colors.xml可修改项
 ​        <!--聊天背景颜色-->
 ​        <color name="ti_session_background_color">#FFF2F6FD</color>
 ​    
-        <!--  ++++++++++++++ 聊天消息样式设置 ++++++++++++++  -->
-        <!--昵称文字颜色-->
-        <color name="ti_nickname_text_color">#FF595959</color>
-        <!--发送端气泡背景颜色-->
-        <color name="ti_send_bubble_background_color">#D5E1F7</color>
-        <!--发送端文字颜色-->
-        <color name="ti_send_msg_text_color">@color/ti_dark</color>
-        <!--发送端超链接文字颜色-->
-        <color name="ti_send_super_line_text_color">#1366dc</color>
-        <!--接收端文字颜色-->
-        <color name="ti_receive_msg_text_color">@color/ti_dark</color>
-        <!--接收端超链接文字颜色-->
-        <color name="ti_receive_super_line_text_color">#1366dc</color>
-        <!--接收端气泡背景颜色-->
-        <color name="ti_receive_bubble_background_color">@android:color/white</color>
-        <!--猜你所想-->
-        <color name="ti_guess_text_color">#FAAD14</color>
-        <!--排队文字颜色-->
-        <color name="ti_line_up_text_color">@color/ti_blue</color>
-        <!--会话提示字体颜色-->
-        <color name="ti_tips_text_color">#FF595959</color>
-        <!--会话提示气泡颜色-->
-        <color name="ti_tips_bubble_bg_color">#a6ffffff</color>
-        <!--时间字体颜色-->
-        <color name="ti_msg_time_color">#FF8C8C8C</color>
-        <!--富文本视频播放器的背景-->
-        <color name="ti_rich_video_bg_color">#80000000</color>
-        <!--富文本视频播放器进度条的背景色-->
-        <color name="ti_rich_video_progress_bg_color">#4D000000</color>
-        <!--富文本视频播放器进度条的前景色-->
-        <color name="ti_rich_video_foreground_color">@color/ti_white</color>
-        <!--满意度文字颜色选中-->
-        <color name="satisfaction_select_text_color">#FAAD14</color>
-        <!--满意度文字颜色未选-->
-        <color name="satisfaction_unselected_text_color">#595959</color>
-        <!--满意度标签文字颜色选中-->
-        <color name="satisfaction_label_select_text_color">#FAAD14</color>
-        <!--满意度标签文字颜色未选-->
-        <color name="satisfaction_label_unselected_text_color">#8C8C8C</color>
-        <!--满意度标签文字颜色选中边框线颜色-->
-        <color name="satisfaction_label_select_border_color">#FAAD14</color>
-        <!--满意度标签文字颜色未选边框线颜色-->
-        <color name="satisfaction_label_unselected_border_color">#D9D9D9</color>
-        <!--满意度标签文字颜色选中背景色-->
-        <color name="satisfaction_label_select_color">#30FAAD14</color>
-        <!--满意度标签文字颜色未选背景色-->
-        <color name="satisfaction_label_unselected_color">#30D9D9D9</color>
-        <!--满意度提交文字-->
-        <color name="satisfaction_submit_tv_color">#4385FF</color>
-        <!--满意度提交背景色-->
-        <color name="satisfaction_submit_bg">#4385FF</color>
-    
+​        <!--  ++++++++++++++ 聊天消息样式设置 ++++++++++++++  -->
+​        <!--昵称文字颜色-->
+​        <color name="ti_nickname_text_color">#FF595959</color>
+​        <!--发送端气泡背景颜色-->
+​        <color name="ti_send_bubble_background_color">#D5E1F7</color>
+​        <!--发送端文字颜色-->
+​        <color name="ti_send_msg_text_color">@color/ti_dark</color>
+​        <!--发送端超链接文字颜色-->
+​        <color name="ti_send_super_line_text_color">#1366dc</color>
+​        <!--接收端文字颜色-->
+​        <color name="ti_receive_msg_text_color">@color/ti_dark</color>
+​        <!--接收端超链接文字颜色-->
+​        <color name="ti_receive_super_line_text_color">#1366dc</color>
+​        <!--接收端气泡背景颜色-->
+​        <color name="ti_receive_bubble_background_color">@android:color/white</color>
+​        <!--猜你所想-->
+​        <color name="ti_guess_text_color">#FAAD14</color>
+​        <!--排队文字颜色-->
+​        <color name="ti_line_up_text_color">@color/ti_blue</color>
+​        <!--会话提示字体颜色-->
+​        <color name="ti_tips_text_color">#FF595959</color>
+​        <!--会话提示气泡颜色-->
+​        <color name="ti_tips_bubble_bg_color">#a6ffffff</color>
+​        <!--时间字体颜色-->
+​        <color name="ti_msg_time_color">#FF8C8C8C</color>
+​        <!--富文本视频播放器的背景-->
+​        <color name="ti_rich_video_bg_color">#80000000</color>
+​        <!--富文本视频播放器进度条的背景色-->
+​        <color name="ti_rich_video_progress_bg_color">#4D000000</color>
+​        <!--富文本视频播放器进度条的前景色-->
+​        <color name="ti_rich_video_foreground_color">@color/ti_white</color>
+​        <!--满意度文字颜色选中-->
+​        <color name="satisfaction_select_text_color">#FAAD14</color>
+​        <!--满意度文字颜色未选-->
+​        <color name="satisfaction_unselected_text_color">#595959</color>
+​        <!--满意度标签文字颜色选中-->
+​        <color name="satisfaction_label_select_text_color">#FAAD14</color>
+​        <!--满意度标签文字颜色未选-->
+​        <color name="satisfaction_label_unselected_text_color">#8C8C8C</color>
+​        <!--满意度标签文字颜色选中边框线颜色-->
+​        <color name="satisfaction_label_select_border_color">#FAAD14</color>
+​        <!--满意度标签文字颜色未选边框线颜色-->
+​        <color name="satisfaction_label_unselected_border_color">#D9D9D9</color>
+​        <!--满意度标签文字颜色选中背景色-->
+​        <color name="satisfaction_label_select_color">#30FAAD14</color>
+​        <!--满意度标签文字颜色未选背景色-->
+​        <color name="satisfaction_label_unselected_color">#30D9D9D9</color>
+​        <!--满意度提交文字-->
+​        <color name="satisfaction_submit_tv_color">#4385FF</color>
+​        <!--满意度提交背景色-->
+​        <color name="satisfaction_submit_bg">#4385FF</color>
+​    
         <!--  ++++++++++++++  输入栏设置 ++++++++++++++  -->
         <!--输入区域背景颜色-->
         <color name="ti_input_area_bg_color">#F5F7F9</color>
@@ -449,46 +455,46 @@ dimen可修改项
 ​        <!--富文本消息之间的默认空格大小-->
 ​        <dimen name="ti_msg_html_divider">4dp</dimen>
 ​    
-        <!--  ++++++++++++++ 输入栏样式设置 ++++++++++++++  -->
-        <!--输入框行高-->
-        <dimen name="ti_input_box_high_line_height">24dp</dimen>
-        <!--输入框文字大小-->
-        <dimen name="ti_input_box_text_size">16sp</dimen>
-        <!--输入框、录音按钮最小高度-->
-        <dimen name="ti_input_box_min_height">40dp</dimen>
-        <!--输入框边框大小-->
-        <dimen name="ti_input_box_border_width">1dp</dimen>
-        <!--输入框边框圆角弧度-->
-        <dimen name="ti_input_box_corner_radius">5dp</dimen>
-        <!--输入区域语音，表情，"+"图标大小-->
-        <dimen name="ti_input_area_icon_size">36dp</dimen>
-        <!--输入区域按住录音按钮文字大小-->
-        <dimen name="ti_input_area_voice_press_text_size">14sp</dimen>
-        <!--输入区域按住录音按钮边框大小-->
-        <dimen name="ti_input_area_voice_press_border_width">1dp</dimen>
-        <!--输入区域按住录音按钮圆角弧度-->
-        <dimen name="ti_input_area_voice_press_corner_radius">5dp</dimen>
-        <!--输入区发送按钮背景圆角弧度-->
-        <dimen name="ti_send_btn_bg_corner_radius">8dp</dimen>
-        <!--拓展面板条目底层背景圆角弧度-->
-        <dimen name="ti_session_func_item_bg_corner_radius">15dp</dimen>
-        <!--扩展面板条目背景大小-->
-        <dimen name="ti_session_func_item_bg_size">56dp</dimen>
-        <!--扩展面板条目图片大小-->
-        <dimen name="ti_session_func_item_img_size">32dp</dimen>
-        <!--扩展面板条目文字大小-->
-        <dimen name="ti_session_func_item_text_size">12sp</dimen>
-        <!--发送按钮高-->
-        <dimen name="ti_send_out_high">40dp</dimen>
-        <!--发送按钮宽-->
-        <dimen name="ti_send_out_wide">62dp</dimen>
-        <!--满意度标签圆角-->
-        <dimen name="satisfaction_label_radius">5dp</dimen>
-        <!--满意度标签高-->
-        <dimen name="satisfaction_label_high">35dp</dimen>
-        <!--满意度提交按钮圆角-->
-        <dimen name="satisfaction_submit_radius">5dp</dimen>
-    
+​        <!--  ++++++++++++++ 输入栏样式设置 ++++++++++++++  -->
+​        <!--输入框行高-->
+​        <dimen name="ti_input_box_high_line_height">24dp</dimen>
+​        <!--输入框文字大小-->
+​        <dimen name="ti_input_box_text_size">16sp</dimen>
+​        <!--输入框、录音按钮最小高度-->
+​        <dimen name="ti_input_box_min_height">40dp</dimen>
+​        <!--输入框边框大小-->
+​        <dimen name="ti_input_box_border_width">1dp</dimen>
+​        <!--输入框边框圆角弧度-->
+​        <dimen name="ti_input_box_corner_radius">5dp</dimen>
+​        <!--输入区域语音，表情，"+"图标大小-->
+​        <dimen name="ti_input_area_icon_size">36dp</dimen>
+​        <!--输入区域按住录音按钮文字大小-->
+​        <dimen name="ti_input_area_voice_press_text_size">14sp</dimen>
+​        <!--输入区域按住录音按钮边框大小-->
+​        <dimen name="ti_input_area_voice_press_border_width">1dp</dimen>
+​        <!--输入区域按住录音按钮圆角弧度-->
+​        <dimen name="ti_input_area_voice_press_corner_radius">5dp</dimen>
+​        <!--输入区发送按钮背景圆角弧度-->
+​        <dimen name="ti_send_btn_bg_corner_radius">8dp</dimen>
+​        <!--拓展面板条目底层背景圆角弧度-->
+​        <dimen name="ti_session_func_item_bg_corner_radius">15dp</dimen>
+​        <!--扩展面板条目背景大小-->
+​        <dimen name="ti_session_func_item_bg_size">56dp</dimen>
+​        <!--扩展面板条目图片大小-->
+​        <dimen name="ti_session_func_item_img_size">32dp</dimen>
+​        <!--扩展面板条目文字大小-->
+​        <dimen name="ti_session_func_item_text_size">12sp</dimen>
+​        <!--发送按钮高-->
+​        <dimen name="ti_send_out_high">40dp</dimen>
+​        <!--发送按钮宽-->
+​        <dimen name="ti_send_out_wide">62dp</dimen>
+​        <!--满意度标签圆角-->
+​        <dimen name="satisfaction_label_radius">5dp</dimen>
+​        <!--满意度标签高-->
+​        <dimen name="satisfaction_label_high">35dp</dimen>
+​        <!--满意度提交按钮圆角-->
+​        <dimen name="satisfaction_submit_radius">5dp</dimen>
+​    
         <!--  ++++++++++++++ 快捷入口设置 ++++++++++++++  -->
         <!--快捷入口内容距边框区域垂直间距-->
         <dimen name="ti_quick_entry_vertical_spec">10dp</dimen>
