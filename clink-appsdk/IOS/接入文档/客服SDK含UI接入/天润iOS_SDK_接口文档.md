@@ -2,7 +2,7 @@
 
 ## TOSClinetKit_iOS_开发文档
 
-> 版本号: v1.5.0+
+> 版本号: v1.5.5+
 
 [TOC]
 
@@ -149,7 +149,7 @@ TOSDisConnectOption 参数说明
 
 ```objective-c
 TOSDisConnectOption *disOption = [[TOSDisConnectOption alloc] initWithOption:YES];
-[[TIMClient sharedTIMClient] disconnect:disOption success:^{
+[[TOSClientKit sharedTOSKit] disconnect:disOption success:^{
 
 } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
     
@@ -160,9 +160,8 @@ TOSDisConnectOption *disOption = [[TOSDisConnectOption alloc] initWithOption:YES
 
 ```objective-c
   // 本地kit一些配置
-  [TOSClientKit sharedClientKit].disableMessageNotificaiton = YES;  // 取消本地推送
-  [TOSClientKit sharedClientKit].disableMessageAlertSound = YES;    // 取消本地推送声音
-  [TOSClientKit sharedClientKit].customMessageClickDelagate = self; // 自定义消息点击事件回调
+  [TOSClientKit sharedTOSKit].disableMessageNotificaiton = YES;  // 取消本地推送
+  [TOSClientKit sharedTOSKit].disableMessageAlertSound = YES;    // 取消本地推送声音
 ```
 
 #### 获取版本号
@@ -239,16 +238,12 @@ typedef NS_ENUM(NSUInteger, TinetChatStatusType) {
 ```objective-c
   /**
    未读消息获取
-  @param visitorId          当前用户ID
-  @param mainUniqueId       会话ID （如果为空字符串就是获取总的未读消息数）
   */
-  [[TOSClientKit sharedClientKit] sessionInfoUnreadCountCurrentVisitorId:@"当前用户ID" 
-   																											WithMainUniqueId:@"会话ID" 
-																													   withSuccess:^(NSString * _Nonnull lastMessage, NSString * _Nonnull unreadCount) {
-       				 NSLog(@"未读数：%@, 最后一条消息：%@", unreadCount, lastMessage);
-  } 																													 withError:^(NSString * _Nonnull errorStr) {
-      /// 错误提示
-  }];
+	[[TOSClientKit sharedTOSKit] getUnreadMessage:^(NSString * _Nonnull lastMessage, NSInteger unreadCount) {
+        NSLog(@"未读数：%@, 最后一条消息：%@", unreadCount, lastMessage);
+    } withError:^(NSString * _Nonnull errorStr) {
+        /// 错误提示
+    }];
 
   // 未读数的更新  接收通知
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(unreadMessage:) name:KTOSClientLibLastMessageReceivedNotification object:nil];

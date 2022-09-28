@@ -34,6 +34,7 @@
 		3C9CE7D928747A2000163770 /* CustomStylesDetailsDataSource.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C9CE7D828747A2000163770 /* CustomStylesDetailsDataSource.plist */; };
 		3C9CE7DC2874941900163770 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9CE7DB2874941900163770 /* MessageViewController.m */; };
 		3C9CE7E42874A07700163770 /* ProtocolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9CE7E32874A07700163770 /* ProtocolViewController.m */; };
+		3CB49AF728E42B6000339D21 /* document.html in Resources */ = {isa = PBXBuildFile; fileRef = 3CB49AF628E42B6000339D21 /* document.html */; };
 		3CB72A72286AD38400F2A780 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB72A71286AD38400F2A780 /* AppDelegate.m */; };
 		3CB72A7B286AD38400F2A780 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CB72A79286AD38400F2A780 /* Main.storyboard */; };
 		3CB72A7D286AD38600F2A780 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CB72A7C286AD38600F2A780 /* Assets.xcassets */; };
@@ -106,7 +107,6 @@
 		3CBDD32228ACEED000EF4051 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CBDD32128ACEEC400EF4051 /* libc++.tbd */; };
 		3CBDD32428ACEEEB00EF4051 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CBDD32328ACEEE300EF4051 /* libiconv.tbd */; };
 		3CBDD32A28ACEF0400EF4051 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CBDD32928ACEF0400EF4051 /* ImageIO.framework */; };
-		3CBDD35B28B3632E00EF4051 /* document.html in Resources */ = {isa = PBXBuildFile; fileRef = 3CBDD35A28B3632E00EF4051 /* document.html */; };
 		3CD9E885288931E100CC739C /* UIResponder+TOSRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD9E884288931E100CC739C /* UIResponder+TOSRouter.m */; };
 		3CD9E88828894E5800CC739C /* CustomStylesSaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD9E88728894E5700CC739C /* CustomStylesSaveView.m */; };
 		3CD9E88A28894E6800CC739C /* CustomStylesSaveView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CD9E88928894E6800CC739C /* CustomStylesSaveView.xib */; };
@@ -188,6 +188,7 @@
 		3C9CE7DB2874941900163770 /* MessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
 		3C9CE7E22874A07700163770 /* ProtocolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolViewController.h; sourceTree = "<group>"; };
 		3C9CE7E32874A07700163770 /* ProtocolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProtocolViewController.m; sourceTree = "<group>"; };
+		3CB49AF628E42B6000339D21 /* document.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = document.html; sourceTree = "<group>"; };
 		3CB72A6D286AD38400F2A780 /* TOSClientKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TOSClientKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CB72A70286AD38400F2A780 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3CB72A71286AD38400F2A780 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -340,7 +341,6 @@
 		3CBDD32728ACEEFE00EF4051 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		3CBDD32928ACEF0400EF4051 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		3CBDD32B28ACEF0E00EF4051 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
-		3CBDD35A28B3632E00EF4051 /* document.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = document.html; sourceTree = "<group>"; };
 		3CD9E883288931E100CC739C /* UIResponder+TOSRouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIResponder+TOSRouter.h"; sourceTree = "<group>"; };
 		3CD9E884288931E100CC739C /* UIResponder+TOSRouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+TOSRouter.m"; sourceTree = "<group>"; };
 		3CD9E88628894E5700CC739C /* CustomStylesSaveView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomStylesSaveView.h; sourceTree = "<group>"; };
@@ -533,7 +533,7 @@
 		3CB72A6F286AD38400F2A780 /* TOSClientKitDemo */ = {
 			isa = PBXGroup;
 			children = (
-				3CBDD35A28B3632E00EF4051 /* document.html */,
+				3CB49AF628E42B6000339D21 /* document.html */,
 				3C9CE7E22874A07700163770 /* ProtocolViewController.h */,
 				3C9CE7E32874A07700163770 /* ProtocolViewController.m */,
 				3CB72AA6286AE42C00F2A780 /* AppDelegate */,
@@ -1128,7 +1128,7 @@
 				3CB72A7D286AD38600F2A780 /* Assets.xcassets in Resources */,
 				228A1F1A289948590017F197 /* MineSwitchTableViewCell.xib in Resources */,
 				3C9CE7BB2874538C00163770 /* CustomStylesViewController.xib in Resources */,
-				3CBDD35B28B3632E00EF4051 /* document.html in Resources */,
+				3CB49AF728E42B6000339D21 /* document.html in Resources */,
 				3CB72BA6286BF5FD00F2A780 /* MainViewController.xib in Resources */,
 				3CB72A7B286AD38400F2A780 /* Main.storyboard in Resources */,
 				228A1F082899462D0017F197 /* MineProfileTableViewCell.xib in Resources */,
@@ -1481,7 +1481,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = R4LP59GT9G;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1535,7 +1535,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = R4LP59GT9G;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
