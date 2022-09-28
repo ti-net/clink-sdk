@@ -1,6 +1,6 @@
-package com.tinet.clink.openapi.response.ticket.stat;
+package com.tinet.clink.ticket.response.stat;
 
-import com.tinet.clink.openapi.response.PagedResponse;
+import com.tinet.clink.core.response.PagedResponse;
 
 import java.util.List;
 import java.util.Map;
@@ -11,11 +11,7 @@ import java.util.Map;
  * @author wangli
  * @date 2022-08-24 11:06 上午
  */
-/**
- * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
- */
-@Deprecated
-public class  StatTicketByClientResponse extends PagedResponse {
+public class StatTicketByClientResponse extends PagedResponse {
 
     private List<Map<String,Object>> statTicketByClient;
 

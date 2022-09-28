@@ -1,9 +1,10 @@
-package com.tinet.clink.openapi.request.ticket.stat;
+package com.tinet.clink.ticket.request.stat;
 
-import com.tinet.clink.openapi.PathEnum;
-import com.tinet.clink.openapi.request.stat.AbstractStatRequest;
-import com.tinet.clink.openapi.response.ticket.stat.StatTicketResponse;
-import com.tinet.clink.openapi.utils.HttpMethodType;
+
+
+import com.tinet.clink.core.utils.HttpMethodType;
+import com.tinet.clink.ticket.PathEnum;
+import com.tinet.clink.ticket.response.stat.StatTicketResponse;
 
 import java.util.Objects;
 
@@ -13,11 +14,7 @@ import java.util.Objects;
  * @author wangli
  * @date 2022-08-24 10:38 上午
  */
-/**
- * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
- */
-@Deprecated
-public class  StatTicketRequest extends AbstractStatRequest<StatTicketResponse> {
+public class StatTicketRequest extends AbstractStatRequest<StatTicketResponse> {
 
     /**
      * 标签

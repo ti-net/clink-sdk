@@ -1,11 +1,11 @@
 package com.tinet.clink.openapi.kb;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tinet.clink.openapi.request.kb.*;
-import com.tinet.clink.openapi.response.kb.DeleteStandardQuestionResponse;
-import com.tinet.clink.openapi.response.kb.ListStandardQuestionResponse;
-import com.tinet.clink.openapi.response.kb.PageStandardQuestionResponse;
-import com.tinet.clink.openapi.response.kb.StandardQuestionResponse;
+import com.tinet.clink.kb.request.*;
+import com.tinet.clink.kb.response.DeleteStandardQuestionResponse;
+import com.tinet.clink.kb.response.ListStandardQuestionResponse;
+import com.tinet.clink.kb.response.PageStandardQuestionResponse;
+import com.tinet.clink.kb.response.StandardQuestionResponse;
 import org.junit.Test;
 
 import java.time.Instant;

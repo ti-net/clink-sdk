@@ -39,6 +39,12 @@ public enum PathEnum {
     ListTicketFields("ticket/list_ticket_fields"),
     // 更新工单字段选项值
     updateTicketFieldProperty("ticket/update_ticket_field_property"),
+    // 工单整体统计报表
+    StatTicket("ticket/stat_ticket"),
+    // 座席情况统计报表
+    StatTicketByClient("ticket/stat_ticket_client"),
+    // 座席组情况统计报表
+    StatTicketByQueue("ticket/stat_ticket_queue"),
     ;
     private String value;
 

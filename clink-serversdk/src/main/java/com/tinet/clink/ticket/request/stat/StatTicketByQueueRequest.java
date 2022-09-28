@@ -1,9 +1,8 @@
-package com.tinet.clink.openapi.request.ticket.stat;
+package com.tinet.clink.ticket.request.stat;
 
-import com.tinet.clink.openapi.PathEnum;
-import com.tinet.clink.openapi.request.stat.AbstractStatRequest;
-import com.tinet.clink.openapi.response.ticket.stat.StatTicketByQueueResponse;
-import com.tinet.clink.openapi.utils.HttpMethodType;
+import com.tinet.clink.core.utils.HttpMethodType;
+import com.tinet.clink.ticket.PathEnum;
+import com.tinet.clink.ticket.response.stat.StatTicketByQueueResponse;
 
 import java.util.Objects;
 
@@ -13,11 +12,7 @@ import java.util.Objects;
  * @author wangli
  * @date 2022-08-24 11:07 上午
  */
-/**
- * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
- */
-@Deprecated
-public class   StatTicketByQueueRequest extends AbstractStatRequest<StatTicketByQueueResponse> {
+public class StatTicketByQueueRequest extends AbstractStatRequest<StatTicketByQueueResponse> {
 
     /**
      * 需要统计的座席号
