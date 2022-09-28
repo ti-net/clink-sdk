@@ -294,9 +294,9 @@ public enum PathEnum {
     // 更新工单字段选项值
     updateTicketFieldProperty("update_ticket_field_property"),
     // 关闭工单
-    CloseTicket("ticket/close_ticket"),
+    CloseTicket("close_ticket"),
     // 完成工单
-    FinishTicket("ticket/finish_ticket"),
+    FinishTicket("finish_ticket"),
     /**
      * 黑白名单相关请求
      */
