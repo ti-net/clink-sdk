@@ -140,6 +140,7 @@ public class  Client {
                 } catch (JsonProcessingException e) {
                     throw new ClientException("SDK", "StringEntity参数设置错误", e);
                 }
+                httpRequest.setHeader("x-virtual-env", "dev.wangli");
                 httpRequest.setEntity(entity);
             }
         }

@@ -4,322 +4,328 @@ package com.tinet.clink.openapi;
  * @author wangll
  * @date 2019/2/19
  */
-/**
- * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
- */
-@Deprecated
 public enum PathEnum {
     //  座席设置
-    CreateClient("cc/create_client"),
-    UpdateClient("cc/update_client"),
-    DeleteClient("cc/delete_client"),
-    ListClients("cc/list_clients"),
-    DescribeClient("cc/describe_client"),
-    DescribeClientObClid("cc/describe_client_ob_clid"),
-    BindClientTel("cc/bind_client_tel"),
-    BindClientTelVerification("cc/bind_client_tel_verification"),
-    BindClientTelConfirmed("cc/bind_client_tel_confirmed"),
-    UnbindClientTel("cc/unbind_client_tel"),
-    ListClientTels("cc/list_client_tels"),
-    DeleteClientTel("cc/delete_client_tel"),
+    CreateClient("create_client"),
+    UpdateClient("update_client"),
+    DeleteClient("delete_client"),
+    ListClients("list_clients"),
+    DescribeClient("describe_client"),
+    DescribeClientObClid("describe_client_ob_clid"),
+    BindClientTel("bind_client_tel"),
+    BindClientTelVerification("bind_client_tel_verification"),
+    BindClientTelConfirmed("bind_client_tel_confirmed"),
+    UnbindClientTel("unbind_client_tel"),
+    ListClientTels("list_client_tels"),
+    DeleteClientTel("delete_client_tel"),
     //  队列设置
-    CreateQueue("cc/create_queue"),
-    UpdateQueue("cc/update_queue"),
-    DeleteQueue("cc/delete_queue"),
-    ListQueues("cc/list_queues"),
-    DescribeQueue("cc/describe_queue"),
-    ListQueuesWithAgentAction("cc/list_queues_with_agent_action"),
+    CreateQueue("create_queue"),
+    UpdateQueue("update_queue"),
+    DeleteQueue("delete_queue"),
+    ListQueues("list_queues"),
+    DescribeQueue("describe_queue"),
+    ListQueuesWithAgentAction("list_queues_with_agent_action"),
 
     /**
      * 置忙状态
      */
-    ListEnterprisePauses("cc/list_enterprise_pauses"),
-    CreateEnterprisePauses("cc/create_enterprise_pause"),
-    DeleteEnterprisePauses("cc/delete_enterprise_pause"),
-    UpdateEnterprisePauses("cc/update_enterprise_pause"),
+    ListEnterprisePauses("list_enterprise_pauses"),
+    CreateEnterprisePauses("create_enterprise_pause"),
+    DeleteEnterprisePauses("delete_enterprise_pause"),
+    UpdateEnterprisePauses("update_enterprise_pause"),
 
     //  话机设置
-    CreateExten("cc/create_exten"),
-    UpdateExten("cc/update_exten"),
-    DeleteExten("cc/delete_exten"),
-    ListExtens("cc/list_extens"),
-    DescribeExten("cc/describe_exten"),
+    CreateExten("create_exten"),
+    UpdateExten("update_exten"),
+    DeleteExten("delete_exten"),
+    ListExtens("list_extens"),
+    DescribeExten("describe_exten"),
     // 号码设置
-    ListClidNumbers("cc/list_clid_numbers"),
-    ListHotlineNumbers("cc/list_hotline_numbers"),
+    ListClidNumbers("list_clid_numbers"),
+    ListHotlineNumbers("list_hotline_numbers"),
     // 呼叫控制
-    Online("cc/online"),
-    Offline("cc/offline"),
-    Pause("cc/pause"),
-    Unpause("cc/unpause"),
-    Callout("cc/callout"),
-    CalloutCancel("cc/callout_cancel"),
-    Unlink("cc/unlink"),
-    Refuse("cc/refuse"),
-    Transfer("cc/transfer"),
-    Interact("cc/interact"),
-    Consult("cc/consult"),
-    ConsultCancel("cc/consult_cancel"),
-    ConsultTransfer("cc/consult_transfer"),
-    ConsultThreeway("consult_cc/threeway"),
-    Unconsult("cc/unconsult"),
-    Hold("cc/hold"),
-    Unhold("cc/unhold"),
-    Mute("cc/mute"),
-    Unmute("cc/unmute"),
-    Dtmf("cc/dtmf"),
-    Investigation("cc/investigation"),
+    Online("online"),
+    Offline("offline"),
+    Pause("pause"),
+    Unpause("unpause"),
+    Callout("callout"),
+    CalloutCancel("callout_cancel"),
+    Unlink("unlink"),
+    Refuse("refuse"),
+    Transfer("transfer"),
+    Interact("interact"),
+    Consult("consult"),
+    ConsultCancel("consult_cancel"),
+    ConsultTransfer("consult_transfer"),
+    ConsultThreeway("consult_threeway"),
+    Unconsult("unconsult"),
+    Hold("hold"),
+    Unhold("unhold"),
+    Mute("mute"),
+    Unmute("unmute"),
+    Dtmf("dtmf"),
+    Investigation("investigation"),
     // 呼叫管理
-    Spy("cc/spy"),
+    Spy("spy"),
     Threeway("threeway"),
-    Whisper("cc/whisper"),
-    Disconnect("cc/disconnect"),
-    Barge("cc/barge"),
-    PauseClient("cc/pause_client"),
-    UnpauseClient("cc/unpause_client"),
-    OfflineClient("cc/offline_client"),
+    Whisper("whisper"),
+    Disconnect("disconnect"),
+    Barge("barge"),
+    PauseClient("pause_client"),
+    UnpauseClient("unpause_client"),
+    OfflineClient("offline_client"),
     //  呼入通话记录
-    ListCdrIbs("cc/list_cdr_ibs"),
-    DescribeCdrIb("cc/describe_cdr_ib"),
-    DescribeCdrIbDetails("cc/describe_cdr_ib_details"),
-    CopyCdrIbs("cc/copy_cdr_ibs"),
-    CopyCdrIbDetails("cc/copy_cdr_ib_details"),
+    ListCdrIbs("list_cdr_ibs"),
+    DescribeCdrIb("describe_cdr_ib"),
+    DescribeCdrIbDetails("describe_cdr_ib_details"),
+    CopyCdrIbs("copy_cdr_ibs"),
+    CopyCdrIbDetails("copy_cdr_ib_details"),
     // 外呼通话记录
-    ListCdrObs("cc/list_cdr_obs"),
-    DescribeCdrOb("cc/describe_cdr_ob"),
-    DescribeCdrObDetails("cc/describe_cdr_ob_details"),
-    CopyCdrObs("cc/copy_cdr_obs"),
-    CopyCdrObDetails("cc/copy_cdr_ob_details"),
+    ListCdrObs("list_cdr_obs"),
+    DescribeCdrOb("describe_cdr_ob"),
+    DescribeCdrObDetails("describe_cdr_ob_details"),
+    CopyCdrObs("copy_cdr_obs"),
+    CopyCdrObDetails("copy_cdr_ob_details"),
     // 下载从话单录音文件
-    DownloadDetailRecordFile("cc/download_detail_record_file"),
+    DownloadDetailRecordFile("download_detail_record_file"),
     // sqc asr
-    sqcAsr("cc/sqc_asr"),
+    sqcAsr("sqc_asr"),
 
 
     //  留言记录
-    ListComments("cc/list_comments"),
+    ListComments("list_comments"),
     // 满意度记录
-    ListInvestigations("cc/list_investigations"),
+    ListInvestigations("list_investigations"),
     // 添加满意度记录
-    CreateInvestigations("cc/create_investigations"),
+    CreateInvestigations("create_investigations"),
     // 下载通话录音文件
-    DownloadRecordFile("cc/download_record_file"),
+    DownloadRecordFile("download_record_file"),
     // 查询通话录音url
-    DescribeRecordFileUrl("cc/describe_record_file_url"),
+    DescribeRecordFileUrl("describe_record_file_url"),
     // 语音导航
-    ListIvrs("cc/list_ivrs"),
-    ListIvrNodes("cc/list_ivr_nodes"),
+    ListIvrs("list_ivrs"),
+    ListIvrNodes("list_ivr_nodes"),
     // 座席状态监控
-    AgentStatus("cc/agent_status"),
+    AgentStatus("agent_status"),
     // 座席状态详情
-    AgentStatusDetail("cc/agent_status_detail"),
+    AgentStatusDetail("agent_status_detail"),
     // 队列状态监控
-    QueueStatus("cc/queue_status"),
+    QueueStatus("queue_status"),
     //客户资料-获取可用查询参数
-    CustomerParam("crm/customer_params"),
+    CustomerParam("customer_params"),
     //客户资料-查询客户资料列表
-    ListCustomers("crm/list_customers"),
+    ListCustomers("list_customers"),
     //创建客户资料
-    CreateCustomer("crm/create_customer"),
+    CreateCustomer("create_customer"),
 
     //更新客户资料
-    UpdateCustomer("crm/update_customer"),
+    UpdateCustomer("update_customer"),
 
     //更新客户资料
-    UpdateCustomerByExternalId("crm/update_customer_by_external_id"),
+    UpdateCustomerByExternalId("update_customer_by_external_id"),
     //创建客户资料
-    ListCustomerField("crm/list_customer_field"),
+    ListCustomerField("list_customer_field"),
     // 删除客户资料
-    DeleteCustomer("crm/delete_customer"),
+    DeleteCustomer("delete_customer"),
 
     //短信发送
-    SmsSend("cc/sms_send"),
+    SmsSend("sms_send"),
     //手机号码状态检测
-    PhoneStatus("cc/phone_status"),
+    PhoneStatus("phone_status"),
 
     //短信发送
-    SsoLoginToken("cc/login_token"),
+    SsoLoginToken("login_token"),
 
     //----------------------------------------------↓呼叫中心-报表↓----------------------------------------------//
 
     //座席工作量报表
-    StatClientWorkload("cc/stat_client_workload"),
+    StatClientWorkload("stat_client_workload"),
     //队列报表
-    StatQueue("cc/stat_queue"),
+    StatQueue("stat_queue"),
     //座席状态统计报表
-    StatClientStatus("cc/stat_client_status"),
+    StatClientStatus("stat_client_status"),
     //外呼报表-预览外呼
-    StatPreviewOb("cc/stat_preview_ob"),
+    StatPreviewOb("stat_preview_ob"),
     //中继报表-来电分析
-    StatHotlineIb("cc/stat_hotline_ib"),
+    StatHotlineIb("stat_hotline_ib"),
     //中继报表-外呼接听率分析
-    StatHotlineObAnsweredRate("cc/stat_hotline_ob_answered_rate"),
+    StatHotlineObAnsweredRate("stat_hotline_ob_answered_rate"),
     //IVR报表-IVR统计
-    StatIvrList("cc/stat_ivr_list"),
+    StatIvrList("stat_ivr_list"),
     //IVR报表-IVR节点统计
-    StatIvrNodes("cc/stat_ivr_nodes"),
+    StatIvrNodes("stat_ivr_nodes"),
     //满意度报表-按座席统计
-    StatInvestigationByCno("cc/stat_investigation_by_cno"),
+    StatInvestigationByCno("stat_investigation_by_cno"),
     //满意度报表-按热线号码
-    StatInvestigationByHotlines("cc/stat_investigation_by_hotlines"),
+    StatInvestigationByHotlines("stat_investigation_by_hotlines"),
     //呼入报表-按地区统计
-    StatCallIbArea("cc/stat_call_ib_area"),
+    StatCallIbArea("stat_call_ib_area"),
     //----------------------------------------------↑呼叫中心-报表↑----------------------------------------------//
 
 
+    //----------------------------------------------↓工单-报表↓----------------------------------------------//
+    // 工单整体统计报表
+    StatTicket("stat_ticket"),
+    // 座席情况统计报表
+    StatTicketByClient("stat_ticket_client"),
+    // 座席组情况统计报表
+    StatTicketByQueue("stat_ticket_queue"),
+
+    //----------------------------------------------↑工单-报表↑----------------------------------------------//
+
+
     // webcall
-    Webcall("cc/webcall"),
+    Webcall("webcall"),
 
     //查询业务记录的自定义字段
-    ListBusinessField("crm/list_business_customize_field"),
+    ListBusinessField("list_business_customize_field"),
 
     //查询业务记录
-    ListBusiness("crm/list_business"),
+    ListBusiness("list_business"),
 
     //查询业务记录
-    GetBusinessDetail("crm/get_business_detail"),
+    GetBusinessDetail("get_business_detail"),
 
     // 在线客服 - 获取会话记录
-    ChatRecord("livechat/copy_chat_records"),
+    ChatRecord("copy_chat_records"),
     // 在线客服 - 查询会话详情
-    ChatRecordInfo("livechat/get_chat_record_info"),
+    ChatRecordInfo("get_chat_record_info"),
     // 在线客服 - 获取会话详情
-    ChatDetail("livechat/copy_chat_details"),
+    ChatDetail("copy_chat_details"),
     // 在线客服 - 获取聊天记录
-    ChatMessage("livechat/copy_chat_messages"),
+    ChatMessage("copy_chat_messages"),
     // 在线客服 - 获取聊天记录明细
-    ChatMessageDetail("livechat/list_chat_messages"),
+    ChatMessageDetail("list_chat_messages"),
     // 在线客服 - 获取会话满意度
-    ChatInvestigation("livechat/copy_chat_investigations"),
+    ChatInvestigation("copy_chat_investigations"),
     // 在线客服 - 获取会话留言
-    ChatComment("livechat/copy_chat_comments"),
+    ChatComment("copy_chat_comments"),
     //在线客服 - 座席工作量报表
-    StatChatClientWorkload("livechat/stat_chat_client_workload"),
+    StatChatClientWorkload("stat_chat_client_workload"),
     //在线客服 - 座席工作量报表（新）
-    StatChatClientWorkloadNew("livechat/stat_chat_client_workload_new"),
+    StatChatClientWorkloadNew("stat_chat_client_workload_new"),
+    //在线客服 - 座席工作考勤报表
+    StatChatClientAttendance("stat_chat_client_attendance"),
     //队列报表
-    StatChatQueueWorkload("livechat/stat_chat_queue_workload"),
+    StatChatQueueWorkload("stat_chat_queue_workload"),
 
     //-------------------在线客服API--------
-    ChatVisitorOpenSession("livechat/chat_visitor_open_session"),
-    ChatVisitorCloseSession("livechat/chat_visitor_close_session"),
-    ChatSubmitInvestigation("livechat/chat_submit_investigation"),
-    ChatQuitQueue("livechat/chat_quit_queue"),
-    ChatRobotTransfer("livechat/chat_robot_transfer"),
-    ChatMessageToClient("livechat/chat_message_to_client"),
-    ChatClientOpenSession("livechat/chat_client_open_session"),
-    ChatClientCloseSession("livechat/chat_client_close_session"),
-    ChatClientInvestigation("livechat/chat_client_investigation"),
-    ChatMessageToVisitor("livechat/chat_message_to_visitor"),
-    ChatClientWithdraw("livechat/chat_client_withdraw"),
-    ChatClientLogin("livechat/chat_client_login"),
-    ChatClientLogout("livechat/chat_client_logout"),
-    ChatQueueAgentStatus("livechat/chat_queue_status"),
+    ChatVisitorOpenSession("chat_visitor_open_session"),
+    ChatVisitorCloseSession("chat_visitor_close_session"),
+    ChatSubmitInvestigation("chat_submit_investigation"),
+    ChatQuitQueue("chat_quit_queue"),
+    ChatRobotTransfer("chat_robot_transfer"),
+    ChatMessageToClient("chat_message_to_client"),
+    ChatClientOpenSession("chat_client_open_session"),
+    ChatClientCloseSession("chat_client_close_session"),
+    ChatClientInvestigation("chat_client_investigation"),
+    ChatMessageToVisitor("chat_message_to_visitor"),
+    ChatClientWithdraw("chat_client_withdraw"),
+    ChatClientLogin("chat_client_login"),
+    ChatClientLogout("chat_client_logout"),
+    ChatQueueAgentStatus("chat_queue_status"),
     // 在线客服 - 获取访客未读消息数
-    ChatVisitorUnreadCount("livechat/chat_visitor_unread_count"),
+    ChatVisitorUnreadCount("chat_visitor_unread_count"),
     //-------------------在线客服API--------
 
 
     //-------------------知识库API--------
-    CreateArticle("kb/create_article"),
-    UpdateArticle("kb/update_article"),
-    DeleteArticle("kb/delete_article"),
-    DescribeArticle("kb/describe_article"),
-    ListArticles("kb/list_articles"),
-    ListRepositories("kb/list_repositories"),
-    ListDirectories("kb/list_directories"),
+    CreateArticle("create_article"),
+    UpdateArticle("update_article"),
+    DeleteArticle("delete_article"),
+    DescribeArticle("describe_article"),
+    ListArticles("list_articles"),
+    ListRepositories("list_repositories"),
+    ListDirectories("list_directories"),
     //-------------------知识库API--------
 
     //-------------------机器人知识库API--------
-    ListStandardQuestion("kb/list_standard_question"),
-    CreateStandardQuestion("kb/create_standard_question"),
-    UpdateStandardQuestion("kb/update_standard_question"),
-    DeleteStandardQuestion("kb/delete_standard_question"),
-    ListAnswer("kb/list_answer"),
-    CreateAnswer("kb/create_answer"),
-    UpdateAnswer("kb/update_answer"),
-    DeleteAnswer("kb/delete_answer"),
-    ListCorpus("kb/list_corpus"),
-    CreateCorpus("kb/create_corpus"),
-    UpdateCorpus("kb/update_corpus"),
-    DeleteCorpus("kb/delete_corpus"),
-    CreateCategory("kb/create_category"),
-    UpdateCategory("kb/update_category"),
-    DeleteCategory("kb/delete_category"),
-    MediaUrl("kb/media_url"),
+    PageStandardQuestion("page_standard_question"),
+    ListStandardQuestion("list_standard_question"),
+    CreateStandardQuestion("create_standard_question"),
+    UpdateStandardQuestion("update_standard_question"),
+    DeleteStandardQuestion("delete_standard_question"),
+    ListAnswer("list_answer"),
+    CreateAnswer("create_answer"),
+    UpdateAnswer("update_answer"),
+    DeleteAnswer("delete_answer"),
+    ListCorpus("list_corpus"),
+    CreateCorpus("create_corpus"),
+    UpdateCorpus("update_corpus"),
+    DeleteCorpus("delete_corpus"),
+    CreateCategory("create_category"),
+    UpdateCategory("update_category"),
+    DeleteCategory("delete_category"),
+    MediaUrl("media_url"),
     //-------------------机器人知识库API--------
 
 //    -----工单记录-------
 
     //查询工单记录
-    ListTicket("ticket/list_ticket"),
+    ListTicket("list_ticket"),
 
     // 获取工单详情
-    GetTicketDetail("ticket/get_ticket_detail"),
+    GetTicketDetail("get_ticket_detail"),
 
-    ListTicketCategory("ticket/list_ticket_category"),
+    ListTicketCategory("list_ticket_category"),
 
-    ListTicketWorkflow("ticket/list_ticket_workflow"),
+    ListTicketWorkflow("list_ticket_workflow"),
 
-    SaveTicket("ticket/save_ticket"),
-    UpdateTicket("ticket/update_ticket"),
+    SaveTicket("save_ticket"),
+    UpdateTicket("update_ticket"),
     // 获取表单详情
-    GetFormDetail("ticket/get_form_detail"),
+    GetFormDetail("get_form_detail"),
     // 获取表单详情
-    GetSysFormDetail("ticket/get_sys_form_detail"),
+    GetSysFormDetail("get_sys_form_detail"),
     // 流转工单
-    FlowTicket("ticket/flow_ticket"),
+    FlowTicket("flow_ticket"),
     // 保存工单
-    StoreTicket("ticket/store_ticket"),
+    StoreTicket("store_ticket"),
     // 评论工单
-    CommentTicket("ticket/comment_ticket"),
-    // 关闭工单
-    CloseTicket("ticket/close_ticket"),
-    // 完成工单
-    FinishTicket("ticket/finish_ticket"),
+    CommentTicket("comment_ticket"),
     // 获取工单文件 url
-    GetTicketFileUrl("ticket/get_ticket_file_url"),
+    GetTicketFileUrl("get_ticket_file_url"),
     // 根据外部参数或ID查询工单插件
-    GetTicketPlugin("ticket/get_ticket_plugin"),
+    GetTicketPlugin("get_ticket_plugin"),
     // 获取工单字段列表
-    ListTicketFields("ticket/list_ticket_fields"),
+    ListTicketFields("list_ticket_fields"),
     // 更新工单字段选项值
-    updateTicketFieldProperty("ticket/update_ticket_field_property"),
+    updateTicketFieldProperty("update_ticket_field_property"),
 
     /**
      * 黑白名单相关请求
      */
-    CreateTelRestrict("cc/create_restrict_tel"),
-    DeleteTelRestrict("cc/delete_restrict_tel"),
-    ListTelRestrict("cc/list_restrict_tel"),
-    ListTelRestrictSetting("cc/describe_restrict_tel_setting"),
-    UpdateTelRestrictSetting("cc/update_restrict_tel_setting"),
+    CreateTelRestrict("create_restrict_tel"),
+    DeleteTelRestrict("delete_restrict_tel"),
+    ListTelRestrict("list_restrict_tel"),
+    ListTelRestrictSetting("describe_restrict_tel_setting"),
+    UpdateTelRestrictSetting("update_restrict_tel_setting"),
 
     /**
      * 日志
      */
-    ListLogOperation("cc/list_log_operation"),
-    ListLogAgent("cc/list_log_agent"),
-    ListLogAgentDuration("cc/list_log_agent_duration"),
-    ListLogLogin("cc/list_log_login"),
+    ListLogOperation("list_log_operation"),
+    ListLogAgent("list_log_agent"),
+    ListLogAgentDuration("list_log_agent_duration"),
+    ListLogLogin("list_log_login"),
     /**
      * rasr转写记录
      */
-    BotAsr("cc/bot_asr"),
+    BotAsr("bot_asr"),
     /**
      * 满意度配置
      */
-    investigationSetting("cc/investigation_setting"),
+    investigationSetting("investigation_setting"),
 
     /**
      * 工具条authToken获取
      */
-    wsAuthToken("cc/ws_auth_token"),
+    wsAuthToken("ws_auth_token"),
 
     /**
      * 工具条agentToken获取
      */
-    wsAgentToken("cc/ws_agent_token"),
+    wsAgentToken("ws_agent_token"),
 
     /**
      * 外呼任务创建
