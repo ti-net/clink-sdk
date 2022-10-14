@@ -2,11 +2,12 @@ package com.tinet.clink.openapi;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tinet.clink.openapi.exceptions.ClientException;
-import com.tinet.clink.openapi.exceptions.ServerException;
-import com.tinet.clink.openapi.request.call.webcall.WebcallRequest;
-import com.tinet.clink.openapi.response.call.webcall.WebcallResponse;
+import com.tinet.clink.cc.request.webcall.WebcallRequest;
+import com.tinet.clink.cc.response.webcall.WebcallResponse;
 
+
+import com.tinet.clink.core.exceptions.ClientException;
+import com.tinet.clink.core.exceptions.ServerException;
 import org.junit.Ignore;
 import org.junit.Test;
 

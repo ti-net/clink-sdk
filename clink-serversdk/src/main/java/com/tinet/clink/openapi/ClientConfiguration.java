@@ -5,7 +5,11 @@ import com.tinet.clink.openapi.auth.Credentials;
 /**
  * @author houfc
  */
-public class ClientConfiguration {
+/** 
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated  
+public class  ClientConfiguration {
     private String host = "api-bj.clink.cn";
 
     private int port = 80;

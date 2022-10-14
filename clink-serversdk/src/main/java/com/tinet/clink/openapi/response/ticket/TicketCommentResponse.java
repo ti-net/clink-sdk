@@ -7,5 +7,9 @@ import com.tinet.clink.openapi.response.ResponseModel;
  * @Author DengJie
  * @Date 2022/04/21
  */
-public class TicketCommentResponse extends ResponseModel {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  TicketCommentResponse extends ResponseModel {
 }

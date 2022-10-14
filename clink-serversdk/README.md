@@ -26,10 +26,10 @@ package com.tinet.clink.openapi;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tinet.clink.openapi.exceptions.ClientException;
-import com.tinet.clink.openapi.exceptions.ServerException;
-import com.tinet.clink.openapi.request.config.queue.ListQueuesRequest;
-import com.tinet.clink.openapi.response.config.queue.ListQueuesResponse;
+import com.tinet.clink.core.exceptions.ClientException;
+import com.tinet.clink.core.exceptions.ServerException;
+import com.tinet.clink.cc.request.queue.ListQueuesRequest;
+import com.tinet.clink.cc.response.queue.ListQueuesResponse;
 
 public class Test {
     public static void main(String[] args) {
@@ -420,4 +420,11 @@ public class Test {
 8、新增 业务系统-工单管理接口-关闭工单接口
 9、新增 业务系统-工单管理接口-完成工单接口
 10、 新增 在线客服-会话记录-查询会话详情、返回参数增加 "满意度发起方式" 字段
+```
+
+### V 2.0.74
+```
+1、 新增 在线客服-API-报表-增加座席工作考勤报表
+2、 新增 在线客服-会话记录-查询会话详情、返参增加 "会话发起方式","排队时间","会话类型","首次响应时长" 字段
+3、 新增 在线客服-会话记录-同步会话记录、返参增加 "会话类型" 字段
 ```

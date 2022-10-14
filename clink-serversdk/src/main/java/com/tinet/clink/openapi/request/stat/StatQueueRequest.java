@@ -9,7 +9,11 @@ import com.tinet.clink.openapi.utils.HttpMethodType;
  * @author Chenjf
  * @date 2020/2/24 15:32
  **/
-public class StatQueueRequest extends AbstractStatRequest<StatQueueResponse> {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  StatQueueRequest extends AbstractStatRequest<StatQueueResponse> {
 
     /**
      * 统计方式 2-汇总 3-分时累计

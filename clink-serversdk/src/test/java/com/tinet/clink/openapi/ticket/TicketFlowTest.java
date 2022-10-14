@@ -1,14 +1,14 @@
 package com.tinet.clink.openapi.ticket;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.tinet.clink.core.client.Client;
+import com.tinet.clink.core.client.ClientConfiguration;
 import com.tinet.clink.openapi.AbstractTest;
-import com.tinet.clink.openapi.Client;
-import com.tinet.clink.openapi.ClientConfiguration;
-import com.tinet.clink.openapi.model.Field;
-import com.tinet.clink.openapi.model.TicketFlowModel;
-import com.tinet.clink.openapi.model.TicketFormModel;
-import com.tinet.clink.openapi.request.ticket.TicketFlowRequest;
-import com.tinet.clink.openapi.response.ticket.TicketFlowResponse;
+
+import com.tinet.clink.ticket.model.Field;
+import com.tinet.clink.ticket.model.TicketFlowModel;
+import com.tinet.clink.ticket.model.TicketFormModel;
+import com.tinet.clink.ticket.request.TicketFlowRequest;
+import com.tinet.clink.ticket.response.TicketFlowResponse;
 import org.junit.Test;
 
 import java.io.File;

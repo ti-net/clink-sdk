@@ -12,7 +12,11 @@ import java.util.List;
  * @date 2021/06/25
  **/
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class KbArticleModel {
+/** 
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated  
+public class  KbArticleModel {
 
     private String id;
 
@@ -20,6 +24,11 @@ public class KbArticleModel {
      * 企业ID
      */
     private String enterpriseId;
+
+    /**
+     * 所属知识库类型；0：问答库，1：文档库
+     */
+    private Integer kbType;
 
     /**
      * 标题
@@ -452,5 +461,13 @@ public class KbArticleModel {
 
     public void setBotAction(String[] botAction) {
         this.botAction = botAction;
+    }
+
+    public Integer getKbType() {
+        return kbType;
+    }
+
+    public void setKbType(Integer kbType) {
+        this.kbType = kbType;
     }
 }

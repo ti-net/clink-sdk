@@ -13,7 +13,11 @@ import java.util.List;
  * @author wangli
  * @date 2022-08-09 3:51 下午
  */
-public class ListFieldsRequest extends AbstractRequestModel<ListFieldsResponse> {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  ListFieldsRequest extends AbstractRequestModel<ListFieldsResponse> {
 
     /**
      * 字段ID集合

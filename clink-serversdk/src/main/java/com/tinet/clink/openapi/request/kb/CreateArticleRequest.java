@@ -14,7 +14,11 @@ import java.util.List;
  * @author feizq
  * @date 2021/11/29
  **/
-public class CreateArticleRequest extends AbstractRequestModel<CreateArticleResponse> {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  CreateArticleRequest extends AbstractRequestModel<CreateArticleResponse> {
 
     /**
      * 知识库ID

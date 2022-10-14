@@ -12,7 +12,11 @@ import com.tinet.clink.openapi.utils.HttpMethodType;
  * @author wangll
  * @date 2020/04/02
  **/
-public class WebcallRequest extends AbstractRequestModel<WebcallResponse> {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  WebcallRequest extends AbstractRequestModel<WebcallResponse> {
 
     /**
      * 客户电话，固话类型需要添加区号，手机类型不加 0，固话带分机以 “-” 分隔。

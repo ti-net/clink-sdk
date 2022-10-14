@@ -6,7 +6,11 @@ package com.tinet.clink.openapi.constant;
  * @author wangll
  * @date 2019/10/15
  */
-public class CallType {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  CallType {
 
     /**
      * 呼入，客户侧为主通道

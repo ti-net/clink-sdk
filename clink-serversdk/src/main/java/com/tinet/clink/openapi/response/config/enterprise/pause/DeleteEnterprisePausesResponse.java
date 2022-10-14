@@ -9,7 +9,11 @@ import com.tinet.clink.openapi.response.ResponseModel;
  * @date 2021-12-14 5:36 下午
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class DeleteEnterprisePausesResponse extends ResponseModel {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  DeleteEnterprisePausesResponse extends ResponseModel {
 
     private EnterprisePauseDeleteModel enterprisePause;
 

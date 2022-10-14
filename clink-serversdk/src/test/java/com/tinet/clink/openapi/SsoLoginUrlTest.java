@@ -1,10 +1,11 @@
 package com.tinet.clink.openapi;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tinet.clink.openapi.request.chat.ChatClientWithdrawRequest;
-import com.tinet.clink.openapi.request.sso.SsoLoginUrlRequest;
-import com.tinet.clink.openapi.response.chat.ChatClientWithdrawResponse;
-import com.tinet.clink.openapi.response.sso.SsoLoginUrlResponse;
+
+import com.tinet.clink.cc.request.sso.SsoLoginUrlRequest;
+import com.tinet.clink.cc.response.sso.SsoLoginUrlResponse;
+import com.tinet.clink.core.client.Client;
+import com.tinet.clink.core.client.ClientConfiguration;
 import org.junit.Before;
 import org.junit.Test;
 

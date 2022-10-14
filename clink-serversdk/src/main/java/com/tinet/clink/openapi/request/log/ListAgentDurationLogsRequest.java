@@ -11,7 +11,11 @@ import com.tinet.clink.openapi.utils.HttpMethodType;
  * @author wangli
  * @date 2022-03-10 5:28 PM
  */
-public class ListAgentDurationLogsRequest extends AbstractRequestModel<ListAgentDurationLogsResponse> {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  ListAgentDurationLogsRequest extends AbstractRequestModel<ListAgentDurationLogsResponse> {
 
     /**
      * 开始时间

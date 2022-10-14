@@ -8,7 +8,11 @@ import java.util.List;
  * @author lizy
  * @date 2018/09/13
  */
-public class QueueDetailModel {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  QueueDetailModel {
 
     private Integer enterpriseId;
 

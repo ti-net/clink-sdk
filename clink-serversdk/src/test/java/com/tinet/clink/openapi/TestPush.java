@@ -1,8 +1,8 @@
 package com.tinet.clink.openapi;
 
-import com.tinet.clink.openapi.auth.HmacSHA1Signer;
-import com.tinet.clink.openapi.auth.SignatureComposer;
-import com.tinet.clink.openapi.utils.AesUtil;
+import com.tinet.clink.core.auth.HmacSHA1Signer;
+import com.tinet.clink.core.auth.SignatureComposer;
+import com.tinet.clink.core.utils.AesUtil;
 import org.junit.Test;
 
 import javax.crypto.BadPaddingException;

@@ -3,8 +3,7 @@ package com.tinet.clink.openapi;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.tinet.clink.openapi.auth.SignatureComposer;
-
+import com.tinet.clink.core.auth.SignatureComposer;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

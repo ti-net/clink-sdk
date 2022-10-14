@@ -11,7 +11,11 @@ import com.tinet.clink.openapi.utils.HttpMethodType;
  * @author lizy
  * @date 2018/10/25
  */
-public class DeleteQueueRequest extends AbstractRequestModel<DeleteQueueResponse> {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  DeleteQueueRequest extends AbstractRequestModel<DeleteQueueResponse> {
 
     /**
      * 队列号

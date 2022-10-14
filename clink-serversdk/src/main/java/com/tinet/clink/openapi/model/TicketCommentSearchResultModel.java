@@ -8,7 +8,11 @@ import java.util.Date;
  * @author liuhy
  * @date: 2020/9/8
  **/
-public class TicketCommentSearchResultModel {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  TicketCommentSearchResultModel {
 
     /**
      * 评论人/操作人类型 0：座席、1：管理员

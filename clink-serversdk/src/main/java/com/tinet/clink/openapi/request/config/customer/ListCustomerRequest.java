@@ -11,7 +11,11 @@ import com.tinet.clink.openapi.utils.HttpMethodType;
  * @author jiangyang
  * @date 2019/11/12
  */
-public class ListCustomerRequest extends AbstractRequestModel<ListCustomerResponse> {
+/** 
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated  
+public class  ListCustomerRequest extends AbstractRequestModel<ListCustomerResponse> {
 
     /**
      * 可用的查询参数,Map格式的字符串

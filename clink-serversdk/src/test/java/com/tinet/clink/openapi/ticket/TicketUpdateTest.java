@@ -2,14 +2,14 @@ package com.tinet.clink.openapi.ticket;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.tinet.clink.core.client.Client;
+import com.tinet.clink.core.client.ClientConfiguration;
 import com.tinet.clink.openapi.AbstractTest;
-import com.tinet.clink.openapi.Client;
-import com.tinet.clink.openapi.ClientConfiguration;
-import com.tinet.clink.openapi.model.*;
-import com.tinet.clink.openapi.request.ticket.TicketSaveRequest;
-import com.tinet.clink.openapi.request.ticket.TicketUpdateRequest;
-import com.tinet.clink.openapi.response.ticket.TicketSaveResponse;
-import com.tinet.clink.openapi.response.ticket.TicketUpdateResponse;
+import com.tinet.clink.ticket.model.Field;
+import com.tinet.clink.ticket.model.TicketFormModel;
+import com.tinet.clink.ticket.model.TicketUpdateModel;
+import com.tinet.clink.ticket.request.TicketUpdateRequest;
+import com.tinet.clink.ticket.response.TicketUpdateResponse;
 import org.junit.Test;
 
 import java.io.File;
@@ -47,7 +47,7 @@ public class TicketUpdateTest extends AbstractTest {
         ticketFormModel.setName("lize测接口");
 
         // 需要保存的字段集合
-        List<Field> fieldList = new ArrayList<>();
+        List<Field>fieldList = new ArrayList<>();
 
         Field field = new Field();
         field.setId(83466);
