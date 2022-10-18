@@ -29,6 +29,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+
 /**
  * @ProjectName: TIMSDK
  * @ClassName: ChatFragment
@@ -58,17 +60,39 @@ public class ChatFragment extends SessionFragment {
     @Override
     protected SessionClickListener getListener() {
         return new SessionClickListenerImpl(this) {
+
+
+            @Override
+            public void onClick(View itemView, OnlineMessage message) {
+                super.onClick(itemView, message);
+                TLogUtils.i("消息点击事件" + message.getMessageUUID());
+            }
+
+            @Override
+            public void onLongClick(View itemView, OnlineMessage info) {
+                super.onLongClick(itemView, info);
+                TLogUtils.i("消息长按事件" + info.getMessageUUID());
+            }
+
             @Override
             public void onLinkClick(String url) {
+                super.onLinkClick(url);
                 // 自定义超链接事件
                 Toast.makeText(requireContext(), "超链接地址：" + url, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onLinkClick(String content, String messageEventType) {
+                super.onLinkClick(content, messageEventType);
+                TLogUtils.i("onLinkClick :content=" + content + "  messageEventType=" + messageEventType);
+                Toast.makeText(requireContext(), "内容：" + content + "  类型：" + messageEventType, Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void videoPlay(String url) {
                 super.videoPlay(url);
                 // 自定义视频播放，如果需要自己实现视频播放，则需要屏蔽super.videoPlay(url);父类的实现方式
-                Toast.makeText(requireContext(), "视频播放地址：" + url, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(requireContext(), "视频播放地址：" + url, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -78,10 +102,15 @@ public class ChatFragment extends SessionFragment {
             }
 
             @Override
-            public void oncardMessageClick(View itemView, OnlineMessage message) {
-                super.oncardMessageClick(itemView, message);
+            public void onCardMessageClick(View itemView, OnlineMessage message) {
+                super.onCardMessageClick(itemView, message);
                 if (message.getOnlineContent().getMessageType() == OnlineMessageType.CARD)
                     Toast.makeText(requireContext(), "卡片消息", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onStartRequestPermissionsCallback(@NonNull String[] permissions, int requestCode) {
+                super.onStartRequestPermissionsCallback(permissions, requestCode);
             }
         };
     }

@@ -1,6 +1,6 @@
 
 # TOSClientKit_Android_开发文档
-> 版本: 1.5.3
+> 版本: 1.5.8
 
 
 ## 目录
@@ -41,13 +41,23 @@ Gradle | 3.0 及以上版本
 
 ```
     //implementation "com.ti-net.oskit:online:1.4.4" (不再更新)
-	implementation 'com.github.ti-net-project:OnlineSDK-Android:1.5.2'
+	implementation 'com.github.ti-net-project:OnlineSDK-Android:x.x.x'//x.x.x为最新版本号
 ```
 
 其他
 ``` 
     //如您的应用内从未使用到以下依赖，则需要在app的 build.gradle 文件中添加如下依赖配置
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+```
+
+#### aar 依赖方式
+aar下载地址：https://tinet-sdk-release.s3.cn-north-1.amazonaws.com.cn/online-sdk/sdk/release/online_sdk_1.5.6_release.aar
+
+在主 app 的 build.gradle 文件中添加如下依赖配置
+
+```
+	api files('libs/online_sdk_1.5.6_release.aar')
 ```
 
 ### 混淆配置
@@ -66,6 +76,12 @@ AndroidManifest.xml中添加如下所需要的权限
 <uses-permission android:name="android.permission.RECORD_AUDIO"/>
 <!--拍照权限，用于拍照（发送照片）-->
 <uses-permission android:name="android.permission.CAMERA"/>
+
+<!-- 安卓11+选择文件进行发送时查看所有文件必须权限  该权限属敏感权限，如有问题请咨询SDK技术支持 -->
+<uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+<uses-permission
+    android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+    tools:ignore="ProtectedPermissions" />
 ```
 
 ##  <span id="init">初始化</span>
@@ -122,7 +138,9 @@ advanceParams  | Map<String, Object> |	否 |	自定义可配参数,可为空
             public void loadImage(Context context, Object uri, int originalWidth, int originalHeight, TImageLoaderListener listener) {
                 // 加载图片，指定图片加载的大小，用于需要查看大图或详图，且加载控件非ImageView
             }
+
         });
+
 ```
 
 ## <span id="connect">连接服务</span>
@@ -192,83 +210,83 @@ listener      |	OnlineDisconnectListener |否  |	断开连接监听
 ### 消息监听
 
 ```
-TOSClientKit.addOnlineMessageListener(new OnlineMessageListener() {
-            @Override
-            public void onMessage(OnlineMessage message) {
-                // 收到的消息信息
-            }
-        });
+        TOSClientKit.addOnlineMessageListener(new OnlineMessageListener() {
+                    @Override
+                    public void onMessage(OnlineMessage message) {
+                        // 收到的消息信息
+                    }
+                });
 ```
 
 ### 会话事件监听
 
 ```
-TOSClientKit.addOnlineEventListener(new OnlineEventListener() {
-            @Override
-            public void chatOpen(OnlineMessage message) {
-            //会话开始
-            }
-
-            @Override
-            public void chatClose(OnlineMessage message) {
-            //会话结束
-            }
-
-            @Override
-            public void chatBridge(OnlineMessage message) {
-            //接通座席
-            }
-
-            @Override
-            public void chatQueue(OnlineMessage message) {
-            //进入排队
-            }
-
-            @Override
-            public void chatLocation(OnlineMessage message) {
-            //排队位置播报
-            }
-
-            @Override
-            public void chatLeaveMessage(OnlineMessage message) {
-            //留言
-            }
-
-            @Override
-            public void chatInvestigation(OnlineMessage message) {
-            //满意度
-            }
-
-            @Override
-            public void robotBridge(OnlineMessage message) {
-            //接通机器人
-            }
-
-            @Override
-            public void withdraw(String messageId) {
-            //座席撤回消息
-            }
-
-            @Override
-            public void chatSwitch(OnlineMessage message) {
-            //分支节点
-            }
-
-            @Override
-            public void chatLeadingWords(OnlineMessage message) {
-            //引导语消息
-            }
-
-            @Override
-            public void chatInquiry(OnlineMessage message) {
-            //询前表单消息
-            }
-
-            @Override
-            public void chatResponse(OnlineMessage message) {
-            //消息发送响应
-            }
-        });
+        TOSClientKit.addOnlineEventListener(new OnlineEventListener() {
+                    @Override
+                    public void chatOpen(OnlineMessage message) {
+                    //会话开始
+                    }
+        
+                    @Override
+                    public void chatClose(OnlineMessage message) {
+                    //会话结束
+                    }
+        
+                    @Override
+                    public void chatBridge(OnlineMessage message) {
+                    //接通座席
+                    }
+        
+                    @Override
+                    public void chatQueue(OnlineMessage message) {
+                    //进入排队
+                    }
+        
+                    @Override
+                    public void chatLocation(OnlineMessage message) {
+                    //排队位置播报
+                    }
+        
+                    @Override
+                    public void chatLeaveMessage(OnlineMessage message) {
+                    //留言
+                    }
+        
+                    @Override
+                    public void chatInvestigation(OnlineMessage message) {
+                    //满意度
+                    }
+        
+                    @Override
+                    public void robotBridge(OnlineMessage message) {
+                    //接通机器人
+                    }
+        
+                    @Override
+                    public void withdraw(String messageId) {
+                    //座席撤回消息
+                    }
+        
+                    @Override
+                    public void chatSwitch(OnlineMessage message) {
+                    //分支节点
+                    }
+        
+                    @Override
+                    public void chatLeadingWords(OnlineMessage message) {
+                    //引导语消息
+                    }
+        
+                    @Override
+                    public void chatInquiry(OnlineMessage message) {
+                    //询前表单消息
+                    }
+        
+                    @Override
+                    public void chatResponse(OnlineMessage message) {
+                    //消息发送响应
+                    }
+                });
 ```
 
 ##  <span id="session">会话界面</span>
@@ -280,12 +298,12 @@ TOSClientKit.addOnlineEventListener(new OnlineEventListener() {
 如下代码：
 
 ```
-SessionFragment sessionFragment = new SessionFragment();
-sessionFragment.setArguments(getIntent().getExtras());
-FragmentManager manager = getSupportFragmentManager();
-FragmentTransaction transaction = manager.beginTransaction();
-transaction.replace(R.id.container, sessionFragment);
-transaction.commitAllowingStateLoss();
+        SessionFragment sessionFragment = new SessionFragment();
+        sessionFragment.setArguments(getIntent().getExtras());
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.container, sessionFragment);
+        transaction.commitAllowingStateLoss();
 ```
 
 ### 修改UI配置
@@ -296,7 +314,7 @@ transaction.commitAllowingStateLoss();
 colors.xml可修改项
 
 
-​    		
+```	
         <!--  ++++++++++++++ 聊天背景设置 ++++++++++++++  -->
         <!--聊天背景颜色-->
         <color name="ti_session_background_color">#FFF2F6FD</color>
@@ -351,8 +369,8 @@ colors.xml可修改项
         <!--满意度提交文字-->
         <color name="satisfaction_submit_tv_color">#4385FF</color>
         <!--满意度提交背景色-->
-        <color name="satisfaction_submit_bg">#4385FF</color>
-    
+        <color name="satisfaction_submit_bg">#4385FF</color> 
+
         <!--  ++++++++++++++  输入栏设置 ++++++++++++++  -->
         <!--输入区域背景颜色-->
         <color name="ti_input_area_bg_color">#F5F7F9</color>
@@ -410,11 +428,12 @@ colors.xml可修改项
         <color name="ti_album_navigation_bar_ext">#303030</color>
         <!--相册导航栏确定按钮背景色-->
         <color name="ti_send_picture_button_bg">#4385ff</color>
+```
 
 dimen可修改项
 
 
-​        
+```
         <!--  ++++++++++++++ 聊天消息样式设置 ++++++++++++++  -->
         <!--头像大小-->
         <dimen name="ti_chat_avatar_size">40dp</dimen>
@@ -508,10 +527,11 @@ dimen可修改项
         <dimen name="ti_message_tv_size">12sp</dimen>
         <!--商品卡片二图片大小-->
         <dimen name="ti_message_img">80dp</dimen>
+```
 
 string.xml可修改项
 
-
+```
     		<!--录音按钮文案-->
         <string name="ti_pressed_speak">按住说话</string>
         <!--发送消息按钮文案-->
@@ -520,12 +540,14 @@ string.xml可修改项
         <string name="ti_input_box_hint_text">请输入内容</string>
         <!--选择图片页面标题-->
         <string name="ti_camera">相册</string>
+```
 
 #### 代码修改示例如下：
 
 说明：只需要在继承Application类的onCreate初始化一次
 
-
+```
+       //以下自定义界面为UI配置代码实现
        TCustomizationUI tCustomizationUI = new TCustomizationUI();//自定义UI对象
        tCustomizationUI.sendBubbleBackground = R.drawable.ti_bg_color;//发送端气泡背景
        tCustomizationUI.receiveBubbleBackground = R.drawable.ti_bg_color;//接收端气泡背景
@@ -545,11 +567,23 @@ string.xml可修改项
        tCustomizationUI.showAgentRobotNickname = false;//客服、机器人昵称
        tCustomizationUI.showAgentRobotAvatar = false;//客服、机器人头像
        tCustomizationUI.showVoiceButton = false;//语音按钮
+       
+       
+        // : 2022/10/13 以下为配置文本消息含超链接高亮显示规则
+        List<TTextPatternRule> tTextPatternRules = new ArrayList<>();
+        tTextPatternRules.add(
+                new TTextPatternRule(Pattern.compile("这里填正则表达式", Pattern.CASE_INSENSITIVE),//正则Pattern变量,是否忽略大小写可自行修改compile第二个参数
+                        Color.parseColor("#1366dc"),//高亮显示颜色int值，可自行修改为所需颜色
+                        "phoneNumber"));//类型说明，用于onLinkClick方法内回调messageEventType，区分匹配类型
+
+
        TOSClientKitConfig tosClientKitConfig = new TOSClientKitConfig.Builder()
                 .setTCustomizationUI(tCustomizationUI)//配置自定义UI
+                .setTextHighLightRuleList(tTextPatternRules)//配置文本消息含超链接高亮显示规则数组
                 .build();
     
        TOSClientKit.setTosClientKitConfig(tosClientKitConfig);
+```
 
 ### 会话界面相关操作
 
@@ -557,97 +591,124 @@ string.xml可修改项
 ##### 会话状态监听
 
 ```
-TOSClientKit.setOnlineStatusListener(new OnlineMessageManager.OnlineStatusListener() {
-            @Override
-            public void onStatusChanged(int status) {
-                //当前状态
-            }
-        });
+        TOSClientKit.setOnlineStatusListener(new OnlineMessageManager.OnlineStatusListener() {
+                    @Override
+                    public void onStatusChanged(int status) {
+                        //当前状态
+                    }
+                });
 ```
 
 ##### 会话内消息事件监听
 请继承SessionFragment来实现
 
 ```
-@Override
-protected SessionClickListener getListener() {
-   return new SessionClickListenerImpl(this){
-   
-            @Override
-            public void onClick(View itemView, OnlineMessage message) {
-                super.onClick(itemView,message);
-                //消息点击事件
+        @Override
+        protected SessionClickListener getListener() {
+           return new SessionClickListenerImpl(this){
+           
+                    @Override
+                    public void onClick(View itemView, OnlineMessage message) {
+                        super.onClick(itemView,message);
+                        //消息点击事件
+                    }
+           
+                    @Override
+                    public void onLinkClick(String url) {
+                        //super.onLinkClick(url);
+                        //屏蔽super，可实现自定义超链接点击事件
+                    }
+        
+                    /**
+                    * 
+                    * @param content          点击文本内容
+                    * @param messageEventType 文本类型
+                    */
+                    @Override
+                    public void onLinkClick(String content, String messageEventType) {
+                        //可根据messageEventType实现自有业务逻辑
+                    }
+        
+                    @Override
+                    public void videoPlay(String url) {
+                        super.videoPlay(url);
+                        //自定义视频播放，如果需要自己实现视频播放，则需要屏蔽super.videoPlay(url);父类的实现方式
+                    }
+        
+                    @Override
+                    public void downloadFile(String url, String name) {
+                        super.downloadFile(url, name);
+                       //下载文件回调，屏蔽super可自定义而下载功能
+                    }
+                    
+                    /**
+                     *
+                     * @param permissions
+                     * @param requestCode
+                     *   申请语音权限                1661
+                     *   申请相机权限                1662
+                     *   申请相机、语音权限 -- 拍摄   1663
+                     *   申请文件权限 -- 文件        1664
+                     *
+                     */
+                    @Override
+                    public void onStartRequestPermissionsCallback(@NonNull String[] permissions, int requestCode) {
+                        super.onStartRequestPermissionsCallback(permissions, requestCode);
+                        // : 2022/9/19 权限申请回调 
+                        TLogUtils.i("onStartRequestPermissionsCallback:" + requestCode);
+                    }
+                    
+                };
             }
-   
-            @Override
-            public void onLinkClick(String url) {
-                //super.onLinkClick(url);
-                //屏蔽super，可实现自定义超链接点击事件
-            }
-
-            @Override
-            public void videoPlay(String url) {
-                super.videoPlay(url);
-                //自定义视频播放，如果需要自己实现视频播放，则需要屏蔽super.videoPlay(url);父类的实现方式
-            }
-
-            @Override
-            public void downloadFile(String url, String name) {
-                super.downloadFile(url, name);
-               //下载文件回调，屏蔽super可自定义而下载功能
-            }
-            
-        };
-    }
 ```
 
 #### 拓展面板功能
 请继承SessionFragment来实现
 ```
- @Override
-    protected FuncListener getFuncListener() {
-        // 自定义底部功能栏
-
-        return new FuncListenerImpl(this){
             @Override
-            public void onFuncClick(Function func) {
-                super.onFuncClick(func);
-               //拓展面板Item点击回调
+            protected FuncListener getFuncListener() {
+                // 自定义底部功能栏
+        
+                return new FuncListenerImpl(this){
+                    @Override
+                    public void onFuncClick(Function func) {
+                        super.onFuncClick(func);
+                       //拓展面板Item点击回调
+                    }
+                };
             }
-        };
-    }
 ```
 
 #### 快捷入口功能
 
 ```
-ArrayList message = new ArrayList<>();
-message.add(new LabeInfo("订单号", "1234567890"));
-message.add(new LabeInfo("服务地区", "北京市"));
-message.add(new LabeInfo("服务", "满意"));
-message.add(new LabeInfo("师傅", "金师傅"));
-message.add(new LabeInfo("产品类型", "电子产品"));
-message.add(new LabeInfo("师傅电话", "12345678900"));
-message.add(new LabeInfo("订单状态", "已完成"));
-
-//更新快捷入口可实时更新至会话窗体
-TOSClientKit.updateSessionWindowQuickEntrys(message);
-
-//清空快捷入口数据
-TOSClientKit.clearSessionWindowQuickEntrys();
-
-//快捷入口的点击回调
-//请继承SessionFragment来实现
-@Override
-protected LabelListener getLabelListener() {
-    return new LabelListenerImpl(this) {
+        ArrayList message = new ArrayList<>();
+        message.add(new LabeInfo("订单号", "1234567890"));
+        message.add(new LabeInfo("服务地区", "北京市"));
+        message.add(new LabeInfo("服务", "满意"));
+        message.add(new LabeInfo("师傅", "金师傅"));
+        message.add(new LabeInfo("产品类型", "电子产品"));
+        message.add(new LabeInfo("师傅电话", "12345678900"));
+        message.add(new LabeInfo("订单状态", "已完成"));
+        
+        //更新快捷入口可实时更新至会话窗体
+        TOSClientKit.updateSessionWindowQuickEntrys(message);
+        
+        //清空快捷入口数据
+        TOSClientKit.clearSessionWindowQuickEntrys();
+        
+        //快捷入口的点击回调
+        //请继承SessionFragment来实现
         @Override
-        public void onLabelClick(LabeInfo info) {
-            super.onLabelClick(info);
-            Toast.makeText(requireContext(), info.toString(), Toast.LENGTH_SHORT).show();
+        protected LabelListener getLabelListener() {
+            return new LabelListenerImpl(this) {
+                @Override
+                public void onLabelClick(LabeInfo info) {
+                    super.onLabelClick(info);
+                    Toast.makeText(requireContext(), info.toString(), Toast.LENGTH_SHORT).show();
+                }
+            };
         }
-    };
-}
 
 ```
 
@@ -656,28 +717,28 @@ protected LabelListener getLabelListener() {
 商品卡片数据可以通过argument传递到会话窗体，参数名：tinetCard，可直接引用SessionFragment.ARGS_CARD，参数实体为CardInfo。
 
 ```
-//定义CardInfo，卡片实体
-CardInfo message = new CardInfo();
-message.setSubTitle("华为P40麒麟990 5G SoC芯片 5000万超感知徕卡三摄 30倍数字变焦");
-message.setDescription("这是商品描述，啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦");
-message.setImg(
-            "https://img1.baidu.com/it/u=1963848283,2056721126&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=500");
-message.setPrice("￥ 100.99");
-message.setTime(TimeUtils.getDate(System.currentTimeMillis()));
-message.setStatus("已到货");
-
-HashMap<String, String> extraInfo = new HashMap<>();
-extraInfo.put("订单号", "1234567890");
-extraInfo.put("服务地区", "北京市");
-extraInfo.put("服务", "满意");
-extraInfo.put("师傅", "金师傅");
-extraInfo.put("产品类型", "电子产品");
-extraInfo.put("师傅电话", "12345678900");
-extraInfo.put("订单状态", "已完成");
-message.setExtraInfo(extraInfo);
-
-//传递至会话窗体
-intent.putExtra(ChatFragment.ARGS_CARD,message);
+        //定义CardInfo，卡片实体
+        CardInfo message = new CardInfo();
+        message.setSubTitle("华为P40麒麟990 5G SoC芯片 5000万超感知徕卡三摄 30倍数字变焦");
+        message.setDescription("这是商品描述，啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦");
+        message.setImg(
+                    "https://img1.baidu.com/it/u=1963848283,2056721126&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=500");
+        message.setPrice("￥ 100.99");
+        message.setTime(TimeUtils.getDate(System.currentTimeMillis()));
+        message.setStatus("已到货");
+        
+        HashMap<String, String> extraInfo = new HashMap<>();
+        extraInfo.put("订单号", "1234567890");
+        extraInfo.put("服务地区", "北京市");
+        extraInfo.put("服务", "满意");
+        extraInfo.put("师傅", "金师傅");
+        extraInfo.put("产品类型", "电子产品");
+        extraInfo.put("师傅电话", "12345678900");
+        extraInfo.put("订单状态", "已完成");
+        message.setExtraInfo(extraInfo);
+        
+        //传递至会话窗体
+        intent.putExtra(ChatFragment.ARGS_CARD,message);
 ```
 
 #### 会话相关接口
