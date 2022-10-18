@@ -22,10 +22,10 @@
     "type": "Test3"
   },
   {
-    "name": "天润北京测试KT",
+    "name": "KT环境",
     "enterpriseId": 8000376,
-    "accessId": "ad3046061c94444999a083acd7d34ae3",
-    "accessSecret": "D3127C4EC8B942BEB8D69E32DB0FF83D",
+    "accessId": "1070fd52f73a4b5f927767bcbafc7e27",
+    "accessSecret": "CAEDE8AE3B4840DCBECDD4C77671E524",
     "type": "Kt"
   }
 ]

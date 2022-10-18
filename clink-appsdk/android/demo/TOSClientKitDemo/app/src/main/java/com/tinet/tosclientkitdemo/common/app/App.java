@@ -2,6 +2,7 @@ package com.tinet.tosclientkitdemo.common.app;
 
 import android.app.Application;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.widget.ImageView;
@@ -9,6 +10,8 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.load.model.GlideUrl;
+import com.bumptech.glide.load.model.LazyHeaders;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.target.Target;
@@ -17,19 +20,23 @@ import com.tencent.bugly.crashreport.CrashReport;
 import com.tinet.oskit.TOSClientKit;
 import com.tinet.oskit.listener.TImageLoader;
 import com.tinet.oskit.listener.TImageLoaderListener;
+import com.tinet.oskit.manager.TOSClientKitConfig;
+import com.tinet.oskit.model.TTextPatternRule;
 import com.tinet.oslib.common.PlatformDefine;
 import com.tinet.oslib.config.TOSInitOption;
 import com.tinet.oslib.model.bean.LabeInfo;
+import com.tinet.timclientlib.utils.TLogUtils;
 import com.tinet.tosclientkitdemo.BuildConfig;
 import com.tinet.tosclientkitdemo.R;
 import com.tinet.tosclientkitdemo.common.constants.PlatformDefaultInfo;
 import com.tinet.tosclientkitdemo.common.platform.PlantformInfo;
 import com.tinet.tosclientkitdemo.common.platform.PlantformUtil;
-import com.tinet.tosclientkitdemo.utils.TLogUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -44,6 +51,17 @@ import androidx.annotation.Nullable;
 public class App extends Application {
 
     public static int CHOOSE_THEME_INDEX = 0;
+
+
+    /**
+     * 匹配手机号正则
+     */
+    public static final String PATTERN_REGEX_PHONE_NUMBER = "1[345678]\\d{9}";
+
+    /**
+     * 匹配手机号MESSAGE_TYPE
+     */
+    public static final String TEXT_PATTERN_MESSAGE_TYPE_PHONE_NUMBER = "phoneNumber";
 
     @Override
     public void onCreate() {
@@ -92,10 +110,12 @@ public class App extends Application {
         TOSClientKit.initSDK(this, tOSInitOption, new TImageLoader() {
             @Override
             public void loadImage(ImageView imageView, Object uri) {
-                Log.e("TYSG","loadImage1");
-                //以glide为示例
+                GlideUrl glideUrl = new GlideUrl((String) uri, new LazyHeaders.Builder()
+                        .addHeader("X-Virtual-Env", "dev.app")
+                        .build());
+                boolean contain = (info != null && "Kt".equals(info.getType())) ? ((String) uri).contains("https") : false;
                 Glide.with(imageView.getContext())
-                        .load(uri)
+                        .load(contain ? glideUrl : uri)
                         .error(R.drawable.ti_ic_load_default_image)
                         .placeholder(R.drawable.ti_ic_load_default_image)
                         .into(imageView);
@@ -103,9 +123,12 @@ public class App extends Application {
 
             @Override
             public void loadImage(ImageView imageView, Object uri, int placeholderImg, int errorImg) {
-                Log.e("TYSG","loadImage2");
+                GlideUrl glideUrl = new GlideUrl((String) uri, new LazyHeaders.Builder()
+                        .addHeader("X-Virtual-Env", "dev.app")
+                        .build());
+                boolean contain = (info != null && "Kt".equals(info.getType())) ? ((String) uri).contains("https") : false;
                 Glide.with(imageView.getContext())
-                        .load(uri)
+                        .load(contain ? glideUrl : uri)
                         .override(CustomTarget.SIZE_ORIGINAL, CustomTarget.SIZE_ORIGINAL)
                         .error(errorImg)
                         .placeholder(placeholderImg)
@@ -114,35 +137,57 @@ public class App extends Application {
 
             @Override
             public void loadImage(ImageView imageView, Object uri, int originalWidth, int originalHeight, TImageLoaderListener listener) {
-                Log.e("TYSG","loadImage3");
-                Glide.with(imageView.getContext()).load(uri)
+                GlideUrl glideUrl = new GlideUrl((String) uri, new LazyHeaders.Builder()
+                        .addHeader("X-Virtual-Env", "dev.app")
+                        .build());
+                boolean contain = (info != null && "Kt".equals(info.getType())) ? ((String) uri).contains("https") : false;
+                Glide.with(imageView.getContext())
+                        .load(contain ? glideUrl : uri)
                         .override(originalWidth, originalHeight)
-                        .error(R.drawable.ti_ic_load_default_image)
                         .listener(new ImageRequestListener(listener))
+                        .error(R.drawable.ti_ic_load_default_image)
                         .placeholder(R.drawable.ti_ic_load_default_image).into(imageView);
 
             }
 
             @Override
             public void loadImage(Context context, Object uri, int originalWidth, int originalHeight, TImageLoaderListener listener) {
-                Log.e("TYSG","loadImage4");
-                Glide.with(context).load(uri).override(originalWidth, originalHeight).into(new CustomTarget<Drawable>() {
-                    @Override
-                    public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
-                        if (null != listener) {
-                            listener.onResourceReady(resource);
-                        }
-                    }
+                GlideUrl glideUrl = new GlideUrl((String) uri, new LazyHeaders.Builder()
+                        .addHeader("X-Virtual-Env", "dev.app")
+                        .build());
+                boolean contain = (info != null && "Kt".equals(info.getType())) ? ((String) uri).contains("https") : false;
+                Glide.with(context)
+                        .load(contain ? glideUrl : uri)
+                        .override(originalWidth, originalHeight)
+                        .into(new CustomTarget<Drawable>() {
+                            @Override
+                            public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+                                if (null != listener) {
+                                    listener.onResourceReady(resource);
+                                }
+                            }
 
-                    @Override
-                    public void onLoadCleared(@Nullable Drawable placeholder) {
-                        if (null != listener) {
-                            listener.onLoadFailed();
-                        }
-                    }
-                });
+                            @Override
+                            public void onLoadCleared(@Nullable Drawable placeholder) {
+                                if (null != listener) {
+                                    listener.onLoadFailed();
+                                }
+                            }
+                        });
             }
         });
+
+        // : 2022/10/13 配置超链接高亮显示规则
+        List<TTextPatternRule> tTextPatternRules = new ArrayList<>();
+        tTextPatternRules.add(new TTextPatternRule(Pattern.compile(PATTERN_REGEX_PHONE_NUMBER, Pattern.CASE_INSENSITIVE),Color.parseColor("#1366dc"),TEXT_PATTERN_MESSAGE_TYPE_PHONE_NUMBER));
+
+        TOSClientKitConfig tosClientKitConfig = new TOSClientKitConfig.Builder()
+//                .setTCustomizationUI(tCustomizationUI)//配置自定义UI
+                .setTextHighLightRuleList(tTextPatternRules)
+                .build();
+
+        TOSClientKit.setTosClientKitConfig(tosClientKitConfig);
+
     }
 
 

@@ -1,6 +1,6 @@
 
 # TOSClientKit_Android_开发文档
-> 版本: 1.5.6
+> 版本: 1.5.8
 
 
 ## 目录
@@ -41,7 +41,7 @@ Gradle | 3.0 及以上版本
 
 ```
     //implementation "com.ti-net.oskit:online:1.4.4" (不再更新)
-	implementation 'com.github.ti-net-project:OnlineSDK-Android:1.5.4'
+	implementation 'com.github.ti-net-project:OnlineSDK-Android:x.x.x'//x.x.x为最新版本号
 ```
 
 其他
@@ -140,6 +140,7 @@ advanceParams  | Map<String, Object> |	否 |	自定义可配参数,可为空
             }
 
         });
+
 ```
 
 ## <span id="connect">连接服务</span>
@@ -209,83 +210,83 @@ listener      |	OnlineDisconnectListener |否  |	断开连接监听
 ### 消息监听
 
 ```
-TOSClientKit.addOnlineMessageListener(new OnlineMessageListener() {
-            @Override
-            public void onMessage(OnlineMessage message) {
-                // 收到的消息信息
-            }
-        });
+        TOSClientKit.addOnlineMessageListener(new OnlineMessageListener() {
+                    @Override
+                    public void onMessage(OnlineMessage message) {
+                        // 收到的消息信息
+                    }
+                });
 ```
 
 ### 会话事件监听
 
 ```
-TOSClientKit.addOnlineEventListener(new OnlineEventListener() {
-            @Override
-            public void chatOpen(OnlineMessage message) {
-            //会话开始
-            }
-
-            @Override
-            public void chatClose(OnlineMessage message) {
-            //会话结束
-            }
-
-            @Override
-            public void chatBridge(OnlineMessage message) {
-            //接通座席
-            }
-
-            @Override
-            public void chatQueue(OnlineMessage message) {
-            //进入排队
-            }
-
-            @Override
-            public void chatLocation(OnlineMessage message) {
-            //排队位置播报
-            }
-
-            @Override
-            public void chatLeaveMessage(OnlineMessage message) {
-            //留言
-            }
-
-            @Override
-            public void chatInvestigation(OnlineMessage message) {
-            //满意度
-            }
-
-            @Override
-            public void robotBridge(OnlineMessage message) {
-            //接通机器人
-            }
-
-            @Override
-            public void withdraw(String messageId) {
-            //座席撤回消息
-            }
-
-            @Override
-            public void chatSwitch(OnlineMessage message) {
-            //分支节点
-            }
-
-            @Override
-            public void chatLeadingWords(OnlineMessage message) {
-            //引导语消息
-            }
-
-            @Override
-            public void chatInquiry(OnlineMessage message) {
-            //询前表单消息
-            }
-
-            @Override
-            public void chatResponse(OnlineMessage message) {
-            //消息发送响应
-            }
-        });
+        TOSClientKit.addOnlineEventListener(new OnlineEventListener() {
+                    @Override
+                    public void chatOpen(OnlineMessage message) {
+                    //会话开始
+                    }
+        
+                    @Override
+                    public void chatClose(OnlineMessage message) {
+                    //会话结束
+                    }
+        
+                    @Override
+                    public void chatBridge(OnlineMessage message) {
+                    //接通座席
+                    }
+        
+                    @Override
+                    public void chatQueue(OnlineMessage message) {
+                    //进入排队
+                    }
+        
+                    @Override
+                    public void chatLocation(OnlineMessage message) {
+                    //排队位置播报
+                    }
+        
+                    @Override
+                    public void chatLeaveMessage(OnlineMessage message) {
+                    //留言
+                    }
+        
+                    @Override
+                    public void chatInvestigation(OnlineMessage message) {
+                    //满意度
+                    }
+        
+                    @Override
+                    public void robotBridge(OnlineMessage message) {
+                    //接通机器人
+                    }
+        
+                    @Override
+                    public void withdraw(String messageId) {
+                    //座席撤回消息
+                    }
+        
+                    @Override
+                    public void chatSwitch(OnlineMessage message) {
+                    //分支节点
+                    }
+        
+                    @Override
+                    public void chatLeadingWords(OnlineMessage message) {
+                    //引导语消息
+                    }
+        
+                    @Override
+                    public void chatInquiry(OnlineMessage message) {
+                    //询前表单消息
+                    }
+        
+                    @Override
+                    public void chatResponse(OnlineMessage message) {
+                    //消息发送响应
+                    }
+                });
 ```
 
 ##  <span id="session">会话界面</span>
@@ -297,12 +298,12 @@ TOSClientKit.addOnlineEventListener(new OnlineEventListener() {
 如下代码：
 
 ```
-SessionFragment sessionFragment = new SessionFragment();
-sessionFragment.setArguments(getIntent().getExtras());
-FragmentManager manager = getSupportFragmentManager();
-FragmentTransaction transaction = manager.beginTransaction();
-transaction.replace(R.id.container, sessionFragment);
-transaction.commitAllowingStateLoss();
+        SessionFragment sessionFragment = new SessionFragment();
+        sessionFragment.setArguments(getIntent().getExtras());
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.container, sessionFragment);
+        transaction.commitAllowingStateLoss();
 ```
 
 ### 修改UI配置
@@ -313,63 +314,63 @@ transaction.commitAllowingStateLoss();
 colors.xml可修改项
 
 
-​    		
-​        <!--  ++++++++++++++ 聊天背景设置 ++++++++++++++  -->
-​        <!--聊天背景颜色-->
-​        <color name="ti_session_background_color">#FFF2F6FD</color>
-​    
-​        <!--  ++++++++++++++ 聊天消息样式设置 ++++++++++++++  -->
-​        <!--昵称文字颜色-->
-​        <color name="ti_nickname_text_color">#FF595959</color>
-​        <!--发送端气泡背景颜色-->
-​        <color name="ti_send_bubble_background_color">#D5E1F7</color>
-​        <!--发送端文字颜色-->
-​        <color name="ti_send_msg_text_color">@color/ti_dark</color>
-​        <!--发送端超链接文字颜色-->
-​        <color name="ti_send_super_line_text_color">#1366dc</color>
-​        <!--接收端文字颜色-->
-​        <color name="ti_receive_msg_text_color">@color/ti_dark</color>
-​        <!--接收端超链接文字颜色-->
-​        <color name="ti_receive_super_line_text_color">#1366dc</color>
-​        <!--接收端气泡背景颜色-->
-​        <color name="ti_receive_bubble_background_color">@android:color/white</color>
-​        <!--猜你所想-->
-​        <color name="ti_guess_text_color">#FAAD14</color>
-​        <!--排队文字颜色-->
-​        <color name="ti_line_up_text_color">@color/ti_blue</color>
-​        <!--会话提示字体颜色-->
-​        <color name="ti_tips_text_color">#FF595959</color>
-​        <!--会话提示气泡颜色-->
-​        <color name="ti_tips_bubble_bg_color">#a6ffffff</color>
-​        <!--时间字体颜色-->
-​        <color name="ti_msg_time_color">#FF8C8C8C</color>
-​        <!--富文本视频播放器的背景-->
-​        <color name="ti_rich_video_bg_color">#80000000</color>
-​        <!--富文本视频播放器进度条的背景色-->
-​        <color name="ti_rich_video_progress_bg_color">#4D000000</color>
-​        <!--富文本视频播放器进度条的前景色-->
-​        <color name="ti_rich_video_foreground_color">@color/ti_white</color>
-​        <!--满意度文字颜色选中-->
-​        <color name="satisfaction_select_text_color">#FAAD14</color>
-​        <!--满意度文字颜色未选-->
-​        <color name="satisfaction_unselected_text_color">#595959</color>
-​        <!--满意度标签文字颜色选中-->
-​        <color name="satisfaction_label_select_text_color">#FAAD14</color>
-​        <!--满意度标签文字颜色未选-->
-​        <color name="satisfaction_label_unselected_text_color">#8C8C8C</color>
-​        <!--满意度标签文字颜色选中边框线颜色-->
-​        <color name="satisfaction_label_select_border_color">#FAAD14</color>
-​        <!--满意度标签文字颜色未选边框线颜色-->
-​        <color name="satisfaction_label_unselected_border_color">#D9D9D9</color>
-​        <!--满意度标签文字颜色选中背景色-->
-​        <color name="satisfaction_label_select_color">#30FAAD14</color>
-​        <!--满意度标签文字颜色未选背景色-->
-​        <color name="satisfaction_label_unselected_color">#30D9D9D9</color>
-​        <!--满意度提交文字-->
-​        <color name="satisfaction_submit_tv_color">#4385FF</color>
-​        <!--满意度提交背景色-->
-​        <color name="satisfaction_submit_bg">#4385FF</color>
-​    
+```	
+        <!--  ++++++++++++++ 聊天背景设置 ++++++++++++++  -->
+        <!--聊天背景颜色-->
+        <color name="ti_session_background_color">#FFF2F6FD</color>
+    
+        <!--  ++++++++++++++ 聊天消息样式设置 ++++++++++++++  -->
+        <!--昵称文字颜色-->
+        <color name="ti_nickname_text_color">#FF595959</color>
+        <!--发送端气泡背景颜色-->
+        <color name="ti_send_bubble_background_color">#D5E1F7</color>
+        <!--发送端文字颜色-->
+        <color name="ti_send_msg_text_color">@color/ti_dark</color>
+        <!--发送端超链接文字颜色-->
+        <color name="ti_send_super_line_text_color">#1366dc</color>
+        <!--接收端文字颜色-->
+        <color name="ti_receive_msg_text_color">@color/ti_dark</color>
+        <!--接收端超链接文字颜色-->
+        <color name="ti_receive_super_line_text_color">#1366dc</color>
+        <!--接收端气泡背景颜色-->
+        <color name="ti_receive_bubble_background_color">@android:color/white</color>
+        <!--猜你所想-->
+        <color name="ti_guess_text_color">#FAAD14</color>
+        <!--排队文字颜色-->
+        <color name="ti_line_up_text_color">@color/ti_blue</color>
+        <!--会话提示字体颜色-->
+        <color name="ti_tips_text_color">#FF595959</color>
+        <!--会话提示气泡颜色-->
+        <color name="ti_tips_bubble_bg_color">#a6ffffff</color>
+        <!--时间字体颜色-->
+        <color name="ti_msg_time_color">#FF8C8C8C</color>
+        <!--富文本视频播放器的背景-->
+        <color name="ti_rich_video_bg_color">#80000000</color>
+        <!--富文本视频播放器进度条的背景色-->
+        <color name="ti_rich_video_progress_bg_color">#4D000000</color>
+        <!--富文本视频播放器进度条的前景色-->
+        <color name="ti_rich_video_foreground_color">@color/ti_white</color>
+        <!--满意度文字颜色选中-->
+        <color name="satisfaction_select_text_color">#FAAD14</color>
+        <!--满意度文字颜色未选-->
+        <color name="satisfaction_unselected_text_color">#595959</color>
+        <!--满意度标签文字颜色选中-->
+        <color name="satisfaction_label_select_text_color">#FAAD14</color>
+        <!--满意度标签文字颜色未选-->
+        <color name="satisfaction_label_unselected_text_color">#8C8C8C</color>
+        <!--满意度标签文字颜色选中边框线颜色-->
+        <color name="satisfaction_label_select_border_color">#FAAD14</color>
+        <!--满意度标签文字颜色未选边框线颜色-->
+        <color name="satisfaction_label_unselected_border_color">#D9D9D9</color>
+        <!--满意度标签文字颜色选中背景色-->
+        <color name="satisfaction_label_select_color">#30FAAD14</color>
+        <!--满意度标签文字颜色未选背景色-->
+        <color name="satisfaction_label_unselected_color">#30D9D9D9</color>
+        <!--满意度提交文字-->
+        <color name="satisfaction_submit_tv_color">#4385FF</color>
+        <!--满意度提交背景色-->
+        <color name="satisfaction_submit_bg">#4385FF</color> 
+
         <!--  ++++++++++++++  输入栏设置 ++++++++++++++  -->
         <!--输入区域背景颜色-->
         <color name="ti_input_area_bg_color">#F5F7F9</color>
@@ -427,83 +428,84 @@ colors.xml可修改项
         <color name="ti_album_navigation_bar_ext">#303030</color>
         <!--相册导航栏确定按钮背景色-->
         <color name="ti_send_picture_button_bg">#4385ff</color>
+```
 
 dimen可修改项
 
 
-​        
-​        <!--  ++++++++++++++ 聊天消息样式设置 ++++++++++++++  -->
-​        <!--头像大小-->
-​        <dimen name="ti_chat_avatar_size">40dp</dimen>
-​        <!--头像与消息气泡的间距-->
-​        <dimen name="ti_chat_avatar_message_spacing">8dp</dimen>
-​        <!--头像与消息气泡的间距-->
-​        <dimen name="ti_chat_avatar_screen_spacing">8dp</dimen>
-​        <!--  头像圆角弧度  -->
-​        <dimen name="ti_chat_avatar_radius">4dp</dimen>
-​        <!--昵称文字大小-->
-​        <dimen name="ti_chat_username_text_size">13sp</dimen>
-​        <!--发送端文字大小-->
-​        <dimen name="ti_send_bubble_text_size">16sp</dimen>
-​        <!--接收端文字大小-->
-​        <dimen name="ti_receive_bubble_text_size">16sp</dimen>
-​        <!--聊天气泡背景圆角弧度-->
-​        <dimen name="ti_msg_bubble_background_corner">10dp</dimen>
-​        <!--消息的最大限制宽度-->
-​        <dimen name="ti_message_max_width">260dp</dimen>
-​        <!--图片消息的默认高度-->
-​        <dimen name="ti_msg_img_height">195dp</dimen>
-​        <!--富文本视频播放器的宽-->
-​        <dimen name="ti_rich_video_width">150dp</dimen>
-​        <!--富文本视频播放器的高-->
-​        <dimen name="ti_rich_video_height">180dp</dimen>
-​        <!--会话提示文字大小-->
-​        <dimen name="ti_notification_size">12sp</dimen>
-​        <!--时间文字大小-->
-​        <dimen name="ti_time_size">12sp</dimen>
-​        <!--富文本消息之间的默认空格大小-->
-​        <dimen name="ti_msg_html_divider">4dp</dimen>
-​    
-​        <!--  ++++++++++++++ 输入栏样式设置 ++++++++++++++  -->
-​        <!--输入框行高-->
-​        <dimen name="ti_input_box_high_line_height">24dp</dimen>
-​        <!--输入框文字大小-->
-​        <dimen name="ti_input_box_text_size">16sp</dimen>
-​        <!--输入框、录音按钮最小高度-->
-​        <dimen name="ti_input_box_min_height">40dp</dimen>
-​        <!--输入框边框大小-->
-​        <dimen name="ti_input_box_border_width">1dp</dimen>
-​        <!--输入框边框圆角弧度-->
-​        <dimen name="ti_input_box_corner_radius">5dp</dimen>
-​        <!--输入区域语音，表情，"+"图标大小-->
-​        <dimen name="ti_input_area_icon_size">36dp</dimen>
-​        <!--输入区域按住录音按钮文字大小-->
-​        <dimen name="ti_input_area_voice_press_text_size">14sp</dimen>
-​        <!--输入区域按住录音按钮边框大小-->
-​        <dimen name="ti_input_area_voice_press_border_width">1dp</dimen>
-​        <!--输入区域按住录音按钮圆角弧度-->
-​        <dimen name="ti_input_area_voice_press_corner_radius">5dp</dimen>
-​        <!--输入区发送按钮背景圆角弧度-->
-​        <dimen name="ti_send_btn_bg_corner_radius">8dp</dimen>
-​        <!--拓展面板条目底层背景圆角弧度-->
-​        <dimen name="ti_session_func_item_bg_corner_radius">15dp</dimen>
-​        <!--扩展面板条目背景大小-->
-​        <dimen name="ti_session_func_item_bg_size">56dp</dimen>
-​        <!--扩展面板条目图片大小-->
-​        <dimen name="ti_session_func_item_img_size">32dp</dimen>
-​        <!--扩展面板条目文字大小-->
-​        <dimen name="ti_session_func_item_text_size">12sp</dimen>
-​        <!--发送按钮高-->
-​        <dimen name="ti_send_out_high">40dp</dimen>
-​        <!--发送按钮宽-->
-​        <dimen name="ti_send_out_wide">62dp</dimen>
-​        <!--满意度标签圆角-->
-​        <dimen name="satisfaction_label_radius">5dp</dimen>
-​        <!--满意度标签高-->
-​        <dimen name="satisfaction_label_high">35dp</dimen>
-​        <!--满意度提交按钮圆角-->
-​        <dimen name="satisfaction_submit_radius">5dp</dimen>
-​    
+```
+        <!--  ++++++++++++++ 聊天消息样式设置 ++++++++++++++  -->
+        <!--头像大小-->
+        <dimen name="ti_chat_avatar_size">40dp</dimen>
+        <!--头像与消息气泡的间距-->
+        <dimen name="ti_chat_avatar_message_spacing">8dp</dimen>
+        <!--头像与消息气泡的间距-->
+        <dimen name="ti_chat_avatar_screen_spacing">8dp</dimen>
+        <!--  头像圆角弧度  -->
+        <dimen name="ti_chat_avatar_radius">4dp</dimen>
+        <!--昵称文字大小-->
+        <dimen name="ti_chat_username_text_size">13sp</dimen>
+        <!--发送端文字大小-->
+        <dimen name="ti_send_bubble_text_size">16sp</dimen>
+        <!--接收端文字大小-->
+        <dimen name="ti_receive_bubble_text_size">16sp</dimen>
+        <!--聊天气泡背景圆角弧度-->
+        <dimen name="ti_msg_bubble_background_corner">10dp</dimen>
+        <!--消息的最大限制宽度-->
+        <dimen name="ti_message_max_width">260dp</dimen>
+        <!--图片消息的默认高度-->
+        <dimen name="ti_msg_img_height">195dp</dimen>
+        <!--富文本视频播放器的宽-->
+        <dimen name="ti_rich_video_width">150dp</dimen>
+        <!--富文本视频播放器的高-->
+        <dimen name="ti_rich_video_height">180dp</dimen>
+        <!--会话提示文字大小-->
+        <dimen name="ti_notification_size">12sp</dimen>
+        <!--时间文字大小-->
+        <dimen name="ti_time_size">12sp</dimen>
+        <!--富文本消息之间的默认空格大小-->
+        <dimen name="ti_msg_html_divider">4dp</dimen>
+    
+        <!--  ++++++++++++++ 输入栏样式设置 ++++++++++++++  -->
+        <!--输入框行高-->
+        <dimen name="ti_input_box_high_line_height">24dp</dimen>
+        <!--输入框文字大小-->
+        <dimen name="ti_input_box_text_size">16sp</dimen>
+        <!--输入框、录音按钮最小高度-->
+        <dimen name="ti_input_box_min_height">40dp</dimen>
+        <!--输入框边框大小-->
+        <dimen name="ti_input_box_border_width">1dp</dimen>
+        <!--输入框边框圆角弧度-->
+        <dimen name="ti_input_box_corner_radius">5dp</dimen>
+        <!--输入区域语音，表情，"+"图标大小-->
+        <dimen name="ti_input_area_icon_size">36dp</dimen>
+        <!--输入区域按住录音按钮文字大小-->
+        <dimen name="ti_input_area_voice_press_text_size">14sp</dimen>
+        <!--输入区域按住录音按钮边框大小-->
+        <dimen name="ti_input_area_voice_press_border_width">1dp</dimen>
+        <!--输入区域按住录音按钮圆角弧度-->
+        <dimen name="ti_input_area_voice_press_corner_radius">5dp</dimen>
+        <!--输入区发送按钮背景圆角弧度-->
+        <dimen name="ti_send_btn_bg_corner_radius">8dp</dimen>
+        <!--拓展面板条目底层背景圆角弧度-->
+        <dimen name="ti_session_func_item_bg_corner_radius">15dp</dimen>
+        <!--扩展面板条目背景大小-->
+        <dimen name="ti_session_func_item_bg_size">56dp</dimen>
+        <!--扩展面板条目图片大小-->
+        <dimen name="ti_session_func_item_img_size">32dp</dimen>
+        <!--扩展面板条目文字大小-->
+        <dimen name="ti_session_func_item_text_size">12sp</dimen>
+        <!--发送按钮高-->
+        <dimen name="ti_send_out_high">40dp</dimen>
+        <!--发送按钮宽-->
+        <dimen name="ti_send_out_wide">62dp</dimen>
+        <!--满意度标签圆角-->
+        <dimen name="satisfaction_label_radius">5dp</dimen>
+        <!--满意度标签高-->
+        <dimen name="satisfaction_label_high">35dp</dimen>
+        <!--满意度提交按钮圆角-->
+        <dimen name="satisfaction_submit_radius">5dp</dimen>
+    
         <!--  ++++++++++++++ 快捷入口设置 ++++++++++++++  -->
         <!--快捷入口内容距边框区域垂直间距-->
         <dimen name="ti_quick_entry_vertical_spec">10dp</dimen>
@@ -525,10 +527,11 @@ dimen可修改项
         <dimen name="ti_message_tv_size">12sp</dimen>
         <!--商品卡片二图片大小-->
         <dimen name="ti_message_img">80dp</dimen>
+```
 
 string.xml可修改项
 
-
+```
     		<!--录音按钮文案-->
         <string name="ti_pressed_speak">按住说话</string>
         <!--发送消息按钮文案-->
@@ -537,12 +540,14 @@ string.xml可修改项
         <string name="ti_input_box_hint_text">请输入内容</string>
         <!--选择图片页面标题-->
         <string name="ti_camera">相册</string>
+```
 
 #### 代码修改示例如下：
 
 说明：只需要在继承Application类的onCreate初始化一次
 
-
+```
+       //以下自定义界面为UI配置代码实现
        TCustomizationUI tCustomizationUI = new TCustomizationUI();//自定义UI对象
        tCustomizationUI.sendBubbleBackground = R.drawable.ti_bg_color;//发送端气泡背景
        tCustomizationUI.receiveBubbleBackground = R.drawable.ti_bg_color;//接收端气泡背景
@@ -562,11 +567,23 @@ string.xml可修改项
        tCustomizationUI.showAgentRobotNickname = false;//客服、机器人昵称
        tCustomizationUI.showAgentRobotAvatar = false;//客服、机器人头像
        tCustomizationUI.showVoiceButton = false;//语音按钮
+       
+       
+        // : 2022/10/13 以下为配置文本消息含超链接高亮显示规则
+        List<TTextPatternRule> tTextPatternRules = new ArrayList<>();
+        tTextPatternRules.add(
+                new TTextPatternRule(Pattern.compile("这里填正则表达式", Pattern.CASE_INSENSITIVE),//正则Pattern变量,是否忽略大小写可自行修改compile第二个参数
+                        Color.parseColor("#1366dc"),//高亮显示颜色int值，可自行修改为所需颜色
+                        "phoneNumber"));//类型说明，用于onLinkClick方法内回调messageEventType，区分匹配类型
+
+
        TOSClientKitConfig tosClientKitConfig = new TOSClientKitConfig.Builder()
                 .setTCustomizationUI(tCustomizationUI)//配置自定义UI
+                .setTextHighLightRuleList(tTextPatternRules)//配置文本消息含超链接高亮显示规则数组
                 .build();
     
        TOSClientKit.setTosClientKitConfig(tosClientKitConfig);
+```
 
 ### 会话界面相关操作
 
@@ -574,114 +591,124 @@ string.xml可修改项
 ##### 会话状态监听
 
 ```
-TOSClientKit.setOnlineStatusListener(new OnlineMessageManager.OnlineStatusListener() {
-            @Override
-            public void onStatusChanged(int status) {
-                //当前状态
-            }
-        });
+        TOSClientKit.setOnlineStatusListener(new OnlineMessageManager.OnlineStatusListener() {
+                    @Override
+                    public void onStatusChanged(int status) {
+                        //当前状态
+                    }
+                });
 ```
 
 ##### 会话内消息事件监听
 请继承SessionFragment来实现
 
 ```
-@Override
-protected SessionClickListener getListener() {
-   return new SessionClickListenerImpl(this){
-   
-            @Override
-            public void onClick(View itemView, OnlineMessage message) {
-                super.onClick(itemView,message);
-                //消息点击事件
+        @Override
+        protected SessionClickListener getListener() {
+           return new SessionClickListenerImpl(this){
+           
+                    @Override
+                    public void onClick(View itemView, OnlineMessage message) {
+                        super.onClick(itemView,message);
+                        //消息点击事件
+                    }
+           
+                    @Override
+                    public void onLinkClick(String url) {
+                        //super.onLinkClick(url);
+                        //屏蔽super，可实现自定义超链接点击事件
+                    }
+        
+                    /**
+                    * 
+                    * @param content          点击文本内容
+                    * @param messageEventType 文本类型
+                    */
+                    @Override
+                    public void onLinkClick(String content, String messageEventType) {
+                        //可根据messageEventType实现自有业务逻辑
+                    }
+        
+                    @Override
+                    public void videoPlay(String url) {
+                        super.videoPlay(url);
+                        //自定义视频播放，如果需要自己实现视频播放，则需要屏蔽super.videoPlay(url);父类的实现方式
+                    }
+        
+                    @Override
+                    public void downloadFile(String url, String name) {
+                        super.downloadFile(url, name);
+                       //下载文件回调，屏蔽super可自定义而下载功能
+                    }
+                    
+                    /**
+                     *
+                     * @param permissions
+                     * @param requestCode
+                     *   申请语音权限                1661
+                     *   申请相机权限                1662
+                     *   申请相机、语音权限 -- 拍摄   1663
+                     *   申请文件权限 -- 文件        1664
+                     *
+                     */
+                    @Override
+                    public void onStartRequestPermissionsCallback(@NonNull String[] permissions, int requestCode) {
+                        super.onStartRequestPermissionsCallback(permissions, requestCode);
+                        // : 2022/9/19 权限申请回调 
+                        TLogUtils.i("onStartRequestPermissionsCallback:" + requestCode);
+                    }
+                    
+                };
             }
-   
-            @Override
-            public void onLinkClick(String url) {
-                //super.onLinkClick(url);
-                //屏蔽super，可实现自定义超链接点击事件
-            }
-
-            @Override
-            public void videoPlay(String url) {
-                super.videoPlay(url);
-                //自定义视频播放，如果需要自己实现视频播放，则需要屏蔽super.videoPlay(url);父类的实现方式
-            }
-
-            @Override
-            public void downloadFile(String url, String name) {
-                super.downloadFile(url, name);
-               //下载文件回调，屏蔽super可自定义而下载功能
-            }
-            
-            /**
-             *
-             * @param permissions
-             * @param requestCode
-             *   申请语音权限                1661
-             *   申请相机权限                1662
-             *   申请相机、语音权限 -- 拍摄   1663
-             *   申请文件权限 -- 文件        1664
-             *
-             */
-            @Override
-            public void onStartRequestPermissionsCallback(@NonNull String[] permissions, int requestCode) {
-                super.onStartRequestPermissionsCallback(permissions, requestCode);
-                // : 2022/9/19 权限申请回调 
-                TLogUtils.i("onStartRequestPermissionsCallback:" + requestCode);
-            }
-            
-        };
-    }
 ```
 
 #### 拓展面板功能
 请继承SessionFragment来实现
 ```
- @Override
-    protected FuncListener getFuncListener() {
-        // 自定义底部功能栏
-
-        return new FuncListenerImpl(this){
             @Override
-            public void onFuncClick(Function func) {
-                super.onFuncClick(func);
-               //拓展面板Item点击回调
+            protected FuncListener getFuncListener() {
+                // 自定义底部功能栏
+        
+                return new FuncListenerImpl(this){
+                    @Override
+                    public void onFuncClick(Function func) {
+                        super.onFuncClick(func);
+                       //拓展面板Item点击回调
+                    }
+                };
             }
-        };
-    }
 ```
 
 #### 快捷入口功能
 
 ```
-ArrayList message = new ArrayList<>();
-message.add(new LabeInfo("订单号", "1234567890"));
-message.add(new LabeInfo("服务地区", "北京市"));
-message.add(new LabeInfo("服务", "满意"));
-message.add(new LabeInfo("师傅", "金师傅"));
-message.add(new LabeInfo("产品类型", "电子产品"));
-message.add(new LabeInfo("师傅电话", "12345678900"));
-message.add(new LabeInfo("订单状态", "已完成"));
-
-//更新快捷入口可实时更新至会话窗体
-TOSClientKit.updateSessionWindowQuickEntrys(message);
-
-//清空快捷入口数据
-TOSClientKit.clearSessionWindowQuickEntrys();
-
-//快捷入口的点击回调
-//请继承SessionFragment来实现
-@Override
-protected LabelListener getLabelListener() {
-    return new LabelListenerImpl(this) {
+        ArrayList message = new ArrayList<>();
+        message.add(new LabeInfo("订单号", "1234567890"));
+        message.add(new LabeInfo("服务地区", "北京市"));
+        message.add(new LabeInfo("服务", "满意"));
+        message.add(new LabeInfo("师傅", "金师傅"));
+        message.add(new LabeInfo("产品类型", "电子产品"));
+        message.add(new LabeInfo("师傅电话", "12345678900"));
+        message.add(new LabeInfo("订单状态", "已完成"));
+        
+        //更新快捷入口可实时更新至会话窗体
+        TOSClientKit.updateSessionWindowQuickEntrys(message);
+        
+        //清空快捷入口数据
+        TOSClientKit.clearSessionWindowQuickEntrys();
+        
+        //快捷入口的点击回调
+        //请继承SessionFragment来实现
         @Override
-        public void onLabelClick(LabeInfo info) {
-            super.onLabelClick(info);
-            Toast.makeText(requireContext(), info.toString(), Toast.LENGTH_SHORT).show();
+        protected LabelListener getLabelListener() {
+            return new LabelListenerImpl(this) {
+                @Override
+                public void onLabelClick(LabeInfo info) {
+                    super.onLabelClick(info);
+                    Toast.makeText(requireContext(), info.toString(), Toast.LENGTH_SHORT).show();
+                }
+            };
         }
-    };
-}
 
 ```
 
@@ -690,28 +717,28 @@ protected LabelListener getLabelListener() {
 商品卡片数据可以通过argument传递到会话窗体，参数名：tinetCard，可直接引用SessionFragment.ARGS_CARD，参数实体为CardInfo。
 
 ```
-//定义CardInfo，卡片实体
-CardInfo message = new CardInfo();
-message.setSubTitle("华为P40麒麟990 5G SoC芯片 5000万超感知徕卡三摄 30倍数字变焦");
-message.setDescription("这是商品描述，啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦");
-message.setImg(
-            "https://img1.baidu.com/it/u=1963848283,2056721126&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=500");
-message.setPrice("￥ 100.99");
-message.setTime(TimeUtils.getDate(System.currentTimeMillis()));
-message.setStatus("已到货");
-
-HashMap<String, String> extraInfo = new HashMap<>();
-extraInfo.put("订单号", "1234567890");
-extraInfo.put("服务地区", "北京市");
-extraInfo.put("服务", "满意");
-extraInfo.put("师傅", "金师傅");
-extraInfo.put("产品类型", "电子产品");
-extraInfo.put("师傅电话", "12345678900");
-extraInfo.put("订单状态", "已完成");
-message.setExtraInfo(extraInfo);
-
-//传递至会话窗体
-intent.putExtra(ChatFragment.ARGS_CARD,message);
+        //定义CardInfo，卡片实体
+        CardInfo message = new CardInfo();
+        message.setSubTitle("华为P40麒麟990 5G SoC芯片 5000万超感知徕卡三摄 30倍数字变焦");
+        message.setDescription("这是商品描述，啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦");
+        message.setImg(
+                    "https://img1.baidu.com/it/u=1963848283,2056721126&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=500");
+        message.setPrice("￥ 100.99");
+        message.setTime(TimeUtils.getDate(System.currentTimeMillis()));
+        message.setStatus("已到货");
+        
+        HashMap<String, String> extraInfo = new HashMap<>();
+        extraInfo.put("订单号", "1234567890");
+        extraInfo.put("服务地区", "北京市");
+        extraInfo.put("服务", "满意");
+        extraInfo.put("师傅", "金师傅");
+        extraInfo.put("产品类型", "电子产品");
+        extraInfo.put("师傅电话", "12345678900");
+        extraInfo.put("订单状态", "已完成");
+        message.setExtraInfo(extraInfo);
+        
+        //传递至会话窗体
+        intent.putExtra(ChatFragment.ARGS_CARD,message);
 ```
 
 #### 会话相关接口
