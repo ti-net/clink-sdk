@@ -52,12 +52,12 @@ Gradle | 3.0 及以上版本
 ```
 
 #### aar 依赖方式
-aar下载地址：https://tinet-sdk-release.s3.cn-north-1.amazonaws.com.cn/online-sdk/sdk/release/online_sdk_1.5.6_release.aar
+aar下载地址：https://tinet-sdk-release.s3.cn-north-1.amazonaws.com.cn/online-sdk/sdk/release/online_sdk_x.x.x_release.aar //x.x.x为最新版本号
 
 在主 app 的 build.gradle 文件中添加如下依赖配置
 
 ```
-	api files('libs/online_sdk_1.5.6_release.aar')
+	api files('libs/online_sdk_x.x.x_release.aar')//x.x.x为最新版本号
 ```
 
 ### 混淆配置
