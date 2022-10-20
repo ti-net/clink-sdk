@@ -41,7 +41,6 @@ public class ListTicketTest extends AbstractTest {
 //        listTicketRequest.setFields(fieldMap);
 //        listTicketRequest.setSystemFields(systemFieldMap);
 
-        listTicketRequest.setWorkflowIds(new Integer[]{1921, 2079});
         listTicketRequest.setTaskKey("UserTask_0cqajg6");
         try {
             ListTicketResponse response= client.getResponseModel(listTicketRequest);
