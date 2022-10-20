@@ -27,7 +27,7 @@ PODS:
   - RTRootNavigationController (0.8.0):
     - RTRootNavigationController/Core (= 0.8.0)
   - RTRootNavigationController/Core (0.8.0)
-  - TOSClientKit (1.5.8)
+  - TOSClientKit (1.5.8.2)
   - TTGTagCollectionView (2.1.0)
   - TZImagePickerController (3.8.3):
     - TZImagePickerController/Basic (= 3.8.3)
@@ -94,7 +94,7 @@ SPEC CHECKSUMS:
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
   RTRootNavigationController: 36c6301870f0467f89d69f4286795340b537d473
-  TOSClientKit: 4207237452f572a48f2dccca40bc835e5daf61c2
+  TOSClientKit: 446d87b073118c1e567ee632e1d653652e083293
   TTGTagCollectionView: a2a8668c659b39e7a6ffd6590475ea53a7ae95f7
   TZImagePickerController: e9909edbadf7381140efc5b5c9f5bdbfd630f7d4
   WMPageController: 0c7624d2b48e4f1ab92371688cf6744ed701575d

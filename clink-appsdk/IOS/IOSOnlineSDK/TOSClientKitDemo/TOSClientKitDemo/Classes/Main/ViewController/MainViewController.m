@@ -42,13 +42,13 @@
     TOSKitExtendBoardItemModel *model5 = [[TOSKitExtendBoardItemModel alloc] init];
     model5.type = TOSChatBoxExtendBoardTypeCloseChat;
     
-    TOSKitExtendBoardItemModel *model6 = [[TOSKitExtendBoardItemModel alloc] init];
-    model6.title = @"百度地图";
-    model6.index = 10006;
-    model6.image = @"";
-    model6.type = TOSChatBoxExtendBoardTypeCustom;
+//    TOSKitExtendBoardItemModel *model6 = [[TOSKitExtendBoardItemModel alloc] init];
+//    model6.title = @"百度地图";
+//    model6.index = 10006;
+//    model6.image = @"";
+//    model6.type = TOSChatBoxExtendBoardTypeCustom;
     
-    [TOSKitChatBoxExtendBoard shareChatBoxExtendBoard].allItems = @[model1,model2,model3,model4,model5,model6];
+    [TOSKitChatBoxExtendBoard shareChatBoxExtendBoard].allItems = @[model1,model2,model3,model4,model5];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

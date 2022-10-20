@@ -44,7 +44,7 @@ android {
         variant ->
             variant.outputs.all {
                 //在这里修改apk文件名
-                outputFileName = "天润客服SDK_${defaultConfig.versionName}_${releaseTime()}.apk"
+                outputFileName = "客服SDK_${defaultConfig.versionName}_${releaseTime()}.apk"
             }
     }
 
@@ -79,11 +79,11 @@ dependencies {
     // bugly
     implementation 'com.tencent.bugly:crashreport:latest.release'
 
-    //天润在线客服 SDK内部所需
+    // SDK内部所需
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
 
-    //天润在线客服 SDK
+    // SDK
     implementation 'com.github.ti-net-project:OnlineSDK-Android:1.5.8'
 //    api files('libs/online_sdk_1.5.8_release.aar')
 

@@ -1,25 +1,24 @@
 
 
-## TOSClinetKit_iOS_开发文档
+## 在线客服SDK-iOS接口文档
 
 > 版本号: v1.5.5+
 
 [TOC]
 
-
-
 ## 概述
 
-> 欢迎使用“智慧服务平台”的在线客服移动端开发者工具套件(SDK)。本文针对iOS端使用做详细说明，通过SDK，可以在您的APP中快速集成访客端在线聊天的功能，以具备文本，图片、视频等类型消息收发及消息通知能力，
+> 欢迎使用AICC的在线客服移动端开发者工具套件(SDK)。本文针对iOS端使用做详细说明，通过SDK，可以在您的APP中快速集成访客端在线聊天的功能，以具备文本，图片、视频等类型消息收发及消息通知能力，
 
 ## 集成准备
 #### 注册账号
-请先确保已注册天润在线客服账号
+请先确保已注册在线客服账号
 
 #### 开发环境
 - 适配iOS 10.0以上
 - 开发工具：Xcode 13
-#### 下载天润在线客服SDK    
+- macOS: 11.6.1
+#### 下载在线客服SDK<div id="2.3"></div>    
 最新SDK包链接地址:
 [iOS_SDK](https://github.com/ti-net/clink-sdk/tree/master/clink-appsdk/IOS/IOSOnlineSDK/SDK)     
 
@@ -51,7 +50,7 @@
 #### 手动导入SDK和添加依赖库
 
 把下载的TOSClinetKit.framework 、TOSClientLib.framework、TOSClient.bundle文件夹中的文件拖入你的工程里。
-天润iOS_SDK 的实现，依赖了一些系统的框架，在开发应用时需要在工程里加入这些框架 ( TOSClientLib不包含UI界面，可根据接口自行开发功能 ) 。开发者首先点击工程右边的工程名，然后在工程名右边依次选择<font color= orange size=2>TARGETS -> BuiLd Phases -> Link Binary With Libraries</font>，展开 <font color= orange size=2>LinkBinary With Libraries</font> 后点击展开后下面的 + 来添加下面的依赖项:  
+iOS_SDK 的实现，依赖了一些系统的框架，在开发应用时需要在工程里加入这些框架 ( TOSClientLib不包含UI界面，可根据接口自行开发功能 ) 。开发者首先点击工程右边的工程名，然后在工程名右边依次选择<font color= orange size=2>TARGETS -> BuiLd Phases -> Link Binary With Libraries</font>，展开 <font color= orange size=2>LinkBinary With Libraries</font> 后点击展开后下面的 + 来添加下面的依赖项:  
 
 - TOSClientLib.framework(Embed & Sign)
 - TOSClientKit.framework(Embed & Sign)
@@ -76,7 +75,7 @@
 
 ## 快速集成
 #### 启动SDK
-天润SDK提供了一套完整的聊天界面，帮助开发者快速集成，并提供自定义接口，以实现定制需求。只需以下几行代码便可快速启动天润SDK应用。
+SDK提供了一套完整的聊天界面，帮助开发者快速集成，并提供自定义接口，以实现定制需求。只需以下几行代码便可快速启动SDK应用。
 
 > 注: 请在链接客服服务成功后再调起会话页面
 
@@ -87,8 +86,8 @@ TOSInitOption 参数说明
 | accessId      | NSString     | 是   | 访问标识(后台创建账号时获取,移动端唯一标识，对应座席端渠道ID) |
 | accessSecret  | NSString     | 是   | 访问秘钥(后台创建账号时获取,在座席端管理平台创建渠道时生成)  |
 | enterpriseId  | NSString     | 是   | 企业号(后台创建账号时获取,企业ID)                            |
-| apiUrl        | NSString     | 是   | 平台apiUrl(接口环境平台,目前仅有正式1平台，即:https://octopus-api-1.vlink.cn/api/sdk/v1) |
-| onlineUrl     | NSString     | 是   | 平台onlineUrl(客服环境平台,目前有上海和北京2个平台，即:https://chat-app-sh.clink.cn、 https://chat-app-bj.clink.cn) |
+| apiUrl        | NSString     | 是   | 平台apiUrl|
+| onlineUrl     | NSString     | 是   | 平台onlineUrl |
 | debug         | BOOL         | 否   | 是否开启debug模式                                            |
 | advanceParams | NSDictionary | 否   | 自定义可配参数,可为空                                        |
 

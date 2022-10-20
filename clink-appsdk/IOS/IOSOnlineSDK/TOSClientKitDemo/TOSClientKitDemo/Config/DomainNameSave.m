@@ -31,7 +31,7 @@ static NSString * const kLoginDomainName = @"kLoginDomainName";
         domainName.accessSecretDomainName = [userDefaults objectForKey:kAccessSecretDomainName]?:@"72EBF29CB4614F7AB404EEC07BFF0B1B";
         domainName.accessIdDomainName = [userDefaults objectForKey:kAccessIdDomainName]?:@"8758096679544ff189d4a9457747f109";
         domainName.enterpriseIdDomainName = [userDefaults objectForKey:kEnterpriseIdDomainName]?:@"8000002";
-        domainName.domainName = [userDefaults objectForKey:kDomainName]?:@"天润北京";
+        domainName.domainName = [userDefaults objectForKey:kDomainName]?:@"北京";
     });
     return domainName;
 }

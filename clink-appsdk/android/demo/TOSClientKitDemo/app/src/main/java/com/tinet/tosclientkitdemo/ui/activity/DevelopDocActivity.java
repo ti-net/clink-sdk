@@ -44,7 +44,7 @@ public class DevelopDocActivity extends BaseActivity {
     @Override
     protected void initData() {
         //加载本地html
-        mWebView.loadUrl("file:///android_asset/天润在线客服SDK_Android_集成文档.html");
+        mWebView.loadUrl("file:///android_asset/在线客服SDK_Android_集成文档.html");
     }
 
     private void initWebView() {

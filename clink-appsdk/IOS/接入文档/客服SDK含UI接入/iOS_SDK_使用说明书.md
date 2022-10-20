@@ -2,7 +2,7 @@
 
 ## SDK-iOS使用说明书
 
-欢迎使用“智慧服务平台”的在线客服移动端开发者工具套件（SDK）。本文针对iOS端使用做详细说明，通过SDK，可以在您的APP中快速集成访客端在线聊天的功能，以具备文本、图片、视频等类型消息收发
+欢迎使用AICC的在线客服移动端开发者工具套件（SDK）。本文针对iOS端使用做详细说明，通过SDK，可以在您的APP中快速集成访客端在线聊天的功能，以具备文本、图片、视频等类型消息收发
 
 ## <font color=LightSeaGreen size=4>一、进入会话</font> 
 
@@ -16,7 +16,7 @@
 
 <font color=LightSeaGreen size=4>三、发送表情</font>
 
-> 仅支持天润系统内部表情库
+> 仅支持系统内部表情库
 
 <img src="./assets/表情.PNG" alt="表情" style="zoom:30%;" />
 

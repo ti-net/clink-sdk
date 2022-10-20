@@ -1,21 +1,21 @@
 //该文档与SDK接入无关，无需关注
 [
   {
-    "name": "天润北京",
+    "name": "北京",
     "enterpriseId": 8000002,
     "accessId": "8758096679544ff189d4a9457747f109",
     "accessSecret": "72EBF29CB4614F7AB404EEC07BFF0B1B",
     "type": "Beijing"
   },
   {
-    "name": "天润上海",
+    "name": "上海",
     "enterpriseId": 8003846,
     "accessId": "f8f7d2be61ce4b8ba272b35647ac1eb2",
     "accessSecret": "D5B70DD63C4848B6824C0233D2FC201F",
     "type": "Shanghai"
   },
   {
-    "name": "天润北京测试",
+    "name": "北京测试",
     "enterpriseId": 8000581,
     "accessId": "80a71b366026406f83b672a66bdd59ce",
     "accessSecret": "B6F2A2125B2C476ABBA230F22B8B5D79",

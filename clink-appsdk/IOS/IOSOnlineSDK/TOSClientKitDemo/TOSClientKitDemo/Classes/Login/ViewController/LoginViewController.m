@@ -62,7 +62,7 @@
     self.platformNameLabel.text = [NSString stringWithFormat:@"(%@)",domainName.domainName];
     if (!domainName.domainName ||
         [domainName.domainName isEqualToString:@""] ||
-        [domainName.domainName isEqualToString:@"天润北京"]) {
+        [domainName.domainName isEqualToString:@"北京"]) {
         self.platformNameLabel.hidden = YES;
     } else {
         self.platformNameLabel.hidden = NO;
@@ -75,7 +75,7 @@
 
     BOOL bDebugLog = YES;
     NSDictionary *params = @{};
-    if ([domainName.domainName isEqualToString:@"天润北京测试KT"]) {
+    if ([domainName.domainName isEqualToString:@"北京测试KT"]) {
         params = @{@"configENVString": @"KTTestEnv"};
     }
     
@@ -128,7 +128,7 @@
 
 - (IBAction)didClickSwitchServeTapAction:(UITapGestureRecognizer *)sender {
     @weakify(self);
-    [YBPopupMenu showRelyOnView:self.logoImageView titles:@[@"天润北京", @"天润上海", @"天润北京测试", @"天润北京测试KT"] icons:@[] menuWidth:150.f otherSettings:^(YBPopupMenu *popupMenu) {
+    [YBPopupMenu showRelyOnView:self.logoImageView titles:@[@"北京", @"上海", @"北京测试", @"北京测试KT"] icons:@[] menuWidth:150.f otherSettings:^(YBPopupMenu *popupMenu) {
         @strongify(self);
         popupMenu.arrowWidth = 0;
         popupMenu.arrowHeight = 0;
@@ -151,7 +151,7 @@
     DomainNameSave *domainName = [DomainNameSave shareDomainNameSave];
     switch (index) {
         case 0: {
-            domainName.domainName = @"天润北京";
+            domainName.domainName = @"北京";
             domainName.apiUrlDomainName = @"https://octopus-api-1.vlink.cn/api/sdk/v1";
             domainName.onlineUrlDomainName = @"https://chat-app-bj.clink.cn";
             domainName.accessSecretDomainName = @"2C7C5D937C24492C8CC325F8546BACAD";//@"72EBF29CB4614F7AB404EEC07BFF0B1B";
@@ -160,7 +160,7 @@
         }
             break;
         case 1: {
-            domainName.domainName = @"天润上海";
+            domainName.domainName = @"上海";
             domainName.apiUrlDomainName = @"https://octopus-api-1.vlink.cn/api/sdk/v1";
             domainName.onlineUrlDomainName = @"https://chat-app-sh.clink.cn";
             domainName.accessSecretDomainName = @"D5B70DD63C4848B6824C0233D2FC201F";
@@ -169,7 +169,7 @@
         }
             break;
         case 2: {
-            domainName.domainName = @"天润北京测试";
+            domainName.domainName = @"北京测试";
             domainName.apiUrlDomainName = @"https://tcbus-api-dev.vlink.cn/api/sdk/v1";
             domainName.onlineUrlDomainName = @"https://chat-app-bj-test3.clink.cn";
             domainName.accessSecretDomainName = @"B6F2A2125B2C476ABBA230F22B8B5D79";
@@ -178,7 +178,7 @@
         }
             break;
         case 3: {
-            domainName.domainName = @"天润北京测试KT";
+            domainName.domainName = @"北京测试KT";
             domainName.apiUrlDomainName = @"https://tcbus-api-dev.vlink.cn/api/sdk/v1";
             domainName.onlineUrlDomainName = @"https://clink2-chat-app-dev.clink.cn/";
             domainName.accessSecretDomainName = @"CAEDE8AE3B4840DCBECDD4C77671E524";
