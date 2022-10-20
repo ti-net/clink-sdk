@@ -112,11 +112,6 @@ public class ListTicketRequest extends AbstractRequestModel<ListTicketResponse> 
     private Integer limit;
 
     /**
-     * 工作流id数组-用于工单模板多选查询
-     */
-    private Integer[] workflowIds;
-
-    /**
      * 节点唯一标识
      */
     private String taskKey;
@@ -338,17 +333,6 @@ public class ListTicketRequest extends AbstractRequestModel<ListTicketResponse> 
         this.limit = limit;
         if (limit != null) {
             putQueryParameter("limit", limit);
-        }
-    }
-
-    public Integer[] getWorkflowIds() {
-        return workflowIds;
-    }
-
-    public void setWorkflowIds(Integer[] workflowIds) {
-        this.workflowIds = workflowIds;
-        if (workflowIds != null) {
-            putQueryParameter("workflowIds", workflowIds);
         }
     }
 
