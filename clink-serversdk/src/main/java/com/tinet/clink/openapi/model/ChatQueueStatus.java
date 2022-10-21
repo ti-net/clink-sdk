@@ -7,7 +7,11 @@ import java.util.List;
  * @author dengsx
  * @create 2022/01/17
  **/
-public class ChatQueueStatus {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  ChatQueueStatus {
 
     /**
      * 队列号

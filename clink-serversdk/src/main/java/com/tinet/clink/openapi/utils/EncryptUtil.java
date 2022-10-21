@@ -16,7 +16,11 @@ import java.security.NoSuchAlgorithmException;
  * @author wangll
  * @date 2020/04/29
  */
-public class EncryptUtil {
+/** 
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated  
+public class  EncryptUtil {
 
     /**
      * 包装AES加密方法，将标准AES加密后的密文进行二次加密

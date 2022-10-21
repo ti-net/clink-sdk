@@ -13,7 +13,11 @@ import java.util.Objects;
  * @author yinzk
  * @date 202/2/9
  **/
-public class AgentStatusDetailRequest extends AbstractRequestModel<AgentStatusDetailResponse> {
+/** 
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated  
+public class  AgentStatusDetailRequest extends AbstractRequestModel<AgentStatusDetailResponse> {
 
     /**
      * 队列号数组

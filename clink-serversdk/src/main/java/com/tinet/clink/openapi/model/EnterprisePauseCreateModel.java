@@ -9,7 +9,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @date 2018/07/10
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class EnterprisePauseCreateModel {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  EnterprisePauseCreateModel {
 
     /**
      * 置忙状态描述

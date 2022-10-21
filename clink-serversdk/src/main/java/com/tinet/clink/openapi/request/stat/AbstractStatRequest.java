@@ -10,6 +10,10 @@ import java.util.List;
  * @author Chenjf
  * @date 2020/2/24 15:40
  **/
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
 public abstract class AbstractStatRequest<T extends ResponseModel> extends AbstractRequestModel<T> {
 
     /**

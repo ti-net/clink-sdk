@@ -13,7 +13,11 @@ import java.util.Objects;
  * @author wangli
  * @date 2022-08-24 11:03 上午
  */
-public class StatTicketByClientRequest extends AbstractStatRequest<StatTicketByClientResponse> {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  StatTicketByClientRequest extends AbstractStatRequest<StatTicketByClientResponse> {
 
     /**
      * 需要统计的座席号

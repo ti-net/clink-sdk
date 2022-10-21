@@ -11,7 +11,11 @@ import com.tinet.clink.openapi.utils.HttpMethodType;
  * @author liuzy
  * @date 2020/11/05
  **/
-public class DescribeDetailRecordFileUrlRequest extends AbstractRequestModel<DescribeDetailRecordFileUrlResponse> {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  DescribeDetailRecordFileUrlRequest extends AbstractRequestModel<DescribeDetailRecordFileUrlResponse> {
     /**
      * 通话记录唯一标识
      */

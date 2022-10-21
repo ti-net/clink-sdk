@@ -6,7 +6,11 @@ import java.util.Map;
 /**
  * 用于封装返回的ChatRecord记录数据model
  */
-public class ChatRecord {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  ChatRecord {
 
     private String mainUniqueId;                // 主会话唯一标识
     private String visitorId;                   // visitor 访客id，此时用系统生成的uuid进行标识，关联唯一的访客

@@ -1,18 +1,11 @@
 package com.tinet.clink.openapi;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.tinet.clink.openapi.exceptions.ClientException;
-import com.tinet.clink.openapi.exceptions.ServerException;
-import com.tinet.clink.openapi.request.config.tel.restrict.CreateTelRestrictRequest;
-import com.tinet.clink.openapi.request.config.tel.restrict.DeleteTelRestrictRequest;
-import com.tinet.clink.openapi.request.config.tel.restrict.DescribeTelRestrictSettingRequest;
-import com.tinet.clink.openapi.request.config.tel.restrict.ListTelRestrictRequest;
-import com.tinet.clink.openapi.request.config.tel.restrict.UpdateTelRestrictSettingRequest;
-import com.tinet.clink.openapi.response.config.tel.restrict.CreateTelRestrictResponse;
-import com.tinet.clink.openapi.response.config.tel.restrict.DeleteTelRestrictResponse;
-import com.tinet.clink.openapi.response.config.tel.restrict.DescribeTelRestrictSettingResponse;
-import com.tinet.clink.openapi.response.config.tel.restrict.ListTelRestrictResponse;
-import com.tinet.clink.openapi.response.config.tel.restrict.UpdateTelRestrictSettingResponse;
+
+import com.tinet.clink.cc.request.restrict.*;
+import com.tinet.clink.cc.response.restrict.*;
+import com.tinet.clink.core.exceptions.ClientException;
+import com.tinet.clink.core.exceptions.ServerException;
 import org.junit.Test;
 
 import java.util.Date;

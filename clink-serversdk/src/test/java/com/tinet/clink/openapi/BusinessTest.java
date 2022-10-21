@@ -2,14 +2,16 @@ package com.tinet.clink.openapi;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tinet.clink.openapi.exceptions.ClientException;
-import com.tinet.clink.openapi.exceptions.ServerException;
-import com.tinet.clink.openapi.request.business.GetBusinessRequest;
-import com.tinet.clink.openapi.request.business.ListBusinessFieldRequest;
-import com.tinet.clink.openapi.request.business.ListBusinessRequest;
-import com.tinet.clink.openapi.response.business.GetBusinessResponse;
-import com.tinet.clink.openapi.response.business.ListBusinessFieldResponse;
-import com.tinet.clink.openapi.response.business.ListBusinessResponse;
+import com.tinet.clink.core.exceptions.ClientException;
+import com.tinet.clink.crm.request.GetBusinessRequest;
+import com.tinet.clink.crm.request.ListBusinessFieldRequest;
+import com.tinet.clink.crm.request.ListBusinessRequest;
+import com.tinet.clink.crm.response.GetBusinessResponse;
+import com.tinet.clink.crm.response.ListBusinessFieldResponse;
+
+import com.tinet.clink.core.exceptions.ServerException;
+
+import com.tinet.clink.crm.response.ListBusinessResponse;
 import org.junit.Test;
 
 import java.util.HashMap;

@@ -1,13 +1,13 @@
 package com.tinet.clink.openapi.ticket;
 
+import com.tinet.clink.core.client.Client;
+import com.tinet.clink.core.client.ClientConfiguration;
 import com.tinet.clink.openapi.AbstractTest;
-import com.tinet.clink.openapi.Client;
-import com.tinet.clink.openapi.ClientConfiguration;
-import com.tinet.clink.openapi.model.Field;
-import com.tinet.clink.openapi.model.TicketFormModel;
-import com.tinet.clink.openapi.model.TicketStoreModel;
-import com.tinet.clink.openapi.request.ticket.TicketStoreRequest;
-import com.tinet.clink.openapi.response.ticket.TicketStoreResponse;
+import com.tinet.clink.ticket.model.Field;
+import com.tinet.clink.ticket.model.TicketFormModel;
+import com.tinet.clink.ticket.model.TicketStoreModel;
+import com.tinet.clink.ticket.request.TicketStoreRequest;
+import com.tinet.clink.ticket.response.TicketStoreResponse;
 import org.junit.Test;
 
 import java.io.File;

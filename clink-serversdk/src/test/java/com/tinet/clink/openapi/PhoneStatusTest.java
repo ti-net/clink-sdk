@@ -2,10 +2,11 @@ package com.tinet.clink.openapi;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tinet.clink.openapi.exceptions.ClientException;
-import com.tinet.clink.openapi.exceptions.ServerException;
-import com.tinet.clink.openapi.request.added.PhoneStatusRequest;
-import com.tinet.clink.openapi.response.added.PhoneStatusResponse;
+
+import com.tinet.clink.cc.request.added.PhoneStatusRequest;
+import com.tinet.clink.cc.response.added.PhoneStatusResponse;
+import com.tinet.clink.core.exceptions.ClientException;
+import com.tinet.clink.core.exceptions.ServerException;
 import org.junit.Test;
 
 public class PhoneStatusTest extends AbstractTest {

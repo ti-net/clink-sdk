@@ -3,7 +3,11 @@ package com.tinet.clink.openapi.exceptions;
 /**
  * @author houfc
  */
-public class ServerException extends Exception {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  ServerException extends Exception {
 
     private String requestId;
     private String code;

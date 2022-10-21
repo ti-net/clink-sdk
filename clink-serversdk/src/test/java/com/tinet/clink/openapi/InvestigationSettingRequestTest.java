@@ -1,11 +1,11 @@
 package com.tinet.clink.openapi;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.tinet.clink.openapi.exceptions.ClientException;
-import com.tinet.clink.openapi.exceptions.ServerException;
-import com.tinet.clink.openapi.request.config.investigation.InvestigationSettingRequest;
-import com.tinet.clink.openapi.response.config.client.BindClientTelConfirmedResponse;
-import com.tinet.clink.openapi.response.config.investigation.InvestigationSettingResponse;
+
+import com.tinet.clink.cc.request.investigation.InvestigationSettingRequest;
+import com.tinet.clink.cc.response.investigation.InvestigationSettingResponse;
+import com.tinet.clink.core.exceptions.ClientException;
+import com.tinet.clink.core.exceptions.ServerException;
 import org.junit.Test;
 
 /**

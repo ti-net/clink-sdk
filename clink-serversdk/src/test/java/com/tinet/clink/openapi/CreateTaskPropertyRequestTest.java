@@ -1,10 +1,11 @@
 package com.tinet.clink.openapi;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tinet.clink.openapi.model.CreateTaskInventoryModel;
-import com.tinet.clink.openapi.model.TaskInventoryCustomizeFieldModel;
-import com.tinet.clink.openapi.request.call.task.CreateTaskPropertyRequest;
-import com.tinet.clink.openapi.response.call.task.CreateTaskPropertyResponse;
+
+import com.tinet.clink.cc.model.CreateTaskInventoryModel;
+import com.tinet.clink.cc.model.TaskInventoryCustomizeFieldModel;
+import com.tinet.clink.cc.request.task.CreateTaskPropertyRequest;
+import com.tinet.clink.cc.response.task.CreateTaskPropertyResponse;
 import org.junit.Test;
 
 /**

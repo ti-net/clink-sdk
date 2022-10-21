@@ -10,7 +10,11 @@ import com.tinet.clink.openapi.utils.HttpMethodType;
  * @date: 2022/3/28
  * @description:
  */
-public class InvestigationSettingRequest extends AbstractRequestModel<InvestigationSettingResponse> {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  InvestigationSettingRequest extends AbstractRequestModel<InvestigationSettingResponse> {
 
 
     public InvestigationSettingRequest() {

@@ -12,7 +12,11 @@ import com.tinet.clink.openapi.utils.HttpMethodType;
  * @author wangli
  * @date 2022-03-10 5:36 PM
  */
-public class ListLoginLogsRequest extends AbstractRequestModel<ListLoginLogsResponse> {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  ListLoginLogsRequest extends AbstractRequestModel<ListLoginLogsResponse> {
 
     /**
      * 用户类型 管理员 座席

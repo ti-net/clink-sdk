@@ -9,7 +9,11 @@ import com.tinet.clink.openapi.utils.HttpMethodType;
  * @author Chenjf
  * @date 2020/2/24 15:32
  **/
-public class StatClientStatusRequest extends AbstractStatRequest<StatClientStatusResponse> {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  StatClientStatusRequest extends AbstractStatRequest<StatClientStatusResponse> {
 
     private Integer startHour;
 

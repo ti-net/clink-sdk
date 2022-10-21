@@ -16,7 +16,11 @@ import java.util.Map;
  * @author wangpw
  * @date 2021年5月14日
  */
-public class ChatVisitorOpenSessionRequest extends AbstractRequestModel<ChatVisitorOpenSessionResponse> {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  ChatVisitorOpenSessionRequest extends AbstractRequestModel<ChatVisitorOpenSessionResponse> {
 
     public ChatVisitorOpenSessionRequest() {
         super(PathEnum.ChatVisitorOpenSession.value(), HttpMethodType.POST);

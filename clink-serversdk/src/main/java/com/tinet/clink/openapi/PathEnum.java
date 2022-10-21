@@ -3,7 +3,9 @@ package com.tinet.clink.openapi;
 /**
  * @author wangll
  * @date 2019/2/19
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
  */
+@Deprecated
 public enum PathEnum {
     //  座席设置
     CreateClient("create_client"),
@@ -240,6 +242,7 @@ public enum PathEnum {
     //-------------------知识库API--------
 
     //-------------------机器人知识库API--------
+    PageStandardQuestion("page_standard_question"),
     ListStandardQuestion("list_standard_question"),
     CreateStandardQuestion("create_standard_question"),
     UpdateStandardQuestion("update_standard_question"),
@@ -290,7 +293,10 @@ public enum PathEnum {
     ListTicketFields("list_ticket_fields"),
     // 更新工单字段选项值
     updateTicketFieldProperty("update_ticket_field_property"),
-
+    // 关闭工单
+    CloseTicket("close_ticket"),
+    // 完成工单
+    FinishTicket("finish_ticket"),
     /**
      * 黑白名单相关请求
      */

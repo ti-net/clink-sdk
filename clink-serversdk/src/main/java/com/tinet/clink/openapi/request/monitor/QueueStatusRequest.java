@@ -12,7 +12,11 @@ import com.tinet.clink.openapi.utils.HttpMethodType;
  * @author wangll
  * @date 2019/11/20
  **/
-public class QueueStatusRequest extends AbstractRequestModel<QueueStatusResponse> {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  QueueStatusRequest extends AbstractRequestModel<QueueStatusResponse> {
 
     /**
      * 队列号数组

@@ -7,7 +7,11 @@ package com.tinet.clink.openapi.constant;
  * @author yinzk
  * @date 2022/7/7
  */
-public class QueueStatusScope {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  QueueStatusScope {
     /**
      * 全部
      */

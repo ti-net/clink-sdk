@@ -6,7 +6,11 @@ package com.tinet.clink.openapi.response.config.customer;
  * @author jiangyang
  * @date 2019/11/13
  */
-public class CustomerField {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  CustomerField {
 
     /**
      * 字段在天润系统中的不变属性，即id

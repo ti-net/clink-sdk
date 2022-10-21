@@ -6,7 +6,11 @@ package com.tinet.clink.openapi.model;
  * @author liuhy
  * @date: 2020/11/22
  **/
-public class WorkflowCategoryModel {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  WorkflowCategoryModel {
 
     /**
      * 工作流类别的id

@@ -15,7 +15,11 @@ import java.util.Objects;
  * @date 2021-12-13 10:31 上午
  */
 
-public class CreateTelRestrictRequest extends AbstractRequestModel<CreateTelRestrictResponse> {
+/** 
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated  
+public class  CreateTelRestrictRequest extends AbstractRequestModel<CreateTelRestrictResponse> {
 
 
     /**
