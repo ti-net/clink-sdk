@@ -85,6 +85,16 @@ public class ListTicketRequest extends AbstractRequestModel<ListTicketResponse> 
     private String lastReminderTimeEnd;
 
     /**
+     * 更新时间起
+     */
+    private String updateTimeStart;
+
+    /**
+     * 更新时间止
+     */
+    private String updateTimeEnd;
+
+    /**
      * 催单次数
      */
     private Integer reminderCount;
@@ -261,6 +271,28 @@ public class ListTicketRequest extends AbstractRequestModel<ListTicketResponse> 
         this.lastReminderTimeEnd = lastReminderTimeEnd;
         if (lastReminderTimeEnd != null) {
             putQueryParameter("lastReminderTimeEnd", lastReminderTimeEnd);
+        }
+    }
+
+    public String getUpdateTimeStart() {
+        return updateTimeStart;
+    }
+
+    public void setUpdateTimeStart(String updateTimeStart) {
+        this.updateTimeStart = updateTimeStart;
+        if (updateTimeStart != null) {
+            putQueryParameter("updateTimeStart", updateTimeStart);
+        }
+    }
+
+    public String getUpdateTimeEnd() {
+        return updateTimeEnd;
+    }
+
+    public void setUpdateTimeEnd(String updateTimeEnd) {
+        this.updateTimeEnd = updateTimeEnd;
+        if (updateTimeEnd != null) {
+            putQueryParameter("updateTimeEnd", updateTimeEnd);
         }
     }
 
