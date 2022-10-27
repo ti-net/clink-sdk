@@ -34,6 +34,11 @@ public class TicketFlowModel {
      */
     private Field[] customizeSystemFields;
 
+    /**
+     * 下一节点 处理人 Id
+     */
+    private Integer nextHandlerId;
+
 
     public Integer getTicketId() { return ticketId; }
 
@@ -54,4 +59,12 @@ public class TicketFlowModel {
     public Field[] getCustomizeSystemFields() { return customizeSystemFields; }
 
     public void setCustomizeSystemFields(Field[] customizeSystemFields) { this.customizeSystemFields = customizeSystemFields; }
+
+    public Integer getNextHandlerId() {
+        return nextHandlerId;
+    }
+
+    public void setNextHandlerId(Integer nextHandlerId) {
+        this.nextHandlerId = nextHandlerId;
+    }
 }
