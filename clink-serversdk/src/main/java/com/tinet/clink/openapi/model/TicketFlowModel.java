@@ -26,6 +26,11 @@ public class  TicketFlowModel {
     private Integer handlerId;
 
     /**
+     * 下一节点 处理人 Id
+     */
+    private Integer nextHandlerId;
+
+    /**
      * 任务id
      */
     private String taskId;
@@ -60,4 +65,12 @@ public class  TicketFlowModel {
     public Field[] getCustomizeSystemFields() { return customizeSystemFields; }
 
     public void setCustomizeSystemFields(Field[] customizeSystemFields) { this.customizeSystemFields = customizeSystemFields; }
+
+    public Integer getNextHandlerId() {
+        return nextHandlerId;
+    }
+
+    public void setNextHandlerId(Integer nextHandlerId) {
+        this.nextHandlerId = nextHandlerId;
+    }
 }
