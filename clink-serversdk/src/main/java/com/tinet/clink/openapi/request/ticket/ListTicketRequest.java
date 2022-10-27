@@ -5,6 +5,8 @@ import com.tinet.clink.openapi.request.AbstractRequestModel;
 import com.tinet.clink.openapi.response.ticket.ListTicketResponse;
 import com.tinet.clink.openapi.utils.HttpMethodType;
 
+import java.util.Map;
+
 /**
  * 工单记录查询
  *
@@ -112,6 +114,21 @@ public class  ListTicketRequest extends AbstractRequestModel<ListTicketResponse>
      * 查询条数，范围 10-100，默认值为 10
      */
     private Integer limit;
+
+    /**
+     * 节点唯一标识
+     */
+    private String taskKey;
+
+    /**
+     * 自定义字段集合
+     */
+    private Map<String, String> fields;
+
+    /**
+     * 自定义系统字段集合
+     */
+    private Map<String, String> systemFields;
 
 
     public Integer getId() {
@@ -320,6 +337,39 @@ public class  ListTicketRequest extends AbstractRequestModel<ListTicketResponse>
         this.limit = limit;
         if (limit != null) {
             putQueryParameter("limit", limit);
+        }
+    }
+
+    public String getTaskKey() {
+        return taskKey;
+    }
+
+    public void setTaskKey(String taskKey) {
+        this.taskKey = taskKey;
+        if (taskKey != null) {
+            putQueryParameter("taskKey", taskKey);
+        }
+    }
+
+    public Map<String, String> getFields() {
+        return fields;
+    }
+
+    public void setFields(Map<String, String> fields) {
+        this.fields = fields;
+        if (fields != null) {
+            putQueryParameter("fields", fields);
+        }
+    }
+
+    public Map<String, String> getSystemFields() {
+        return systemFields;
+    }
+
+    public void setSystemFields(Map<String, String> systemFields) {
+        this.systemFields = systemFields;
+        if (systemFields != null) {
+            putQueryParameter("systemFields", systemFields);
         }
     }
 
