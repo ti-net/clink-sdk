@@ -1,6 +1,8 @@
 package com.tinet.clink.openapi;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.tinet.clink.core.client.Client;
+import com.tinet.clink.core.client.ClientConfiguration;
 import org.junit.Before;
 
 /**

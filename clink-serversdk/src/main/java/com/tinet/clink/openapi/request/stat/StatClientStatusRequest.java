@@ -9,7 +9,40 @@ import com.tinet.clink.openapi.utils.HttpMethodType;
  * @author Chenjf
  * @date 2020/2/24 15:32
  **/
-public class StatClientStatusRequest extends AbstractStatRequest<StatClientStatusResponse> {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  StatClientStatusRequest extends AbstractStatRequest<StatClientStatusResponse> {
+
+    private Integer startHour;
+
+    private Integer endHour;
+
+
+    public void setStartHour(Integer startHour) {
+        this.startHour = startHour;
+
+        if (startHour != null) {
+            putQueryParameter("startHour", startHour);
+        }
+    }
+
+    public void setEndHour(Integer endHour) {
+        this.endHour = endHour;
+
+        if (endHour != null) {
+            putQueryParameter("endHour", endHour);
+        }
+    }
+
+    public Integer getEndHour() {
+        return endHour;
+    }
+
+    public Integer getStartHour() {
+        return startHour;
+    }
 
     @Override
     public Class<StatClientStatusResponse> getResponseClass() {

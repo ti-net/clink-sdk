@@ -11,7 +11,11 @@ import com.tinet.clink.openapi.utils.HttpMethodType;
  * @author wangpw
  * @date 2021年5月14日
  */
-public class ChatClientOpenSessionRequest extends AbstractRequestModel<ChatClientOpenSessionResponse> {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  ChatClientOpenSessionRequest extends AbstractRequestModel<ChatClientOpenSessionResponse> {
 
     public ChatClientOpenSessionRequest() {
         super(PathEnum.ChatClientOpenSession.value(), HttpMethodType.POST);

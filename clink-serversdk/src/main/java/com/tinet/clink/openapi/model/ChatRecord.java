@@ -6,7 +6,11 @@ import java.util.Map;
 /**
  * 用于封装返回的ChatRecord记录数据model
  */
-public class ChatRecord {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  ChatRecord {
 
     private String mainUniqueId;                // 主会话唯一标识
     private String visitorId;                   // visitor 访客id，此时用系统生成的uuid进行标识，关联唯一的访客
@@ -133,6 +137,63 @@ public class ChatRecord {
      * 满意度发起方式 1：座席主动发起、2：系统邀评、3: 访客主动发起
      */
     private Integer invitationInitiator;
+
+    /**
+     * 会话发起方式
+     */
+    private Integer openType;
+
+    /**
+     * 排队时间
+     */
+    private Long queueTime;
+
+    /**
+     * 会话类型
+     * 1 接入会话
+     * 2 未接入会话
+     * 3 有效会话
+     * 4 无效会话
+     * 5 留言会话
+     */
+    private Integer sessionType;
+
+    /**
+     * 首次响应时长
+     */
+    private Integer firstResponseDuration;
+
+    public Integer getOpenType() {
+        return openType;
+    }
+
+    public void setOpenType(Integer openType) {
+        this.openType = openType;
+    }
+
+    public Long getQueueTime() {
+        return queueTime;
+    }
+
+    public void setQueueTime(Long queueTime) {
+        this.queueTime = queueTime;
+    }
+
+    public Integer getSessionType() {
+        return sessionType;
+    }
+
+    public void setSessionType(Integer sessionType) {
+        this.sessionType = sessionType;
+    }
+
+    public Integer getFirstResponseDuration() {
+        return firstResponseDuration;
+    }
+
+    public void setFirstResponseDuration(Integer firstResponseDuration) {
+        this.firstResponseDuration = firstResponseDuration;
+    }
 
     public Integer getInvitationInitiator() { return invitationInitiator; }
 

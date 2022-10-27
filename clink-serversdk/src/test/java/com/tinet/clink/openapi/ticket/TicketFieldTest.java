@@ -2,13 +2,13 @@ package com.tinet.clink.openapi.ticket;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.tinet.clink.core.exceptions.ClientException;
 import com.tinet.clink.openapi.AbstractTest;
-import com.tinet.clink.openapi.exceptions.ClientException;
-import com.tinet.clink.openapi.exceptions.ServerException;
-import com.tinet.clink.openapi.request.ticket.ListFieldsRequest;
-import com.tinet.clink.openapi.request.ticket.UpdateFieldPropertyRequest;
-import com.tinet.clink.openapi.response.ticket.ListFieldsResponse;
-import com.tinet.clink.openapi.response.ticket.UpdateFieldPropertyResponse;
+import com.tinet.clink.core.exceptions.ServerException;
+import com.tinet.clink.ticket.request.ListFieldsRequest;
+import com.tinet.clink.ticket.request.UpdateFieldPropertyRequest;
+import com.tinet.clink.ticket.response.ListFieldsResponse;
+import com.tinet.clink.ticket.response.UpdateFieldPropertyResponse;
 import org.junit.Test;
 
 import java.util.Arrays;

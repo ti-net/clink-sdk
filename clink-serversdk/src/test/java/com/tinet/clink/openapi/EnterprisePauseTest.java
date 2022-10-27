@@ -1,16 +1,17 @@
 package com.tinet.clink.openapi;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.tinet.clink.openapi.exceptions.ClientException;
-import com.tinet.clink.openapi.exceptions.ServerException;
-import com.tinet.clink.openapi.request.config.enterprise.pause.CreateEnterprisePausesRequest;
-import com.tinet.clink.openapi.request.config.enterprise.pause.DeleteEnterprisePausesRequest;
-import com.tinet.clink.openapi.request.config.enterprise.pause.ListEnterprisePausesRequest;
-import com.tinet.clink.openapi.request.config.enterprise.pause.UpdateEnterprisePausesRequest;
-import com.tinet.clink.openapi.response.config.enterprise.pause.CreateEnterprisePausesResponse;
-import com.tinet.clink.openapi.response.config.enterprise.pause.DeleteEnterprisePausesResponse;
-import com.tinet.clink.openapi.response.config.enterprise.pause.ListEnterprisePausesResponse;
-import com.tinet.clink.openapi.response.config.enterprise.pause.UpdateEnterprisePausesResponse;
+
+import com.tinet.clink.cc.request.pause.CreateEnterprisePausesRequest;
+import com.tinet.clink.cc.request.pause.DeleteEnterprisePausesRequest;
+import com.tinet.clink.cc.request.pause.ListEnterprisePausesRequest;
+import com.tinet.clink.cc.request.pause.UpdateEnterprisePausesRequest;
+import com.tinet.clink.cc.response.pause.CreateEnterprisePausesResponse;
+import com.tinet.clink.cc.response.pause.DeleteEnterprisePausesResponse;
+import com.tinet.clink.cc.response.pause.ListEnterprisePausesResponse;
+import com.tinet.clink.cc.response.pause.UpdateEnterprisePausesResponse;
+import com.tinet.clink.core.exceptions.ClientException;
+import com.tinet.clink.core.exceptions.ServerException;
 import org.junit.Test;
 
 public class EnterprisePauseTest extends AbstractTest {

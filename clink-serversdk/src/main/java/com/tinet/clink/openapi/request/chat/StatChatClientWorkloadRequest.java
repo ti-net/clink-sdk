@@ -11,7 +11,11 @@ import com.tinet.clink.openapi.utils.HttpMethodType;
  * @author ningkun
  * @date 2020/11/25
  */
-public class StatChatClientWorkloadRequest extends AbstractStatRequest<StatChatClientWorkloadResponse> {
+/** 
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated  
+public class  StatChatClientWorkloadRequest extends AbstractStatRequest<StatChatClientWorkloadResponse> {
 
     /**
      * 统计方式 2-汇总 3-分时累计

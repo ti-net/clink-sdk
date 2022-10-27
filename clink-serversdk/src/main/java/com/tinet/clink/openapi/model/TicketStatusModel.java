@@ -6,7 +6,11 @@ package com.tinet.clink.openapi.model;
  * @author liuhy
  * @date: 2020/8/25
  **/
-public class TicketStatusModel {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  TicketStatusModel {
 
     /**
      * 处理状态 0:待领取 2:处理中

@@ -11,7 +11,11 @@ import com.tinet.clink.openapi.utils.HttpMethodType;
  * @author huwk
  * @date 2018/10/23
  **/
-public class ListCdrIbsRequest extends AbstractRequestModel<ListCdrIbsResponse> {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  ListCdrIbsRequest extends AbstractRequestModel<ListCdrIbsResponse> {
 
     /**
      * 队列号，要求只能是 4-6 位数字

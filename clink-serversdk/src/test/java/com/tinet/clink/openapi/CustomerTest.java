@@ -2,12 +2,14 @@ package com.tinet.clink.openapi;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tinet.clink.openapi.exceptions.ClientException;
-import com.tinet.clink.openapi.exceptions.ServerException;
-import com.tinet.clink.openapi.model.CustomerSearchResponse;
-import com.tinet.clink.openapi.model.IdValue;
-import com.tinet.clink.openapi.request.config.customer.*;
-import com.tinet.clink.openapi.response.config.customer.*;
+import com.tinet.clink.core.exceptions.ClientException;
+import com.tinet.clink.crm.model.CustomerSearchResponse;
+import com.tinet.clink.crm.model.IdValue;
+import com.tinet.clink.crm.request.customer.*;
+import com.tinet.clink.crm.response.customer.*;
+
+import com.tinet.clink.core.exceptions.ServerException;
+
 import org.junit.Test;
 
 import java.util.HashMap;

@@ -1,11 +1,11 @@
 package com.tinet.clink.openapi.ticket;
 
+import com.tinet.clink.core.client.Client;
+import com.tinet.clink.core.client.ClientConfiguration;
 import com.tinet.clink.openapi.AbstractTest;
-import com.tinet.clink.openapi.Client;
-import com.tinet.clink.openapi.ClientConfiguration;
-import com.tinet.clink.openapi.model.TicketCommentModel;
-import com.tinet.clink.openapi.request.ticket.TicketCommentRequest;
-import com.tinet.clink.openapi.response.ticket.TicketCommentResponse;
+import com.tinet.clink.ticket.model.TicketCommentModel;
+import com.tinet.clink.ticket.request.TicketCommentRequest;
+import com.tinet.clink.ticket.response.TicketCommentResponse;
 import org.junit.Test;
 
 import java.io.File;

@@ -11,7 +11,11 @@ import com.tinet.clink.openapi.utils.HttpMethodType;
  * @author feizq
  * @date 2021/11/29
  **/
-public class DeleteArticleRequest extends AbstractRequestModel<DeleteArticleResponse> {
+/** 
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated  
+public class  DeleteArticleRequest extends AbstractRequestModel<DeleteArticleResponse> {
 
     /**
      * 文章Id

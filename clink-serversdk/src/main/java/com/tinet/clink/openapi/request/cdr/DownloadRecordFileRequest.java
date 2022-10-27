@@ -11,7 +11,11 @@ import com.tinet.clink.openapi.utils.HttpMethodType;
  * @author Wangyl
  * @date 2019/7/9
  */
-public class DownloadRecordFileRequest extends AbstractRequestModel<DownloadRecordFileResponse> {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  DownloadRecordFileRequest extends AbstractRequestModel<DownloadRecordFileResponse> {
 
     /**
      * 通话记录唯一标识

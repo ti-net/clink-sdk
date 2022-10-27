@@ -1,7 +1,7 @@
 package com.tinet.clink.openapi.chat;
 
-import com.tinet.clink.openapi.Client;
-import com.tinet.clink.openapi.ClientConfiguration;
+import com.tinet.clink.core.client.Client;
+import com.tinet.clink.core.client.ClientConfiguration;
 import org.junit.Before;
 
 public class ChatAbstractTest {

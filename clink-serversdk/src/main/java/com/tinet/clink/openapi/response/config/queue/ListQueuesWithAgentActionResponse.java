@@ -5,7 +5,11 @@ import com.tinet.clink.openapi.response.ResponseModel;
 
 import java.util.List;
 
-public class ListQueuesWithAgentActionResponse extends ResponseModel {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  ListQueuesWithAgentActionResponse extends ResponseModel {
 
 	private List<QueueWithAgentActionModel> queues;
 

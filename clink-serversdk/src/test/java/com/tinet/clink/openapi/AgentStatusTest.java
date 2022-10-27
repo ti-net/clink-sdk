@@ -1,10 +1,11 @@
 package com.tinet.clink.openapi;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.tinet.clink.openapi.exceptions.ClientException;
-import com.tinet.clink.openapi.exceptions.ServerException;
-import com.tinet.clink.openapi.request.monitor.AgentStatusRequest;
-import com.tinet.clink.openapi.response.monitor.AgentStatusResponse;
+import com.tinet.clink.cc.request.monitor.AgentStatusRequest;
+import com.tinet.clink.cc.response.monitor.AgentStatusResponse;
+import com.tinet.clink.core.exceptions.ClientException;
+import com.tinet.clink.core.exceptions.ServerException;
+
 import org.junit.Test;
 
 public class AgentStatusTest extends AbstractTest {

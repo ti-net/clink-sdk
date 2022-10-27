@@ -11,7 +11,11 @@ import java.util.List;
  * @author wangli
  * @date 2022-03-09 5:09 PM
  */
-public class ListOperationLogsResponse extends PagedResponse {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  ListOperationLogsResponse extends PagedResponse {
 
     /**
      * 座席操作日志列表

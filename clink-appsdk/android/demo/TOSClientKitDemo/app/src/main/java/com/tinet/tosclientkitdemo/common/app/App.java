@@ -57,7 +57,6 @@ public class App extends Application {
         long enterpriseId = info == null ? PlatformDefaultInfo.enterpriseId : info.getEnterpriseId();
         PlatformDefine define = info == null ? PlatformDefaultInfo.define : info.getPlatform();
 
-
         TOSInitOption tOSInitOption = new TOSInitOption();
         tOSInitOption.setAccessId(accessId);
         tOSInitOption.setAccessSecret(accessSecret);

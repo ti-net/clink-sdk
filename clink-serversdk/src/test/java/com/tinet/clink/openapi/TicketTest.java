@@ -1,10 +1,10 @@
 package com.tinet.clink.openapi;
 
-import com.tinet.clink.openapi.model.TicketHistoryForm;
-import com.tinet.clink.openapi.request.ticket.GetTicketDetailRequest;
-import com.tinet.clink.openapi.request.ticket.ListTicketRequest;
-import com.tinet.clink.openapi.response.ticket.GetTicketDetailResponse;
-import com.tinet.clink.openapi.response.ticket.ListTicketResponse;
+import com.tinet.clink.ticket.model.TicketHistoryForm;
+import com.tinet.clink.ticket.request.GetTicketDetailRequest;
+import com.tinet.clink.ticket.request.ListTicketRequest;
+import com.tinet.clink.ticket.response.GetTicketDetailResponse;
+import com.tinet.clink.ticket.response.ListTicketResponse;
 import org.junit.Test;
 
 import java.util.Objects;

@@ -1,15 +1,16 @@
 package com.tinet.clink.openapi.kb;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tinet.clink.openapi.model.CorpusRecordModel;
-import com.tinet.clink.openapi.request.kb.CreateCorpusRequest;
-import com.tinet.clink.openapi.request.kb.DeleteCorpusRequest;
-import com.tinet.clink.openapi.request.kb.ListCorporaRequest;
-import com.tinet.clink.openapi.request.kb.UpdateCorpusRequest;
-import com.tinet.clink.openapi.response.kb.CreateCorpusResponse;
-import com.tinet.clink.openapi.response.kb.DeleteCorpusResponse;
-import com.tinet.clink.openapi.response.kb.ListCorporaResponse;
-import com.tinet.clink.openapi.response.kb.UpdateCorpusResponse;
+
+import com.tinet.clink.kb.model.CorpusRecordModel;
+import com.tinet.clink.kb.request.CreateCorpusRequest;
+import com.tinet.clink.kb.request.DeleteCorpusRequest;
+import com.tinet.clink.kb.request.ListCorporaRequest;
+import com.tinet.clink.kb.request.UpdateCorpusRequest;
+import com.tinet.clink.kb.response.CreateCorpusResponse;
+import com.tinet.clink.kb.response.DeleteCorpusResponse;
+import com.tinet.clink.kb.response.ListCorporaResponse;
+import com.tinet.clink.kb.response.UpdateCorpusResponse;
 import org.junit.Test;
 
 import java.util.ArrayList;

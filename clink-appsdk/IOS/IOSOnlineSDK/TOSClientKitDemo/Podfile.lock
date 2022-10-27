@@ -6,7 +6,19 @@ PODS:
   - AFNetworking/Reachability (4.0.1)
   - AFNetworking/Security (4.0.1)
   - AFNetworking/Serialization (4.0.1)
-  - Bugly (2.5.91)
+  - BaiduNaviKit-All (6.5.3):
+    - BaiduNaviKit-All/Base (= 6.5.3)
+    - BaiduNaviKit-All/Map (= 6.5.3)
+    - BaiduNaviKit-All/Navi (= 6.5.3)
+    - BaiduNaviKit-All/WalkNavi (= 6.5.3)
+  - BaiduNaviKit-All/Base (6.5.3)
+  - BaiduNaviKit-All/Map (6.5.3):
+    - BaiduNaviKit-All/Base
+  - BaiduNaviKit-All/Navi (6.5.3):
+    - BaiduNaviKit-All/Map
+  - BaiduNaviKit-All/WalkNavi (6.5.3):
+    - BaiduNaviKit-All/Map
+  - Bugly (2.5.93)
   - Masonry (1.1.0)
   - MBProgressHUD (1.2.0)
   - MJRefresh (3.7.5)
@@ -15,7 +27,7 @@ PODS:
   - RTRootNavigationController (0.8.0):
     - RTRootNavigationController/Core (= 0.8.0)
   - RTRootNavigationController/Core (0.8.0)
-  - TOSClientKit (1.5.0)
+  - TOSClientKit (1.5.3)
   - TTGTagCollectionView (2.1.0)
   - TZImagePickerController (3.8.3):
     - TZImagePickerController/Basic (= 3.8.3)
@@ -33,6 +45,7 @@ PODS:
   - ZYCornerRadius (1.0.2)
 
 DEPENDENCIES:
+  - BaiduNaviKit-All
   - Bugly
   - Masonry
   - MBProgressHUD
@@ -40,7 +53,7 @@ DEPENDENCIES:
   - Reachability
   - ReactiveObjC
   - RTRootNavigationController
-  - TOSClientKit (~> 1.5.0)
+  - TOSClientKit
   - TTGTagCollectionView
   - TZImagePickerController
   - WMPageController
@@ -53,6 +66,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - AFNetworking
+    - BaiduNaviKit-All
     - Bugly
     - Masonry
     - MBProgressHUD
@@ -72,14 +86,15 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
-  Bugly: afe841bba2ea6de6d432a3c125240a5e75949c55
+  BaiduNaviKit-All: a015a55e714c1106e1cb55073c038b3887d8a15d
+  Bugly: b8715e6ec4004b7f7fbffab0643ba80545aee3da
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
   RTRootNavigationController: 36c6301870f0467f89d69f4286795340b537d473
-  TOSClientKit: 3e66e25fbe1cd8291f3c05576e547891e9367da9
+  TOSClientKit: 8f8ca4b4d391000be1c49e4b81769f8fbceb3902
   TTGTagCollectionView: a2a8668c659b39e7a6ffd6590475ea53a7ae95f7
   TZImagePickerController: e9909edbadf7381140efc5b5c9f5bdbfd630f7d4
   WMPageController: 0c7624d2b48e4f1ab92371688cf6744ed701575d
@@ -89,6 +104,6 @@ SPEC CHECKSUMS:
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
   ZYCornerRadius: f0af817be7805b5c63d793042ca7a03f81e14069
 
-PODFILE CHECKSUM: 262c99f5742697782292e4f6959c594e104a68a1
+PODFILE CHECKSUM: 4c9e76d68d386ed4ebff373d086ee5eb47921a5f
 
 COCOAPODS: 1.11.3

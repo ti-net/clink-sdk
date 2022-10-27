@@ -9,7 +9,11 @@ import java.util.Date;
  * @author: wangpw
  * @date: 2021/5/11
  */
-public class ChatMessageSyncModel {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  ChatMessageSyncModel {
 
     /**
      * 消息发送方，1：座席、2：访客、3：机器人、4：系统

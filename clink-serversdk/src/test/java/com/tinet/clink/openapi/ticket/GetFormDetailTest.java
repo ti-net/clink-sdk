@@ -1,11 +1,11 @@
 package com.tinet.clink.openapi.ticket;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.tinet.clink.core.client.Client;
+import com.tinet.clink.core.client.ClientConfiguration;
 import com.tinet.clink.openapi.AbstractTest;
-import com.tinet.clink.openapi.Client;
-import com.tinet.clink.openapi.ClientConfiguration;
-import com.tinet.clink.openapi.request.ticket.GetFormDetailRequest;
-import com.tinet.clink.openapi.response.ticket.GetFormDetailResponse;
+import com.tinet.clink.ticket.request.GetFormDetailRequest;
+import com.tinet.clink.ticket.response.GetFormDetailResponse;
 import org.junit.Test;
 
 /**

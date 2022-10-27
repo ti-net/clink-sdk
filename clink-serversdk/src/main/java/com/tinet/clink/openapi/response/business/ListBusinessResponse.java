@@ -10,7 +10,11 @@ import java.util.Map;
  * @author liuhy
  * @date: 2020/7/29
  **/
-public class ListBusinessResponse extends PagedResponse {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  ListBusinessResponse extends PagedResponse {
 
     /**
      * 客户资料列表 --Map中存放每一条客户资料的字段值

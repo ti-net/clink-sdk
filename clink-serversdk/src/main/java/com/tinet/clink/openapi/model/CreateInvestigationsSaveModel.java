@@ -7,7 +7,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @date 2022-04-06 6:04 下午
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CreateInvestigationsSaveModel {
+/** 
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated  
+public class  CreateInvestigationsSaveModel {
 
     /**
      * 唯一标识

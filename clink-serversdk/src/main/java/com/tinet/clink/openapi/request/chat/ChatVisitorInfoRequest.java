@@ -9,7 +9,11 @@ import com.tinet.clink.openapi.utils.HttpMethodType;
  * @author midong
  * @date 2022/6/8 15:48
  */
-public class ChatVisitorInfoRequest extends AbstractRequestModel<ChatVisitorInfoResponse> {
+/** 
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated  
+public class  ChatVisitorInfoRequest extends AbstractRequestModel<ChatVisitorInfoResponse> {
     private String visitorId;
     private String accessId;
 

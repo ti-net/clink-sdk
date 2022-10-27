@@ -1,12 +1,13 @@
 package com.tinet.clink.openapi.kb;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tinet.clink.openapi.request.kb.CreateCategoryRequest;
-import com.tinet.clink.openapi.request.kb.DeleteCategoryRequest;
-import com.tinet.clink.openapi.request.kb.UpdateCategoryRequest;
-import com.tinet.clink.openapi.response.kb.CreateCategoryResponse;
-import com.tinet.clink.openapi.response.kb.DeleteCategoryResponse;
-import com.tinet.clink.openapi.response.kb.UpdateCategoryResponse;
+
+import com.tinet.clink.kb.request.CreateCategoryRequest;
+import com.tinet.clink.kb.request.DeleteCategoryRequest;
+import com.tinet.clink.kb.request.UpdateCategoryRequest;
+import com.tinet.clink.kb.response.CreateCategoryResponse;
+import com.tinet.clink.kb.response.DeleteCategoryResponse;
+import com.tinet.clink.kb.response.UpdateCategoryResponse;
 import org.junit.Test;
 
 /**

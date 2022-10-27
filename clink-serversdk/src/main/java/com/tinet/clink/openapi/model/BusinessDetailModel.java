@@ -10,7 +10,11 @@ import java.util.Date;
  * @author liuhy
  * @date: 2020/12/28
  **/
-public class BusinessDetailModel {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  BusinessDetailModel {
 
     /**
      * 业务记录id

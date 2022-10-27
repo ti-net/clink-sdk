@@ -5,23 +5,13 @@ import java.util.List;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tinet.clink.openapi.exceptions.ClientException;
-import com.tinet.clink.openapi.exceptions.ServerException;
-import com.tinet.clink.openapi.model.QueueMemberModel;
-import com.tinet.clink.openapi.model.QueueSearchResultModel;
-import com.tinet.clink.openapi.model.QueueWithAgentActionModel;
-import com.tinet.clink.openapi.request.config.queue.CreateQueueRequest;
-import com.tinet.clink.openapi.request.config.queue.DeleteQueueRequest;
-import com.tinet.clink.openapi.request.config.queue.DescribeQueueRequest;
-import com.tinet.clink.openapi.request.config.queue.ListQueuesRequest;
-import com.tinet.clink.openapi.request.config.queue.ListQueuesWithAgentActionRequest;
-import com.tinet.clink.openapi.request.config.queue.UpdateQueueRequest;
-import com.tinet.clink.openapi.response.config.queue.CreateQueueResponse;
-import com.tinet.clink.openapi.response.config.queue.DeleteQueueResponse;
-import com.tinet.clink.openapi.response.config.queue.DescribeQueueResponse;
-import com.tinet.clink.openapi.response.config.queue.ListQueuesResponse;
-import com.tinet.clink.openapi.response.config.queue.ListQueuesWithAgentActionResponse;
-import com.tinet.clink.openapi.response.config.queue.UpdateQueueResponse;
+import com.tinet.clink.cc.model.QueueMemberModel;
+import com.tinet.clink.cc.model.QueueSearchResultModel;
+import com.tinet.clink.cc.model.QueueWithAgentActionModel;
+import com.tinet.clink.cc.request.queue.*;
+import com.tinet.clink.cc.response.queue.*;
+import com.tinet.clink.core.exceptions.ClientException;
+import com.tinet.clink.core.exceptions.ServerException;
 
 import org.junit.Test;
 

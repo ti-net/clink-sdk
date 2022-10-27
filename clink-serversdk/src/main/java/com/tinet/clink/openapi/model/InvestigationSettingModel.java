@@ -10,7 +10,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @date 2018/08/27
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class InvestigationSettingModel {
+/** 
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated  
+public class  InvestigationSettingModel {
     /**
      * 自动执行开关，0：关闭、1：开启
      */

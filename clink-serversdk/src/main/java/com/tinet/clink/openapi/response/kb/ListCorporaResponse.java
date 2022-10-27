@@ -12,7 +12,11 @@ import java.util.List;
  * @author feizq
  * @date 2022/07/26
  **/
-public class ListCorporaResponse extends ResponseModel {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  ListCorporaResponse extends ResponseModel {
 
     private List<CorpusModel> corpora;
 

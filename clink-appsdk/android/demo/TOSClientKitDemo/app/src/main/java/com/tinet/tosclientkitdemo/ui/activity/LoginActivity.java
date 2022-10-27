@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.HideReturnsTransformationMethod;
@@ -53,6 +54,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     private ImageView ivTogglePassword;
     private boolean isShowAccessSecret = false;
 
+    final static int COUNTS = 4;// 点击次数
+    final static long DURATION = 1000;// 规定有效时间
+    long[] mHits = new long[COUNTS];
+    private boolean isClick;
+
+
     @Override
     protected int getLayoutId(@Nullable Bundle savedInstanceState) {
         return R.layout.activity_login;
@@ -70,6 +77,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         ivTogglePassword = findViewById(R.id.iv_toggle_password);
         ivTogglePassword.setVisibility(View.GONE);
         ivTogglePassword.setOnClickListener(this);
+
+        findViewById(R.id.iv_logo).setOnClickListener(this);
 
         tvEnter = findViewById(R.id.tv_enter);
         tvEnter.setOnClickListener(this);
@@ -136,6 +145,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             case R.id.iv_toggle_password:
                 showAccessSecret();
                 break;
+            case R.id.iv_logo:
+                continuousClick(COUNTS, DURATION);
+                break;
         }
     }
 
@@ -156,17 +168,23 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         tOSConnectOption.setMobile("135xxxx9206");
         tOSConnectOption.setAdvanceParams(extraInfo);
 
+        isClick = true;
+
         ProgressDialogHandler progressDialogHandler = new ProgressDialogHandler(LoginActivity.this, true);
         progressDialogHandler.obtainMessage(ProgressDialogHandler.SHOW_PROGRESS_DIALOG).sendToTarget();
         TOSClientKit.connect(tOSConnectOption, new OnlineConnectResultCallback() {
             @Override
             public void onSuccess() {
                 progressDialogHandler.obtainMessage(ProgressDialogHandler.DISMISS_PROGRESS_DIALOG).sendToTarget();
-                startActivity(new Intent(LoginActivity.this, SessionActivity.class));
+                if (isClick) {
+                    startActivity(new Intent(LoginActivity.this, SessionActivity.class));
+                }
+                isClick = false;
             }
 
             @Override
             public void onError(int errorCode, String errorDesc) {
+                isClick = false;
                 TLogUtils.e(errorDesc);
                 ToastUtils.showShortToast(LoginActivity.this, errorDesc);
                 progressDialogHandler.obtainMessage(ProgressDialogHandler.DISMISS_PROGRESS_DIALOG).sendToTarget();
@@ -269,4 +287,15 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         }
     }
 
+
+    private void continuousClick(int count, long time) {
+        //每次点击时，数组向前移动一位
+        System.arraycopy(mHits, 1, mHits, 0, mHits.length - 1);
+        //为数组最后一位赋值
+        mHits[mHits.length - 1] = SystemClock.uptimeMillis();
+        if (mHits[0] >= (SystemClock.uptimeMillis() - DURATION)) {
+            mHits = new long[COUNTS];//重新初始化数组
+            etVisitorId.setVisibility(etVisitorId.getVisibility() == View.VISIBLE ? View.GONE : View.VISIBLE);
+        }
+    }
 }

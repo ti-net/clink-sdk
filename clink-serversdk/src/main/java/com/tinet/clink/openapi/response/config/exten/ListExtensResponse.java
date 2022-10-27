@@ -11,7 +11,11 @@ import java.util.List;
  * @author wangyq
  * @date 2018/10/26
  */
-public class ListExtensResponse extends PagedResponse {
+/**
+ * 由于SDK版本升级，当前类已过期，请使用v3.0新版SDK,详见官网文档
+ */
+@Deprecated
+public class  ListExtensResponse extends PagedResponse {
 
     /**
      * 话机对象集合
