@@ -8,6 +8,8 @@ import com.tinet.clink.ticket.request.ListTicketRequest;
 import com.tinet.clink.ticket.response.ListTicketResponse;
 import org.junit.Test;
 
+import java.util.HashMap;
+
 /**
  *
  * @author liuhy
@@ -19,18 +21,26 @@ public class ListTicketTest extends AbstractTest {
     public void listTicket(){
 
         ClientConfiguration configuration = new ClientConfiguration(
-                "a307c59f2e9e95b236aaded45806366c",          // AccessKeyId
-                "55xWk0s47070pZK82e0w");     // AccessKeySecret
-        configuration.setHost("api-bj-test0.clink.cn");
+                "85cd43bc929ee1a8eae6faa066239b8a",          // AccessKeyId
+                "Et7GCR16765YC3T5i48V");     // AccessKeySecret
+        configuration.setHost("alb-01l5fw2u4lg0sajop3.cn-beijing.alb.aliyuncs.com");
         configuration.setScheme("http");
         Client client = new Client(configuration);
 
         ListTicketRequest listTicketRequest= new ListTicketRequest();
 
-        listTicketRequest.setStartTime("2022-07-14 00:00:00");
-        listTicketRequest.setEndTime("2022-07-14 23:59:59");
+        listTicketRequest.setStartTime("2022-07-20 00:00:00");
+        listTicketRequest.setEndTime("2022-10-19 23:59:59");
         listTicketRequest.setOffset(0);
         listTicketRequest.setLimit(10);
+        HashMap<String, String> fieldMap = new HashMap<>();
+        fieldMap.put("93915", "43dd");
+
+        HashMap<String, String> systemFieldMap = new HashMap<>();
+        systemFieldMap.put("866872", "1");
+//        listTicketRequest.setFields(fieldMap);
+//        listTicketRequest.setSystemFields(systemFieldMap);
+
         try {
             ListTicketResponse response= client.getResponseModel(listTicketRequest);
 

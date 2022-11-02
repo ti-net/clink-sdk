@@ -124,6 +124,11 @@ public class  CreateClientRequest extends AbstractRequestModel<CreateClientRespo
      */
     private Integer chatLimitNum;
 
+    /**
+     * 微信小程序RTC开关
+     */
+    private Integer wechatMiniProgramRtc;
+
     public Integer getType() {
         return type;
     }
@@ -341,6 +346,17 @@ public class  CreateClientRequest extends AbstractRequestModel<CreateClientRespo
         this.cno = cno;
         if (cno != null) {
             putBodyParameter("cno", cno);
+        }
+    }
+
+    public Integer getWechatMiniProgramRtc() {
+        return wechatMiniProgramRtc;
+    }
+
+    public void setWechatMiniProgramRtc(Integer wechatMiniProgramRtc) {
+        this.wechatMiniProgramRtc = wechatMiniProgramRtc;
+        if (wechatMiniProgramRtc != null) {
+            putBodyParameter("wechatMiniProgramRtc", wechatMiniProgramRtc);
         }
     }
 
