@@ -1,5 +1,7 @@
 package com.tinet.clink.cc.model;
 
+import java.util.Set;
+
 /**
  * 外呼通话记录返回对象
  *
@@ -167,6 +169,16 @@ public class CdrObRecordModel {
      * 是否邀评
      */
     private Integer evaluation;
+
+    /**
+     * 业务记录id 集合
+     */
+    private Set<Integer> businessIds;
+
+    /**
+     * 工单id 集合
+     */
+    private Set<Integer> ticketIds;
 
     public Integer getQueueAnswerInTime() {
         return queueAnswerInTime;
@@ -422,6 +434,22 @@ public class CdrObRecordModel {
 
     public void setEvaluation(Integer evaluation) {
         this.evaluation = evaluation;
+    }
+
+    public Set<Integer> getBusinessIds() {
+        return businessIds;
+    }
+
+    public void setBusinessIds(Set<Integer> businessIds) {
+        this.businessIds = businessIds;
+    }
+
+    public Set<Integer> getTicketIds() {
+        return ticketIds;
+    }
+
+    public void setTicketIds(Set<Integer> ticketIds) {
+        this.ticketIds = ticketIds;
     }
 }
 

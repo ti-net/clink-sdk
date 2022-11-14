@@ -110,6 +110,16 @@ public class ListCdrObsRequest extends AbstractRequestModel<ListCdrObsResponse> 
      */
     private Integer evaluation;
 
+    /**
+     * 业务关联ID类型
+     */
+    private Integer idType;
+
+    /**
+     * 关联ID
+     */
+    private String associatedId;
+
 
     public ListCdrObsRequest() {
         super(PathEnum.ListCdrObs.value(), HttpMethodType.GET);
@@ -311,6 +321,28 @@ public class ListCdrObsRequest extends AbstractRequestModel<ListCdrObsResponse> 
         this.evaluation = evaluation;
         if (evaluation != null) {
             putQueryParameter("evaluation", evaluation);
+        }
+    }
+
+    public Integer getIdType() {
+        return idType;
+    }
+
+    public void setIdType(Integer idType) {
+        this.idType = idType;
+        if (idType != null) {
+            putQueryParameter("idType", idType);
+        }
+    }
+
+    public String getAssociatedId() {
+        return associatedId;
+    }
+
+    public void setAssociatedId(String associatedId) {
+        this.associatedId = associatedId;
+        if (associatedId != null) {
+            putQueryParameter("associatedId", associatedId);
         }
     }
 
