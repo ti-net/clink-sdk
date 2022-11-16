@@ -1,6 +1,6 @@
 
 # TOSClientKit_Android_开发文档
-> 版本: 1.5.8
+> 版本: 1.5.9
 
 
 ## 目录

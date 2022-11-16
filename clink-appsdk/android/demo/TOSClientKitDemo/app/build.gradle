@@ -7,7 +7,7 @@ static def releaseTime() {
 }
 
 android {
-    compileSdk 30
+    compileSdk 31
 
     signingConfigs {
         key {
@@ -21,9 +21,9 @@ android {
     defaultConfig {
         applicationId "com.tinet.tosclientkitdemo"
         minSdk 21
-        targetSdk 30
+        targetSdk 31
         versionCode 13
-        versionName "1.5.8"
+        versionName "1.5.9"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -84,7 +84,7 @@ dependencies {
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
 
     // SDK
-    implementation 'com.github.ti-net-project:OnlineSDK-Android:1.5.8'
-//    api files('libs/online_sdk_1.5.8_release.aar')
+    implementation 'com.github.ti-net-project:OnlineSDK-Android:1.5.9'
+//    api files('libs/online_sdk_1.5.9_release.aar')
 
 }

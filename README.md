@@ -14,7 +14,7 @@
 #### [客服SDK（无UI）接入](https://github.com/ti-net/clink-sdk/tree/master/clink-appsdk/android/%E6%8E%A5%E5%85%A5%E6%96%87%E6%A1%A3/%E5%AE%A2%E6%9C%8DSDK%EF%BC%88%E6%97%A0UI%EF%BC%89)
 #### Android 体验版 Demo
 ##### 下载地址
-https://tinet-sdk-release.s3.cn-north-1.amazonaws.com.cn/TOSClientKitDemo/app/latest/%E5%A4%A9%E6%B6%A6%E5%AE%A2%E6%9C%8DSDK.apk
+https://tinet-sdk-release.s3.cn-north-1.amazonaws.com.cn/TOSClientKitDemo/app/latest/%E5%AE%A2%E6%9C%8DSDK.apk
 ##### 二维码
 <img src="https://raw.githubusercontent.com/ti-net/clink-sdk/master/clink-appsdk/android/demo/download_qrcode.png" alt="image.png" style="zoom:20%;" />
 
