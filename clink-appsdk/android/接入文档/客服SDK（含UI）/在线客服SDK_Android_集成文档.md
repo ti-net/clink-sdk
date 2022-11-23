@@ -1,6 +1,6 @@
 
 # TOSClientKit_Android_开发文档
-> 版本: 1.5.9
+> 版本: 1.5.9.3
 
 
 ## 目录
@@ -44,12 +44,6 @@ Gradle | 3.0 及以上版本
 	implementation 'com.github.ti-net-project:OnlineSDK-Android:x.x.x'//x.x.x为最新版本号
 ```
 
-其他
-``` 
-    //如您的应用内从未使用到以下依赖，则需要在app的 build.gradle 文件中添加如下依赖配置
-    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
-    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
-```
 
 #### aar 依赖方式
 aar下载地址：https://tinet-sdk-release.s3.cn-north-1.amazonaws.com.cn/online-sdk/sdk/release/online_sdk_x.x.x_release.aar //x.x.x为最新版本号
@@ -58,6 +52,19 @@ aar下载地址：https://tinet-sdk-release.s3.cn-north-1.amazonaws.com.cn/onlin
 
 ```
 	api files('libs/online_sdk_x.x.x_release.aar')//x.x.x为最新版本号
+```
+
+其他
+说明：如您的应用内从未使用到以下依赖，且使用的是本地aar依赖客服SDK的方式，则需要在app的 build.gradle 文件中添加如下依赖配置
+``` 
+    //1.5.9.3版本之前仅需要添加以下依赖
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+    //1.5.9.3+版本还需要添加以下依赖
+    implementation 'com.jakewharton:disklrucache:2.0.2'
+    implementation "org.jsoup:jsoup:1.12.1"
+    implementation 'com.github.gzu-liyujiang.AndroidPicker:Common:4.1.5'
+    implementation 'com.github.gzu-liyujiang.AndroidPicker:FilePicker:4.1.5'
 ```
 
 ### 混淆配置

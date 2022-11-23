@@ -79,12 +79,16 @@ dependencies {
     // bugly
     implementation 'com.tencent.bugly:crashreport:latest.release'
 
-    // SDK内部所需
+    // 本地aar方式加载时客服SDK内部所需
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+    implementation 'com.jakewharton:disklrucache:2.0.2'
+    implementation "org.jsoup:jsoup:1.12.1"
+    implementation 'com.github.gzu-liyujiang.AndroidPicker:Common:4.1.5'
+    implementation 'com.github.gzu-liyujiang.AndroidPicker:FilePicker:4.1.5'
 
-    // SDK
-    implementation 'com.github.ti-net-project:OnlineSDK-Android:1.5.9.2'
+    // 客服SDK
+    implementation 'com.github.ti-net-project:OnlineSDK-Android:1.5.9.3'
 //    api files('libs/online_sdk_1.5.9_release.aar')
 
 }
