@@ -1,6 +1,6 @@
 
 # TOSClientKit_Android_开发文档
-> 版本: 1.5.9.3
+> 版本: 1.5.9.4
 
 
 ## 目录
@@ -412,11 +412,8 @@ colors.xml可修改项
         <!--快捷入口底部背景色-->
         <color name="ti_quick_entry_rv_bg_color">#ffffff</color>
     
+
         <!--  ++++++++++++++ 商品卡片设置 ++++++++++++++  -->
-        <!--商品卡片一发送按钮背景色-->
-        <color name="ti_commodity_card_bg_color">#4384ff</color>
-        <!--商品卡片一发送文字颜色-->
-        <color name="ti_commodity_card__color">#ffffff</color>
         <!--聊天接受商品卡片分割线颜色-->
         <color name="ti_msg_card_receive_dividing_line_color">#80000000</color>
         <!--聊天发送商品卡片分割线颜色-->
@@ -427,6 +424,43 @@ colors.xml可修改项
         <color name="ti_msg_card_send_text_color">#80000000</color>
         <!--聊天文件名颜色-->
         <color name="ti_msg_receive_filename_text_color">@color/ti_send_bubble_background_color</color>
+
+        <!--商品卡片待发送一发送按钮背景色-->
+        <color name="ti_commodity_card_bg_color">#4384ff</color>
+        <!--商品卡片待发送一发送文字颜色-->
+        <color name="ti_commodity_card__color">#ffffff</color>
+
+        <!--待发送 子标题 文字颜色-->
+        <color name="ti_hold_subtitle_text_color">@color/ti_dark</color>
+        <!--待发送 价格 文字颜色-->
+        <color name="ti_hold_price_text_color">#f00</color>
+
+        <!--接收端 订单id 文字颜色-->
+        <color name="ti_receive_order_id_text_color">@color/ti_dark</color>
+        <!--接收端 时间 文字颜色-->
+        <color name="ti_receive_time_text_color">@color/ti_dark</color>
+        <!--接收端 子标题 文字颜色-->
+        <color name="ti_receive_subtitle_text_color">@color/ti_dark</color>
+        <!--接收端 描述 文字颜色-->
+        <color name="ti_receive_description_text_color">#8A8D9A</color>
+        <!--接收端 价格 文字颜色-->
+        <color name="ti_receive_price_text_color">#f00</color>
+        <!--接收端 到货状态 文字颜色-->
+        <color name="ti_receive_status_text_color">@color/ti_dark</color>
+
+        <!--发送端 订单id 文字颜色-->
+        <color name="ti_sender_order_id_text_color">@color/ti_dark</color>
+        <!--发送端 时间 文字颜色-->
+        <color name="ti_sender_time_text_color">@color/ti_dark</color>
+        <!--发送端 子标题 文字颜色-->
+        <color name="ti_sender_subtitle_text_color">@color/ti_dark</color>
+        <!--发送端 描述 文字颜色-->
+        <color name="ti_sender_description_text_color">#8A8D9A</color>
+        <!--发送端 价格 文字颜色-->
+        <color name="ti_sender_price_text_color">#f00</color>
+        <!--发送端 到货状态 文字颜色-->
+        <color name="ti_sender_status_text_color">@color/ti_dark</color>
+
     
         <!--  ++++++++++++++ 选择图片页面 ++++++++++++++  -->
         <!--相册导航栏背景色-->
@@ -534,6 +568,38 @@ dimen可修改项
         <dimen name="ti_message_tv_size">12sp</dimen>
         <!--商品卡片二图片大小-->
         <dimen name="ti_message_img">80dp</dimen>
+
+    
+        <!--待发送 子标题 文字大小-->
+        <dimen name="ti_hold_subtitle_text_size">16sp</dimen>
+        <!--待发送 价格 文字大小-->
+        <dimen name="ti_hold_price_text_size">16sp</dimen>
+
+        <!--接收端 订单id 文字大小-->
+        <dimen name="ti_receive_order_id_text_size">12sp</dimen>
+        <!--接收端 时间 文字大小-->
+        <dimen name="ti_receive_time_text_size">12sp</dimen>
+        <!--接收端 子标题 文字大小-->
+        <dimen name="ti_receive_subtitle_text_size">16sp</dimen>
+        <!--接收端 描述 文字大小-->
+        <dimen name="ti_receive_description_text_size">16sp</dimen>
+        <!--接收端 价格 文字大小-->
+        <dimen name="ti_receive_price_text_size">16sp</dimen>
+        <!--接收端 到货状态 文字大小-->
+        <dimen name="ti_receive_status_text_size">16sp</dimen>
+
+        <!--发送端 订单id 文字大小-->
+        <dimen name="ti_sender_order_id_text_size">12sp</dimen>
+        <!--发送端 时间 文字大小-->
+        <dimen name="ti_sender_time_text_size">12sp</dimen>
+        <!--发送端 子标题 文字大小-->
+        <dimen name="ti_sender_subtitle_text_size">16sp</dimen>
+        <!--发送端 描述 文字大小-->
+        <dimen name="ti_sender_description_text_size">16sp</dimen>
+        <!--发送端 价格 文字大小-->
+        <dimen name="ti_sender_price_text_size">16sp</dimen>
+        <!--发送端 到货状态 文字大小-->
+        <dimen name="ti_sender_status_text_size">16sp</dimen>
 ```
 
 string.xml可修改项
