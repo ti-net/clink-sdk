@@ -296,6 +296,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         if (mHits[0] >= (SystemClock.uptimeMillis() - DURATION)) {
             mHits = new long[COUNTS];//重新初始化数组
             etVisitorId.setVisibility(etVisitorId.getVisibility() == View.VISIBLE ? View.GONE : View.VISIBLE);
+            etEnterpriseId.setText("8000002");
+            etAccessId.setText("8758096679544ff189d4a9457747f109");
+            etAccessSecret.setText("72EBF29CB4614F7AB404EEC07BFF0B1B");
+            etVisitorId.setText("tinet1111");
         }
     }
 }
