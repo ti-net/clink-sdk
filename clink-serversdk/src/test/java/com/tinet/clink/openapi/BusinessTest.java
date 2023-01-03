@@ -4,9 +4,11 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tinet.clink.core.exceptions.ClientException;
 import com.tinet.clink.crm.request.GetBusinessRequest;
+import com.tinet.clink.crm.request.ListBusinessCountRequest;
 import com.tinet.clink.crm.request.ListBusinessFieldRequest;
 import com.tinet.clink.crm.request.ListBusinessRequest;
 import com.tinet.clink.crm.response.GetBusinessResponse;
+import com.tinet.clink.crm.response.ListBusinessCountResponse;
 import com.tinet.clink.crm.response.ListBusinessFieldResponse;
 
 import com.tinet.clink.core.exceptions.ServerException;
@@ -99,7 +101,26 @@ public class BusinessTest extends AbstractTest {
 
 
 
+    @Test
+    public void listBusinessCount() throws ServerException, ClientException {
 
+
+        //当前企业可以用的查询参数
+        ListBusinessCountRequest listBusinessRequestCount = new ListBusinessCountRequest();
+
+        listBusinessRequestCount.setStartTime(1595952000L);
+
+        listBusinessRequestCount.setEndTime(1596124800L);
+
+        Map<String, String> customize = new HashMap<String, String>();
+
+        customize.put("25868","用车,出城,报备出城");
+
+
+        ListBusinessCountResponse listBusinessCountResponse = client.getResponseModel(listBusinessRequestCount);
+
+
+    }
 
 
 

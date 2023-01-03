@@ -30,6 +30,9 @@ public enum PathEnum {
     ListBusiness("crm/list_business"),
 
     //查询业务记录
+    ListBusinessCount("crm/list_business_count"),
+
+    //查询业务记录
     GetBusinessDetail("crm/get_business_detail");
 
     /**
