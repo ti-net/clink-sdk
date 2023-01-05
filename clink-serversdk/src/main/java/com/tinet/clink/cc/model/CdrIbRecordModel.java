@@ -196,6 +196,11 @@ public class CdrIbRecordModel {
      */
     private Integer evaluation;
 
+    /**
+     * 热线别名
+     */
+    private String hotlineName;
+
     public Integer getQueueAnswerInTime() {
         return queueAnswerInTime;
     }
@@ -491,6 +496,14 @@ public class CdrIbRecordModel {
 
     public void setEvaluation(Integer evaluation) {
         this.evaluation = evaluation;
+    }
+
+    public String getHotlineName() {
+        return hotlineName;
+    }
+
+    public void setHotlineName(String hotlineName) {
+        this.hotlineName = hotlineName;
     }
 }
 
