@@ -19,8 +19,6 @@ public class ListBusinessCountRequest extends AbstractRequestModel<ListBusinessC
 
     private Long endTime;
 
-//    private Map<String, String> customize;
-
     public Long getStartTime() {
         return startTime;
     }

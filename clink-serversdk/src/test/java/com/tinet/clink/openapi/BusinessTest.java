@@ -112,10 +112,6 @@ public class BusinessTest extends AbstractTest {
 
         listBusinessRequestCount.setEndTime(1596124800L);
 
-        Map<String, String> customize = new HashMap<String, String>();
-
-        customize.put("25868","用车,出城,报备出城");
-
 
         ListBusinessCountResponse listBusinessCountResponse = client.getResponseModel(listBusinessRequestCount);
 
