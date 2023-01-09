@@ -5,6 +5,8 @@ import com.tinet.clink.core.request.AbstractRequestModel;
 import com.tinet.clink.core.utils.HttpMethodType;
 import com.tinet.clink.ticket.response.ListTicketResponse;
 
+import java.util.Map;
+
 /**
  * 工单记录查询
  *
@@ -109,6 +111,20 @@ public class ListTicketRequest extends AbstractRequestModel<ListTicketResponse> 
      */
     private Integer limit;
 
+    /**
+     * 节点唯一标识
+     */
+    private String taskKey;
+
+    /**
+     * 自定义字段集合
+     */
+    private Map<String, String> fields;
+
+    /**
+     * 自定义系统字段集合
+     */
+    private Map<String, String> systemFields;
 
     public Integer getId() {
         return id;
@@ -318,6 +334,40 @@ public class ListTicketRequest extends AbstractRequestModel<ListTicketResponse> 
             putQueryParameter("limit", limit);
         }
     }
+
+    public String getTaskKey() {
+        return taskKey;
+    }
+
+    public void setTaskKey(String taskKey) {
+        this.taskKey = taskKey;
+        if (taskKey != null) {
+            putQueryParameter("taskKey", taskKey);
+        }
+    }
+
+    public Map<String, String> getFields() {
+        return fields;
+    }
+
+    public void setFields(Map<String, String> fields) {
+        this.fields = fields;
+        if (fields != null) {
+            putQueryParameter("fields", fields);
+        }
+    }
+
+    public Map<String, String> getSystemFields() {
+        return systemFields;
+    }
+
+    public void setSystemFields(Map<String, String> systemFields) {
+        this.systemFields = systemFields;
+        if (systemFields != null) {
+            putQueryParameter("systemFields", systemFields);
+        }
+    }
+
 
     public ListTicketRequest() {
         super(PathEnum.ListTicket.value(), HttpMethodType.POST);

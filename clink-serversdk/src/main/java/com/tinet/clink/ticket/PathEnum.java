@@ -16,7 +16,10 @@ public enum PathEnum {
     ListTicketWorkflow("ticket/list_ticket_workflow"),
 
     SaveTicket("ticket/save_ticket"),
+    // 更新工单-人工
     UpdateTicket("ticket/update_ticket"),
+    // 更新工单-预制流
+    UpdateTicketPrefabricated("ticket/update_ticket_prefabricated"),
     // 获取表单详情
     GetFormDetail("ticket/get_form_detail"),
     // 获取表单详情
