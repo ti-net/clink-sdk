@@ -126,6 +126,11 @@ public class ListCdrIbsRequest extends AbstractRequestModel<ListCdrIbsResponse> 
      */
     private Integer evaluation;
 
+    /**
+     * 热线别名
+     */
+    private String hotlineName;
+
 
     public ListCdrIbsRequest() {
         super(PathEnum.ListCdrIbs.value(), HttpMethodType.GET);
@@ -337,6 +342,17 @@ public class ListCdrIbsRequest extends AbstractRequestModel<ListCdrIbsResponse> 
         this.evaluation = evaluation;
         if (evaluation != null) {
             putQueryParameter("evaluation", evaluation);
+        }
+    }
+
+    public String getHotlineName() {
+        return hotlineName;
+    }
+
+    public void setHotlineName(String hotlineName) {
+        this.hotlineName = hotlineName;
+        if (hotlineName != null && hotlineName != "") {
+            putQueryParameter("hotlineName", hotlineName);
         }
     }
 
