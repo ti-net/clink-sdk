@@ -44,23 +44,23 @@ public class DevelopDocActivity extends BaseActivity {
     @Override
     protected void initData() {
         //加载本地html
-        mWebView.loadUrl("file:///android_asset/在线客服SDK_Android_集成文档.html");
+        mWebView.loadUrl("https://develop.clink.cn/develop/mobile/chat-mobile.html#_android%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3");
     }
 
     private void initWebView() {
-        //设置为ChromeClinet 才能执⾏js代码
-        WebChromeClient webChromeClient = new WebChromeClient();
-        mWebView.setWebChromeClient(webChromeClient);
         //设置开启js⽀持
         mWebView.getSettings().setJavaScriptEnabled(true);
         // 是否⽀持缩放
         mWebView.getSettings().setSupportZoom(true);
-        mWebView.setWebViewClient(new WebViewClient() {
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                super.onPageFinished(view, url);
+        mWebView.getSettings().setDomStorageEnabled(true);//打开DOM存储API
 
-            }
-        });
+        mWebView.getSettings().setLoadsImagesAutomatically(true);
+        mWebView.getSettings().setDefaultTextEncodingName("utf-8");
+        mWebView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+        mWebView.getSettings().setSupportMultipleWindows(true);
+        mWebView.getSettings().setUseWideViewPort(true);
+        mWebView.getSettings().setLoadWithOverviewMode(true);
+        mWebView.setWebViewClient(new WebViewClient());
+        mWebView.setWebChromeClient(new WebChromeClient());
     }
 }
