@@ -20,9 +20,11 @@ import com.tinet.oslib.manager.OnlineMessageManager;
 import com.tinet.oslib.manager.OnlineQuickManager;
 import com.tinet.oslib.model.bean.CardInfo;
 import com.tinet.oslib.model.bean.LabeInfo;
+import com.tinet.oslib.model.bean.LogisticsCardInfo;
 import com.tinet.oslib.model.bean.SessionInfo;
 import com.tinet.oslib.model.message.OnlineMessage;
 import com.tinet.oslib.model.message.content.ChatLeaveMessage;
+import com.tinet.oslib.model.message.content.ChatMiniProgramCardMessage;
 import com.tinet.timclientlib.utils.TLogUtils;
 
 import java.util.ArrayList;
@@ -89,6 +91,16 @@ public class ChatFragment extends SessionFragment {
             }
 
             @Override
+            public void onMiniProgramCardClick(ChatMiniProgramCardMessage miniProgramCardMessage) {
+                super.onMiniProgramCardClick(miniProgramCardMessage);
+            }
+
+            @Override
+            public void onLogisticsCardButtonClick(LogisticsCardInfo logisticsCardInfo) {
+                super.onLogisticsCardButtonClick(logisticsCardInfo);
+            }
+
+            @Override
             public void videoPlay(String url) {
                 super.videoPlay(url);
                 // 自定义视频播放，如果需要自己实现视频播放，则需要屏蔽super.videoPlay(url);父类的实现方式
@@ -107,6 +119,8 @@ public class ChatFragment extends SessionFragment {
                 if (message.getOnlineContent().getMessageType() == OnlineMessageType.CARD)
                     Toast.makeText(requireContext(), "卡片消息", Toast.LENGTH_SHORT).show();
             }
+
+
 
             @Override
             public void onStartRequestPermissionsCallback(@NonNull String[] permissions, int requestCode) {
