@@ -16,6 +16,11 @@ public class TicketResultModel {
     private Integer id;
 
     /**
+     * 工单 Id
+     */
+    private String customId;
+
+    /**
      * 模板 Id
      */
     private Integer workflowId;
@@ -162,6 +167,14 @@ public class TicketResultModel {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getCustomId() {
+        return customId;
+    }
+
+    public void setCustomId(String customId) {
+        this.customId = customId;
     }
 
     public Integer getWorkflowId() {
