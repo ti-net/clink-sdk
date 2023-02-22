@@ -12,6 +12,11 @@ import java.util.Date;
 public class TicketDetailModel {
 
     /**
+     * 自定义工单编号
+     */
+    private String customId;
+
+    /**
      * 工单id
      */
     private Integer id;
@@ -161,6 +166,14 @@ public class TicketDetailModel {
      * 工单的系统表单
      */
     private TicketSystemForm systemForm;
+
+    public String getCustomId() {
+        return customId;
+    }
+
+    public void setCustomId(String customId) {
+        this.customId = customId;
+    }
 
     public Integer getId() { return id; }
 
