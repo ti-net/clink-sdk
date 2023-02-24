@@ -17,9 +17,9 @@ public abstract class AbstractTest {
 
     @Before
     public void init() {
-        configuration = new ClientConfiguration("******", "******");
+        configuration = new ClientConfiguration("9bcf7605654e13bbc1e59ca41611c8c8", "7V10v43U1b76PwxnS6b3");
         configuration.setScheme("http");
-        configuration.setHost("******");
+        configuration.setHost("alb-01l5fw2u4lg0sajop3.cn-beijing.alb.aliyuncs.com");
 
         client = new Client(configuration);
     }
