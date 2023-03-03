@@ -22,6 +22,11 @@ public class ListTicketRequest extends AbstractRequestModel<ListTicketResponse> 
     private Integer id;
 
     /**
+     * 自定义工单编号
+     */
+    private String customId;
+
+    /**
      * 工单的处理状态 不传为状态 0：待领取 2：处理中 3：已撤销 4：已完成
      */
     private Integer handleStatus;
@@ -134,6 +139,17 @@ public class ListTicketRequest extends AbstractRequestModel<ListTicketResponse> 
         this.id = id;
         if (id != null) {
             putQueryParameter("id", id);
+        }
+    }
+
+    public String getCustomId() {
+        return customId;
+    }
+
+    public void setCustomId(String customId) {
+        this.customId = customId;
+        if (customId != null) {
+            putQueryParameter("customId", customId);
         }
     }
 

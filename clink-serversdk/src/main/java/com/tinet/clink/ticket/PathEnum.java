@@ -48,6 +48,12 @@ public enum PathEnum {
     StatTicketByClient("ticket/stat_ticket_client"),
     // 座席组情况统计报表
     StatTicketByQueue("ticket/stat_ticket_queue"),
+    // 工单自定义导出文件生成
+    TicketRecordFilesGenerate("ticket/ticket_records_file_generate"),
+    // 获取工单自定义导出文件状态
+    TicketRecordFilesStatus("ticket/ticket_records_file_status"),
+    // 获取工单自定义导出文件链接
+    TicketRecordFileUrl("ticket/ticket_records_file_url")
     ;
     private String value;
 

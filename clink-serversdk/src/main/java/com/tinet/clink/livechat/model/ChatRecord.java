@@ -129,6 +129,41 @@ public class ChatRecord {
      */
     private Integer chatDurationType;
 
+    /**
+     * 满意度发起方式 1：座席主动发起、2：系统邀评、3: 访客主动发起
+     */
+    private Integer invitationInitiator;
+
+    /**
+     * 会话发起方式  1为访客发起  2为座席主动发起  3为座席从浏览中邀请
+     */
+    private Integer openType;
+
+    /**
+     * 排队时间
+     */
+    private Long queueTime;
+
+    /**
+     * 会话类型
+     * 接入会话
+     * 未接入会话
+
+     *
+     */
+    private Integer sessionType;
+
+    /**
+     *有效会话
+     *无效会话
+     */
+    private Integer chatValidSession;
+
+    /**
+     * 留言会话
+     */
+    private Integer commentSession;
+
     public String getMainUniqueId() {
         return mainUniqueId;
     }
@@ -447,5 +482,53 @@ public class ChatRecord {
 
     public void setChatDurationType(Integer chatDurationType) {
         this.chatDurationType = chatDurationType;
+    }
+
+    public Integer getSessionType() {
+        return sessionType;
+    }
+
+    public void setSessionType(Integer sessionType) {
+        this.sessionType = sessionType;
+    }
+
+    public Integer getChatValidSession() {
+        return chatValidSession;
+    }
+
+    public void setChatValidSession(Integer chatValidSession) {
+        this.chatValidSession = chatValidSession;
+    }
+
+    public Integer getCommentSession() {
+        return commentSession;
+    }
+
+    public void setCommentSession(Integer commentSession) {
+        this.commentSession = commentSession;
+    }
+
+    public Long getQueueTime() {
+        return queueTime;
+    }
+
+    public void setQueueTime(Long queueTime) {
+        this.queueTime = queueTime;
+    }
+
+    public Integer getInvitationInitiator() {
+        return invitationInitiator;
+    }
+
+    public void setInvitationInitiator(Integer invitationInitiator) {
+        this.invitationInitiator = invitationInitiator;
+    }
+
+    public Integer getOpenType() {
+        return openType;
+    }
+
+    public void setOpenType(Integer openType) {
+        this.openType = openType;
     }
 }
