@@ -246,7 +246,7 @@ public class CustomStyleActivity extends BaseActivity implements View.OnClickLis
 
     private void initThemeData() {
 
-        TOSClientKitConfig tosClientKitConfig = TOSClientKit.getTosClientKitConfig();
+        TOSClientKitConfig tosClientKitConfig = TOSClientKit.getTOSClientKitConfig();
         if (tosClientKitConfig != null && tosClientKitConfig.getTCustomizationUI() != null) {
             mTCustomizationUI = tosClientKitConfig.getTCustomizationUI();
         } else {
@@ -309,7 +309,7 @@ public class CustomStyleActivity extends BaseActivity implements View.OnClickLis
             @Override
             public void onClick(View view) {
                 App.CHOOSE_THEME_INDEX = SESSION_STYLE_THEME_DEFAULT;//设置默认主题
-                TOSClientKit.setTosClientKitConfig(null);
+                TOSClientKit.setTOSClientKitConfig(null);
                 initThemeData();
                 mCommonAdapter.setData(mCustomDataList);
                 dialogByType2.dismiss();
@@ -352,7 +352,7 @@ public class CustomStyleActivity extends BaseActivity implements View.OnClickLis
             TOSClientKitConfig tosClientKitConfig = new TOSClientKitConfig.Builder()
                     .setTCustomizationUI(mTCustomizationUI)
                     .build();
-            TOSClientKit.setTosClientKitConfig(tosClientKitConfig);
+            TOSClientKit.setTOSClientKitConfig(tosClientKitConfig);
         }
         super.onPause();
     }
