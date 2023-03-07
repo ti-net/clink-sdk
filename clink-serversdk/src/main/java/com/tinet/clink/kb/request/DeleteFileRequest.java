@@ -3,6 +3,7 @@ package com.tinet.clink.kb.request;
 import com.tinet.clink.core.request.AbstractRequestModel;
 import com.tinet.clink.core.utils.HttpMethodType;
 import com.tinet.clink.kb.PathEnum;
+import com.tinet.clink.kb.response.DeleteFileResponse;
 import com.tinet.clink.kb.response.ListFileResponse;
 
 /**
@@ -11,7 +12,7 @@ import com.tinet.clink.kb.response.ListFileResponse;
  * @Author 周先康
  * @create 2023/3/7 10:48
  */
-public class DeleteFileRequest extends AbstractRequestModel<ListFileResponse> {
+public class DeleteFileRequest extends AbstractRequestModel<DeleteFileResponse> {
 
     private String[] ids;
 
@@ -51,7 +52,7 @@ public class DeleteFileRequest extends AbstractRequestModel<ListFileResponse> {
      * @return 响应对象
      */
     @Override
-    public Class<ListFileResponse> getResponseClass() {
-        return ListFileResponse.class;
+    public Class<DeleteFileResponse> getResponseClass() {
+        return DeleteFileResponse.class;
     }
 }
