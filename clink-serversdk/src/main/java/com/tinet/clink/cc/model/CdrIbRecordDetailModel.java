@@ -212,6 +212,19 @@ public class CdrIbRecordDetailModel {
      */
     private Integer evaluation;
 
+    /**
+     * 首次进入队列时间
+     */
+    private Long firstJoinQueueTime;
+
+    public Long getFirstJoinQueueTime() {
+        return firstJoinQueueTime;
+    }
+
+    public void setFirstJoinQueueTime(Long firstJoinQueueTime) {
+        this.firstJoinQueueTime = firstJoinQueueTime;
+    }
+
     public Integer getQueueAnswerInTime() {
         return queueAnswerInTime;
     }
