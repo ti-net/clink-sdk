@@ -111,6 +111,10 @@ public class ChatDetail {
      */
     private Integer invitationInitiator;
 
+    /**
+     * 人工有效会话 0.无效 1.有效
+     */
+    private Integer agentChatValid = 0;
 
     public Integer getInvitationInitiator() { return invitationInitiator; }
 
@@ -278,5 +282,13 @@ public class ChatDetail {
 
     public void setAgentLastMsgTime(Long agentLastMsgTime) {
         this.agentLastMsgTime = agentLastMsgTime;
+    }
+
+    public Integer getAgentChatValid() {
+        return agentChatValid;
+    }
+
+    public void setAgentChatValid(Integer agentChatValid) {
+        this.agentChatValid = agentChatValid;
     }
 }
