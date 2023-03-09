@@ -36,11 +36,6 @@ public class QueryCustomerModel {
     private String[] tel;
 
     /**
-     * 电话
-     */
-    private String[] telEncrypt;
-
-    /**
      * 邮箱
      */
     private String email;
@@ -141,11 +136,6 @@ public class QueryCustomerModel {
     private String modifierName;
 
     /**
-     * 自定义字段查询条件
-     */
-    private String customizeSearch;
-
-    /**
      * 呼入接通次数
      */
     private Integer ibBridgedNumber;
@@ -201,29 +191,9 @@ public class QueryCustomerModel {
     private Integer phaseReasonId;
 
     /**
-     * 推广ID
-     * */
-    private String promoteId;
-
-    /**
      * 推广来源
      * */
     private String promoteSource;
-
-    /**
-     * 推广账户
-     * */
-    private String promoteAccount;
-
-    /**
-     * 推广计划
-     * */
-    private String promotePlan;
-
-    /**
-     * 推广媒介
-     * */
-    private String promoteMedium;
 
     /**
      * 重复推广次数
@@ -234,12 +204,6 @@ public class QueryCustomerModel {
      * 最近一次重复推广时间
      * */
     private Date lastRepeatPromoteTime;
-
-    /**
-     * 跟进状态：0-未跟进，1-已跟进
-     * */
-    private Integer followStatus;
-
 
     public Integer getId() {
         return id;
@@ -279,14 +243,6 @@ public class QueryCustomerModel {
 
     public void setTel(String[] tel) {
         this.tel = tel;
-    }
-
-    public String[] getTelEncrypt() {
-        return telEncrypt;
-    }
-
-    public void setTelEncrypt(String[] telEncrypt) {
-        this.telEncrypt = telEncrypt;
     }
 
     public String getEmail() {
@@ -449,14 +405,6 @@ public class QueryCustomerModel {
         this.modifierName = modifierName;
     }
 
-    public String getCustomizeSearch() {
-        return customizeSearch;
-    }
-
-    public void setCustomizeSearch(String customizeSearch) {
-        this.customizeSearch = customizeSearch;
-    }
-
     public Integer getIbBridgedNumber() {
         return ibBridgedNumber;
     }
@@ -545,44 +493,12 @@ public class QueryCustomerModel {
         this.phaseReasonId = phaseReasonId;
     }
 
-    public String getPromoteId() {
-        return promoteId;
-    }
-
-    public void setPromoteId(String promoteId) {
-        this.promoteId = promoteId;
-    }
-
     public String getPromoteSource() {
         return promoteSource;
     }
 
     public void setPromoteSource(String promoteSource) {
         this.promoteSource = promoteSource;
-    }
-
-    public String getPromoteAccount() {
-        return promoteAccount;
-    }
-
-    public void setPromoteAccount(String promoteAccount) {
-        this.promoteAccount = promoteAccount;
-    }
-
-    public String getPromotePlan() {
-        return promotePlan;
-    }
-
-    public void setPromotePlan(String promotePlan) {
-        this.promotePlan = promotePlan;
-    }
-
-    public String getPromoteMedium() {
-        return promoteMedium;
-    }
-
-    public void setPromoteMedium(String promoteMedium) {
-        this.promoteMedium = promoteMedium;
     }
 
     public Integer getRepeatPromoteCount() {
@@ -599,13 +515,5 @@ public class QueryCustomerModel {
 
     public void setLastRepeatPromoteTime(Date lastRepeatPromoteTime) {
         this.lastRepeatPromoteTime = lastRepeatPromoteTime;
-    }
-
-    public Integer getFollowStatus() {
-        return followStatus;
-    }
-
-    public void setFollowStatus(Integer followStatus) {
-        this.followStatus = followStatus;
     }
 }
