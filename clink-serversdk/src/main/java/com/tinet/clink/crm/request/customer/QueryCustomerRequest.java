@@ -32,4 +32,19 @@ public class QueryCustomerRequest extends AbstractRequestModel<QueryCustomerResp
         super(PathEnum.QueryCustomer.value(), HttpMethodType.POST);
     }
 
+    public Integer getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
 }
