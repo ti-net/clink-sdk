@@ -2,18 +2,14 @@ package com.tinet.clink.openapi;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.tinet.clink.core.client.Client;
+import com.tinet.clink.core.client.ClientConfiguration;
 import com.tinet.clink.core.exceptions.ClientException;
-import com.tinet.clink.crm.request.GetBusinessRequest;
-import com.tinet.clink.crm.request.ListBusinessCountRequest;
-import com.tinet.clink.crm.request.ListBusinessFieldRequest;
-import com.tinet.clink.crm.request.ListBusinessRequest;
-import com.tinet.clink.crm.response.GetBusinessResponse;
-import com.tinet.clink.crm.response.ListBusinessCountResponse;
-import com.tinet.clink.crm.response.ListBusinessFieldResponse;
+import com.tinet.clink.crm.request.*;
+import com.tinet.clink.crm.response.*;
 
 import com.tinet.clink.core.exceptions.ServerException;
 
-import com.tinet.clink.crm.response.ListBusinessResponse;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -45,7 +41,13 @@ public class BusinessTest extends AbstractTest {
 
     @Test
     public void listBusiness() throws ServerException, ClientException {
-
+        // 创建访问服务的client实例并初始化
+        ClientConfiguration configuration = new ClientConfiguration(
+                "9e969f413431ae0c0cf674fc56cec6ad",          // AccessKeyId
+                "9616O59uJ3Whmp001704");     // AccessKeySecret
+        configuration.setHost("api-bj-test0.clink.cn");
+        configuration.setScheme("https");
+        Client client = new Client(configuration);
 
         //当前企业可以用的查询参数
         ListBusinessRequest listBusinessRequest = new ListBusinessRequest();
@@ -118,6 +120,31 @@ public class BusinessTest extends AbstractTest {
 
     }
 
+    @Test
+    public void CreateBusiness() throws ServerException, ClientException {
 
+        // 创建访问服务的client实例并初始化
+        ClientConfiguration configuration = new ClientConfiguration(
+                "9e969f413431ae0c0cf674fc56cec6ad",          // AccessKeyId
+                "9616O59uJ3Whmp001704");     // AccessKeySecret
+        configuration.setHost("api-bj-test0.clink.cn");
+        configuration.setScheme("https");
+        Client client = new Client(configuration);
+
+        //创建业务记录
+        CreateBusinessRequest createBusinessRequest = new CreateBusinessRequest();
+        createBusinessRequest.setCustomerId(2201563);
+        createBusinessRequest.setTopic("test1");
+        createBusinessRequest.setSource(24);
+        // 发起接口调用
+        CreateBusinessResponse response = client.getResponseModel(createBusinessRequest);
+        try {
+            String resultStr = mapper.writeValueAsString(response);
+            System.out.println(resultStr);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+    }
 
 }
