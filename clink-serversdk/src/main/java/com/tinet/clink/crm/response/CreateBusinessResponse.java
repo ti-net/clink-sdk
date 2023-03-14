@@ -11,6 +11,7 @@ import com.tinet.clink.crm.model.BusinessDetailModel;
  */
 public class CreateBusinessResponse extends ResponseModel {
 
+    //todo 创建 BusinessModel
    private BusinessDetailModel business;
 
     public BusinessDetailModel getBusiness() {

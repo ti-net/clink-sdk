@@ -3,22 +3,17 @@ package com.tinet.clink.crm.model;
 import java.util.Date;
 
 /**
- * 添加客户资料数据模型
+ * 查询客户资料数据模型
  *
  * @author gexd
  * @date 2023/03/08
  */
-public class QueryCustomerModel {
+public class CustomerResultModel {
 
     /**
      * 自增主键
      */
     private Integer id;
-
-    /**
-     * 企业id
-     */
-    private Integer enterpriseId;
 
     /**
      * 客户姓名
@@ -46,12 +41,12 @@ public class QueryCustomerModel {
     private String address;
 
     /**
-     * 客户等级，0：普通、1：VIP
+     * 客户等级
      */
     private String level;
 
     /**
-     * 归属类型，0：全体共享、1：队列共享、2：座席私有、3：无归属
+     * 归属类型
      */
     private String shareType;
 
@@ -66,27 +61,27 @@ public class QueryCustomerModel {
     private String remark;
 
     /**
-     * 来源，0：呼叫中心 、1：在线咨询、2：微信、3：人工添加 、4：邮件
+     * 客户来源
      */
     private String source;
 
     /**
-     * 创建人类型，0：座席、1：管理员
+     * 创建人类型
      */
     private String creatorType;
 
     /**
-     * 创建人
+     * 创建人id，-1：openApi
      */
     private Integer creatorId;
 
     /**
-     * 修改人类型，0：座席、1：管理员
+     * 更新人类型
      */
     private String modifierType;
 
     /**
-     * 修改人，新增时创建人即修改人
+     * 更新人id，-1：openApi
      */
     private Integer modifierId;
 
@@ -99,11 +94,6 @@ public class QueryCustomerModel {
      * 最后一次联系类型，1：呼入，4：外呼
      */
     private Integer lastContactType;
-
-    /**
-     * 删除标识，0：未删除、1：已删除
-     */
-    private Integer delete;
 
     /**
      * 自定义字段
@@ -211,14 +201,6 @@ public class QueryCustomerModel {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getEnterpriseId() {
-        return enterpriseId;
-    }
-
-    public void setEnterpriseId(Integer enterpriseId) {
-        this.enterpriseId = enterpriseId;
     }
 
     public String getName() {
@@ -347,14 +329,6 @@ public class QueryCustomerModel {
 
     public void setLastContactType(Integer lastContactType) {
         this.lastContactType = lastContactType;
-    }
-
-    public Integer getDelete() {
-        return delete;
-    }
-
-    public void setDelete(Integer delete) {
-        this.delete = delete;
     }
 
     public CustomizeField[] getCustomize() {

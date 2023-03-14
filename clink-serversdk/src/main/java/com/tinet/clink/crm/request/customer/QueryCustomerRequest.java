@@ -6,7 +6,7 @@ import com.tinet.clink.crm.PathEnum;
 import com.tinet.clink.crm.response.customer.QueryCustomerResponse;
 
 /**
- * 获取客户资料请求
+ * 查询客户资料请求
  *
  * @author gexd
  * @date 2023/03/08

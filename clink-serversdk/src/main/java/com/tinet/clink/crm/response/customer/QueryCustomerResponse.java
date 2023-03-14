@@ -1,27 +1,24 @@
 package com.tinet.clink.crm.response.customer;
 
 import com.tinet.clink.core.response.ResponseModel;
-import com.tinet.clink.crm.model.QueryCustomerModel;
+import com.tinet.clink.crm.model.CustomerResultModel;
 
 
 /**
- * 获取客户资料请求结果
+ * 查询客户资料请求结果
  *
  * @author gexd
  * @date 2023/03/08
  */
 public class QueryCustomerResponse extends ResponseModel {
 
-    /**
-     * 客户资料列表 --Map中存放每一条客户资料的字段值
-     */
-    private QueryCustomerModel customer;
+    private CustomerResultModel customer;
 
-    public QueryCustomerModel getCustomer() {
+    public CustomerResultModel getCustomer() {
         return customer;
     }
 
-    public void setCustomer(QueryCustomerModel customer) {
+    public void setCustomer(CustomerResultModel customer) {
         this.customer = customer;
     }
 }
