@@ -1,5 +1,7 @@
 package com.tinet.clink.crm.model;
 
+import com.fasterxml.jackson.databind.node.ArrayNode;
+
 import java.util.Date;
 
 /**
@@ -61,7 +63,7 @@ public class BusinessSaveReturnModel {
     /**
      * 自定义字段
      */
-    private String customize;
+    private ArrayNode customize;
 
     /**
      * 记录创建时间
@@ -178,11 +180,12 @@ public class BusinessSaveReturnModel {
         this.source = source;
     }
 
-    public String getCustomize() {
+
+    public ArrayNode getCustomize() {
         return customize;
     }
 
-    public void setCustomize(String customize) {
+    public void setCustomize(ArrayNode customize) {
         this.customize = customize;
     }
 
