@@ -1,6 +1,6 @@
 
 # TOSClientKit_Android_开发文档
-> 版本: 1.5.8
+> 版本: 1.5.9.4
 
 
 ## 目录
@@ -44,12 +44,6 @@ Gradle | 3.0 及以上版本
 	implementation 'com.github.ti-net-project:OnlineSDK-Android:x.x.x'//x.x.x为最新版本号
 ```
 
-其他
-``` 
-    //如您的应用内从未使用到以下依赖，则需要在app的 build.gradle 文件中添加如下依赖配置
-    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
-    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
-```
 
 #### aar 依赖方式
 aar下载地址：https://tinet-sdk-release.s3.cn-north-1.amazonaws.com.cn/online-sdk/sdk/release/online_sdk_x.x.x_release.aar //x.x.x为最新版本号
@@ -58,6 +52,19 @@ aar下载地址：https://tinet-sdk-release.s3.cn-north-1.amazonaws.com.cn/onlin
 
 ```
 	api files('libs/online_sdk_x.x.x_release.aar')//x.x.x为最新版本号
+```
+
+其他
+说明：如您的应用内从未使用到以下依赖，且使用的是本地aar依赖客服SDK的方式，则需要在app的 build.gradle 文件中添加如下依赖配置
+``` 
+    //1.5.9.3版本之前仅需要添加以下依赖
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+    //1.5.9.3+版本还需要添加以下依赖
+    implementation 'com.jakewharton:disklrucache:2.0.2'
+    implementation "org.jsoup:jsoup:1.12.1"
+    implementation 'com.github.gzu-liyujiang.AndroidPicker:Common:4.1.5'
+    implementation 'com.github.gzu-liyujiang.AndroidPicker:FilePicker:4.1.5'
 ```
 
 ### 混淆配置
@@ -405,11 +412,8 @@ colors.xml可修改项
         <!--快捷入口底部背景色-->
         <color name="ti_quick_entry_rv_bg_color">#ffffff</color>
     
+
         <!--  ++++++++++++++ 商品卡片设置 ++++++++++++++  -->
-        <!--商品卡片一发送按钮背景色-->
-        <color name="ti_commodity_card_bg_color">#4384ff</color>
-        <!--商品卡片一发送文字颜色-->
-        <color name="ti_commodity_card__color">#ffffff</color>
         <!--聊天接受商品卡片分割线颜色-->
         <color name="ti_msg_card_receive_dividing_line_color">#80000000</color>
         <!--聊天发送商品卡片分割线颜色-->
@@ -420,6 +424,43 @@ colors.xml可修改项
         <color name="ti_msg_card_send_text_color">#80000000</color>
         <!--聊天文件名颜色-->
         <color name="ti_msg_receive_filename_text_color">@color/ti_send_bubble_background_color</color>
+
+        <!--商品卡片待发送一发送按钮背景色-->
+        <color name="ti_commodity_card_bg_color">#4384ff</color>
+        <!--商品卡片待发送一发送文字颜色-->
+        <color name="ti_commodity_card__color">#ffffff</color>
+
+        <!--待发送 子标题 文字颜色-->
+        <color name="ti_hold_subtitle_text_color">@color/ti_dark</color>
+        <!--待发送 价格 文字颜色-->
+        <color name="ti_hold_price_text_color">#f00</color>
+
+        <!--接收端 订单id 文字颜色-->
+        <color name="ti_receive_order_id_text_color">@color/ti_dark</color>
+        <!--接收端 时间 文字颜色-->
+        <color name="ti_receive_time_text_color">@color/ti_dark</color>
+        <!--接收端 子标题 文字颜色-->
+        <color name="ti_receive_subtitle_text_color">@color/ti_dark</color>
+        <!--接收端 描述 文字颜色-->
+        <color name="ti_receive_description_text_color">#8A8D9A</color>
+        <!--接收端 价格 文字颜色-->
+        <color name="ti_receive_price_text_color">#f00</color>
+        <!--接收端 到货状态 文字颜色-->
+        <color name="ti_receive_status_text_color">@color/ti_dark</color>
+
+        <!--发送端 订单id 文字颜色-->
+        <color name="ti_sender_order_id_text_color">@color/ti_dark</color>
+        <!--发送端 时间 文字颜色-->
+        <color name="ti_sender_time_text_color">@color/ti_dark</color>
+        <!--发送端 子标题 文字颜色-->
+        <color name="ti_sender_subtitle_text_color">@color/ti_dark</color>
+        <!--发送端 描述 文字颜色-->
+        <color name="ti_sender_description_text_color">#8A8D9A</color>
+        <!--发送端 价格 文字颜色-->
+        <color name="ti_sender_price_text_color">#f00</color>
+        <!--发送端 到货状态 文字颜色-->
+        <color name="ti_sender_status_text_color">@color/ti_dark</color>
+
     
         <!--  ++++++++++++++ 选择图片页面 ++++++++++++++  -->
         <!--相册导航栏背景色-->
@@ -527,6 +568,38 @@ dimen可修改项
         <dimen name="ti_message_tv_size">12sp</dimen>
         <!--商品卡片二图片大小-->
         <dimen name="ti_message_img">80dp</dimen>
+
+    
+        <!--待发送 子标题 文字大小-->
+        <dimen name="ti_hold_subtitle_text_size">16sp</dimen>
+        <!--待发送 价格 文字大小-->
+        <dimen name="ti_hold_price_text_size">16sp</dimen>
+
+        <!--接收端 订单id 文字大小-->
+        <dimen name="ti_receive_order_id_text_size">12sp</dimen>
+        <!--接收端 时间 文字大小-->
+        <dimen name="ti_receive_time_text_size">12sp</dimen>
+        <!--接收端 子标题 文字大小-->
+        <dimen name="ti_receive_subtitle_text_size">16sp</dimen>
+        <!--接收端 描述 文字大小-->
+        <dimen name="ti_receive_description_text_size">16sp</dimen>
+        <!--接收端 价格 文字大小-->
+        <dimen name="ti_receive_price_text_size">16sp</dimen>
+        <!--接收端 到货状态 文字大小-->
+        <dimen name="ti_receive_status_text_size">16sp</dimen>
+
+        <!--发送端 订单id 文字大小-->
+        <dimen name="ti_sender_order_id_text_size">12sp</dimen>
+        <!--发送端 时间 文字大小-->
+        <dimen name="ti_sender_time_text_size">12sp</dimen>
+        <!--发送端 子标题 文字大小-->
+        <dimen name="ti_sender_subtitle_text_size">16sp</dimen>
+        <!--发送端 描述 文字大小-->
+        <dimen name="ti_sender_description_text_size">16sp</dimen>
+        <!--发送端 价格 文字大小-->
+        <dimen name="ti_sender_price_text_size">16sp</dimen>
+        <!--发送端 到货状态 文字大小-->
+        <dimen name="ti_sender_status_text_size">16sp</dimen>
 ```
 
 string.xml可修改项

@@ -111,7 +111,7 @@ public class App extends Application {
             @Override
             public void loadImage(ImageView imageView, Object uri) {
                 GlideUrl glideUrl = new GlideUrl((String) uri, new LazyHeaders.Builder()
-                        .addHeader("X-Virtual-Env", "dev.app")
+                        .addHeader("X-Virtual-Env", "dev.chat")
                         .build());
                 boolean contain = (info != null && "Kt".equals(info.getType())) ? ((String) uri).contains("https") : false;
                 Glide.with(imageView.getContext())
@@ -124,7 +124,7 @@ public class App extends Application {
             @Override
             public void loadImage(ImageView imageView, Object uri, int placeholderImg, int errorImg) {
                 GlideUrl glideUrl = new GlideUrl((String) uri, new LazyHeaders.Builder()
-                        .addHeader("X-Virtual-Env", "dev.app")
+                        .addHeader("X-Virtual-Env", "dev.chat")
                         .build());
                 boolean contain = (info != null && "Kt".equals(info.getType())) ? ((String) uri).contains("https") : false;
                 Glide.with(imageView.getContext())
@@ -138,7 +138,7 @@ public class App extends Application {
             @Override
             public void loadImage(ImageView imageView, Object uri, int originalWidth, int originalHeight, TImageLoaderListener listener) {
                 GlideUrl glideUrl = new GlideUrl((String) uri, new LazyHeaders.Builder()
-                        .addHeader("X-Virtual-Env", "dev.app")
+                        .addHeader("X-Virtual-Env", "dev.chat")
                         .build());
                 boolean contain = (info != null && "Kt".equals(info.getType())) ? ((String) uri).contains("https") : false;
                 Glide.with(imageView.getContext())
@@ -153,7 +153,7 @@ public class App extends Application {
             @Override
             public void loadImage(Context context, Object uri, int originalWidth, int originalHeight, TImageLoaderListener listener) {
                 GlideUrl glideUrl = new GlideUrl((String) uri, new LazyHeaders.Builder()
-                        .addHeader("X-Virtual-Env", "dev.app")
+                        .addHeader("X-Virtual-Env", "dev.chat")
                         .build());
                 boolean contain = (info != null && "Kt".equals(info.getType())) ? ((String) uri).contains("https") : false;
                 Glide.with(context)
