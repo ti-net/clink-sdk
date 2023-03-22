@@ -16,7 +16,7 @@ public class KbAbstractTest {
 
     @Before
     public void init() {
-        configuration = new ClientConfiguration("659f737b1134aaac65c9d893248a3de9", "3aKa9i82qRl322s1540t");
+        configuration = new ClientConfiguration("b05d23a7ab03360fc5a6ee10d91d6be8", "rYkSt8qmf5huD5nM73X1");
         configuration.setScheme("http");
         configuration.setHost("alb-01l5fw2u4lg0sajop3.cn-beijing.alb.aliyuncs.com");
 

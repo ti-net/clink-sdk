@@ -67,6 +67,10 @@ public class CreateCustomerRequest extends AbstractRequestModel<CreateCustomerRe
      */
     private IdValue[] customize;
 
+    /**
+     * 来源。24：坐席助手，30：接口创建
+     */
+    private Integer source;
 
     public String getName() {
         return name;
@@ -199,6 +203,14 @@ public class CreateCustomerRequest extends AbstractRequestModel<CreateCustomerRe
         if (externalId != null) {
             putBodyParameter("externalId", externalId);
         }
+    }
+
+    public Integer getSource() {
+        return source;
+    }
+
+    public void setSource(Integer source) {
+        this.source = source;
     }
 
     public CreateCustomerRequest() {

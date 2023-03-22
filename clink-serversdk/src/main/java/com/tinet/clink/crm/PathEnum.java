@@ -21,6 +21,8 @@ public enum PathEnum {
     ListCustomerField("crm/list_customer_field"),
     // 删除客户资料
     DeleteCustomer("crm/delete_customer"),
+    //查询客户资料
+    QueryCustomer("crm/query_customer"),
 
 
     //查询业务记录的自定义字段
@@ -33,7 +35,10 @@ public enum PathEnum {
     ListBusinessCount("crm/list_business_count"),
 
     //查询业务记录
-    GetBusinessDetail("crm/get_business_detail");
+    GetBusinessDetail("crm/get_business_detail"),
+
+    //新增业务记录
+    CreateBusiness("crm/create_business");
 
     /**
      * 外呼任务创建

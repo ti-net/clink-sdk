@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.ti-net</groupId>
     <artifactId>clink-serversdk</artifactId>
-    <version>3.0.6</version>
+    <version>3.0.7.1</version>
 
     <name>Clink Open API Java SDK</name>
     <description>Clink Open API Java SDK is used for simplify the development for clink open api access.</description>

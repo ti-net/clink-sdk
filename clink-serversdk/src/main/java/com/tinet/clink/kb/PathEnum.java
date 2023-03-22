@@ -31,7 +31,10 @@ public enum PathEnum {
     CreateCategory("kb/create_category"),
     UpdateCategory("kb/update_category"),
     DeleteCategory("kb/delete_category"),
-    MediaUrl("kb/media_url");
+    MediaUrl("kb/media_url"),
+    ListFile("kb/files_list"),
+    DeleteFile("kb/files_delete");
+
     private String value;
 
     PathEnum(String value) {
