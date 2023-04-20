@@ -8,10 +8,6 @@ package com.tinet.clink.cc.model;
  **/
 public class CdrObRecordDetailModel {
 
-    /**
-     * callId
-     */
-    private String callId;
 
     /**
      * 通话记录唯一标识
@@ -179,14 +175,6 @@ public class CdrObRecordDetailModel {
 
     public void setQueueAnswerInTime(Integer queueAnswerInTime) {
         this.queueAnswerInTime = queueAnswerInTime;
-    }
-
-    public String getCallId() {
-        return callId;
-    }
-
-    public void setCallId(String callId) {
-        this.callId = callId;
     }
 
     public String getMarkData() {

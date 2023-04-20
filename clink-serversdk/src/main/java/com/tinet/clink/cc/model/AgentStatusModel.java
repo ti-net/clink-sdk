@@ -74,11 +74,6 @@ public class AgentStatusModel {
     private Map<String, String> queuesMap;
 
     /**
-     * 队列来电接听数
-     */
-    private Integer queueIncomingCallCount;
-
-    /**
      * 状态时长
      */
     private Long stateDuration;
@@ -158,14 +153,6 @@ public class AgentStatusModel {
 
     public void setIncomingCallCount(Integer incomingCallCount) {
         this.incomingCallCount = incomingCallCount;
-    }
-
-    public Integer getQueueIncomingCallCount() {
-        return queueIncomingCallCount;
-    }
-
-    public void setQueueIncomingCallCount(Integer queueIncomingCallCount) {
-        this.queueIncomingCallCount = queueIncomingCallCount;
     }
 
     public Long getStateDuration() {
