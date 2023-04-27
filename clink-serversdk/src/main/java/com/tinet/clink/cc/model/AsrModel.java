@@ -119,6 +119,11 @@ public class AsrModel {
          */
         private String text;
 
+        /**
+         * 座席侧转写文本：agent；客户侧转写文本：client
+         */
+        private String side;
+
         public Integer getChannelId() {
             return channelId;
         }
@@ -173,6 +178,14 @@ public class AsrModel {
 
         public void setText(String text) {
             this.text = text;
+        }
+
+        public String getSide() {
+            return side;
+        }
+
+        public void setSide(String side) {
+            this.side = side;
         }
     }
 

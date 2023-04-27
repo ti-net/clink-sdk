@@ -36,30 +36,39 @@ public class AgentStatusModel {
      * 主叫号码，即来电客户号码
      */
     private String customerNumber;
+
     /**
      * 客户号码加密串
      */
     private String customerNumberEncrypt;
+
     /**
      * 置忙类型
      */
     private Integer pauseType;
+
     /**
      * 置忙状态
      */
     private String pauseDescription;
+
     /**
-     * 座席状态 (空闲、置忙(具体置忙原因)、通话、振铃、整理、外呼中)
+     * 设备状态 (空闲、置忙(具体置忙原因)、通话、振铃、整理、外呼中(离线不展示))
      */
     private String agentStatus;
 
     /**
-     * 座席状态详情
+     *
      */
     private String agentStatusDetail;
 
     /**
-     * 来电接听数
+     * 空闲超时时间（单位分钟）
+     */
+    private Integer idleTimeOut = 5;
+
+    /**
+     * 座席来电次数
      */
     private Integer incomingCallCount;
 
@@ -69,9 +78,9 @@ public class AgentStatusModel {
     private Integer bridgeCallCount;
 
     /**
-     * qno，qname 映射
+     * 队列来电接听数
      */
-    private Map<String, String> queuesMap;
+    private Integer queueIncomingCallCount;
 
     /**
      * 状态时长
@@ -82,6 +91,94 @@ public class AgentStatusModel {
      * 登录时长
      */
     private Long loginDuration;
+
+    /**
+     * 呼入接听总响铃时长
+     */
+    private Long ibAnsweredRingingDuration;
+
+    /**
+     * 座席code
+     */
+    private String code;
+
+    /**
+     * 队列信息
+     */
+    private String queueInfo;
+
+    /**
+     * 队列编号
+     */
+    private String queues;
+
+
+    /**
+     * qno，qname 映射
+     */
+    private Map<String, String> queuesMap;
+
+    /**
+     * 座席外呼数
+     */
+    private Integer obCallCount;
+    /**
+     * 外呼座席未接听数
+     */
+    private Integer obClientUnbridgeCount;
+    /**
+     * 外呼客户接听数
+     */
+    private Integer obCustomerBridgeCount;
+    /**
+     * 外呼客户未接听数
+     */
+    private Integer obCustomerUnbridgeCount;
+    /**
+     * 外呼接听率
+     */
+    private Double obBridgeRate;
+    /**
+     * 外呼通话时长
+     */
+    private Long obBridgeDuration;
+    /**
+     * 外呼平均通话时长
+     */
+    private Long obAvgBridgeDuration;
+    /**
+     * 座席标签
+     */
+    private String[] tagNames;
+
+    /**
+     * 客户呼入接听数
+     */
+    private Integer ibClientAnsweredCount = 0;
+    /**
+     * 客户呼入未接听数
+     */
+    private Integer ibClientUnansweredCount = 0;
+
+    /**
+     * 客户速挂数
+     */
+    private Integer quickUnlinkCount = 0;
+
+    /**
+     * 客户呼入数
+     */
+    private Integer ibClientTotalCount = 0;
+
+    /**
+     * 客户呼入接听率
+     */
+    private double ibClientAnsweredRate;
+
+    /**
+     *  座席是否处于预测外呼状态 1：是 0：否
+     */
+    private Integer predictToCall = 0;
 
     public String getCno() {
         return cno;
@@ -201,5 +298,165 @@ public class AgentStatusModel {
 
     public void setQueuesMap(Map<String, String> queuesMap) {
         this.queuesMap = queuesMap;
+    }
+
+    public Integer getIdleTimeOut() {
+        return idleTimeOut;
+    }
+
+    public void setIdleTimeOut(Integer idleTimeOut) {
+        this.idleTimeOut = idleTimeOut;
+    }
+
+    public Integer getQueueIncomingCallCount() {
+        return queueIncomingCallCount;
+    }
+
+    public void setQueueIncomingCallCount(Integer queueIncomingCallCount) {
+        this.queueIncomingCallCount = queueIncomingCallCount;
+    }
+
+    public Long getIbAnsweredRingingDuration() {
+        return ibAnsweredRingingDuration;
+    }
+
+    public void setIbAnsweredRingingDuration(Long ibAnsweredRingingDuration) {
+        this.ibAnsweredRingingDuration = ibAnsweredRingingDuration;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getQueueInfo() {
+        return queueInfo;
+    }
+
+    public void setQueueInfo(String queueInfo) {
+        this.queueInfo = queueInfo;
+    }
+
+    public String getQueues() {
+        return queues;
+    }
+
+    public void setQueues(String queues) {
+        this.queues = queues;
+    }
+
+    public Integer getObCallCount() {
+        return obCallCount;
+    }
+
+    public void setObCallCount(Integer obCallCount) {
+        this.obCallCount = obCallCount;
+    }
+
+    public Integer getObClientUnbridgeCount() {
+        return obClientUnbridgeCount;
+    }
+
+    public void setObClientUnbridgeCount(Integer obClientUnbridgeCount) {
+        this.obClientUnbridgeCount = obClientUnbridgeCount;
+    }
+
+    public Integer getObCustomerBridgeCount() {
+        return obCustomerBridgeCount;
+    }
+
+    public void setObCustomerBridgeCount(Integer obCustomerBridgeCount) {
+        this.obCustomerBridgeCount = obCustomerBridgeCount;
+    }
+
+    public Integer getObCustomerUnbridgeCount() {
+        return obCustomerUnbridgeCount;
+    }
+
+    public void setObCustomerUnbridgeCount(Integer obCustomerUnbridgeCount) {
+        this.obCustomerUnbridgeCount = obCustomerUnbridgeCount;
+    }
+
+    public Double getObBridgeRate() {
+        return obBridgeRate;
+    }
+
+    public void setObBridgeRate(Double obBridgeRate) {
+        this.obBridgeRate = obBridgeRate;
+    }
+
+    public Long getObBridgeDuration() {
+        return obBridgeDuration;
+    }
+
+    public void setObBridgeDuration(Long obBridgeDuration) {
+        this.obBridgeDuration = obBridgeDuration;
+    }
+
+    public Long getObAvgBridgeDuration() {
+        return obAvgBridgeDuration;
+    }
+
+    public void setObAvgBridgeDuration(Long obAvgBridgeDuration) {
+        this.obAvgBridgeDuration = obAvgBridgeDuration;
+    }
+
+    public String[] getTagNames() {
+        return tagNames;
+    }
+
+    public void setTagNames(String[] tagNames) {
+        this.tagNames = tagNames;
+    }
+
+    public Integer getIbClientAnsweredCount() {
+        return ibClientAnsweredCount;
+    }
+
+    public void setIbClientAnsweredCount(Integer ibClientAnsweredCount) {
+        this.ibClientAnsweredCount = ibClientAnsweredCount;
+    }
+
+    public Integer getIbClientUnansweredCount() {
+        return ibClientUnansweredCount;
+    }
+
+    public void setIbClientUnansweredCount(Integer ibClientUnansweredCount) {
+        this.ibClientUnansweredCount = ibClientUnansweredCount;
+    }
+
+    public Integer getQuickUnlinkCount() {
+        return quickUnlinkCount;
+    }
+
+    public void setQuickUnlinkCount(Integer quickUnlinkCount) {
+        this.quickUnlinkCount = quickUnlinkCount;
+    }
+
+    public Integer getIbClientTotalCount() {
+        return ibClientTotalCount;
+    }
+
+    public void setIbClientTotalCount(Integer ibClientTotalCount) {
+        this.ibClientTotalCount = ibClientTotalCount;
+    }
+
+    public double getIbClientAnsweredRate() {
+        return ibClientAnsweredRate;
+    }
+
+    public void setIbClientAnsweredRate(double ibClientAnsweredRate) {
+        this.ibClientAnsweredRate = ibClientAnsweredRate;
+    }
+
+    public Integer getPredictToCall() {
+        return predictToCall;
+    }
+
+    public void setPredictToCall(Integer predictToCall) {
+        this.predictToCall = predictToCall;
     }
 }

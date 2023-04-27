@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AgentStatusDetailModel {
 
+    private Integer enterpriseId;
     /**
      * 座席号
      */
@@ -40,6 +41,14 @@ public class AgentStatusDetailModel {
      * 座席状态详情，空闲，忙碌，整体，呼叫中，响铃，呼入振铃，外呼振铃，通话，呼入通话，外呼通话，自定义置忙状态
      */
     private String statusDetail;
+
+    public Integer getEnterpriseId() {
+        return enterpriseId;
+    }
+
+    public void setEnterpriseId(Integer enterpriseId) {
+        this.enterpriseId = enterpriseId;
+    }
 
     public String getCno() {
         return cno;

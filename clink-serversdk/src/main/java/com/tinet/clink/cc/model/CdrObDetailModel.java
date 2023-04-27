@@ -8,6 +8,8 @@ package com.tinet.clink.cc.model;
  **/
 public class CdrObDetailModel {
 
+    private String callId;
+
     /**
      * 主通话记录唯一标识
      */
@@ -72,6 +74,16 @@ public class CdrObDetailModel {
      * 是否开启主叫记忆
      */
     private String remember;
+
+    private String recordFile;        // 录音文件
+
+    public String getCallId() {
+        return callId;
+    }
+
+    public void setCallId(String callId) {
+        this.callId = callId;
+    }
 
     public String getMainUniqueId() {
         return mainUniqueId;
@@ -175,5 +187,13 @@ public class CdrObDetailModel {
 
     public void setRemember(String remember) {
         this.remember = remember;
+    }
+
+    public String getRecordFile() {
+        return recordFile;
+    }
+
+    public void setRecordFile(String recordFile) {
+        this.recordFile = recordFile;
     }
 }
