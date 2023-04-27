@@ -445,3 +445,7 @@ public class Test {
 ```
 1、 新增 在线客服-API-同步会话详情 返回增加 人工有效会话
 ```
+### V 3.0.7.1
+```
+修改sdk timestamp生成方式， 使用utc时区生成timestamp
+```

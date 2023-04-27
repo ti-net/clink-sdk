@@ -61,6 +61,16 @@ public class ClientDetailModel {
     private Integer hiddenTel;
 
     /**
+     * 呼入整理类型，1队列，2座席
+     */
+    private Integer ibWrapupType;
+
+    /**
+     * 呼入整理时长，当呼入整理类型为队列时生效
+     */
+    private Integer ibWrapupTime;
+
+    /**
      * 座席权限
      */
     private ClientPermission permission;
@@ -202,6 +212,22 @@ public class ClientDetailModel {
 
     public void setHiddenTel(Integer hiddenTel) {
         this.hiddenTel = hiddenTel;
+    }
+
+    public Integer getIbWrapupType() {
+        return ibWrapupType;
+    }
+
+    public void setIbWrapupType(Integer ibWrapupType) {
+        this.ibWrapupType = ibWrapupType;
+    }
+
+    public Integer getIbWrapupTime() {
+        return ibWrapupTime;
+    }
+
+    public void setIbWrapupTime(Integer ibWrapupTime) {
+        this.ibWrapupTime = ibWrapupTime;
     }
 
     public ClientPermission getPermission() {

@@ -59,6 +59,16 @@ public class UpdateClientRequest extends AbstractRequestModel<UpdateClientRespon
     private Integer hiddenTel;
 
     /**
+     * 呼入整理类型，1队列，2座席
+     */
+    private Integer ibWrapupType;
+
+    /**
+     * 呼入整理时长
+     */
+    private Integer ibWrapupTime;
+
+    /**
      * 整理时长，座席进行外呼操作后的整理时间，取值范围3 ~ 300秒
      */
     private Integer wrapupTime;
@@ -116,6 +126,11 @@ public class UpdateClientRequest extends AbstractRequestModel<UpdateClientRespon
      * 在线客服座席会话上限
      */
     private Integer chatLimitNum;
+
+    /**
+     * 微信小程序RTC开关
+     */
+    private Integer wechatMiniProgramRtc;
 
     public Integer getChatLimit() {
         return chatLimit;
@@ -227,6 +242,28 @@ public class UpdateClientRequest extends AbstractRequestModel<UpdateClientRespon
         }
     }
 
+    public Integer getIbWrapupType() {
+        return ibWrapupType;
+    }
+
+    public void setIbWrapupType(Integer ibWrapupType) {
+        this.ibWrapupType = ibWrapupType;
+        if (ibWrapupType != null) {
+            putBodyParameter("ibWrapupType", ibWrapupType);
+        }
+    }
+
+    public Integer getIbWrapupTime() {
+        return ibWrapupTime;
+    }
+
+    public void setIbWrapupTime(Integer ibWrapupTime) {
+        this.ibWrapupTime = ibWrapupTime;
+        if (ibWrapupTime != null) {
+            putBodyParameter("ibWrapupTime", ibWrapupTime);
+        }
+    }
+
     public Integer getWrapupTime() {
         return wrapupTime;
     }
@@ -323,6 +360,17 @@ public class UpdateClientRequest extends AbstractRequestModel<UpdateClientRespon
         this.permission = permission;
         if (permission != null) {
             putBodyParameter("permission", permission);
+        }
+    }
+
+    public Integer getWechatMiniProgramRtc() {
+        return wechatMiniProgramRtc;
+    }
+
+    public void setWechatMiniProgramRtc(Integer wechatMiniProgramRtc) {
+        this.wechatMiniProgramRtc = wechatMiniProgramRtc;
+        if (wechatMiniProgramRtc != null) {
+            putBodyParameter("wechatMiniProgramRtc", wechatMiniProgramRtc);
         }
     }
 
