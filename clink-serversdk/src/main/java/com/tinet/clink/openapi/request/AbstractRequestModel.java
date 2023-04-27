@@ -17,6 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.TimeZone;
 import java.util.TreeMap;
 
 /**
@@ -66,6 +67,7 @@ public abstract class AbstractRequestModel<T extends ResponseModel> {
     public void signRequest(Signer signer, Credentials credentials, String domain) {
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+        sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
         putQueryParameter(RequestConstant.ACCESS_KEY_ID, credentials.getAccessKeyId());
         putQueryParameter(RequestConstant.EXPIRES, expires);
         putQueryParameter(RequestConstant.TIMESTAMP, sdf.format(new Date()));
