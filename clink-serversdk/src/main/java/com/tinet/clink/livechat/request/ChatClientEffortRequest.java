@@ -1,18 +1,17 @@
 package com.tinet.clink.livechat.request;
 
-import com.tinet.clink.core.utils.HttpMethodType;
 import com.tinet.clink.livechat.PathEnum;
-import com.tinet.clink.livechat.response.StatChatClientWorkQualityResponse;
+import com.tinet.clink.core.utils.HttpMethodType;
+import com.tinet.clink.livechat.response.ChatClientEffortResponse;
 import com.tinet.clink.ticket.request.stat.AbstractStatRequest;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 /**
- * 在线客服-座席工作考勤报表 Request
  * @author midong
+ * @since 2023/4/24 19:39
  */
-public class StatChatClientWorkQualityRequest extends AbstractStatRequest<StatChatClientWorkQualityResponse> {
+public class ChatClientEffortRequest extends AbstractStatRequest<ChatClientEffortResponse> {
 
     /**
      * 起始日期
@@ -39,6 +38,9 @@ public class StatChatClientWorkQualityRequest extends AbstractStatRequest<StatCh
      */
     private List<Integer> appType;
 
+    private Integer limit;
+
+    private Integer offset;
 
     public String getStartTime() {
         return startTime;
@@ -81,8 +83,8 @@ public class StatChatClientWorkQualityRequest extends AbstractStatRequest<StatCh
         this.cnos = cnos;
         if (cnos != null && cnos.size() != 0) {
             putQueryParameter("cnos", convertStringListToString(cnos));
-            }
         }
+    }
 
 
     public List<Integer> getAppType() {
@@ -96,13 +98,35 @@ public class StatChatClientWorkQualityRequest extends AbstractStatRequest<StatCh
         }
 
     }
-    @Override
-    public Class<StatChatClientWorkQualityResponse> getResponseClass() {
-        return StatChatClientWorkQualityResponse.class;
+    public Integer getLimit() {
+        return limit;
     }
 
-    public StatChatClientWorkQualityRequest() {
-        super(PathEnum.StatChatClientWorkQuality.value(), HttpMethodType.POST);
+    public void setLimit(Integer limit) {
+        this.limit = limit;
+        if (limit != null) {
+            putQueryParameter("limit", limit);
+        }
+    }
+
+    public Integer getOffset() {
+        return offset;
+    }
+
+    public void setOffset(Integer offset) {
+        this.offset = offset;
+        if (offset != null) {
+            putQueryParameter("offset", offset);
+        }
+    }
+
+    public ChatClientEffortRequest() {
+        super(PathEnum.StatChatClientEffort.value(), HttpMethodType.POST);
+    }
+
+    @Override
+    public Class<ChatClientEffortResponse> getResponseClass() {
+        return ChatClientEffortResponse.class;
     }
 
     private static String convertStringListToString(List<String> list) {
