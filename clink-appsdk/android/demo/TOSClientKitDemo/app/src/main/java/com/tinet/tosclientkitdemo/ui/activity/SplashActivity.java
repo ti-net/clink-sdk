@@ -89,6 +89,7 @@ public class SplashActivity extends BaseActivity implements View.OnClickListener
         extraInfo.put("tinetSex", "男");
         extraInfo.put("tinetType", "用户端（安卓）");
         extraInfo.put("tinetAge", 36);
+        extraInfo.put("enableMqtt", false);
 
         // : 2022/6/23 改版后直接连接，无需点击登录按钮再连接
         TOSConnectOption tOSConnectOption = new TOSConnectOption();

@@ -186,7 +186,7 @@ public class App extends Application {
                 .setTextHighLightRuleList(tTextPatternRules)
                 .build();
 
-        TOSClientKit.setTosClientKitConfig(tosClientKitConfig);
+        TOSClientKit.setTOSClientKitConfig(tosClientKitConfig);
 
     }
 
@@ -234,7 +234,7 @@ public class App extends Application {
             message.add(new LabeInfo("订单状态", "已完成"));
             TOSClientKit.updateSessionWindowQuickEntrys(message);
         } else {
-            TOSClientKit.clearSessionWindowQuickEntrys();
+            TOSClientKit.updateSessionWindowQuickEntrys(new ArrayList<>());
         }
     }
 }

@@ -17,7 +17,6 @@ import com.gyf.immersionbar.ImmersionBar;
 import com.tinet.oskit.TOSClientKit;
 import com.tinet.oskit.tool.TimeUtils;
 import com.tinet.oslib.OnlineServiceClient;
-import com.tinet.oslib.listener.SessionInfoResult;
 import com.tinet.oslib.manager.OnlineMessageManager;
 import com.tinet.oslib.model.bean.CardInfo;
 import com.tinet.oslib.model.bean.SessionInfo;
