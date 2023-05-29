@@ -9,13 +9,13 @@ public enum PathEnum {
     ListTicket("ticket/list_ticket"),
 
     // 获取工单详情
-    GetTicketDetail("ticket/get_ticket_detail"),
+    GetTicketDetail("get_ticket_detail"),
 
     ListTicketCategory("ticket/list_ticket_category"),
 
     ListTicketWorkflow("ticket/list_ticket_workflow"),
 
-    SaveTicket("ticket/save_ticket"),
+    SaveTicket("save_ticket"),
     // 更新工单-人工
     UpdateTicket("ticket/update_ticket"),
     // 更新工单-预制流
