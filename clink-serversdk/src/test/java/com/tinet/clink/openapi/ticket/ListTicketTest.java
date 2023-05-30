@@ -21,8 +21,8 @@ public class ListTicketTest extends AbstractTest {
     public void listTicket(){
 
         ClientConfiguration configuration = new ClientConfiguration(
-                "85cd43bc929ee1a8eae6faa066239b8a",          // AccessKeyId
-                "Et7GCR16765YC3T5i48V");     // AccessKeySecret
+                "3ee29817e02c59ab4f27f55b75053ab9",          // AccessKeyId
+                "4498PzDejj8y13e2u19Q");     // AccessKeySecret
         configuration.setHost("alb-01l5fw2u4lg0sajop3.cn-beijing.alb.aliyuncs.com");
         configuration.setScheme("http");
         Client client = new Client(configuration);
@@ -31,6 +31,10 @@ public class ListTicketTest extends AbstractTest {
 
         listTicketRequest.setStartTime("2022-07-20 00:00:00");
         listTicketRequest.setEndTime("2022-10-19 23:59:59");
+        listTicketRequest.setCloseTimeStart("2022-07-20 00:00:00");
+        listTicketRequest.setCloseTimeEnd("2022-10-19 23:59:59");
+//        listTicketRequest.setEndTimeStart("2022-07-20 00:00:00");
+//        listTicketRequest.setEndTimeEnd("2022-10-19 23:59:59");
         listTicketRequest.setOffset(0);
         listTicketRequest.setLimit(10);
         HashMap<String, String> fieldMap = new HashMap<>();

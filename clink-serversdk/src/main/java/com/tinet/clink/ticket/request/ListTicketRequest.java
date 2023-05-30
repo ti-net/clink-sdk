@@ -82,6 +82,26 @@ public class ListTicketRequest extends AbstractRequestModel<ListTicketResponse> 
     private String endTime;
 
     /**
+     * 结束时间查询条件-开始时间
+     */
+    private String endTimeStart;
+
+    /**
+     * 结束时间查询条件-结束时间
+     */
+    private String endTimeEnd;
+
+    /**
+     * 关闭时间查询条件-开始时间
+     */
+    private String closeTimeStart;
+
+    /**
+     * 关闭时间查询条件-结束时间
+     */
+    private String closeTimeEnd;
+
+    /**
      * 最近催单开始时间
      */
     private String lastReminderTimeStart;
@@ -285,6 +305,50 @@ public class ListTicketRequest extends AbstractRequestModel<ListTicketResponse> 
         }
     }
 
+    public String getEndTimeStart() {
+        return endTimeStart;
+    }
+
+    public void setEndTimeStart(String endTimeStart) {
+        this.endTimeStart = endTimeStart;
+        if (endTimeStart != null) {
+            putQueryParameter("endTimeStart",endTimeStart);
+        }
+    }
+
+    public String getEndTimeEnd() {
+        return endTimeEnd;
+    }
+
+    public void setEndTimeEnd(String endTimeEnd) {
+        this.endTimeEnd = endTimeEnd;
+        if (endTimeEnd != null) {
+            putQueryParameter("endTimeEnd",endTimeEnd);
+        }
+    }
+
+    public String getCloseTimeStart() {
+        return closeTimeStart;
+    }
+
+    public void setCloseTimeStart(String closeTimeStart) {
+        this.closeTimeStart = closeTimeStart;
+        if (closeTimeStart != null) {
+            putQueryParameter("closeTimeStart",closeTimeStart);
+        }
+    }
+
+    public String getCloseTimeEnd() {
+        return closeTimeEnd;
+
+    }
+
+    public void setCloseTimeEnd(String closeTimeEnd) {
+        this.closeTimeEnd = closeTimeEnd;
+        if (closeTimeEnd != null) {
+            putQueryParameter("closeTimeEnd",closeTimeEnd);
+        }
+    }
     public String getLastReminderTimeEnd() {
         return lastReminderTimeEnd;
     }

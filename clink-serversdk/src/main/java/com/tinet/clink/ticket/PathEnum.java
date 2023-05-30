@@ -9,13 +9,13 @@ public enum PathEnum {
     ListTicket("ticket/list_ticket"),
 
     // 获取工单详情
-    GetTicketDetail("get_ticket_detail"),
+    GetTicketDetail("ticket/get_ticket_detail"),
 
     ListTicketCategory("ticket/list_ticket_category"),
 
     ListTicketWorkflow("ticket/list_ticket_workflow"),
 
-    SaveTicket("save_ticket"),
+    SaveTicket("ticket/save_ticket"),
     // 更新工单-人工
     UpdateTicket("ticket/update_ticket"),
     // 更新工单-预制流
@@ -32,6 +32,8 @@ public enum PathEnum {
     CommentTicket("ticket/comment_ticket"),
     // 关闭工单
     CloseTicket("ticket/close_ticket"),
+    // 分配工单
+    AssignTicket("ticket/assign_ticket"),
     // 完成工单
     FinishTicket("ticket/finish_ticket"),
     // 获取工单文件 url
