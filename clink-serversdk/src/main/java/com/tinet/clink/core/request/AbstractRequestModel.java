@@ -29,7 +29,7 @@ import java.util.TreeMap;
  */
 public abstract class AbstractRequestModel<T extends ResponseModel> {
 
-    private int expires = 86400;
+    private int expires = 600;
 
     private String path;
 
