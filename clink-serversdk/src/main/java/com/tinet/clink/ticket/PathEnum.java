@@ -32,6 +32,8 @@ public enum PathEnum {
     CommentTicket("ticket/comment_ticket"),
     // 关闭工单
     CloseTicket("ticket/close_ticket"),
+    // 分配工单
+    AssignTicket("ticket/assign_ticket"),
     // 完成工单
     FinishTicket("ticket/finish_ticket"),
     // 获取工单文件 url
