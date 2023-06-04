@@ -74,6 +74,10 @@ public enum PathEnum {
     PauseClient("cc/pause_client"),
     UnpauseClient("cc/unpause_client"),
     OfflineClient("cc/offline_client"),
+    //  通话记录
+    ListTodayCdrsByCno("cc/list_today_cdrs_by_cno"),
+    ListHistoryCdrs("cc/list_history_cdrs"),
+
     //  呼入通话记录
     ListCdrIbs("cc/list_cdr_ibs"),
     DescribeCdrIb("cc/describe_cdr_ib"),
@@ -109,6 +113,10 @@ public enum PathEnum {
     AgentStatus("cc/agent_status"),
     // 座席状态详情
     AgentStatusDetail("cc/agent_status_detail"),
+    /**
+     * 座席当日状态小记
+     */
+    AgentStatusSubtotal("/cc/agent_status_subtotal"),
     // 队列状态监控
     QueueStatus("cc/queue_status"),
     //短信发送
@@ -189,7 +197,36 @@ public enum PathEnum {
     /**
      * 外呼任务创建
      */
-    CreateTaskProperty("cc/create_task_property");
+    CreateTaskProperty("cc/create_task_property"),
+    /**
+     * 外呼任务执行状态
+     */
+    TaskPropertyExecStatuses("cc/task_property_exec_statuses"),
+    /**
+     * 外呼任务表单模版
+     */
+    TaskPropertyForm("cc/task_property_form"),
+    /**
+     * 座席外呼任务列表
+     */
+    ListAgentTaskProperties("cc/list_agent_task_properties"),
+    /**
+     * 座席外呼任务明细列表
+     */
+    ListAgentTaskInventories("cc/list_agent_task_inventories"),
+    /**
+     * 座席外呼任务明细详情
+     */
+    AgentTaskInventoryDetail("cc/agent_task_inventory_detail"),
+    /**
+     * 更新外呼任务明细处理状态
+     */
+    UpdateTaskInventoryHandleStatus("cc/update_task_inventory_handle_status"),
+    /**
+     * 更新外呼任务明细表单信息
+     */
+    UpdateTaskInventoryFormInfo("cc/update_task_inventory_form_info"),
+    ;
     private String value;
 
     PathEnum(String value) {
