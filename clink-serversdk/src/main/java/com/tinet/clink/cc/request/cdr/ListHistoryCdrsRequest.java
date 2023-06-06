@@ -42,6 +42,11 @@ public class ListHistoryCdrsRequest extends AbstractRequestModel<ListHistoryCdrs
     private Integer status = 0;
 
     /**
+     * 呼叫类型 ib-呼入 or ob-外呼
+     */
+    private String callType;
+
+    /**
      * 是否隐藏号码 0 不隐藏，1隐藏中间四位 2隐藏最后八位 3隐藏全部号码 4隐藏最后四位 默认是0
      */
     private Integer hiddenType = 0;
@@ -163,6 +168,14 @@ public class ListHistoryCdrsRequest extends AbstractRequestModel<ListHistoryCdrs
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public String getCallType() {
+        return callType;
+    }
+
+    public void setCallType(String callType) {
+        this.callType = callType;
     }
 
     public Integer getHiddenType() {
