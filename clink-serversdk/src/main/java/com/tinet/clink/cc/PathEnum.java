@@ -116,7 +116,7 @@ public enum PathEnum {
     /**
      * 座席当日状态小记
      */
-    AgentStatusSubtotal("/cc/agent_status_subtotal"),
+    AgentStatusSubtotal("agent_status_subtotal"),
     // 队列状态监控
     QueueStatus("cc/queue_status"),
     //短信发送
