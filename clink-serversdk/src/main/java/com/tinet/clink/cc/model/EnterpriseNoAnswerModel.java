@@ -51,21 +51,42 @@ public class EnterpriseNoAnswerModel {
      * 开始时间
      */
     private Long startTime;
+    /**
+     * 呼叫类型 ;枚举：呼入、webCall、点击外呼、预览外呼、预测外呼、主叫外呼、自助录音、发送传真、内部呼叫、预约回呼、呼转座席、转移、咨询、三方、监听、耳语、强插、抢线、转移、咨询、三方、监听、耳语、强插、呼转客户、呼转分机、呼转电话
+     */
+    private String callType;
 
-    private Integer callType;
-
+    /**
+     * 客户手机区号
+     */
     private String customerAreaCode;
 
+    /**
+     * 客户是否为vip
+     */
     private Integer customerVip;
 
+    /**
+     * 客户城市
+     */
     private String customerCity;
 
+    /**
+     * 客户省份
+     */
     private String customerProvince;
-
+    /**
+     * 客户姓名
+     */
     private String customerName;
-
+    /**
+     * obRememberOffline：外呼主叫记忆-离线未接听、obRememberBusy：外呼主叫记忆-忙碌未接听、
+     * rna-响铃未接听、selfHandled：本座席处理
+     */
     private String action;
-
+    /**
+     * 参考 action 字段
+     */
     private String actionDest;
 
     /**
@@ -101,7 +122,6 @@ public class EnterpriseNoAnswerModel {
     private String numberTrunk;
     /**
      * 最后未接来电的创建时间
-     * isNullAble:1,defaultVal:now()
      */
     private Long endTime;
     /**
@@ -189,11 +209,11 @@ public class EnterpriseNoAnswerModel {
         this.startTime = startTime;
     }
 
-    public Integer getCallType() {
+    public String getCallType() {
         return callType;
     }
 
-    public void setCallType(Integer callType) {
+    public void setCallType(String callType) {
         this.callType = callType;
     }
 
