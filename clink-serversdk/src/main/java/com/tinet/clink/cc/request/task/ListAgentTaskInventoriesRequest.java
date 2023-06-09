@@ -29,6 +29,9 @@ public class ListAgentTaskInventoriesRequest extends AbstractRequestModel<ListAg
 
     public void setCno(String cno) {
         this.cno = cno;
+        if (cno != null) {
+            putQueryParameter("cno", cno);
+        }
     }
 
     @Override

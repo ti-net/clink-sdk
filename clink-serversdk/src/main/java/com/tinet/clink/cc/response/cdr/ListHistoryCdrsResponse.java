@@ -7,10 +7,10 @@ import com.tinet.clink.core.response.PagedResponse;
 import java.util.List;
 
 /**
- * 查询呼入通话记录列表响应
+ * 查询历史通话记录
  *
- * @author huwk
- * @date 2018/10/23
+ * @author yinzk
+ * @date 2023/6/9
  **/
 public class ListHistoryCdrsResponse extends PagedResponse {
     private List<CdrRecordModel> cdrs;

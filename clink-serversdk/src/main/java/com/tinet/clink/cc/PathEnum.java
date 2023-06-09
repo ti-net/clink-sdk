@@ -90,6 +90,14 @@ public enum PathEnum {
     DescribeCdrObDetails("cc/describe_cdr_ob_details"),
     CopyCdrObs("cc/copy_cdr_obs"),
     CopyCdrObDetails("cc/copy_cdr_ob_details"),
+    // 未接来电
+    ListEnterpriseNoAnswer("cc/list_enterprise_no_answer"),
+    HandleEnterpriseNoAnswer("cc/handle_enterprise_no_answer"),
+    // 预约回呼
+    ListOrderCallback("cc/list_order_callback"),
+    HandleOrderCallback("cc/handle_order_callback"),
+
+
     // 下载从话单录音文件
     DownloadDetailRecordFile("cc/download_detail_record_file"),
     // sqc asr

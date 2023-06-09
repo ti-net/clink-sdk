@@ -5,6 +5,8 @@ import com.tinet.clink.cc.response.task.AgentTaskInventoryDetailResponse;
 import com.tinet.clink.core.request.AbstractRequestModel;
 import com.tinet.clink.core.utils.HttpMethodType;
 
+import java.util.Objects;
+
 
 /**
  * 获取座席外呼任务明细详情 请求
@@ -42,6 +44,9 @@ public class AgentTaskInventoryDetailRequest extends AbstractRequestModel<AgentT
 
     public void setCno(String cno) {
         this.cno = cno;
+        if (Objects.nonNull(cno)) {
+            putQueryParameter("cno", cno);
+        }
     }
 
     public Integer getTaskId() {
@@ -50,6 +55,9 @@ public class AgentTaskInventoryDetailRequest extends AbstractRequestModel<AgentT
 
     public void setTaskId(Integer taskId) {
         this.taskId = taskId;
+        if (Objects.nonNull(taskId)) {
+            putQueryParameter("taskId", taskId);
+        }
     }
 
     public Integer getInventoryId() {
@@ -58,6 +66,9 @@ public class AgentTaskInventoryDetailRequest extends AbstractRequestModel<AgentT
 
     public void setInventoryId(Integer inventoryId) {
         this.inventoryId = inventoryId;
+        if (Objects.nonNull(inventoryId)) {
+            putQueryParameter("inventoryId", inventoryId);
+        }
     }
 
     public String getCustomerTel() {
@@ -66,6 +77,9 @@ public class AgentTaskInventoryDetailRequest extends AbstractRequestModel<AgentT
 
     public void setCustomerTel(String customerTel) {
         this.customerTel = customerTel;
+        if (Objects.nonNull(customerTel)) {
+            putQueryParameter("customerTel", customerTel);
+        }
     }
 
     @Override

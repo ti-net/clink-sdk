@@ -5,6 +5,8 @@ import com.tinet.clink.cc.response.task.ListAgentTaskPropertiesResponse;
 import com.tinet.clink.core.request.AbstractRequestModel;
 import com.tinet.clink.core.utils.HttpMethodType;
 
+import java.util.Objects;
+
 
 /**
  * 获取座席外呼任务列表
@@ -29,6 +31,9 @@ public class ListAgentTaskPropertiesRequest extends AbstractRequestModel<ListAge
 
     public void setCno(String cno) {
         this.cno = cno;
+        if (Objects.nonNull(cno)) {
+            putQueryParameter("cno", cno);
+        }
     }
 
     @Override

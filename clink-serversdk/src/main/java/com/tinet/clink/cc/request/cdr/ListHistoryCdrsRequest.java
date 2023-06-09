@@ -6,11 +6,13 @@ import com.tinet.clink.cc.response.cdr.ListHistoryCdrsResponse;
 import com.tinet.clink.core.request.AbstractRequestModel;
 import com.tinet.clink.core.utils.HttpMethodType;
 
+import java.util.Objects;
+
 /**
  * 查询历史通话记录列表请求
  *
- * @author huwk
- * @date 2018/10/23
+ * @author yinzk
+ * @date 2023/6/9
  **/
 public class ListHistoryCdrsRequest extends AbstractRequestModel<ListHistoryCdrsResponse> {
 
@@ -128,6 +130,9 @@ public class ListHistoryCdrsRequest extends AbstractRequestModel<ListHistoryCdrs
 
     public void setStartTime(Long startTime) {
         this.startTime = startTime;
+        if (Objects.nonNull(startTime)) {
+            this.putQueryParameter("startTime", startTime);
+        }
     }
 
     public Long getEndTime() {
@@ -136,6 +141,9 @@ public class ListHistoryCdrsRequest extends AbstractRequestModel<ListHistoryCdrs
 
     public void setEndTime(Long endTime) {
         this.endTime = endTime;
+        if (Objects.nonNull(endTime)) {
+            this.putQueryParameter("endTime", endTime);
+        }
     }
 
     public String getCustomerNumber() {
@@ -144,6 +152,9 @@ public class ListHistoryCdrsRequest extends AbstractRequestModel<ListHistoryCdrs
 
     public void setCustomerNumber(String customerNumber) {
         this.customerNumber = customerNumber;
+        if (Objects.nonNull(customerNumber)) {
+            this.putQueryParameter("customerNumber", customerNumber);
+        }
     }
 
     public String getCno() {
@@ -152,6 +163,9 @@ public class ListHistoryCdrsRequest extends AbstractRequestModel<ListHistoryCdrs
 
     public void setCno(String cno) {
         this.cno = cno;
+        if (Objects.nonNull(cno)) {
+            this.putQueryParameter("cno", cno);
+        }
     }
 
     public String getHotline() {
@@ -160,6 +174,9 @@ public class ListHistoryCdrsRequest extends AbstractRequestModel<ListHistoryCdrs
 
     public void setHotline(String hotline) {
         this.hotline = hotline;
+        if (Objects.nonNull(hotline)) {
+            this.putQueryParameter("hotline", hotline);
+        }
     }
 
     public Integer getStatus() {
@@ -168,6 +185,9 @@ public class ListHistoryCdrsRequest extends AbstractRequestModel<ListHistoryCdrs
 
     public void setStatus(Integer status) {
         this.status = status;
+        if (Objects.nonNull(status)) {
+            this.putQueryParameter("status", status);
+        }
     }
 
     public String getCallType() {
@@ -176,6 +196,9 @@ public class ListHistoryCdrsRequest extends AbstractRequestModel<ListHistoryCdrs
 
     public void setCallType(String callType) {
         this.callType = callType;
+        if (Objects.nonNull(callType)) {
+            this.putQueryParameter("callType", callType);
+        }
     }
 
     public Integer getHiddenType() {
@@ -184,6 +207,9 @@ public class ListHistoryCdrsRequest extends AbstractRequestModel<ListHistoryCdrs
 
     public void setHiddenType(Integer hiddenType) {
         this.hiddenType = hiddenType;
+        if (Objects.nonNull(hiddenType)) {
+            this.putQueryParameter("hiddenType", hiddenType);
+        }
     }
 
     public String getUserField() {
@@ -192,6 +218,9 @@ public class ListHistoryCdrsRequest extends AbstractRequestModel<ListHistoryCdrs
 
     public void setUserField(String userField) {
         this.userField = userField;
+        if (Objects.nonNull(userField)) {
+            this.putQueryParameter("userField", userField);
+        }
     }
 
     public Integer getMark() {
@@ -200,6 +229,9 @@ public class ListHistoryCdrsRequest extends AbstractRequestModel<ListHistoryCdrs
 
     public void setMark(Integer mark) {
         this.mark = mark;
+        if (Objects.nonNull(mark)) {
+            this.putQueryParameter("mark", mark);
+        }
     }
 
     public String getProvince() {
@@ -208,6 +240,9 @@ public class ListHistoryCdrsRequest extends AbstractRequestModel<ListHistoryCdrs
 
     public void setProvince(String province) {
         this.province = province;
+        if (Objects.nonNull(province)) {
+            this.putQueryParameter("province", province);
+        }
     }
 
     public String getCity() {
@@ -216,6 +251,9 @@ public class ListHistoryCdrsRequest extends AbstractRequestModel<ListHistoryCdrs
 
     public void setCity(String city) {
         this.city = city;
+        if (Objects.nonNull(city)) {
+            this.putQueryParameter("city", city);
+        }
     }
 
     public String getMainUniqueId() {
@@ -224,6 +262,9 @@ public class ListHistoryCdrsRequest extends AbstractRequestModel<ListHistoryCdrs
 
     public void setMainUniqueId(String mainUniqueId) {
         this.mainUniqueId = mainUniqueId;
+        if (Objects.nonNull(mainUniqueId)) {
+            this.putQueryParameter("mainUniqueId", mainUniqueId);
+        }
     }
 
     public String getRequestUniqueId() {
@@ -232,6 +273,10 @@ public class ListHistoryCdrsRequest extends AbstractRequestModel<ListHistoryCdrs
 
     public void setRequestUniqueId(String requestUniqueId) {
         this.requestUniqueId = requestUniqueId;
+        if (Objects.nonNull(requestUniqueId)) {
+            this.putQueryParameter("requestUniqueId", requestUniqueId);
+        }
+
     }
 
     public String getClientNumber() {
@@ -240,6 +285,9 @@ public class ListHistoryCdrsRequest extends AbstractRequestModel<ListHistoryCdrs
 
     public void setClientNumber(String clientNumber) {
         this.clientNumber = clientNumber;
+        if (Objects.nonNull(clientNumber)) {
+            this.putQueryParameter("clientNumber", clientNumber);
+        }
     }
 
     public Integer getQueueAnswerInTime() {
@@ -248,6 +296,9 @@ public class ListHistoryCdrsRequest extends AbstractRequestModel<ListHistoryCdrs
 
     public void setQueueAnswerInTime(Integer queueAnswerInTime) {
         this.queueAnswerInTime = queueAnswerInTime;
+        if (Objects.nonNull(queueAnswerInTime)) {
+            this.putQueryParameter("queueAnswerInTime", queueAnswerInTime);
+        }
     }
 
     public Integer getEvaluation() {
@@ -256,6 +307,9 @@ public class ListHistoryCdrsRequest extends AbstractRequestModel<ListHistoryCdrs
 
     public void setEvaluation(Integer evaluation) {
         this.evaluation = evaluation;
+        if (Objects.nonNull(evaluation)) {
+            this.putQueryParameter("evaluation", evaluation);
+        }
     }
 
     public Integer getIdType() {
@@ -264,6 +318,9 @@ public class ListHistoryCdrsRequest extends AbstractRequestModel<ListHistoryCdrs
 
     public void setIdType(Integer idType) {
         this.idType = idType;
+        if (Objects.nonNull(idType)) {
+            this.putQueryParameter("idType", idType);
+        }
     }
 
     public Integer getAssociatedId() {
@@ -272,6 +329,9 @@ public class ListHistoryCdrsRequest extends AbstractRequestModel<ListHistoryCdrs
 
     public void setAssociatedId(Integer associatedId) {
         this.associatedId = associatedId;
+        if (Objects.nonNull(associatedId)) {
+            this.putQueryParameter("associatedId", associatedId);
+        }
     }
 
     public String getQno() {
@@ -280,6 +340,9 @@ public class ListHistoryCdrsRequest extends AbstractRequestModel<ListHistoryCdrs
 
     public void setQno(String qno) {
         this.qno = qno;
+        if (Objects.nonNull(qno)) {
+            this.putQueryParameter("qno", qno);
+        }
     }
 
     public String getHotlineName() {
@@ -288,6 +351,9 @@ public class ListHistoryCdrsRequest extends AbstractRequestModel<ListHistoryCdrs
 
     public void setHotlineName(String hotlineName) {
         this.hotlineName = hotlineName;
+        if (Objects.nonNull(hotlineName)) {
+            this.putQueryParameter("hotlineName", hotlineName);
+        }
     }
 
     @Override

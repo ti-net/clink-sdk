@@ -5,9 +5,12 @@ import com.tinet.clink.cc.response.task.UpdateTaskInventoryHandleStatusResponse;
 import com.tinet.clink.core.request.AbstractRequestModel;
 import com.tinet.clink.core.utils.HttpMethodType;
 
+import java.util.Objects;
+
 
 /**
  * 更新外呼任务明细处理状态 请求
+ *
  * @author : Tinet-yinzk
  * @date 2023/6/4 21:36
  **/
@@ -36,6 +39,9 @@ public class UpdateTaskInventoryHandleStatusRequest extends AbstractRequestModel
 
     public void setInventoryId(Integer inventoryId) {
         this.inventoryId = inventoryId;
+        if (Objects.nonNull(inventoryId)) {
+            putBodyParameter("inventoryId", inventoryId);
+        }
     }
 
     public Integer getHandleStatus() {
@@ -44,6 +50,9 @@ public class UpdateTaskInventoryHandleStatusRequest extends AbstractRequestModel
 
     public void setHandleStatus(Integer handleStatus) {
         this.handleStatus = handleStatus;
+        if (Objects.nonNull(handleStatus)) {
+            putBodyParameter("handleStatus", handleStatus);
+        }
     }
 
     public String getHandleStatusDetail() {
@@ -52,6 +61,9 @@ public class UpdateTaskInventoryHandleStatusRequest extends AbstractRequestModel
 
     public void setHandleStatusDetail(String handleStatusDetail) {
         this.handleStatusDetail = handleStatusDetail;
+        if (Objects.nonNull(handleStatusDetail)) {
+            putBodyParameter("handleStatusDetail", handleStatusDetail);
+        }
     }
 
     @Override

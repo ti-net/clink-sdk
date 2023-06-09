@@ -7,10 +7,10 @@ import com.tinet.clink.core.request.AbstractRequestModel;
 import com.tinet.clink.core.utils.HttpMethodType;
 
 /**
- * 查询呼入通话记录列表请求
+ * 查询座席今日通话列表
  *
- * @author huwk
- * @date 2018/10/23
+ * @author yinzk
+ * @date 2023/6/9
  **/
 public class ListTodayCdrsByCnoRequest extends AbstractRequestModel<ListTodayCdrsByCnoResponse> {
 

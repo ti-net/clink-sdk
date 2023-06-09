@@ -6,6 +6,8 @@ import com.tinet.clink.cc.response.task.UpdateTaskInventoryFormInfoResponse;
 import com.tinet.clink.core.request.AbstractRequestModel;
 import com.tinet.clink.core.utils.HttpMethodType;
 
+import java.util.Objects;
+
 
 /**
  * 更新外呼任务明细处理状态 请求
@@ -43,6 +45,9 @@ public class UpdateTaskInventoryFormInfoRequest extends AbstractRequestModel<Upd
 
     public void setInventoryId(Integer inventoryId) {
         this.inventoryId = inventoryId;
+        if (inventoryId != null) {
+            putBodyParameter("inventoryId", inventoryId);
+        }
     }
 
     public CustomizeField[] getCustomize() {
@@ -51,6 +56,9 @@ public class UpdateTaskInventoryFormInfoRequest extends AbstractRequestModel<Upd
 
     public void setCustomize(CustomizeField[] customize) {
         this.customize = customize;
+        if (Objects.nonNull(customize)) {
+            putBodyParameter("customize", customize);
+        }
     }
 
     public String getRemark() {
@@ -59,6 +67,9 @@ public class UpdateTaskInventoryFormInfoRequest extends AbstractRequestModel<Upd
 
     public void setRemark(String remark) {
         this.remark = remark;
+        if (Objects.nonNull(remark)) {
+            putBodyParameter("remark", remark);
+        }
     }
 
     public String getCustomerName() {
@@ -67,6 +78,9 @@ public class UpdateTaskInventoryFormInfoRequest extends AbstractRequestModel<Upd
 
     public void setCustomerName(String customerName) {
         this.customerName = customerName;
+        if (Objects.nonNull(customerName)) {
+            putBodyParameter("customerName", customerName);
+        }
     }
 
     @Override

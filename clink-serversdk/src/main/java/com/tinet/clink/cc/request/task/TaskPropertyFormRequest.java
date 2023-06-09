@@ -5,6 +5,8 @@ import com.tinet.clink.cc.response.task.TaskPropertyFormResponse;
 import com.tinet.clink.core.request.AbstractRequestModel;
 import com.tinet.clink.core.utils.HttpMethodType;
 
+import java.util.Objects;
+
 
 /**
  * 外呼任务表单模版
@@ -29,6 +31,9 @@ public class TaskPropertyFormRequest extends AbstractRequestModel<TaskPropertyFo
 
     public void setTaskId(Integer taskId) {
         this.taskId = taskId;
+        if (Objects.nonNull(taskId)) {
+            putQueryParameter("taskId", taskId);
+        }
     }
 
     @Override
