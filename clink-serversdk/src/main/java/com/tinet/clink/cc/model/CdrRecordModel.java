@@ -210,4 +210,395 @@ public class CdrRecordModel {
      */
     private String statusCode;
 
+    public String getMainUniqueId() {
+        return mainUniqueId;
+    }
+
+    public void setMainUniqueId(String mainUniqueId) {
+        this.mainUniqueId = mainUniqueId;
+    }
+
+    public String getUniqueId() {
+        return uniqueId;
+    }
+
+    public void setUniqueId(String uniqueId) {
+        this.uniqueId = uniqueId;
+    }
+
+    public String getCallId() {
+        return callId;
+    }
+
+    public void setCallId(String callId) {
+        this.callId = callId;
+    }
+
+    public String getCallType() {
+        return callType;
+    }
+
+    public void setCallType(String callType) {
+        this.callType = callType;
+    }
+
+    public Long getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Long startTime) {
+        this.startTime = startTime;
+    }
+
+    public Long getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Long endTime) {
+        this.endTime = endTime;
+    }
+
+    public Long getBridgeTime() {
+        return bridgeTime;
+    }
+
+    public void setBridgeTime(Long bridgeTime) {
+        this.bridgeTime = bridgeTime;
+    }
+
+    public Integer getBridgeDuration() {
+        return bridgeDuration;
+    }
+
+    public void setBridgeDuration(Integer bridgeDuration) {
+        this.bridgeDuration = bridgeDuration;
+    }
+
+    public Integer getTotalDuration() {
+        return totalDuration;
+    }
+
+    public void setTotalDuration(Integer totalDuration) {
+        this.totalDuration = totalDuration;
+    }
+
+    public String getCustomerNumber() {
+        return customerNumber;
+    }
+
+    public void setCustomerNumber(String customerNumber) {
+        this.customerNumber = customerNumber;
+    }
+
+    public String getCustomerNumberEncrypt() {
+        return customerNumberEncrypt;
+    }
+
+    public void setCustomerNumberEncrypt(String customerNumberEncrypt) {
+        this.customerNumberEncrypt = customerNumberEncrypt;
+    }
+
+    public String getCustomerAreaCode() {
+        return customerAreaCode;
+    }
+
+    public void setCustomerAreaCode(String customerAreaCode) {
+        this.customerAreaCode = customerAreaCode;
+    }
+
+    public String getCustomerProvince() {
+        return customerProvince;
+    }
+
+    public void setCustomerProvince(String customerProvince) {
+        this.customerProvince = customerProvince;
+    }
+
+    public String getCustomerCity() {
+        return customerCity;
+    }
+
+    public void setCustomerCity(String customerCity) {
+        this.customerCity = customerCity;
+    }
+
+    public String getHotline() {
+        return hotline;
+    }
+
+    public void setHotline(String hotline) {
+        this.hotline = hotline;
+    }
+
+    public String getSipCause() {
+        return sipCause;
+    }
+
+    public void setSipCause(String sipCause) {
+        this.sipCause = sipCause;
+    }
+
+    public String getEndReason() {
+        return endReason;
+    }
+
+    public void setEndReason(String endReason) {
+        this.endReason = endReason;
+    }
+
+    public String getClientNumber() {
+        return clientNumber;
+    }
+
+    public void setClientNumber(String clientNumber) {
+        this.clientNumber = clientNumber;
+    }
+
+    public String getCno() {
+        return cno;
+    }
+
+    public void setCno(String cno) {
+        this.cno = cno;
+    }
+
+    public String getClientName() {
+        return clientName;
+    }
+
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getIvrName() {
+        return ivrName;
+    }
+
+    public void setIvrName(String ivrName) {
+        this.ivrName = ivrName;
+    }
+
+    public String getQno() {
+        return qno;
+    }
+
+    public void setQno(String qno) {
+        this.qno = qno;
+    }
+
+    public Integer getMark() {
+        return mark;
+    }
+
+    public void setMark(Integer mark) {
+        this.mark = mark;
+    }
+
+    public String getMarkData() {
+        return markData;
+    }
+
+    public void setMarkData(String markData) {
+        this.markData = markData;
+    }
+
+    public Integer getKeys() {
+        return keys;
+    }
+
+    public void setKeys(Integer keys) {
+        this.keys = keys;
+    }
+
+    public String getXnumber() {
+        return xnumber;
+    }
+
+    public void setXnumber(String xnumber) {
+        this.xnumber = xnumber;
+    }
+
+    public String[] getTags() {
+        return tags;
+    }
+
+    public void setTags(String[] tags) {
+        this.tags = tags;
+    }
+
+    public Integer getCustomerVip() {
+        return customerVip;
+    }
+
+    public void setCustomerVip(Integer customerVip) {
+        this.customerVip = customerVip;
+    }
+
+    public Long getCustomerRingingTime() {
+        return customerRingingTime;
+    }
+
+    public void setCustomerRingingTime(Long customerRingingTime) {
+        this.customerRingingTime = customerRingingTime;
+    }
+
+    public Long getClientRingingTime() {
+        return clientRingingTime;
+    }
+
+    public void setClientRingingTime(Long clientRingingTime) {
+        this.clientRingingTime = clientRingingTime;
+    }
+
+    public Long getIbWaitDuration() {
+        return ibWaitDuration;
+    }
+
+    public void setIbWaitDuration(Long ibWaitDuration) {
+        this.ibWaitDuration = ibWaitDuration;
+    }
+
+    public String getQname() {
+        return qname;
+    }
+
+    public void setQname(String qname) {
+        this.qname = qname;
+    }
+
+    public Integer getTaskId() {
+        return taskId;
+    }
+
+    public void setTaskId(Integer taskId) {
+        this.taskId = taskId;
+    }
+
+    public String getTaskName() {
+        return taskName;
+    }
+
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
+    }
+
+    public Integer getTaskInventoryId() {
+        return taskInventoryId;
+    }
+
+    public void setTaskInventoryId(Integer taskInventoryId) {
+        this.taskInventoryId = taskInventoryId;
+    }
+
+    public Long getJoinQueueTime() {
+        return joinQueueTime;
+    }
+
+    public void setJoinQueueTime(Long joinQueueTime) {
+        this.joinQueueTime = joinQueueTime;
+    }
+
+    public Long getLeaveQueueTime() {
+        return leaveQueueTime;
+    }
+
+    public void setLeaveQueueTime(Long leaveQueueTime) {
+        this.leaveQueueTime = leaveQueueTime;
+    }
+
+    public Integer getInvestigationKeys() {
+        return investigationKeys;
+    }
+
+    public void setInvestigationKeys(Integer investigationKeys) {
+        this.investigationKeys = investigationKeys;
+    }
+
+    public Integer getIbRingingDuration() {
+        return ibRingingDuration;
+    }
+
+    public void setIbRingingDuration(Integer ibRingingDuration) {
+        this.ibRingingDuration = ibRingingDuration;
+    }
+
+    public Integer getSayVoiceDuration() {
+        return sayVoiceDuration;
+    }
+
+    public void setSayVoiceDuration(Integer sayVoiceDuration) {
+        this.sayVoiceDuration = sayVoiceDuration;
+    }
+
+    public Long getRingTime() {
+        return ringTime;
+    }
+
+    public void setRingTime(Long ringTime) {
+        this.ringTime = ringTime;
+    }
+
+    public Integer getQueueAnswerInTime() {
+        return queueAnswerInTime;
+    }
+
+    public void setQueueAnswerInTime(Integer queueAnswerInTime) {
+        this.queueAnswerInTime = queueAnswerInTime;
+    }
+
+    public Integer getEvaluation() {
+        return evaluation;
+    }
+
+    public void setEvaluation(Integer evaluation) {
+        this.evaluation = evaluation;
+    }
+
+    public String getNumberTrunk() {
+        return numberTrunk;
+    }
+
+    public void setNumberTrunk(String numberTrunk) {
+        this.numberTrunk = numberTrunk;
+    }
+
+    public String getCustomerPostCode() {
+        return customerPostCode;
+    }
+
+    public void setCustomerPostCode(String customerPostCode) {
+        this.customerPostCode = customerPostCode;
+    }
+
+    public Long getFirstJoinQueueTime() {
+        return firstJoinQueueTime;
+    }
+
+    public void setFirstJoinQueueTime(Long firstJoinQueueTime) {
+        this.firstJoinQueueTime = firstJoinQueueTime;
+    }
+
+    public String getRecordFile() {
+        return recordFile;
+    }
+
+    public void setRecordFile(String recordFile) {
+        this.recordFile = recordFile;
+    }
+
+    public String getStatusCode() {
+        return statusCode;
+    }
+
+    public void setStatusCode(String statusCode) {
+        this.statusCode = statusCode;
+    }
 }

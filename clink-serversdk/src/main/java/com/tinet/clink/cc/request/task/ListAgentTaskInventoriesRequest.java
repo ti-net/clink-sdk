@@ -5,6 +5,8 @@ import com.tinet.clink.cc.response.task.ListAgentTaskInventoriesResponse;
 import com.tinet.clink.core.request.AbstractRequestModel;
 import com.tinet.clink.core.utils.HttpMethodType;
 
+import java.util.Objects;
+
 
 /**
  * 获取座席外呼任务明细列表 请求
@@ -18,6 +20,10 @@ public class ListAgentTaskInventoriesRequest extends AbstractRequestModel<ListAg
      * 座席工号
      */
     private String cno;
+    /**
+     * 外呼任务
+     */
+    private Integer taskId;
 
     public ListAgentTaskInventoriesRequest() {
         super(PathEnum.ListAgentTaskInventories.value(), HttpMethodType.GET);
@@ -31,6 +37,17 @@ public class ListAgentTaskInventoriesRequest extends AbstractRequestModel<ListAg
         this.cno = cno;
         if (cno != null) {
             putQueryParameter("cno", cno);
+        }
+    }
+
+    public Integer getTaskId() {
+        return taskId;
+    }
+
+    public void setTaskId(Integer taskId) {
+        this.taskId = taskId;
+        if (Objects.nonNull(taskId)) {
+            putQueryParameter("taskId", taskId);
         }
     }
 

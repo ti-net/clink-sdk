@@ -6,6 +6,8 @@ import com.tinet.clink.cc.response.cdr.ListTodayCdrsByCnoResponse;
 import com.tinet.clink.core.request.AbstractRequestModel;
 import com.tinet.clink.core.utils.HttpMethodType;
 
+import java.util.Objects;
+
 /**
  * 查询座席今日通话列表
  *
@@ -23,7 +25,7 @@ public class ListTodayCdrsByCnoRequest extends AbstractRequestModel<ListTodayCdr
      */
     private Integer limit;
     /**
-     * 开始时间
+     * 最新记录开始时间对应的时间戳，单位：s，默认值取当前时间戳
      */
     private Long startTime;
 
@@ -37,6 +39,9 @@ public class ListTodayCdrsByCnoRequest extends AbstractRequestModel<ListTodayCdr
 
     public void setCno(String cno) {
         this.cno = cno;
+        if (Objects.nonNull(cno) && cno.length() > 0) {
+            this.putQueryParameter("cno", cno);
+        }
     }
 
     public Integer getLimit() {
@@ -45,6 +50,9 @@ public class ListTodayCdrsByCnoRequest extends AbstractRequestModel<ListTodayCdr
 
     public void setLimit(Integer limit) {
         this.limit = limit;
+        if (Objects.nonNull(limit)) {
+            this.putQueryParameter("limit", limit);
+        }
     }
 
     public Long getStartTime() {
@@ -53,6 +61,9 @@ public class ListTodayCdrsByCnoRequest extends AbstractRequestModel<ListTodayCdr
 
     public void setStartTime(Long startTime) {
         this.startTime = startTime;
+        if (Objects.nonNull(startTime)) {
+            this.putQueryParameter("startTime", startTime);
+        }
     }
 
     @Override

@@ -119,6 +119,16 @@ public class ListHistoryCdrsRequest extends AbstractRequestModel<ListHistoryCdrs
      */
     private String hotlineName;
 
+    /**
+     * 偏移量，范围 0-99990。默认值为 0，但limit + offset 不允许超过100000
+     */
+    private Integer offset;
+
+    /**
+     * 查询条数，范围 10-100。默认值为 10，但limit + offset 不允许超过100000
+     */
+    private Integer limit;
+
 
     public ListHistoryCdrsRequest() {
         super(PathEnum.ListHistoryCdrs.value(), HttpMethodType.GET);
@@ -353,6 +363,28 @@ public class ListHistoryCdrsRequest extends AbstractRequestModel<ListHistoryCdrs
         this.hotlineName = hotlineName;
         if (Objects.nonNull(hotlineName)) {
             this.putQueryParameter("hotlineName", hotlineName);
+        }
+    }
+
+    public Integer getLimit() {
+        return limit;
+    }
+
+    public void setLimit(Integer limit) {
+        this.limit = limit;
+        if (Objects.nonNull(limit)) {
+            this.putQueryParameter("limit", limit);
+        }
+    }
+
+    public Integer getOffset() {
+        return offset;
+    }
+
+    public void setOffset(Integer offset) {
+        this.offset = offset;
+        if (Objects.nonNull(offset)) {
+            this.putQueryParameter("offset", offset);
         }
     }
 
