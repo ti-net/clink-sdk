@@ -39,6 +39,10 @@ public class TicketFlowModel {
      */
     private Integer nextHandlerId;
 
+    /**
+     * 自定义状态id，用于指定当前工单的下一节点的自定义状态
+     */
+    private Integer stateId;
 
     public Integer getTicketId() { return ticketId; }
 
@@ -66,5 +70,13 @@ public class TicketFlowModel {
 
     public void setNextHandlerId(Integer nextHandlerId) {
         this.nextHandlerId = nextHandlerId;
+    }
+
+    public Integer getStateId() {
+        return stateId;
+    }
+
+    public void setStateId(Integer stateId) {
+        this.stateId = stateId;
     }
 }
