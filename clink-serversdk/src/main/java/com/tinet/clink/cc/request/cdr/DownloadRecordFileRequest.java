@@ -24,6 +24,15 @@ public class DownloadRecordFileRequest extends AbstractRequestModel<DownloadReco
      */
     private Integer recordSide;
 
+    /**
+     * 非必选参数,不传该参数时获取通话录音的 url,
+     * 传参数时获得其他类型文件的 url: "voicemail"-留言记录
+     *
+     * @Author liyj
+     * @Date 2023-06-15 10:16
+     **/
+    private String recordType;
+
     public DownloadRecordFileRequest() {
         super(PathEnum.DownloadRecordFile.value(), HttpMethodType.GET);
     }
@@ -54,4 +63,12 @@ public class DownloadRecordFileRequest extends AbstractRequestModel<DownloadReco
             putQueryParameter("recordSide", recordSide);
         }
     }
+
+    public void setRecordType(String recordType) {
+        this.recordType = recordType;
+        if (recordType != null) {
+            putQueryParameter("recordType", recordType);
+        }
+    }
+
 }
