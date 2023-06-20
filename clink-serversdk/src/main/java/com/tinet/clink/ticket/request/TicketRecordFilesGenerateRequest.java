@@ -13,18 +13,31 @@ import com.tinet.clink.ticket.response.TicketRecordFilesGenerateResponse;
  */
 public class TicketRecordFilesGenerateRequest extends AbstractRequestModel<TicketRecordFilesGenerateResponse> {
 
-    private String date;
+    private String startDate;
+
+    private String endDate;
 
     private Integer type;
 
-    public String getDate() {
-        return date;
+    public String getStartDate() {
+        return startDate;
     }
 
-    public void setDate(String date) {
-        this.date = date;
-        if (date != null) {
-            putQueryParameter("date", date);
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+        if (startDate != null) {
+            putQueryParameter("startDate", startDate);
+        }
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+        if (endDate != null) {
+            putQueryParameter("endDate", endDate);
         }
     }
 
