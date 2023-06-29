@@ -74,6 +74,18 @@ public class CreateClientRequest extends AbstractRequestModel<CreateClientRespon
     private Integer clidType;
 
     /**
+     * 号码类型:
+     * 0:号码,1:动态号码组
+     */
+    private Integer numberType ;
+
+    /**
+     * 动态外呼组id
+     * dynamicTelGroupRule.id
+     */
+    private Integer dynamicTelGroupId;
+
+    /**
      * 外显号码
      */
     private String[] clid;
@@ -262,6 +274,28 @@ public class CreateClientRequest extends AbstractRequestModel<CreateClientRespon
         this.clidType = clidType;
         if (clidType != null) {
             putBodyParameter("clidType", clidType);
+        }
+    }
+
+    public Integer getNumberType() {
+        return numberType;
+    }
+
+    public void setNumberType(Integer numberType) {
+        this.numberType = numberType;
+        if (numberType != null) {
+            putBodyParameter("numberType", numberType);
+        }
+    }
+
+    public Integer getDynamicTelGroupId() {
+        return dynamicTelGroupId;
+    }
+
+    public void setDynamicTelGroupId(Integer dynamicTelGroupId) {
+        this.dynamicTelGroupId = dynamicTelGroupId;
+        if (dynamicTelGroupId != null) {
+            putBodyParameter("dynamicTelGroupId", dynamicTelGroupId);
         }
     }
 
