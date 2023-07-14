@@ -129,6 +129,10 @@ public enum PathEnum {
     QueueStatus("cc/queue_status"),
     //短信发送
     SmsSend("cc/sms_send"),
+
+    // 查询短信模板列表
+    ListSmsTemplates("cc/list_sms_templates"),
+
     //手机号码状态检测
     PhoneStatus("cc/phone_status"),
 
