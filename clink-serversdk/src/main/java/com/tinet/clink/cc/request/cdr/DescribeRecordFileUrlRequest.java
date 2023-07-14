@@ -28,6 +28,15 @@ public class DescribeRecordFileUrlRequest extends AbstractRequestModel<DescribeR
      */
     private Long timeout;
 
+    /**
+     * 非必选参数,不传该参数时获取通话录音的 url,
+     * 传参数时获得其他类型文件的 url: "voicemail"-留言记录
+     *
+     * @Author liyj
+     * @Date 2023-06-15 10:16
+     **/
+    private String recordType;
+
     public DescribeRecordFileUrlRequest() {
         super(PathEnum.DescribeRecordFileUrl.value(), HttpMethodType.GET);
     }
@@ -63,6 +72,13 @@ public class DescribeRecordFileUrlRequest extends AbstractRequestModel<DescribeR
         this.timeout = timeout;
         if (timeout != null) {
             putQueryParameter("timeout", timeout);
+        }
+    }
+
+    public void setRecordType(String recordType) {
+        this.recordType = recordType;
+        if (recordType != null) {
+            putQueryParameter("recordType", recordType);
         }
     }
 
