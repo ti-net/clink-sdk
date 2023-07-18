@@ -66,6 +66,18 @@ public class ClientCreateResultModel {
     private Integer clidType;
 
     /**
+     * 号码类型:
+     * 0:号码,1:动态号码组
+     */
+    private Integer assignType;
+
+    /**
+     * 动态外呼组id
+     * dynamicTelGroupRule.id
+     */
+    private Integer dynamicTelGroupId;
+
+    /**
      * 外显号码
      */
     private String[] clid;
@@ -206,6 +218,22 @@ public class ClientCreateResultModel {
 
     public void setClidType(Integer clidType) {
         this.clidType = clidType;
+    }
+
+    public Integer getAssignType() {
+        return assignType;
+    }
+
+    public void setAssignType(Integer assignType) {
+        this.assignType = assignType;
+    }
+
+    public Integer getDynamicTelGroupId() {
+        return dynamicTelGroupId;
+    }
+
+    public void setDynamicTelGroupId(Integer dynamicTelGroupId) {
+        this.dynamicTelGroupId = dynamicTelGroupId;
     }
 
     public String[] getClid() {

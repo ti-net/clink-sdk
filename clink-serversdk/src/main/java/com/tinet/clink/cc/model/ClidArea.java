@@ -18,6 +18,19 @@ public class ClidArea {
      */
     private String[] obClids;
 
+
+    /**
+     * 号码类型，0: 号码；1:动态号码组
+     */
+    private Integer assignType;
+
+    /**
+     * 动态外呼组id
+     * dynamicTelGroupRule.id
+     */
+    private Integer dynamicTelGroupId;
+
+
     public Integer getAreaGroupId() {
         return areaGroupId;
     }
@@ -32,5 +45,21 @@ public class ClidArea {
 
     public void setObClids(String[] obClids) {
         this.obClids = obClids;
+    }
+
+    public Integer getAssignType() {
+        return assignType;
+    }
+
+    public void setAssignType(Integer assignType) {
+        this.assignType = assignType;
+    }
+
+    public Integer getDynamicTelGroupId() {
+        return dynamicTelGroupId;
+    }
+
+    public void setDynamicTelGroupId(Integer dynamicTelGroupId) {
+        this.dynamicTelGroupId = dynamicTelGroupId;
     }
 }

@@ -43,6 +43,8 @@ public enum PathEnum {
     // 号码设置
     ListClidNumbers("cc/list_clid_numbers"),
     ListHotlineNumbers("cc/list_hotline_numbers"),
+
+    ListDynamicTelGroupRule("cc/list_dynamic_tel_group_rule"),
     // 呼叫控制
     Online("cc/online"),
     Offline("cc/offline"),
