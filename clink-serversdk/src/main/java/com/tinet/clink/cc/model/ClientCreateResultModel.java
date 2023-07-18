@@ -69,7 +69,7 @@ public class ClientCreateResultModel {
      * 号码类型:
      * 0:号码,1:动态号码组
      */
-    private Integer numberType ;
+    private Integer assignType;
 
     /**
      * 动态外呼组id
@@ -220,12 +220,12 @@ public class ClientCreateResultModel {
         this.clidType = clidType;
     }
 
-    public Integer getNumberType() {
-        return numberType;
+    public Integer getAssignType() {
+        return assignType;
     }
 
-    public void setNumberType(Integer numberType) {
-        this.numberType = numberType;
+    public void setAssignType(Integer assignType) {
+        this.assignType = assignType;
     }
 
     public Integer getDynamicTelGroupId() {

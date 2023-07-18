@@ -77,7 +77,7 @@ public class UpdateClientRequest extends AbstractRequestModel<UpdateClientRespon
      * 号码类型:
      * 0:号码,1:动态号码组
      */
-    private Integer numberType ;
+    private Integer assignType;
 
     /**
      * 动态外呼组id
@@ -272,14 +272,14 @@ public class UpdateClientRequest extends AbstractRequestModel<UpdateClientRespon
         }
     }
 
-    public Integer getNumberType() {
-        return numberType;
+    public Integer getAssignType() {
+        return assignType;
     }
 
-    public void setNumberType(Integer numberType) {
-        this.numberType = numberType;
-        if (numberType != null) {
-            putBodyParameter("numberType", numberType);
+    public void setAssignType(Integer assignType) {
+        this.assignType = assignType;
+        if (assignType != null) {
+            putBodyParameter("assignType", assignType);
         }
     }
 

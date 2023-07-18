@@ -11,13 +11,13 @@ import java.util.List;
  * @date 2023-06-29 14:34
  */
 public class ListDynamicTelGroupRuleResponse extends ResponseModel {
-        private List<DynamicTelGroupRuleModel> data;
+        private List<DynamicTelGroupRuleModel> dynamicTelGroupRules;
 
-    public List<DynamicTelGroupRuleModel> getData() {
-        return data;
+    public List<DynamicTelGroupRuleModel> getDynamicTelGroupRules() {
+        return dynamicTelGroupRules;
     }
 
-    public void setData(List<DynamicTelGroupRuleModel> data) {
-        this.data = data;
+    public void setDynamicTelGroupRules(List<DynamicTelGroupRuleModel> dynamicTelGroupRules) {
+        this.dynamicTelGroupRules = dynamicTelGroupRules;
     }
 }
