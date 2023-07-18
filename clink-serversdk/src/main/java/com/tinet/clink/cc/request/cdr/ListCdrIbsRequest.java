@@ -131,6 +131,12 @@ public class ListCdrIbsRequest extends AbstractRequestModel<ListCdrIbsResponse> 
      */
     private String hotlineName;
 
+    /**
+     * 需要展示的字段
+     * tagNames
+     */
+    private String[] fields;
+
 
     public ListCdrIbsRequest() {
         super(PathEnum.ListCdrIbs.value(), HttpMethodType.GET);
@@ -353,6 +359,17 @@ public class ListCdrIbsRequest extends AbstractRequestModel<ListCdrIbsResponse> 
         this.hotlineName = hotlineName;
         if (hotlineName != null && hotlineName != "") {
             putQueryParameter("hotlineName", hotlineName);
+        }
+    }
+
+    public String[] getFields() {
+        return fields;
+    }
+
+    public void setFields(String[] fields) {
+        this.fields = fields;
+        if (fields != null && fields.length > 0) {
+            putQueryParameter("fields", String.join(",", fields));
         }
     }
 

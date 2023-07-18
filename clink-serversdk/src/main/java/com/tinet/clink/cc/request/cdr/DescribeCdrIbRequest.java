@@ -24,6 +24,13 @@ public class DescribeCdrIbRequest extends AbstractRequestModel<DescribeCdrIbResp
      */
     private Integer hiddenType;
 
+
+    /**
+     * 需要展示的字段
+     * tagNames
+     */
+    private String[] fields;
+
     public DescribeCdrIbRequest() {
         super(PathEnum.DescribeCdrIb.value(), HttpMethodType.GET);
     }
@@ -47,6 +54,18 @@ public class DescribeCdrIbRequest extends AbstractRequestModel<DescribeCdrIbResp
         this.hiddenType = hiddenType;
         if (hiddenType != null) {
             putQueryParameter("hiddenType", hiddenType);
+        }
+    }
+
+
+    public String[] getFields() {
+        return fields;
+    }
+
+    public void setFields(String[] fields) {
+        this.fields = fields;
+        if (fields != null && fields.length > 0) {
+            putQueryParameter("fields", String.join(",", fields));
         }
     }
 

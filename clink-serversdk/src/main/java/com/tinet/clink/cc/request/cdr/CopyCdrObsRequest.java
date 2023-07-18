@@ -35,6 +35,12 @@ public class CopyCdrObsRequest extends AbstractRequestModel<CopyCdrObsResponse> 
      */
     private Integer hiddenType;
 
+    /**
+     * 需要展示的字段
+     * tagNames
+     */
+    private String[] fields;
+
     public CopyCdrObsRequest() {
         super(PathEnum.CopyCdrObs.value(), HttpMethodType.GET);
     }
@@ -80,6 +86,19 @@ public class CopyCdrObsRequest extends AbstractRequestModel<CopyCdrObsResponse> 
         this.hiddenType = hiddenType;
         if (hiddenType != null) {
             putQueryParameter("hiddenType", hiddenType);
+        }
+    }
+
+
+
+    public String[] getFields() {
+        return fields;
+    }
+
+    public void setFields(String[] fields) {
+        this.fields = fields;
+        if (fields != null && fields.length > 0) {
+            putQueryParameter("fields", String.join(",", fields));
         }
     }
 

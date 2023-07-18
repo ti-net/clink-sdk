@@ -217,6 +217,12 @@ public class CdrIbRecordDetailModel {
      */
     private Long firstJoinQueueTime;
 
+
+    /**
+     * 通话标签级联名称
+     */
+    private String[] tagNames;
+
     public Long getFirstJoinQueueTime() {
         return firstJoinQueueTime;
     }
@@ -544,6 +550,14 @@ public class CdrIbRecordDetailModel {
 
     public void setEvaluation(Integer evaluation) {
         this.evaluation = evaluation;
+    }
+
+    public String[] getTagNames() {
+        return tagNames;
+    }
+
+    public void setTagNames(String[] tagNames) {
+        this.tagNames = tagNames;
     }
 }
 

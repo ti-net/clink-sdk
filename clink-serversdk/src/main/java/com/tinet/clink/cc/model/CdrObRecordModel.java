@@ -180,6 +180,11 @@ public class CdrObRecordModel {
      */
     private Set<Integer> ticketIds;
 
+    /**
+     * 通话标签级联名称
+     */
+    private String[] tagNames;
+
     public Integer getQueueAnswerInTime() {
         return queueAnswerInTime;
     }
@@ -450,6 +455,14 @@ public class CdrObRecordModel {
 
     public void setTicketIds(Set<Integer> ticketIds) {
         this.ticketIds = ticketIds;
+    }
+
+    public String[] getTagNames() {
+        return tagNames;
+    }
+
+    public void setTagNames(String[] tagNames) {
+        this.tagNames = tagNames;
     }
 }
 
