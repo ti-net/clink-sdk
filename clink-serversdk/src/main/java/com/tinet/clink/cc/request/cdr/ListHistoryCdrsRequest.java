@@ -6,7 +6,9 @@ import com.tinet.clink.cc.response.cdr.ListHistoryCdrsResponse;
 import com.tinet.clink.core.request.AbstractRequestModel;
 import com.tinet.clink.core.utils.HttpMethodType;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * 查询历史通话记录列表请求
@@ -29,9 +31,10 @@ public class ListHistoryCdrsRequest extends AbstractRequestModel<ListHistoryCdrs
      */
     private String customerNumber;
     /**
-     * 座席号
+     * 座席号 集合
      */
-    private String cno;
+    private List<String> cnos;
+
 
     /**
      * 热线号码
@@ -167,14 +170,15 @@ public class ListHistoryCdrsRequest extends AbstractRequestModel<ListHistoryCdrs
         }
     }
 
-    public String getCno() {
-        return cno;
+    public List<String> getCnos() {
+        return cnos;
     }
 
-    public void setCno(String cno) {
-        this.cno = cno;
-        if (Objects.nonNull(cno)) {
-            this.putQueryParameter("cno", cno);
+    public void setCnos(List<String> cnos) {
+        this.cnos = cnos;
+        if (Objects.nonNull(cnos) && cnos.size() != 0) {
+            String cnoStr = cnos.stream().map(Object::toString).collect(Collectors.joining(","));
+            putQueryParameter("cnos", cnoStr);
         }
     }
 
