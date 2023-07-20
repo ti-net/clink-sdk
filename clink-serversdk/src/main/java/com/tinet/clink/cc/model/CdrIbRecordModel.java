@@ -206,6 +206,11 @@ public class CdrIbRecordModel {
      */
     private Long firstJoinQueueTime;
 
+    /**
+     * 通话标签级联名称
+     */
+    private String[] tagNames;
+
     public Long getFirstJoinQueueTime() {
         return firstJoinQueueTime;
     }
@@ -517,6 +522,14 @@ public class CdrIbRecordModel {
 
     public void setHotlineName(String hotlineName) {
         this.hotlineName = hotlineName;
+    }
+
+    public String[] getTagNames() {
+        return tagNames;
+    }
+
+    public void setTagNames(String[] tagNames) {
+        this.tagNames = tagNames;
     }
 }
 

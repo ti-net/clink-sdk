@@ -121,6 +121,13 @@ public class ListCdrObsRequest extends AbstractRequestModel<ListCdrObsResponse> 
     private String associatedId;
 
 
+    /**
+     * 需要展示的字段
+     * tagNames
+     */
+    private String[] fields;
+
+
     public ListCdrObsRequest() {
         super(PathEnum.ListCdrObs.value(), HttpMethodType.GET);
     }
@@ -343,6 +350,17 @@ public class ListCdrObsRequest extends AbstractRequestModel<ListCdrObsResponse> 
         this.associatedId = associatedId;
         if (associatedId != null) {
             putQueryParameter("associatedId", associatedId);
+        }
+    }
+
+    public String[] getFields() {
+        return fields;
+    }
+
+    public void setFields(String[] fields) {
+        this.fields = fields;
+        if (fields != null && fields.length > 0) {
+            putQueryParameter("fields", String.join(",", fields));
         }
     }
 
