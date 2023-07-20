@@ -8,7 +8,6 @@ import com.tinet.clink.core.request.AbstractRequestModel;
 /**
  * 查询被绑定的话机列表请求
  *
- *
  * @author yinzk
  * @date 2023/07/14
  */
@@ -30,7 +29,7 @@ public class ListBindedExtensRequest extends AbstractRequestModel<ListBindedExte
     private Integer limit;
 
     public ListBindedExtensRequest() {
-        super(PathEnum.ListExtens.value());
+        super(PathEnum.ListBindedExtens.value());
     }
 
 

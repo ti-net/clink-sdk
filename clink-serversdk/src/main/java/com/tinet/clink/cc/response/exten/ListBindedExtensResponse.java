@@ -1,8 +1,7 @@
 package com.tinet.clink.cc.response.exten;
 
 
-
-import com.tinet.clink.cc.model.ListExtensResultModel;
+import com.tinet.clink.cc.model.ListBindedExtensResultModel;
 import com.tinet.clink.core.response.PagedResponse;
 
 import java.util.List;
@@ -18,13 +17,13 @@ public class ListBindedExtensResponse extends PagedResponse {
     /**
      * 话机对象集合
      */
-    List<ListExtensResultModel> extens;
+    List<ListBindedExtensResultModel> extens;
 
-    public List<ListExtensResultModel> getExtens() {
+    public List<ListBindedExtensResultModel> getExtens() {
         return extens;
     }
 
-    public void setExtens(List<ListExtensResultModel> extens) {
+    public void setExtens(List<ListBindedExtensResultModel> extens) {
         this.extens = extens;
     }
 }

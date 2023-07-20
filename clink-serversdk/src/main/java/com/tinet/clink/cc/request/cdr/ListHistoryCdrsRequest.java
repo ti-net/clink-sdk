@@ -8,7 +8,6 @@ import com.tinet.clink.core.utils.HttpMethodType;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 /**
  * 查询历史通话记录列表请求
@@ -177,8 +176,9 @@ public class ListHistoryCdrsRequest extends AbstractRequestModel<ListHistoryCdrs
     public void setCnos(List<String> cnos) {
         this.cnos = cnos;
         if (Objects.nonNull(cnos) && cnos.size() != 0) {
-            String cnoStr = cnos.stream().map(Object::toString).collect(Collectors.joining(","));
-            putQueryParameter("cnos", cnoStr);
+            for (int i = 0; i < cnos.size(); i++) {
+                putQueryParameter("cnos[" + i + "]", cnos.get(i));
+            }
         }
     }
 
