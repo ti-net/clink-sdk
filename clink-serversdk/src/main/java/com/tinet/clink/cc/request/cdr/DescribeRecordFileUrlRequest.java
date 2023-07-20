@@ -5,6 +5,8 @@ import com.tinet.clink.core.request.AbstractRequestModel;
 import com.tinet.clink.cc.response.cdr.DescribeRecordFileUrlResponse;
 import com.tinet.clink.core.utils.HttpMethodType;
 
+import java.util.Objects;
+
 /**
  * 查询通话录音地址请求
  *
@@ -27,6 +29,12 @@ public class DescribeRecordFileUrlRequest extends AbstractRequestModel<DescribeR
      *  通话录音超时时长 默认一小时 范围 1-24
      */
     private Long timeout;
+
+    /**
+     * 录音地址类型，0：试听，1：下载（默认）
+     */
+    private Integer download;
+
 
     /**
      * 非必选参数,不传该参数时获取通话录音的 url,
@@ -67,8 +75,12 @@ public class DescribeRecordFileUrlRequest extends AbstractRequestModel<DescribeR
             putQueryParameter("recordSide", recordSide);
         }
     }
-    public Long getTimeout(){return timeout;}
-    public void setTimeout(Long timeout){
+
+    public Long getTimeout() {
+        return timeout;
+    }
+
+    public void setTimeout(Long timeout) {
         this.timeout = timeout;
         if (timeout != null) {
             putQueryParameter("timeout", timeout);
@@ -81,5 +93,18 @@ public class DescribeRecordFileUrlRequest extends AbstractRequestModel<DescribeR
             putQueryParameter("recordType", recordType);
         }
     }
+    public String getRecordType(){
+        return this.recordType;
+    }
 
+    public Integer getDownload() {
+        return download;
+    }
+
+    public void setDownload(Integer download) {
+        this.download = download;
+        if (Objects.nonNull(download)) {
+            putQueryParameter("download", download);
+        }
+    }
 }

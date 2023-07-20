@@ -39,6 +39,7 @@ public enum PathEnum {
     UpdateExten("cc/update_exten"),
     DeleteExten("cc/delete_exten"),
     ListExtens("cc/list_extens"),
+    ListBindedExtens("cc/list_binded_extens"),
     DescribeExten("cc/describe_exten"),
     // 号码设置
     ListClidNumbers("cc/list_clid_numbers"),
