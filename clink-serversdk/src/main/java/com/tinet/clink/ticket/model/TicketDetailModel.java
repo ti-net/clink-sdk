@@ -167,6 +167,20 @@ public class TicketDetailModel {
      */
     private TicketSystemForm systemForm;
 
+    /**
+     * 操作日志v2
+     */
+    private TicketOperationLogNewModel[] operationLogsNew;
+
+
+    public TicketOperationLogNewModel[] getOperationLogsNew() {
+        return operationLogsNew;
+    }
+
+    public void setOperationLogsNew(TicketOperationLogNewModel[] operationLogsNew) {
+        this.operationLogsNew = operationLogsNew;
+    }
+
     public String getCustomId() {
         return customId;
     }
