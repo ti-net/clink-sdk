@@ -1,7 +1,9 @@
 package com.tinet.clink.openapi;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.tinet.clink.core.client.Client;
 import com.tinet.clink.core.client.ClientConfiguration;
 import com.tinet.clink.core.exceptions.ClientException;
@@ -12,6 +14,7 @@ import com.tinet.clink.core.exceptions.ServerException;
 
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,18 +27,24 @@ public class BusinessTest extends AbstractTest {
     private static final ObjectMapper mapper = new ObjectMapper();
 
     @Test
-    public void listCutomizeField() throws ServerException, ClientException {
+    public void listCustomizeField() throws ServerException, ClientException {
+        // 创建访问服务的client实例并初始化
+        ClientConfiguration configuration = new ClientConfiguration(
+                "ac9d9658fecd3cd64cec4324d59fb88f",          // AccessKeyId
+                "J402964Em6c4b22c3XQL");     // AccessKeySecret
+        configuration.setHost("api-bj-test0.clink.cn");
+        configuration.setScheme("https");
+        Client client = new Client(configuration);
 
         ListBusinessFieldRequest customerParamRequest = new ListBusinessFieldRequest();
-        ListBusinessFieldResponse customerParamResponse = client.getResponseModel(customerParamRequest);
 
-        if (customerParamResponse != null && customerParamResponse.getBusinessCustomizeParams() != null) {
-            try {
-                String resultStr = mapper.writeValueAsString(customerParamResponse);
-                System.out.println(resultStr);
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
-            }
+        // 发起接口调用
+        ListBusinessFieldResponse response = client.getResponseModel(customerParamRequest);
+        try {
+            String resultStr = mapper.writeValueAsString(response);
+            System.out.println(resultStr);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
         }
     }
 
@@ -43,99 +52,129 @@ public class BusinessTest extends AbstractTest {
     public void listBusiness() throws ServerException, ClientException {
         // 创建访问服务的client实例并初始化
         ClientConfiguration configuration = new ClientConfiguration(
-                "9e969f413431ae0c0cf674fc56cec6ad",          // AccessKeyId
-                "9616O59uJ3Whmp001704");     // AccessKeySecret
+                "ac9d9658fecd3cd64cec4324d59fb88f",          // AccessKeyId
+                "J402964Em6c4b22c3XQL");     // AccessKeySecret
         configuration.setHost("api-bj-test0.clink.cn");
         configuration.setScheme("https");
         Client client = new Client(configuration);
 
         //当前企业可以用的查询参数
         ListBusinessRequest listBusinessRequest = new ListBusinessRequest();
-
-        listBusinessRequest.setStartTime(1595952000L);
-
-        listBusinessRequest.setEndTime(1596124800L);
-
-        Map<String, String> customize = new HashMap<String, String>();
-
-        customize.put("25868","用车,出城,报备出城");
-
-
-//        listBusinessRequest.setCustomize(customize);
+        listBusinessRequest.setStartTime(1689868800L);
+        listBusinessRequest.setEndTime(1689955199L);
+        listBusinessRequest.setUpdateStartTime(1689904800L);
+        listBusinessRequest.setUpdateEndTime(1689908400L);
+        listBusinessRequest.setCustomerId(5209110);
+        listBusinessRequest.setCallId("callId-A");
+        listBusinessRequest.setChatId("chatId-A");
+        listBusinessRequest.setSource(30);
+        listBusinessRequest.setCustomerTel("10086");
+        listBusinessRequest.setTel("10086");
+        listBusinessRequest.setCustomerName("sdk");
+        Map<String, String> customize = new HashMap<>();
+        customize.put("158571", "备注");
+        listBusinessRequest.setCustomize(customize);
 
         listBusinessRequest.setLimit(20);
+        listBusinessRequest.setOffset(0);
 
-        listBusinessRequest.setOffset(1);
-
-        ListBusinessResponse listBusinessResponse = client.getResponseModel(listBusinessRequest);
-
-
-    }
-
-    @Test
-    public void listBusinessCustomer() throws ServerException, ClientException {
-
-        //开始查询业务记录自定义字段，拼装参数
-        ListBusinessFieldRequest listBusinessFieldRequest = new ListBusinessFieldRequest();
-
-        ListBusinessFieldResponse responseModel = client.getResponseModel(listBusinessFieldRequest);
-
+        // 发起接口调用
+        ListBusinessResponse response = client.getResponseModel(listBusinessRequest);
         try {
-            String resultStr = mapper.writeValueAsString(responseModel);
+            String resultStr = mapper.writeValueAsString(response);
             System.out.println(resultStr);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-
     }
 
     @Test
     public void getBusinessDetail() throws ServerException, ClientException {
+        // 创建访问服务的client实例并初始化
+        ClientConfiguration configuration = new ClientConfiguration(
+                "ac9d9658fecd3cd64cec4324d59fb88f",          // AccessKeyId
+                "J402964Em6c4b22c3XQL");     // AccessKeySecret
+        configuration.setHost("api-bj-test0.clink.cn");
+        configuration.setScheme("https");
+        Client client = new Client(configuration);
 
         GetBusinessRequest businessRequest = new GetBusinessRequest();
+        businessRequest.setId(2142);
 
-        businessRequest.setId(121840);
-
+        // 发起接口调用
         GetBusinessResponse response = client.getResponseModel(businessRequest);
-
-        System.out.println(1);
+        try {
+            String resultStr = mapper.writeValueAsString(response);
+            System.out.println(resultStr);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
     }
-
-
 
     @Test
     public void listBusinessCount() throws ServerException, ClientException {
-
+        // 创建访问服务的client实例并初始化
+        ClientConfiguration configuration = new ClientConfiguration(
+                "ac9d9658fecd3cd64cec4324d59fb88f",          // AccessKeyId
+                "J402964Em6c4b22c3XQL");     // AccessKeySecret
+        configuration.setHost("api-bj-test0.clink.cn");
+        configuration.setScheme("https");
+        Client client = new Client(configuration);
 
         //当前企业可以用的查询参数
         ListBusinessCountRequest listBusinessRequestCount = new ListBusinessCountRequest();
+        listBusinessRequestCount.setStartTime(1689868800L);
+        listBusinessRequestCount.setEndTime(1689955199L);
+        listBusinessRequestCount.setUpdateStartTime(1689904800L);
+        listBusinessRequestCount.setUpdateEndTime(1689908400L);
+        listBusinessRequestCount.setCustomerId(5209110);
+        listBusinessRequestCount.setCallId("callId-A");
+        listBusinessRequestCount.setChatId("chatId-A");
+        listBusinessRequestCount.setSource(30);
+        listBusinessRequestCount.setCustomerTel("10086");
+        listBusinessRequestCount.setTel("10086");
+        listBusinessRequestCount.setCustomerName("sdk");
+        Map<String, String> customize = new HashMap<>();
+        customize.put("158571", "备注");
+        listBusinessRequestCount.setCustomize(customize);
 
-        listBusinessRequestCount.setStartTime(1595952000L);
-
-        listBusinessRequestCount.setEndTime(1596124800L);
-
-
-        ListBusinessCountResponse listBusinessCountResponse = client.getResponseModel(listBusinessRequestCount);
-
-
+        // 发起接口调用
+        ListBusinessCountResponse response = client.getResponseModel(listBusinessRequestCount);
+        try {
+            String resultStr = mapper.writeValueAsString(response);
+            System.out.println(resultStr);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
     public void CreateBusiness() throws ServerException, ClientException {
-
         // 创建访问服务的client实例并初始化
         ClientConfiguration configuration = new ClientConfiguration(
-                "9e969f413431ae0c0cf674fc56cec6ad",          // AccessKeyId
-                "9616O59uJ3Whmp001704");     // AccessKeySecret
+                "ac9d9658fecd3cd64cec4324d59fb88f",          // AccessKeyId
+                "J402964Em6c4b22c3XQL");     // AccessKeySecret
         configuration.setHost("api-bj-test0.clink.cn");
         configuration.setScheme("https");
         Client client = new Client(configuration);
 
         //创建业务记录
         CreateBusinessRequest createBusinessRequest = new CreateBusinessRequest();
-        createBusinessRequest.setCustomerId(2201563);
-        createBusinessRequest.setTopic("test1");
-        createBusinessRequest.setSource(24);
+        createBusinessRequest.setCustomerId(5209110);
+        createBusinessRequest.setTopic("sdk业务记录创建");
+        createBusinessRequest.setSource(30);
+        try {
+            ArrayNode customize = mapper.readTree("[{\"name\":\"备注\",\"value\":\"这是一条备注\"}]").deepCopy();
+            createBusinessRequest.setCustomize(customize);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        createBusinessRequest.setChatId("chatId-abc");
+        createBusinessRequest.setChatStartTime(1689906232L);
+        createBusinessRequest.setCallId("callId-abc");
+        createBusinessRequest.setCallUniqueId("callUniqueId-abc");
+        createBusinessRequest.setChatUniqueId("chatUniqueId-abc");
+
         // 发起接口调用
         CreateBusinessResponse response = client.getResponseModel(createBusinessRequest);
         try {
@@ -144,7 +183,6 @@ public class BusinessTest extends AbstractTest {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-
     }
 
 }
