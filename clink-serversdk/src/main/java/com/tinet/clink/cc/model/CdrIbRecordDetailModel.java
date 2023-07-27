@@ -28,6 +28,11 @@ public class CdrIbRecordDetailModel {
     private String hotline;
 
     /**
+     * 热线别名
+     **/
+    private String hotlineName;
+
+    /**
      * 客户来电号码，带区号
      */
     private String customerNumber;
@@ -558,6 +563,14 @@ public class CdrIbRecordDetailModel {
 
     public void setTagNames(String[] tagNames) {
         this.tagNames = tagNames;
+    }
+
+    public String getHotlineName() {
+        return hotlineName;
+    }
+
+    public void setHotlineName(String hotlineName) {
+        this.hotlineName = hotlineName;
     }
 }
 
