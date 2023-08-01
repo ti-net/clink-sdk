@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:orientation="horizontal"
+  android:layout_alignParentEnd="true"
+  android:layout_alignParentBottom="true"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:paddingBottom="16dp"
+  android:paddingRight="16dp"
+    tools:ignore="MissingDefaultResource">
+  <androidx.appcompat.widget.AppCompatImageButton
+    android:id="@id/tinetEmoDelete"
+    android:layout_width="68dp"
+    android:layout_height="36dp"
+    android:src="@drawable/ti_ic_emoji_del"
+    android:background="@drawable/ti_send_btn_bg"
+    />
+
+  <androidx.appcompat.widget.AppCompatButton
+    android:id="@id/tinetMessageSend"
+    android:layout_width="68dp"
+    android:layout_height="36dp"
+    android:background="@drawable/ti_send_btn_bg"
+    android:gravity="center"
+    android:text="@string/ti_send"
+    android:visibility="gone"
+    android:elevation="0dp"
+    android:textColor="@color/ti_send_btn_text_color"
+    android:textSize="@dimen/ti_send_bubble_text_size"/>
+</LinearLayout>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.scwang.smartrefresh.layout.SmartRefreshLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:id="@+id/smartRefresh"
+  android:layout_height="0dp"
+  android:layout_weight="1">
+
+
+
+  <!-- 此处尽量不要修改 start -->
+  <FrameLayout
+    android:id="@id/tinetMessageContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ti_session_bg">
+
+    <androidx.recyclerview.widget.RecyclerView
+      android:id="@id/tinetMessageRecyclerView"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:fastScrollEnabled="false"
+      android:orientation="vertical"
+      android:layerType="software"
+      android:transcriptMode="normal"
+      app:layoutManager="com.tinet.oskit.adapter.layout.ReverseLinearLayoutManager" />
+  </FrameLayout>
+
+  <!-- 此处尽量不要修改 end -->
+
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>

@@ -1,0 +1,139 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        key {
+            storeFile file('../keys/timsdk')
+            storePassword 'tinet8888'
+            keyAlias 'key0'
+            keyPassword 'tinet8888'
+        }
+    }
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        applicationId "com.tinet.timsdk"
+        versionCode 141
+        versionName "1.4.1"
+        testInstrumentationRunner "androidx.Shanghai.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
+        flavorDimensions dimensions.app
+    }
+
+    allprojects {
+        repositories {
+            maven { url 'https://jitpack.io' }
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.key
+        }
+        debug {
+            signingConfig signingConfigs.key
+        }
+    }
+
+
+    android.applicationVariants.all {
+        variant ->
+            variant.outputs.all {
+                //在这里修改apk文件名
+                outputFileName = "online_${variant.productFlavors[0].name}.apk"
+            }
+    }
+
+    flavorDimensions "app"
+
+    productFlavors {
+
+        // 北京环境
+        Beijing {
+            dimension = "app"
+        }
+
+        // 上海环境
+        Shanghai {
+            dimension = "app"
+        }
+
+        // 测试环境
+        Test3 {
+            dimension = "app"
+        }
+
+    }
+
+    sourceSets {
+        Beijing {
+            java {
+                srcDirs 'src/Beijing/java'
+            }
+        }
+        Shanghai {
+            java {
+                srcDirs 'src/Shanghai/java'
+            }
+        }
+        Test3 {
+            java {
+                srcDirs 'src/Test3/java'
+            }
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    packagingOptions {
+        exclude 'push_version'
+        exclude 'miui_push_version'
+    }
+
+    ndkVersion '22.1.7171670'
+
+}
+
+dependencies {
+    // 多dex配置
+    implementation "com.android.support:multidex:1.0.3"
+    implementation "androidx.appcompat:appcompat:${appCompat}"
+    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
+    implementation "androidx.constraintlayout:constraintlayout:1.1.3"
+
+    //测试所用（内存泄露）
+//    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.9.1'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.1'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.1'
+    // Optional, if you use support library fragments:
+    debugImplementation 'com.squareup.leakcanary:leakcanary-support-fragment:1.6.1'
+
+    //测试所用（性能监测工具）
+    debugImplementation 'io.github.didi.dokit:dokitx:latest.release'
+    releaseImplementation 'io.github.didi.dokit:dokitx-no-op:latest.release'
+
+    //material
+    implementation 'com.google.android.material:material:1.2.0'
+
+    //图片加载
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    testImplementation 'junit:junit:4.+'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+    //下拉刷新
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'
+
+    // 在线客服SDK 本地module依赖
+    implementation project(path: ':oskit')
+
+    // 在线客服SDK 线上依赖（可用于发布后的测试）
+//    implementation 'com.github.ti-net-project:OnlineSDK-Android:1.7.17'
+
+}

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:visibility="gone"
+      tools:visibility="visible"
+      style="@style/tinetRobotClassicTitleStyle"
+        tools:text="亲，有什么可以为您服务的啊数据库拉我这是东西的新的高" />
+
+    <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/viewGuess"
+      android:layout_below="@id/tvText"
+        android:orientation="horizontal">
+        <TextView
+          android:id="@+id/tvChanged"
+          android:layout_alignParentEnd="true"
+          android:layout_centerVertical="true"
+          android:layout_marginLeft="8dp"
+          style="@style/tinetQuestionChangeStyle" />
+
+        <TextView
+          android:id="@+id/tvGuess"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/ti_guess"
+          android:layout_toLeftOf="@id/tvChanged"
+          tools:text="sdfksfkdskfkskfkdskfksdfksdkfksddfkeeeee"
+          style="@style/tinetRobotClassicGuessStyle" />
+
+
+    </RelativeLayout>
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/viewGuess"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layoutManager="com.tinet.oskit.adapter.layout.NoScrollLinearLayoutManager"
+        tools:listitem="@layout/frg_session_robot_group_text" />
+
+</RelativeLayout>

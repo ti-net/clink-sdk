@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="@color/ti_gray_9"
+            android:textSize="@dimen/sp16"
+            tools:text="title" />
+
+        <ImageView
+            android:id="@+id/ivStar"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@mipmap/ic_must"
+            android:layout_gravity="center_vertical"
+            android:visibility="gone"
+            tools:visibility="visible" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/etValue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:textCursorDrawable="@null"
+            android:background="@drawable/ti_chat_leave_message_input_bg"
+            android:gravity="top|left"
+            android:hint=""
+            android:textColor="@color/ti_7e"
+            android:textColorHint="@color/ti_7e"
+            android:textSize="@dimen/sp16"/>
+
+
+        <TextView
+            android:id="@+id/tvValue"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical|left"
+            android:padding="10dp"
+            android:textColor="@color/ti_black"
+            android:textColorHint="@color/ti_7e"
+            android:textSize="@dimen/sp16"
+            android:visibility="gone"
+            tools:visibility="visible"
+            tools:text="value"/>
+
+        <ImageView
+            android:id="@+id/ivMore"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginEnd="10dp"
+            tools:visibility="visible"
+            android:background="@mipmap/ic_more"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tvUnit"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            tools:visibility="visible"
+            tools:text="unit"
+            android:paddingEnd="10dp"
+            android:textColor="@color/ti_black"
+            android:textSize="@dimen/sp16"
+            android:visibility="gone" />
+    </LinearLayout>
+
+
+
+</LinearLayout>

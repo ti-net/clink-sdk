@@ -1,0 +1,34 @@
+apply plugin: 'com.android.library'
+android {
+
+    compileSdkVersion rootProject.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode 1
+        versionName "${onlineSDKVersion}"
+
+    }
+
+    buildTypes {
+        release {
+            android.libraryVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "threepart_sdk_${variant.buildType.name}.aar"
+                }
+            }
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+}
+
+dependencies {
+    implementation "androidx.recyclerview:recyclerview:1.0.0"
+    implementation "androidx.appcompat:appcompat:${appCompat}"
+    implementation "org.jsoup:jsoup:1.12.1"
+}

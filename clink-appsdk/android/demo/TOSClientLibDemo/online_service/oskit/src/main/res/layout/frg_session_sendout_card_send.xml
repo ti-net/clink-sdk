@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="15dp"
+    android:background="@drawable/ti_session_sendout_card"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="@dimen/ti_msg_img_one"
+        android:layout_height="@dimen/ti_msg_img_one" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@id/img">
+
+        <TextView
+            android:id="@+id/subTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lines="2"
+            android:textColor="@color/ti_hold_subtitle_text_color"
+            android:textSize="@dimen/ti_hold_subtitle_text_size" />
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/subTitle"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/ti_hold_price_text_color"
+            android:textSize="@dimen/ti_hold_price_text_size" />
+
+        <TextView
+          android:id="@+id/tvSend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/subTitle"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/ti_tv_sendout_card"
+            android:paddingLeft="8dp"
+            android:paddingTop="1dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="1dp"
+            android:text="发送商品"
+            android:textColor="@color/ti_commodity_card__color"
+            android:textSize="@dimen/ti_commodity_card_size" />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,35 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.lcw.library.imagepicker">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <application>
+
+        <!--图片列表Activity-->
+        <activity
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:name="com.lcw.library.imagepicker.activity.ImagePickerActivity"
+            android:screenOrientation="portrait" />
+        <!--大图预览Activity-->
+        <activity
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:name="com.lcw.library.imagepicker.activity.ImagePreActivity"
+            android:screenOrientation="portrait" />
+
+        <!-- Android 7.0 文件共享配置，必须配置 -->
+        <provider
+            android:name=".provider.ImagePickerProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/image_picker" />
+        </provider>
+    </application>
+
+</manifest>

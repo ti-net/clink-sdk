@@ -1,0 +1,56 @@
+apply plugin: 'com.android.library'
+
+android {
+
+    compileSdkVersion rootProject.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode 1
+        versionName "${onlineSDKVersion}"
+
+        buildConfigField "int", "VERSION_CODE", "${versionCode}"
+        buildConfigField "String", "VERSION_NAME", "\"${versionName}\""
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            android.libraryVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "oskit_sdk_${variant.buildType.name}.aar"
+                }
+            }
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+
+    implementation "androidx.appcompat:appcompat:${appCompat}"
+    implementation 'com.google.android.material:material:1.2.0'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+
+    implementation 'com.google.android.flexbox:flexbox:3.0.0'
+
+    api 'com.github.ti-net:OnlineLib-Android:1.8.0'
+    api project(path: ':widget')
+    api project(path: ':threepart')
+    //选择图片或照片
+    api project(path: ':imagepicker')
+
+    implementation "androidx.recyclerview:recyclerview:1.0.0"
+
+    implementation 'com.jakewharton:disklrucache:2.0.2'
+
+//    implementation 'com.github.gzu-liyujiang.AndroidPicker:Common:4.1.5'
+//    implementation 'com.github.gzu-liyujiang.AndroidPicker:FilePicker:4.1.5'
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+
+}

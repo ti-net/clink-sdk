@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:background="@android:color/transparent"
+  android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_gravity="center"
+        android:background="@drawable/ti_voice_record_view_bg"
+        android:gravity="center">
+
+        <TextView
+            android:id="@id/tinetVoiceTimer"
+            android:layout_width="105dp"
+            android:layout_height="105dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="41dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="41dp"
+            android:layout_marginBottom="11dp"
+            android:gravity="center"
+            tools:text="11:11"
+            android:textColor="@color/ti_input_area_voice_press_hint_text_color"
+            android:textSize="60sp" />
+
+        <ImageView
+            android:id="@id/tinetVoiceStatusIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="41dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="41dp"
+            android:layout_marginBottom="11dp" />
+
+        <TextView
+            android:id="@id/tinetVoiceStatusText"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginRight="14dp"
+            android:layout_marginBottom="11dp"
+            android:gravity="center"
+            android:textColor="@color/ti_input_area_voice_press_hint_text_color"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+</FrameLayout>

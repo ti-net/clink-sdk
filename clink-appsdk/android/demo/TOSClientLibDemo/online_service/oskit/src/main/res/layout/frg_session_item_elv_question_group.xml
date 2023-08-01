@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:gravity="center_vertical"
+    android:minHeight="38dp"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:textColor="#262626"
+        android:id="@+id/tvGroupName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableEnd="@mipmap/ti_grey_right"
+        android:drawablePadding="5dp"
+        android:textSize="@dimen/ti_group_question_item_text_size" />
+
+</LinearLayout>

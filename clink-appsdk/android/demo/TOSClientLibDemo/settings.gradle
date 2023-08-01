@@ -1,0 +1,14 @@
+include ':online'
+rootProject.name='OnlineSDK'
+
+include ':oskit'
+project(':oskit').projectDir = new File(settingsDir, 'online_service/oskit')
+
+include ':threepart'
+project(':threepart').projectDir = new File(settingsDir, 'online_service/threepart')
+
+include ':widget'
+project(':widget').projectDir = new File(settingsDir, 'online_service/widget')
+
+include ':imagepicker'
+project(':imagepicker').projectDir = new File(settingsDir, 'online_service/imagepicker')

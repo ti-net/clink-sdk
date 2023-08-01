@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/tvLogo"
+        android:layout_width="19dp"
+        android:layout_height="19dp"
+        android:padding="5.5dp"
+        android:src="@drawable/ti_point"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/tinetRobotQuestionStyle"
+        tools:text="天润融通天润融通天润融通天润融通天润融通天润融通天润融通天润融通" />
+
+</LinearLayout>

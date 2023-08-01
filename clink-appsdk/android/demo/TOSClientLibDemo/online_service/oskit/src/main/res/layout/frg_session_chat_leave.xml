@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <include layout="@layout/frg_session_item_time"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:orientation="horizontal"
+        android:paddingRight="@dimen/ti_message_max_span">
+
+        <!-- 人物头像 -->
+        <com.tinet.oskit.widget.UserHeaderView
+          android:id="@+id/userHeader"
+          style="@style/tinetHeaderStyle"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/frg_session_item_name"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ti_receive_bubble_bg"
+                    android:gravity="left|center_vertical"
+                    tools:text="123456"
+                  android:paddingStart="@dimen/ti_content_paddingLeft"
+                  android:paddingEnd="@dimen/ti_content_paddingRight"
+                  android:paddingTop="@dimen/ti_content_paddingTop"
+                  android:paddingBottom="@dimen/ti_content_paddingBottom"
+                    android:textColor="@color/ti_44"
+                    android:textColorLink="@color/ti_66"
+                    android:textSize="@dimen/ti_receive_bubble_text_size" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

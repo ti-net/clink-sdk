@@ -1,0 +1,45 @@
+apply plugin: 'com.android.library'
+
+android {
+
+    compileSdkVersion rootProject.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode 1
+        versionName "${onlineSDKVersion}"
+    }
+
+    buildTypes {
+        release {
+//            minifyEnabled false
+            //Zipalign优化
+            zipAlignEnabled false
+            // 移除无用的resource文件
+            shrinkResources false
+            android.libraryVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "imagepicker_sdk_${variant.buildType.name}.aar"
+                }
+            }
+        }
+        debug {
+            minifyEnabled false
+            //Zipalign优化
+            zipAlignEnabled false
+            // 移除无用的resource文件
+            shrinkResources false
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+}
+
+dependencies {
+    implementation "androidx.appcompat:appcompat:${appCompat}"
+    implementation "androidx.recyclerview:recyclerview:1.0.0"
+}

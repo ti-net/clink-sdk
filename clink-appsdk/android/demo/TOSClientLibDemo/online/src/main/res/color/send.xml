@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+  <item android:color="#824DFC" android:state_pressed="false" android:state_enabled="true"/>
+  <item android:color="@color/ti_cc" android:state_pressed="true" android:state_enabled="true"/>
+  <item android:color="@color/ti_image_color_yellow" android:state_enabled="false"/>
+</selector>
