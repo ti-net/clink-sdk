@@ -1,0 +1,34 @@
+//
+//  PrefixHeader.pch
+//  DarkMode
+//
+//  Created by wsl on 2019/11/5.
+//  Copyright © 2019 https://github.com/wsl2ls/iOS_Tips.git All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+//如何安装:
+//1.创建新pch文件,默认名字即可: "PrefixHeader.pch".
+//2.点击下一步再去Build Settings 搜索Prefix Header.
+//3.找到Prefix Header并且双击,输入$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch
+//现在你可以在项目内任何文件调用宏定义了,祝一切顺利.
+
+#ifdef __OBJC__ // 只被object－c文件所引用
+
+#import "SLToolMacro.h"
+
+
+#import "UIView+SLFrame.h"
+#import "SLDelayPerform.h"
+#import "SLAlertView.h"
+#import "Masonry.h"
+#import "SLMethod.h"
+#import "SLViewController.h"
+
+
+#endif
+
+#endif /* PrefixHeader_pch */
+

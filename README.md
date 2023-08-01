@@ -25,4 +25,4 @@ https://tinet-sdk-release.s3.cn-north-1.amazonaws.com.cn/TOSClientKitDemo/app/la
 ##### 下载地址
 https://apps.apple.com/cn/app/%E5%AE%A2%E6%9C%8Dsdk/id1584932176
 ##### 二维码
-<img src="https://raw.githubusercontent.com/ti-net/clink-sdk/master/clink-appsdk/IOS/IOSOnlineSDK/download_qrcode_ios.png" alt="image.png" style="zoom:20%;" />
+<img src="https://raw.githubusercontent.com/ti-net/clink-sdk/master/clink-appsdk/IOS/Demo/TOSClientKitDemo/download_qrcode_ios.png" alt="image.png" style="zoom:20%;" />

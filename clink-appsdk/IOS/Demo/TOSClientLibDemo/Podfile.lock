@@ -1,0 +1,48 @@
+PODS:
+  - AFNetworking/NSURLSession (3.2.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - ReactiveObjC (3.1.1)
+  - TOSClientLib (1.7.15)
+  - YBPopupMenu (1.1.9)
+  - YTKNetwork (2.1.4):
+    - AFNetworking/NSURLSession (~> 3.0)
+  - YYKit (1.0.9):
+    - YYKit/no-arc (= 1.0.9)
+  - YYKit/no-arc (1.0.9)
+
+DEPENDENCIES:
+  - AFNetworking/NSURLSession (~> 3.0)
+  - AFNetworking/Reachability (~> 3.0)
+  - AFNetworking/Security (~> 3.0)
+  - AFNetworking/Serialization (~> 3.0)
+  - ReactiveObjC
+  - TOSClientLib
+  - YBPopupMenu
+  - YTKNetwork
+  - YYKit
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - AFNetworking
+    - ReactiveObjC
+    - TOSClientLib
+    - YBPopupMenu
+    - YTKNetwork
+    - YYKit
+
+SPEC CHECKSUMS:
+  AFNetworking: cb604b1c2bded0871f5f61f5d53653739e841d6b
+  ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
+  TOSClientLib: ef5f5133137b0606a0a6a88de22ec324ea6272ad
+  YBPopupMenu: 3a02e89860bb0568ba477aee609bc3f25e5bd339
+  YTKNetwork: 19be749c30f0512ada07180f4637b4b67bc8ddc2
+  YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
+
+PODFILE CHECKSUM: ad6e4dea2688759392f750b1260442d25d739d30
+
+COCOAPODS: 1.12.0
