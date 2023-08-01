@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <!--超链接的发送默认字体颜色-->
+  <attr name="super_link_sender_color" format="color|reference"/>
+
+  <!--超链接的接收默认字体颜色-->
+  <attr name="super_link_receiver_color" format="color|reference"/>
+
+  <declare-styleable name="EmotionLayout">
+    <attr name="tinetShowDelete" format="boolean">true</attr>
+  </declare-styleable>
+
+</resources>

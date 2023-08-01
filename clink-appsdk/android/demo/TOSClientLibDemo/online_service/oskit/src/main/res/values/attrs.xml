@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CircleImageView">
+        <attr name="civ_border_width" format="dimension" />
+        <attr name="civ_border_color" format="color" />
+        <attr name="civ_border_overlay" format="boolean" />
+        <attr name="civ_circle_background_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="FormView">
+        <attr name="formModel">
+            <enum name="inputSingle" value="0" />
+            <enum name="inputMulti" value="1" />
+            <enum name="select" value="2" />
+        </attr>
+        <attr name="formType">
+            <enum name="edit" value="0" />
+            <enum name="readOnly" value="1" />
+        </attr>
+        <attr name="android:hint" />
+        <attr name="formTitle" format="string|reference" />
+        <attr name="android:required" />
+        <attr name="unit" format="string|reference" />
+        <attr name="android:inputType" />
+        <attr name="formValue" format="string|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundCardView">
+        <!--        左上圆角大小-->
+        <attr name="tinet_topLeftRadius" format="dimension" />
+        <!--        右上圆角大小-->
+        <attr name="tinet_topRightRadius" format="dimension" />
+        <!--        右下圆角大小-->
+        <attr name="tinet_bottomRightRadius" format="dimension" />
+        <!--        左下圆角大小-->
+        <attr name="tinet_bottomLeftRadius" format="dimension" />
+    </declare-styleable>
+
+    <style name="defaultStyle">
+        <item name="super_link_sender_color">@color/ti_send_super_line_text_color</item>
+        <item name="super_link_receiver_color">@color/ti_receive_super_line_text_color</item>
+    </style>
+
+    <declare-styleable name="RoundCornerImageView">
+        <attr name="tinetRounndCorner" format="reference|dimension"/>
+    </declare-styleable>
+
+
+    <style name="Theme.TIMSDK.LEAVE.chat">
+    </style>
+
+    <declare-styleable name="RoundedImageView">
+        <attr name="tinet_corner_radius" format="dimension" />
+        <attr name="tinet_corner_radius_top_left" format="dimension" />
+        <attr name="tinet_corner_radius_top_right" format="dimension" />
+        <attr name="tinet_corner_radius_bottom_left" format="dimension" />
+        <attr name="tinet_corner_radius_bottom_right" format="dimension" />
+        <attr name="tinet_border_width" format="dimension" />
+        <attr name="tinet_border_color" format="color" />
+        <attr name="tinet_mutate_background" format="boolean" />
+        <attr name="tinet_oval" format="boolean" />
+        <attr name="android:scaleType" />
+        <attr name="tinet_tile_mode">
+            <enum name="clamp" value="0" />
+            <enum name="repeat" value="1" />
+            <enum name="mirror" value="2" />
+        </attr>
+        <attr name="tinet_tile_mode_x">
+            <enum name="clamp" value="0" />
+            <enum name="repeat" value="1" />
+            <enum name="mirror" value="2" />
+        </attr>
+        <attr name="tinet_tile_mode_y">
+            <enum name="clamp" value="0" />
+            <enum name="repeat" value="1" />
+            <enum name="mirror" value="2" />
+        </attr>
+    </declare-styleable>
+
+    <!--用户头像-->
+    <declare-styleable name="UserHeaderView">
+        <!--是否为左边的头像，否则为右边的头像-->
+        <attr name="tinetHeaderIsLeft" format="boolean" />
+        <!--头像大小-->
+        <attr name="tinetHeaderSize" format="dimension|reference" />
+        <!--头像与屏幕之间的距离-->
+        <attr name="tinetHeaderMarginScreenHorizontal" format="dimension|reference"/>
+        <!--头像与消息之间的距离-->
+        <attr name="tinetHeaderMarginMessage" format="dimension|reference" />
+        <!--头像圆角大小-->
+        <attr name="tinetHeaderRadius" format="dimension|reference" />
+        <!--圆角头像-->
+        <attr name="tinetHeaderIsCircle" format="boolean"></attr>
+    </declare-styleable>
+
+    <!--用户输入框，如果不允许表情，同时也不允许更多的话，则发送按钮常驻-->
+    <declare-styleable name="SessionInputView">
+        <!--是否允许发送语音-->
+        <attr name="tinetSessionInputVoiceEnable" format="boolean"/>
+        <!--是否允许更多-->
+        <attr name="tinetSessionInputMoreEnable" format="boolean"/>
+        <!--是否允许发送表情-->
+        <attr name="tinetSessionInputEmoEnable" format="boolean"/>
+        <!--整体背景色[默认：ti_input_area_bg_color]-->
+        <attr name="android:background"/>
+
+        <!--键盘输入框-->
+        <attr name="tinetKeyboardSrc" format="reference"/>
+
+        <attr name="android:paddingLeft"/>
+        <attr name="android:paddingTop"/>
+        <attr name="android:paddingBottom"/>
+        <attr name="android:paddingRight"/>
+
+        <!--聊天语音输入框的样式-->
+        <attr name="tinetAudioStyle" format="reference"/>
+        <!--表情按钮的样式-->
+        <attr name="tinetEmoStyle" format="reference"/>
+        <!--更多按钮的样式-->
+        <attr name="tinetMoreStyle" format="reference"/>
+        <!--输入框的样式-->
+        <attr name="tinetInputStyle" format="reference"/>
+        <!--发送按钮的样式-->
+        <attr name="tinetSendButtonStyle" format="reference"/>
+        <!--按住说话的样式-->
+        <attr name="tinetVoiceStyle" format="reference"/>
+    </declare-styleable>
+
+    <style name="tinetInputContentStyle"/>
+
+    <!--输入框 - 输入框-->
+    <declare-styleable name="SessionInputView_TinetInputContent">
+        <attr name="android:background"/>
+        <attr name="android:gravity"/>
+        <!--[默认：@string/ti_input_box_hint_text]-->
+        <attr name="android:hint"/>
+        <attr name="android:lineHeight"/>
+        <attr name="android:maxLines"/>
+        <attr name="android:lines"/>
+        <attr name="android:paddingLeft"/>
+        <attr name="android:paddingTop"/>
+        <attr name="android:layout_marginLeft"/>
+        <attr name="android:layout_marginRight"/>
+        <attr name="android:layout_marginTop"/>
+        <attr name="android:layout_marginBottom"/>
+        <attr name="android:paddingBottom"/>
+        <attr name="android:paddingRight"/>
+        <attr name="android:textColor"/>
+        <attr name="android:textColorHint"/>
+        <attr name="android:layout_height"/>
+        <attr name="android:textSize"/>
+        <attr name="android:imeOptions"/>
+        <attr name="android:inputType"/>
+    </declare-styleable>
+
+    <!--输入框 - 发送按钮-->
+    <declare-styleable name="SessionInputView_TinetSendButton">
+        <attr name="android:layout_width"/>
+        <attr name="android:layout_height"/>
+        <attr name="android:background"/>
+        <attr name="android:gravity"/>
+        <attr name="android:text"/>
+        <attr name="android:textColor"/>
+        <attr name="android:textSize"/>
+        <attr name="android:paddingLeft"/>
+        <attr name="android:paddingTop"/>
+        <attr name="android:paddingBottom"/>
+        <attr name="android:paddingRight"/>
+        <attr name="android:layout_marginLeft"/>
+        <attr name="android:layout_marginRight"/>
+        <attr name="android:layout_marginTop"/>
+        <attr name="android:layout_marginBottom"/>
+    </declare-styleable>
+
+    <!--输入框 - 图标按钮样式-->
+    <declare-styleable name="SessionInputView_TinetIcon">
+        <attr name="android:layout_width"/>
+        <attr name="android:layout_height"/>
+        <attr name="android:paddingLeft"/>
+        <attr name="android:paddingTop"/>
+        <attr name="android:paddingBottom"/>
+        <attr name="android:paddingRight"/>
+        <attr name="android:src"/>
+        <attr name="android:layout_marginLeft"/>
+        <attr name="android:layout_marginRight"/>
+        <attr name="android:layout_marginTop"/>
+        <attr name="android:layout_marginBottom"/>
+        <attr name="android:scaleType"/>
+    </declare-styleable>
+
+    <!--输入框 - 按住说话 -->
+    <declare-styleable name="SessionInputView_TinetVoiceStyle">
+        <attr name="android:layout_width"/>
+        <attr name="android:layout_height"/>
+        <attr name="android:background"/>
+        <attr name="android:gravity"/>
+        <attr name="android:text"/>
+        <attr name="android:textColor"/>
+        <attr name="android:textSize"/>
+
+        <!--按下去的文字-->
+        <attr name="tinetPressText" format="string"/>
+
+        <attr name="android:paddingLeft"/>
+        <attr name="android:paddingTop"/>
+        <attr name="android:paddingBottom"/>
+        <attr name="android:paddingRight"/>
+        <attr name="android:layout_marginLeft"/>
+        <attr name="android:layout_marginRight"/>
+        <attr name="android:layout_marginTop"/>
+        <attr name="android:layout_marginBottom"/>
+    </declare-styleable>
+
+    <!--访客默认头像-->
+    <item name="ti_visitor_default_header" type="drawable">@drawable/ti_ic_default_user_avatar</item>
+    <!--机器人默认头像-->
+    <item name="ti_robot_default_header" type="drawable">@mipmap/robot_default_head</item>
+</resources>

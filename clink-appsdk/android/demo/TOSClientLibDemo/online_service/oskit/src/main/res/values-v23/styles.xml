@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.TIMSDK.LEAVE">
+        <item name="android:statusBarColor">@color/ti_white</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:colorPrimary">@color/ti_white</item>
+        <item name="android:colorPrimaryDark">@color/ti_white</item>
+        <item name="android:colorAccent">@color/ti_white</item>
+        <item name="android:windowBackground">@color/ti_white</item>
+    </style>
+
+</resources>

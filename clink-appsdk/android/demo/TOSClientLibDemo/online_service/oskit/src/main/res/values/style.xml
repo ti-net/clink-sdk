@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="SessionBottomBarStyle">
+        <!--<item name="session_bottom_bar_bg">@color/session_bottom_bar_bg</item>-->
+    </style>
+
+    <style name="tabLayoutTextStyle">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Theme.TIMSDK" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="super_link_sender_color">@color/ti_send_super_line_text_color</item>
+        <item name="super_link_receiver_color">@color/ti_receive_super_line_text_color</item>
+    </style>
+
+    <!--留言-->
+    <style name="Theme.TIMSDK.LEAVE">
+        <item name="colorPrimary">@color/ti_send_super_line_text_color</item>
+        <item name="colorPrimaryDark">@color/ti_send_super_line_text_color</item>
+        <item name="colorAccent">@color/ti_send_super_line_text_color</item>
+        <item name="android:windowBackground">@color/ti_white</item>
+    </style>
+
+    <style name="TinetRatingBarStyle" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/ti_layer_star</item>
+        <item name="android:maxHeight">32dp</item>
+        <item name="android:maxWidth">32dp</item>
+    </style>
+
+    <style name="tinetDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowAnimationStyle">@style/TinetDialogAnimation</item>
+
+    </style>
+
+    <style name="TinetDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/tinet_bottom_dialog_enter_anim</item>
+        <item name="android:windowExitAnimation">@anim/tinet_bottom_dialog_exit_anim</item>
+    </style>
+
+    <!--图片发送样式-->
+    <style name="tinetImageSendStyle">
+        <item name="cornerFamilyTopLeft">rounded</item>
+        <item name="cornerSizeTopLeft">@dimen/ti_image_cornet_size</item>
+        <item name="cornerFamilyBottomLeft">rounded</item>
+        <item name="cornerSizeBottomLeft">@dimen/ti_image_cornet_size</item>
+        <item name="cornerFamilyBottomRight">rounded</item>
+        <item name="cornerSizeBottomRight">@dimen/ti_image_cornet_size</item>
+    </style>
+
+    <!--图片接收样式-->
+    <style name="tinetImageReceiverStyle">
+        <item name="cornerFamilyTopRight">rounded</item>
+        <item name="cornerSizeTopRight">@dimen/ti_image_cornet_size</item>
+        <item name="cornerFamilyBottomLeft">rounded</item>
+        <item name="cornerSizeBottomLeft">@dimen/ti_image_cornet_size</item>
+        <item name="cornerFamilyBottomRight">rounded</item>
+        <item name="cornerSizeBottomRight">@dimen/ti_image_cornet_size</item>
+    </style>
+
+    <!--接收文本的样式-->
+    <!--<item name="tinetTextReceiveStyle" type="style"></item>-->
+
+    <!--默认字体样式-->
+    <style name="tinetTextStyle">
+        <item name="android:linksClickable">true</item>
+        <item name="android:paddingStart">@dimen/ti_content_paddingLeft</item>
+        <item name="android:paddingEnd">@dimen/ti_content_paddingRight</item>
+        <item name="android:paddingTop">@dimen/ti_content_paddingTop</item>
+        <item name="android:paddingBottom">@dimen/ti_content_paddingBottom</item>
+        <item name="android:textColor">@color/ti_send_msg_text_color</item>
+        <item name="android:textSize">@dimen/ti_receive_bubble_text_size</item>
+    </style>
+
+    <!--发送文本的样式-->
+    <style name="tinetTextStyle.tinetTextSendStyle">
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:background">@drawable/ti_send_bubble_bg</item>
+    </style>
+
+    <!--接收文本的样式-->
+    <style name="tinetTextStyle.tinetTextReceiveStyle">
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:background">@drawable/ti_receive_bubble_bg</item>
+    </style>
+
+    <!--默认图片样式-->
+    <style name="tinetImageStyle">
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:maxWidth">250dp</item>
+        <item name="android:maxHeight">250dp</item>
+        <item name="android:minWidth">160dp</item>
+        <item name="android:padding">@dimen/ti_image_content_padding</item>
+        <item name="android:minHeight">160dp</item>
+        <item name="android:scaleType">fitXY</item>
+    </style>
+
+    <!--默认图片容器样式-->
+    <style name="tinetImageContainerStyle"></style>
+    <!--默认图片容器样式 - 发送 -->
+    <style name="tinetImageContainerStyle.tinetImageContainerSendStyle">
+        <item name="android:background">@drawable/ti_send_bubble_bg</item>
+    </style>
+    <!--默认图片容器样式 - 接收 -->
+    <style name="tinetImageContainerStyle.tinetImageContainerReceiveStyle">
+        <item name="android:background">@drawable/ti_receive_bubble_bg</item>
+    </style>
+
+    <!--发送图片的样式-->
+    <style name="tinetImageStyle.tinetImageSendStyle">
+        <item name="shapeAppearance">@style/tinetImageSendStyle</item>
+    </style>
+
+    <!--接收图片的样式-->
+    <style name="tinetImageStyle.tinetImageReceiveStyle">
+        <item name="shapeAppearance">@style/tinetImageReceiverStyle</item>
+    </style>
+
+    <!--语音消息容器样式-->
+    <style name="tinetAudioContainerStyle">
+        <item name="android:paddingStart">@dimen/ti_content_paddingLeft</item>
+        <item name="android:paddingEnd">@dimen/ti_content_paddingRight</item>
+        <item name="android:paddingTop">@dimen/ti_content_paddingTop</item>
+        <item name="android:paddingBottom">@dimen/ti_content_paddingBottom</item>
+        <item name="android:minHeight">42dp</item>
+        <item name="android:minWidth">@dimen/ti_voice_min_width</item>
+    </style>
+
+    <!--语音消息容器样式 - 发送-->
+    <style name="tinetAudioContainerStyle.tinetAudioContainerSendStyle">
+        <item name="android:background">@drawable/ti_send_bubble_bg</item>
+        <item name="android:gravity">right|center_vertical</item>
+    </style>
+
+    <!--语音消息容器样式 - 接收-->
+    <style name="tinetAudioContainerStyle.tinetAudioContainerReceiverStyle">
+        <item name="android:background">@drawable/ti_receive_bubble_bg</item>
+        <item name="android:gravity">left|center_vertical</item>
+    </style>
+
+    <!--语音消息内容样式-->
+    <style name="tinetAudioContentStyle">
+        <item name="android:textColor">@color/ti_send_msg_text_color</item>
+        <item name="android:textSize">@dimen/ti_receive_bubble_text_size</item>
+    </style>
+
+    <!--语音消息内容样式 - 发送-->
+    <style name="tinetAudioContentStyle.tinetAudioContentSendStyle"></style>
+    <!--语音消息内容样式 - 接收-->
+    <style name="tinetAudioContentStyle.tinetAudioContentReceiveStyle">
+        <item name="android:layout_marginLeft">5dp</item>
+    </style>
+
+    <!--语音消息图标样式-->
+    <style name="tinetAudioIconStyle"/>
+
+    <!--语音消息图标样式 - 发送-->
+    <style name="tinetAudioIconStyle.tinetAudioIconSendStyle">
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:background">@drawable/ti_audio_animation_right_list</item>
+    </style>
+    <!--语音消息图标样式 - 接收-->
+    <style name="tinetAudioIconStyle.tinetAudioIconReceiveStyle">
+        <item name="android:background">@drawable/ti_audio_animation_left_list</item>
+    </style>
+
+    <!--默认视频容器样式-->
+    <style name="tinetVideoContainerStyle"></style>
+    <!--默认视频容器样式 - 发送 -->
+    <style name="tinetVideoContainerStyle.tinetVideoContainerSendStyle">
+        <item name="android:background">@drawable/ti_send_bubble_bg</item>
+    </style>
+    <!--默认视频容器样式 - 接收 -->
+    <style name="tinetVideoContainerStyle.tinetVideoContainerReceiveStyle">
+        <item name="android:background">@drawable/ti_receive_bubble_bg</item>
+    </style>
+
+    <!--默认视频样式-->
+    <style name="tinetVideoStyle">
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:maxWidth">250dp</item>
+        <item name="android:maxHeight">250dp</item>
+        <item name="android:minWidth">160dp</item>
+        <item name="android:padding">@dimen/ti_image_content_padding</item>
+        <item name="android:minHeight">160dp</item>
+        <item name="android:scaleType">fitXY</item>
+    </style>
+
+    <style name="tinetVideoStyle.tinetVideoSendStyle">
+        <item name="shapeAppearance">@style/tinetImageSendStyle</item>
+    </style>
+
+    <style name="tinetVideoStyle.tinetVideoReceiveStyle">
+        <item name="shapeAppearance">@style/tinetImageReceiverStyle</item>
+    </style>
+
+    <!--默认视频样式 - 播放按钮 -->
+    <style name="tinetVideoIconStyle">
+        <item name="android:src">@drawable/tinetVideoPlay</item>
+    </style>
+
+    <style name="tinetVideoIconStyle.tinetVideoIconSendStyle"></style>
+    <style name="tinetVideoIconStyle.tinetVideoIconReceiveStyle"></style>
+
+    <!--通知消息样式-->
+    <style name="tinetNotifyStyle">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:background">@drawable/ti_shape_notification_bg</item>
+        <item name="android:gravity">center</item>
+        <item name="android:lineSpacingExtra">1dp</item>
+        <item name="android:paddingHorizontal" tools:ignore="NewApi">@dimen/ti_notification_paddingHorizontal</item>
+        <item name="android:paddingVertical" tools:ignore="NewApi">@dimen/ti_notification_paddingVertical</item>
+        <item name="android:layout_marginHorizontal" tools:ignore="NewApi">@dimen/ti_notification_marginHorizontal</item>
+        <item name="android:layout_marginVertical" tools:ignore="NewApi">0dp</item>
+        <item name="android:textColor">@color/ti_tips_text_color</item>
+        <item name="android:textSize">@dimen/ti_notification_size</item>
+    </style>
+
+    <!--默认文件样式 - 容器样式 -->
+    <style name="tinetFileContainerStyle">
+        <item name="android:background">@drawable/ti_shape_file_message_bg</item>
+    </style>
+
+    <!--默认文件样式 - 文件名样式 -->
+    <style name="tinetFileNameStyle">
+        <item name="android:ellipsize">end</item>
+        <item name="android:lineSpacingExtra">1dp</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/ti_receive_bubble_text_size</item>
+    </style>
+
+    <!--默认文件样式 - 分隔线样式 -->
+    <style name="tinetFileDividerStyle">
+        <item name="android:background">#0F000000</item>
+    </style>
+
+    <!--默认文件样式 - 下载文字样式-->
+    <style name="tinetFileDownloadStyle">
+        <item name="android:gravity">center</item>
+        <item name="android:text">@string/ti_file_down</item>
+        <item name="android:textColor">#4385FF</item>
+        <item name="android:textSize">@dimen/ti_receive_bubble_text_size</item>
+    </style>
+
+    <!--消息时间样式-->
+    <style name="tinetTimeStyle">
+        <item name="android:textColor">@color/ti_msg_time_color</item>
+        <item name="android:textSize">@dimen/ti_time_size</item>
+    </style>
+
+    <!--昵称的样式-->
+    <style name="tinetNicknameStyle">
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/ti_nickname_text_color</item>
+        <item name="android:textSize">@dimen/ti_chat_username_text_size</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:paddingBottom">@dimen/ti_nickname_content_span</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <!--引导语-->
+    <style name="tinetLeadingWordsStyle">
+        <item name="android:background">@drawable/ti_shape_notification_bg</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:lineSpacingExtra">1dp</item>
+        <item name="android:paddingHorizontal" tools:ignore="NewApi">@dimen/ti_notification_paddingHorizontal</item>
+        <item name="android:paddingVertical" tools:ignore="NewApi">@dimen/ti_notification_paddingVertical</item>
+        <item name="android:layout_marginHorizontal" tools:ignore="NewApi">@dimen/ti_notification_marginHorizontal</item>
+        <item name="android:layout_marginVertical" tools:ignore="NewApi">0dp</item>
+        <item name="android:textColor">@color/ti_tips_text_color</item>
+        <item name="android:textSize">@dimen/ti_notification_size</item>
+    </style>
+
+    <!--接收消息的样式-->
+    <style name="tinetReceiveMessageStyle">
+        <item name="android:paddingStart">@dimen/ti_content_paddingLeft</item>
+        <item name="android:paddingEnd">@dimen/ti_content_paddingRight</item>
+        <item name="android:paddingTop">@dimen/ti_content_paddingTop</item>
+        <item name="android:paddingBottom">@dimen/ti_content_paddingBottom</item>
+        <item name="android:background">@drawable/ti_receive_bubble_bg</item>
+    </style>
+
+    <!--默认容器-->
+    <style name="tinetReceiveMessageStyle.tinetContainerStyle">
+    </style>
+
+    <!--机器人快捷回复消息-->
+    <style name="tinetReceiveMessageStyle.tinetContainerStyle.tinetRobotReplyStyle">
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:maxWidth">@dimen/ti_message_max_width</item>
+        <item name="android:textColor">@color/ti_receive_msg_text_color</item>
+        <item name="android:textSize">@dimen/ti_receive_bubble_text_size</item>
+    </style>
+
+    <!--富文本 - 文本消息-->
+    <style name="tinetHtmlTextStyle">
+        <item name="android:lineSpacingExtra">2dp</item>
+        <item name="android:textColor">@color/ti_receive_msg_text_color</item>
+        <item name="android:textSize">@dimen/ti_receive_bubble_text_size</item>
+    </style>
+
+    <!--分类消息 - 标题样式-->
+    <style name="tinetRobotClassicTitleStyle">
+        <item name="android:layout_marginBottom">14dp</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+        <item name="android:textColor">@color/ti_black</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!--分类消息 - 猜你所想样式-->
+    <style name="tinetRobotClassicGuessStyle">
+        <item name="android:textColor">@color/ti_guess_text_color</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!--分类消息 - tab样式-->
+    <style name="tinetRobotClassicTabStyle">
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="tabGravity">fill</item>
+        <item name="tabIndicatorColor">@color/ti_blue</item>
+        <item name="tabIndicatorFullWidth">false</item>
+        <item name="tabIndicatorGravity">bottom</item>
+        <item name="tabIndicatorHeight">2dp</item>
+        <item name="tabMode">scrollable</item>
+        <item name="tabSelectedTextColor">@color/ti_blue</item>
+        <item name="tabTextAppearance">@style/tabLayoutTextStyle</item>
+        <item name="tabTextColor">@color/ti_black</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+    </style>
+
+    <!--分类消息 - 分隔线样式-->
+    <style name="tinetRobotClassicDividerStyle">
+        <item name="android:background">#0A000000</item>
+    </style>
+
+    <!--问题 - 问题项样式-->
+    <style name="tinetRobotQuestionStyle">
+        <item name="android:layout_marginLeft">8dp</item>
+        <item name="android:lineSpacingExtra">1dp</item>
+        <item name="android:textColor">@color/ti_dark</item>
+        <item name="android:textSize">@dimen/ti_group_question_item_text_size</item>
+    </style>
+
+    <!--会话分隔线样式-->
+    <style name="tinetSessionDividerStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">#EAEBEF</item>
+    </style>
+
+    <!--会话分隔线底部样式-->
+    <style name="tinetSessionBottomDividerStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">#EAEBEF</item>
+    </style>
+
+    <!--换一换-->
+    <style name="tinetQuestionChangeStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:drawableLeft">@drawable/ti_ic_refresh_change</item>
+        <item name="android:drawablePadding">4dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:text">@string/ti_change</item>
+        <item name="android:textColor">#4385FF</item>
+        <item name="android:paddingVertical" tools:ignore="NewApi">5dp</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+</resources>

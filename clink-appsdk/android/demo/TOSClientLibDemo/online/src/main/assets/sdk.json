@@ -1,0 +1,80 @@
+//该文档与SDK接入无关，无需关注
+[
+  {
+    "name": "天润北京",
+    "enterpriseId": 8000002,
+    "accessId": "8758096679544ff189d4a9457747f109",
+    "accessSecret": "72EBF29CB4614F7AB404EEC07BFF0B1B",
+    "type": "Beijing"
+  },
+  {
+    "name": "陈仪",
+    "enterpriseId": 8000002,
+    "accessId": "a28b4b495a994f14ad884bfef74c33f3",
+    "accessSecret": "469241BA4315405987D6E61A6E2FA5A6",
+    "type": "Beijing"
+  },
+  {
+    "name": "陈仪(test0)",
+    "enterpriseId": 8001678,
+    "accessId": "7b9ec915f0c74443ac7115d241af9c26",
+    "accessSecret": "71E0A8FB84BD4BE0B4CC813B73B5B47D",
+    "type": "Test3"
+  },
+  {
+    "name": "天润上海",
+    "enterpriseId": 8003846,
+    "accessId": "f8f7d2be61ce4b8ba272b35647ac1eb2",
+    "accessSecret": "D5B70DD63C4848B6824C0233D2FC201F",
+    "type": "Shanghai"
+  },
+  {
+    "name": "集度",
+    "enterpriseId": 8009636,
+    "accessId": "c1b86e53996e4c74b6ce28df8f9faee1",
+    "accessSecret": "252920977A7443C385423FD8084FA1F7",
+    "type": "Beijing"
+  },
+  {
+    "name": "集度-上海",
+    "enterpriseId": 8009725,
+    "accessId": "80ffab421a2b44a9a20a6ba9c51266d0",
+    "accessSecret": "C7A9F08C77094C5B89AC66A296B3E7FF",
+    "type": "Shanghai"
+  },
+  {
+    "name": "集度-上海1",
+    "enterpriseId": 8009725,
+    "accessId": "6aef004204c64ded93aefb097941dd66",
+    "accessSecret": "354A4F14CED94694A5C9303FF5CFB443",
+    "type": "Shanghai"
+  },
+  {
+    "name": "KT环境",
+    "enterpriseId": 8000376,
+    "accessId": "35a919ecd0ca4b619f82a655ba1e696d",
+    "accessSecret": "FB44FE4A397F40FCAE6F00BA302357AA",
+    "type": "Kt"
+  },
+  {
+    "name": "集度",
+    "enterpriseId": 8004022,
+    "accessId": "c1b86e53996e4c74b6ce28df8f9faee1",
+    "accessSecret": "252920977A7443C385423FD8084FA1F7",
+    "type": "Beijing"
+  },
+  {
+    "name": "分贝通",
+    "enterpriseId": 8008921,
+    "accessId": "78a696762ab04b0ba1e52a1535d4011c",
+    "accessSecret": "5B002BF8447148DFB06C5D3C4982B49F",
+    "type": "Beijing"
+  },
+  {
+    "name": "test0",
+    "enterpriseId": 8001612,
+    "accessId": "9d4e8171360c4254b833dbcb23acaa84",
+    "accessSecret": "9F74BC0C45F74ED7B1D1F7600901BA20",
+    "type": "Test3"
+  }
+]

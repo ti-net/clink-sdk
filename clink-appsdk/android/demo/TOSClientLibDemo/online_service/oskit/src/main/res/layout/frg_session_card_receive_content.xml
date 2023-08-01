@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/order_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/ti_receive_order_id_text_color"
+            android:textSize="@dimen/ti_receive_order_id_text_size"
+            tools:text="订单号：" />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/ti_receive_time_text_color"
+            android:textSize="@dimen/ti_receive_time_text_size"
+            tools:text="2022/12/12 12:34" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view_line_card_top"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/ti_msg_card_receive_dividing_line_color" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="@dimen/ti_message_img"
+            android:layout_height="@dimen/ti_message_img"
+            android:layout_marginRight="15dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/subTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lines="2"
+                android:textColor="@color/ti_receive_subtitle_text_color"
+                android:textSize="@dimen/ti_receive_subtitle_text_size"
+                tools:text="联想笔记本电脑联想笔记本电脑联想笔记本电脑联想笔记本电脑" />
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lines="1"
+                android:textColor="@color/ti_receive_description_text_color"
+                android:textSize="@dimen/ti_receive_description_text_size"
+                tools:text="联想笔记本电脑ThinkBook15" />
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/ti_receive_price_text_color"
+                android:textSize="@dimen/ti_receive_price_text_size"
+                tools:text="¥ 6785" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view_line_card_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/ti_msg_card_receive_dividing_line_color" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/ti_receive_status_text_color"
+            android:textSize="@dimen/ti_receive_status_text_size"
+            tools:text="到货状态：已到货" />
+
+        <TextView
+            android:id="@+id/more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:paddingLeft="10dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/ti_receive_status_text_color"
+            android:textSize="@dimen/ti_receive_status_text_size"
+            tools:text="收起" />
+
+        <ImageView
+            android:id="@+id/open"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/darkdown"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layerType="software"
+        android:paddingVertical="@dimen/padding_vertical"
+        app:layoutManager="com.tinet.oskit.adapter.layout.NoScrollLinearLayoutManager" />
+
+
+</LinearLayout>

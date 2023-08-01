@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <CheckBox
+        android:id="@+id/cb_satisfaction_level"
+        android:layout_width="match_parent"
+        android:minHeight="@dimen/satisfaction_label_high"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginVertical="6dp"
+        android:background="@drawable/satisfaction_tv_bg"
+        android:button="@null"
+        android:gravity="center"
+        android:textColor="@drawable/satisfaction_label_tv_color" />
+
+</LinearLayout>

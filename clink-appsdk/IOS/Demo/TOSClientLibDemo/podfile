@@ -1,0 +1,23 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform:ios,'10.0'
+use_frameworks!
+
+target "TOSClientKit" do
+
+pod 'TOSClientLib'
+
+end
+
+target "TOSClientLibDemo" do
+
+pod 'TOSClientLib'
+
+pod 'YTKNetwork'
+pod 'AFNetworking', '~> 3.0', :subspecs => ['Reachability', 'Serialization', 'Security', 'NSURLSession']
+pod 'ReactiveObjC'
+pod 'YBPopupMenu'
+pod 'YYKit'
+
+
+end

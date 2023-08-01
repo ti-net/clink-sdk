@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="tinetIconSize" format="dimension"/>
+    <attr name="tinetIconMargin" format="dimension"/>
+    <attr name="tinetIconSrc" format="reference"/>
+    <attr name="tinetIconLeft" format="reference"/>
+    <attr name="tinetIconRight" format="reference"/>
+    <attr name="tinetDurationMax" format="integer"/>
+    <declare-styleable name="JCameraView">
+        <attr name="tinetIconSize"/>
+        <attr name="tinetIconMargin"/>
+        <attr name="tinetIconSrc"/>
+        <attr name="tinetIconLeft"/>
+        <attr name="tinetIconRight"/>
+        <attr name="tinetDurationMax"/>
+    </declare-styleable>
+</resources>

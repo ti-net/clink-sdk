@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tvAuditHint"
+    android:layout_width="45dp"
+    android:layout_height="17dp"
+    android:layout_gravity="bottom"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:background="@color/ti_red"
+    android:textColor="@color/ti_white"
+    android:visibility="gone"
+    android:textSize="10sp"
+    android:gravity="center"
+    android:text="@string/ti_is_not_pass" />

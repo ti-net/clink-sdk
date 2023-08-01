@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/tvName"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:lineSpacingExtra="2dp"
+    tools:text="[文件]这是文件名.txt"
+    android:textColor="@color/ti_msg_receive_filename_text_color"
+    android:textSize="@dimen/ti_receive_bubble_text_size" />

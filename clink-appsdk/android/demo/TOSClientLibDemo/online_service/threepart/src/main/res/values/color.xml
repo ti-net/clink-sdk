@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="ti_line">#F3F6F7</color>
+    <color name="ti_white">#fff</color>
+    <color name="ti_gray">#D9D9D9</color>
+    <color name="ti_window_bg">#F5F8F9</color>
+    <color name="tinet_send_bg">#1C69D4</color>
+</resources>

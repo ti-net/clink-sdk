@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!--头像样式定义-->
+  <style name="tinetHeaderStyle"/>
+
+  <!--输入区域样式定义-->
+  <style name="tinetInputAreaStyle"/>
+
+  <!--发送中布局文件-->
+  <item name="tinet_message_sending_layout" type="layout">@layout/frg_session_message_sending</item>
+  <!--发送动画控件-->
+  <item name="tinetSending" type="id"/>
+  <!--发送失败布局文件-->
+  <item name="tinet_message_send_failure_layout" type="layout">@layout/frg_session_message_send_failure</item>
+  <!--发送失败布局根路径-->
+  <item name="tinetSendFailureContent" type="id"/>
+  
+  
+  <!--录音布局-->
+  <item name="tinet_voice_popup_layout" type="layout">@layout/frg_session_audio_popup</item>
+  <!--图标-->
+  <item name="tinetVoiceStatusIcon" type="id"/>
+  <!--方案-->
+  <item name="tinetVoiceStatusText" type="id"/>
+  <!--计时器-->
+  <item name="tinetVoiceTimer" type="id"/>
+
+  <!--内容布局体-->
+  <item name="tinet_session_refresh" type="layout">@layout/frg_session_refresh_content</item>
+  <!--消息recyclerView-->
+  <item name="tinetMessageRecyclerView" type="id"/>
+  <!--消息recyclerView的父container-->
+  <item name="tinetMessageContainer" type="id"/>
+
+  <!--视频消息的播放按钮-->
+  <item name="tinetVideoPlay" type="drawable">@drawable/ti_ic_video_play</item>
+
+  <!--表情发送布局-->
+  <item name="tinetEmoManagerLayout" type="layout">@layout/ti_emo_empty</item>
+  <!--发送按钮-->
+  <item name="tinetMessageSend" type="id"/>
+  <!--表情删除-->
+  <item name="tinetEmoDelete" type="id"/>
+  <!--表情显示默认的删除-->
+  <item name="tinetShowDelete" type="bool">true</item>
+</resources>

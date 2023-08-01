@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <color name="ti_7e">#7E7E7E</color>
+    <color name="send_bg">#1C69D4</color>
+    <color name="ti_99">#999</color>
+    <color name="ti_44">#444</color>
+    <color name="ti_cc">#ccc</color>
+    <color name="ti_66">#666</color>
+    <color name="ti_customer_not_read">#a1a3a6</color>
+    <color name="ti_blue">#1366dc</color>
+    <color name="ti_red">#E16767</color>
+    <color name="ti_dark">#333333</color>
+    <color name="ti_gray_9">#999999</color>
+    <color name="ti_black">#000000</color>
+    <color name="color_ffffff80">#80ffffff</color>、
+    <color name="color_00000080">#80000000</color>
+    <color name="ti_bf">#BFBFBF</color>
+    <color name="ti_transparent_dark">#30ffffff</color>
+    <color name="ti_checked">#299AFF</color>
+    <color name="ti_chat_leave_message_btn">#1b6bd9</color>
+    <color name="ti_image_color_yellow">#FFC300</color>
+    <drawable name="ti_transparent_drawable">@android:color/transparent</drawable>
+    <color name="transparent">#00ffffff</color>
+
+
+    <!--  ++++++++++++++ 聊天背景设置 ++++++++++++++  -->
+    <!--聊天背景颜色-->
+    <color name="ti_session_background_color">#FFF2F6FD</color>
+
+    <!--  ++++++++++++++ 聊天消息样式设置 ++++++++++++++  -->
+    <!--昵称文字颜色-->
+    <color name="ti_nickname_text_color">#FF595959</color>
+    <!--发送端气泡背景颜色-->
+    <color name="ti_send_bubble_background_color">#D5E1F7</color>
+    <!--发送端文字颜色-->
+    <color name="ti_send_msg_text_color">@color/ti_dark</color>
+    <!--发送端超链接文字颜色-->
+    <color name="ti_send_super_line_text_color">#1366dc</color>
+    <!--接收端文字颜色-->
+    <color name="ti_receive_msg_text_color">@color/ti_dark</color>
+    <!--接收端超链接文字颜色-->
+    <color name="ti_receive_super_line_text_color">#1366dc</color>
+    <!--接收端气泡背景颜色-->
+    <color name="ti_receive_bubble_background_color">@android:color/white</color>
+    <!--猜你所想-->
+    <color name="ti_guess_text_color">#FAAD14</color>
+    <!--排队文字颜色-->
+    <color name="ti_line_up_text_color">@color/ti_blue</color>
+    <!--会话提示字体颜色-->
+    <color name="ti_tips_text_color">#FF595959</color>
+    <!--会话提示气泡颜色-->
+    <color name="ti_tips_bubble_bg_color">#a6ffffff</color>
+    <!--时间字体颜色-->
+    <color name="ti_msg_time_color">#FF8C8C8C</color>
+    <!--富文本视频播放器的背景-->
+    <color name="ti_rich_video_bg_color">#80000000</color>
+    <!--富文本视频播放器进度条的背景色-->
+    <color name="ti_rich_video_progress_bg_color">#4D000000</color>
+    <!--富文本视频播放器进度条的前景色-->
+    <color name="ti_rich_video_foreground_color">@color/ti_white</color>
+    <!--满意度文字颜色选中-->
+    <color name="satisfaction_select_text_color">#FAAD14</color>
+    <!--满意度文字颜色未选-->
+    <color name="satisfaction_unselected_text_color">#595959</color>
+    <!--满意度标签文字颜色选中-->
+    <color name="satisfaction_label_select_text_color">#FAAD14</color>
+    <!--满意度标签文字颜色未选-->
+    <color name="satisfaction_label_unselected_text_color">#8C8C8C</color>
+    <!--满意度标签文字颜色选中边框线颜色-->
+    <color name="satisfaction_label_select_border_color">#FAAD14</color>
+    <!--满意度标签文字颜色未选边框线颜色-->
+    <color name="satisfaction_label_unselected_border_color">#D9D9D9</color>
+    <!--满意度标签文字颜色选中背景色-->
+    <color name="satisfaction_label_select_color">#30FAAD14</color>
+    <!--满意度标签文字颜色未选背景色-->
+    <color name="satisfaction_label_unselected_color">#30D9D9D9</color>
+    <!--满意度提交文字-->
+    <color name="satisfaction_submit_tv_color">#4385FF</color>
+    <!--满意度提交背景色-->
+    <color name="satisfaction_submit_bg">#4385FF</color>
+
+
+    <!--  ++++++++++++++  输入栏设置 ++++++++++++++  -->
+    <!--输入区域背景颜色-->
+    <color name="ti_input_area_bg_color">#F5F7F9</color>
+    <!--输入区域更多背景颜色-->
+    <color name="ti_input_more_bg_color">@color/ti_input_area_bg_color</color>
+    <drawable name="ti_input_area_bg">@color/ti_input_area_bg_color</drawable>
+    <!--聊天输入框文字颜色-->
+    <color name="ti_input_box_text_color">#FF262626</color>
+    <!--聊天输入框边框线颜色-->
+    <color name="ti_input_box_border_color">#F3F6F7</color>
+    <!--聊天输入框背景色-->
+    <color name="ti_input_box_bg_color">#ffffff</color>
+    <!--输入区域按住录音按钮文字颜色-->
+    <color name="ti_input_area_voice_press_text_color">#7E7E7E</color>
+    <!--输入区域按住录音按钮抬起背景颜色-->
+    <color name="ti_input_area_voice_press_up_bg_color">#ffffff</color>
+    <!--输入区域按住录音按钮按下背景颜色-->
+    <color name="ti_input_area_voice_press_bg_color">#ffe5e5e5</color>
+    <!--输入区域按住录音pop提示文字颜色-->
+    <color name="ti_input_area_voice_press_hint_text_color">#A6FFFFFF</color>
+    <!--输入区发送按钮背景颜色-->
+    <color name="ti_send_btn_bg_color">#FF4385FF</color>
+    <!--输入区发送按钮字体颜色-->
+    <color name="ti_send_btn_text_color">#ffffff</color>
+    <!--拓展面板条目背景颜色-->
+    <color name="ti_session_func_item_bg_color">#ffffff</color>
+    <!--扩展面板条目文字颜色-->
+    <color name="ti_session_func_item_text_color">#8B8F9D</color>
+    <!--快捷回复标签默认背景颜色-->
+    <color name="ti_quick_reply_tag_bg_color">#FF10A2F3</color>
+    <!--输入提示框hint的字体颜色-->
+    <color name="ti_input_text_color_hint">@color/ti_cc</color>
+
+
+
+    <!--  ++++++++++++++ 快捷入口设置 ++++++++++++++  -->
+    <!--快捷入口标签字体颜色-->
+    <color name="ti_quick_entry_text_color">#000000</color>
+    <!--快捷入口标签背景色-->
+    <color name="ti_quick_entry_bg_color">#F3F6F7</color>
+    <!--快捷入口底部背景色-->
+    <color name="ti_quick_entry_rv_bg_color">#ffffff</color>
+
+
+    <!--  ++++++++++++++ 商品卡片设置 ++++++++++++++  -->
+    <!--聊天接受商品卡片分割线颜色-->
+    <color name="ti_msg_card_receive_dividing_line_color">#80000000</color>
+    <!--聊天发送商品卡片分割线颜色-->
+    <color name="ti_msg_card_send_dividing_line_color">#80000000</color>
+    <!--聊天接受商品卡片描述颜色-->
+    <color name="ti_msg_card_receive_text_color">#80000000</color>
+    <!--聊天发送商品卡片描述颜色-->
+    <color name="ti_msg_card_send_text_color">#80000000</color>
+    <!--聊天文件名颜色-->
+    <color name="ti_msg_receive_filename_text_color">@color/ti_send_bubble_background_color</color>
+
+    <!--商品卡片待发送一发送按钮背景色-->
+    <color name="ti_commodity_card_bg_color">#4384ff</color>
+    <!--商品卡片待发送一发送文字颜色-->
+    <color name="ti_commodity_card__color">#ffffff</color>
+
+    <!--待发送 子标题 文字颜色-->
+    <color name="ti_hold_subtitle_text_color">@color/ti_dark</color>
+    <!--待发送 价格 文字颜色-->
+    <color name="ti_hold_price_text_color">#f00</color>
+
+    <!--接收端 订单id 文字颜色-->
+    <color name="ti_receive_order_id_text_color">@color/ti_dark</color>
+    <!--接收端 时间 文字颜色-->
+    <color name="ti_receive_time_text_color">@color/ti_dark</color>
+    <!--接收端 子标题 文字颜色-->
+    <color name="ti_receive_subtitle_text_color">@color/ti_dark</color>
+    <!--接收端 描述 文字颜色-->
+    <color name="ti_receive_description_text_color">#8A8D9A</color>
+    <!--接收端 价格 文字颜色-->
+    <color name="ti_receive_price_text_color">#f00</color>
+    <!--接收端 到货状态 文字颜色-->
+    <color name="ti_receive_status_text_color">@color/ti_dark</color>
+
+    <!--发送端 订单id 文字颜色-->
+    <color name="ti_sender_order_id_text_color">@color/ti_dark</color>
+    <!--发送端 时间 文字颜色-->
+    <color name="ti_sender_time_text_color">@color/ti_dark</color>
+    <!--发送端 子标题 文字颜色-->
+    <color name="ti_sender_subtitle_text_color">@color/ti_dark</color>
+    <!--发送端 描述 文字颜色-->
+    <color name="ti_sender_description_text_color">#8A8D9A</color>
+    <!--发送端 价格 文字颜色-->
+    <color name="ti_sender_price_text_color">#f00</color>
+    <!--发送端 到货状态 文字颜色-->
+    <color name="ti_sender_status_text_color">@color/ti_dark</color>
+
+
+
+    <!--  ++++++++++++++ 选择图片页面 ++++++++++++++  -->
+    <!--相册导航栏背景色-->
+    <color name="ti_album_navigation_bar_background">#ffffff</color>
+    <!--相册导航栏文字颜色-->
+    <color name="ti_album_navigation_bar_ext">#303030</color>
+    <!--相册导航栏确定按钮背景色-->
+    <color name="ti_send_picture_button_bg">#4385ff</color>
+</resources>

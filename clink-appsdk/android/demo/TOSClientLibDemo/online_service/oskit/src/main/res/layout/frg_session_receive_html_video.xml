@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ivImg"
+    android:layout_width="@dimen/ti_rich_video_width"
+    android:layout_height="@dimen/ti_rich_video_height"
+    android:background="@drawable/ti_rich_video_bg"
+    android:scaleType="centerCrop"
+    tools:src="@mipmap/ic_launcher">
+
+
+    <ImageView
+        android:id="@+id/ivCover"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:id="@+id/ivPlay"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_above="@id/pbProgress"
+        android:layout_alignLeft="@id/pbProgress"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/ti_ic_video_play" />
+
+    <ImageView
+        android:id="@+id/ivFullScreen"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_above="@id/pbProgress"
+        android:layout_alignRight="@id/pbProgress"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/ti_ic_video_fullscreen" />
+
+    <SurfaceView
+        android:id="@+id/svVideoPlay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:background="@android:color/transparent" />
+
+    <ProgressBar
+        android:id="@+id/pbProgress"
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="14dp"
+        android:indeterminateDrawable="@drawable/ti_video_player_progress"
+        android:indeterminateOnly="false"
+        tools:progress="50" />
+
+</RelativeLayout>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <include layout="@layout/frg_session_item_time" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:gravity="right"
+      android:paddingLeft="@dimen/ti_message_max_span"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+          android:visibility="gone"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvReadStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="6dp"
+                android:text="@string/ti_customer_is_not_read"
+                android:textColor="@color/ti_customer_not_read"
+                android:textSize="10sp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+          android:layout_weight="1"
+            android:gravity="right"
+            android:orientation="vertical">
+
+            <include layout="@layout/frg_session_item_name" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+              android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <!--<ProgressBar
+                    android:id="@+id/pbSending"
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:visibility="gone"
+                    tools:visibility="visible" />-->
+
+                <include layout="@layout/tinet_message_sending_layout"/>
+                <include layout="@layout/tinet_message_send_failure_layout"/>
+
+                <com.tinet.oskit.view.TinetTextView
+                    android:id="@+id/tvText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/tinetTextStyle.tinetTextSendStyle"
+                    tools:text="123这奔跑哥奔跑哥奔跑哥奔跑哥，奔跑,哥奔跑哥" />
+
+            </LinearLayout>
+
+            <include layout="@layout/frg_session_item_layout_sensitive_word"/>
+
+        </LinearLayout>
+
+        <com.tinet.oskit.widget.UserHeaderView
+          android:id="@+id/userHeader"
+          android:layout_width="wrap_content"
+          style="@style/tinetHeaderStyle"
+          android:layout_height="wrap_content"
+          app:tinetHeaderIsLeft="false"/>
+
+    </LinearLayout>
+
+</LinearLayout>

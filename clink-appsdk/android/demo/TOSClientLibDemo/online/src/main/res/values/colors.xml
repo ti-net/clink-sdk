@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="session_bottom_bar_bg">#FFF2F6FD</color>
+    <color name="ti_7e">#7E7E7E</color>
+    <color name="send_bg">#1C69D4</color>
+    <color name="ti_99">#999</color>
+    <color name="ti_44">#444</color>
+    <color name="ti_cc">#ccc</color>
+    <color name="ti_66">#666</color>
+    <color name="ti_customer_not_read">#a1a3a6</color>
+    <color name="ti_blue">#1C69D4</color>
+    <color name="ti_red">#E16767</color>
+    <color name="ti_dark">#333333</color>
+    <color name="ti_gray_9">#999999</color>
+    <color name="ti_black">#000000</color>
+    <color name="ti_gray">#666666</color>
+
+    <color name="ti_image_color_yellow">#FFC300</color>
+
+    <drawable name="ti_transparent_drawable">@android:color/transparent</drawable>
+</resources>

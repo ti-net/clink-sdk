@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <!--发送气泡样式-->
+  <!--<style name="tinetTextStyle.tinetTextSendStyle">
+    <item name="android:background">@drawable/sp_red</item>
+  </style>-->
+
+  <!--<style name="tinetReceiveMessageStyle.tinetContainerStyle">
+    <item name="android:paddingStart">8dp</item>
+    <item name="android:paddingEnd">8dp</item>
+    <item name="android:paddingTop">8dp</item>
+    <item name="android:paddingBottom">8dp</item>
+    <item name="android:background">@drawable/sp_left</item>
+    <item name="limit_maxWidth">200dp</item>
+  </style>
+
+  &lt;!&ndash;富文本 - 文本消息&ndash;&gt;
+  <style name="tinetHtmlTextStyle">
+    <item name="android:lineSpacingExtra">6dp</item>
+    <item name="android:textColor">@color/ti_red</item>
+    <item name="android:textSize">10sp</item>
+  </style>
+
+
+
+
+  &lt;!&ndash;分类消息 - 标题样式&ndash;&gt;
+  <style name="tinetRobotClassicTitleStyle">
+    <item name="android:layout_marginBottom">20dp</item>
+    <item name="android:lineSpacingExtra">4dp</item>
+    <item name="android:textColor">@color/ti_red</item>
+    <item name="android:textSize">18sp</item>
+  </style>
+
+  &lt;!&ndash;分类消息 - 猜你所想样式&ndash;&gt;
+  <style name="tinetRobotClassicGuessStyle">
+    <item name="android:textColor">@color/ti_red</item>
+    <item name="android:textSize">17sp</item>
+    &lt;!&ndash;<item name="android:textStyle">bold</item>&ndash;&gt;
+  </style>
+
+  &lt;!&ndash;分类消息 - tab样式&ndash;&gt;
+  <style name="tinetRobotClassicTabStyle">
+    <item name="android:layout_marginTop">18dp</item>
+    <item name="android:background">@color/transparent</item>
+    <item name="tabGravity">fill</item>
+    <item name="tabIndicatorColor">@color/ti_red</item>
+    <item name="tabIndicatorFullWidth">false</item>
+    <item name="tabIndicatorGravity">bottom</item>
+    <item name="tabIndicatorHeight">2dp</item>
+    <item name="tabMode">scrollable</item>
+    <item name="tabSelectedTextColor">@color/ti_red</item>
+    <item name="tabTextAppearance">@style/tabLayoutTextStyle</item>
+    <item name="tabTextColor">@color/ti_black</item>
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">30dp</item>
+  </style>
+
+  &lt;!&ndash;分类消息 - 分隔线样式&ndash;&gt;
+  <style name="tinetRobotClassicDividerStyle">
+    <item name="android:background">@color/ti_red</item>
+  </style>
+
+  &lt;!&ndash;问题 - 问题项样式&ndash;&gt;
+  <style name="tinetRobotQuestionStyle">
+    <item name="android:layout_marginLeft">1dp</item>
+    <item name="android:lineSpacingExtra">4dp</item>
+    <item name="android:textColor">@color/ti_red</item>
+    <item name="android:textSize">18sp</item>
+  </style>-->
+</resources>

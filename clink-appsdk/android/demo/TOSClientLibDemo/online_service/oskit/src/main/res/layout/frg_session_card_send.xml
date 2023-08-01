@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <include layout="@layout/frg_session_item_time" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/ti_message_max_span">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvReadStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="6dp"
+                android:text="@string/ti_customer_is_not_read"
+              android:visibility="gone"
+                android:textColor="#a1a3a6"
+                android:textSize="10sp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="vertical">
+
+            <include layout="@layout/frg_session_item_name" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- 重试 -->
+                <include layout="@layout/tinet_message_sending_layout"/>
+                <include layout="@layout/tinet_message_send_failure_layout"/>
+
+                <include layout="@layout/frg_session_audit_message_hint" />
+
+                <LinearLayout
+                    android:id="@+id/layout"
+                    android:background="@drawable/ti_send_bubble_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="6dp">
+
+                    <include layout="@layout/frg_session_card_send_content" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <include layout="@layout/frg_session_item_layout_sensitive_word"/>
+
+        </LinearLayout>
+        <!-- 人物头像 -->
+        <com.tinet.oskit.widget.UserHeaderView
+          android:id="@+id/userHeader"
+          style="@style/tinetHeaderStyle"
+          app:tinetHeaderIsLeft="false"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+
+    <include layout="@layout/frg_session_audit_message_right_view" />
+
+</LinearLayout>

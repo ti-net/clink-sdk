@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="20dp">
+
+    <include layout="@layout/frg_session_item_time" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvReadStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="6dp"
+                android:text="@string/ti_customer_is_not_read"
+                android:textColor="#a1a3a6"
+                android:textSize="10sp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="vertical">
+
+            <include layout="@layout/frg_session_item_name" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <include layout="@layout/tinet_message_sending_layout"/>
+                <include layout="@layout/tinet_message_send_failure_layout"/>
+
+                <include layout="@layout/frg_session_audit_message_hint" />
+
+                <!-- 图片 -->
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/tinetImageContainerStyle.tinetImageContainerSendStyle">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/ivBivPic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/tinetImageStyle.tinetImageSendStyle" />
+                </FrameLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <!-- 人物头像 -->
+        <com.tinet.oskit.widget.UserHeaderView
+          android:id="@+id/userHeader"
+          android:layout_width="wrap_content"
+          app:tinetHeaderIsLeft="false"
+          style="@style/tinetHeaderStyle"
+          android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+
+    <include layout="@layout/frg_session_audit_message_right_view" />
+
+</LinearLayout>

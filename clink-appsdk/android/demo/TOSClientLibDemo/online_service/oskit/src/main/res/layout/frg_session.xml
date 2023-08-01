@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tinet.threepart.keyboard.MeasureLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/viewRootForInput"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/tinet_session_refresh"/>
+
+    <View style="@style/tinetSessionDividerStyle" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/ti_quick_entry_rv_bg_color"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/ti_quick_entry_vertical_spec"
+        android:paddingRight="@dimen/ti_quick_entry_item_horizontal_spacing"
+        android:paddingBottom="@dimen/ti_quick_entry_vertical_spec"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+    <com.tinet.oskit.widget.SessionInputView
+      android:id="@+id/inputView"
+      android:layout_width="match_parent"
+      style="@style/tinetInputAreaStyle"
+      android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tvOver"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/ti_cc"
+        android:gravity="center"
+        android:textColor="@color/ti_dark"
+        android:textSize="14sp"
+        android:visibility="gone"
+        tools:text="会话已结束，您可以 继续咨询"
+        tools:visibility="visible" />
+
+    <View android:id="@+id/viewBottomDivider" style="@style/tinetSessionBottomDividerStyle" />
+
+    <RelativeLayout
+        android:id="@+id/viewMore"
+        android:layout_width="match_parent"
+        android:layout_height="246dp"
+        android:background="@color/ti_input_more_bg_color"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <!--表情-->
+        <com.tinet.threepart.emoji.EmotionLayout
+            android:id="@+id/emotionLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:tinetShowDelete="@bool/tinetShowDelete"
+            tools:visibility="visible" />
+
+        <ViewStub
+          android:id="@+id/vsEmoSend"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentBottom="true"
+          android:layout_alignParentEnd="true"
+          android:layout="@layout/tinetEmoManagerLayout"/>
+
+        <!--其他功能-->
+        <include
+            android:id="@+id/moreLayout"
+            layout="@layout/frg_session_more"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+
+</com.tinet.threepart.keyboard.MeasureLinearLayout>

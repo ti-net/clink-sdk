@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ti_customer_is_not_read">客户未读</string>
+    <string name="ti_customer_is_read">客户未读</string>
+    <string name="ti_retry">重试</string>
+    <string name="ti_is_not_pass">未通过</string>
+    <string name="ti_is_pass">通过</string>
+    <string name="ti_is_qualified">合格</string>
+    <string name="ti_is_not_qualified">不合格</string>
+    <string name="ti_cancel_send_message">你撤回了一条消息</string>
+    <string name="ti_cancel_send_message_by_online">对方撤回了一条消息</string>
+    <string name="ti_reedit">重新编辑</string>
+    <string name="ti_voice_rec">手指上滑，取消发送</string>
+    <string name="ti_voice_cancel">松开手指，取消发送</string>
+    <string name="ti_voice_short">录音时间太短</string>
+    <string name="ti_send_audio_limit">发送视频不能超过20s</string>
+    <string name="ti_send_message_not_allow_null">不能发送空内容</string>
+    <string name="ti_revoke_message">%1$s撤回了一条消息</string>
+    <string name="ti_you">你</string>
+
+    <string name="ti_video">拍摄</string>
+    <string name="ti_file">文件</string>
+    <string name="ti_copy">复制</string>
+    <string name="ti_revoke">撤回</string>
+    <string name="ti_revoke_success">消息撤回成功</string>
+    <string name="ti_chat_close_by_system">系统关闭了当前会话!</string>
+    <string name="ti_chat_close_by_online">客服人员关闭了当前会话!</string>
+    <string name="ti_chat_close_by_client">您关闭了当前会话!</string>
+    <string name="ti_chat_close_by_robot">机器人关闭了当前会话!</string>
+    <string name="ti_chat_is_close">当前会话已关闭!</string>
+    <string name="ti_no_more_message">没有更多聊天记录了！</string>
+    <string name="ti_leave_tip">请留言！</string>
+    <string name="ti_manual_service">转人工</string>
+    <string name="ti_point">•</string>
+    <string name="ti_circle">○</string>
+    <string name="ti_square">▪</string>
+    <string name="ti_space">&#160;&#160;</string>
+    <string name="ti_index_position">%1$d.</string>
+    <string name="ti_chat_over_hint">对话已结束，您可以&#160;&#160;继续咨询</string>
+    <string name="ti_abandon_queue">&#160;&#160;放弃排队</string>
+    <string name="ti_file_down">下载</string>
+    <string name="ti_file_save_path">文件保存在%1$s</string>
+    <string name="ti_file_save_path_error">文件下载失败</string>
+    <string name="ti_robot">机器人</string>
+    <string name="ti_file_limit_size">发送失败，文件的大小超出限制</string>
+    <string name="ti_to_online">转人工</string>
+    <string name="ti_chat_over">结束会话</string>
+    <string name="ti_voice_time">%1$d\'\'</string>
+    <string name="ti_path_resove_failure">文件路径解析失败！</string>
+    <string name="ti_online_default_name">客服</string>
+    <string name="ti_rebot_default_name">机器人</string>
+    <string name="ti_chat_leave_message_send">留言</string>
+    <string name="ti_form_bean_is_not_empty">%1$s不能为空！</string>
+    <string name="ti_chat_leave_success">留言成功</string>
+    <string name="ti_chat_leave_message_please">请您留言</string>
+    <string name="ti_chat_leavve_receive_message">%1$s:&#160;%2$s</string>
+    <string name="ti_chat_leavve_receive_message_n">\n</string>
+    <string name="ti_evaluating_title">满意度评价</string>
+    <string name="ti_commit">提交</string>
+    <string name="ti_evaluating_tip">感谢您的咨询\n请您对本次服务做出评价，感谢~</string>
+    <string name="ti_result_tip">您的问题是否得到解决</string>
+    <string name="ti_result_yes">已解决</string>
+    <string name="ti_perfect_information">请完善卡片信息</string>
+    <string name="ti_investigation_message">请对我本次服务进行满意度评价</string>
+    <string name="ti_change">换一换</string>
+    <string name="ti_guess">猜你想问</string>
+    <string name="ti_satisfaction_submit">提交</string>
+    <string name="ti_Submitted_evaluation_prompt">已评价</string>
+
+    <!--录音按钮文案-->
+    <string name="ti_pressed_speak">松手 发送</string>
+    <!--录音按钮按下文案-->
+    <string name="ti_pressed_up_speak">按住 说话</string>
+    <!--发送消息按钮文案-->
+    <string name="ti_send">发送</string>
+    <!--会话页面输入框hint文案-->
+    <string name="ti_input_box_hint_text">请输入内容</string>
+    <!--选择图片页面标题-->
+    <string name="ti_camera">相册</string>
+    <!--  会话页面消息发送失败（含敏感词）提示  -->
+    <string name="ti_sensitive_word_hint">消息中包含敏感词无法发送</string>
+    <string name="ti_send_product">发送商品</string>
+
+    <string name="ti_unknown_message">未知消息类型</string>
+</resources>
