@@ -1,0 +1,87 @@
+@startuml
+class com.tinet.oslib.model.message.content.VoiceMessage {
++ Integer getMessageType()
++ String getUri()
++ {static} VoiceMessage obtain(String)
+}
+class com.tinet.oslib.model.message.content.TextMessage {
++ String getContent()
++ Integer getMessageType()
++ void setMessageType()
++ String getEvent()
++ void setContent(String)
++ {static} TextMessage obtain(String)
+}
+class com.tinet.oslib.model.message.content.FileMessage {
++ {static} FileMessage obtain(String)
+}
+class com.tinet.oslib.model.message.content.ImageMessage {
++ Integer getMessageType()
++ String getUri()
++ String getThumbnail()
++ {static} ImageMessage obtain(String)
+}
+class com.tinet.oslib.model.message.content.OnlineServiceMessage {
++ {static} String MESSAGE_EVENT
++ JSONObject getBody()
++ Integer getMessageType()
++ Long getCreateTime()
++ String getEvent()
++ String getSender()
++ Integer getSenderType()
++ String getRobotProvider()
++ Integer getStatus()
++ Integer getSendStatus()
++ void setStatus(int)
++ void setSendStatus(int)
++ void setEvent(String)
++ void setType(int)
++ String getContent()
++ ArrayList<HtmlContent> getRichContent()
++ String getMessageUniqueId()
++ void setMessageUniqueId(String)
++ String getSenderName()
++ String getVisitorName()
++ void setSystemInfo()
++ {static} OnlineServiceMessage fromJson(JSONObject)
+}
+class com.tinet.oslib.model.message.content.VideoMessage {
++ Integer getMessageType()
++ {static} VideoMessage obtain(String)
+}
+class com.tinet.oslib.model.message.content.OnlineMediaMessage {
++ void setPath(String)
++ String getEvent()
++ String getFileKey()
++ void setFileKey(String)
++ String getFileName()
++ void setFileName(String)
++ String getUri()
+}
+class com.tinet.oslib.model.message.OnlineMessage {
++ int getOnlineMessageType()
++ OnlineServiceMessage getOnlineContent()
++ String getEvent()
++ String getMsgId()
++ String getType()
++ TIMMesageContent getContent()
++ String getSenderId()
++ String getReceiverId()
++ int getMsgFrom()
++ int getStatus()
++ Long getSendTime()
++ int getMessageDirection()
++ String getMessageUUID()
++ {static} OnlineMessage obtain(TIMMesageContent)
+}
+
+
+com.tinet.oslib.model.message.content.OnlineMediaMessage <|-- com.tinet.oslib.model.message.content.VoiceMessage
+com.tinet.oslib.model.message.content.OnlineServiceMessage <|-- com.tinet.oslib.model.message.content.TextMessage
+com.tinet.oslib.model.message.content.OnlineMediaMessage <|-- com.tinet.oslib.model.message.content.FileMessage
+com.tinet.oslib.model.message.content.OnlineMediaMessage <|-- com.tinet.oslib.model.message.content.ImageMessage
+com.tinet.timclientlib.model.message.TextMessage <|-- com.tinet.oslib.model.message.content.OnlineServiceMessage
+com.tinet.oslib.model.message.content.OnlineMediaMessage <|-- com.tinet.oslib.model.message.content.VideoMessage
+com.tinet.oslib.model.message.content.OnlineServiceMessage <|-- com.tinet.oslib.model.message.content.OnlineMediaMessage
+com.tinet.timclientlib.model.bean.TIMMessage <|-- com.tinet.oslib.model.message.OnlineMessage
+@enduml

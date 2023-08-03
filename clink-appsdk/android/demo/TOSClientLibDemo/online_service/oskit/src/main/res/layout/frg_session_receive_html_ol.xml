@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/recyclerView"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:layoutManager="com.tinet.oskit.adapter.layout.NoScrollLinearLayoutManager"
+    android:orientation="vertical"
+    tools:text="天润融通天润融通天润融通天润融通天润融通天润融通"
+/>

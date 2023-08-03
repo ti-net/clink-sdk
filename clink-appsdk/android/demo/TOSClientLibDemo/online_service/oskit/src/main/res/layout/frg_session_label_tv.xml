@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tvText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/ti_quick_entry_item_horizontal_spacing"
+        android:background="@drawable/ti_labe_tv_back"
+        android:paddingLeft="10dp"
+        android:paddingTop="1dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="1dp"
+        android:textColor="@color/ti_quick_entry_text_color"
+        android:textSize="@dimen/ti_quick_entry_item_text_size"
+        tools:text="123456" />
+</LinearLayout>

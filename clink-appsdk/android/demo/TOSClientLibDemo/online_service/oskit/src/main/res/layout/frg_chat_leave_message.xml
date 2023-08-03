@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/viewContent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/viewChatLeave"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvChatLeaveMessageTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="3dp"
+                android:paddingHorizontal="15dp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/ti_gray_9"
+                android:textSize="@dimen/sp16"
+                tools:text="dkksfslfslfksfjskfsfksdfjsdkfsdjkfjsdlfksdkfslflsdfskdfdkksfslfslfksfjskfsfksdfjsdkfsdjkfjsdlfksdkfslflsdfskdf" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginTop="14dp"
+                android:paddingHorizontal="15dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/tinet_form_common" />
+
+
+            <TextView
+                android:id="@+id/btnLeaveMessage"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_margin="15dp"
+                android:background="@drawable/ti_blue_button_round_bg"
+                android:text="@string/ti_chat_leave_message_send"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/ti_white"
+                tools:text="chat" />
+
+        </LinearLayout>
+
+    <ViewStub
+        android:id="@+id/vsSuccess"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout="@layout/frg_chat_leave_message_success"/>
+</FrameLayout>

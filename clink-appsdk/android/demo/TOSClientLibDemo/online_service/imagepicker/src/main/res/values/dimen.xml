@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="send_picture_button_radius">5dp</dimen>
+</resources>

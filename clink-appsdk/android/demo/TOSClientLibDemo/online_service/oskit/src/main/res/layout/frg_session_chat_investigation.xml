@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="15dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:background="@drawable/ti_session_sendout_card"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingVertical="15dp" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingVertical="5dp">
+
+        <RadioButton
+            android:id="@+id/very_dissatisfied"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/very_dissatisfied_drawable"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:textColor="@drawable/satisfaction_tv_color" />
+
+        <RadioButton
+            android:id="@+id/dissatisfaction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/dissatisfaction_drawable"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:textColor="@drawable/satisfaction_tv_color" />
+
+        <RadioButton
+            android:id="@+id/commonly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/commonly_drawable"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:textColor="@drawable/satisfaction_tv_color" />
+
+        <RadioButton
+            android:id="@+id/satisfied"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/satisfied_drawable"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:textColor="@drawable/satisfaction_tv_color" />
+
+        <RadioButton
+            android:id="@+id/very_satisfied"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/very_satisfied_drawable"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:textColor="@drawable/satisfaction_tv_color" />
+    </RadioGroup>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:choiceMode="multipleChoice" />
+
+    <TextView
+        android:id="@+id/submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/submit_bg"
+        android:gravity="center"
+        android:paddingVertical="7dp"
+        android:text="@string/ti_satisfaction_submit"
+        android:textColor="@color/satisfaction_submit_tv_color" />
+</LinearLayout>

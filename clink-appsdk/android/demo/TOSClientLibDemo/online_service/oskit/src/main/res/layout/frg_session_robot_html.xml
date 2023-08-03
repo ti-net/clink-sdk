@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <include layout="@layout/frg_session_item_time"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:orientation="horizontal"
+        android:paddingRight="10dp">
+
+        <!-- 人物头像 -->
+        <com.tinet.oskit.widget.UserHeaderView
+          android:id="@+id/userHeader"
+          android:layout_width="wrap_content"
+          style="@style/tinetHeaderStyle"
+          android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/frg_session_item_name"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.tinet.oskit.widget.web.TinetWebView
+                    android:id="@+id/wvName"
+                    android:layout_width="@dimen/ti_max_robot_width"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ti_receive_bubble_bg"
+                    android:gravity="left|center_vertical"
+                    android:maxWidth="240dp"
+                    tools:text="3333333"
+                    android:textColor="@color/ti_44"
+                    android:textColorLink="@color/ti_66"
+                    android:textSize="@dimen/ti_receive_bubble_text_size" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

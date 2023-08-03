@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/album_navigation_bar_background">
+
+    <include
+        android:id="@+id/layout_actionBar"
+        layout="@layout/include_layout_actionbar" />
+
+    <RelativeLayout
+        android:id="@+id/rl_main_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/album_navigation_bar_background"
+        android:gravity="right"
+        android:paddingRight="16dp">
+
+        <LinearLayout
+            android:id="@+id/ll_pre_select"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_item_check"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="6dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ti_ic_image_checked" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/image_select"
+                android:textColor="@color/text_color_black"
+                android:textSize="14sp" />
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/rl_main_bottom"
+        android:layout_below="@id/layout_actionBar">
+
+        <com.lcw.library.imagepicker.view.HackyViewPager
+            android:id="@+id/vp_main_preImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/iv_main_play"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:visibility="gone"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/icon_video_play" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

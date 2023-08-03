@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="90dp"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingTop="24dp">
+
+    <FrameLayout
+        android:layout_width="@dimen/ti_session_func_item_bg_size"
+        android:layout_height="@dimen/ti_session_func_item_bg_size"
+        android:background="@drawable/ti_session_func_item_bg"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="@dimen/ti_session_func_item_img_size"
+            android:layout_height="@dimen/ti_session_func_item_img_size"
+            android:layout_gravity="center" />
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/ti_session_func_item_margin"
+        android:textColor="@color/ti_session_func_item_text_color"
+        android:textSize="@dimen/ti_session_func_item_text_size"
+        tools:text="123456" />
+
+</LinearLayout>

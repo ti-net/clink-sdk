@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--聊天输入栏背景色-->
+    <attr name="session_bottom_bar_bg" format="reference|color"/>
+    
+</resources>

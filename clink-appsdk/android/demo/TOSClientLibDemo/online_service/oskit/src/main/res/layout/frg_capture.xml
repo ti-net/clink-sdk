@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.tinet.widget.cameralibrary.JCameraView
+        android:id="@+id/cameraView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:tinetIconMargin="20dp"
+        app:tinetDurationMax="90000"
+        app:tinetIconSrc="@drawable/ti_ic_camera_enhance_black"/>
+</FrameLayout>

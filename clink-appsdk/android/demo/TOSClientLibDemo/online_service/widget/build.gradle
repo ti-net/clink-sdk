@@ -1,0 +1,32 @@
+apply plugin: 'com.android.library'
+
+android {
+
+    compileSdkVersion rootProject.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode 1
+        versionName "${onlineSDKVersion}"
+    }
+
+    buildTypes {
+        release {
+            android.libraryVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "oswidget_sdk_${variant.buildType.name}.aar"
+                }
+            }
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+}
+
+dependencies {
+    implementation "androidx.appcompat:appcompat:${appCompat}"
+}

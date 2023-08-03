@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:id="@+id/tinetRefreshLayout"
+  android:layout_width="match_parent"
+  android:layout_height="0dp"
+  android:layout_weight="1">
+
+  <FrameLayout
+    android:id="@id/tinetMessageContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ti_session_bg">
+
+    <androidx.recyclerview.widget.RecyclerView
+      android:id="@id/tinetMessageRecyclerView"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:fastScrollEnabled="false"
+      android:orientation="vertical"
+      android:layerType="software"
+      android:transcriptMode="normal"
+      app:layoutManager="com.tinet.oskit.adapter.layout.ReverseLinearLayoutManager" />
+  </FrameLayout>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

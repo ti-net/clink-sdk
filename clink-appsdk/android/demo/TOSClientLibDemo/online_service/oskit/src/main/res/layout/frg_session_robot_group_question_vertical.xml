@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingHorizontal="14dp"
+    android:paddingVertical="12dp">
+
+    <TextView
+        android:id="@+id/tvText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="14dp"
+        android:lineSpacingExtra="2dp"
+        android:paddingVertical="5dp"
+        android:textColor="@color/ti_black"
+        android:textSize="14sp"
+        android:visibility="gone"
+        tools:text="亲，有什么可以为您服务的啊数据库拉我这是东西的新的高" />
+
+    <TextView
+        android:id="@+id/tvGuess"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ti_guess"
+        android:textColor="@color/ti_guess_text_color"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <com.tinet.oskit.widget.TiCustomExpandableListView
+        android:id="@+id/expandableLV"
+        android:layout_width="match_parent"
+        android:groupIndicator="@null"
+        android:divider="@null"
+        android:listSelector="@android:color/transparent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

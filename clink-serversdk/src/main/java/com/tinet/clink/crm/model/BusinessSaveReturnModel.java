@@ -63,7 +63,7 @@ public class BusinessSaveReturnModel {
     /**
      * 自定义字段
      */
-    private ArrayNode customize;
+    private String customize;
 
     /**
      * 记录创建时间
@@ -181,11 +181,11 @@ public class BusinessSaveReturnModel {
     }
 
 
-    public ArrayNode getCustomize() {
+    public String getCustomize() {
         return customize;
     }
 
-    public void setCustomize(ArrayNode customize) {
+    public void setCustomize(String customize) {
         this.customize = customize;
     }
 

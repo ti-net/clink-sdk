@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_pressed="false">
+        <shape>
+            <corners android:radius="@dimen/ti_input_area_voice_press_corner_radius" />
+            <solid android:color="@color/ti_input_area_voice_press_up_bg_color" />
+        </shape>
+
+    </item>
+
+    <item android:state_pressed="true">
+        <shape>
+            <corners android:radius="@dimen/ti_input_area_voice_press_corner_radius" />
+            <stroke
+              android:width="@dimen/ti_input_area_voice_press_border_width"
+              android:color="@color/ti_input_area_voice_press_bg_color" />
+            <solid android:color="@color/ti_input_area_voice_press_bg_color" />
+        </shape>
+
+    </item>
+
+</selector>

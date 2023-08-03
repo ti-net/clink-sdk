@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <include layout="@layout/frg_session_item_time" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:orientation="horizontal"
+        android:paddingRight="10dp">
+
+        <!-- 人物头像 -->
+        <com.tinet.oskit.widget.UserHeaderView
+          android:id="@+id/userHeader"
+          style="@style/tinetHeaderStyle"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingEnd="30dp">
+
+            <include layout="@layout/frg_session_item_name" />
+
+            <TextView
+                android:id="@+id/tvText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/tinetReceiveMessageStyle.tinetContainerStyle.tinetRobotReplyStyle"
+                tools:text="这个是机器人快捷回复" />
+
+            <com.tinet.oskit.widget.tagview.FlowTagLayout
+                android:id="@+id/ti_flow_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

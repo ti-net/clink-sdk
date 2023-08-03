@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <include layout="@layout/frg_session_item_time" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:orientation="horizontal"
+        android:paddingRight="10dp">
+
+        <!-- 人物头像 -->
+        <com.tinet.oskit.widget.UserHeaderView
+          android:id="@+id/userHeader"
+          android:layout_width="wrap_content"
+          style="@style/tinetHeaderStyle"
+          android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/frg_session_item_name" />
+
+            <LinearLayout
+                android:id="@+id/llMiniProgramCard"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ti_shape_white_round_card_message_bg"
+                android:orientation="vertical"
+              android:paddingStart="@dimen/ti_content_paddingLeft"
+              android:paddingEnd="@dimen/ti_content_paddingRight"
+              android:paddingTop="@dimen/ti_content_paddingTop"
+              android:paddingBottom="@dimen/ti_content_paddingBottom">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/ivMiniLogo"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@mipmap/ic_launcher" />
+
+                    <TextView
+                        android:id="@+id/tvMiniName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:text="领英-全球知名招聘平台"
+                        android:textColor="#BFBFBF"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvMiniTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:text="覆盖全球8亿会员，致力于为求职者和招聘者提供专业的覆盖全球8亿会员，致力于为求职者和招聘者提供专业的" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="12dp"
+                    android:background="#fff"
+                    app:cardElevation="0dp">
+
+                    <ImageView
+                        android:id="@+id/ivMiniPicUrl"
+                        android:layout_width="216dp"
+                        android:layout_height="174dp"/>
+                </androidx.cardview.widget.CardView>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="4dp"
+                    android:background="#0F000000" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:src="@mipmap/ti_mini_program_logo" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_weight="1"
+                        android:text="小程序" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="复制链接"
+                        android:textColor="#4385FF"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

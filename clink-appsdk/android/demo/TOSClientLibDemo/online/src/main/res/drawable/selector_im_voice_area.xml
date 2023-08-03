@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/bg_im_input_shape" android:state_pressed="false"/>
+    <item android:state_pressed="true">
+        <shape>
+            <corners android:radius="30dp" />
+            <solid android:color="@color/ti_red" />
+        </shape>
+    </item>
+</selector>

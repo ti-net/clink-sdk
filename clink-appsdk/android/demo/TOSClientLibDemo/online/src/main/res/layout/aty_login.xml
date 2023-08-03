@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingHorizontal="16dp">
+            
+
+
+            <TextView
+                android:id="@+id/tvWelcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="80dp"
+                android:text="欢迎使用客服系统"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tvPlantform"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/tvWelcome"
+                android:layout_marginLeft="4dp"
+                android:layout_toRightOf="@id/tvWelcome"
+                android:textColor="@color/ti_blue"
+                android:textSize="14sp"
+                tools:text="北京" />
+
+            <TextView
+                android:id="@+id/connectionStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvWelcome"
+                android:layout_marginTop="5dp"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/ti_image_color_yellow"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvWelcome"
+                android:layout_marginTop="60dp"
+                android:text="ID"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/etId"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignBaseline="@id/tvId"
+                android:layout_marginLeft="32dp"
+                android:layout_toRightOf="@id/tvId"
+                android:background="@null"
+                android:hint="APP用户ID，可为空"
+                android:text="tinet"
+                android:textColor="@color/black"
+                android:textColorHint="@color/ti_gray"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvNickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvId"
+                android:layout_marginTop="24dp"
+                android:text="昵称"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/etNickname"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignBaseline="@id/tvNickname"
+                android:layout_marginLeft="16dp"
+                android:layout_toRightOf="@id/tvNickname"
+                android:background="@null"
+                android:hint="系统用户昵称，可为空"
+                android:textColor="@color/black"
+                android:textColorHint="@color/ti_gray"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvNickname"
+                android:layout_marginTop="24dp"
+                android:text="头像"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/etHeader"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignBaseline="@id/tvHeader"
+                android:layout_marginLeft="16dp"
+                android:layout_toRightOf="@id/tvHeader"
+                android:background="@null"
+                android:hint="系统用户头像，可为空"
+                android:textColor="@color/black"
+                android:textColorHint="@color/ti_gray"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/etHeader"
+                android:layout_marginTop="24dp"
+                android:text="手机号"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/etPhone"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignBaseline="@id/tvPhone"
+                android:layout_marginLeft="16dp"
+                android:layout_toRightOf="@id/tvPhone"
+                android:background="@null"
+                android:hint="手机号，可为空"
+                android:textColor="@color/black"
+                android:textColorHint="@color/ti_gray"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/tvPhone"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="60dp"
+                android:background="@color/send_bg"
+                android:gravity="center"
+                android:text="联系客服"
+                android:textColor="@color/ti_white" />
+
+            <TextView
+                android:id="@+id/messagettype"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btnLogin"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/btnConnect"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/btnLogin"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/send_bg"
+                android:gravity="center"
+                android:text="联系客服"
+                android:textColor="@color/ti_white"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/btnLoginOut"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/btnConnect"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="60dp"
+                android:background="@color/send_bg"
+                android:gravity="center"
+                android:text="模拟登出"
+                android:textColor="@color/ti_white" />
+
+            <TextView
+                android:id="@+id/btnLoginOutPush"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/btnLoginOut"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/send_bg"
+                android:gravity="center"
+                android:text="模拟登出（不关闭推送）"
+                android:textColor="@color/ti_white"
+                android:visibility="gone" />
+
+            <CheckBox
+                android:id="@+id/checkbox"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/btnLoginOutPush"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/send_bg"
+                android:checked="true"
+                android:text="配置更多功能"
+                android:textColor="@color/ti_white" />
+        </RelativeLayout>
+    </ScrollView>
+
+
+    <!--<FrameLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center">
+        <com.google.android.material.imageview.ShapeableImageView
+          android:id="@+id/ivImage"
+          android:layout_width="wrap_content"
+          android:maxWidth="200dp"
+          android:maxHeight="200dp"
+          android:adjustViewBounds="true"
+          app:shapeAppearance="@style/t"
+          android:layout_height="wrap_content"/>
+    </FrameLayout>-->
+</FrameLayout>

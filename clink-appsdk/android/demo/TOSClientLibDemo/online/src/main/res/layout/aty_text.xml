@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/ti_red"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <LinearLayout
+    android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/ti_receive_bubble_bg"
+    android:layout_height="wrap_content">
+    <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/recyclerView"
+      android:layout_width="wrap_content"
+      app:layoutManager="com.tinet.oskit.adapter.layout.NoSrcollLinearLayoutManager"
+      tools:listitem="@layout/aty_text_item"
+      android:layout_height="wrap_content"/>
+  </LinearLayout>
+
+
+</FrameLayout>

@@ -1,0 +1,151 @@
+@startuml
+class com.tinet.oslib.model.message.content.VoiceMessage {
+- String videoPlayUri
++ Integer getMessageType()
++ String getUri()
++ {static} VoiceMessage obtain(String)
+}
+class com.tinet.oslib.model.message.content.TextMessage {
++ String getContent()
++ Integer getMessageType()
++ void setMessageType()
++ String getEvent()
++ void setContent(String)
++ {static} TextMessage obtain(String)
+}
+class com.tinet.oslib.model.message.content.FileMessage {
++ {static} FileMessage obtain(String)
+}
+class com.tinet.oslib.model.message.content.ImageMessage {
+- String uri
+- String thumbnailUri
++ Integer getMessageType()
++ String getUri()
++ String getThumbnail()
++ {static} ImageMessage obtain(String)
+}
+class com.tinet.oslib.model.message.content.OnlineServiceMessage {
++ {static} String MESSAGE_EVENT
+# {static} String TYPE
+# {static} String EVENT
+# {static} String SEND_STATUS
+# {static} String FILE_NAME
+# {static} String CLIENT_NAME
+# {static} String CITY
+# {static} String ONLNE_STATUS
+# {static} String CONTACT_TYPE
+# {static} String FILE_KEY
+# {static} String ROBOT_AVATAR
+# {static} String UUID
+# {static} String BCP_SSID
+# {static} String CONTENT
+# {static} String ROBOT_NICKNAME
+# {static} String NICKNAME
+# {static} String SENSITIVE_WORD
+# {static} String VISITOR_NAME
+# {static} String PROVINCE
+# {static} String MESSAGE_TYPE
+# {static} String APP_ID
+# {static} String BROWSER
+# {static} String IS_COMMENT_REPLY
+# {static} String LOCK
+# {static} String START_TIME
+# {static} String BCP_UID
+# {static} String OS
+# {static} String SEND_NAME
+# {static} String HEADER_URL
+- {static} String URL
+# {static} String CREATE_TIME
+# {static} String SENDER
+# {static} String MAIN_UNIQUE_ID
+# {static} String UNIQUE_ID
+# {static} String MESSAGE_UNIQUE_ID
+# {static} String SENDER_TYPE
+# {static} String ENTERPRISE_ID
+# {static} String STATUS
+# {static} String VISITOR_ID
+- {static} String CNO
+- {static} String CLIENT_AVATAR
+- {static} String ROBOT_ID
+- {static} String ROBOT_NAME
+- {static} String ROBOT_PROVIDER
+- {static} String FAIL_REASON
+- {static} String BOT_ANSWER_UNIQUEID
+- {static} String BOT_ANSWER
+- {static} String BOT_FAQ_MATCH_LEVEL
+- JSONObject messageBody
++ JSONObject getBody()
++ Integer getMessageType()
++ Long getCreateTime()
++ String getEvent()
+# void setBody(String)
+# void setBody(JSONObject)
+# void put(String,Object)
+# String getString(String)
+# Boolean getBoolean(String)
++ String getSender()
++ Integer getSenderType()
++ String getRobotProvider()
++ Integer getStatus()
++ Integer getSendStatus()
++ void setStatus(int)
++ void setSendStatus(int)
+# List<String> getStringArray(String)
+# JSONArray getJSONArray(String)
+# Double getDouble(String)
+# Integer getInteger(String)
+# Long getLong(String)
++ void setEvent(String)
++ void setType(int)
++ String getContent()
++ ArrayList<HtmlContent> getRichContent()
++ String getMessageUniqueId()
++ void setMessageUniqueId(String)
++ String getSenderName()
++ String getVisitorName()
++ void setSystemInfo()
++ {static} OnlineServiceMessage fromJson(JSONObject)
+}
+class com.tinet.oslib.model.message.content.VideoMessage {
++ Integer getMessageType()
++ {static} VideoMessage obtain(String)
+}
+class com.tinet.oslib.model.message.content.OnlineMediaMessage {
+# String path
++ void setPath(String)
++ String getEvent()
++ String getFileKey()
++ void setFileKey(String)
++ String getFileName()
++ void setFileName(String)
++ String getUri()
+}
+class com.tinet.oslib.model.message.OnlineMessage {
+- TIMMessage message
+- OnlineServiceMessage messageContent
++ int getOnlineMessageType()
++ OnlineServiceMessage getOnlineContent()
++ String getEvent()
++ String getMsgId()
++ String getType()
++ TIMMesageContent getContent()
++ String getSenderId()
++ String getReceiverId()
++ int getMsgFrom()
++ int getStatus()
++ Long getSendTime()
++ int getMessageDirection()
++ String getMessageUUID()
++ {static} OnlineMessage obtain(TIMMesageContent)
+}
+
+
+com.tinet.oslib.model.message.content.OnlineMediaMessage <|-- com.tinet.oslib.model.message.content.VoiceMessage
+com.tinet.oslib.model.message.content.OnlineServiceMessage <|-- com.tinet.oslib.model.message.content.TextMessage
+com.tinet.oslib.model.message.content.OnlineMediaMessage <|-- com.tinet.oslib.model.message.content.FileMessage
+com.tinet.oslib.model.message.content.OnlineMediaMessage <|-- com.tinet.oslib.model.message.content.ImageMessage
+com.tinet.timclientlib.model.message.TextMessage <|-- com.tinet.oslib.model.message.content.OnlineServiceMessage
+com.tinet.oslib.model.message.content.OnlineMediaMessage <|-- com.tinet.oslib.model.message.content.VideoMessage
+com.tinet.oslib.model.message.content.OnlineServiceMessage <|-- com.tinet.oslib.model.message.content.OnlineMediaMessage
+com.tinet.timclientlib.model.bean.TIMMessage <|-- com.tinet.oslib.model.message.OnlineMessage
+@enduml

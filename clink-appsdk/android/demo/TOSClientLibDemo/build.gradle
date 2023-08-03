@@ -1,0 +1,131 @@
+ext.dimensions = [
+        'app': "app",
+        'kit': "kit",
+]
+
+buildscript {
+
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://plugins.gradlew.org/m2/" }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.0.3'
+        classpath "io.realm:realm-gradle-plugin:6.0.2"
+        classpath "com.kezong:fat-aar:1.2.16"
+    }
+}
+
+allprojects {
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+
+        google()
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+}
+
+task clean(type: Delete) {
+    //清除项目编译缓存
+    delete rootProject.buildDir
+
+    //清除各模块缓存
+    dependsOn(":imagepicker:clean")
+    dependsOn(":threepart:clean")
+    dependsOn(":widget:clean")
+    dependsOn(":oslib:clean")
+    dependsOn(":oskit:clean")
+}
+
+task buildModuleAAR(dependsOn: clean) {
+
+    //task任务分组名称
+    group = "build module aar"
+
+    //打包各模块aar
+    dependsOn(":imagepicker:assemble")
+    dependsOn(":threepart:assemble")
+    dependsOn(":widget:assemble")
+    //mqtt 模块打包aar需要删除resource文件夹手动打包
+    //dependsOn(":mqtt:assemble")
+    dependsOn(":oslib:assemble")
+    dependsOn(":oskit:assemble")
+
+    //复制各模块aar至SDK整合项目中
+    doLast {
+
+        copy {
+            from "${project.projectDir}/online_service/imagepicker/build/outputs/aar"
+            include "*_release.aar"
+            into "../../../OnlineSDK-Android/imagepicker"
+        }
+
+        copy {
+            from "${project.projectDir}/online_service/threepart/build/outputs/aar"
+            include "*_release.aar"
+            into "../../../OnlineSDK-Android/threepart"
+        }
+
+        copy {
+            from "${project.projectDir}/online_service/widget/build/outputs/aar"
+            include "*_release.aar"
+            into "../../../OnlineSDK-Android/oswidget"
+        }
+
+        copy {
+            from "${project.projectDir}/tim/mqtt/build/outputs/aar"
+            include "*_release.aar"
+            into "../../../OnlineSDK-Android/mqtt"
+        }
+
+        copy {
+            from "${project.projectDir}/online_service/oslib/build/outputs/aar"
+            include "*_release.aar"
+            into "../../../OnlineSDK-Android/oslib"
+        }
+
+        copy {
+            from "${project.projectDir}/online_service/oskit/build/outputs/aar"
+            include "*_release.aar"
+            into "../../../OnlineSDK-Android/oskit"
+        }
+
+    }
+
+}
+
+ext {
+    // 编译相关
+    minSdkVersion = 19
+    targetSdkVersion = 30
+    compileSdkVersion = 31
+    buildToolsVersion = "31.0.0"
+
+    //相关扩展
+    appCompat = '1.0.0'
+
+    //版本号
+    onlineSDKVersion = '1.7.17'
+    artifactId = 'online'
+
+    mavenUrl = 'https://oss.sonatype.org/content/repositories/releases/'
+    mavenLocalUrl = '/Users/liuzeren/Documents/tinet/clink-sdk/clink-appsdk/android/repository'
+
+    osKitGroupId = "com.ti-net.oskit"
+
+    osLibGroupId = "com.ti-net.oslib"
+
+    osSpanHtmlGroupId = "com.ti-net.spanhtml"
+
+    osMqttGroupId = "com.ti-net.mqtt"
+
+    osThreePartGroupId = "com.ti-net.threepart"
+
+    osWidgetGroupId = "com.ti-net.widget"
+
+    osImageGroupId = "com.ti-net.lcw"
+}
