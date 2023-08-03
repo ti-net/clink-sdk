@@ -60,7 +60,7 @@ public enum PathEnum {
     Consult("cc/consult"),
     ConsultCancel("cc/consult_cancel"),
     ConsultTransfer("cc/consult_transfer"),
-    ConsultThreeway("cc/consult_cc/threeway"),
+    ConsultThreeway("cc/consult_threeway"),
     Unconsult("cc/unconsult"),
     Hold("cc/hold"),
     Unhold("cc/unhold"),
