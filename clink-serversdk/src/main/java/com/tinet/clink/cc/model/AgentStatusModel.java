@@ -88,6 +88,21 @@ public class AgentStatusModel {
      */
     private Long loginDuration;
 
+    /**
+     * 外呼接听率
+     **/
+    private Double obBridgeRate;
+
+    /**
+     * 外呼通话时长
+     **/
+    private Long obBridgeDuration;
+
+    /**
+     * 外呼平均通话时长
+     **/
+    private Long obAvgBridgeDuration;
+
     public String getCno() {
         return cno;
     }
@@ -214,5 +229,30 @@ public class AgentStatusModel {
 
     public void setQueuesMap(Map<String, String> queuesMap) {
         this.queuesMap = queuesMap;
+    }
+
+
+    public Double getObBridgeRate() {
+        return obBridgeRate;
+    }
+
+    public void setObBridgeRate(Double obBridgeRate) {
+        this.obBridgeRate = obBridgeRate;
+    }
+
+    public Long getObBridgeDuration() {
+        return obBridgeDuration;
+    }
+
+    public void setObBridgeDuration(Long obBridgeDuration) {
+        this.obBridgeDuration = obBridgeDuration;
+    }
+
+    public Long getObAvgBridgeDuration() {
+        return obAvgBridgeDuration;
+    }
+
+    public void setObAvgBridgeDuration(Long obAvgBridgeDuration) {
+        this.obAvgBridgeDuration = obAvgBridgeDuration;
     }
 }

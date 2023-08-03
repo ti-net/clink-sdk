@@ -44,6 +44,11 @@ public class CreateTelRestrictRequest extends AbstractRequestModel<CreateTelRest
      */
     private Date expirationTime;
 
+    /**
+     * 备注
+     **/
+    private String description;
+
 
     public CreateTelRestrictRequest() {
         super(PathEnum.CreateTelRestrict.value(), HttpMethodType.POST);
@@ -109,4 +114,13 @@ public class CreateTelRestrictRequest extends AbstractRequestModel<CreateTelRest
     public Date getExpirationTime() {
         return expirationTime;
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
 }
