@@ -12,7 +12,7 @@ import java.util.List;
 public class ListInvestigationResponse extends PagedResponse {
 
 
-    List<InvestigationResultModel> investigations;
+    private List<InvestigationResultModel> investigations;
 
     public List<InvestigationResultModel> getInvestigations() {
         return investigations;
