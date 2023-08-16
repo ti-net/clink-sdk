@@ -68,6 +68,7 @@ public enum PathEnum {
     Unmute("cc/unmute"),
     Dtmf("cc/dtmf"),
     Investigation("cc/investigation"),
+    ListInvestigation("cc/list_investigation"),
     // 呼叫管理
     Spy("cc/spy"),
     Threeway("threeway"),
