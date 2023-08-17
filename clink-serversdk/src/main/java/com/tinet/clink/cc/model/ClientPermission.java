@@ -2,6 +2,7 @@ package com.tinet.clink.cc.model;
 
 /**
  * 座席权限对象
+ *
  * @author lizy
  * @date 2018/09/06
  */
@@ -41,6 +42,21 @@ public class ClientPermission {
      * 在线客服查看会话记录权限 ，0：全部、1：所属队列、2：本座席； 默认值为 0
      */
     private Integer chat;
+
+    /**
+     * 通话转移/咨询权限，可选范围，0：全部，1：所属员工组, 默认所属员工组
+     */
+    private Integer transfer;
+
+    /**
+     * 其他数据查看权限：1：全部 2：所属员工组 3：自己 4:指定员工组 ,默认所属员工组
+     */
+    private Integer otherData;
+
+    /**
+     * 外呼任务查看权限，1：全部（默认） 3：自己
+     */
+    private Integer taskInventory;
 
     public Integer getAsr() {
         return asr;
@@ -98,6 +114,30 @@ public class ClientPermission {
         this.chat = chat;
     }
 
+    public Integer getTransfer() {
+        return transfer;
+    }
+
+    public void setTransfer(Integer transfer) {
+        this.transfer = transfer;
+    }
+
+    public Integer getOtherData() {
+        return otherData;
+    }
+
+    public void setOtherData(Integer otherData) {
+        this.otherData = otherData;
+    }
+
+    public Integer getTaskInventory() {
+        return taskInventory;
+    }
+
+    public void setTaskInventory(Integer taskInventory) {
+        this.taskInventory = taskInventory;
+    }
+
     @Override
     public String toString() {
         return "ClientPermission{" +
@@ -107,6 +147,9 @@ public class ClientPermission {
                 ", recordDownload=" + recordDownload +
                 ", sms=" + sms +
                 ", record=" + record +
+                ", transfer=" + transfer +
+                ", otherData=" + otherData +
+                ", taskInventory=" + taskInventory +
                 ", chat=" + chat +
                 '}';
     }
