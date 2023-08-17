@@ -1,7 +1,6 @@
 package com.tinet.clink.openapi;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.tinet.clink.core.client.Client;
@@ -185,4 +184,27 @@ public class BusinessTest extends AbstractTest {
         }
     }
 
+    @Test
+    public void listBusinessField() throws ServerException, ClientException {
+        // 创建访问服务的client实例并初始化
+        ClientConfiguration configuration = new ClientConfiguration(
+                "9e969f413431ae0c0cf674fc56cec6ad",          // AccessKeyId
+                "9616O59uJ3Whmp001704");     // AccessKeySecret
+        configuration.setHost("api-bj-test0.clink.cn");
+        configuration.setScheme("https");
+        Client client = new Client(configuration);
+
+        // 本接口无特有请求参数
+        ListBusinessFieldInfoRequest request = new ListBusinessFieldInfoRequest();
+
+        // 发起接口调用
+        ListBusinessFieldInfoResponse response = client.getResponseModel(request);
+
+        try {
+            String resultStr = mapper.writeValueAsString(response);
+            System.out.println(resultStr);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+    }
 }

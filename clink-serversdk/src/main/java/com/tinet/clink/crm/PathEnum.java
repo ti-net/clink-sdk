@@ -38,7 +38,10 @@ public enum PathEnum {
     GetBusinessDetail("crm/get_business_detail"),
 
     //新增业务记录
-    CreateBusiness("crm/create_business");
+    CreateBusiness("crm/create_business"),
+
+    //查询业务记录自定义字段
+    ListBusinessFieldInfo("crm/list_business_field");
 
     /**
      * 外呼任务创建
