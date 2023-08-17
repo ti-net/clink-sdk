@@ -29,6 +29,11 @@ public class TransferRequest extends AbstractRequestModel<TransferResponse> {
      */
     private String transferNumber;
 
+    /**
+     * 座席转移保持通话，仅转移类型为语音导航节点、语音导航id时，支持保持通话功能 0：不保持 1：保持
+     */
+    private Integer hold;
+
     public TransferRequest() {
         super(PathEnum.Transfer.value(), HttpMethodType.POST);
     }
@@ -63,6 +68,17 @@ public class TransferRequest extends AbstractRequestModel<TransferResponse> {
         this.transferNumber = transferNumber;
         if (transferNumber != null) {
             putBodyParameter("transferNumber", transferNumber);
+        }
+    }
+
+    public Integer getHold() {
+        return hold;
+    }
+
+    public void setHold(Integer hold) {
+        this.hold = hold;
+        if (hold != null) {
+            putBodyParameter("hold", hold);
         }
     }
 
