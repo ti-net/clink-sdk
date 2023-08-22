@@ -21,7 +21,7 @@ public class InvestigationRequest extends AbstractRequestModel<InvestigationResp
     private String cno;
 
 
-    private Integer investigationId
+    private Integer investigationId;
 
     public InvestigationRequest() {
         super(PathEnum.Investigation.value(), HttpMethodType.POST);
