@@ -1,0 +1,1692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<title>Lib 层接入文档</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
+/*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
+/* Uncomment the following line when using as a custom stylesheet */
+/* @import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"; */
+html{font-family:sans-serif;-webkit-text-size-adjust:100%}
+a{background:none}
+a:focus{outline:thin dotted}
+a:active,a:hover{outline:0}
+h1{font-size:2em;margin:.67em 0}
+b,strong{font-weight:bold}
+abbr{font-size:.9em}
+abbr[title]{cursor:help;border-bottom:1px dotted #dddddf;text-decoration:none}
+dfn{font-style:italic}
+hr{height:0}
+mark{background:#ff0;color:#000}
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+pre{white-space:pre-wrap}
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:0}
+audio,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+button,input{line-height:normal}
+button,select{text-transform:none}
+button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input[type=checkbox],input[type=radio]{padding:0}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+textarea{overflow:auto;vertical-align:top}
+table{border-collapse:collapse;border-spacing:0}
+*,::before,::after{box-sizing:border-box}
+html,body{font-size:100%}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;line-height:1;position:relative;cursor:auto;-moz-tab-size:4;-o-tab-size:4;tab-size:4;word-wrap:anywhere;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+a:hover{cursor:pointer}
+img,object,embed{max-width:100%;height:auto}
+object,embed{height:100%}
+img{-ms-interpolation-mode:bicubic}
+.left{float:left!important}
+.right{float:right!important}
+.text-left{text-align:left!important}
+.text-right{text-align:right!important}
+.text-center{text-align:center!important}
+.text-justify{text-align:justify!important}
+.hide{display:none}
+img,object,svg{display:inline-block;vertical-align:middle}
+textarea{height:auto;min-height:50px}
+select{width:100%}
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0}
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+a:hover,a:focus{color:#1d4b8f}
+a img{border:0}
+p{line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+h1{font-size:2.125em}
+h2{font-size:1.6875em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+h4,h5{font-size:1.125em}
+h6{font-size:1em}
+hr{border:solid #dddddf;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em}
+em,i{font-style:italic;line-height:inherit}
+strong,b{font-weight:bold;line-height:inherit}
+small{font-size:60%;line-height:inherit}
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+ul,ol,dl{line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+ul,ol{margin-left:1.5em}
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+ul.square{list-style-type:square}
+ul.circle{list-style-type:circle}
+ul.disc{list-style-type:disc}
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+dl dt{margin-bottom:.3125em;font-weight:bold}
+dl dd{margin-bottom:1.25em}
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+@media screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+h1{font-size:2.75em}
+h2{font-size:2.3125em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:1px solid #dedede;word-wrap:normal}
+table thead,table tfoot{background:#f7f8f7}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+table tr.even,table tr.alt{background:#f8f8f7}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{line-height:1.6}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.center{margin-left:auto;margin-right:auto}
+.stretch{width:100%}
+.clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
+.clearfix::after,.float-group::after{clear:both}
+:not(pre).nobreak{word-wrap:normal}
+:not(pre).nowrap{white-space:nowrap}
+:not(pre).pre-wrap{white-space:pre-wrap}
+:not(pre):not([class^=L])>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background:#f7f7f8;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed}
+pre{color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;line-height:1.45;text-rendering:optimizeSpeed}
+pre code,pre pre{color:inherit;font-size:inherit;line-height:inherit}
+pre>code{display:block}
+pre.nowrap,pre.nowrap pre{white-space:pre;word-wrap:normal}
+em em{font-style:normal}
+strong strong{font-weight:400}
+.keyseq{color:rgba(51,51,51,.8)}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background:#f7f7f7;border:1px solid #ccc;border-radius:3px;box-shadow:0 1px 0 rgba(0,0,0,.2),inset 0 0 0 .1em #fff;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+.keyseq kbd:first-child{margin-left:0}
+.keyseq kbd:last-child{margin-right:0}
+.menuseq,.menuref{color:#000}
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+.menuseq{word-spacing:-.02em}
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+b.button::before,b.button::after{position:relative;top:-1px;font-weight:400}
+b.button::before{content:"[";padding:0 3px 0 2px}
+b.button::after{content:"]";padding:0 2px 0 3px}
+p a>code:hover{color:rgba(0,0,0,.9)}
+#header,#content,#footnotes,#footer{width:100%;margin:0 auto;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header::before,#header::after,#content::before,#content::after,#footnotes::before,#footnotes::after,#footer::before,#footer::after{content:" ";display:table}
+#header::after,#content::after,#footnotes::after,#footer::after{clear:both}
+#content{margin-top:1.25em}
+#content::before{content:none}
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
+#header .details span:first-child{margin-left:-.125em}
+#header .details span.email a{color:rgba(0,0,0,.85)}
+#header .details br{display:none}
+#header .details br+span::before{content:"\00a0\2013\00a0"}
+#header .details br+span.author::before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+#header .details br+span#revremark::before{content:"\00a0|\00a0"}
+#header #revnumber{text-transform:capitalize}
+#header #revnumber::after{content:"\00a0"}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #dddddf;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #e7e7e9;padding-bottom:.5em}
+#toc>ul{margin-left:.125em}
+#toc ul.sectlevel0>li>a{font-style:italic}
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
+#toc a{text-decoration:none}
+#toc a:active{text-decoration:underline}
+#toctitle{color:#7a2518;font-size:1.2em}
+@media screen and (min-width:768px){#toctitle{font-size:1.375em}
+body.toc2{padding-left:15em;padding-right:0}
+#toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
+@media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+#toc.toc2{width:20em}
+#toc.toc2 #toctitle{font-size:1.375em}
+#toc.toc2>ul{font-size:.95em}
+#toc.toc2 ul ul{padding-left:1.25em}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border:1px solid #e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;border-radius:4px}
+#content #toc>:first-child{margin-top:0}
+#content #toc>:last-child{margin-bottom:0}
+#footer{max-width:none;background:rgba(0,0,0,.8);padding:1.25em}
+#footer-text{color:hsla(0,0%,100%,.8);line-height:1.44}
+#content{margin-bottom:.625em}
+.sect1{padding-bottom:.625em}
+@media screen and (min-width:768px){#content{margin-bottom:1.25em}
+.sect1{padding-bottom:1.25em}}
+.sect1:last-child{padding-bottom:0}
+.sect1+.sect1{border-top:1px solid #e7e7e9}
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+#content h1>a.anchor::before,h2>a.anchor::before,h3>a.anchor::before,#toctitle>a.anchor::before,.sidebarblock>.content>.title>a.anchor::before,h4>a.anchor::before,h5>a.anchor::before,h6>a.anchor::before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+details,.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+details{margin-left:1.25rem}
+details>summary{cursor:pointer;display:block;position:relative;line-height:1.6;margin-bottom:.625rem;outline:none;-webkit-tap-highlight-color:transparent}
+details>summary::-webkit-details-marker{display:none}
+details>summary::before{content:"";border:solid transparent;border-left:solid;border-width:.3em 0 .3em .5em;position:absolute;top:.5em;left:-1.25rem;transform:translateX(15%)}
+details[open]>summary::before{border:solid transparent;border-top:solid;border-width:.5em .3em 0;transform:translateY(15%)}
+details>summary::after{content:"";width:1.25rem;height:1em;position:absolute;top:.3em;left:-1.25rem}
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
+.paragraph.lead>p,#preamble>.sectionbody>[class=paragraph]:first-of-type p{font-size:1.21875em;line-height:1.6;color:rgba(0,0,0,.85)}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
+.sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
+@media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
+@media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
+.literalblock pre,.listingblock>.content>pre:not(.highlight),.listingblock>.content>pre[class=highlight],.listingblock>.content>pre[class^="highlight "]{background:#f7f7f8}
+.literalblock.output pre{color:#f7f7f8;background:rgba(0,0,0,.9)}
+.listingblock>.content{position:relative}
+.listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:inherit;opacity:.5}
+.listingblock:hover code[data-lang]::before{display:block}
+.listingblock.terminal pre .command::before{content:attr(data-prompt);padding-right:.5em;color:inherit;opacity:.5}
+.listingblock.terminal pre .command:not([data-prompt])::before{content:"$"}
+.listingblock pre.highlightjs{padding:0}
+.listingblock pre.highlightjs>code{padding:1em;border-radius:4px}
+.listingblock pre.prettyprint{border-width:0}
+.prettyprint{background:#f7f7f8}
+pre.prettyprint .linenums{line-height:1.45;margin-left:2em}
+pre.prettyprint li{background:none;list-style-type:inherit;padding-left:0}
+pre.prettyprint li code[data-lang]::before{opacity:1}
+pre.prettyprint li:not(:first-child) code[data-lang]::before{display:none}
+table.linenotable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.linenotable td[class]{color:inherit;vertical-align:top;padding:0;line-height:inherit;white-space:normal}
+table.linenotable td.code{padding-left:.75em}
+table.linenotable td.linenos,pre.pygments .linenos{border-right:1px solid;opacity:.35;padding-right:.5em;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+pre.pygments span.linenos{display:inline-block;margin-right:.75em}
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+.quoteblock:not(.excerpt)>.title{margin-left:-1.5em;margin-bottom:.75em}
+.quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+.quoteblock blockquote{margin:0;padding:0;border:0}
+.quoteblock blockquote::before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+.quoteblock .attribution{margin-top:.75em;margin-right:.5ex;text-align:right}
+.verseblock{margin:0 1em 1.25em}
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans-serif;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+.verseblock pre strong{font-weight:400}
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract blockquote::before,.quoteblock.excerpt blockquote::before,.quoteblock .quoteblock blockquote::before{display:none}
+.quoteblock.abstract blockquote,.quoteblock.abstract p,.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{line-height:1.6;word-spacing:0}
+.quoteblock.abstract{margin:0 1em 1.25em;display:block}
+.quoteblock.abstract>.title{margin:0 0 .375em;font-size:1.15em;text-align:center}
+.quoteblock.excerpt>blockquote,.quoteblock .quoteblock{padding:0 0 .25em 1em;border-left:.25em solid #dddddf}
+.quoteblock.excerpt,.quoteblock .quoteblock{margin-left:0}
+.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
+.quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;font-size:.85rem;text-align:left;margin-right:0}
+p.tableblock:last-child{margin-bottom:0}
+td.tableblock>.content{margin-bottom:1.25em;word-wrap:anywhere}
+td.tableblock>.content>:last-child{margin-bottom:-1.25em}
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+table.grid-all>*>tr>*{border-width:1px}
+table.grid-cols>*>tr>*{border-width:0 1px}
+table.grid-rows>*>tr>*{border-width:1px 0}
+table.frame-all{border-width:1px}
+table.frame-ends{border-width:1px 0}
+table.frame-sides{border-width:0 1px}
+table.frame-none>colgroup+*>:first-child>*,table.frame-sides>colgroup+*>:first-child>*{border-top-width:0}
+table.frame-none>:last-child>:last-child>*,table.frame-sides>:last-child>:last-child>*{border-bottom-width:0}
+table.frame-none>*>tr>:first-child,table.frame-ends>*>tr>:first-child{border-left-width:0}
+table.frame-none>*>tr>:last-child,table.frame-ends>*>tr>:last-child{border-right-width:0}
+table.stripes-all>*>tr,table.stripes-odd>*>tr:nth-of-type(odd),table.stripes-even>*>tr:nth-of-type(even),table.stripes-hover>*>tr:hover{background:#f8f8f7}
+th.halign-left,td.halign-left{text-align:left}
+th.halign-right,td.halign-right{text-align:right}
+th.halign-center,td.halign-center{text-align:center}
+th.valign-top,td.valign-top{vertical-align:top}
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+th.valign-middle,td.valign-middle{vertical-align:middle}
+table thead th,table tfoot th{font-weight:bold}
+tbody tr th{background:#f7f8f7}
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+p.tableblock>code:only-child{background:none;padding:0}
+p.tableblock{font-size:1em}
+ol{margin-left:1.75em}
+ul li ol{margin-left:1.5em}
+dl dd{margin-left:1.125em}
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+ul.unstyled,ol.unstyled{margin-left:0}
+li>p:empty:only-child::before{content:"";display:inline-block}
+ul.checklist>li>p:first-child{margin-left:-1em}
+ul.checklist>li>p:first-child>.fa-square-o:first-child,ul.checklist>li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+ul.checklist>li>p:first-child>input[type=checkbox]:first-child{margin-right:.25em}
+ul.inline{display:flex;flex-flow:row wrap;list-style:none;margin:0 0 .625em -1.25em}
+ul.inline>li{margin-left:1.25em}
+.unstyled dl dt{font-weight:400;font-style:normal}
+ol.arabic{list-style-type:decimal}
+ol.decimal{list-style-type:decimal-leading-zero}
+ol.loweralpha{list-style-type:lower-alpha}
+ol.upperalpha{list-style-type:upper-alpha}
+ol.lowerroman{list-style-type:lower-roman}
+ol.upperroman{list-style-type:upper-roman}
+ol.lowergreek{list-style-type:lower-greek}
+.hdlist>table,.colist>table{border:0;background:none}
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+td.hdlist2{word-wrap:anywhere}
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+.colist td:not([class]):first-child{padding:.4em .75em 0;line-height:1;vertical-align:top}
+.colist td:not([class]):first-child img{max-width:none}
+.colist td:not([class]):last-child{padding:.25em 0}
+.thumb,.th{line-height:0;display:inline-block;border:4px solid #fff;box-shadow:0 0 0 1px #ddd}
+.imageblock.left{margin:.25em .625em 1.25em 0}
+.imageblock.right{margin:.25em 0 1.25em .625em}
+.imageblock>.title{margin-bottom:0}
+.imageblock.thumb,.imageblock.th{border-width:6px}
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+.image.left{margin-right:.625em}
+.image.right{margin-left:.625em}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none;margin-left:-1.05em}
+#footnotes .footnote:last-of-type{margin-bottom:0}
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+div.unbreakable{page-break-inside:avoid}
+.big{font-size:larger}
+.small{font-size:smaller}
+.underline{text-decoration:underline}
+.overline{text-decoration:overline}
+.line-through{text-decoration:line-through}
+.aqua{color:#00bfbf}
+.aqua-background{background:#00fafa}
+.black{color:#000}
+.black-background{background:#000}
+.blue{color:#0000bf}
+.blue-background{background:#0000fa}
+.fuchsia{color:#bf00bf}
+.fuchsia-background{background:#fa00fa}
+.gray{color:#606060}
+.gray-background{background:#7d7d7d}
+.green{color:#006000}
+.green-background{background:#007d00}
+.lime{color:#00bf00}
+.lime-background{background:#00fa00}
+.maroon{color:#600000}
+.maroon-background{background:#7d0000}
+.navy{color:#000060}
+.navy-background{background:#00007d}
+.olive{color:#606000}
+.olive-background{background:#7d7d00}
+.purple{color:#600060}
+.purple-background{background:#7d007d}
+.red{color:#bf0000}
+.red-background{background:#fa0000}
+.silver{color:#909090}
+.silver-background{background:#bcbcbc}
+.teal{color:#006060}
+.teal-background{background:#007d7d}
+.white{color:#bfbfbf}
+.white-background{background:#fafafa}
+.yellow{color:#bfbf00}
+.yellow-background{background:#fafa00}
+span.icon>.fa{cursor:default}
+a span.icon>.fa{cursor:inherit}
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+.admonitionblock td.icon .icon-note::before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-tip::before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
+.admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
+.admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
+.conum[data-value]{display:inline-block;color:#fff!important;background:rgba(0,0,0,.8);border-radius:50%;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] *{color:#fff!important}
+.conum[data-value]+b{display:none}
+.conum[data-value]::after{content:attr(data-value)}
+pre .conum[data-value]{position:relative;top:-.125em}
+b.conum *{color:inherit!important}
+.conum:not([data-value]):empty{display:none}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,span.alt,summary{font-size:1.0625rem}
+p{margin-bottom:1.25rem}
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+.exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+.print-only{display:none!important}
+@page{margin:1.25cm .75cm}
+@media print{*{box-shadow:none!important;text-shadow:none!important}
+html{font-size:80%}
+a{color:inherit!important;text-decoration:underline!important}
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+a[href^="http:"]:not(.bare)::after,a[href^="https:"]:not(.bare)::after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+abbr[title]{border-bottom:1px dotted}
+abbr[title]::after{content:" (" attr(title) ")"}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+thead{display:table-header-group}
+svg{max-width:100%}
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#header,#content,#footnotes,#footer{max-width:none}
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+#toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
+body.book #header{text-align:center}
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
+body.book #header .details{border:0!important;display:block;padding:0!important}
+body.book #header .details span:first-child{margin-left:0!important}
+body.book #header .details br{display:block}
+body.book #header .details br+span::before{content:none!important}
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+.listingblock code[data-lang]::before{display:block}
+#footer{padding:0 .9375em}
+.hide-on-print{display:none!important}
+.print-only{display:block!important}
+.hide-for-print{display:none!important}
+.show-for-print{display:inherit!important}}
+@media amzn-kf8,print{#header>h1:first-child{margin-top:1.25rem}
+.sect1{padding:0!important}
+.sect1+.sect1{border:0}
+#footer{background:none}
+#footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
+@media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
+</style>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="sect2">
+<h3 id="_lib_层接入文档">Lib 层接入文档</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_简介">简介</h3>
+<div class="paragraph">
+<p>欢迎使用“AICC”的在线客服移动端开发者工具套件(SDK)。本文针对iOS端使用做详细说明，通过SDK，可以在您的APP中快速集成访客端在线聊天的功能，以具备文本，图片、视频等类型消息收发及消息通知能力，</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_集成准备">集成准备</h3>
+<div class="sect3">
+<h4 id="_注册账号">注册账号</h4>
+<div class="paragraph">
+<p>请先确保已注在线客服账号</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_开发环境">开发环境</h4>
+<div class="paragraph">
+<p>适配iOS 9.0以上</p>
+</div>
+<div class="paragraph">
+<p>开发工具：Xcode 13</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_sdk文件说明">SDK文件说明</h4>
+<div class="paragraph">
+<p>包含TOSClientLib.framework、TOSClient.bundle和相关说明文档。</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">文件名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">说明</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TOSClient.bundle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">图片资源文件 表情资源文件</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TOSCilentLib.framework</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SDK Lib</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_自动导入">自动导入</h4>
+<div class="paragraph">
+<p>1.<code>cd</code> 至项目根目录。</p>
+</div>
+<div class="paragraph">
+<p>2.执行 <code>vim podfile</code>。</p>
+</div>
+<div class="paragraph">
+<p>3.在 <code>Podfile</code> 文件中，添加以下内容</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-objective-c" data-lang="objective-c">pod 'TOSClientLib'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>4.执行 <code>pod install</code>。如果出现找不到相关版本的问题，可先执行 <code>pod repo update</code> ，再执行 <code>pod install</code>。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_手动导入sdk和添加依赖库">手动导入SDK和添加依赖库</h4>
+<div class="paragraph">
+<p>把下载的TOSClientLib.framework、TOSClient.bundle文件夹中的文件拖入你的工程里。
+iOS_SDK 的实现，依赖了一些系统的框架，在开发应用时需要在工程里加入这些框架 ( TOSClientLib不包含UI界面，可根据接口自行开发功能 ) 。开发者首先点击工程右边的工程名，然后在工程名右边依次选择 TARGETS &#8594; BuiLd Phases &#8594; Link Binary With Libraries，展开 LinkBinary With Libraries 后点击展开后下面的 + 来添加下面的依赖项:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-objective-c" data-lang="objective-c">- TOSClientLib.framework(Embed &amp; Sign)
+- TOSClient.bundle
+- 另外需要增加libc++.tbd来支持c++环境</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_初始化">初始化</h3>
+<div class="sect3">
+<h4 id="_初始化sdk">初始化SDK</h4>
+<div class="paragraph">
+<p>客服SDK提供了一套完整的IM模块，帮助开发者实现聊天功能，只需以下几行代码便可快速启动SDK应用。</p>
+</div>
+<div class="paragraph">
+<p>参数说明</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">参数</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类型</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">必填</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">说明</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">accessId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">访问标识(后台创建账号时获取,移动端唯一标识，对应座席端渠道ID)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">accessSecret</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">访问秘钥(后台创建账号时获取,在座席端管理平台创建渠道时生成)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enterpriseId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">企业号(后台创建账号时获取,企业ID)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">apiUrl</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">平台apiUrl(接口环境平台)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">onlineUrl</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">平台onlineUrl</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">debug</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BOOL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">是否开启debug模式</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-objective-c" data-lang="objective-c">首先在AppDelegate中初始化SDK
+[[OnlineInitOption shareOnlineInitOption] initWithOptionIsDebug:YES
+                                                         apiUrl:@"平台apiUrl"
+                                                      onlineUrl:@"平台onlineUrl"
+                                                   accessSecret:@"在座席端管理平台创建渠道时生成"
+                                                       accessId:@"移动端唯一标识，对应座席端渠道ID"
+                                                   enterpriseId:@"企业ID"];</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_连接">连接</h3>
+<div class="sect3">
+<h4 id="_功能描述">功能描述</h4>
+<div class="paragraph">
+<p>连接在线客服，同一用户多次调用connect不会触发多次连接</p>
+</div>
+<div class="paragraph">
+<p>参数说明</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">参数</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类型</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">必填</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">说明</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">userId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">用户App的userID（为空的情况下，系统默认为UUID去除-号，不可包含中文或特殊符号，建议使用用户系统ID方便APP拓展功能）</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nickname</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">昵称</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">headerUrl</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">头像地址</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">phoneNum</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">手机号</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">advanceParams</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSDictionary</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">自定义可配参数</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-objective-c" data-lang="objective-c">NSString *jsonString = @"";
+NSError *error;
+NSData *jsonData = [NSJSONSerialization dataWithJSONObject:advanceParams options:NSJSONWritingPrettyPrinted  error:&amp;error];
+if(jsonData) {
+    jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+}
+//存储附加参数
+[[OnlineDataSave shareOnlineDataSave] saveConnectAdParams:jsonString];
+
+//建立连接
+[[OnlineRequestManager sharedCustomerManager] getUserInfoWithUserId:@"用户App的userID"
+                                                           nickname:@"昵称"
+                                                           phoneNum:@"手机号"
+                                                          headerUrl:@"头像地址"
+                                                     connectSuccess:^{
+    NSLog(@"链接成功");
+    //创建会话
+    [[OnlineRequestManager sharedCustomerManager] visitorReadyWithDict:[kitUtils dictionaryWithJsonString:moreInfo]
+                                                               success:^(TOSSessionInfoModel * _Nonnull sessModel) {
+        //存储会话信息
+        [[OnlineDataSave shareOnlineDataSave] saveMainUniqueModel:[sessModel yy_modelToJSONString]];
+    } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+    }];
+} error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+} tokenIncorrect:^{
+}];</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_访客状态相关">访客状态相关</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-objective-c" data-lang="objective-c">// 代码示例
+[[OnlineEventSendManager sharedOnlineEventSendManager] chatCloseEventWithSuccess:^{
+    //存储会话状态
+     NSString * curMainUniqueId = [[OnlineDataSave shareOnlineDataSave] getMainUniqueId];
+     TOSSessionInfoModel * model = [[TOSSessionInfoModel alloc] init];
+     [[OnlineDataSave shareOnlineDataSave] saveMainUniqueModel:[model yy_modelToJSONString]];
+     [[OnlineDataSave shareOnlineDataSave] saveMainUniqueIdRunningStatus:curMainUniqueId runningStatus:@"ClosedStatus"];// 目前只做ClosedStatus RunningStatus俩个状态
+} error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+
+}];
+
+#pragma mark 访客上线
+- (void)chatOnlineEventWithSuccess:(void (^)(void))successBlock
+                             error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
+
+#pragma mark 访客离线
+- (void)chatOfflineEventWithSuccess:(void (^)(void))successBlock
+                              error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
+
+#pragma mark 访客关闭会话事件
+- (void)chatCloseEventWithSuccess:(void (^)(void))successBlock
+                            error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
+
+#pragma mark 退出排队
+- (void)leaveQueueEventWithSuccess:(void (^)(void))successBlock
+                             error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
+
+#pragma mark 访客消息预知事件
+- (void)inputHintEventWithText:(NSString*)text
+                       success:(void (^)(void))successBlock
+                         error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
+
+#pragma mark 访客提交留言
+- (void)upLoadChatLeaveMessageEventWithPayloads:(NSDictionary*)payloads
+                                        success:(void (^)(void))successBlock
+                                          error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_断开连接">断开连接</h3>
+<div class="sect3">
+<h4 id="_功能描述_2">功能描述</h4>
+<div class="paragraph">
+<p>断开连接在线客服，当用户退出登录时调用</p>
+</div>
+<div class="paragraph">
+<p>TOSDisConnectOption 参数说明</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">参数</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类型</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">必填</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">说明</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">isReceivePush</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BOOL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">是否需要推送</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-objective-c" data-lang="objective-c">TOSDisConnectOption *disOption = [[TOSDisConnectOption alloc] initWithOption:NO];
+[[TIMClient sharedTIMClient] disconnect:disOption success:^{
+
+} error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+
+}];</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_会话相关">会话相关</h3>
+<div class="sect3">
+<h4 id="_获取会话信息">获取会话信息</h4>
+<div class="paragraph">
+<p>TOSSessionInfoModel 参数说明</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">参数</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类型</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">必填</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">说明</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enterpriseId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">企业号</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mainUniqueId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">会话ID</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">startTime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSNumber</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">时间戳</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSNumber</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">会话状态(新打开 1;路由中 2;排队中 3;接通座席 4;留言中 5;满意度 6;关闭 7;接通机器人 8;座席主动发起会话 9;)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">visitorId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">当前用户ID</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-objective-c" data-lang="objective-c">NSString *sessionModelJSONStr = [[OnlineDataSave shareOnlineDataSave] getMainUniqueModel];
+TOSSessionInfoModel *model = [TOSSessionInfoModel yy_modelWithJSON:sessModel];</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_监听会话消息">监听会话消息</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-objective-c" data-lang="objective-c">/// TIMClient类
+/**
+ 设置TIMClient的消息监听器
+
+ @param delegate TIMClient消息监听器
+ */
+ -(void)setTIMReceiveMessageDelegate:(id&lt;TIMClientReceiveMessageDelegate&gt;)delegate;
+
+/// 示例：
+[[TIMClient sharedTIMClient] setTIMReceiveMessageDelegate:self];
+
+
+/// TIMClientReceiveMessageDelegate
+/**
+ 接收消息的回调方法
+
+ @param message     当前接收到的消息
+ @param nLeft       还剩余的未接收的消息数，left&gt;=0，暂做忽略
+ */
+- (void)onReceived:(TOSMessage *)message left:(int)nLeft;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_消息发送">消息发送</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-objective-c" data-lang="objective-c">// 代码示例
+[[OnlineMessageSendManager sharedOnlineMessageSendManager] sendTextMessageWithMessageStr:@"文本消息"
+                                                                               knowledge:@""
+                                                                             messageUUID:[[NSUUID UUID] UUIDString]
+                                                                                 success:^(TOSMessage * timMessage) {
+} error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+}];
+
+#pragma mark  发送商品卡片消息,详情请参考商品卡片参数说明
+- (void)sendCommodityCardMessageWithMessageStr:(NSDictionary *)messageStr
+                                       success:(void (^)(TOSMessage * timMessage))successBlock
+                                         error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
+
+
+#pragma mark  发送文字消息
+- (void)sendTextMessageWithMessageStr:(NSString *)messageStr
+                            knowledge:(NSString *)knowledge
+                          messageUUID:(NSString *)messageUUID
+                              success:(void (^)(TOSMessage * timMessage))successBlock
+                                error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
+
+#pragma mark  发送图片消息
+- (void)sendImageMessageWithImageData:(NSData *)imageData
+                              success:(void (^)(NSString * messageId,NSString * fileKey))successBlock
+                                error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
+
+#pragma mark  发送语音消息
+- (void)sendVoiceMessageWithVoiceData:(NSData *)voiceData
+                              success:(void (^)(NSString * messageId))successBlock
+                                error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
+
+#pragma mark  发送视频消息
+- (void)sendVideoMessageWithVideoData:(NSData *)videoData
+                              success:(void (^)(NSString * messageId))successBlock
+                                error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
+
+#pragma mark  发送文件消息
+- (void)sendFileMessageWithFileData:(NSData *)fileData
+                           fileType:(NSString *)fileType
+                           fileName:(NSString *)fileName
+                            success:(void (^)(NSString * messageId))successBlock
+                              error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
+
+#pragma mark  获取已提交满意度信息
+-(void)getInvestigationInfoSuccess:(void (^)(void))successBlock
+                            error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
+//满意度数据获取
+[TOSGetInvestigationInfoModel shareInvestigationInfoModel]
+
+#pragma mark  提交满意度
+//options: @[@{@"name": @"", @"star": @"", @"label": @[@"", @"",]}]
+//uniqueId: 消息内容extra字段内的uniqueId字段
+-(void)submitInvestigationUniqueId:(NSString *)uniqueId
+                           options:(NSArray *)options
+                           Success:(void (^)(void))successBlock
+                            error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_获取离线期间的未读数和最后一条消息">获取离线期间的未读数和最后一条消息</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-objective-c" data-lang="objective-c">/**
+ 未读消息获取
+*/
+NSString *mainUniqueId = [[OnlineDataSave shareOnlineDataSave] getMainUniqueId];
+[[OnlineRequestManager sharedCustomerManager] sessionInfoUnreadCountCurrentVisitorId:[[OnlineDataSave shareOnlineDataSave] getVisitorId]
+                                                                    WithMainUniqueId:[NSString stringWithFormat:@"%@", mainUniqueId.length &gt; 0 ? mainUniqueId : @""]
+                                                                         withSuccess:^(NSString * _Nonnull lastMessage, NSInteger unreadCount) {
+    NSLog(@"未读数：%@, 最后一条消息：%@", unreadCount, lastMessage);
+} withError:^(NSString * _Nonnull errorStr) {
+        /// 错误提示
+}]</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_消息已读事件发送">消息已读事件发送</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-objective-c" data-lang="objective-c">/*
+ 进入会话发送已读
+@param mainUniqueId    会话ID
+ **/
+- (void)sessionInfoReadWithMainUniqueId:(NSString *)mainUniqueId;
+
+[[OnlineRequestManager sharedCustomerManager] sessionInfoReadWithMainUniqueId:[[OnlineDataSave shareOnlineDataSave] getMainUniqueId]];</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_获取历史消息">获取历史消息</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-objective-c" data-lang="objective-c">/// 获取历史消息
+/// @param lastTime 截止时间，13位时间戳
+/// @param limit 获取条数
+/// @param successBlock 成功
+/// @param errorBlock 失败
+-(void)getChatRecordListLastTime:(NSString *)lastTime
+                           limit:(NSString *)limit
+                         success:(void (^)(NSArray * chatList))successBlock
+                           error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
+
+[[OnlineRequestManager sharedCustomerManager] getChatRecordListLastTime:@"13位时间戳"
+                                                                  limit:@"20"
+                                                                success:^(NSArray * _Nonnull chatList) {
+        // chatList内部存放OnlineChatRecordModel类型的数组
+} error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+
+}];</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_获取客服信息">获取客服信息</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-objective-c" data-lang="objective-c">/// 获取客服信息
+/// @param sender 客服ID或机器人id
+/// @param senderType 客服为1，机器人为4
+/// @param successBlock 成功
+/// @param errorBlock 失败
+-(void)getClientInfoWithSender:(NSString *)sender
+                    senderType:(NSString *)senderType
+                         success:(void (^)(OnlineClientInfoModel * model))successBlock
+                         error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
+
+[[OnlineRequestManager sharedCustomerManager] getClientInfoWithSender:robotBridgeMsg.robotId
+                                                           senderType:@"4"
+                                                              success:^(OnlineClientInfoModel * _Nonnull model) {
+
+} error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+
+}];</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_其他">其他</h3>
+<div class="sect3">
+<h4 id="_获取版本号">获取版本号</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-objective-c" data-lang="objective-c">// 获取版本号
+[TIMLibUtils getSDKVersion];</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_常见问题">常见问题</h3>
+<div class="sect3">
+<h4 id="_如何解决客服分组问题">如何解决客服分组问题？</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-objective-c" data-lang="objective-c">- 如需切换客服组，可先结束正在进行中的会话，然后根据后台配置修改TOSConnectOption类的advanceParams附加字段，在其中传入对应键值对后重新调用visitorReadyWithDict方法。</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_关于userid不能传入特殊字符的问题">关于UserId不能传入特殊字符的问题</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-objective-c" data-lang="objective-c">// 传入可能会出现的特殊字符
+NSString *charaters = @"?!@#$^&amp;%*+,:;='\"`&lt;&gt;()[]{}/\\| 《》";
+NSCharacterSet *set = [[NSCharacterSet characterSetWithCharactersInString:charaters] invertedSet];
+NSString *userId = [@"需要编码的字符串" stringByAddingPercentEncodingWithAllowedCharacters:set];</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_商品卡片物流卡片如何隐藏不需要的控件">商品卡片、物流卡片如何隐藏不需要的控件？</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>需要在对应的字段传入对应类型的空值，如：@""、@[]、@{}</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_关于cocoapods内搜不到sdk的最新版本问题">关于cocoapods内搜不到SDK的最新版本问题</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>需要在终端执行pod update</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_详细参数说明">详细参数说明</h3>
+<div class="sect3">
+<h4 id="_商品卡片参数说明">商品卡片参数说明</h4>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">参数名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">参数类型</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">说明</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">subTitle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">卡片消息副标题</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">descriptions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">卡片消息的描述，例如商品的简单描述</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">price</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">商品卡片的价格</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">卡片消息的时间，例如订单的生成时间</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">img</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">卡片消息的图片地址，例如商品的图片地址</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">商品状态</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">extraInfo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSDictionary</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">额外信息</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">title</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">标题</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">subUrl</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">卡片副标题点击跳转链接，商品卡片的点击事件获取到的链接</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">url</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">卡片点击跳转链接（废弃）</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">buttonText</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">发送按钮文本内容（废弃）</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">extraData</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">附加字段（废弃）</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">senderType</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">写死为 2</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-objective-c" data-lang="objective-c">/// 传参示例
+NSDictionary *cardDict = @{@"subTitle":@"华为P40麒麟990 ",
+                            @"description" : @"这是商品描述，啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦",
+                            @"price" : @"123.43",
+                            @"time" : @"2023/05/24 18:32",
+                            @"img" : @"https://lmg.jj20.com/up/allimg/tp09/210F2130512J47-0-lp.jpg",
+                            @"status" : @"待签收",
+                            @"extraInfo" : @[@{@"name": @"订单号", @"value": @"1234567890"},
+                                              @{@"name": @"产品类型", @"value": @"电子产品"},
+                                              @{@"name": @"师傅"   , @"value": @"金师傅"},
+                                              @{@"name": @"服务地区", @"value": @"北京市"},
+                                              @{@"name": @"服务"   , @"value": @"满意"},
+                                              @{@"name": @"师傅电话", @"value": @"12345678900"},
+                                              @{@"name": @"订单状态", @"value": @"已完成"}],
+                            @"url" : @"https://hellojoy.jd.com/",
+                            @"title" : @"华为P40",
+                            @"subUrl" : @"https://p4psearch.1688.com/",
+                            @"buttonText" : @"发送商品",
+                            @"extraData" : @"https://p4psearch.1688.com/",
+                            @"senderType" : @"2",
+};</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_onlineclientinfomodel参数说明">OnlineClientInfoModel参数说明</h4>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">参数名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">参数类型</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">说明</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">avatar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">头像信息</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nickName</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">昵称信息</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_tosmessage参数说明">TOSMessage参数说明</h4>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">参数名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">参数类型</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">说明</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">messageUUID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">本地生成的消息唯一ID</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">msg_id</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">服务器生成的消息id 消息唯一ID 按照时间顺序生成</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">消息类型</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">senderId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">发送者Id</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">receiverId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">接收者Id</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">content</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TIMMessageContent</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">消息内容</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">msg_from</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TIMSessionType</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">消息归属 3.客服</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TIMMessageStatus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">消息状态  1.已发送 2.未读 3.已读 4.已撤回 5.已删除</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">messageType</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">消息类型 1：文本消息，2：图片，3：文件，4：视频，5：富文本消息，6：机器人选项消息，7：语音，8：知识库文件，9：套电（废弃），10：商品卡片，物流卡片，11：订单卡片，12：留言消息，13：小程序卡片，14：机器人组合消息，15：机器人相关问题，16：机器人猜你想问，17：机器人常见问题，18：机器人近似问题，19：机器人选项消息(推荐问)，20：机器人相关问题（常见问），21~25：fold、link、select、flow from、gus card（废弃），26 知识库的问答库和文档库，27 满意度评价，30：机器人快捷回复，31：机器人热门问题（竖版），32：图文消息</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">senderType</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">消息发送者类型，  0:消息事件(忽略)  1:座席  2:访客  3:系统  4:机器人  5:系统通知</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">timestamp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSTimeInterval</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">创建时间</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect4">
+<h5 id="_type_消息类型详细说明_和_其content对应类">type 消息类型详细说明 和 其content对应类</h5>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">value值</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">说明</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">所属content对应类</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChatCloseMessage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">结束会话</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChatCloseMessage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SensitiveWordEvent</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">敏感词</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TOSSensitiveWordEventModel</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TIMCommodityCardMessage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">商品卡片</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TIMCommodityCardMessage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RobotBridgeMessage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">接通机器人</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RobotBridgeMessage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChatBridgeMessage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">接通坐席</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChatBridgeMessage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChatLeadingWordsMessage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">引导语</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChatLeadingWordsMessage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChatLeaveMessage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">留言消息</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChatLeaveMessage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChatOpenMessage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">会话开始</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChatOpenMessage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChatCloseMessage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">会话结束</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChatCloseMessage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChatQueueMessage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">进入排队</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChatQueueMessage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChatLocationMessage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">排队位置更新</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChatLocationMessage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChatInvestigationMessage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">满意度(废弃)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChatInvestigationMessage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WithdrawMessage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">座席撤回消息</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WithdrawMessage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChatOfflineMessage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">访客离线</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChatOfflineMessage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChatOnlineMessage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">访客上线</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChatOnlineMessage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChatLeaveQueueMessage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">访客退出排队</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChatLeaveQueueMessage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SystemMessage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">系统消息</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TextMessage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TextMessage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">文本消息</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TextMessage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ImageMessage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">图片消息</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ImageMessage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FileMessage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">文件消息</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FileMessage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VideoMessage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">视频消息</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VideoMessage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RichTextMessage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">富文本消息</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RichTextMessage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VoiceMessage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">语音消息</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VoiceMessage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TIMLogisticsCardMessage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">物流卡片</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TIMLogisticsCardMessage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TIMCommodityCardMessage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">商品卡片</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TIMCommodityCardMessage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChatLeaveReceiveMessage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">留言消息</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChatLeaveReceiveMessage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChatSmallProgramMessage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">小程序卡片</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TOSMessageSmallProgramModel</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RobotRichMessage14</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">机器人组合消息</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSArray &lt;CombinationMessage *&gt;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RobotRichMessage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">同上</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSArray &lt;CombinationMessage *&gt;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MessageTextTag</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">机器人快捷回复</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TOSMessageTextTagModel</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_onlinechatrecordmodel参数说明">OnlineChatRecordModel参数说明</h4>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">参数名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">参数类型</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">说明</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mainUniqueId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">会话id</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uniqueId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">消息id</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enterpriseId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">企业id</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">senderType</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">发送方类型 0:消息事件(忽略)  1:座席  2:访客  3:系统  4:机器人  5:系统通知</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">messageType</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">消息类型 1：文本消息，2：图片，3：文件，4：视频，5：富文本消息，6：机器人选项消息，7：语音，8：知识库文件，9：套电（废弃），10：商品卡片，物流卡片，11：订单卡片，12：留言消息，13：小程序卡片，14：机器人组合消息，15：机器人相关问题，16：机器人猜你想问，17：机器人常见问题，18：机器人近似问题，19：机器人选项消息(推荐问)，20：机器人相关问题（常见问），21~25：fold、link、select、flow from、gus card（废弃），26 知识库的问答库和文档库，27 满意度评价，30：机器人快捷回复，31：机器人热门问题（竖版），32：图文消息</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sender</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">发送方id</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sendName</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">发送方名称</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">visitorId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">客户id</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">content</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">消息内容</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fileKey</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">文件key</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fileName</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">文件name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">robotId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">机器人id</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">robotName</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">机器人name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sendStatus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">发送状态 1.已发送 2.未读 3.已读 4.已撤回 5.已删除</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sensitiveWord</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">敏感词</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">createTime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">创建时间</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">robotAvatar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">机器人头像</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clientAvatar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">客户头像</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nickName</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">客户昵称</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alreadyInvestigation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">判断是否评价 1已评价 0或null未评价</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">repliedMessage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RepliedMessageModel</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">引用数据</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect4">
+<h5 id="_repliedmessagemodel参数说明">RepliedMessageModel参数说明</h5>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">参数名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">参数类型</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">说明</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">content</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">消息内容</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">createTime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSNumber</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">创建时间</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fileKey</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">文件Key</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fileName</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">文件name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mainUniqueId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">会话id</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">messageType</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSNumber</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1、文本  2、图片  3、文件  4、视频  7、语音</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">messageUniqueId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">消息id</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sender</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">发送方id</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">senderAvatar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">发送方头像</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">senderName</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSString</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">发送方名称</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">senderType</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSNumber</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">发送方类型 0:消息事件(忽略)  1:座席  2:访客  3:系统  4:机器人  5:系统通知</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_tosgetinvestigationinfomodel参数说明">TOSGetInvestigationInfoModel参数说明</h4>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">参数名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">参数类型</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">说明</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">options</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSArray &lt;TOSGetInvestigationOptionsModel *&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">评价信息</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect4">
+<h5 id="_tosgetinvestigationoptionsmodel参数说明">TOSGetInvestigationOptionsModel参数说明</h5>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">参数名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">参数类型</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">说明</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">star</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSNumber</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">星级</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">label</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NSArray &lt;NSString *&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">标签</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2023-08-08 17:23:09 +0800
+</div>
+</div>
+</body>
+</html>
