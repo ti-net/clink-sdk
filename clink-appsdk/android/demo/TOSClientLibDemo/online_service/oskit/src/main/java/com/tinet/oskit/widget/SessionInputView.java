@@ -35,6 +35,7 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import androidx.annotation.IntDef;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import com.tinet.oskit.R;
@@ -72,6 +73,46 @@ public class SessionInputView extends LinearLayout implements View.OnClickListen
    * 输入内容
    */
   public EditText etContent;
+
+  /**
+   * AIEM
+   *
+   * A - 语音输入按钮
+   */
+  public static final int A = 1;
+
+  /**
+   * AIEM
+   *
+   * I - 输入框
+   */
+  public static final int I = 2;
+
+  /**
+   * AIEM
+   *
+   * E - 表情
+   */
+  public static final int E = 4;
+
+  /**
+   * AIEM
+   *
+   * M - 更多功能
+   */
+  public static final int M = 8;
+
+  /**
+   * AIEM
+   */
+  @IntDef({A,I,E,M})
+  public @interface InputStyle{}
+
+  /**
+   * AIEM
+   * 输入类型
+   */
+  private int inputStyle = A|I|E|M;
 
   public SessionInputView(Context context) {
     this(context,null);
@@ -783,6 +824,26 @@ public class SessionInputView extends LinearLayout implements View.OnClickListen
 
     if(etContent != null){
       etContent.setHint(hint);
+    }
+  }
+
+  public void setInputStyle(int inputStyle){
+    this.inputStyle = inputStyle;
+
+    if(ivVoice != null){
+      ivVoice.setVisibility((A & inputStyle) != 0 ?View.VISIBLE:View.GONE);
+    }
+
+    if(ivEmo != null){
+      ivEmo.setVisibility((E & inputStyle) != 0 ?View.VISIBLE:View.GONE);
+    }
+
+    if(ivAdd != null){
+      ivAdd.setVisibility((M & inputStyle) != 0 ?View.VISIBLE:View.GONE);
+    }
+
+    if(etContent != null){
+      etContent.setVisibility((I & inputStyle) != 0 ?View.VISIBLE:View.GONE);
     }
   }
 }

@@ -208,4 +208,7 @@
     ti_chat_avatar_size
     -->
     <dimen name="ti_message_max_span">58dp</dimen>
+
+    <dimen name="ti_dialog_normal_size">14sp</dimen>
+    <dimen name="ti_dialog_large_size">16sp</dimen>
 </resources>

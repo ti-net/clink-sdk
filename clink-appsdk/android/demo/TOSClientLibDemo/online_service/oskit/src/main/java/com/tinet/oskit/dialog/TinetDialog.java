@@ -62,10 +62,15 @@ public abstract class TinetDialog extends AppCompatDialogFragment implements Dia
 
     }
 
+    protected boolean outsideClose(){
+        return true;
+    }
+
     @Override
     public void onStart() {
         super.onStart();
 
+        getDialog().setCanceledOnTouchOutside(outsideClose());
 
         Window win = getDialog().getWindow();
         WindowManager.LayoutParams params = win.getAttributes();

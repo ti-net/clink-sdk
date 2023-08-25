@@ -1,5 +1,9 @@
 package com.tinet.oskit.present;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.text.TextUtils;
 
 import com.tinet.oskit.TOSClientKit;
@@ -8,17 +12,23 @@ import com.tinet.oslib.OnlineServiceClient;
 import com.tinet.oslib.common.OnlineMessageStatus;
 import com.tinet.oslib.common.OnlineMessageType;
 import com.tinet.oslib.listener.ChatInfoCallback;
+import com.tinet.oslib.listener.InvestigationListener;
 import com.tinet.oslib.listener.OnlineConnectStatusListener;
 import com.tinet.oslib.listener.OnlineEventListener;
 import com.tinet.oslib.listener.OnlineMessageHistoryCallback;
 import com.tinet.oslib.listener.OnlineMessageListener;
 import com.tinet.oslib.listener.OnlineSendMessageCallback;
+import com.tinet.oslib.listener.RequestInvestigationListener;
 import com.tinet.oslib.listener.SettingCallback;
+import com.tinet.oslib.listener.SubmitInvestigationListener;
 import com.tinet.oslib.listener.VisitorReadyListener;
+import com.tinet.oslib.manager.InvestigationManager;
 import com.tinet.oslib.manager.OnlineManager;
 import com.tinet.oslib.manager.OnlineMessageFailureManager;
+import com.tinet.oslib.manager.OnlineMessageManager;
 import com.tinet.oslib.manager.OnlineQueueManager;
 import com.tinet.oslib.model.bean.CardInfo;
+import com.tinet.oslib.model.bean.InvestigationStar;
 import com.tinet.oslib.model.bean.OnlineSetting;
 import com.tinet.oslib.model.bean.SessionInfo;
 import com.tinet.oslib.model.message.OnlineMessage;
@@ -523,15 +533,15 @@ public class SessionPresent extends TinetPresent<SessionView> {
     /**
      * 更多功能
      */
-    public void initFuctions() {
-        List<Function> fucs = new ArrayList<>();
-        fucs.add(new Function(Function.TYPE_SYSTEM, Function.SEND_IMAGE));
-        fucs.add(new Function(Function.TYPE_SYSTEM, Function.SEND_VIDEO));
-        fucs.add(new Function(Function.TYPE_SYSTEM, Function.SEND_FILE));
-        fucs.add(new Function(Function.TYPE_SYSTEM, Function.TO_ONLINE));
-        fucs.add(new Function(Function.TYPE_SYSTEM, Function.CHAT_OVER));
+    public void initFunctions() {
+        List<Function> funs = new ArrayList<>();
+        funs.add(new Function(Function.TYPE_SYSTEM, Function.SEND_IMAGE));
+        funs.add(new Function(Function.TYPE_SYSTEM, Function.SEND_VIDEO));
+        funs.add(new Function(Function.TYPE_SYSTEM, Function.SEND_FILE));
+        funs.add(new Function(Function.TYPE_SYSTEM, Function.TO_ONLINE));
+        funs.add(new Function(Function.TYPE_SYSTEM, Function.CHAT_OVER));
 
-        view.funcList(fucs);
+        view.funcList(funs);
     }
 
     /**
@@ -586,12 +596,13 @@ public class SessionPresent extends TinetPresent<SessionView> {
         OnlineServiceClient.addOnlineConntectStatusListener(onlineConnectStatusListener);
 
         if (OnlineServiceClient.isConnected()) {
-            if (!OnlineServiceClient.isSessionOpen()) {
-                openSession(null);
-            }else{
-                //会话已经打开了，直接拉取历史消息
-                loadHistory();
-            }
+//            if (!OnlineServiceClient.isSessionOpen()) {
+//                openSession(null);
+//            }else{
+//                //会话已经打开了，直接拉取历史消息
+//                loadHistory();
+//            }
+            openSession(null);
         } else {
             if (!OnlineServiceClient.isConnecting()) {
                 OnlineServiceClient.connect(null);
@@ -911,4 +922,92 @@ public class SessionPresent extends TinetPresent<SessionView> {
         }
     }
 
+    /**
+     * 满意度评论消息的ID
+     */
+    private String investigationMessageUniqueId;
+
+    /**
+     * 处理第一次退出时显示满意度评价
+     * @param context
+     */
+    public void handleFirstOutInvestigation(Context context){
+        if(TOSClientKit.getCurrentOnlineStatus() == OnlineMessageManager.STATUS_ONLINE) {
+            SessionInfo sessionInfo = OnlineServiceClient.getCurrentSessionInfo();
+            if (sessionInfo != null) {
+                //判断是否弹出过对话框或是否已评价
+                String key = sessionInfo.getMainUniqueId();
+
+                SharedPreferences sp = context.getApplicationContext()
+                    .getSharedPreferences("investigation",
+                        MODE_PRIVATE);
+                boolean hasMainUniqueId = sp.getBoolean(key, false);
+                if (!hasMainUniqueId) {
+                    //没有弹出过
+                    //是否提交过
+                    InvestigationManager.isRecordInvestigation(key, result -> {
+                        if (result) {
+                            sp.edit().putBoolean(key, true).apply();
+                            view.investigationResult(false);
+                        } else {
+                            //没有提交过满意度，生成满意度
+                            InvestigationManager.requestInvestigation(
+                                new RequestInvestigationListener() {
+                                    @Override
+                                    public void onError(Exception e) {
+                                        view.investigationResult(false);
+                                    }
+
+                                    @Override
+                                    public void onSuccess(String messageUniqueId) {
+                                        investigationMessageUniqueId = messageUniqueId;
+                                        sp.edit().putBoolean(key, true).apply();
+                                        view.investigationResult(true);
+                                    }
+                                });
+                        }
+                    });
+                } else {
+                    //弹出过
+                    view.investigationResult(false);
+                }
+
+            } else {
+                view.investigationResult(false);
+            }
+        }else{
+            view.investigationResult(false);
+        }
+    }
+
+    /**
+     * 提交满意度
+     * @param investigationStar
+     * @param starTabs
+     */
+    public void submitInvestigation(InvestigationStar investigationStar,
+        List<String> starTabs){
+        if(TextUtils.isEmpty(investigationMessageUniqueId)){
+            view.onSubmitInvestigationResult(false,null,new RuntimeException("not allow investigation"));
+            return;
+        }
+
+        InvestigationManager.submitInvestigation(investigationMessageUniqueId, investigationStar, starTabs,
+            new SubmitInvestigationListener() {
+                @Override
+                public void onError(Exception e) {
+                    view.onSubmitInvestigationResult(false,null,e);
+                }
+
+                @Override
+                public void onError(String msg) {
+                    view.onSubmitInvestigationResult(false,msg,null);
+                }
+
+                @Override
+                public void onSuccess() {
+                    view.onSubmitInvestigationResult(true,null,null);
+                }
+            });
+    }
 }

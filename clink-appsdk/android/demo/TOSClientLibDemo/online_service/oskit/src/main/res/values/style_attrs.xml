@@ -3,5 +3,19 @@
 
     <!--聊天输入栏背景色-->
     <attr name="session_bottom_bar_bg" format="reference|color"/>
-    
+
+    <!--满意度评价图标样式-->
+    <style name="tinetInvestigationRatioButtonStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:button">@null</item>
+        <item name="android:drawablePadding">4dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@drawable/satisfaction_tv_color1</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:lines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
 </resources>

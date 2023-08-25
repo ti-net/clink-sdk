@@ -24,6 +24,8 @@
     <drawable name="ti_transparent_drawable">@android:color/transparent</drawable>
     <color name="transparent">#00ffffff</color>
 
+    <color name="ti_f5">#f5f5f5</color>
+
 
     <!--  ++++++++++++++ 聊天背景设置 ++++++++++++++  -->
     <!--聊天背景颜色-->
@@ -62,6 +64,7 @@
     <color name="ti_rich_video_foreground_color">@color/ti_white</color>
     <!--满意度文字颜色选中-->
     <color name="satisfaction_select_text_color">#FAAD14</color>
+    <color name="satisfaction_select_text_color1">#4385FF</color>
     <!--满意度文字颜色未选-->
     <color name="satisfaction_unselected_text_color">#595959</color>
     <!--满意度标签文字颜色选中-->
@@ -183,4 +186,6 @@
     <color name="ti_album_navigation_bar_ext">#303030</color>
     <!--相册导航栏确定按钮背景色-->
     <color name="ti_send_picture_button_bg">#4385ff</color>
+
+    <color name="tinet_26">#ff262626</color>
 </resources>

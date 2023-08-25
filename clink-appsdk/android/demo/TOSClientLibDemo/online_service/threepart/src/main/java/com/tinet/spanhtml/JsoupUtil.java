@@ -79,6 +79,11 @@ public class JsoupUtil {
     public static final String TR = "tr";
     public static final String TD = "td";
 
+    /**
+     * 知识库 - 当div处理
+     * */
+    public static final String ARTICLE = "article";
+
     public static final String KNOWLEDGE = "knowledge";
 
     /**
@@ -97,9 +102,29 @@ public class JsoupUtil {
     public static final String FILE_ATTACHMENT = "file/attachment";
 
     /**
+     * 机器人富文本中相对路径的图片（/basic-api/oss/avatar),确认只有tibot才会有这个前缀
+     */
+    public static final String ROBOT_RICHTEXT_IMAGE = "/basic-api/oss/avatar";
+
+    /**
      * 服务器相对地址
      */
     public static String BASE_URL = "";
+
+    /**
+     * 针对机器人富文本消息中图片url是相对地址,此处设置需要的域名地址，拼接地址后会重定向到oss图片地址
+     */
+    public static String ROBOT_RICHTEXT_BASE_URL_SH = "https://webchat-sh.clink.cn";
+
+    /**
+     * 针对机器人富文本消息中图片url是相对地址,此处设置需要的域名地址，拼接地址后会重定向到oss图片地址
+     */
+    public static String ROBOT_RICHTEXT_BASE_URL_BJ = "https://webchat-bj.clink.cn";
+
+    /**
+     * 针对机器人富文本消息中图片url是相对地址,此处设置需要的域名地址，拼接地址后会重定向到oss图片地址
+     */
+    public static String ROBOT_RICHTEXT_BASE_URL_TEST0 = "https://webchat-test0.clink.cn";
 
     /**
      * 知识库图片
@@ -279,6 +304,7 @@ public class JsoupUtil {
                 case TABLE:
                 case TBODY:
                 case TD:
+                case ARTICLE:
                     //div内容可能还有其他标识
                     if (null == style) {
                         style = new HtmlStyle();
@@ -354,6 +380,16 @@ public class JsoupUtil {
         if (src.startsWith(ARTICLE_IMAGE) || src.startsWith(FILE_ATTACHMENT)) {
             //知识库图片
             return BASE_URL + ARTICLES_IMAGES + ARTICLE_IMAGE_PREF + src;
+        } else if (src.startsWith(ROBOT_RICHTEXT_IMAGE)) {
+            // tibot的来源的机器人富文本消息中的图片
+            String tibotImageRequestPath = "/api/bot_media?fileKey=" + src + "&provider=tibot&isDownload=false&isThumbnail=true";
+            if (BASE_URL.contains("chat-app-bj")) {
+                return ROBOT_RICHTEXT_BASE_URL_BJ + tibotImageRequestPath;
+            } else if (BASE_URL.contains("chat-app-sh")) {
+                return ROBOT_RICHTEXT_BASE_URL_SH + tibotImageRequestPath;
+            } else {
+                return ROBOT_RICHTEXT_BASE_URL_TEST0 + tibotImageRequestPath;
+            }
         } else {
             //普通图片，需要添加域名
             return BASE_URL + src;

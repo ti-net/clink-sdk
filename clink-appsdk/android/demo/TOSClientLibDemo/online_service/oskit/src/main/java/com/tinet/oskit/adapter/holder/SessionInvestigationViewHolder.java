@@ -13,6 +13,7 @@ import com.tinet.oskit.adapter.SatisfactionLevelAdapter;
 import com.tinet.oskit.listener.SessionClickListener;
 import com.tinet.oslib.OnlineServiceClient;
 import com.tinet.oslib.listener.ChatInfoCallback;
+import com.tinet.oslib.manager.InvestigationManager;
 import com.tinet.oslib.manager.OnlineManager;
 import com.tinet.oslib.model.bean.Investigation;
 import com.tinet.oslib.model.bean.OnlineSetting;
@@ -67,6 +68,8 @@ public class SessionInvestigationViewHolder extends SessionViewHolder {
     public void update(final OnlineMessage info) {
         super.update(info);
 
+        radioGroup.clearCheck();
+
         if (TOSClientKit.getTOSClientKitConfig() == null)
             return;
         OnlineSetting onlineSetting = TOSClientKit.getTOSClientKitConfig().getOnlineSetting();
@@ -76,6 +79,7 @@ public class SessionInvestigationViewHolder extends SessionViewHolder {
         welcome.setText(investigation.getWelcome());
 
         rv_label.setLayoutManager(new GridLayoutManager(itemView.getContext(), 2));
+        rv_label.setNestedScrollingEnabled(false);
         adapter = new SatisfactionLevelAdapter(listener);
 
         very_dissatisfied.setVisibility(View.GONE);
@@ -144,7 +148,8 @@ public class SessionInvestigationViewHolder extends SessionViewHolder {
         });
 
         chatInvestigationMessage = (ChatInvestigationMessage) info.getOnlineContent();
-        if (chatInvestigationMessage.getAlreadyInvestigation() == 1 ) {
+        if (chatInvestigationMessage.getAlreadyInvestigation() == 1) {
+            //已评价
             rv_label.setVisibility(View.VISIBLE);
             if (checkedRecord != null && checkedRecord.get(chatInvestigationMessage.getUniqueId()) != null) {
                 checkInvestigationResult();
@@ -152,6 +157,7 @@ public class SessionInvestigationViewHolder extends SessionViewHolder {
                 getRecordInvestigation();
             }
         } else {
+            //未评价
             checkInvestigationResult();
             rv_label.setVisibility(View.GONE);
             submit.setVisibility(View.GONE);
@@ -193,7 +199,7 @@ public class SessionInvestigationViewHolder extends SessionViewHolder {
                     options.put("label", label);
                     array.put(options);
                     object.put("options", array);//评价信息
-                    OnlineManager.submitInvestigation(object.toString(), new ChatInfoCallback() {
+                    InvestigationManager.submitInvestigation(object.toString(), new ChatInfoCallback() {
                         @Override
                         public void onSuccess(JSONObject data) {
                             try {
@@ -226,7 +232,30 @@ public class SessionInvestigationViewHolder extends SessionViewHolder {
                 }
             }
         });
+
+        if (chatInvestigationMessage.getAlreadyInvestigation() != 1){
+            setDefaultValue();
+        }
     }
+
+    private void setDefaultValue(){
+        int id = radioGroup.getCheckedRadioButtonId();
+        if(id == -1){
+            RadioButton radioButton = null;
+            int count = radioGroup.getChildCount()-1;
+            while (radioButton == null && count >=0){
+                View view = radioGroup.getChildAt(count--);
+                if(view instanceof RadioButton){
+                    radioButton = (RadioButton) view;
+                }
+            }
+
+            if(radioButton != null){
+                radioButton.setChecked(true);
+            }
+        }
+    }
+
 
     private void closeSubmitBoard() {
         radioGroup.clearCheck();
@@ -236,7 +265,7 @@ public class SessionInvestigationViewHolder extends SessionViewHolder {
     }
 
     private void getRecordInvestigation() {
-        OnlineManager.RecordInvestigation(new ChatInfoCallback() {
+        InvestigationManager.getRecordInvestigation(new ChatInfoCallback() {
             @Override
             public void onSuccess(JSONObject data) {
                 TLogUtils.i("RecordInvestigation onSuccess:" + data.toString());

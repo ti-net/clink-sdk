@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioButton android:id="@+id/rb1"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  style="@style/tinetInvestigationRatioButtonStyle"
+  tools:text="很不满"
+  android:drawableTop="@drawable/very_dissatisfied_drawable"
+  xmlns:tools="http://schemas.android.com/tools"
+  tools:ignore="MissingDefaultResource" />

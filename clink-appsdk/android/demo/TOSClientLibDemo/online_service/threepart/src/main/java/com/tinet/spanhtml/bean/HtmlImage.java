@@ -54,11 +54,14 @@ public class HtmlImage implements Html {
         String widthStr = JsoupUtil.getAttribute(node, "width");
         String heightStr = JsoupUtil.getAttribute(node, "height");
         if (!TextUtils.isEmpty(widthStr) && !TextUtils.isEmpty(heightStr)) {
-            int width = Integer.parseInt(widthStr);
-            int height = Integer.parseInt(heightStr);
-            if (width > 0 && height > 0){
-                setRatio((float) width / height);
-            }
+            try {
+                int width = Integer.parseInt(widthStr);
+                int height = Integer.parseInt(heightStr);
+
+                if (width > 0 && height > 0){
+                    setRatio((float) width / height);
+                }
+            }catch (Exception e){}
         }
     }
 }

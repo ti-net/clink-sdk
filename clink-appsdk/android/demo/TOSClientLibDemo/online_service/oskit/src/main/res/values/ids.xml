@@ -43,4 +43,31 @@
   <item name="tinetEmoDelete" type="id"/>
   <!--表情显示默认的删除-->
   <item name="tinetShowDelete" type="bool">true</item>
+
+  <!--确认取消对话框-->
+  <item name="tinetSureDialogLayout" type="layout">@layout/dlg_sure</item>
+  <!--取消 - 左边按钮-->
+  <item name="tinetCancel" type="id"/>
+  <!--确认 - 右边按钮-->
+  <item name="tinetSure" type="id"/>
+  <!--提示内容-->
+  <item name="tinetMessage" type="id"/>
+  <!--提示标题-->
+  <item name="tinetTitle" type="id"/>
+  <!--关闭对话框-->
+  <item name="tinetCloseView" type="id"/>
+
+  <item name="tinetInvestigationVeryDissatisfied" type="id"/>
+
+  <!--不满意-->
+  <item name="tinetInvestigationDissatisfaction" type="id"/>
+
+  <!--一般-->
+  <item name="tinetInvestigationCommonly" type="id"/>
+
+  <!--满意-->
+  <item name="tinetInvestigationSatisfied" type="id"/>
+
+  <!--很满意-->
+  <item name="tinetInvestigationVerySatisfied" type="id"/>
 </resources>

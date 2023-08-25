@@ -270,7 +270,12 @@ public class SessionViewHolder extends TinetViewHolder<OnlineMessage> {
         if (null != ivAvatar)
             ivAvatar.setVisibility(showAgentRobotAvatar ? View.VISIBLE : View.GONE);
         if (null != ivAvatar && !TextUtils.isEmpty(avatar) && !"null".equals(avatar)) {
-            TOSClientKit.getImageLoader().loadImage(ivAvatar, avatar, defaultHeader, defaultHeader);
+            try {
+                if (itemView.getContext() != null) {
+                    TOSClientKit.getImageLoader()
+                        .loadImage(ivAvatar, avatar, defaultHeader, defaultHeader);
+                }
+            }catch (Exception e){}
         } else if (null != ivAvatar) {
             ivAvatar.setImageResource(defaultHeader);
         }
