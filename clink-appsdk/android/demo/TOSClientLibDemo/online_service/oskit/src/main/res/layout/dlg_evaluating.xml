@@ -1,41 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="10dp"
-    android:background="@drawable/ti_sp_tinet_white_8"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  xmlns:tools="http://schemas.android.com/tools"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:padding="16dp"
+  tools:background="@color/ti_red"
+  android:orientation="vertical">
+
+  <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center"
+      android:background="@drawable/ti_dialog_bg"
+      android:orientation="vertical"
+      android:padding="10dp">
 
-    <RelativeLayout
+      <TextView
+        android:id="@+id/tvWelcome"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="@color/ti_dark"
+        tools:text="您对海绵宝宝的服务满意吗"
+        android:paddingVertical="15dp" />
 
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:text="@string/ti_evaluating_title"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/ti_dark"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/ivClose"
-            android:src="@drawable/ti_ic_close"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:padding="5dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignTop="@id/tvTitle"
-            android:layout_alignBottom="@id/tvTitle"/>
-    </RelativeLayout>
-
-    <com.tinet.oskit.widget.web.TinetWebView
-        android:id="@+id/webView"
+      <RadioGroup
+        android:id="@+id/radioGroup"
         android:layout_width="match_parent"
-        android:layout_height="450dp"/>
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:paddingVertical="5dp">
 
-</LinearLayout>
+        <RadioButton
+          android:id="@+id/rb1"
+          style="@style/tinetInvestigationRatioButtonStyle"
+          tools:text="很不满"
+          android:drawableTop="@drawable/very_dissatisfied_drawable" />
+
+        <RadioButton
+          android:id="@+id/rb2"
+          tools:text="不满"
+          style="@style/tinetInvestigationRatioButtonStyle"
+          android:drawableTop="@drawable/dissatisfaction_drawable" />
+
+        <RadioButton
+          android:id="@+id/rb3"
+          tools:text="一般"
+          android:drawableTop="@drawable/commonly_drawable"
+          style="@style/tinetInvestigationRatioButtonStyle" />
+
+        <RadioButton
+          android:id="@+id/rb4"
+          tools:text="满意"
+          android:drawableTop="@drawable/satisfied_drawable"
+          style="@style/tinetInvestigationRatioButtonStyle" />
+
+        <RadioButton
+          android:id="@+id/rb5"
+          tools:text="很满意"
+          android:drawableTop="@drawable/very_satisfied_drawable"
+          style="@style/tinetInvestigationRatioButtonStyle" />
+      </RadioGroup>
+
+      <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:choiceMode="multipleChoice"
+        tools:itemCount="3"
+        android:layout_marginTop="10dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
+        tools:listitem="@layout/dlg_evaluating_item"/>
+
+      <TextView
+        android:id="@+id/tvSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/submit_bg1"
+        android:gravity="center"
+        android:paddingVertical="10dp"
+        android:text="@string/ti_satisfaction_submit"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/ti_white" />
+    </LinearLayout>
+
+    <ImageView
+      android:id="@+id/ivClose"
+      android:layout_gravity="center_horizontal"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="20dp"
+      android:src="@mipmap/tinet_close"/>
+  </LinearLayout>
+
+</FrameLayout>

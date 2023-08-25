@@ -82,4 +82,14 @@
     <string name="ti_send_product">发送商品</string>
 
     <string name="ti_unknown_message">未知消息类型</string>
+
+    <string name="ti_permission_open">去开启</string>
+    <string name="ti_cancel">取消</string>
+
+
+
+    <string name="ti_permission_camera">需申请相机、录音、SD卡读写权限以便您能通过选择相册/拍照/拍视频/录音实现图片和视频的发送，拒绝或取消授权不影响其他服务</string>
+    <string name="ti_permission_audio">需申请录音权限以便您能通过录音实现语音功能的发送，拒绝或取消授权不影响其他服务</string>
+    <string name="ti_permission_file">需申请SD卡读写权限以便您能通过选择文件实现文件发送和下载，拒绝或取消授权不影响其他服务</string>
+    <string name="ti_permission_title">权限申请提示</string>
 </resources>

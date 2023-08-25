@@ -112,13 +112,6 @@ public interface SessionView extends TinetView {
     void chatLeaveMessage(ChatLeaveMessage message);
 
     /**
-     * 满意度评价
-     *
-     * @param message
-     */
-    void investigation(ChatInvestigationMessage message);
-
-    /**
      * 修改评价状态
      */
     void investigation(String uniqueId);
@@ -128,4 +121,18 @@ public interface SessionView extends TinetView {
      * @param messageUUID
      */
     void updateMessageStatusByMessageUUID(String messageUUID, int status);
+
+    /**
+     * 满意度
+     * @param result true没有弹起过满意度，也没有提交过满意度
+     */
+    void investigationResult(boolean result);
+
+    /**
+     * 提交满意度结果
+     * @param result
+     * @param e 异常信息
+     * @param msg 异常原因
+     */
+    void onSubmitInvestigationResult(boolean result,String msg,Exception e);
 }

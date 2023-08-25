@@ -36,10 +36,14 @@ import com.org.gzuliyujiang.filepicker.annotation.ExplorerMode;
 import com.org.gzuliyujiang.filepicker.contract.OnFilePickedListener;
 import com.lcw.library.imagepicker.ImagePicker;
 import com.lcw.library.imagepicker.activity.ImagePickerActivity;
+import com.tinet.oskit.TOSClientKit;
 import com.tinet.oskit.adapter.LabelAdapter;
 import com.tinet.oskit.adapter.decoration.LinearLayoutManagerDecoration;
 import com.tinet.oskit.aty.ChatLeaveMessageAty;
 import com.tinet.oskit.dialog.EvaluatingDialog;
+import com.tinet.oskit.dialog.EvaluatingDialog.OnEvaluatingListener;
+import com.tinet.oskit.dialog.SureDialog;
+import com.tinet.oskit.dialog.SureDialog.OnResultListener;
 import com.tinet.oskit.listener.LabelListener;
 import com.tinet.oskit.listener.impl.LabelListenerImpl;
 import com.tinet.oskit.tool.LinkMovementClickMethod;
@@ -48,23 +52,31 @@ import com.tinet.oskit.view.SatisfactionStatusChange;
 import com.tinet.oskit.widget.SessionInputView;
 import com.tinet.oslib.OnlineServiceClient;
 import com.tinet.oslib.common.OnlineEvent;
+import com.tinet.oslib.common.OnlineMessageSenderType;
 import com.tinet.oslib.common.OnlineMessageType;
+import com.tinet.oslib.listener.ChatInfoCallback;
+import com.tinet.oslib.listener.RequestInvestigationListener;
+import com.tinet.oslib.listener.SubmitInvestigationListener;
+import com.tinet.oslib.manager.InvestigationManager;
+import com.tinet.oslib.manager.OnlineManager;
 import com.tinet.oslib.manager.OnlineMessageFailureManager;
 import com.tinet.oslib.manager.OnlineQuickManager;
 import com.tinet.oslib.manager.OnlineResourceManager;
 import com.tinet.oslib.manager.OnlineSessionManager;
 import com.tinet.oslib.model.bean.CardInfo;
+import com.tinet.oslib.model.bean.InvestigationStar;
 import com.tinet.oslib.model.bean.LabeInfo;
+import com.tinet.oslib.model.bean.SessionInfo;
 import com.tinet.oslib.model.message.OnlineMessage;
 import com.tinet.oslib.model.message.content.CardMessage;
 import com.tinet.oslib.model.message.content.ChatBridgeMessage;
 import com.tinet.oslib.model.message.content.ChatCloseMessage;
 import com.tinet.oslib.model.message.content.ChatInputHintMessage;
-import com.tinet.oslib.model.message.content.ChatInvestigationMessage;
 import com.tinet.oslib.model.message.content.ChatLeaveMessage;
 import com.tinet.oslib.model.message.content.OnlineServiceMessage;
 import com.tinet.oslib.model.message.content.TextMessage;
 import com.tinet.threepart.tools.TMediaFile;
+import com.tinet.timclientlib.common.constans.TMessageDirection;
 import com.tinet.timclientlib.utils.TNtpUtils;
 import com.tinet.threepart.audio.AudioRecordManager;
 import com.tinet.threepart.emoji.EmotionLayout;
@@ -433,7 +445,7 @@ public class SessionFragment extends TinetFragment implements IEmotionSelectedLi
             return false;
         });
 
-        present.initFuctions();
+        present.initFunctions();
         present.registerListener();
 
         OnlineQuickManager.getInstance().setOnlineQuickChangeListener(
@@ -605,8 +617,31 @@ public class SessionFragment extends TinetFragment implements IEmotionSelectedLi
             AudioRecordManager.getInstance(requireContext()).startRecord();
         } else {
             //没权限
-            this.shouldShowRequestPermissionRationale(Manifest.permission.RECORD_AUDIO);
-            this.startRequestPermissions(new String[]{Manifest.permission.RECORD_AUDIO}, REQUEST_AUDIO_PERMISSION);
+            if(!isOpenRequestPermissionTip()){
+                SessionFragment.this.shouldShowRequestPermissionRationale(
+                    Manifest.permission.RECORD_AUDIO);
+                SessionFragment.this.startRequestPermissions(
+                    new String[]{Manifest.permission.RECORD_AUDIO},
+                    REQUEST_AUDIO_PERMISSION);
+            }else {
+                new SureDialog(new OnResultListener() {
+                    @Override
+                    public void onCancel() {
+
+                    }
+
+                    @Override
+                    public void onSure() {
+                        SessionFragment.this.shouldShowRequestPermissionRationale(
+                            Manifest.permission.RECORD_AUDIO);
+                        SessionFragment.this.startRequestPermissions(
+                            new String[]{Manifest.permission.RECORD_AUDIO},
+                            REQUEST_AUDIO_PERMISSION);
+                    }
+                }, getString(R.string.ti_permission_title), getString(R.string.ti_permission_audio),
+                    getString(R.string.ti_cancel), getString(R.string.ti_permission_open)).show(
+                    getChildFragmentManager(), SessionFragment.class.getName());
+            }
         }
     }
 
@@ -702,29 +737,80 @@ public class SessionFragment extends TinetFragment implements IEmotionSelectedLi
     }
 
     /**
+     * 是否开启权限申请提示
+     * */
+    protected boolean isOpenRequestPermissionTip(){
+        return false;
+    }
+
+    /**
      * 申请照相机权限
      */
-    public void requestCameraPermission(int requestCode) {
-        if (REQUEST_CAMERA_SHOOT_PERMISSION == requestCode) {
+    public void requestCameraPermission(final int requestCode) {
+        if (REQUEST_CAMERA_SHOOT_PERMISSION == requestCode || REQUEST_CAMERA_PERMISSION == requestCode) {
             //相机和语音权限
             if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED
-                    && ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
+                    && ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED
+                && ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
+                && ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                 //有权限
                 takeOrShoot(requestCode);
             } else {
                 //没权限
-                if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                    this.shouldShowRequestPermissionRationale(Manifest.permission.CAMERA);
-                }
-                if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
-                    this.shouldShowRequestPermissionRationale(Manifest.permission.RECORD_AUDIO);
-                }
+                if(!isOpenRequestPermissionTip()){
+                    doRequestCameraPermission(requestCode);
+                }else {
+                    new SureDialog(new OnResultListener() {
+                        @Override
+                        public void onCancel() {
 
-                this.startRequestPermissions(new String[]{Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO}, requestCode);
+                        }
+
+                        @Override
+                        public void onSure() {
+                            doRequestCameraPermission(requestCode);
+                        }
+                    }, getString(R.string.ti_permission_title),
+                        getString(R.string.ti_permission_camera), getString(R.string.ti_cancel),
+                        getString(R.string.ti_permission_open)).show(getChildFragmentManager(),
+                        SessionFragment.class.getName());
+                }
             }
         } else {
             takeOrShoot(requestCode);
         }
+    }
+
+    private void doRequestCameraPermission(int requestCode){
+        if (ContextCompat.checkSelfPermission(requireContext(),
+            Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            SessionFragment.this.shouldShowRequestPermissionRationale(
+                Manifest.permission.CAMERA);
+        }
+        if (ContextCompat.checkSelfPermission(requireContext(),
+            Manifest.permission.RECORD_AUDIO)
+            != PackageManager.PERMISSION_GRANTED) {
+            SessionFragment.this.shouldShowRequestPermissionRationale(
+                Manifest.permission.RECORD_AUDIO);
+        }
+        if (ContextCompat.checkSelfPermission(requireContext(),
+            Manifest.permission.READ_EXTERNAL_STORAGE)
+            != PackageManager.PERMISSION_GRANTED) {
+            SessionFragment.this.shouldShowRequestPermissionRationale(
+                Manifest.permission.READ_EXTERNAL_STORAGE);
+        }
+        if (ContextCompat.checkSelfPermission(requireContext(),
+            Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            != PackageManager.PERMISSION_GRANTED) {
+            SessionFragment.this.shouldShowRequestPermissionRationale(
+                Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        }
+
+        SessionFragment.this.startRequestPermissions(
+            new String[]{Manifest.permission.CAMERA,
+                Manifest.permission.RECORD_AUDIO,
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE}, requestCode);
     }
 
     /**
@@ -765,8 +851,32 @@ public class SessionFragment extends TinetFragment implements IEmotionSelectedLi
                 showSelectFilePop();
             } else {
                 //没权限
-                this.shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE);
-                this.startRequestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_FILE_PERMISSION);
+                if(!isOpenRequestPermissionTip()){
+                    SessionFragment.this.shouldShowRequestPermissionRationale(
+                        Manifest.permission.READ_EXTERNAL_STORAGE);
+                    SessionFragment.this.startRequestPermissions(
+                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                        REQUEST_FILE_PERMISSION);
+                }else {
+                    new SureDialog(new OnResultListener() {
+                        @Override
+                        public void onCancel() {
+
+                        }
+
+                        @Override
+                        public void onSure() {
+                            SessionFragment.this.shouldShowRequestPermissionRationale(
+                                Manifest.permission.READ_EXTERNAL_STORAGE);
+                            SessionFragment.this.startRequestPermissions(
+                                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                                REQUEST_FILE_PERMISSION);
+                        }
+                    }, getString(R.string.ti_permission_title),
+                        getString(R.string.ti_permission_file), getString(R.string.ti_cancel),
+                        getString(R.string.ti_permission_open)).show(getChildFragmentManager(),
+                        SessionFragment.class.getName());
+                }
             }
         }
     }
@@ -945,9 +1055,13 @@ public class SessionFragment extends TinetFragment implements IEmotionSelectedLi
                 }
 
                 if(sendTime2>sendTime1){
-                    adapter.addFirstItem(mOnlineMessage);
-                    message = mOnlineMessage;
+                    if(handleMessage(mOnlineMessage)) {
+                        adapter.addFirstItem(mOnlineMessage);
+                        message = mOnlineMessage;
+                    }
                 }
+
+
             }
         }
     }
@@ -1176,12 +1290,12 @@ public class SessionFragment extends TinetFragment implements IEmotionSelectedLi
     public void onReceiverMessage(OnlineMessage message) {
         String event = message.getEvent();
 
-        if(handleMessage(message)) {
+        if (handleMessage(message)) {
             adapter.addFirstItem(message);
             recyclerView.scrollToPosition(0);
         }
 
-        if (OnlineEvent.CHAT_BRIDGE.equals(event) || OnlineEvent.ROBOT_BRIDGE.equals(event)){
+        if (OnlineEvent.CHAT_BRIDGE.equals(event) || OnlineEvent.ROBOT_BRIDGE.equals(event)) {
             addCardInfo();
         }
     }
@@ -1208,13 +1322,19 @@ public class SessionFragment extends TinetFragment implements IEmotionSelectedLi
 
         boolean isFind = false;
 
+        int receiverScannerCount = 0;
         //最多检测最下面的10条数据，检测多了影响性能。
-        for(int i=0;i<10 && i<adapter.getItemCount();i++){
+        for(int i=0;receiverScannerCount<10 && i<adapter.getItemCount();i++){
             OnlineMessage lastMessage = adapter.getItem(i);
-            String lastMessageId = lastMessage.getMessageUUID();
-            isFind = TextUtils.equals(messageId,lastMessageId);
-            if(isFind){
-                break;
+            OnlineServiceMessage onlineServiceMessage = lastMessage.getOnlineContent();
+            if(onlineServiceMessage != null && onlineServiceMessage.getSenderType() != OnlineMessageSenderType.VISITOR) {
+                receiverScannerCount++;
+                String lastMessageId = onlineServiceMessage.getMessageUniqueId();
+
+                isFind = TextUtils.equals(messageId, lastMessageId);
+                if (isFind) {
+                    break;
+                }
             }
         }
 
@@ -1303,24 +1423,8 @@ public class SessionFragment extends TinetFragment implements IEmotionSelectedLi
         startActivity(intent);
     }
 
-
-    /**
-     * 满意度评价对话框
-     */
-    private EvaluatingDialog investigationDialog;
-
     @Override
-    public void investigation(ChatInvestigationMessage message) {
-        if (null != investigationDialog && investigationDialog.isVisible()) {
-            investigationDialog.dismiss();
-        }
-
-        investigationDialog = new EvaluatingDialog(message, this);
-        investigationDialog.show(getChildFragmentManager(), "tinet");
-    }
-
-    @Override
-    public void SatisfactionStatus(final String mainUniqueId, final String uniqueId) {
+    public void satisfactionStatus(final String mainUniqueId, final String uniqueId) {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -1350,7 +1454,7 @@ public class SessionFragment extends TinetFragment implements IEmotionSelectedLi
         super.onDestroyView();
         viewRoot.getKeyBoardObservable().unRegister(this);
         present.unRegisterListener();
-        OnlineServiceClient.closeClientSession();
+//        OnlineServiceClient.closeClientSession();
         // : 2022/7/1 关闭正在上传的资源请求，避免内存泄露
         OnlineResourceManager.cancelAllRequest();
         OnlineQuickManager.getInstance().setOnlineQuickChangeListener(null);
@@ -1483,4 +1587,43 @@ public class SessionFragment extends TinetFragment implements IEmotionSelectedLi
     protected boolean bottomDividerShowInMore(){
         return true;
     }
+
+    @Override
+    public void investigationResult(boolean result) {
+        if(result){
+            //需要拉起满意度
+            EvaluatingDialog dialog = new EvaluatingDialog(
+                TOSClientKit.getTOSClientKitConfig().getOnlineSetting()
+                    .getInvestigation(), new OnEvaluatingListener() {
+                @Override
+                public void submitEvaluating(InvestigationStar investigationStar,
+                    List<String> starTabs) {
+                    present.submitInvestigation(investigationStar,starTabs);
+                }
+
+                @Override
+                public void cancelEvaluating() {
+                    onSubmitInvestigationResult(false,null,null);
+                }
+            });
+
+            dialog.show(getChildFragmentManager(),SessionFragment.class.getName());
+        }else{
+            onSubmitInvestigationResult(false,null,null);
+        }
+    }
+
+    /**
+     * 处理第一次退出时的满意度
+     */
+    public void handleFirstOutInvestigation(){
+        present.handleFirstOutInvestigation(requireContext());
+    }
+
+    /**
+     * 提交满意度结果
+     */
+    @Override
+    public void onSubmitInvestigationResult(boolean result,String msg,Exception e){}
+
 }

@@ -47,16 +47,6 @@
               android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <!--<ProgressBar
-                    android:id="@+id/pbSending"
-                    style="?android:attr/progressBarStyleSmall"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="5dp"
-                    android:visibility="gone"
-                    tools:visibility="visible" />-->
-
                 <include layout="@layout/tinet_message_sending_layout"/>
                 <include layout="@layout/tinet_message_send_failure_layout"/>
 

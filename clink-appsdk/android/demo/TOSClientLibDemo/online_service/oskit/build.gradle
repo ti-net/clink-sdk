@@ -39,7 +39,7 @@ dependencies {
 
     implementation 'com.google.android.flexbox:flexbox:3.0.0'
 
-    api 'com.github.ti-net:OnlineLib-Android:1.8.0'
+    api 'com.github.ti-net:OnlineLib-Android:1.8.6'
     api project(path: ':widget')
     api project(path: ':threepart')
     //选择图片或照片
