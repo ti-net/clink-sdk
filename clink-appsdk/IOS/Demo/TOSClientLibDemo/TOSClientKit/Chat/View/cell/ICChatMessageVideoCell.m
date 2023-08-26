@@ -114,7 +114,7 @@
     
     self.bubbleView.userInteractionEnabled = videoArrowImage != nil;
     [self.imageBtn setImage:videoArrowImage  forState:UIControlStateNormal];
-    self.topBtn.frame = CGRectMake(0, 0, _imageBtn.width, _imageBtn.height);
+    self.topBtn.frame = CGRectMake(0, 0, _imageBtn.tosSD_width, _imageBtn.tosSD_height);
     
     if ([TOSKitCustomInfo shareCustomInfo].chatBubble_CornerType != BubbleCornerTypeAll && [TOSKitCustomInfo shareCustomInfo].chatBubble_CornerType != BubbleCornerTypeNormal) {
         self.imageBtn.layer.maskedCorners = self.bubbleView.layer.maskedCorners;

@@ -136,7 +136,7 @@
     if (!_topBtn) {
         _topBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_topBtn setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,@"MMVideoPreviewPlay"]] forState:UIControlStateNormal];
-        _topBtn.frame = CGRectMake(App_Frame_Width / 2 - _topBtn.width / 2, APP_Frame_Height / 2 - _topBtn.height / 2, _topBtn.width, _topBtn.height);
+        _topBtn.frame = CGRectMake(App_Frame_Width / 2 - _topBtn.tosCF_width / 2, APP_Frame_Height / 2 - _topBtn.tosCF_height / 2, _topBtn.tosCF_width, _topBtn.tosCF_height);
         [_topBtn addTarget:self action:@selector(playerItemDidPlayToEndTimeNotification) forControlEvents:UIControlEventTouchUpInside];
         _topBtn.layer.masksToBounds = YES;
         _topBtn.layer.cornerRadius = 5;
@@ -149,7 +149,7 @@
     if (!_backBtn) {
         _backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_backBtn setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,@"navi_back"]] forState:UIControlStateNormal];
-        _backBtn.frame = CGRectMake(30, 20, _backBtn.width, _backBtn.height);
+        _backBtn.frame = CGRectMake(30, 20, _backBtn.tosCF_width, _backBtn.tosCF_height);
         [_backBtn addTarget:self action:@selector(backBtnAction) forControlEvents:UIControlEventTouchUpInside];
         _backBtn.layer.masksToBounds = YES;
         _backBtn.layer.cornerRadius = 5;

@@ -23,14 +23,14 @@
     
     if (newSuperview) { // 新的父控件
         if (self.hidden == NO) {
-            self.scrollView.mj_insetB += self.mj_h;
+            self.scrollView.tosmj_insetB += self.mj_h;
         }
         
         // 设置位置
-        self.mj_y = _scrollView.mj_contentH;
+        self.mj_y = _scrollView.tosmj_contentH;
     } else { // 被移除了
         if (self.hidden == NO) {
-            self.scrollView.mj_insetB -= self.mj_h;
+            self.scrollView.tosmj_insetB -= self.mj_h;
         }
     }
 }
@@ -65,7 +65,7 @@
     [super scrollViewContentSizeDidChange:change];
     
     // 设置位置
-    self.mj_y = self.scrollView.mj_contentH + self.ignoredScrollViewContentInsetBottom;
+    self.mj_y = self.scrollView.tosmj_contentH + self.ignoredScrollViewContentInsetBottom;
 }
 
 - (void)scrollViewContentOffsetDidChange:(NSDictionary *)change
@@ -74,9 +74,9 @@
     
     if (self.state != TIMRefreshStateIdle || !self.automaticallyRefresh || self.mj_y == 0) return;
     
-    if (_scrollView.mj_insetT + _scrollView.mj_contentH > _scrollView.mj_h) { // 内容超过一个屏幕
+    if (_scrollView.tosmj_insetT + _scrollView.tosmj_contentH > _scrollView.mj_h) { // 内容超过一个屏幕
         // 这里的_scrollView.mj_contentH替换掉self.mj_y更为合理
-        if (_scrollView.mj_offsetY >= _scrollView.mj_contentH - _scrollView.mj_h + self.mj_h * self.triggerAutomaticallyRefreshPercent + _scrollView.mj_insetB - self.mj_h) {
+        if (_scrollView.tosmj_offsetY >= _scrollView.tosmj_contentH - _scrollView.mj_h + self.mj_h * self.triggerAutomaticallyRefreshPercent + _scrollView.tosmj_insetB - self.mj_h) {
             // 防止手松开时连续调用
             CGPoint old = [change[@"old"] CGPointValue];
             CGPoint new = [change[@"new"] CGPointValue];
@@ -102,13 +102,13 @@
     switch (panState) {
         // 手松开
         case UIGestureRecognizerStateEnded: {
-            if (_scrollView.mj_insetT + _scrollView.mj_contentH <= _scrollView.mj_h) {  // 不够一个屏幕
-                if (_scrollView.mj_offsetY >= - _scrollView.mj_insetT) { // 向上拽
+            if (_scrollView.tosmj_insetT + _scrollView.tosmj_contentH <= _scrollView.mj_h) {  // 不够一个屏幕
+                if (_scrollView.tosmj_offsetY >= - _scrollView.tosmj_insetT) { // 向上拽
                     self.triggerByDrag = YES;
                     [self beginRefreshing];
                 }
             } else { // 超出一个屏幕
-                if (_scrollView.mj_offsetY >= _scrollView.mj_contentH + _scrollView.mj_insetB - _scrollView.mj_h) {
+                if (_scrollView.tosmj_offsetY >= _scrollView.tosmj_contentH + _scrollView.tosmj_insetB - _scrollView.mj_h) {
                     self.triggerByDrag = YES;
                     [self beginRefreshing];
                 }
@@ -156,7 +156,7 @@
         if (TIMRefreshStateRefreshing == oldState) {
             if (self.scrollView.pagingEnabled) {
                 CGPoint offset = self.scrollView.contentOffset;
-                offset.y -= self.scrollView.mj_insetB;
+                offset.y -= self.scrollView.tosmj_insetB;
                 [UIView animateWithDuration:TIMRefreshSlowAnimationDuration animations:^{
                     self.scrollView.contentOffset = offset;
                     
@@ -191,12 +191,12 @@
     if (!lastHidden && hidden) {
         self.state = TIMRefreshStateIdle;
         
-        self.scrollView.mj_insetB -= self.mj_h;
+        self.scrollView.tosmj_insetB -= self.mj_h;
     } else if (lastHidden && !hidden) {
-        self.scrollView.mj_insetB += self.mj_h;
+        self.scrollView.tosmj_insetB += self.mj_h;
         
         // 设置位置
-        self.mj_y = _scrollView.mj_contentH;
+        self.mj_y = _scrollView.tosmj_contentH;
     }
 }
 

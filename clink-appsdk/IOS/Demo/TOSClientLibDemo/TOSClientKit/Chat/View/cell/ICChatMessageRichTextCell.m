@@ -62,6 +62,7 @@
     }
     self.model = model;
     
+//    self.chatLabel.font = MessageFont;
     self.chatLabel.font = [TOSKitCustomInfo shareCustomInfo].chatMessage_tosRobotText_font;
     self.chatLabel.numberOfLines = 0;
     __block NSMutableAttributedString *attStr;
@@ -152,6 +153,8 @@
                     [attStr setTextUnderline:[YYTextDecoration decorationWithStyle:(YYTextLineStyleSingle)] range:range];
                 } else if ([obj.style containsString:@"background-color"]) {
                     
+//                    NSString *style = [obj.style stringByReplacingOccurrencesOfString:@"background-color: #" withString:@""];
+//                    NSString *colorStr = [style stringByReplacingOccurrencesOfString:@";" withString:@""];
                     NSArray * styleArr = [obj.style componentsSeparatedByString:@";"];
                     NSLog(@"styleArr : %@", styleArr);
                     NSString * colorStr = @"";
@@ -169,6 +172,7 @@
                     if (colorStr.length == 6) {
                         [attStr setBackgroundColor:[self colorWithHexString:colorStr alpha:1.f] range:range];
                     }
+                    
                 } else if ([obj.style containsString:@"color"]) {
                     
                     NSString *style = [obj.style stringByReplacingOccurrencesOfString:@"color: #" withString:@""];
@@ -199,8 +203,9 @@
     self.chatLabel.size = layout.textBoundingSize;
     self.chatLabel.textLayout = layout;
     
-    
+//    self.chatLabel.font = MessageFont;
     self.chatLabel.numberOfLines = 0;
+//    self.chatLabel.lineBreakMode = NSLineBreakByCharWrapping;
     self.chatLabel.lineBreakMode = NSLineBreakByWordWrapping;
 }
 
@@ -211,8 +216,8 @@
     
     __weak typeof(self) weadSelf = self;
     NSMutableAttributedString *attributeStr = [[NSMutableAttributedString alloc] initWithData:[message dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType} documentAttributes:nil error:nil];
+//    attributeStr.lineBreakMode = NSLineBreakByCharWrapping;
     attributeStr.lineBreakMode = NSLineBreakByWordWrapping;
-    
     NSMutableDictionary <NSString *, NSString *>*linkDic = [NSMutableDictionary dictionary];
     [attributeStr enumerateAttribute:NSLinkAttributeName inRange:NSMakeRange(0, attributeStr.length) options:(NSAttributedStringEnumerationReverse) usingBlock:^(id  _Nullable value, NSRange range, BOOL * _Nonnull stop) {
         
@@ -358,6 +363,7 @@
         _chatLabel.font = MessageFont;
         _chatLabel.textColor = TOSHexAColor(0x282724,1.0);
         _chatLabel.userInteractionEnabled = YES;
+//        _chatLabel.lineBreakMode = NSLineBreakByCharWrapping;
         _chatLabel.lineBreakMode = NSLineBreakByWordWrapping;
     }
     return _chatLabel;

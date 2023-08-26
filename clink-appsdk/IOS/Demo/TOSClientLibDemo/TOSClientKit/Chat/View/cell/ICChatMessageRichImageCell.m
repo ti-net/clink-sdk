@@ -86,6 +86,21 @@
             [model.urlPath hasPrefix:@"file/attachment"]) { //知识库类型
             
             model.urlPath = [[NSString stringWithFormat:@"%@/api/kb/articles/images?filePath=%@",[[OnlineDataSave shareOnlineDataSave] getOnlineUrl],model.urlPath] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        } else if ([model.urlPath hasPrefix:@"/basic-api/oss/avatar"]) {    //机器人类型
+            NSString *path = @"";
+            if (![model.urlPath hasPrefix:@"/"]) {
+                path = @"/";
+            }
+            NSString * hostURL = @"";
+            /// 上海
+            if ([[[OnlineDataSave shareOnlineDataSave] getOnlineUrl] isEqualToString:@"https://chat-app-sh.clink.cn"]) {
+                hostURL = @"https://webchat-sh.clink.cn";
+            }
+            /// 北京
+            else if ([[[OnlineDataSave shareOnlineDataSave] getOnlineUrl] isEqualToString:@"https://chat-app-bj.clink.cn"]) {
+                hostURL = @"https://webchat-bj.clink.cn";
+            }
+            model.urlPath = [[NSString stringWithFormat:@"%@%@%@%@%@%@%@", hostURL, @"/api/bot_media?fileKey=",path,model.urlPath, @"&provider=", self.robotProvider, @"&isDownload=false&isThumbnail=true"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         } else {
             NSString *path = @"";
             if (![model.urlPath hasPrefix:@"/"]) {
@@ -148,7 +163,7 @@
             self.picView.image = videoArrowImage;
         }
     } else {
-        NSLog(@"urlPath ==== %@",model.urlPath);
+        TIMKitLog(@"urlPath ==== %@",model.urlPath);
         [self.picView setImageWithURL:[NSURL URLWithString:model.urlPath?:@""] placeholder:[UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,@"im_photos"]]];
     }
 }

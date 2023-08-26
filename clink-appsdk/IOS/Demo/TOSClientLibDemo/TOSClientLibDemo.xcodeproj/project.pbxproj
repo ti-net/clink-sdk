@@ -21,6 +21,12 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		22B2CD522A9A189600667A49 /* TOSInvestigationPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B2CD4C2A9A189500667A49 /* TOSInvestigationPopupView.m */; };
+		22B2CD532A9A189600667A49 /* TOSInvestigationPopupView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B2CD4D2A9A189500667A49 /* TOSInvestigationPopupView.h */; };
+		22B2CD542A9A189600667A49 /* TOSInvestigationStarTagView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B2CD4E2A9A189500667A49 /* TOSInvestigationStarTagView.h */; };
+		22B2CD552A9A189600667A49 /* TOSInvestigationStarTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B2CD4F2A9A189500667A49 /* TOSInvestigationStarTagView.m */; };
+		22B2CD562A9A189600667A49 /* TOSInvestigationStarView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B2CD502A9A189500667A49 /* TOSInvestigationStarView.h */; };
+		22B2CD572A9A189600667A49 /* TOSInvestigationStarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B2CD512A9A189500667A49 /* TOSInvestigationStarView.m */; };
 		3C1CD4762A5BAFB900E7766E /* YBImageBrowserVideo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3CAF652E2A569E1800DAE2B2 /* YBImageBrowserVideo.bundle */; };
 		3C1CD6BE2A5C045500E7766E /* OSEventSatisfactionExpressionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CAF64382A569E1800DAE2B2 /* OSEventSatisfactionExpressionView.xib */; };
 		3C1CD6BF2A5C046000E7766E /* OSEventSatisfactionTagView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CAF64322A569E1800DAE2B2 /* OSEventSatisfactionTagView.xib */; };
@@ -1238,6 +1244,12 @@
 /* Begin PBXFileReference section */
 		0E5CA2E25AB2D884AB837706 /* Pods_TOSClientKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TOSClientKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		19C9590EEE78F2E519ED57CB /* Pods-TOSClientLibDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TOSClientLibDemo.debug.xcconfig"; path = "Target Support Files/Pods-TOSClientLibDemo/Pods-TOSClientLibDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		22B2CD4C2A9A189500667A49 /* TOSInvestigationPopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOSInvestigationPopupView.m; sourceTree = "<group>"; };
+		22B2CD4D2A9A189500667A49 /* TOSInvestigationPopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOSInvestigationPopupView.h; sourceTree = "<group>"; };
+		22B2CD4E2A9A189500667A49 /* TOSInvestigationStarTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOSInvestigationStarTagView.h; sourceTree = "<group>"; };
+		22B2CD4F2A9A189500667A49 /* TOSInvestigationStarTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOSInvestigationStarTagView.m; sourceTree = "<group>"; };
+		22B2CD502A9A189500667A49 /* TOSInvestigationStarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOSInvestigationStarView.h; sourceTree = "<group>"; };
+		22B2CD512A9A189500667A49 /* TOSInvestigationStarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOSInvestigationStarView.m; sourceTree = "<group>"; };
 		2C90825FACCAE1F005357E25 /* Pods-TOSClientLibDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TOSClientLibDemo.release.xcconfig"; path = "Target Support Files/Pods-TOSClientLibDemo/Pods-TOSClientLibDemo.release.xcconfig"; sourceTree = "<group>"; };
 		3C1CD47C2A5BFE8200E7766E /* TOSKitClient.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TOSKitClient.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C1CD6C42A5C06C600E7766E /* TIMXFCameraController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TIMXFCameraController.xib; sourceTree = "<group>"; };
@@ -4114,6 +4126,12 @@
 				3CAF63FC2A569E1800DAE2B2 /* ICMessageTopTimeView.m */,
 				3CAF63F82A569E1800DAE2B2 /* ICMessageTopView.h */,
 				3CAF63FB2A569E1800DAE2B2 /* ICMessageTopView.m */,
+				22B2CD4D2A9A189500667A49 /* TOSInvestigationPopupView.h */,
+				22B2CD4C2A9A189500667A49 /* TOSInvestigationPopupView.m */,
+				22B2CD4E2A9A189500667A49 /* TOSInvestigationStarTagView.h */,
+				22B2CD4F2A9A189500667A49 /* TOSInvestigationStarTagView.m */,
+				22B2CD502A9A189500667A49 /* TOSInvestigationStarView.h */,
+				22B2CD512A9A189500667A49 /* TOSInvestigationStarView.m */,
 			);
 			path = moreView;
 			sourceTree = "<group>";
@@ -5080,6 +5098,7 @@
 				3CAF65EC2A569E1900DAE2B2 /* UITableView+YYAdd.h in Headers */,
 				3CAF688A2A569E1B00DAE2B2 /* NSDictionary+SLExtension.h in Headers */,
 				3CAF67AC2A569E1A00DAE2B2 /* OSRobotHotSubIssueView.h in Headers */,
+				22B2CD532A9A189600667A49 /* TOSInvestigationPopupView.h in Headers */,
 				3CAF67492A569E1A00DAE2B2 /* TIMRefresh.h in Headers */,
 				3CAF65CC2A569E1900DAE2B2 /* YYTextRubyAnnotation.h in Headers */,
 				3CAF670D2A569E1A00DAE2B2 /* HWPanModalPresentationUpdateProtocol.h in Headers */,
@@ -5207,6 +5226,7 @@
 				3CAF68AD2A569E1B00DAE2B2 /* YBIBOrientationReceiveProtocol.h in Headers */,
 				3CAF685C2A569E1B00DAE2B2 /* SLImageDecoder.h in Headers */,
 				3CAF664E2A569E1900DAE2B2 /* UIButton+TIMEnlargeEdge.h in Headers */,
+				22B2CD542A9A189600667A49 /* TOSInvestigationStarTagView.h in Headers */,
 				3CAF67762A569E1A00DAE2B2 /* ICMessageConst.h in Headers */,
 				3CAF68252A569E1B00DAE2B2 /* TIMSpriteSheetImage.h in Headers */,
 				3CAF658E2A569E1900DAE2B2 /* YYCache.h in Headers */,
@@ -5321,6 +5341,7 @@
 				3CAF671D2A569E1A00DAE2B2 /* HWPanModalPresenterProtocol.h in Headers */,
 				3CAF66392A569E1900DAE2B2 /* UITextView+QEmotion.h in Headers */,
 				3CAF65D62A569E1900DAE2B2 /* UIPasteboard+YYText.h in Headers */,
+				22B2CD562A9A189600667A49 /* TOSInvestigationStarView.h in Headers */,
 				3CAF68BE2A569E1B00DAE2B2 /* YBImage.h in Headers */,
 				3CAF66A82A569E1900DAE2B2 /* TIMFoundation.h in Headers */,
 				3CAF66422A569E1900DAE2B2 /* QEmotion.h in Headers */,
@@ -5409,7 +5430,6 @@
 				3CAF52322A556D4300DAE2B2 /* Frameworks */,
 				3CAF52332A556D4300DAE2B2 /* Resources */,
 				7F85EBC7FB7FC95545DD30C7 /* [CP] Embed Pods Frameworks */,
-				42FDCEC9B5419016642D5DD3 /* [CP] Copy Pods Resources */,
 				3CAF58062A5575D500DAE2B2 /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -5467,7 +5487,6 @@
 				3CAF57F72A5575D400DAE2B2 /* Sources */,
 				3CAF57F82A5575D400DAE2B2 /* Frameworks */,
 				3CAF57F92A5575D400DAE2B2 /* Resources */,
-				0BFB674B3CBF69D178F9A9C0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -5857,23 +5876,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0BFB674B3CBF69D178F9A9C0 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TOSClientKit/Pods-TOSClientKit-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TOSClientKit/Pods-TOSClientKit-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TOSClientKit/Pods-TOSClientKit-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		3CAF5F5C2A56639400DAE2B2 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -5890,23 +5892,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\nINSTALL_DIR=${SRCROOT}/TOSClientLibDemo/TOSKitSDK\n\nKit_DEVICE_DIR=${BUILD_DIR}/Release-iphoneos/TOSClientKit.framework\n\nBundle_DEVICE_DIR=${BUILD_DIR}/Release-iphoneos/TOSKitClient.bundle\n\n# Cleaning the oldest.\nif [ ! -d \"${INSTALL_DIR}\" ]\nthen\nmkdir -p \"${INSTALL_DIR}\"\nfi\n\ncp -R \"${Kit_DEVICE_DIR}\" \"${INSTALL_DIR}\"\n\ncp -R \"${Bundle_DEVICE_DIR}\" \"${INSTALL_DIR}\"\n\n\n";
-		};
-		42FDCEC9B5419016642D5DD3 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TOSClientLibDemo/Pods-TOSClientLibDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TOSClientLibDemo/Pods-TOSClientLibDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TOSClientLibDemo/Pods-TOSClientLibDemo-resources.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 		4920C66DDFC561C81908B728 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -6098,6 +6083,7 @@
 				3CAF67972A569E1A00DAE2B2 /* STBaseWebViewController.m in Sources */,
 				3CAF68202A569E1B00DAE2B2 /* ICAVPlayer.m in Sources */,
 				3CAF68BD2A569E1B00DAE2B2 /* YBIBImageCell.m in Sources */,
+				22B2CD522A9A189600667A49 /* TOSInvestigationPopupView.m in Sources */,
 				3CAF67F62A569E1B00DAE2B2 /* ICChatBox.m in Sources */,
 				3CAF666B2A569E1900DAE2B2 /* NSDate+TIMKit.m in Sources */,
 				3CAF67592A569E1A00DAE2B2 /* TIMRefreshAutoNormalFooter.m in Sources */,
@@ -6268,6 +6254,7 @@
 				3CAF67852A569E1A00DAE2B2 /* ICChatBarItemModel.m in Sources */,
 				3CAF66312A569E1900DAE2B2 /* UITextView+QEmotion.m in Sources */,
 				3CAF682E2A569E1B00DAE2B2 /* TIMXFPhotoLibraryManager.m in Sources */,
+				22B2CD572A9A189600667A49 /* TOSInvestigationStarView.m in Sources */,
 				3CAF658B2A569E1900DAE2B2 /* YYCache.m in Sources */,
 				3CAF65F62A569E1900DAE2B2 /* NSNumber+YYAdd.m in Sources */,
 				3CAF67332A569E1A00DAE2B2 /* HWPanModalContainerView.m in Sources */,
@@ -6299,6 +6286,7 @@
 				3CAF68392A569E1B00DAE2B2 /* MYHTZAssetModel.m in Sources */,
 				3CAF689E2A569E1B00DAE2B2 /* YBIBVideoTopBar.m in Sources */,
 				3CAF676F2A569E1A00DAE2B2 /* TOSBaseViewController.m in Sources */,
+				22B2CD552A9A189600667A49 /* TOSInvestigationStarTagView.m in Sources */,
 				3CAF67D92A569E1A00DAE2B2 /* ICChatMessageCommodityCardDetailsCell.m in Sources */,
 				3CAF68172A569E1B00DAE2B2 /* WHToastConfig.m in Sources */,
 				3CAF66602A569E1900DAE2B2 /* NSString+Extension.m in Sources */,
@@ -6658,6 +6646,7 @@
 					"$(PROJECT_DIR)/TOSClientLibDemo/TOSClientKit/Chat/Tool/SLEditImage/General/SLAnimateImageView",
 					"$(PROJECT_DIR)/TOSClientLibDemo/TOSClientKit/ThirdLibs/YYKit/Vendor",
 					"$(PROJECT_DIR)/TOSClientLibDemo/TOSKitSDK",
+					"$(PROJECT_DIR)",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TOSClientLibDemo/Info.plist;
@@ -6708,6 +6697,7 @@
 					"$(PROJECT_DIR)/TOSClientLibDemo/TOSClientKit/Chat/Tool/SLEditImage/General/SLAnimateImageView",
 					"$(PROJECT_DIR)/TOSClientLibDemo/TOSClientKit/ThirdLibs/YYKit/Vendor",
 					"$(PROJECT_DIR)/TOSClientLibDemo/TOSKitSDK",
+					"$(PROJECT_DIR)",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TOSClientLibDemo/Info.plist;
@@ -6828,6 +6818,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/TOSClientKit/ThirdLibs/YYKit/Vendor",
 					"$(PROJECT_DIR)/TOSClientKit/Chat/Tool/SLEditImage/General/SLAnimateImageView",
+					"$(PROJECT_DIR)",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -6874,6 +6865,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/TOSClientKit/ThirdLibs/YYKit/Vendor",
 					"$(PROJECT_DIR)/TOSClientKit/Chat/Tool/SLEditImage/General/SLAnimateImageView",
+					"$(PROJECT_DIR)",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";

@@ -110,15 +110,15 @@
     NSUInteger count      = self.scrollView.subviews.count;
 //    CGFloat btnW          = self.width/(count+1);
     CGFloat btnW          = 60;
-    self.scrollView.frame = CGRectMake(0, 0, self.width-btnW, self.height);
-    self.sendBtn.frame    = CGRectMake(self.width-btnW, 0, btnW, self.height);
-    CGFloat btnH          = self.height;
+    self.scrollView.frame = CGRectMake(0, 0, self.tosSD_width-btnW, self.tosSD_height);
+    self.sendBtn.frame    = CGRectMake(self.tosSD_width-btnW, 0, btnW, self.tosSD_height);
+    CGFloat btnH          = self.tosSD_height;
     for (int i = 0; i < count; i ++) {
         ICEmotionMenuButton *btn = self.scrollView.subviews[i];
-        btn.y                    = 0;
-        btn.width                = (int)btnW;// 去除小缝隙
-        btn.height               = btnH;
-        btn.x                    = (int)btnW * i;
+        btn.tosSD_y                    = 0;
+        btn.tosSD_width                = (int)btnW;// 去除小缝隙
+        btn.tosSD_height               = btnH;
+        btn.tosSD_x                    = (int)btnW * i;
     }
 }
 

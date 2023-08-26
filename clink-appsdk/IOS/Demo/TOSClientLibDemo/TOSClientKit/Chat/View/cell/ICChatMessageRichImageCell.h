@@ -13,6 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 @class RichTextMessage;
 @class CombinationMessage;
 @interface ICChatMessageRichImageCell : TOSBaseView
+/**
+ robotProvider
+ */
+@property (nonatomic, strong) NSString *robotProvider;
 
 - (void)setWithModel:(RichTextMessage *)model;
 

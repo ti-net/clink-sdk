@@ -61,6 +61,7 @@
     if (@available(iOS 13.0, *)) {
            self.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;    //关闭暗黑模式
     }
+//    self.view.backgroundColor = [UIColor whiteColor];
     /// 默认跟chatBox的背景颜色一致
     self.view.backgroundColor = [TOSKitCustomInfo shareCustomInfo].ChatBox_backGroundColor;
     
@@ -75,13 +76,43 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardFrameWillChange:) name:UIKeyboardWillChangeFrameNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(chatBoxFaceSend:) name:kTextViewChangeNotification object:nil];
+    
+    /// 监听当前会话状态是否为座席接待，并且打开了更多面板的变更开关（onlineChange）
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(chatBoxExtendBoardChangeItem) name:kOnlineChangeExtendBoardItemNotification object:nil];
 
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    
+    [self chatBoxExtendBoardChangeItem];
+    
+}
+
+- (ICChatBoxMoreViewItem *)setupxMoreItem:(NSString *)title
+                                imageName:(NSString *)imageName
+                                      obj:(TOSKitExtendBoardItemModel *)obj {
+    if (![kitUtils isBlankString:obj.title]) {
+        title = obj.title;
+    }
+    
+    NSString *image = [NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,imageName];
+    if (![kitUtils isBlankString:obj.image]) {
+        image = obj.image;
+    }
+    
+    return [ICChatBoxMoreViewItem createChatBoxMoreItemWithTitle:title imageName:image index:obj.index type:obj.type];
+}
+
+/// 加载扩展面板的item数据源
+- (void)chatBoxExtendBoardChangeItem {
+    /// 默认加载扩展面板的item数据源
     NSArray <TOSKitExtendBoardItemModel *>*allItems = [TOSKitChatBoxExtendBoard shareChatBoxExtendBoard].allItems;
+    /// 如果开启了座席在线状态下修改更多面板的item开关，并且当前的会话状态是座席接待，替换扩展面板的item数据源
+    if (TOSKitChatBoxExtendBoard.shareChatBoxExtendBoard.onlineChange && TOSClientKit.sharedTOSKit.getCurrentOnlineStatus == TinetChatStatusTypeOnline) {
+        allItems = TOSKitChatBoxExtendBoard.shareChatBoxExtendBoard.onlienAllItems;
+    }
     
     NSMutableArray *arr = [NSMutableArray array];
     [allItems enumerateObjectsUsingBlock:^(TOSKitExtendBoardItemModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -120,21 +151,8 @@
     }];
         
     [self.chatBoxMoreView setItems:arr];
-}
-
-- (ICChatBoxMoreViewItem *)setupxMoreItem:(NSString *)title
-                                imageName:(NSString *)imageName
-                                      obj:(TOSKitExtendBoardItemModel *)obj {
-    if (![kitUtils isBlankString:obj.title]) {
-        title = obj.title;
-    }
     
-    NSString *image = [NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,imageName];
-    if (![kitUtils isBlankString:obj.image]) {
-        image = obj.image;
-    }
     
-    return [ICChatBoxMoreViewItem createChatBoxMoreItemWithTitle:title imageName:image index:obj.index type:obj.type];
 }
 
 #pragma mark - QEmotionBoardViewDelegate
@@ -186,7 +204,8 @@
         [self.chatBox resignFirstResponder];
         if (_delegate && [_delegate respondsToSelector:@selector(chatBoxViewController:didChangeChatBoxHeight:)]) {
             [UIView animateWithDuration:0.3 animations:^{
-                [self->_delegate chatBoxViewController:self didChangeChatBoxHeight:[self getTextviewHeight]];
+//                NSLog(@"status = %ld self.keyboardFrame.size.height = %ld",(long)self.chatBox.status, (long)self.keyboardFrame.size.height);
+                    [self->_delegate chatBoxViewController:self didChangeChatBoxHeight:[self getTextviewHeight]];
             } completion:^(BOOL finished) {
                 [self.chatBoxFaceView removeFromSuperview];
                 [self.chatBoxMoreView removeFromSuperview];
@@ -209,8 +228,13 @@
     if ([eventName isEqualToString:GXRouterEventVideoRecordExit]) {
         [self resignFirstResponder];
     } else if ([eventName isEqualToString:GXRouterEventVideoRecordFinish]) {
+//        NSString *videoPath = userInfo[VideoPathKey];
         [self resignFirstResponder];
+//        if (_delegate && [_delegate respondsToSelector:@selector(chatBoxViewController:sendVideoMessage:duration:thumbnailImage)]) {
+//            [_delegate chatBoxViewController:self sendVideoMessage:videoPath];
+//        }
     } else if ([eventName isEqualToString:GXRouterEventVideoRecordCancel]) {
+        //ICLog(@"record cancel");
     } 
 }
 
@@ -242,6 +266,10 @@
     self.keyboardFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     self.keyboardFrameHeight = self.keyboardFrame.size.height;
     // MARK: 软键盘可以设置是否启用输入预测，如果没有输入预测，会被下面的方法拦截掉，无法进入后续逻辑，HEIGHT_CHATBOXVIEW是表情/更多面板的高度，不应该用来对软键盘进行高度的比较!!!⚠️⚠️⚠️
+//    if (_chatBox.status == ICChatBoxStatusShowKeyboard && self.keyboardFrame.size.height <= HEIGHT_CHATBOXVIEW) {
+//        return;
+//    }
+//    else
     if ((_chatBox.status == ICChatBoxStatusShowFace || _chatBox.status == ICChatBoxStatusShowMore) && self.keyboardFrame.size.height <= HEIGHT_CHATBOXVIEW) {
         return;
     }
@@ -305,6 +333,7 @@
 - (QEmotionBoardView *)chatBoxFaceView
 {
     if (nil == _chatBoxFaceView) {
+//        _chatBoxFaceView = [[QEmotionBoardView alloc] initWithFrame:CGRectMake(0, HEIGHT_TABBAR, App_Frame_Width, HEIGHT_CHATBOXVIEW)];
         QEmotionHelper *faceManager = [QEmotionHelper sharedEmotionHelper];
         faceManager.emotionArray = [self createTotalEmotion];
         CGFloat chatBarheight = self.barDataCount.count ? CHATBOX_BAR_HEIGHT : 0.0f;
@@ -370,6 +399,7 @@
     NSMutableArray *mArr = [NSMutableArray arrayWithArray:arr];
     //auth只控制群聊权限
     if (self.isCurChatGroup == NO) {
+        NSLog(@"self.isCurChatGroup == NO chatbox arr == %@",mArr);
         return mArr;
     }
     self.userAuth = self.curGroupType.intValue;
@@ -384,6 +414,7 @@
             }
         }
     }];
+    NSLog(@"chatbox arr == %@",mArr);
     return mArr;
 }
 
@@ -421,7 +452,7 @@
     }
     
     if (self.barItemArray.count) {
-        self.chatBox.height = [TOSKitCustomInfo shareCustomInfo].chatBox_Height+CHATBOX_BAR_HEIGHT;
+        self.chatBox.tosCF_height = [TOSKitCustomInfo shareCustomInfo].chatBox_Height+CHATBOX_BAR_HEIGHT;
     }
     
     return testArr;
@@ -639,6 +670,10 @@
     NSLog(@"changeStatus fromStatus = %ld toStatus = %ld",(long)fromStatus,(long)toStatus);
     if (toStatus == ICChatBoxStatusShowKeyboard) {  // 显示键盘
         [self.chatBox resumeTextHeight:NO];
+//        /// 需要优化
+//        [self.chatBox.textView mas_TIMupdateTIMConstraints:^(TIMMASConstraintMaker *make) {
+//            make.height.mas_TIMequalTo(HEIGHT_TEXTVIEW);
+//        }];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             if (self->_delegate && [self->_delegate respondsToSelector:@selector(chatBoxViewController:didChangeChatBoxHeight:)]) {
                 [self->_delegate chatBoxViewController:self didChangeChatBoxHeight:[self getTextviewHeight] + self.keyboardFrame.size.height];
@@ -651,10 +686,11 @@
     } else if (toStatus == ICChatBoxStatusShowVoice) {    // 语音输入按钮
         [UIView animateWithDuration:0.3 animations:^{
             if (self->_delegate && [self->_delegate respondsToSelector:@selector(chatBoxViewController:didChangeChatBoxHeight:)]) {
+//                TIMLog(@"from = %d keyheight = %ld textviewheight = %ld",fromStatus,(long)self.keyboardFrame.size.height,(long)self.chatBox.textView.height);
                 [self.chatBox resumeTextHeight:YES];
                 if ((fromStatus == ICChatBoxStatusShowKeyboard) &&
                     self.keyboardFrame.size.height <= 0 &&
-                    (int)self.chatBox.textView.height <= [TOSKitCustomInfo shareCustomInfo].chatBox_Height) {
+                    (int)self.chatBox.textView.tosSD_height <= [TOSKitCustomInfo shareCustomInfo].chatBox_Height) {
                     TIMKitLog(@"nothing to do");
                 }else{
                     
@@ -669,8 +705,9 @@
     } else if (toStatus == ICChatBoxStatusShowFace) {     // 表情面板
         
         if (fromStatus == ICChatBoxStatusShowKeyboard) {//从键盘到表情切换
-            
-            self.chatBoxFaceView.y = self.chatBox.bottom;
+
+//            self.chatBoxFaceView.y = [self getTextviewHeight];
+            self.chatBoxFaceView.tosSD_y = self.chatBox.bottom_sd;
             [self.view addSubview:self.chatBoxFaceView];
             [UIView animateWithDuration:0.3 animations:^{
                 if (self->_delegate && [self->_delegate respondsToSelector:@selector(chatBoxViewController:didChangeChatBoxHeight:)]) {
@@ -684,22 +721,39 @@
             if (fromStatus == ICChatBoxStatusShowVoice) {
                 [self.chatBox resumeTextHeight:NO];
             }
-            self.chatBoxFaceView.y = self.chatBox.bottom;
+            NSLog(@"didChangeChatBoxHeight 从语音切表情，并且文本输入框里是多行");
+//            self.chatBoxFaceView.y = [self getTextviewHeight];
+            /// 需要优化
+//            [self.chatBox.textView mas_TIMupdateTIMConstraints:^(TIMMASConstraintMaker *make) {
+//                make.height.mas_TIMequalTo(HEIGHT_TEXTVIEW);
+//            }];
+//            CGFloat inputHeight = [self.chatBox.textView sizeThatFits:CGSizeMake(self.chatBox.textView.width, MAXFLOAT)].height;
+//            /// 这里的减3是文本框距下的高度
+//            CGFloat textInputHeight = inputHeight + (HEIGHT_TABBAR - HEIGHT_TEXTVIEW)/2 + self.chatBox.textView.y - 3;
+            self.chatBoxFaceView.tosSD_y = self.chatBox.bottom_sd;
             [self.view addSubview:self.chatBoxFaceView];
 
             [UIView animateWithDuration:0.3 animations:^{
+//                if (self->_delegate && [self->_delegate respondsToSelector:@selector(chatBoxViewController:didChangeChatBoxHeight:)]) {
+//                    [self chatBox:self.chatBox changeChatBoxTextViewHeight:inputHeight+chatBarheight+10];
+//                    /// HEIGHT_CHATBOXVIEW = 215
+//                    [self->_delegate chatBoxViewController:self didChangeChatBoxHeight:[self getTextviewHeight] + HEIGHT_CHATBOXVIEW];
+//
+//                }
                 if (self->_delegate && [self->_delegate respondsToSelector:@selector(chatBoxViewController:didChangeChatBoxFaceTextViewHeight:withFaceHeight:)]) {
-                    [self->_delegate chatBoxViewController:self didChangeChatBoxFaceTextViewHeight:self.chatBox.bottom withFaceHeight:HEIGHT_CHATBOXVIEW+kBottomBarHeight];
+                    [self->_delegate chatBoxViewController:self didChangeChatBoxFaceTextViewHeight:self.chatBox.bottom_sd withFaceHeight:HEIGHT_CHATBOXVIEW+kBottomBarHeight];
                 }
             }];
             if (self.chatBox.textView.attributedText.length > 0) {
                 self.chatBoxFaceView.isHighlighted = YES;
             }
         } else {  // 表情高度变化
-            self.chatBoxFaceView.y = self.chatBox.bottom;
+//            self.chatBoxFaceView.y = [self getTextviewHeight] + HEIGHT_CHATBOXVIEW;
+            self.chatBoxFaceView.tosSD_y = self.chatBox.bottom_sd;
             [self.view addSubview:self.chatBoxFaceView];
             [UIView animateWithDuration:0.3 animations:^{
-                self.chatBoxFaceView.y = self.chatBox.bottom;
+//                self.chatBoxFaceView.y = [self getTextviewHeight];
+                self.chatBoxFaceView.tosSD_y = self.chatBox.bottom_sd;
             } completion:^(BOOL finished) {
                 [self.chatBoxMoreView removeFromSuperview];
             }];
@@ -716,16 +770,18 @@
         }
         self.view.backgroundColor = [TOSKitCustomInfo shareCustomInfo].chatBox_emotion_backgroundColor;
     } else if (toStatus == ICChatBoxStatusShowMore) {
+        [self chatBoxExtendBoardChangeItem];
         if (fromStatus == ICChatBoxStatusShowVoice || fromStatus == ICChatBoxStatusShowKeyboard) {
+//            self.chatBoxMoreView.y = [self getTextviewHeight] + chatBarheight;
             
             if (fromStatus == ICChatBoxStatusShowVoice) {
-                CGFloat inputHeight = [self.chatBox.textView sizeThatFits:CGSizeMake(self.chatBox.textView.width, MAXFLOAT)].height;
+                CGFloat inputHeight = [self.chatBox.textView sizeThatFits:CGSizeMake(self.chatBox.textView.tosSD_width, MAXFLOAT)].height;
                 if ((int)inputHeight > [TOSKitCustomInfo shareCustomInfo].chatBox_textView_height){
                     [self.chatBox switchTextEditing];
                 }
             }
             
-            self.chatBoxMoreView.y = self.chatBox.bottom;
+            self.chatBoxMoreView.tosSD_y = self.chatBox.bottom_sd;
             [self.view addSubview:self.chatBoxMoreView];
             [UIView animateWithDuration:0.3 animations:^{
                 if (self->_delegate && [self->_delegate respondsToSelector:@selector(chatBoxViewController:didChangeChatBoxHeight:)]) {
@@ -733,10 +789,12 @@
                 }
             }];
         } else {
-            self.chatBoxMoreView.y = self.chatBox.bottom;
+//            self.chatBoxMoreView.y = [self getTextviewHeight] + HEIGHT_CHATBOXVIEW;
+            self.chatBoxMoreView.tosSD_y = self.chatBox.bottom_sd;
             [self.view addSubview:self.chatBoxMoreView];
             [UIView animateWithDuration:0.3 animations:^{
-                self.chatBoxMoreView.y = self.chatBox.bottom;
+//                self.chatBoxMoreView.y = [self getTextviewHeight];
+                self.chatBoxMoreView.tosSD_y = self.chatBox.bottom_sd;
             } completion:^(BOOL finished) {
                 [self.chatBoxFaceView removeFromSuperview];
             }];
@@ -777,12 +835,20 @@
  *  @param chatBox chatBox
  *  @param height  height
  */
-- (void)chatBox:(ICChatBox *)chatBox changeChatBoxHeight:(CGFloat)height {
-    self.chatBoxFaceView.y = self.chatBox.bottom;
-    self.chatBoxMoreView.y = self.chatBox.bottom;
+- (void)chatBox:(ICChatBox *)chatBox changeChatBoxHeight:(CGFloat)height
+{
+//    CGFloat barHeight = self.barDataCount.count?CHATBOX_BAR_HEIGHT:0.0f;
+//    CGFloat inputHeight = [self.chatBox.textView sizeThatFits:CGSizeMake(self.chatBox.textView.width, MAXFLOAT)].height;
+    /// 这里的减3是文本框距下的高度
+//    CGFloat textInputHeight = inputHeight + (HEIGHT_TABBAR - HEIGHT_TEXTVIEW)/2 + self.chatBox.textView.y - 3;
+//    CGFloat textInputHeight = self.chatBox.textView.height + (HEIGHT_TABBAR - HEIGHT_TEXTVIEW)/2 + self.chatBox.textView.y - 3;
+//    self.chatBoxFaceView.y = height;
+    self.chatBoxFaceView.tosSD_y = self.chatBox.bottom_sd;
+    self.chatBoxMoreView.tosSD_y = self.chatBox.bottom_sd;
     if (_delegate && [_delegate respondsToSelector:@selector(chatBoxViewController:didChangeChatBoxHeight:)]) {
         float h = (self.chatBox.status == ICChatBoxStatusShowFace ? HEIGHT_CHATBOXVIEW : self.keyboardFrame.size.height ) + height;
         [_delegate chatBoxViewController:self didChangeChatBoxHeight: h];
+        // TODO
     }
 
 }
@@ -795,11 +861,18 @@
  */
 - (void)chatBox:(ICChatBox *)chatBox changeChatBoxTextViewHeight:(CGFloat)height
 {
-    self.chatBox.height = height;
-    self.chatBoxFaceView.y = self.chatBox.bottom;
-    self.chatBoxMoreView.y = self.chatBox.bottom;
+    self.chatBox.tosCF_height = height;
+    
+//    self.chatBoxFaceView.y = height;
+//    self.chatBoxMoreView.y = height;
+    
+    /// 这里的减3是文本框距下的高度
+//    CGFloat textInputHeight = self.chatBox.textView.height + (HEIGHT_TABBAR - HEIGHT_TEXTVIEW)/2 + self.chatBox.textView.y - 3;
+    self.chatBoxFaceView.tosSD_y = self.chatBox.bottom_sd;
+    self.chatBoxMoreView.tosSD_y = self.chatBox.bottom_sd;
     
     if (_delegate && [_delegate respondsToSelector:@selector(chatBoxViewController:didChangeChatBoxTextViewHeight:)]) {
+//        [self.chatBox removeFromSuperview];
         TIMKitLog(@"self.chatBox.status = %d",(int)self.chatBox.status);
         float h = (self.chatBox.status == ICChatBoxStatusShowFace ? HEIGHT_CHATBOXVIEW+kBottomBarHeight : self.keyboardFrame.size.height ) + height;
         [_delegate chatBoxViewController:self didChangeChatBoxTextViewHeight: h];
@@ -809,6 +882,9 @@
 - (void)chatBoxDidStartRecordingVoice:(ICChatBox *)chatBox
 {
     self.recordName = [self currentRecordFileName];
+//    if ([_delegate respondsToSelector:@selector(voiceDidStartRecording)]) {
+//        [_delegate voiceDidStartRecording];
+//    }
     [[ICRecordManager shareManager] startRecordingWithFileName:self.recordName completion:^(NSError *error) {
         if (error) {   // 加了录音权限的判断
             
@@ -877,7 +953,7 @@
 #pragma mark - getTextHeight
 - (CGFloat )getTextviewHeight{
     CGFloat chatBarheight = self.barDataCount.count ? CHATBOX_BAR_HEIGHT : 0.0f;
-    return self.chatBox.textView.height + [TOSKitCustomInfo shareCustomInfo].chatBox_Height - [TOSKitCustomInfo shareCustomInfo].chatBox_textView_height + chatBarheight;
+    return self.chatBox.textView.tosCF_height + [TOSKitCustomInfo shareCustomInfo].chatBox_Height - [TOSKitCustomInfo shareCustomInfo].chatBox_textView_height + chatBarheight;
 }
 
 - (void)openPicker {
@@ -918,8 +994,8 @@
         imagePickerVc.needCircleCrop = NO;
         // 设置竖屏下的裁剪尺寸
         NSInteger left = 30;
-        NSInteger widthHeight = self.view.width - 2 * left;
-        NSInteger top = (self.view.width - widthHeight) / 2;
+        NSInteger widthHeight = self.view.tosSD_width - 2 * left;
+        NSInteger top = (self.view.tosSD_width - widthHeight) / 2;
         imagePickerVc.cropRect = CGRectMake(left, top, widthHeight, widthHeight);
         imagePickerVc.scaleAspectFillCrop = YES;
         imagePickerVc.statusBarStyle = UIStatusBarStyleLightContent;

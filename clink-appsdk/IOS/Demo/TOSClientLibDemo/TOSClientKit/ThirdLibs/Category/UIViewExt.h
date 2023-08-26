@@ -24,8 +24,8 @@ CGRect  CGRectMoveToCenter(CGRect rect, CGPoint center);
 @property (readonly) CGPoint bottomRight;
 @property (readonly) CGPoint topRight;
 
-@property CGFloat height;
-@property CGFloat width;
+@property CGFloat tosVFG_height;
+@property CGFloat tosVFG_width;
 
 @property CGFloat top;
 @property CGFloat left;

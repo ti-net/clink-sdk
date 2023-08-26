@@ -141,23 +141,23 @@
         self.commodityPic.hidden = YES;
     }
     
-    self.extraInfo = option.extraInfo;
-    [self.transportDetails reloadData];
-        
-    if (option.extraInfo &&
-        [option.extraInfo isKindOfClass:[NSArray class]] &&
-        option.extraInfo.count > 3) {
-        self.foldAndUnfoldBtn.hidden = NO;
-        self.foldAndUnfoldIcon.hidden = NO;
-    } else {
-        self.foldAndUnfoldBtn.hidden = YES;
-        self.foldAndUnfoldIcon.hidden = YES;
-    }
+//    self.extraInfo = option.extraInfo;
+//    [self.transportDetails reloadData];
+//
+//    if (option.extraInfo &&
+//        [option.extraInfo isKindOfClass:[NSArray class]] &&
+//        option.extraInfo.count > 3) {
+//        self.foldAndUnfoldBtn.hidden = NO;
+//        self.foldAndUnfoldIcon.hidden = NO;
+//    } else {
+//        self.foldAndUnfoldBtn.hidden = YES;
+//        self.foldAndUnfoldIcon.hidden = YES;
+//    }
     
     
     __block NSString *orderNumber = @"";
-    if ([self.extraInfo isKindOfClass:[NSArray class]]) {
-        [self.extraInfo enumerateObjectsUsingBlock:^(NSDictionary<NSString *,NSString *> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    if ([option.extraInfo isKindOfClass:[NSArray class]]) {
+        [option.extraInfo enumerateObjectsUsingBlock:^(NSDictionary<NSString *,NSString *> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             
             if ([obj[@"name"] isEqualToString:@"订单号"]) {
                 orderNumber = obj[@"value"];
@@ -168,9 +168,32 @@
     
     if (orderNumber &&
         orderNumber.length > 0) {
-        self.orderNumber.text = [NSString stringWithFormat:@"订单号：#%@",orderNumber];
+        self.orderNumber.text = [NSString stringWithFormat:@"订单号：%@",orderNumber];
     } else {
         self.orderNumber.text = @" ";
+    }
+    
+    NSInteger extraInfoCount = option.extraInfo.count;
+    if (orderNumber.length) {
+        extraInfoCount -= 1;
+    }
+    NSMutableArray * testArray = [NSMutableArray array];
+    for (NSDictionary * item in option.extraInfo) {
+        if (![item[@"name"] isEqualToString:@"订单号"]) {
+            [testArray addObject:item];
+        }
+    }
+    self.extraInfo = testArray;
+    [self.transportDetails reloadData];
+        
+    if (option.extraInfo &&
+        [option.extraInfo isKindOfClass:[NSArray class]] &&
+        extraInfoCount > 3) {
+        self.foldAndUnfoldBtn.hidden = NO;
+        self.foldAndUnfoldIcon.hidden = NO;
+    } else {
+        self.foldAndUnfoldBtn.hidden = YES;
+        self.foldAndUnfoldIcon.hidden = YES;
     }
     
     self.time.text = option.time?:@" ";

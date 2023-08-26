@@ -319,7 +319,7 @@ NS_ASSUME_NONNULL_BEGIN
     @"TypeEventQueue" :  [CustomTableViewCell class]
  }
  然后在页面实现- (UITableViewCell *)customTableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath withModel:(nonnull TIMMessageModel *)model;方法
- 自定义的cell需要继承于 TOSChatCustomBaseTableViewCell
+ 自定义的cell需要继承于 TOSChatCustomBaseTableViewCell 
  */
 @property (nonatomic, strong) NSMutableDictionary                * customCellRegister;
 
@@ -541,6 +541,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 机器人组合消息的换一换按钮的文字字体 default: [UIFont fontWithName:@"PingFangSC-Regular" size:12.f]
 @property (nonatomic, strong) UIFont                * chatMessage_tosRobotCombination_showRefreshTitleFont;
+
+/// 会话状态为机器人时是否隐藏语音按钮 default: NO
+@property (nonatomic, assign) BOOL                robotHiddenVoice;
+
+
 
 @end
 

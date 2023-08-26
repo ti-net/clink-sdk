@@ -124,6 +124,9 @@ static NSString * const kSendFileMessageNotification = @"kSendFileMessageNotific
 /// 输入框文本发生变化，表情面板的发送按钮是否高亮显示
 static NSString * const kTextViewChangeNotification = @"kTextViewChangeNotification";
 
+/// 更新扩展面板的item，（从机器人转到座席时触发）
+static NSString * const kOnlineChangeExtendBoardItemNotification = @"kOnlineChangeExtendBoardItemNotification";
+
 //撤回消息重新编辑的展示字符
 static NSString * const kTIMRecalledMessageAgainEdit = @"重新编辑";
 //有人@我的展示字符

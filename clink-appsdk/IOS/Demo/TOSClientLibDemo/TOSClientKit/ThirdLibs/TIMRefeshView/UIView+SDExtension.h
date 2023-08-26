@@ -10,17 +10,17 @@
 
 @interface UIView (SDExtension)
 
-@property (nonatomic, assign) CGFloat x;
-@property (nonatomic, assign) CGFloat y;
-@property (nonatomic,assign) CGFloat left;
-@property (nonatomic,assign) CGFloat top;
-@property (nonatomic,assign) CGFloat height;
-@property (nonatomic,assign) CGFloat right;
-@property (nonatomic,assign) CGFloat bottom;
-@property (nonatomic,assign) CGFloat width;
-@property (nonatomic,assign) CGPoint origin;
-@property (nonatomic,assign) CGSize size;
-@property (nonatomic,assign) CGFloat centerX;
-@property (nonatomic,assign) CGFloat centerY;
+@property (nonatomic, assign) CGFloat tosSD_x;
+@property (nonatomic, assign) CGFloat tosSD_y;
+@property (nonatomic,assign) CGFloat tosSD_left;
+@property (nonatomic,assign) CGFloat tosSD_top;
+@property (nonatomic,assign) CGFloat tosSD_height;
+@property (nonatomic,assign) CGFloat tosSD_right;
+@property (nonatomic,assign) CGFloat tosSD_bottom;
+@property (nonatomic,assign) CGFloat tosSD_width;
+@property (nonatomic,assign) CGPoint tosSD_origin;
+@property (nonatomic,assign) CGSize tosSD_size;
+@property (nonatomic,assign) CGFloat tosSD_centerX;
+@property (nonatomic,assign) CGFloat tosSD_centerY;
 
 @end
