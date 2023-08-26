@@ -54,14 +54,14 @@
 {
     [super layoutSubviews];
     
-    self.menuView.width         = self.width;
-    self.menuView.height        = bottomViewH;
-    self.menuView.x             = 0;
-    self.menuView.y             = self.height - self.menuView.height;
+    self.menuView.tosSD_width         = self.tosSD_width;
+    self.menuView.tosSD_height        = bottomViewH;
+    self.menuView.tosSD_x             = 0;
+    self.menuView.tosSD_y             = self.tosSD_height - self.menuView.tosSD_height;
     
-    self.showingListView.x      = self.showingListView.y = 0;
-    self.showingListView.width  = self.width;
-    self.showingListView.height = self.menuView.y;
+    self.showingListView.tosSD_x      = self.showingListView.tosSD_y = 0;
+    self.showingListView.tosSD_width  = self.tosSD_width;
+    self.showingListView.tosSD_height = self.menuView.tosSD_y;
 }
 
 

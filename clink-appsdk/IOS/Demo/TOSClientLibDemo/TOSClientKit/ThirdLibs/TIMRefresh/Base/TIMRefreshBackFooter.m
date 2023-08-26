@@ -31,10 +31,10 @@
     // 如果正在刷新，直接返回
     if (self.state == TIMRefreshStateRefreshing) return;
     
-    _scrollViewOriginalInset = self.scrollView.mj_inset;
+    _scrollViewOriginalInset = self.scrollView.tosmj_inset;
     
     // 当前的contentOffset
-    CGFloat currentOffsetY = self.scrollView.mj_offsetY;
+    CGFloat currentOffsetY = self.scrollView.tosmj_offsetY;
     // 尾部控件刚好出现的offsetY
     CGFloat happenOffsetY = [self happenOffsetY];
     // 如果是向下滚动到看不见尾部控件，直接返回
@@ -73,7 +73,7 @@
     [super scrollViewContentSizeDidChange:change];
     
     // 内容的高度
-    CGFloat contentHeight = self.scrollView.mj_contentH + self.ignoredScrollViewContentInsetBottom;
+    CGFloat contentHeight = self.scrollView.tosmj_contentH + self.ignoredScrollViewContentInsetBottom;
     // 表格的高度
     CGFloat scrollHeight = self.scrollView.mj_h - self.scrollViewOriginalInset.top - self.scrollViewOriginalInset.bottom + self.ignoredScrollViewContentInsetBottom;
     // 设置位置和尺寸
@@ -93,7 +93,7 @@
                     self.endRefreshingAnimationBeginAction();
                 }
                 
-                self.scrollView.mj_insetB -= self.lastBottomDelta;
+                self.scrollView.tosmj_insetB -= self.lastBottomDelta;
                 // 自动调整透明度
                 if (self.isAutomaticallyChangeAlpha) self.alpha = 0.0;
             } completion:^(BOOL finished) {
@@ -107,12 +107,12 @@
         
         CGFloat deltaH = [self heightForContentBreakView];
         // 刚刷新完毕
-        if (TIMRefreshStateRefreshing == oldState && deltaH > 0 && self.scrollView.mj_totalDataCount != self.lastRefreshCount) {
-            self.scrollView.mj_offsetY = self.scrollView.mj_offsetY;
+        if (TIMRefreshStateRefreshing == oldState && deltaH > 0 && self.scrollView.tosmj_totalDataCount != self.lastRefreshCount) {
+            self.scrollView.tosmj_offsetY = self.scrollView.tosmj_offsetY;
         }
     } else if (state == TIMRefreshStateRefreshing) {
         // 记录刷新前的数量
-        self.lastRefreshCount = self.scrollView.mj_totalDataCount;
+        self.lastRefreshCount = self.scrollView.tosmj_totalDataCount;
         
         [UIView animateWithDuration:TIMRefreshFastAnimationDuration animations:^{
             CGFloat bottom = self.mj_h + self.scrollViewOriginalInset.bottom;
@@ -120,9 +120,9 @@
             if (deltaH < 0) { // 如果内容高度小于view的高度
                 bottom -= deltaH;
             }
-            self.lastBottomDelta = bottom - self.scrollView.mj_insetB;
-            self.scrollView.mj_insetB = bottom;
-            self.scrollView.mj_offsetY = [self happenOffsetY] + self.mj_h;
+            self.lastBottomDelta = bottom - self.scrollView.tosmj_insetB;
+            self.scrollView.tosmj_insetB = bottom;
+            self.scrollView.tosmj_offsetY = [self happenOffsetY] + self.mj_h;
         } completion:^(BOOL finished) {
             [self executeRefreshingCallback];
         }];

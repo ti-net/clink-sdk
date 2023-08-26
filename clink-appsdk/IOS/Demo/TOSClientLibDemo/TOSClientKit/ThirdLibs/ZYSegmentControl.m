@@ -126,7 +126,7 @@ static const CGFloat LineHeight = 2.f;          //下划线的高
     NSUInteger number = items.count;
     self.widthBtnArray = [NSMutableArray array];
     self.storageAllBtn = [NSMutableArray array];
-    CGFloat height = self.height;
+    CGFloat height = self.tos_height;
     for (NSUInteger i = 0; i < number; i++) {
         
         __block CGFloat viewX = BottomEdgeInsets;
@@ -140,7 +140,8 @@ static const CGFloat LineHeight = 2.f;          //下划线的高
                 viewX += BtnSpacing;
             }
         }];
-        CGFloat viewW = [self contentWidthWithString:items[i] font:TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_segmentFont height:self.height] + BtnEdgeInsets*2;
+//        CGFloat viewW = [self contentWidthWithString:items[i] font:[UIFont fontWithName:@"PingFangSC-Medium" size:BtnTitleFont] height:20.f] + BtnEdgeInsets*2;
+        CGFloat viewW = [self contentWidthWithString:items[i] font:TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_segmentFont height:self.tos_height] + BtnEdgeInsets*2;
         UIView *view = [self.bottomView viewWithBgColor:[UIColor clearColor]];
         view.frame = CGRectMake(viewX, 0, viewW , height);
         [self.widthBtnArray addObject:[NSNumber numberWithDouble:viewW]];
@@ -150,6 +151,7 @@ static const CGFloat LineHeight = 2.f;          //下划线的高
         
         UIButton *btn = [view buttonWithType:(UIButtonTypeCustom) title:items[i] titleColor:self.btnTitleColor BgColor:[UIColor clearColor]];
         btn.tag = i + BtnTag;
+//        btn.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:BtnTitleFont];
         btn.titleLabel.font = TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_segmentFont;
         btn.titleLabel.numberOfLines = 1;
         btn.titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -171,12 +173,12 @@ static const CGFloat LineHeight = 2.f;          //下划线的高
         self.underline.center = point;
     } else {
         
-        underline.frame = CGRectMake(0, (height - height/3) / 2, btn.width, height * 3 / 4);
+        underline.frame = CGRectMake(0, (height - height/3) / 2, btn.tos_width, height * 3 / 4);
         self.underline.layer.cornerRadius = 5.f;
         [self sendSubviewToBack:self.underline];
         self.underline.center = btn.center;
     }
-    [self.bottomView setContentOffset:CGPointMake(self.bottomView.contentSize.width - self.width, 0) animated:YES];
+    [self.bottomView setContentOffset:CGPointMake(self.bottomView.contentSize.width - self.tos_width, 0) animated:YES];
     self.selectedSegmentIndex = items.count - 1;
 }
 
@@ -210,11 +212,11 @@ static const CGFloat LineHeight = 2.f;          //下划线的高
         self.tempBtn = sender;
     }
     
-    CGFloat offsetX = sender.superview.x + sender.superview.width/2 - self.width/2;
-    if (self.bottomView.contentSize.width < self.width || offsetX < self.width/4) {
+    CGFloat offsetX = sender.superview.x + sender.superview.tos_width/2 - self.tos_width/2;
+    if (self.bottomView.contentSize.width < self.tos_width || offsetX < self.tos_width/4) {
         offsetX = 0.f;
-    } else if (offsetX > self.bottomView.contentSize.width - self.width) {
-        offsetX = self.bottomView.contentSize.width - self.width;
+    } else if (offsetX > self.bottomView.contentSize.width - self.tos_width) {
+        offsetX = self.bottomView.contentSize.width - self.tos_width;
     }
     [self.bottomView setContentOffset:CGPointMake(offsetX, 0) animated:YES];
     

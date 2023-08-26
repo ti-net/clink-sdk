@@ -51,7 +51,7 @@
 
 - (void)setWithModel:(CombinationMessage *)model {
     
-    self.bottomView.frame = CGRectMake(5, 5, self.width - 10, self.height - 10);
+    self.bottomView.frame = CGRectMake(5, 5, self.tos_width - 10, self.tos_height - 10);
     NSString *fileKey = @"null";
     NSString *fileName = @"null";
     if (![kitUtils isBlankString:model.text]) {
@@ -78,9 +78,9 @@
     
     self.voiceIcon.animationDuration = 0.8;
 
-    self.voiceIcon.frame     = CGRectMake(20.f, self.height/2 - 20.f/2, 13.f, 20.f);
+    self.voiceIcon.frame     = CGRectMake(20.f, self.tos_height/2 - 20.f/2, 13.f, 20.f);
     
-    self.durationLabel.frame = CGRectMake(CGRectGetMaxX(self.voiceIcon.frame) + 5.f, self.height/2 - 24.f/2, 10.f, 24.f);
+    self.durationLabel.frame = CGRectMake(CGRectGetMaxX(self.voiceIcon.frame) + 5.f, self.tos_height/2 - 24.f/2, 10.f, 24.f);
     
     self.voiceButton.frame   = self.bounds;
 

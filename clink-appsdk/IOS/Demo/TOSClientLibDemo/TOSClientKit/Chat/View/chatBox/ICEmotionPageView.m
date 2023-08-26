@@ -72,33 +72,33 @@
     
     if (bGitImage) {
         [self.deleteBtn removeFromSuperview];
-        CGFloat btnW             = (self.width - 2*inset)/ICGifEmotionMaxCols;
-        CGFloat btnH             = (self.height - 2*inset)/ICGifEmotionMaxRows;
+        CGFloat btnW             = (self.tosSD_width - 2*inset)/ICGifEmotionMaxCols;
+        CGFloat btnH             = (self.tosSD_height - 2*inset)/ICGifEmotionMaxRows;
         for (int i = 0; i < count; i ++) {
             ICEmotionButton *btn = self.subviews[i];
-            btn.width            = btnW;
-            btn.height           = btnH;
-            btn.x                = inset + (i % ICGifEmotionMaxCols)*btnW;
-            btn.y                = inset + (i / ICGifEmotionMaxCols)*btnH;
+            btn.tosSD_width            = btnW;
+            btn.tosSD_height           = btnH;
+            btn.tosSD_x                = inset + (i % ICGifEmotionMaxCols)*btnW;
+            btn.tosSD_y                = inset + (i / ICGifEmotionMaxCols)*btnH;
         }
 //        self.deleteBtn.width     = btnW;
 //        self.deleteBtn.height    = btnH;
 //        self.deleteBtn.x         = inset + (count%ICGifEmotionMaxCols)*btnW;
 //        self.deleteBtn.y         = inset + (count/ICGifEmotionMaxCols)*btnH;
     }else{
-        CGFloat btnW             = (self.width - 2*inset)/ICEmotionMaxCols;
-        CGFloat btnH             = (self.height - 2*inset)/ICEmotionMaxRows;
+        CGFloat btnW             = (self.tosSD_width - 2*inset)/ICEmotionMaxCols;
+        CGFloat btnH             = (self.tosSD_height - 2*inset)/ICEmotionMaxRows;
         for (int i = 0; i < count; i ++) {
             ICEmotionButton *btn = self.subviews[i + 1];//因为已经加了一个deleteBtn了
-            btn.width            = btnW;
-            btn.height           = btnH;
-            btn.x                = inset + (i % ICEmotionMaxCols)*btnW;
-            btn.y                = inset + (i / ICEmotionMaxCols)*btnH;
+            btn.tosSD_width            = btnW;
+            btn.tosSD_height           = btnH;
+            btn.tosSD_x                = inset + (i % ICEmotionMaxCols)*btnW;
+            btn.tosSD_y                = inset + (i / ICEmotionMaxCols)*btnH;
         }
-        self.deleteBtn.width     = btnW;
-        self.deleteBtn.height    = btnH;
-        self.deleteBtn.x         = inset + (count%ICEmotionMaxCols)*btnW;
-        self.deleteBtn.y         = inset + (count/ICEmotionMaxCols)*btnH;
+        self.deleteBtn.tosSD_width     = btnW;
+        self.deleteBtn.tosSD_height    = btnH;
+        self.deleteBtn.tosSD_x         = inset + (count%ICEmotionMaxCols)*btnW;
+        self.deleteBtn.tosSD_y         = inset + (count/ICEmotionMaxCols)*btnH;
     }
 }
 

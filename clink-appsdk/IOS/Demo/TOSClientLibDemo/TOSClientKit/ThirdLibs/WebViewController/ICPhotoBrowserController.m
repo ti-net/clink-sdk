@@ -140,11 +140,11 @@
     self.scale = self.scale == 1 ? 2:1;
     UIEdgeInsets insets = self.scrollView.contentInset;
     CGFloat appHeight   = [UIScreen mainScreen].bounds.size.height;
-    if (self.imageView.height > appHeight) {
-        CGFloat margin = (self.imageView.height - appHeight)*0.5;
-        self.scrollView.contentInset = UIEdgeInsetsMake(margin, self.imageView.width/4.0, margin, self.imageView.width/4.0);
+    if (self.imageView.tos_height > appHeight) {
+        CGFloat margin = (self.imageView.tos_height - appHeight)*0.5;
+        self.scrollView.contentInset = UIEdgeInsetsMake(margin, self.imageView.tos_width/4.0, margin, self.imageView.tos_width/4.0);
     } else {
-         self.scrollView.contentInset = UIEdgeInsetsMake(insets.top, self.imageView.width/4.0, insets.bottom, self.imageView.width/4.0);
+         self.scrollView.contentInset = UIEdgeInsetsMake(insets.top, self.imageView.tos_width/4.0, insets.bottom, self.imageView.tos_width/4.0);
     }
 }
 
@@ -191,20 +191,20 @@
 
 - (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale
 {
-    CGFloat offsetX = (scrollView.width - view.width) * 0.5;
-    CGFloat offsetY = (scrollView.height - view.height) * 0.5;
+    CGFloat offsetX = (scrollView.tos_width - view.tos_width) * 0.5;
+    CGFloat offsetY = (scrollView.tos_height - view.tos_height) * 0.5;
     
     offsetX = offsetX > 0 ? offsetX : 0;
     offsetY = offsetY > 0 ? offsetY : 0;
-    view.x = 0;
-    view.y = 0;
+    view.tosSD_x = 0;
+    view.tosSD_y = 0;
     scrollView.contentInset = UIEdgeInsetsMake(offsetY, offsetX, offsetY, offsetX);
 }
 
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView
 {
-    CGFloat offsetX = (scrollView.width - self.imageView.width) * 0.5;
-    CGFloat offsetY = (scrollView.height - self.imageView.height) * 0.5;
+    CGFloat offsetX = (scrollView.tos_width - self.imageView.tos_width) * 0.5;
+    CGFloat offsetY = (scrollView.tos_height - self.imageView.tos_height) * 0.5;
     
     offsetX = offsetX > 0 ? offsetX : 0;
     offsetY = offsetY > 0 ? offsetY : 0;

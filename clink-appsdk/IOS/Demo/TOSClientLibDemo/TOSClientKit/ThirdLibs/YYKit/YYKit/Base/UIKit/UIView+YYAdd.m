@@ -183,15 +183,25 @@ YYSYNTH_DUMMY_CLASS(UIView_YYAdd)
     self.frame = frame;
 }
 
-- (CGFloat)top {
+- (CGFloat)tos_top {
     return self.frame.origin.y;
 }
 
-- (void)setTop:(CGFloat)y {
+- (void)setTos_top:(CGFloat)tos_top {
     CGRect frame = self.frame;
-    frame.origin.y = y;
+    frame.origin.y = tos_top;
     self.frame = frame;
 }
+
+//- (CGFloat)top {
+//    return self.frame.origin.y;
+//}
+//
+//- (void)setTop:(CGFloat)y {
+//    CGRect frame = self.frame;
+//    frame.origin.y = y;
+//    self.frame = frame;
+//}
 
 - (CGFloat)right {
     return self.frame.origin.x + self.frame.size.width;
@@ -203,35 +213,67 @@ YYSYNTH_DUMMY_CLASS(UIView_YYAdd)
     self.frame = frame;
 }
 
-- (CGFloat)bottom {
+- (CGFloat)tos_bottom {
     return self.frame.origin.y + self.frame.size.height;
 }
 
-- (void)setBottom:(CGFloat)bottom {
+- (void)setTos_bottom:(CGFloat)tos_bottom {
     CGRect frame = self.frame;
-    frame.origin.y = bottom - frame.size.height;
+    frame.origin.y = tos_bottom - frame.size.height;
     self.frame = frame;
 }
 
-- (CGFloat)width {
+//- (CGFloat)bottom {
+//    return self.frame.origin.y + self.frame.size.height;
+//}
+//
+//- (void)setBottom:(CGFloat)bottom {
+//    CGRect frame = self.frame;
+//    frame.origin.y = bottom - frame.size.height;
+//    self.frame = frame;
+//}
+
+
+- (CGFloat)tos_width {
     return self.frame.size.width;
 }
 
-- (void)setWidth:(CGFloat)width {
+- (void)setTos_width:(CGFloat)tos_width {
     CGRect frame = self.frame;
-    frame.size.width = width;
+    frame.size.width = tos_width;
     self.frame = frame;
 }
 
-- (CGFloat)height {
+//- (CGFloat)width {
+//    return self.frame.size.width;
+//}
+
+//- (void)setWidth:(CGFloat)width {
+//    CGRect frame = self.frame;
+//    frame.size.width = width;
+//    self.frame = frame;
+//}
+
+
+- (CGFloat)tos_height {
     return self.frame.size.height;
 }
 
-- (void)setHeight:(CGFloat)height {
+- (void)setTos_height:(CGFloat)tos_height {
     CGRect frame = self.frame;
-    frame.size.height = height;
+    frame.size.height = tos_height;
     self.frame = frame;
 }
+
+//- (CGFloat)height {
+//    return self.frame.size.height;
+//}
+
+//- (void)setHeight:(CGFloat)height {
+//    CGRect frame = self.frame;
+//    frame.size.height = height;
+//    self.frame = frame;
+//}
 
 - (CGFloat)centerX {
     return self.center.x;

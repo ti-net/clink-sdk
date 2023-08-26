@@ -21,6 +21,7 @@
 #import "ICChatMessageBaseCell+CustomerUnread.h"
 //#import <SDWebImage/SDWebImage.h>
 #import <TOSClientKit/TOSClientKit.h>
+#import "NSObject+TIMImage.h"
 
 //#import "TIMSDWebImageDownloader.h"
 
@@ -183,6 +184,8 @@
         _imageBtn.layer.masksToBounds = YES;
 //        _imageBtn.layer.cornerRadius = 5;
         _imageBtn.clipsToBounds = YES;
+        _imageBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        
     }
     return _imageBtn;
 }

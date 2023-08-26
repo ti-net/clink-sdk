@@ -42,13 +42,13 @@
 
 - (void)layoutSubviews
 {
-    self.imageView.width = self.frame.size.width - _bordering;
-    self.imageView.height = self.frame.size.height - _bordering;
+    self.imageView.tosSD_width = self.frame.size.width - _bordering;
+    self.imageView.tosSD_height = self.frame.size.height - _bordering;
     
     self.layer.cornerRadius = [TOSKitCustomInfo shareCustomInfo].portrait_cornerRadius;
     self.imageView.layer.cornerRadius = [TOSKitCustomInfo shareCustomInfo].portrait_cornerRadius;
-    self.imageView.centerX = self.width*0.5;
-    self.imageView.centerY = self.height*0.5;
+    self.imageView.tosSD_centerX = self.tosSD_width*0.5;
+    self.imageView.tosSD_centerY = self.tosSD_height*0.5;
 }
 
 - (void)setColor:(UIColor *)color bording:(CGFloat)bord

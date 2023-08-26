@@ -55,6 +55,8 @@
     CGFloat cellMargin    = [TOSKitCustomInfo shareCustomInfo].cellMargin;
     /// 气泡的内间距
     CGFloat bubblePadding = [TOSKitCustomInfo shareCustomInfo].bubblePadding;
+    /// 聊天气泡的最大宽度
+//    CGFloat chatLabelMax  = APP_WIDTH - headWidth - 100;
     /// 聊天气泡的最大宽度(⚠️还需要减去重发按钮的宽度)
     CGFloat chatLabelMax  = APP_WIDTH - headWidth - [TOSKitCustomInfo shareCustomInfo].resendButtonSize.width - headToView - headToBubble - [TOSKitCustomInfo shareCustomInfo].resendToBubblePadding;
     if ([TOSKitCustomInfo shareCustomInfo].bubbleMaxWidth < chatLabelMax) {
@@ -66,9 +68,11 @@
     /// 时间控件的高度
     CGFloat topTimeViewH  = 20;
     CGFloat cellMinW      = 60;     // cell的最小宽度值,针对文本
+//    CGFloat voiceMinW     = 60;     // 针对语音的最小宽度
     CGFloat voiceMinW     = [TOSKitCustomInfo shareCustomInfo].chat_voiceMinWidth;     // 针对语音的最小宽度
     /// 顶部视图加上气泡的高度
-    CGFloat topViewToBubbleH = 20;
+//    CGFloat topViewToBubbleH = 2+20;
+    CGFloat topViewToBubbleH = 20;      /// 不清楚之前为什么加2 （teil留）
     /// 时间控件显示的最长宽度
     CGFloat timeShowLength = 135;
     /// 图片最小宽度
@@ -115,12 +119,15 @@
             _headNameF = CGRectZero;
             topViewToBubbleH = 0;
         }
-        
+
         if ([model.message.type isEqualToString:TypeText] ||             // 文字
             [model.message.type isEqualToString:TypeUnsupport]) {    // 未知类型消息
             
+//            CGSize chateLabelSize = [model.message.content sizeWithMaxWidth:chatLabelMax andFont:MessageFont];
             CGSize chateLabelSize = [model.message.content sizeWithMaxWidth:chatLabelMax andFont:[TOSKitCustomInfo shareCustomInfo].chatMessage_visitorText_font];
-                        
+            
+            NSLog(@"文案的高度：%@", NSStringFromCGSize(chateLabelSize));
+            
             chateLabelSize.width += 2.f;
             CGSize bubbleSize     = CGSizeMake(chateLabelSize.width + bubblePadding * 2 + arrowWidth, chateLabelSize.height + bubblePadding * 2);
             CGSize topViewSize    = CGSizeMake(cellMinW+bubblePadding*2, topViewH);
@@ -137,7 +144,7 @@
                 _sensitiveWordsLabelF = CGRectZero;
             }
         } else if ([model.message.type isEqualToString:GXRichText]) {
-            // 发送端暂不支持富文本
+               // 发送端暂不支持富文本
             
         } else if ([model.message.type isEqualToString:TypeCommodityCardDetails]) {
             
@@ -208,7 +215,7 @@
             CGFloat titleH = 35.f;
             CGFloat subTitleTopSpace = 0.f;
             if (![kitUtils isBlankString:cardMessgae.subTitle]) {
-                
+
                 CGSize subTitleSize = [cardMessgae.subTitle sizeWithMaxWidth:chatLabelMax andFont:[UIFont fontWithName:@"PingFangSC-Medium" size:12.0]];
                 if (subTitleSize.height > 20.f) {
                     titleH = 35.f;
@@ -254,11 +261,17 @@
             CGFloat transportDetailsH = 0;
             if (cardMessgae.extraInfo &&
                 [cardMessgae.extraInfo isKindOfClass:[NSArray class]]) {
-                if (cardMessgae.extraInfo.count > 3 &&
+                
+                NSInteger extraInfoCount = cardMessgae.extraInfo.count;
+                if (orderNumber.length) {
+                    extraInfoCount -= 1;
+                }
+                
+                if (extraInfoCount > 3 &&
                     _foldAndUnfold) {
                     transportDetailsH = 3 * 21.f;
                 } else {
-                    transportDetailsH = cardMessgae.extraInfo.count * 21.f;
+                    transportDetailsH = extraInfoCount * 21.f;
                 }
             } else {
                 transportDetailsH = 0.f;
@@ -336,7 +349,7 @@
                     CGSize topViewSize    = CGSizeMake(cellMinW+bubblePadding*2, topViewH);
                     _bubbleViewF          = CGRectMake(CGRectGetMinX(_headImageViewF) - headToBubble - bubbleSize.width, cellMargin+topViewH+topViewToBubbleH+topTimeViewH+sendNickNameToBubbleSpacing, bubbleSize.width, bubbleSize.height);
                     CGFloat x             = CGRectGetMinX(_bubbleViewF)+bubblePadding;
-                    _topViewF             = CGRectMake(CGRectGetMinX(_headImageViewF) - timeShowLength , cellMargin+topTimeViewH,topViewSize.width,topViewSize.height);
+                    _topViewF             = CGRectMake(CGRectGetMinX(_headImageViewF) - timeShowLength , cellMargin+topTimeViewH,topViewSize.width,topViewSize.height); 
                     _chatLabelF           = CGRectMake(x, CGRectGetMinY(_bubbleViewF) + (bubbleSize.height -chateLabelSize.height) / 2, chateLabelSize.width, chateLabelSize.height);
                 } else {
                     CGSize chateLabelSize = CGSizeMake(240.f, 113.f);
@@ -387,12 +400,12 @@
             CGFloat x              = CGRectGetMinX(_bubbleViewF);
             _topViewF             = CGRectMake(CGRectGetMinX(_headImageViewF) - timeShowLength, cellMargin+topTimeViewH,topViewSize.width,topViewSize.height);
             _picViewF              = CGRectMake(x, cellMargin+topViewH+topTimeViewH +topViewToBubbleH+sendNickNameToBubbleSpacing, imageSize.width, imageSize.height);
-            
+
             CGSize chateLabelSize = [@"待审核" sizeWithMaxWidth:chatLabelMax andFont:MessageFont12];
             _aduitStatusViewF      = CGRectMake(x - chateLabelSize.width-bubblePadding, topViewH+bubbleSize.height-chateLabelSize.height+topTimeViewH, chateLabelSize.width+bubblePadding, chateLabelSize.height+bubblePadding);
         } else if ([model.message.type isEqualToString:TypeVoice]) { // 语音消息
             CGFloat bubbleViewW     = voiceMinW;
-            
+
             long addbubbleViewLength = APP_WIDTH - (APP_WIDTH - CGRectGetMinX(_headImageViewF)) * 2 - voiceMinW; // 追增长度最大值
             long needAddWidth = 5 * [model.message.voiceDuration longValue] / 1000;
             if (needAddWidth > addbubbleViewLength) {
@@ -402,8 +415,10 @@
             _bubbleViewF = CGRectMake(CGRectGetMinX(_headImageViewF) - headToBubble - bubbleViewW - needAddWidth, cellMargin+topViewH+topViewToBubbleH+topTimeViewH+sendNickNameToBubbleSpacing, bubbleViewW + needAddWidth, 40);
             CGSize topViewSize     = CGSizeMake(cellMinW+bubblePadding*2, topViewH);
             _topViewF               = CGRectMake(CGRectGetMinX(_headImageViewF) - timeShowLength , cellMargin+topTimeViewH, topViewSize.width, topViewSize.height);
+//            _durationLabelF         = CGRectMake(CGRectGetMinX(_bubbleViewF)+ bubblePadding , cellMargin + 10+topViewH+topTimeViewH+topViewToBubbleH, 50, 20);
+//            _voiceIconF = CGRectMake(CGRectGetMaxX(_bubbleViewF) - 22, cellMargin + 10 + topViewH+topTimeViewH +topViewToBubbleH, 13, 20);// - 20
             _durationLabelF         = CGRectMake(CGRectGetMinX(_bubbleViewF)+ [TOSKitCustomInfo shareCustomInfo].chat_send_voiceLabelToBubbleLeftX , cellMargin + [TOSKitCustomInfo shareCustomInfo].chat_send_voiceLabelToBubbleTop+topViewH+topTimeViewH+topViewToBubbleH+sendNickNameToBubbleSpacing, 50, 20);
-            _voiceIconF = CGRectMake(CGRectGetMaxX(_bubbleViewF) - [TOSKitCustomInfo shareCustomInfo].chat_send_voiceImageToBubbleRightX, cellMargin + [TOSKitCustomInfo shareCustomInfo].chat_send_voiceImageToBubbleTop + topViewH+topTimeViewH +topViewToBubbleH+sendNickNameToBubbleSpacing, 13, 20);
+            _voiceIconF = CGRectMake(CGRectGetMaxX(_bubbleViewF) - [TOSKitCustomInfo shareCustomInfo].chat_send_voiceImageToBubbleRightX, cellMargin + [TOSKitCustomInfo shareCustomInfo].chat_send_voiceImageToBubbleTop + topViewH+topTimeViewH +topViewToBubbleH+sendNickNameToBubbleSpacing, 13, 20);// - 20
         }  else if ([model.message.type isEqualToString:TypeVideo]) { // 视频信息
             CGSize imageSize = CGSizeMake(model.picWidth?:150, model.picHeight?:150);
             float rateWH = (float)imageSize.width / imageSize.height;
@@ -434,28 +449,34 @@
             _picViewF              = CGRectMake(x, cellMargin+topViewH+topViewToBubbleH+topTimeViewH+sendNickNameToBubbleSpacing, imageSize.width, imageSize.height);
             
         } else if ([model.message.type isEqualToString:TypeFile]) {
-            CGSize bubbleSize = CGSizeMake(253, 95.0);
+           CGSize bubbleSize = CGSizeMake(253, 95.0);
             _bubbleViewF = CGRectMake(CGRectGetMinX(_headImageViewF)-headToBubble-bubbleSize.width, cellMargin+topViewH+topViewToBubbleH+topTimeViewH+sendNickNameToBubbleSpacing, bubbleSize.width, bubbleSize.height);
             CGSize topViewSize     = CGSizeMake(cellMinW+bubblePadding*2, topViewH);
             CGFloat x              = CGRectGetMinX(_bubbleViewF);
             _topViewF              = CGRectMake(CGRectGetMinX(_headImageViewF) - timeShowLength , cellMargin+topTimeViewH, topViewSize.width, topViewSize.height);
-            _picViewF              = CGRectMake(x, cellMargin+topViewH+topTimeViewH, bubbleSize.width, bubbleSize.height);
+            _picViewF              = CGRectMake(x, cellMargin+topViewH+topTimeViewH+sendNickNameToBubbleSpacing, bubbleSize.width, bubbleSize.height);
         } else if ([model.message.type isEqualToString:TypePicText]) {
             CGSize bubbleSize = CGSizeMake(253, 120.0);
             _bubbleViewF = CGRectMake(CGRectGetMinX(_headImageViewF)-headToBubble-bubbleSize.width, cellMargin+topViewH+topViewToBubbleH+topTimeViewH+sendNickNameToBubbleSpacing, bubbleSize.width, bubbleSize.height);
             CGSize topViewSize     = CGSizeMake(bubbleSize.width-arrowWidth, topViewH);
             CGFloat x              = CGRectGetMinX(_bubbleViewF);
             _topViewF              = CGRectMake(CGRectGetMinX(_headImageViewF) - timeShowLength , cellMargin+topTimeViewH, topViewSize.width, topViewSize.height);
-            _picViewF              = CGRectMake(x, cellMargin+topViewH+topTimeViewH, bubbleSize.width, bubbleSize.height);
+            _picViewF              = CGRectMake(x, cellMargin+topViewH+topTimeViewH+sendNickNameToBubbleSpacing, bubbleSize.width, bubbleSize.height);
         }
         CGFloat activityX = _bubbleViewF.origin.x-[TOSKitCustomInfo shareCustomInfo].resendButtonSize.width-[TOSKitCustomInfo shareCustomInfo].resendToBubblePadding;
         
         CGFloat activityY = CGRectGetCenter(_bubbleViewF).y - 10.f;
+//        if (model.message.showTime) {
+//            activityY = (_bubbleViewF.origin.y + _bubbleViewF.size.height + topTimeViewH)/2;
+//        } else {
+//            activityY = (_bubbleViewF.origin.y + _bubbleViewF.size.height)/2;
+//        }
         
         CGFloat activityW = [TOSKitCustomInfo shareCustomInfo].resendButtonSize.width;
         CGFloat activityH = [TOSKitCustomInfo shareCustomInfo].resendButtonSize.height;
         _activityF        = CGRectMake(activityX, activityY, activityW, activityH);
         _retryButtonF     = _activityF;
+    
     } else {    // 接收者
         if (![TOSKitCustomInfo shareCustomInfo].Chat_tosRobot_portrait_enable) {
             headWidth = 0;
@@ -463,7 +484,9 @@
         _headImageViewF   = CGRectMake(headToView, cellMargin+topTimeViewH, headWidth, headWidth);
         
         if ([TOSKitCustomInfo shareCustomInfo].Chat_tosRobotName_enable) {
+//            NSString * strName = [kitUtils isBlankString:model.message.senderName]?@"":model.message.senderName;
             NSString * strName = [[ICMediaManager sharedManager] getHeadNameWithUserId:model.message.from];
+            NSLog(@"机器人昵称：%@", strName);
             if (!strName.length) {
                 strName = @"客服";
             }
@@ -475,7 +498,7 @@
             topViewToBubbleH = 0;
         }
         
-        
+
         CGFloat bubbleToNameH = 5;  // 群聊接收时 名称与内容的间隔
         
         topViewH = 0;
@@ -485,6 +508,7 @@
         cellMinW = nameSize.width + 6 + timeSize.width; // 最小宽度
         if ([model.message.type isEqualToString:TypeText] ||           // 文本
             [model.message.type isEqualToString:TypeUnsupport]) { // 未知类型消息
+//            CGSize chateLabelSize = [model.message.content sizeWithMaxWidth:chatLabelMax andFont:MessageFont];
             CGSize chateLabelSize = [model.message.content sizeWithMaxWidth:chatLabelMax andFont:[TOSKitCustomInfo shareCustomInfo].chatMessage_tosRobotText_font];
             chateLabelSize.width += 2.f;
             CGSize topViewSize    = CGSizeMake(cellMinW+bubblePadding*2, topViewH);
@@ -499,6 +523,7 @@
             
             TOSMessageTextTagModel *textTagModel = (TOSMessageTextTagModel *)model.message.content;
             
+//            CGSize chateLabelSize = [textTagModel.text sizeWithMaxWidth:chatLabelMax andFont:MessageFont];
             CGSize chateLabelSize = [textTagModel.text sizeWithMaxWidth:chatLabelMax andFont:[TOSKitCustomInfo shareCustomInfo].chatMessage_tosRobotText_font];
             chateLabelSize.width += 2.f;
             CGSize topViewSize    = CGSizeMake(cellMinW+bubblePadding*2, topViewH);
@@ -527,7 +552,7 @@
                 }
             }];
             [tagCollectionView addTags:textTags];
-            
+        
             
             _bubbleViewF  = CGRectMake(CGRectGetMaxX(_headImageViewF) + headToBubble, cellMargin+topViewH+topViewToBubbleH+topTimeViewH+receiveNickNameToBubbleSpacing, bubbleSize.width, bubbleSize.height + tagCollectionView.contentSize.height);
             
@@ -581,6 +606,7 @@
                                 }
                             }];
                             
+//                            CGSize chateLabelSize = [obj.content sizeWithMaxWidth:chatLabelMax andFont:MessageFont fontDic:fontDic];
                             CGSize chateLabelSize = [obj.content sizeWithMaxWidth:chatLabelMax andFont:[TOSKitCustomInfo shareCustomInfo].chatMessage_tosRobotText_font fontDic:fontDic];
                             
                             obj.contentF = CGRectMake(0, 0, chateLabelSize.width, chateLabelSize.height);
@@ -599,6 +625,7 @@
                                 [obj.type isEqualToString:@"h5"] ||
                                 [obj.type isEqualToString:@"h6"]) {
                                 
+//                                CGSize chateLabelSize = [obj.content sizeWithMaxWidth:chatLabelMax andFont:MessageFont];
                                 CGSize chateLabelSize = [obj.content sizeWithMaxWidth:chatLabelMax andFont:[TOSKitCustomInfo shareCustomInfo].chatMessage_tosRobotText_font];
                                 
                                 obj.contentF = CGRectMake(0, 0, chateLabelSize.width, chateLabelSize.height);
@@ -615,6 +642,7 @@
                                     olChatLabelMax -= 20.f;
                                 }
                                 
+//                                CGSize chateLabelSize = [obj.content sizeWithMaxWidth:olChatLabelMax andFont:MessageFont];
                                 CGSize chateLabelSize = [obj.content sizeWithMaxWidth:olChatLabelMax andFont:[TOSKitCustomInfo shareCustomInfo].chatMessage_tosRobotText_font];
                                 
                                 obj.contentF = CGRectMake(0, 0, chateLabelSize.width, chateLabelSize.height);
@@ -649,7 +677,7 @@
                     CGSize chateLabelSize = CGSizeMake(247.f, 85.f);
                     obj.contentF = CGRectMake(0, 0.f, chateLabelSize.width, chateLabelSize.height);
                     contentHeight += chateLabelSize.height;
-                    
+
                     if (contentWidth < chateLabelSize.width) {
                         contentWidth = chateLabelSize.width;
                     }
@@ -670,9 +698,11 @@
                     
                     CGFloat titleMaxWidth = chateLabelSize.width;
                     
+//                    CGFloat titleTotalWidth = [obj.text?:@"" contentWidthWithFont:[UIFont fontWithName:@"PingFangSC-Medium" size:16.f] height:24.f];
                     CGFloat titleTotalWidth = [obj.text?:@"" sizeWithMaxWidth:chatLabelMax andFont:TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_titleFont].width;
                     CGFloat titleWidth = titleTotalWidth >= titleMaxWidth ? titleMaxWidth : titleTotalWidth;
                     
+//                    CGFloat titleTotalHeight = [obj.text?:@"" contentHeightWithFont:[UIFont fontWithName:@"PingFangSC-Medium" size:16.f] width:titleWidth];
                     CGFloat titleTotalHeight = [obj.text?:@"" sizeWithMaxWidth:chatLabelMax andFont:TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_titleFont].height;
                     
                     CGFloat titleHeight = titleTotalHeight >= 24.f ? titleTotalHeight : 24.f;
@@ -693,7 +723,17 @@
                             [obj.data enumerateObjectsUsingBlock:^(CombinationDataModel * _Nonnull dataModel, NSUInteger idx, BOOL * _Nonnull stop) {
                                 
                                 NSString *name = [NSString stringWithFormat:@"%@",dataModel.name?:@""];
+//                                CGSize labelSize = [name sizeWithMaxWidth:chateLabelSize.width andFont:[UIFont fontWithName:@"PingFangSC-Regular" size:14.f]];
                                 CGSize labelSize = [name sizeWithMaxWidth:chateLabelSize.width andFont:TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_hotSubIssueTitleFont];
+//                                if (labelSize.height <= 22.f) {
+//                                    chateLabelSize.height += 38.f;
+//                                    tableViewHeight += 38.f;
+//                                    [hotListTypeTitleH addObject:[NSNumber numberWithFloat:38.f]];
+//                                } else {
+//                                    chateLabelSize.height += 60.f;
+//                                    tableViewHeight += 60.f;
+//                                    [hotListTypeTitleH addObject:[NSNumber numberWithFloat:60.f]];
+//                                }
                                 chateLabelSize.height += labelSize.height+TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_hotSubIssusSpacing;
                                 tableViewHeight += labelSize.height+TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_hotSubIssusSpacing;
                                 [hotListTypeTitleH addObject:[NSNumber numberWithFloat:labelSize.height+TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_hotSubIssusSpacing]];
@@ -718,7 +758,17 @@
                                 
                                 NSMutableArray <NSNumber *>*itemH = [NSMutableArray array];
                                 [item enumerateObjectsUsingBlock:^(NSString * _Nonnull text, NSUInteger idx, BOOL * _Nonnull stop) {
+//                                    CGSize labelSize = [[NSString stringWithFormat:@"%ld.%@",idx+1,text] sizeWithMaxWidth:chateLabelSize.width andFont:[UIFont fontWithName:@"PingFangSC-Regular" size:14.f]];
                                     CGSize labelSize = [[NSString stringWithFormat:@"%ld.%@",idx+1,text] sizeWithMaxWidth:chateLabelSize.width andFont:TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_hotSubIssueTitleFont];
+//                                    if (labelSize.height <= 22.f) {
+//                                        chateLabelSize.height += 30.f;
+//                                        tableViewHeight += 30.f;
+//                                        [itemH addObject:[NSNumber numberWithFloat:30.f]];
+//                                    } else {
+//                                        chateLabelSize.height += 52.f;
+//                                        tableViewHeight += 52.f;
+//                                        [itemH addObject:[NSNumber numberWithFloat:52.f]];
+//                                    }
                                     chateLabelSize.height += labelSize.height+TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_hotSubIssusSpacing;
                                     tableViewHeight += labelSize.height+TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_hotSubIssusSpacing;
                                     [itemH addObject:[NSNumber numberWithFloat:labelSize.height+TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_hotSubIssusSpacing]];
@@ -729,6 +779,8 @@
                             if (!hiddenRefresh) {
                                 /// 通过文案及字体大小计算文本所占大小
                                 CGSize refreshBtnSize = [TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_showRefreshTitle sizeWithMaxWidth:chatLabelMax andFont:TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_showRefreshTitleFont];
+//                                tableViewHeight += 18.f;
+//                                chateLabelSize.height += 18.f;//换一换按钮高度
                                 tableViewHeight += refreshBtnSize.height;
                                 chateLabelSize.height += refreshBtnSize.height;//换一换按钮高度
                             }
@@ -757,11 +809,12 @@
                                     * stop = YES;
                                 }
                             }];
-                            chateLabelSize.height += MAX(segmentHeight, 29.0);
+                            chateLabelSize.height += MAX(segmentHeight, 29.0);//segmentC 固定高度 29.f;
+//                            chateLabelSize.height += 29.f;//segmentC 固定高度 29.f;
                             CombinationDataModel *dataObj = obj.data[obj.selectData?:0];
                             
                             item = [self getSubIssueItem:dataObj.topics
-                                              selectPage:dataObj.selectPageData];
+                                              selectPage:dataObj.selectPageData];//obj.selectPageData];
                             
                             if (dataObj.topics.count <= TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_showRefreshNumber) {
                                 hiddenRefresh = YES;
@@ -772,7 +825,17 @@
                         
                         NSMutableArray <NSNumber *>*itemH = [NSMutableArray array];
                         [item enumerateObjectsUsingBlock:^(NSString * _Nonnull text, NSUInteger idx, BOOL * _Nonnull stop) {
+//                            CGSize labelSize = [[NSString stringWithFormat:@"%ld.%@",idx+1,text] sizeWithMaxWidth:chateLabelSize.width andFont:[UIFont fontWithName:@"PingFangSC-Regular" size:14.0]];
                             CGSize labelSize = [[NSString stringWithFormat:@"%ld.%@",idx+1,text] sizeWithMaxWidth:chateLabelSize.width andFont:TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_hotSubIssueTitleFont];
+//                            if (labelSize.height <= 22.f) {
+//                                chateLabelSize.height += 38.f;
+//                                tableViewHeight += 38.f;
+//                                [itemH addObject:[NSNumber numberWithFloat:38.f]];
+//                            } else {
+//                                chateLabelSize.height += 60.f;
+//                                tableViewHeight += 60.f;
+//                                [itemH addObject:[NSNumber numberWithFloat:60.f]];
+//                            }
                             chateLabelSize.height += labelSize.height+TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_hotSubIssusSpacing;
                             tableViewHeight += labelSize.height+TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_hotSubIssusSpacing;
                             [itemH addObject:[NSNumber numberWithFloat:labelSize.height+TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_hotSubIssusSpacing]];
@@ -788,6 +851,7 @@
                             CGSize refreshBtnSize = [TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_showRefreshTitle sizeWithMaxWidth:chatLabelMax andFont:TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_showRefreshTitleFont];
                             _refreshBtnY = chateLabelSize.height;
                             _refreshIconY = chateLabelSize.height + 2.f;
+//                            chateLabelSize.height += 18.f;//换一换按钮高度
                             chateLabelSize.height += refreshBtnSize.height;
                         }
                     }
@@ -824,7 +888,7 @@
             if (repliedMessage &&
                 [repliedMessage isKindOfClass:[RepliedMessageModel class]] &&
                 (![kitUtils isBlankString:repliedMessage.content] ||
-                 ![kitUtils isBlankString:repliedMessage.fileKey])) {
+                ![kitUtils isBlankString:repliedMessage.fileKey])) {
                 richContentWidth = chatLabelMax;
                 
                 repliedMessageY += 47.f;
@@ -888,6 +952,7 @@
                         }
                     }];
                     
+//                    CGSize chateLabelSize = [obj.content sizeWithMaxWidth:chatLabelMax andFont:MessageFont fontDic:fontDic];
                     CGSize chateLabelSize = [obj.content sizeWithMaxWidth:chatLabelMax andFont:TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotText_font fontDic:fontDic];
                     
                     obj.contentF = CGRectMake(0, 0, chateLabelSize.width, chateLabelSize.height);
@@ -906,6 +971,7 @@
                         [obj.type isEqualToString:@"h5"] ||
                         [obj.type isEqualToString:@"h6"]) {
                         
+//                        CGSize chateLabelSize = [obj.content sizeWithMaxWidth:chatLabelMax andFont:MessageFont];
                         CGSize chateLabelSize = [obj.content sizeWithMaxWidth:chatLabelMax andFont:TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotText_font];
                         
                         obj.contentF = CGRectMake(0, 0, chateLabelSize.width, chateLabelSize.height);
@@ -922,6 +988,7 @@
                             olChatLabelMax -= 20.f;
                         }
                         
+//                        CGSize chateLabelSize = [obj.content sizeWithMaxWidth:olChatLabelMax andFont:MessageFont];
                         CGSize chateLabelSize = [obj.content sizeWithMaxWidth:olChatLabelMax andFont:TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotText_font];
                         
                         obj.contentF = CGRectMake(0, 0, chateLabelSize.width, chateLabelSize.height);
@@ -1028,7 +1095,7 @@
             CGFloat titleH = 35.f;
             CGFloat subTitleTopSpace = 0.f;
             if (![kitUtils isBlankString:cardMessgae.subTitle]) {
-                
+
                 CGSize subTitleSize = [cardMessgae.subTitle sizeWithMaxWidth:chatLabelMax andFont:[UIFont fontWithName:@"PingFangSC-Medium" size:12.0]];
                 if (subTitleSize.height > 20.f) {
                     titleH = 35.f;
@@ -1209,7 +1276,7 @@
             _smallProgram_copyBtnF = CGRectMake(chateLabelSize.width + bubblePadding * 2 + arrowWidth - 65.f, CGRectGetMaxY(_smallProgram_lineF) + 4.f, 55.f, 18.f);
             
             
-            chateLabelSize.height = CGRectGetMaxY(_smallProgram_copyBtnF);
+            chateLabelSize.height = CGRectGetMaxY(_smallProgram_copyBtnF);            
             CGSize topViewSize    = CGSizeMake(cellMinW+bubblePadding*2, topViewH);
             CGSize bubbleSize = CGSizeMake(chateLabelSize.width + bubblePadding * 2 + arrowWidth, chateLabelSize.height + 4.f);
             
@@ -1237,6 +1304,8 @@
                 _topViewF     = CGRectMake(CGRectGetMinX(_bubbleViewF), cellMargin+topTimeViewH, topViewSize.width, topViewSize.height);
                 _chatLabelF   = CGRectMake(x, CGRectGetMinY(_bubbleViewF) + (bubbleSize.height -chateLabelSize.height) / 2, chateLabelSize.width, chateLabelSize.height);
                 
+                
+//                _custFilePictureF         = CGRectMake(CGRectGetMinX(_bubbleViewF) + 160.f, CGRectGetMinY(_bubbleViewF) + 8.f, 32.f, 32.f);
                 _custFilePictureF         = CGRectMake(x, CGRectGetMinY(_bubbleViewF) + 8.f, 32.f, 32.f);
                 
                 CGFloat custFileTypeDescY = CGRectGetMinY(_bubbleViewF) + 12.0f;
@@ -1245,10 +1314,11 @@
                 
                 _custFileNameF = CGRectMake(x, CGRectGetMaxY(_custFileTypeDescF) + 3.f, custFileTypeDescW, 17.f);
                 
+//                _custFileTimeF = CGRectMake(x, CGRectGetMaxY(_custFileNameF) + 11.f, custFileTypeDescW, 16.f);
                 _custFileTimeF = CGRectMake(CGRectGetMinX(_custFileTypeDescF), CGRectGetMaxY(_custFileTypeDescF) + 5.f, custFileTypeDescW, 16.f);
                 
                 _aduitRejectedViewF  = CGRectMake(CGRectGetMinX(_bubbleViewF), CGRectGetMaxY(_custFileTypeDescF) + 12.0f, bubbleSize.width, 36.f);
-                
+
             }
         } else if ([model.message.type isEqualToString:TypeCustom]) { // 自定义消息
             if (model.message.content) {
@@ -1318,7 +1388,7 @@
             _bubbleViewF           = CGRectMake(bubbleX, cellMargin+topViewH+topViewToBubbleH+topTimeViewH+bubbleToNameH+receiveNickNameToBubbleSpacing, bubbleSize.width, bubbleSize.height);
             CGFloat x              = CGRectGetMinX(_bubbleViewF);
             _topViewF              = CGRectMake(x, cellMargin+topTimeViewH, topViewSize.width, topViewSize.height);
-            _picViewF              = CGRectMake(x, cellMargin+topViewH+topTimeViewH+bubbleToNameH + topViewToBubbleH, imageSize.width, imageSize.height);
+            _picViewF              = CGRectMake(x, cellMargin+topViewH+topTimeViewH+bubbleToNameH + topViewToBubbleH+topTimeViewH+bubbleToNameH+receiveNickNameToBubbleSpacing, imageSize.width, imageSize.height);
             
             CGSize chateLabelSize = [@"待审核" sizeWithMaxWidth:chatLabelMax andFont:MessageFont12];
             _aduitStatusViewF      = CGRectMake(x + bubbleSize.width, topViewH+bubbleSize.height-chateLabelSize.height+topTimeViewH, chateLabelSize.width+bubblePadding, chateLabelSize.height+bubblePadding);
@@ -1332,6 +1402,7 @@
             _bubbleViewF.size.height = _bubbleViewF.size.height +chateLabelSize2.height+bubblePadding;
         } else if ([model.message.type isEqualToString:TypeVoice]) {   // 语音
             CGFloat bubbleViewW = voiceMinW + 20; // 加上一个红点的宽度
+//            CGFloat bubbleViewW = 100 + 20; // 加上一个红点的宽度
             CGFloat voiceToBull = 4;
             long addbubbleViewLength = APP_WIDTH - CGRectGetMaxX(_headImageViewF) * 2 - voiceMinW; // 追增长度最大值
             long needAddWidth = 5 * [model.message.voiceDuration longValue] / 1000;
@@ -1371,8 +1442,18 @@
             CGSize topViewSize     = CGSizeMake(imageSize.width-arrowWidth, topViewH);
             CGFloat x              = CGRectGetMinX(_bubbleViewF);
             _topViewF              = CGRectMake(CGRectGetMinX(_bubbleViewF), cellMargin+topTimeViewH, topViewSize.width, topViewSize.height);
-            _picViewF              = CGRectMake(x, cellMargin+topViewH+topViewToBubbleH+topTimeViewH+bubbleToNameH, imageSize.width, imageSize.height);
-            _bubbleViewF.size.height = _bubbleViewF.size.height;
+            _picViewF              = CGRectMake(x, cellMargin+topViewH+topViewToBubbleH+topTimeViewH+bubbleToNameH+receiveNickNameToBubbleSpacing, imageSize.width, imageSize.height);
+            
+//            CGSize chateLabelSize = [@"待审核" sizeWithMaxWidth:chatLabelMax andFont:MessageFont12];
+//            _aduitStatusViewF      = CGRectMake(x + bubbleSize.width, topViewH+bubbleSize.height-chateLabelSize.height+topTimeViewH, chateLabelSize.width+bubblePadding, chateLabelSize.height+bubblePadding);
+            
+            // 审核操作
+//            CGSize chateLabelSize2 = [@"不合格  通过" sizeWithMaxWidth:chatLabelMax andFont:MessageFont12];
+//            CGRect auditOpVF     = CGRectMake(x + bubbleSize.width/2 - chateLabelSize2.width/2-bubblePadding, topViewH+bubbleSize.height+bubblePadding*2+topTimeViewH, chateLabelSize2.width+bubblePadding*2, chateLabelSize2.height+bubblePadding);
+//            _aduitRejectedViewF = auditOpVF;
+//            _aduitRejectedViewF.size.width = auditOpVF.size.width/2;
+//            _aduitApprovedViewF = CGRectMake(auditOpVF.origin.x+auditOpVF.size.width/2, auditOpVF.origin.y, auditOpVF.size.width/2, auditOpVF.size.height);
+            _bubbleViewF.size.height = _bubbleViewF.size.height;//+chateLabelSize2.height+ bubblePadding
             
         } else if ([model.message.type isEqualToString:TypeSystem]) {
             if (![kitUtils isBlankString:model.message.content]) {
@@ -1385,36 +1466,53 @@
             CGSize topViewSize     = CGSizeMake(bubbleSize.width-arrowWidth, topViewH);
             CGFloat x              = CGRectGetMinX(_bubbleViewF);
             _topViewF              = CGRectMake(CGRectGetMinX(_bubbleViewF), cellMargin, topViewSize.width, topViewSize.height);
-            _picViewF              = CGRectMake(x, cellMargin+topViewH, bubbleSize.width, bubbleSize.height);
+            _picViewF              = CGRectMake(x, cellMargin+topViewH+topViewToBubbleH+receiveNickNameToBubbleSpacing, bubbleSize.width, bubbleSize.height);
         } else if ([model.message.type isEqualToString:TypePicText]) {
             CGSize bubbleSize = CGSizeMake(253, 120.0);
             _bubbleViewF = CGRectMake(CGRectGetMaxX(_headImageViewF)+headToBubble, cellMargin+topViewH+topViewToBubbleH+receiveNickNameToBubbleSpacing, bubbleSize.width, bubbleSize.height);
             CGSize topViewSize     = CGSizeMake(bubbleSize.width-arrowWidth, topViewH);
             CGFloat x              = CGRectGetMinX(_bubbleViewF);
             _topViewF              = CGRectMake(CGRectGetMinX(_bubbleViewF), cellMargin, topViewSize.width, topViewSize.height);
-            _picViewF              = CGRectMake(x, cellMargin+topViewH, bubbleSize.width, bubbleSize.height);
+            _picViewF              = CGRectMake(x, cellMargin+topViewH+topViewToBubbleH+receiveNickNameToBubbleSpacing, bubbleSize.width, bubbleSize.height);
         }else if ([model.message.type isEqualToString:TypeRobotCombination]) {//机器人组合消息
             
+//            CGSize chateLabelSize = [model.combinationTitle sizeWithMaxWidth:chatLabelMax andFont:MessageFont];
+//            CGSize chateSubLabelSize = [model.combinationSubTitle sizeWithMaxWidth:chatLabelMax andFont:MessageFont];
             CGSize chateLabelSize = [model.combinationTitle sizeWithMaxWidth:chatLabelMax andFont:TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_titleFont];
             CGSize chateSubLabelSize = [model.combinationSubTitle sizeWithMaxWidth:chatLabelMax andFont:TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_subTitleFont];
+//            CGFloat moreHeight = 10;
+//            CGFloat textWidth = chatLabelMax;
+//            if (model.combinationNum == 0) {
+//                moreHeight = 0;
+//                textWidth = chateLabelSize.width;
+//            }
             CGSize bubbleSize = CGSizeMake(chatLabelMax + bubblePadding * 2 + arrowWidth, chateLabelSize.height+chateSubLabelSize.height+30.f*model.combinationNum + bubblePadding * 2 + 10);
             _bubbleViewF  = CGRectMake(CGRectGetMaxX(_headImageViewF) + headToBubble, cellMargin+topViewH+topViewToBubbleH+topTimeViewH+bubbleToNameH+receiveNickNameToBubbleSpacing, bubbleSize.width, bubbleSize.height);
             CGFloat x = CGRectGetMinX(_bubbleViewF) + bubblePadding + arrowWidth;
             _custShareTitleF = CGRectMake(x, CGRectGetMinY(_bubbleViewF) + 10, chatLabelMax, chateLabelSize.height);
             _custTitleF = CGRectMake(x, CGRectGetMinY(_bubbleViewF)+chateLabelSize.height +20, chatLabelMax, chateSubLabelSize.height);
             _custContentF = CGRectMake(x, CGRectGetMinY(_bubbleViewF)  + chateLabelSize.height +chateSubLabelSize.height +20, chatLabelMax, 30.f*model.combinationNum);
-            
+    
         }else if ([model.message.type isEqualToString:TypeRobotCombinationList]) {//机器人组合消息
             
+            
+//            CGSize chateLabelSize = [model.combinationTitle sizeWithMaxWidth:chatLabelMax andFont:MessageFont];
+//            CGSize chateSubLabelSize = [model.combinationSubTitle sizeWithMaxWidth:chatLabelMax andFont:MessageFont];
             CGSize chateLabelSize = [model.combinationTitle sizeWithMaxWidth:chatLabelMax andFont:TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_titleFont];
             CGSize chateSubLabelSize = [model.combinationSubTitle sizeWithMaxWidth:chatLabelMax andFont:TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_subTitleFont];
+//            CGFloat moreHeight = 10;
+//            CGFloat textWidth = chatLabelMax;
+//            if (model.combinationNum == 0) {
+//                moreHeight = 0;
+//                textWidth = chateLabelSize.width;
+//            }
             CGSize bubbleSize = CGSizeMake(chatLabelMax + bubblePadding * 2 + arrowWidth, chateLabelSize.height+chateSubLabelSize.height+30.f*model.combinationNum + bubblePadding * 2 + 10);
             _bubbleViewF  = CGRectMake(CGRectGetMaxX(_headImageViewF) + headToBubble, cellMargin+topViewH+topViewToBubbleH+topTimeViewH+bubbleToNameH+receiveNickNameToBubbleSpacing, bubbleSize.width, bubbleSize.height);
             CGFloat x = CGRectGetMinX(_bubbleViewF) + bubblePadding + arrowWidth;
             _custShareTitleF = CGRectMake(x, CGRectGetMinY(_bubbleViewF) + 10, chatLabelMax, chateLabelSize.height);
             _custTitleF = CGRectMake(x, CGRectGetMinY(_bubbleViewF)+chateLabelSize.height +20, chatLabelMax, chateSubLabelSize.height);
             _custContentF = CGRectMake(x, CGRectGetMinY(_bubbleViewF)  + chateLabelSize.height +chateSubLabelSize.height +20, chatLabelMax, 30.f*model.combinationNum);
-            
+    
         }else if ([model.message.type isEqualToString:TypeRobotSelectCombination]) {//机器人组合消息20
             
             CGSize titleHeightSize = [model.combinationTitle sizeWithMaxWidth:chatLabelMax andFont:MessageFont];
@@ -1428,7 +1526,7 @@
             _custShareTitleF = CGRectMake(x, CGRectGetMinY(_bubbleViewF) + customPadding, chateLabelSize.width, titleHeight);
             _custContentF = CGRectMake(x, CGRectGetMinY(_bubbleViewF) + customPadding + titleHeight+ 10.f , chateLabelSize.width, 30.f*(model.combinationNum+2));
         }else if ([model.message.type isEqualToString:TypeRobotWelcome]) {//机器人欢迎消息
-            
+                        
             CGSize htmlWebSize = CGSizeMake(240.f, 440.f);
             
             CGSize bubbleSize = CGSizeMake(htmlWebSize.width + bubblePadding * 2 + arrowWidth, htmlWebSize.height + bubblePadding * 2);
@@ -1520,6 +1618,8 @@
     }
     _cellHight = MAX(CGRectGetMaxY(_bubbleViewF), CGRectGetMaxY(_headImageViewF)) + cellMargin;
     if ([model.message.type isEqualToString:TypeSystem]) {
+//        CGSize size           = [model.message.content sizeWithMaxWidth:[UIScreen mainScreen].bounds.size.width-40 andFont:[UIFont systemFontOfSize:11.0]];
+//        _cellHight = size.height+10;
         CGFloat edgeinset = [TOSKitCustomInfo shareCustomInfo].chatMessage_system_edgeInsets.left+[TOSKitCustomInfo shareCustomInfo].chatMessage_system_edgeInsets.right + [TOSKitCustomInfo shareCustomInfo].chatMessage_system_labelTextEdgeInsets.left + [TOSKitCustomInfo shareCustomInfo].chatMessage_system_labelTextEdgeInsets.right;
         CGSize size = [model.message.content sizeWithMaxWidth:[UIScreen mainScreen].bounds.size.width - edgeinset andFont:[TOSKitCustomInfo shareCustomInfo].chatMessage_system_textFont];
         _cellHight = size.height + [TOSKitCustomInfo shareCustomInfo].chatMessage_system_edgeInsets.top+[TOSKitCustomInfo shareCustomInfo].chatMessage_system_edgeInsets.bottom + [TOSKitCustomInfo shareCustomInfo].chatMessage_system_labelTextEdgeInsets.top + [TOSKitCustomInfo shareCustomInfo].chatMessage_system_labelTextEdgeInsets.bottom;
@@ -1537,14 +1637,30 @@
     }
     
     if (model.isSender) {
+//        if (model.message.from containsString:@"customer-") {
+            
+//        if (1) {
         if ([model.message.from containsString:@"customer"] == NO) {
+
+            //如果要展示已读未读状态
+            TIMKitLog(@"如果要展示已读未读状态,计算frame");
+            //仿钉钉布局
+//            _cellHight = _cellHight + unreadLabelH;
+//            if (_bubbleViewF.size.width >= unreadLabelWidth) {
+//
+//                _unReadLabelF = CGRectMake(_bubbleViewF.origin.x, _cellHight - unreadLabelH - 5, _bubbleViewF.size.width, unreadLabelH);
+//            }else{
+//
+//                CGFloat minusWidth = unreadLabelWidth - _bubbleViewF.size.width;
+//                _unReadLabelF = CGRectMake(_bubbleViewF.origin.x - minusWidth, _cellHight - unreadLabelH - 5, _bubbleViewF.size.width + minusWidth, unreadLabelH);
+//            }
             
             //仿拼多多布局
             _unReadLabelF = CGRectMake(_bubbleViewF.origin.x - unreadLabelWidth, _bubbleViewF.origin.y + _bubbleViewF.size.height - unreadLabelH, unreadLabelWidth, unreadLabelH);
-            
+
         }
     }
-    
+        
 }
 
 /// 获取当前页的子问题
@@ -1563,7 +1679,7 @@
         return items;
     }
 }
-
+    
 // 缩放，临时的方法
 - (CGSize)handleImage:(CGSize)retSize
 {
@@ -1593,15 +1709,15 @@
 /// @param cellMargin cellMargin
 /// @param timeShowLength timeShowLength
 - (void)revokeMessageFrameWithModel:(TIMMessageModel *)model
-                      bubblePadding:(CGFloat)bubblePadding
-                           cellMinW:(CGFloat)cellMinW
-                           topViewH:(CGFloat)topViewH
-                       headToBubble:(CGFloat)headToBubble
-                       topTimeViewH:(CGFloat)topTimeViewH
-                         arrowWidth:(CGFloat)arrowWidth
-                   topViewToBubbleH:(CGFloat)topViewToBubbleH
-                         cellMargin:(CGFloat)cellMargin
-                     timeShowLength:(CGFloat)timeShowLength {
+    bubblePadding:(CGFloat)bubblePadding
+         cellMinW:(CGFloat)cellMinW
+         topViewH:(CGFloat)topViewH
+     headToBubble:(CGFloat)headToBubble
+     topTimeViewH:(CGFloat)topTimeViewH
+       arrowWidth:(CGFloat)arrowWidth
+ topViewToBubbleH:(CGFloat)topViewToBubbleH
+       cellMargin:(CGFloat)cellMargin
+   timeShowLength:(CGFloat)timeShowLength {
     /// 昵称和气泡的间距
     CGFloat sendNickNameToBubbleSpacing = 0.0f;
     
@@ -1619,15 +1735,15 @@
 }
 
 - (void)queueMessageFrameWithModel:(TIMMessageModel *)model
-                     bubblePadding:(CGFloat)bubblePadding
-                          cellMinW:(CGFloat)cellMinW
-                          topViewH:(CGFloat)topViewH
-                      headToBubble:(CGFloat)headToBubble
-                      topTimeViewH:(CGFloat)topTimeViewH
-                        arrowWidth:(CGFloat)arrowWidth
-                  topViewToBubbleH:(CGFloat)topViewToBubbleH
-                        cellMargin:(CGFloat)cellMargin
-                    timeShowLength:(CGFloat)timeShowLength {
+    bubblePadding:(CGFloat)bubblePadding
+         cellMinW:(CGFloat)cellMinW
+         topViewH:(CGFloat)topViewH
+     headToBubble:(CGFloat)headToBubble
+     topTimeViewH:(CGFloat)topTimeViewH
+       arrowWidth:(CGFloat)arrowWidth
+ topViewToBubbleH:(CGFloat)topViewToBubbleH
+       cellMargin:(CGFloat)cellMargin
+   timeShowLength:(CGFloat)timeShowLength {
     /// 昵称和气泡的间距
     CGFloat sendNickNameToBubbleSpacing = [TOSKitCustomInfo shareCustomInfo].Chat_visitorName_enable ? [TOSKitCustomInfo shareCustomInfo].nickNameToBubbleSpacing : 0.0f;
     
@@ -1646,6 +1762,7 @@
     
     _custTitleF = CGRectMake(0, CGRectGetMinY(_bubbleViewF), 50, 22.f);
     _custTitleF.origin.x = (APP_WIDTH - chatWidth)/2 + chatWidth-15;
+
 }
 
 /// 客户搜索模块，设置标签样式

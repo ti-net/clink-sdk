@@ -140,7 +140,7 @@
 {
     if (nil == _midLine) {
         _midLine = [[UIView alloc] init];
-        _midLine.height = 1.0f;
+        _midLine.tosSD_height = 1.0f;
         _midLine.backgroundColor = [UIColor grayColor];
         _midLine.alpha = 1.0;
     }

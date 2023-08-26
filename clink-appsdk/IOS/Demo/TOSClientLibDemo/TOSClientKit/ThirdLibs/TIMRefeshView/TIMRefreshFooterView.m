@@ -33,7 +33,7 @@
     
     self.activityIndicatorView.hidden = YES;
     _originalScrollViewContentHeight = self.scrollView.contentSize.height;
-    self.center = CGPointMake(self.scrollView.width * 0.5, self.scrollView.contentSize.height + self.height * 0.5); // + self.scrollView.contentInset.bottom
+    self.center = CGPointMake(self.scrollView.tosSD_width * 0.5, self.scrollView.contentSize.height + self.tosSD_height * 0.5); // + self.scrollView.contentInset.bottom
     
     self.hidden = [self shouldHide];
 }
@@ -41,15 +41,15 @@
 - (void)didMoveToSuperview
 {
     [super didMoveToSuperview];
-    self.scrollViewEdgeInsets = UIEdgeInsetsMake(0, 0, self.height, 0);
+    self.scrollViewEdgeInsets = UIEdgeInsetsMake(0, 0, self.tosSD_height, 0);
 }
 
 - (BOOL)shouldHide
 {
     if (self.isEffectedByNavigationController) {
-        return (self.scrollView.bounds.size.height - SDKNavigationBarHeight > self.y); //  + self.scrollView.contentInset.bottom
+        return (self.scrollView.bounds.size.height - SDKNavigationBarHeight > self.tosSD_y); //  + self.scrollView.contentInset.bottom
     }
-    return (self.scrollView.bounds.size.height> self.y); // + self.scrollView.contentInset.bottom
+    return (self.scrollView.bounds.size.height> self.tosSD_y); // + self.scrollView.contentInset.bottom
 }
 
 
@@ -58,7 +58,7 @@
     if (![keyPath isEqualToString:TIMRefreshViewObservingkeyPath] || self.refreshState == TIMRefreshViewStateRefreshing) return;
     
     CGFloat y = [change[@"new"] CGPointValue].y;
-    CGFloat criticalY = self.scrollView.contentSize.height - self.scrollView.height + self.height + self.scrollView.contentInset.bottom;
+    CGFloat criticalY = self.scrollView.contentSize.height - self.scrollView.tosSD_height + self.tosSD_height + self.scrollView.contentInset.bottom;
     
     // 如果scrollView内容有增减，重新调整refreshFooter位置
     if (self.scrollView.contentSize.height != _originalScrollViewContentHeight) {

@@ -133,6 +133,16 @@ TIMKit核心类
 */
 - (void)connect:(TOSConnectOption *)option success:(void (^)(void))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock tokenIncorrect:(void (^)(void))tokenIncorrectBlock;
 
+/// 关闭会话事件
+/// @param successBlock 成功
+/// @param errorBlock 失败
+- (void)closeSession:(void (^)(void))successBlock
+               error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
+
+/// 设置附加参数
+/// @param advanceParams 附加参数
+- (void)setAdvanceParams:(NSDictionary *)advanceParams;
+
 /**
  断开与TIM服务器的链接
  

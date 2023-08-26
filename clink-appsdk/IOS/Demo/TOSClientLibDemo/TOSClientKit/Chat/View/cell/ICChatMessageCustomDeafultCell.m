@@ -169,7 +169,7 @@ static CGFloat PaddingLength = 3.0f;
 {
     if (nil == _midLine) {
         _midLine = [[UIView alloc] init];
-        _midLine.height = 1.0f;
+        _midLine.tosSD_height = 1.0f;
         _midLine.backgroundColor = [UIColor grayColor];
         _midLine.alpha = 1.0;
 //        _midLine.frame = CGRectMake(_shareTitleLabel.origin.x, _shareTitleLabel.origin.y + PaddingLength, _shareTitleLabel.size.width, 1.0f);

@@ -36,8 +36,8 @@
 {
     [super layoutSubviews];
     
-    self.nameLabel.x       = 3;
-    self.nameLabel.centerY = self.height * 0.5;
+    self.nameLabel.tosSD_x       = 3;
+    self.nameLabel.tosSD_centerY = self.tosSD_height * 0.5;
 //    _nameLabel.width       = 200;//58;
     [self.nameLabel sizeToFit];
 

@@ -80,11 +80,11 @@
     CGSize size           = [messageF.model.message.content sizeWithMaxWidth:[UIScreen mainScreen].bounds.size.width - edgeInset andFont:[TOSKitCustomInfo shareCustomInfo].chatMessage_system_textFont];
     
     if ([TOSKitCustomInfo shareCustomInfo].chatMessage_system_center) {
-        self.contentLabel.height = (int)size.height+[TOSKitCustomInfo shareCustomInfo].chatMessage_system_labelTextEdgeInsets.top+[TOSKitCustomInfo shareCustomInfo].chatMessage_system_labelTextEdgeInsets.bottom;
-        self.contentLabel.width  = (int)size.width+[TOSKitCustomInfo shareCustomInfo].chatMessage_system_labelTextEdgeInsets.left+[TOSKitCustomInfo shareCustomInfo].chatMessage_system_labelTextEdgeInsets.right;// 这个地方不强制转换会有问题
+        self.contentLabel.tos_height = (int)size.height+[TOSKitCustomInfo shareCustomInfo].chatMessage_system_labelTextEdgeInsets.top+[TOSKitCustomInfo shareCustomInfo].chatMessage_system_labelTextEdgeInsets.bottom;
+        self.contentLabel.tos_width  = (int)size.width+[TOSKitCustomInfo shareCustomInfo].chatMessage_system_labelTextEdgeInsets.left+[TOSKitCustomInfo shareCustomInfo].chatMessage_system_labelTextEdgeInsets.right;// 这个地方不强制转换会有问题
 //        self.contentLabel.center = CGPointMake(width*0.5, (size.height+10)*0.5);
         self.contentLabel.centerX = width*0.5;
-        self.contentLabel.centerY = (self.contentLabel.height + [TOSKitCustomInfo shareCustomInfo].chatMessage_system_edgeInsets.top + [TOSKitCustomInfo shareCustomInfo].chatMessage_system_edgeInsets.bottom) * 0.5;
+        self.contentLabel.centerY = (self.contentLabel.tos_height + [TOSKitCustomInfo shareCustomInfo].chatMessage_system_edgeInsets.top + [TOSKitCustomInfo shareCustomInfo].chatMessage_system_edgeInsets.bottom) * 0.5;
     }
     else {
         self.contentLabel.frame = CGRectMake([TOSKitCustomInfo shareCustomInfo].chatMessage_system_edgeInsets.left, [TOSKitCustomInfo shareCustomInfo].chatMessage_system_edgeInsets.top, (int)size.width+[TOSKitCustomInfo shareCustomInfo].chatMessage_system_labelTextEdgeInsets.left+[TOSKitCustomInfo shareCustomInfo].chatMessage_system_labelTextEdgeInsets.right, (int)size.height+[TOSKitCustomInfo shareCustomInfo].chatMessage_system_labelTextEdgeInsets.top+[TOSKitCustomInfo shareCustomInfo].chatMessage_system_labelTextEdgeInsets.bottom);
