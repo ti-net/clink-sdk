@@ -90,6 +90,10 @@ typedef NS_ENUM(NSUInteger, TinetClickTextMessageEventType) {
 /// 发送商品卡片消息
 - (void)sendCard:(TOSClientKitCommodityCardOption *)userInfo;
 
+/// 发送文本消息
+- (void)sendText:(NSString *)text;
+
+
 /// 重写返回事件，是否弹出满意度弹窗
 - (void)investigationAlert;
 

@@ -3615,6 +3615,13 @@ static const NSInteger kMaxImageDataRequest = 50;
     
 }
 
+/// 发送文本消息
+- (void)sendText:(NSString *)text {
+    
+    [self sendTextMessagewithText:text knowledge:@""];
+    
+}
+
 // 路由响应
 - (void)routerEventWithName:(NSString *)eventName
                    userInfo:(NSDictionary *)userInfo
