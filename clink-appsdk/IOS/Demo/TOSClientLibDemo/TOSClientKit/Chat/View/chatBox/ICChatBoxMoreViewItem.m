@@ -56,9 +56,9 @@
     [super setFrame:frame];
     
     float w = 56;//59;
-    [self.button setFrame:CGRectMake((self.width - w) / 2, 0, w, w)];
-    [self.titleLabel setFrame:CGRectMake(-5, self.button.height + 12.f, self.width + 20.f, 15)];
-    self.titleLabel.centerX = self.width/2;
+    [self.button setFrame:CGRectMake((self.tosSD_width - w) / 2, 0, w, w)];
+    [self.titleLabel setFrame:CGRectMake(-5, self.button.tosSD_height + 12.f, self.tosSD_width + 20.f, 15)];
+    self.titleLabel.tosSD_centerX = self.tosSD_width/2;
 }
 
 #pragma mark - Public Method

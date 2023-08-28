@@ -55,7 +55,7 @@
 {
 
 //    self.recordBtn.frame = CGRectMake(0, self.height-20-70, 70, 70);
-    self.recordBtn.centerX = self.centerX;
+    self.recordBtn.tosSD_centerX = self.tosSD_centerX;
 
     UIButton *exitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self addSubview:exitBtn];
@@ -70,7 +70,7 @@
     [exitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [exitBtn addTarget:self action:@selector(exit) forControlEvents:UIControlEventTouchUpInside];
     
-    self.videoLayerView.frame = CGRectMake(0, 10, App_Frame_Width,self.recordBtn.top-20-10);
+    self.videoLayerView.frame = CGRectMake(0, 10, App_Frame_Width,self.recordBtn.tosSD_top-20-10);
     
     // 占位图片,现写成label
     UILabel *label = [[UILabel alloc] init];
@@ -104,12 +104,12 @@
 - (void)recordVideoStarted
 {
     self.recordBtn.hidden = YES;
-    self.timeLine.frame = CGRectMake(0,self.videoLayerView.bottom , App_Frame_Width, 1);
+    self.timeLine.frame = CGRectMake(0,self.videoLayerView.tosSD_bottom , App_Frame_Width, 1);
     _startDate = [NSDate date];
     self.timeLine.hidden = NO;
     self.promptLabel.hidden = NO;
     [UIView animateWithDuration:kDurationTime animations:^{
-        self->_timeLine.frame = CGRectMake(self->_timeLine.centerX, self->_timeLine.top, 0, 1);
+        self->_timeLine.frame = CGRectMake(self->_timeLine.tosSD_centerX, self->_timeLine.tosSD_top, 0, 1);
     } completion:^(BOOL finished) {
         
     }];
@@ -164,9 +164,9 @@
 - (void)setTimeLineAndPromptView
 {
     self.promptLabel.text = @"↑上移取消";
-    self.promptLabel.bottom = self.timeLine.bottom-40;
+    self.promptLabel.tosSD_bottom = self.timeLine.tosSD_bottom-40;
     [self.promptLabel sizeToFit];
-    self.promptLabel.center = CGPointMake(self.width*0.5, _promptLabel.centerY);
+    self.promptLabel.center = CGPointMake(self.tosSD_width*0.5, _promptLabel.tosSD_centerY);
     self.promptLabel.textColor = [UIColor greenColor];
     self.promptLabel.backgroundColor = [UIColor clearColor];
 }
@@ -195,7 +195,7 @@
 {
     CGFloat x = point.x;
     CGFloat y = point.y;
-    return (x>=self.recordBtn.left-80&&x<=self.recordBtn.right+50)&&(y<=self.recordBtn.bottom&&y>=self.recordBtn.top);
+    return (x>=self.recordBtn.tosSD_left-80&&x<=self.recordBtn.tosSD_right+50)&&(y<=self.recordBtn.tosSD_bottom&&y>=self.recordBtn.tosSD_top);
 }
 
 - (void)promptStatuesChanged:(BOOL)status
@@ -213,7 +213,7 @@
 - (BOOL)isMoveToTop:(CGPoint)point
 {
     CGFloat y = point.y;
-    return y<self.recordBtn.top-10;
+    return y<self.recordBtn.tosSD_top-10;
 }
 
 
@@ -301,7 +301,7 @@
 - (UILabel *)recordBtn
 {
     if (!_recordBtn) {
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, self.height-20-70-64, 70, 70)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, self.tosSD_height-20-70-64, 70, 70)];
         [self addSubview:label];
         _recordBtn = label;
         _recordBtn.layer.cornerRadius = 70/2.0;

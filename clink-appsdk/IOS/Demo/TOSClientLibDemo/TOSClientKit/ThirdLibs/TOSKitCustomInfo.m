@@ -181,7 +181,7 @@ static TOSKitCustomInfo *customInfo = nil;
         self.chatBox_textView_borderColor = UIColor.clearColor;
         self.chatBox_textView_borderWidth = 0.5;
         self.chatBox_textView_maxRows = 5;
-        self.ChatBox_textview_placeholder = @"买石灰街车站的海鸥 山水禽兽与年少一梦 买太平湖底陈年水墨 哥本哈根的童年传说";
+//        self.ChatBox_textview_placeholder = @"买石灰街车站的海鸥 山水禽兽与年少一梦 买太平湖底陈年水墨 哥本哈根的童年传说";
         self.chatBox_textView_placeholderMargin = 10.0f;
         self.chatBox_textview_placeholderTextColor = UIColor.grayColor;
         self.chatBox_talkText = @"按住 说话";
@@ -300,7 +300,7 @@ static TOSKitCustomInfo *customInfo = nil;
         self.chatMessage_tosRobotCombination_showRefreshTitleColor = TOSHexColor(0x4385FF);
         self.chatMessage_tosRobotCombination_showRefreshTitleFont = [UIFont fontWithName:@"PingFangSC-Regular" size:12.f];
         
-        
+        self.robotHiddenVoice = NO;
         
     });
     return customInfo;

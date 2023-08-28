@@ -35,6 +35,9 @@
         
         YYLabel *content = [[YYLabel alloc] init];
         content.tag = 60000+i;
+//        content.numberOfLines = 2;
+//        content.font = [UIFont fontWithName:@"PingFangSC-Regular" size:14.f];
+//        content.textColor = TOSHexAColor(0x262626,1.f);
         content.numberOfLines = 0;
         content.font = TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_hotSubIssueTitleFont;
         content.textColor = TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_hotSubIssueTitleColor;
@@ -75,7 +78,7 @@
     [self.dataSource enumerateObjectsUsingBlock:^(YYLabel * obj, NSUInteger idx, BOOL * _Nonnull stop) {
         @StrongObj(self);
         CGFloat height = ((NSNumber *)[itemH objectOrNilAtIndex:idx]).floatValue;
-        obj.frame = CGRectMake(0.f, y, self.width, height);
+        obj.frame = CGRectMake(0.f, y, self.tos_width, height);
         y += height;
     }];
 }

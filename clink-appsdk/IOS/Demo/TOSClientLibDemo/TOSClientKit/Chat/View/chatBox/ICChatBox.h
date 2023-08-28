@@ -97,6 +97,10 @@
 /** 输入框 */
 @property (nonatomic, strong) TOSTextView *textView;
 
+/// 是否隐藏语音按钮
+@property (nonatomic, assign) BOOL                robotHiddenVoice;
+
+
 -(void)resumeTextHeight:(BOOL)bResume;
 - (void)switchTextEditing;
 

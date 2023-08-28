@@ -50,15 +50,21 @@
 {
     _items = items;
     self.pageControl.numberOfPages = items.count / 8 + 1;
-    self.scrollView.contentSize = CGSizeMake(self.scrollView.width * (items.count / 8 + 1), _scrollView.height);
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.tosSD_width * (items.count / 8 + 1), _scrollView.tosSD_height);
+    /// 赋值前先移除之前的item
+    for (UIView * item in self.scrollView.subviews) {
+        if ([item isKindOfClass:[ICChatBoxMoreViewItem class]]) {
+            [item removeFromSuperview];
+        }
+    }
     
     float x = 24.f;
     float y = 24.f;
     float w = 56.f;
     float h = 56.f + 12.f + 20.f;
     
-    float lineSpacing = self.height - y*2 - h*2;
-    float interitemSpacing = (self.width - x*2 - w*4) / 3;
+    float lineSpacing = self.tosSD_height - y*2 - h*2;
+    float interitemSpacing = (self.tosSD_width - x*2 - w*4) / 3;
     int i = 0;
     int page = 0;
     
@@ -69,7 +75,7 @@
         [item addTarget:self action:@selector(didSelectedItem:) forControlEvents:UIControlEventTouchUpInside];
         i ++;
         page = i % 8 == 0 ? page + 1 : page;
-        x = (i % 4 ? x + w + interitemSpacing : page * self.width + 24.f);
+        x = (i % 4 ? x + w + interitemSpacing : page * self.tosSD_width + 24.f);
         y = (i % 8 < 4 ? 24.f : h + lineSpacing + 24.f);
     }
 
@@ -96,7 +102,7 @@
 
 - (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    int page = scrollView.contentOffset.x / self.width;
+    int page = scrollView.contentOffset.x / self.tosSD_width;
     [_pageControl setCurrentPage:page];
 }
 
@@ -147,7 +153,7 @@
 
 - (void)pageControlClicked:(UIPageControl *)pageControl
 {
-    [self.scrollView scrollRectToVisible:CGRectMake(pageControl.currentPage * App_Frame_Width, 0, App_Frame_Width, self.scrollView.height) animated:YES];
+    [self.scrollView scrollRectToVisible:CGRectMake(pageControl.currentPage * App_Frame_Width, 0, App_Frame_Width, self.scrollView.tosCF_height) animated:YES];
 }
 
 

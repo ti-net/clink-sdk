@@ -121,12 +121,24 @@
 //            make.width.height.mas_TIMequalTo(CHATBOX_BUTTON_WIDTH);
 //        }];
 
+        BOOL isShowVoice = YES;
+        NSLog(@"当前的会话状态：%i", TOSClientKit.sharedTOSKit.getCurrentOnlineStatus);
+        if (TOSClientKit.sharedTOSKit.getCurrentOnlineStatus == TinetChatStatusTypeRobot && TOSKitCustomInfo.shareCustomInfo.robotHiddenVoice) {
+            isShowVoice = NO;
+        }
+        
         if ([TOSKitCustomInfo shareCustomInfo].ChatBox_voiceButton_enable) {
             // 当前有语音的权限
             [self.voiceButton mas_TIMmakeTIMConstraints:^(TIMMASConstraintMaker *make) {
                 make.left.mas_TIMequalTo([TOSKitCustomInfo shareCustomInfo].chatBox_itemLeftPadding);
                 make.bottom.mas_TIMequalTo(-[TOSKitCustomInfo shareCustomInfo].chatBox_itemBottomSpacing);
-                make.width.height.mas_TIMequalTo([TOSKitCustomInfo shareCustomInfo].chatBox_Item_Width);
+                make.height.mas_TIMequalTo([TOSKitCustomInfo shareCustomInfo].chatBox_Item_Width);
+                if (isShowVoice) {
+                    make.width.mas_TIMequalTo([TOSKitCustomInfo shareCustomInfo].chatBox_Item_Width);
+                }
+                else {
+                    make.width.mas_TIMequalTo(0);
+                }
             }];
         }
         
@@ -190,7 +202,7 @@
         
         [self.textView mas_TIMmakeTIMConstraints:^(TIMMASConstraintMaker *make) {
             //CGRectMake(self.voiceButton.x + self.voiceButton.width + 4, (HEIGHT_TABBAR - CHATBOX_BUTTON_WIDTH) / 2, self.faceButton.x - self.voiceButton.x - self.voiceButton.width - 8, HEIGHT_TEXTVIEW)
-            if ([TOSKitCustomInfo shareCustomInfo].ChatBox_voiceButton_enable) {
+            if ([TOSKitCustomInfo shareCustomInfo].ChatBox_voiceButton_enable || isShowVoice) {
                 make.left.equalTo(self.voiceButton.mas_TIMright).offset([TOSKitCustomInfo shareCustomInfo].chatBox_itemSpacing);
             } else {
                 make.left.mas_TIMequalTo([TOSKitCustomInfo shareCustomInfo].chatBox_itemLeftPadding);
@@ -247,6 +259,28 @@
 
 #pragma mark - Getter and Setter
 
+- (void)setRobotHiddenVoice:(BOOL)robotHiddenVoice {
+    _robotHiddenVoice = robotHiddenVoice;
+    
+    if (TOSKitCustomInfo.shareCustomInfo.ChatBox_voiceButton_enable == NO) {
+        return;
+    }
+    
+    /// 隐藏语音按钮的话，改变语音按钮的宽度
+    if (robotHiddenVoice) {
+        [self.voiceButton mas_TIMupdateTIMConstraints:^(TIMMASConstraintMaker *make) {
+            make.width.mas_TIMequalTo(0);
+        }];
+    }
+    else {
+        /// 显示语音按钮，重新设置语音按钮的宽度
+        [self.voiceButton mas_TIMupdateTIMConstraints:^(TIMMASConstraintMaker *make) {
+            make.width.mas_TIMequalTo([TOSKitCustomInfo shareCustomInfo].chatBox_Item_Width);
+        }];
+        
+    }
+    
+}
 
 - (ICChatBarFunctionView *)barFunctionView {
     if (!_barFunctionView) {
@@ -327,6 +361,9 @@
         _textView.sw_emoticonDelegate = self;
         if ([TOSKitCustomInfo shareCustomInfo].chatBox_textView_maxRows == 1) {
             _textView.showsVerticalScrollIndicator = NO;
+//            _textView.showsHorizontalScrollIndicator = YES;
+//            _textView.scrollEnabled = YES;
+//            _textView.textContainer.maximumNumberOfLines = 1;
         }
     }
     return _textView;
@@ -406,7 +443,7 @@
     /// 是否加载发送按钮
     BOOL sendShow = ![TOSKitCustomInfo shareCustomInfo].chatBox_emotionButton_enable && ![TOSKitCustomInfo shareCustomInfo].chatBox_moreButton_enable && [TOSKitCustomInfo shareCustomInfo].chatBox_sendButton_enable;
     
-    CGFloat placeholderWidth = self.width - [TOSKitCustomInfo shareCustomInfo].chatBox_textView_textContainerInset.left - [TOSKitCustomInfo shareCustomInfo].chatBox_textView_textContainerInset.right - [TOSKitCustomInfo shareCustomInfo].chatBox_itemLeftPadding - [TOSKitCustomInfo shareCustomInfo].chatBox_itemRightPadding;
+    CGFloat placeholderWidth = self.tos_width - [TOSKitCustomInfo shareCustomInfo].chatBox_textView_textContainerInset.left - [TOSKitCustomInfo shareCustomInfo].chatBox_textView_textContainerInset.right - [TOSKitCustomInfo shareCustomInfo].chatBox_itemLeftPadding - [TOSKitCustomInfo shareCustomInfo].chatBox_itemRightPadding;
     
     if ([TOSKitCustomInfo shareCustomInfo].ChatBox_voiceButton_enable) {
         placeholderWidth -= (CHATBOX_BUTTON_WIDTH + [TOSKitCustomInfo shareCustomInfo].chatBox_itemSpacing);
@@ -469,7 +506,7 @@
     CGFloat barHeight = self.barDataCount.count?CHATBOX_BAR_HEIGHT:0.0f;
     
     /// 这里修改是因为最小的高度，要跟配置单例里面的文本框初始高度做匹配
-    CGFloat height = MAX([textView sizeThatFits:CGSizeMake(self.textView.width, MAXFLOAT)].height, [TOSKitCustomInfo shareCustomInfo].chatBox_textView_height);
+    CGFloat height = MAX([textView sizeThatFits:CGSizeMake(self.textView.tos_width, MAXFLOAT)].height, [TOSKitCustomInfo shareCustomInfo].chatBox_textView_height);
         
     if (height >= (ceilf(textView.font.lineHeight)*[TOSKitCustomInfo shareCustomInfo].chatBox_textView_maxRows)) {
         textView.scrollEnabled = YES;   ///> 当textView高度大于等于最大高度的时候让其可以滚动
@@ -818,7 +855,7 @@
             [_delegate chatBox:self sendTextMessage:content];
         }
     }
-    [self.textView setHeight:[TOSKitCustomInfo shareCustomInfo].chatBox_textView_height];
+    [self.textView setTos_height:[TOSKitCustomInfo shareCustomInfo].chatBox_textView_height];
     if (_delegate && [_delegate respondsToSelector:@selector(chatBox:changeChatBoxHeight:)]) {
         [_delegate chatBox:self changeChatBoxHeight:[TOSKitCustomInfo shareCustomInfo].chatBox_Height];
     }
@@ -909,7 +946,7 @@
             [_delegate chatBox:self sendTextMessage:content];
         }
     }
-    [self.textView setHeight:[TOSKitCustomInfo shareCustomInfo].chatBox_textView_height];
+    [self.textView setTos_height:[TOSKitCustomInfo shareCustomInfo].chatBox_textView_height];
 //    if (_delegate && [_delegate respondsToSelector:@selector(chatBox:changeChatBoxHeight:)]) {
 //        [_delegate chatBox:self changeChatBoxHeight:HEIGHT_TABBAR];
 //    }
@@ -952,7 +989,7 @@
     /// 获取快捷入口的高度
     CGFloat barHeight = self.barDataCount.count?CHATBOX_BAR_HEIGHT:0.0f;
    // 键盘切换到录音时 恢复textView高度
-    CGFloat textHeight = [self.textView sizeThatFits:CGSizeMake(self.textView.width, MAXFLOAT)].height;
+    CGFloat textHeight = [self.textView sizeThatFits:CGSizeMake(self.textView.tos_width, MAXFLOAT)].height;
     if (textHeight >= (ceilf(self.textView.font.lineHeight)*[TOSKitCustomInfo shareCustomInfo].chatBox_textView_maxRows)) {
         self.textView.scrollEnabled = YES;   ///> 当textView高度大于等于最大高度的时候让其可以滚动
         textHeight = ceilf(self.textView.font.lineHeight)*[TOSKitCustomInfo shareCustomInfo].chatBox_textView_maxRows;                   ///> 设置最大高度
@@ -970,7 +1007,7 @@
 //    [self mas_TIMupdateTIMConstraints:^(TIMMASConstraintMaker *make) {
 //        make.height.mas_TIMequalTo(height + barHeight + HEIGHT_TABBAR - HEIGHT_TEXTVIEW);
 //    }];
-    self.height = height + barHeight + [TOSKitCustomInfo shareCustomInfo].chatBox_Height - [TOSKitCustomInfo shareCustomInfo].chatBox_textView_height;
+    self.tos_height = height + barHeight + [TOSKitCustomInfo shareCustomInfo].chatBox_Height - [TOSKitCustomInfo shareCustomInfo].chatBox_textView_height;
 //   self.textView.frame = CGRectMake(self.textView.origin.x,(HEIGHT_TABBAR - CHATBOX_BUTTON_WIDTH) / 2 , self.textView.width, height);
     
     

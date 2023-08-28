@@ -15,14 +15,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIScrollView (TIMRefresh)
 /** 下拉刷新控件 */
-@property (strong, nonatomic, nullable) TIMRefreshHeader *mj_header;
-@property (strong, nonatomic, nullable) TIMRefreshHeader *header TIMRefreshDeprecated("使用mj_header");
+@property (strong, nonatomic, nullable) TIMRefreshHeader *tos_header;
+@property (strong, nonatomic, nullable) TIMRefreshHeader *header TIMRefreshDeprecated("使用tos_header");
 /** 上拉刷新控件 */
-@property (strong, nonatomic, nullable) TIMRefreshFooter *mj_footer;
-@property (strong, nonatomic, nullable) TIMRefreshFooter *footer TIMRefreshDeprecated("使用mj_footer");
+@property (strong, nonatomic, nullable) TIMRefreshFooter *tos_footer;
+@property (strong, nonatomic, nullable) TIMRefreshFooter *footer TIMRefreshDeprecated("使用tos_header");
 
 #pragma mark - other
-- (NSInteger)mj_totalDataCount;
+- (NSInteger)tosmj_totalDataCount;
 
 @end
 

@@ -67,13 +67,15 @@
     
     self.model = model;
     
-    CGSize refreshBtnSize = [TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_showRefreshTitle sizeWithMaxWidth:self.width andFont:TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_showRefreshTitleFont];
+    CGSize refreshBtnSize = [TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_showRefreshTitle sizeWithMaxWidth:self.tos_width andFont:TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_showRefreshTitleFont];
     
     self.refreshBtn.frame = CGRectMake(194.f, self.refreshBtnY, refreshBtnSize.width+10, 18.f);
-    self.refreshBtn.x = self.width - 16.f - self.refreshBtn.width;
+//    self.refreshBtn.x = self.width - 53.f;//37.f + 16.f;
+    self.refreshBtn.tosSD_x = self.tos_width - 16.f - self.refreshBtn.tos_width;
     
     self.refreshIcon.frame = CGRectMake(174.f, self.refreshIconY, 16.f, 16.f);
-    self.refreshIcon.x = self.width - 16.f - self.refreshBtn.width - self.refreshIcon.width;
+//    self.refreshIcon.x = self.width - 73.f;//16.f + 57.f;
+    self.refreshIcon.tosSD_x = self.tos_width - 16.f - self.refreshBtn.tos_width - self.refreshIcon.tos_width;
     
     self.title.frame = self.hotIssueTitleF;
     
@@ -123,7 +125,7 @@
             }
         }
         
-        self.subIssueVerticalListView.frame = CGRectMake(0.f, self.title.bottom + 12.f, model.contentF.size.width, model.tableViewH);
+        self.subIssueVerticalListView.frame = CGRectMake(0.f, self.title.tos_bottom + 12.f, model.contentF.size.width, model.tableViewH);
         
         self.subIssueVerticalListView.hiddenRefresh = hiddenRefresh;
         self.subIssueVerticalListView.refreshIcon = self.refreshIcon;
@@ -133,8 +135,8 @@
                                                      issueItem:model.hotListTypeSubIssueH];
     } else {
         
-        self.refreshBtn.y = self.refreshBtnY;
-        self.refreshIcon.y = self.refreshIconY;
+        self.refreshBtn.tosSD_y = self.refreshBtnY;
+        self.refreshIcon.tosSD_y = self.refreshIconY;
         
         self.subIssueView.hidden = NO;
         self.subIssueVerticalListView.hidden = YES;
@@ -158,10 +160,10 @@
                 hiddenRefresh = NO;
             }
             
-            self.subIssueView.frame = CGRectMake(0.f, self.title.bottom + 12.f, model.contentF.size.width, model.tableViewH);
+            self.subIssueView.frame = CGRectMake(0.f, self.title.tos_bottom + 12.f, model.contentF.size.width, model.tableViewH);
             
         } else {
-            self.segmentC.frame = CGRectMake(0, self.title.bottom + 12.f, model.contentF.size.width, 29.f);
+            self.segmentC.frame = CGRectMake(0, self.title.tos_bottom + 12.f, model.contentF.size.width, 29.f);
             self.segmentCLine.frame = CGRectMake(0, 29.f, model.contentF.size.width, 1.f);
             
             self.segmentC.hidden = NO;
@@ -171,12 +173,12 @@
             [model.data enumerateObjectsUsingBlock:^(CombinationDataModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 [array addObject:[NSString stringWithFormat:@"%@",obj.name?:@""]];
                 if (idx == 0) {
-                    segmentHeight = [obj.name sizeWithMaxWidth:self.width andFont:TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_segmentFont].height;
+                    segmentHeight = [obj.name sizeWithMaxWidth:self.tos_width andFont:TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_segmentFont].height;
                 }
             }];
             
-            self.segmentC.height = MAX(segmentHeight, 29.0);
-            self.segmentCLine.top = self.segmentC.height;
+            self.segmentC.tos_height = MAX(segmentHeight, 29.0);
+            self.segmentCLine.tos_top = self.segmentC.tos_height;
             
             [self.segmentC reloadDataWithDatas:array];
             self.segmentC.selectedSegmentIndex = model.selectData?:0;
@@ -195,9 +197,10 @@
                 hiddenRefresh = YES;
             } else {
                 hiddenRefresh = NO;
+                
             }
             
-            self.subIssueView.frame = CGRectMake(0.f, self.segmentC.bottom, model.contentF.size.width, model.tableViewH);
+            self.subIssueView.frame = CGRectMake(0.f, self.segmentC.tos_bottom, model.contentF.size.width, model.tableViewH);
         }
         [self.subIssueView reloadView:model.hotSubIssueH];
     }
@@ -241,6 +244,8 @@
 
 
 - (void)setModelFrame:(TIMMessageFrame *)modelFrame {
+    
+//    CombinationMessage *richModels = (CombinationMessage *)modelFrame.model.message.content;
     
 }
 
@@ -298,7 +303,9 @@
     if (!_title) {
         _title = [[YYLabel alloc] init];
         _title.text = @"猜你想问";
+//        _title.font = [UIFont fontWithName:@"PingFangSC-Medium" size:16.f];
         _title.font = TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_titleFont;
+//        _title.textColor = TOSHexColor(0xFAAD14);
         _title.textColor = TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_titleColor;
         _title.numberOfLines = 0;
     }

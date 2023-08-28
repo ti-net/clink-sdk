@@ -1157,7 +1157,7 @@
         TOSAutoLayoutModel *model = self.ownLayoutModel;
         
         if (![self isKindOfClass:[UIScrollView class]] && self.sd_rightViewsArray.count && (model.right || model.equalRight || model.centerX || model.equalCenterX)) {
-            self.fixedWidth = @(self.width);
+            self.fixedWidth = @(self.tosCF_width);
             if (model.right || model.equalRight) {
                 [self layoutRightWithView:self model:model];
             } else {
@@ -1167,7 +1167,7 @@
         }
         
         if (![self isKindOfClass:[UIScrollView class]] && self.sd_bottomViewsArray.count && (model.bottom || model.equalBottom || model.centerY || model.equalCenterY)) {
-            self.fixedHeight = @(self.height);
+            self.fixedHeight = @(self.tosCF_height);
             if (model.bottom || model.equalBottom) {
                 [self layoutBottomWithView:self model:model];
             } else {
@@ -1614,7 +1614,7 @@
     if (self.ownLayoutModel.widthEqualHeight) {
         if (width_sd != self.height_sd) return;
     }
-    [self setWidth:width_sd];
+    [self setTosCF_width:width_sd];
     if (self.ownLayoutModel.heightEqualWidth) {
         self.height_sd = width_sd;
     }
@@ -1628,7 +1628,7 @@
     if (self.ownLayoutModel.heightEqualWidth) {
         if (height_sd != self.width_sd) return;
     }
-    [self setHeight:height_sd];
+    [self setTosCF_height:height_sd];
     if (self.ownLayoutModel.widthEqualHeight) {
         self.width_sd = height_sd;
     }
@@ -1652,18 +1652,32 @@
     [self setSize:size_sd];
 }
 
-- (void)setWidth:(CGFloat)width
+//- (void)setWidth:(CGFloat)width
+//{
+//    CGRect frame = self.frame;
+//    frame.size.width = width;
+//    self.frame = frame;
+//}
+//
+//- (void)setHeight:(CGFloat)height {
+//    CGRect frame = self.frame;
+//    frame.size.height = height;
+//    self.frame = frame;
+//}
+
+- (void)setTosCF_width:(CGFloat)tosCF_width
 {
     CGRect frame = self.frame;
-    frame.size.width = width;
+    frame.size.width = tosCF_width;
     self.frame = frame;
 }
 
-- (void)setHeight:(CGFloat)height {
+- (void)setTosCF_height:(CGFloat)tosCF_height {
     CGRect frame = self.frame;
-    frame.size.height = height;
+    frame.size.height = tosCF_height;
     self.frame = frame;
 }
+
 
 - (void)setSize:(CGSize)size {
     CGRect frame = self.frame;
@@ -1693,15 +1707,23 @@
     self.right_sd = right;
 }
 
-- (CGFloat)width
-{
+- (CGFloat)tosCF_width {
     return self.width_sd;
 }
 
-- (CGFloat)height
-{
+- (CGFloat)tosCF_height {
     return self.height_sd;
 }
+
+//- (CGFloat)width
+//{
+//    return self.width_sd;
+//}
+//
+//- (CGFloat)height
+//{
+//    return self.height_sd;
+//}
 
 - (CGFloat)top
 {

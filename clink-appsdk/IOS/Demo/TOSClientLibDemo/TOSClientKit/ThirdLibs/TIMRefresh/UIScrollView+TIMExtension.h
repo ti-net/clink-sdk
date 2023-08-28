@@ -12,18 +12,18 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UIScrollView (TIMExtension)
-@property (readonly, nonatomic) UIEdgeInsets mj_inset;
+@property (readonly, nonatomic) UIEdgeInsets tosmj_inset;
 
-@property (assign, nonatomic) CGFloat mj_insetT;
-@property (assign, nonatomic) CGFloat mj_insetB;
-@property (assign, nonatomic) CGFloat mj_insetL;
-@property (assign, nonatomic) CGFloat mj_insetR;
+@property (assign, nonatomic) CGFloat tosmj_insetT;
+@property (assign, nonatomic) CGFloat tosmj_insetB;
+@property (assign, nonatomic) CGFloat tosmj_insetL;
+@property (assign, nonatomic) CGFloat tosmj_insetR;
 
-@property (assign, nonatomic) CGFloat mj_offsetX;
-@property (assign, nonatomic) CGFloat mj_offsetY;
+@property (assign, nonatomic) CGFloat tosmj_offsetX;
+@property (assign, nonatomic) CGFloat tosmj_offsetY;
 
-@property (assign, nonatomic) CGFloat mj_contentW;
-@property (assign, nonatomic) CGFloat mj_contentH;
+@property (assign, nonatomic) CGFloat tosmj_contentW;
+@property (assign, nonatomic) CGFloat tosmj_contentH;
 @end
 
 NS_ASSUME_NONNULL_END

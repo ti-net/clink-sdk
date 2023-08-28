@@ -60,12 +60,12 @@
         // 设置宽度
         self.mj_w = _scrollView.mj_w;
         // 设置位置
-        self.mj_x = -_scrollView.mj_insetL;
+        self.mj_x = -_scrollView.tosmj_insetL;
     
         // 设置永远支持垂直弹簧效果
         _scrollView.alwaysBounceVertical = YES;
         // 记录UIScrollView最开始的contentInset
-        _scrollViewOriginalInset = _scrollView.mj_inset;
+        _scrollViewOriginalInset = _scrollView.tosmj_inset;
         
         // 添加监听
         [self addObservers];

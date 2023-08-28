@@ -68,29 +68,50 @@ CGRect CGRectMoveToCenter(CGRect rect, CGPoint center)
 
 
 // Retrieve and set height, width, top, bottom, left, right
-- (CGFloat) height
-{
-	return self.frame.size.height;
+
+- (CGFloat)tosVFG_height {
+    return self.frame.size.height;
 }
 
-- (void) setHeight: (CGFloat) newheight
-{
-	CGRect newframe = self.frame;
-	newframe.size.height = newheight;
-	self.frame = newframe;
+- (void)setTosVFG_height:(CGFloat)tosVFG_height {
+    CGRect newframe = self.frame;
+    newframe.size.height = tosVFG_height;
+    self.frame = newframe;
 }
 
-- (CGFloat) width
-{
-	return self.frame.size.width;
+- (CGFloat)tosVFG_width {
+    return self.frame.size.width;
 }
 
-- (void) setWidth: (CGFloat) newwidth
-{
-	CGRect newframe = self.frame;
-	newframe.size.width = newwidth;
-	self.frame = newframe;
+- (void)setTosVFG_width:(CGFloat)tosVFG_width {
+    CGRect newframe = self.frame;
+    newframe.size.width = tosVFG_width;
+    self.frame = newframe;
 }
+
+//- (CGFloat) height
+//{
+//	return self.frame.size.height;
+//}
+//
+//- (void) setHeight: (CGFloat) newheight
+//{
+//	CGRect newframe = self.frame;
+//	newframe.size.height = newheight;
+//	self.frame = newframe;
+//}
+//
+//- (CGFloat) width
+//{
+//	return self.frame.size.width;
+//}
+//
+//- (void) setWidth: (CGFloat) newwidth
+//{
+//	CGRect newframe = self.frame;
+//	newframe.size.width = newwidth;
+//	self.frame = newframe;
+//}
 
 - (CGFloat)x {
     return self.frame.origin.x;
@@ -190,16 +211,16 @@ CGRect CGRectMoveToCenter(CGRect rect, CGPoint center)
 
 
 - (void)verticalCenter {
-    self.centerY = self.superview.height/2;
+    self.centerY = self.superview.tosVFG_height/2;
 }
 
 - (void)horizontalCenter {
-    self.centerX = self.superview.width/2;
+    self.centerX = self.superview.tosVFG_width/2;
 }
 
 
 - (void)toLeftView:(UIView *)view ofPix:(float)left {
-    self.left = view.left + view.width + left;
+    self.left = view.left + view.tosVFG_width + left;
 }
 
 /**
@@ -224,11 +245,11 @@ CGRect CGRectMoveToCenter(CGRect rect, CGPoint center)
 }
 
 - (void)marginBottom:(CGFloat)bottom {
-    self.bottom = self.superview.height - bottom;
+    self.bottom = self.superview.tosVFG_height - bottom;
 }
 
 - (void)marginRight:(CGFloat)right {
-    self.right = self.superview.width - right;
+    self.right = self.superview.tosVFG_width - right;
 }
 
 - (void)marginTop:(CGFloat)top {

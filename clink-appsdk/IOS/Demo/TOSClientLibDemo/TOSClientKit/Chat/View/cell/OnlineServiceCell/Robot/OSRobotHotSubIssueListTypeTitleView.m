@@ -70,9 +70,9 @@
 }
 
 - (void)reloadView {
-    self.title.frame = CGRectMake(0, 0, self.width - 14.f - 8.f, self.height);
-    self.icon.frame = CGRectMake(self.width - 14.f, 12.f, 14.f, 14.f);
-    self.icon.y = self.height/2 - 14.f/2.f;
+    self.title.frame = CGRectMake(0, 0, self.tos_width - 14.f - 8.f, self.tos_height);
+    self.icon.frame = CGRectMake(self.tos_width - 14.f, 12.f, 14.f, 14.f);
+    self.icon.tosSD_y = self.tos_height/2 - 14.f/2.f;
 }
 
 - (void)setupTitle:(NSString *)title selected:(BOOL)selected {

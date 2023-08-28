@@ -59,12 +59,12 @@ NSString * const TIMRefreshHeaderRefreshingBoundsKey = @"TIMRefreshHeaderRefresh
     }
     
     // sectionheader停留解决
-    CGFloat insetT = - self.scrollView.mj_offsetY > _scrollViewOriginalInset.top ? - self.scrollView.mj_offsetY : _scrollViewOriginalInset.top;
+    CGFloat insetT = - self.scrollView.tosmj_offsetY > _scrollViewOriginalInset.top ? - self.scrollView.tosmj_offsetY : _scrollViewOriginalInset.top;
     insetT = insetT > self.mj_h + _scrollViewOriginalInset.top ? self.mj_h + _scrollViewOriginalInset.top : insetT;
     self.insetTDelta = _scrollViewOriginalInset.top - insetT;
     // 避免 CollectionView 在使用根据 Autolayout 和 内容自动伸缩 Cell, 刷新时导致的 Layout 异常渲染问题
-    if (self.scrollView.mj_insetT != insetT) {
-        self.scrollView.mj_insetT = insetT;
+    if (self.scrollView.tosmj_insetT != insetT) {
+        self.scrollView.tosmj_insetT = insetT;
     }
 }
 
@@ -79,10 +79,10 @@ NSString * const TIMRefreshHeaderRefreshingBoundsKey = @"TIMRefreshHeaderRefresh
     }
     
     // 跳转到下一个控制器时，contentInset可能会变
-    _scrollViewOriginalInset = self.scrollView.mj_inset;
+    _scrollViewOriginalInset = self.scrollView.tosmj_inset;
     
     // 当前的contentOffset
-    CGFloat offsetY = self.scrollView.mj_offsetY;
+    CGFloat offsetY = self.scrollView.tosmj_offsetY;
     // 头部控件刚好出现的offsetY
     CGFloat happenOffsetY = - self.scrollViewOriginalInset.top;
     
@@ -134,7 +134,7 @@ NSString * const TIMRefreshHeaderRefreshingBoundsKey = @"TIMRefreshHeaderRefresh
     if (!self.isCollectionViewAnimationBug) {
         // 恢复inset和offset
         [UIView animateWithDuration:TIMRefreshSlowAnimationDuration animations:^{
-            self.scrollView.mj_insetT += self.insetTDelta;
+            self.scrollView.tosmj_insetT += self.insetTDelta;
             
             if (self.endRefreshingAnimationBeginAction) {
                 self.endRefreshingAnimationBeginAction();
@@ -164,7 +164,7 @@ NSString * const TIMRefreshHeaderRefreshingBoundsKey = @"TIMRefreshHeaderRefresh
     // 由于修改 Inset 会导致 self.pullingPercent 联动设置 self.alpha, 故提前获取 alpha 值, 后续用于还原 alpha 动画
     CGFloat viewAlpha = self.alpha;
     
-    self.scrollView.mj_insetT += self.insetTDelta;
+    self.scrollView.tosmj_insetT += self.insetTDelta;
     // 禁用交互, 如果不禁用可能会引起渲染问题.
     self.scrollView.userInteractionEnabled = NO;
 
@@ -206,7 +206,7 @@ NSString * const TIMRefreshHeaderRefreshingBoundsKey = @"TIMRefreshHeaderRefresh
                 if (self.scrollView.panGestureRecognizer.state != UIGestureRecognizerStateCancelled) {
                     CGFloat top = self.scrollViewOriginalInset.top + self.mj_h;
                     // 增加滚动区域top
-                    self.scrollView.mj_insetT = top;
+                    self.scrollView.tosmj_insetT = top;
                     // 设置滚动位置
                     CGPoint offset = self.scrollView.contentOffset;
                     offset.y = -top;
@@ -256,7 +256,7 @@ NSString * const TIMRefreshHeaderRefreshingBoundsKey = @"TIMRefreshHeaderRefresh
         // 避免出现 end 先于 Refreshing 状态
         if (self.state != TIMRefreshStateIdle) {
             CGFloat top = self.scrollViewOriginalInset.top + self.mj_h;
-            self.scrollView.mj_insetT = top;
+            self.scrollView.tosmj_insetT = top;
             // 设置最终滚动位置
             CGPoint offset = self.scrollView.contentOffset;
             offset.y = -top;

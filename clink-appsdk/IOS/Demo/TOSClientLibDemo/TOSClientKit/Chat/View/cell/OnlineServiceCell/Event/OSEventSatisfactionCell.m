@@ -57,7 +57,7 @@
     self.dataSource = [NSMutableArray array];
     for (NSInteger i = 0; i < 5; i++) {
         
-        OSEventSatisfactionExpressionView *expressionView = kInitXibName(@"TOSKitClient.bundle/OSEventSatisfactionExpressionView");
+        OSEventSatisfactionExpressionView *expressionView = kInitXibName(@"TOSClient.bundle/OSEventSatisfactionExpressionView");
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didClickIconBtnAction:)];
         [expressionView addGestureRecognizer:tap];
         expressionView.hidden = YES;
@@ -65,11 +65,11 @@
         [self.dataSource addObject:expressionView];
     }
     
-    self.expressionBottomView.frame = CGRectMake(0, CGRectGetMaxY(self.titleLabel.frame), self.contentView.width - 32.f, 86.f);
+    self.expressionBottomView.frame = CGRectMake(0, CGRectGetMaxY(self.titleLabel.frame), self.contentView.tos_width - 32.f, 86.f);
     
-    self.tagBottomView.frame = CGRectMake(0, CGRectGetMaxY(self.expressionBottomView.frame), self.contentView.width - 32.f, modelFrame.satisfactionSelectStarTagHeight);
+    self.tagBottomView.frame = CGRectMake(0, CGRectGetMaxY(self.expressionBottomView.frame), self.contentView.tos_width - 32.f, modelFrame.satisfactionSelectStarTagHeight);
     
-    self.commitBtn.frame = CGRectMake(25.f, CGRectGetMaxY(self.tagBottomView.frame) + 24.f, self.contentView.width - 32.f - 25.f - 25.f, 38.f);
+    self.commitBtn.frame = CGRectMake(25.f, CGRectGetMaxY(self.tagBottomView.frame) + 24.f, self.contentView.tos_width - 32.f - 25.f - 25.f, 38.f);
         
     TOSSatisfactionModel *contentModel = [TOSSatisfactionModel yy_modelWithJSON:modelFrame.model.message.content];
     
@@ -132,7 +132,7 @@
     [starInfoModel.tabBar enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
         TOSSatisfactionTabBarFrameModel *frameModel = [self.tempModelFrame.tabBarFrame objectOrNilAtIndex:idx];
-        OSEventSatisfactionTagView *tagView = kInitXibName(@"TOSKitClient.bundle/OSEventSatisfactionTagView");
+        OSEventSatisfactionTagView *tagView = kInitXibName(@"TOSClient.bundle/OSEventSatisfactionTagView");
         tagView.frame = CGRectMake(frameModel.x.floatValue, frameModel.y.floatValue, frameModel.w.floatValue, frameModel.h.floatValue);
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didClickTagBtnAction:)];
         [tagView addGestureRecognizer:tap];
@@ -179,7 +179,7 @@
     self.tempModelFrame.satisfactionSelectStar = expressionView.obj.star.integerValue;
     self.tempModelFrame.tabBarSelect = [NSMutableArray array];
     self.tempModelFrame.model = self.tempModelFrame.model;
-    /// 提交按钮的间距加高度 24.f+38.f    TIMMessageFrame类中，未评价是直接加了62的，评价按钮是未隐藏的，所以需要在这里加上评价按钮的相关高度
+//    /// 提交按钮的间距加高度 24.f+38.f    TIMMessageFrame类中，未评价是直接加了62的，评价按钮是未隐藏的，所以需要在这里加上评价按钮的相关高度
 //    self.tempModelFrame.cellHight += 62.0f;
     
     [self routerEventWithName:GXRobotCombinationHotIssueCellRefreshEventName

@@ -213,7 +213,7 @@
         popupMenu.cornerRadius = 3.;
         popupMenu.borderWidth = 1.;
         popupMenu.borderColor = TOSHexColor(0xECECEC);
-        popupMenu.isShowShadow = NO;
+//        popupMenu.isShowShadow = NO;
         popupMenu.itemHeight = 46.f;
         popupMenu.tableView.separatorInset = UIEdgeInsetsMake(0, 14.f, 0, 0);
         popupMenu.tableView.separatorColor = TOSHexColor(0xECECEC);

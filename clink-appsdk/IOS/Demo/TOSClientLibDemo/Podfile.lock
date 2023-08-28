@@ -7,8 +7,8 @@ PODS:
   - AFNetworking/Security (3.2.1)
   - AFNetworking/Serialization (3.2.1)
   - ReactiveObjC (3.1.1)
-  - TOSClientLib (1.7.15)
-  - YBPopupMenu (1.1.9)
+  - TOSClientLib (1.8.6)
+  - YBPopupMenu (1.3.0)
   - YTKNetwork (2.1.4):
     - AFNetworking/NSURLSession (~> 3.0)
   - YYKit (1.0.9):
@@ -38,11 +38,11 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AFNetworking: cb604b1c2bded0871f5f61f5d53653739e841d6b
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
-  TOSClientLib: ef5f5133137b0606a0a6a88de22ec324ea6272ad
-  YBPopupMenu: 3a02e89860bb0568ba477aee609bc3f25e5bd339
+  TOSClientLib: 861b73359118880ffbaae7854771d308beac2a41
+  YBPopupMenu: ace6d58993c6013e44eea203fd5d1e00a039a0b6
   YTKNetwork: 19be749c30f0512ada07180f4637b4b67bc8ddc2
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
 PODFILE CHECKSUM: ad6e4dea2688759392f750b1260442d25d739d30
 
-COCOAPODS: 1.12.0
+COCOAPODS: 1.12.1

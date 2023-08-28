@@ -45,23 +45,23 @@
 -(void)layoutSubviews
 {
     [super layoutSubviews];
-    self.pageControl.width          = self.width;
-    self.pageControl.height         = 10;
-    self.pageControl.x              = 0;
-    self.pageControl.y              = self.height - self.pageControl.height;
-    self.scrollView.width           = self.width;
-    self.scrollView.height          = self.pageControl.y;
-    self.scrollView.x               =self.scrollView.y
+    self.pageControl.tosSD_width          = self.tosSD_width;
+    self.pageControl.tosSD_height         = 10;
+    self.pageControl.tosSD_x              = 0;
+    self.pageControl.tosSD_y              = self.tosSD_height - self.pageControl.tosSD_height;
+    self.scrollView.tosSD_width           = self.tosSD_width;
+    self.scrollView.tosSD_height          = self.pageControl.tosSD_y;
+    self.scrollView.tosSD_x               =self.scrollView.tosSD_y
                                     = 0;
     NSUInteger count                = self.scrollView.subviews.count;
     for (int i = 0; i < count; i ++) {
         ICEmotionPageView *pageView = self.scrollView.subviews[i];
-        pageView.width              = self.scrollView.width;
-        pageView.height             = self.scrollView.height;
-        pageView.y                  = 0;
-        pageView.x                  = i * pageView.width;
+        pageView.tosSD_width              = self.scrollView.tosSD_width;
+        pageView.tosSD_height             = self.scrollView.tosSD_height;
+        pageView.tosSD_y                  = 0;
+        pageView.tosSD_x                  = i * pageView.tosSD_width;
     }
-    self.scrollView.contentSize     = CGSizeMake(count*self.scrollView.width, 0);
+    self.scrollView.contentSize     = CGSizeMake(count*self.scrollView.tosSD_width, 0);
 }
 
 - (void)setEmotions:(NSArray *)emotions
@@ -115,7 +115,7 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    double pageNum                = scrollView.contentOffset.x/scrollView.width;
+    double pageNum                = scrollView.contentOffset.x/scrollView.tosSD_width;
     self.pageControl.currentPage  = (int)(pageNum+0.5);
 }
 

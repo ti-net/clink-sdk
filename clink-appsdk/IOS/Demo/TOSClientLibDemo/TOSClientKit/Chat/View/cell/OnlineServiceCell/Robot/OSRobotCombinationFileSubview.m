@@ -100,12 +100,12 @@
     [self.custFilePictureView setFrame:CGRectMake(16.f, 8.f, 32.f, 32.f)];
     
     //(CGRectGetMaxX(self.custFilePictureView.frame) + 4.f, 12.f, self.width - CGRectGetMaxX(self.custFilePictureView.frame) - 4.f - 16.f, 24.f)
-    [self.custFileTypeDescLabel setFrame:CGRectMake(CGRectGetMaxX(self.custFilePictureView.frame) + 4.f, 12.f, self.width - CGRectGetMaxX(self.custFilePictureView.frame) - 20.f, 24.f)];
+    [self.custFileTypeDescLabel setFrame:CGRectMake(CGRectGetMaxX(self.custFilePictureView.frame) + 4.f, 12.f, self.tos_width - CGRectGetMaxX(self.custFilePictureView.frame) - 20.f, 24.f)];
     
-    [self.lineView setFrame:(CGRectMake(0.f, 48.f, self.width, 1.f))];
+    [self.lineView setFrame:(CGRectMake(0.f, 48.f, self.tos_width, 1.f))];
     
     //(self.width/2-50.f/2, 57.f, 50.f, 20.f)
-    [self.downLoadBtn setFrame:CGRectMake(self.width/2-25.f, 57.f, 50.f, 20.f)];
+    [self.downLoadBtn setFrame:CGRectMake(self.tos_width/2-25.f, 57.f, 50.f, 20.f)];
 
     if (![kitUtils isBlankString:model.name]) {
         self.custFileTypeDescLabel.text = [NSString stringWithFormat:@"%@",model.name];

@@ -99,11 +99,11 @@ CGFloat const TIMTimeIndicatorMargin = 10.0f;
 {
     [super layoutSubviews];
     
-    _activityIndicatorView.center = CGPointMake(TIMActivityIndicatorViewMargin, self.height * 0.5);
+    _activityIndicatorView.center = CGPointMake(TIMActivityIndicatorViewMargin, self.tosSD_height * 0.5);
     _stateIndicatorView.center = _activityIndicatorView.center;
     
-    _textIndicator.center = CGPointMake(self.width * 0.5, _activityIndicatorView.height * 0.5 + TIMTextIndicatorMargin);
-    _timeIndicator.center = CGPointMake(self.width * 0.5, self.height - _timeIndicator.height * 0.5 - TIMTimeIndicatorMargin);
+    _textIndicator.center = CGPointMake(self.tosSD_width * 0.5, _activityIndicatorView.tosSD_height * 0.5 + TIMTextIndicatorMargin);
+    _timeIndicator.center = CGPointMake(self.tosSD_width * 0.5, self.tosSD_height - _timeIndicator.tosSD_height * 0.5 - TIMTimeIndicatorMargin);
 }
 
 - (NSString *)lastRefreshingTimeString

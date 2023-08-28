@@ -65,17 +65,17 @@
 }
 
 #pragma mark - Private Method
-- (void)setWithCombinationModel:(CombinationMessage *)model {
+- (void)setWithCombinationModel:(CombinationMessage *)itemmodel {
     
-    NSMutableArray <RichTextMessage *>*richModels = model.richTextMessage.elements;
+    NSMutableArray <RichTextMessage *>*richModels = itemmodel.richTextMessage.elements;
     
     self.elements = [NSMutableArray arrayWithArray:richModels];
     
-    self.subContentView.frame = model.contentF;
+    self.subContentView.frame = itemmodel.contentF;
     [self.subContentView removeAllSubviews];
     
     __block CGFloat y = 0;
-    CGFloat width = model.contentF.size.width;
+    CGFloat width = itemmodel.contentF.size.width;
     CGFloat x = 0;
     
     [self.elements enumerateObjectsUsingBlock:^(RichTextMessage * _Nonnull model, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -110,7 +110,9 @@
                    [model.type isEqualToString:@"video"]) {
             
             ICChatMessageRichImageCell *imageSubview = [[ICChatMessageRichImageCell alloc] initWithFrame:CGRectMake(x, y, width, height)];
+            imageSubview.robotProvider = itemmodel.robotProvider;
             [imageSubview setWithModel:model];
+            
             [self.subContentView addSubview:imageSubview];
         } else {
             

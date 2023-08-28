@@ -118,7 +118,7 @@
 {
     if (self.cacheArray == nil) {
         @WeakObj(self);
-        self.cacheTable.mj_header = [TIMRefreshNormalHeader headerWithRefreshingBlock:^{
+        self.cacheTable.tos_header = [TIMRefreshNormalHeader headerWithRefreshingBlock:^{
             @StrongObj(self);
             dispatch_async(dispatch_get_global_queue(0, 0), ^{
                 @StrongObj(self);
@@ -130,11 +130,11 @@
                     @StrongObj(self);
                     self.cacheTable.cacheDatas = self.cacheArray;
                     [self.cacheTable reloadData];
-                    [self.cacheTable.mj_header endRefreshing];
+                    [self.cacheTable.tos_header endRefreshing];
                 });
             });
         }];
-        [self.cacheTable.mj_header beginRefreshing];
+        [self.cacheTable.tos_header beginRefreshing];
     } else {
         [self loadUI];
     }

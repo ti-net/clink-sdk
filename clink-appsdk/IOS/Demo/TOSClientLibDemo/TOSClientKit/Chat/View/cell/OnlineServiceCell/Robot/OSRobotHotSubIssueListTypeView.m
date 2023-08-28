@@ -98,7 +98,7 @@
     [self.titleDataSource enumerateObjectsUsingBlock:^(OSRobotHotSubIssueListTypeTitleView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         @StrongObj(self);
         CGFloat height = ((NSNumber *)[titleH objectOrNilAtIndex:idx]).floatValue;
-        obj.frame = CGRectMake(0.f, y, self.width, height);
+        obj.frame = CGRectMake(0.f, y, self.tos_width, height);
         [obj reloadView];
         y += height;
         
@@ -106,12 +106,12 @@
             [self.issueDataSource enumerateObjectsUsingBlock:^(UILabel * obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 @StrongObj(self);
                 CGFloat height = ((NSNumber *)[issueH objectOrNilAtIndex:idx]).floatValue;
-                obj.frame = CGRectMake(0.f, y, self.width, height);
+                obj.frame = CGRectMake(0.f, y, self.tos_width, height);
                 y += height;
                 if (!self.hiddenRefresh &&
                     idx == self.issueDataSource.count - 1) {
-                    self.refreshIcon.y = y + self.y;
-                    self.refreshBtn.y = y + self.y;
+                    self.refreshIcon.tosSD_y = y + self.tosSD_y;
+                    self.refreshBtn.tosSD_y = y + self.tosSD_y;
                     y += 18.f;
                 }
             }];
