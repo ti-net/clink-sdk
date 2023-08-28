@@ -15,12 +15,12 @@ import android.widget.TextView;
 
 import com.gyf.immersionbar.ImmersionBar;
 import com.tinet.oskit.TOSClientKit;
-import com.tinet.oskit.tool.TimeUtils;
 import com.tinet.oslib.OnlineServiceClient;
 import com.tinet.oslib.manager.OnlineMessageManager;
 import com.tinet.oslib.model.bean.CardInfo;
 import com.tinet.oslib.model.bean.SessionInfo;
 import com.tinet.threepart.tools.TUIUtils;
+import com.tinet.threepart.tools.TimeUtils;
 import com.tinet.tosclientkitdemo.R;
 import com.tinet.tosclientkitdemo.common.app.App;
 import com.tinet.tosclientkitdemo.common.base.BaseActivity;
