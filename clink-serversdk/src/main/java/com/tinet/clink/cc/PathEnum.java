@@ -110,6 +110,7 @@ public enum PathEnum {
 
     //  留言记录
     ListComments("cc/list_comments"),
+    ListVoiceMails("cc/list_voice_mails"),
     // 满意度记录
     ListInvestigations("cc/list_investigations"),
     // 添加满意度记录

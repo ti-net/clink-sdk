@@ -583,7 +583,13 @@ public class Test {
 ```
 
 1、 新增 呼叫中心-设置-座席设置-新增座席 permission字段追加 参数：transfer、otherData、taskInventory
-1、 新增 呼叫中心-设置-座席设置-更新座席 permission字段追加 参数：transfer、otherData、taskInventory
-1、 新增 呼叫中心-设置-座席设置-查看座席 permission字段追加 返回值：transfer、otherData、taskInventory
+2、 新增 呼叫中心-设置-座席设置-更新座席 permission字段追加 参数：transfer、otherData、taskInventory
+3、 新增 呼叫中心-设置-座席设置-查看座席 permission字段追加 返回值：transfer、otherData、taskInventory
+
+```
+### V 3.0.10
+
+```
+1、 新增 呼叫中心-设置-留言箱设置-查询留言箱列表 
 
 ```
