@@ -44,7 +44,7 @@ public class InvestigationRequest extends AbstractRequestModel<InvestigationResp
 
     public void setInvestigationId(Integer investigationId) {
         this.investigationId = investigationId;
-        if (cno != null) {
+        if (investigationId != null) {
             putBodyParameter("investigationId", investigationId);
         }
     }
