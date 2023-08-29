@@ -48,7 +48,7 @@ public class ListVoiceMailsRequest extends AbstractRequestModel<ListVoiceMailsRe
         }
     }
 
-    public ListVoiceMailsRequest(String path) {
+    public ListVoiceMailsRequest() {
         super(PathEnum.ListVoiceMails.value(), HttpMethodType.GET);
     }
 

@@ -22,7 +22,7 @@ public class VoiceMail {
      */
     private Integer ownerType;
     /**
-     * 留言箱归属，type=1 时 owner 为空，type=2时 owner是队列，type=3时owner是座席
+     * 留言箱归属，type=1 时 owner 为空，type=2时 owner是队列号，type=3时owner是座席号
      */
     private String owner;
     /**
