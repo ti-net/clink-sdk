@@ -20,6 +20,9 @@ public class InvestigationRequest extends AbstractRequestModel<InvestigationResp
      */
     private String cno;
 
+
+    private Integer investigationId;
+
     public InvestigationRequest() {
         super(PathEnum.Investigation.value(), HttpMethodType.POST);
     }
@@ -32,6 +35,17 @@ public class InvestigationRequest extends AbstractRequestModel<InvestigationResp
         this.cno = cno;
         if (cno != null) {
             putBodyParameter("cno", cno);
+        }
+    }
+
+    public Integer getInvestigationId() {
+        return investigationId;
+    }
+
+    public void setInvestigationId(Integer investigationId) {
+        this.investigationId = investigationId;
+        if (cno != null) {
+            putBodyParameter("investigationId", investigationId);
         }
     }
 
