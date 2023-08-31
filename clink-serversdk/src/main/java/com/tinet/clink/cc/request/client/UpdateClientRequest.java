@@ -129,6 +129,39 @@ public class UpdateClientRequest extends AbstractRequestModel<UpdateClientRespon
      */
     private Integer chatLimitNum;
 
+    /**
+     * 呼入整理类型，1：队列；2：座席。
+     */
+    private Integer ibWrapupType;
+
+    /**
+     * 呼入整理时长，客户来电座席接听，双方通话结束后座席的话后处理时长，
+     * 此期间座席不接收新的客户来电。取值范围：0～3600秒。
+     */
+    private Integer ibWrapupTime;
+
+    public Integer getIbWrapupType() {
+        return ibWrapupType;
+    }
+
+    public void setIbWrapupType(Integer ibWrapupType) {
+        this.ibWrapupType = ibWrapupType;
+        if (ibWrapupType != null) {
+            putBodyParameter("ibWrapupType", ibWrapupType);
+        }
+    }
+
+    public Integer getIbWrapupTime() {
+        return ibWrapupTime;
+    }
+
+    public void setIbWrapupTime(Integer ibWrapupTime) {
+        this.ibWrapupTime = ibWrapupTime;
+        if (ibWrapupTime != null) {
+            putBodyParameter("ibWrapupTime", ibWrapupTime);
+        }
+    }
+
     public Integer getChatLimit() {
         return chatLimit;
     }
