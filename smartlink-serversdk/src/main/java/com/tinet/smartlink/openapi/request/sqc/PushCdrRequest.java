@@ -268,6 +268,11 @@ public class PushCdrRequest extends BaseRequest<PushCdrResponse> {
      */
     private Long expirationTime;
 
+    /**
+     * 振铃时长(ms)
+     */
+    private Long ringDuration;
+
     public String getUserField() {
         return userField;
     }
@@ -724,6 +729,17 @@ public class PushCdrRequest extends BaseRequest<PushCdrResponse> {
     }
     public Long getExpirationTime() {
         return expirationTime;
+    }
+
+    public Long getRingDuration() {
+        return ringDuration;
+    }
+
+    public void setRingDuration(Long ringDuration) {
+        this.ringDuration = ringDuration;
+        if (ringDuration != null) {
+            putBodyParameter("ringDuration", ringDuration);
+        }
     }
 
 }
