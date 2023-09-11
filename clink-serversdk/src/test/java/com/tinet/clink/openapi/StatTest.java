@@ -4,9 +4,11 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tinet.clink.cc.request.stat.StatClientStatusRequest;
 import com.tinet.clink.cc.request.stat.StatClientWorkloadRequest;
+import com.tinet.clink.cc.request.stat.StatNewQueueRequest;
 import com.tinet.clink.cc.request.stat.StatQueueRequest;
 import com.tinet.clink.cc.response.stat.StatClientStatusResponse;
 import com.tinet.clink.cc.response.stat.StatClientWorkloadResponse;
+import com.tinet.clink.cc.response.stat.StatNewQueueResponse;
 import com.tinet.clink.cc.response.stat.StatQueueResponse;
 import com.tinet.clink.core.exceptions.ClientException;
 import com.tinet.clink.core.exceptions.ServerException;
@@ -51,6 +53,21 @@ public class StatTest extends AbstractTest {
         request.setFields(fields);*/
         StatQueueResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getStatQueue()));
+    }
+
+    /**
+     * 队列报表（新）单元测试
+     */
+    @Test
+    public void statNewQueueTest() throws ServerException, ClientException, JsonProcessingException {
+
+        StatNewQueueRequest request = new StatNewQueueRequest();
+        request.setDate("20230905");
+      /*  List<String> fields = new LinkedList<String>();
+        fields.add("totalAbandonWaitDuration");
+        request.setFields(fields);*/
+        StatNewQueueResponse response = client.getResponseModel(request);
+        System.out.println(mapper.writeValueAsString(response.getStatNewQueue()));
     }
 
 

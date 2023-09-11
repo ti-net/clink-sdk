@@ -149,6 +149,8 @@ public enum PathEnum {
     StatClientWorkload("cc/stat_client_workload"),
     //队列报表
     StatQueue("cc/stat_queue"),
+    // 新队列报表
+    StatNewQueue("cc/stat_new_queue"),
     //座席状态统计报表
     StatClientStatus("cc/stat_client_status"),
     //外呼报表-预览外呼
