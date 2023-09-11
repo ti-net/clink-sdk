@@ -576,14 +576,20 @@ public class Test {
 1、 调整 呼叫中心-监控-座席状态监控 返回参数
 2、 新增 呼叫中心-黑白名单设置-添加黑白名单列表 查询参数：description
 3、 新增 呼叫中心-数据-呼入通话记录-查询呼入通话记录 返回参数：hotlineName
-``
+```
 
 ### V 3.0.9.8
 
 ```
 
 1、 新增 呼叫中心-设置-座席设置-新增座席 permission字段追加 参数：transfer、otherData、taskInventory
-1、 新增 呼叫中心-设置-座席设置-更新座席 permission字段追加 参数：transfer、otherData、taskInventory
-1、 新增 呼叫中心-设置-座席设置-查看座席 permission字段追加 返回值：transfer、otherData、taskInventory
+2、 新增 呼叫中心-设置-座席设置-更新座席 permission字段追加 参数：transfer、otherData、taskInventory
+3、 新增 呼叫中心-设置-座席设置-查看座席 permission字段追加 返回值：transfer、otherData、taskInventory
+
+```
+### V 3.0.10
+
+```
+1、 新增 呼叫中心-设置-留言箱设置-查询留言箱列表 
 
 ```
