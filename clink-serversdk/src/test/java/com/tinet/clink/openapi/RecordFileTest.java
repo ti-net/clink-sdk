@@ -50,8 +50,8 @@ public class RecordFileTest extends AbstractTest {
     @Test
     public void describeDetailRecordFileUrl() {
         DescribeDetailRecordFileUrlRequest request = new DescribeDetailRecordFileUrlRequest();
-        request.setMainUniqueId(ibUniqueId);
-        request.setUniqueId(ibUniqueId);
+        request.setMainUniqueId("medias_3-1694506364.124820");
+        request.setUniqueId("medias_3-1694506368.124850");
         request.setTimeout(7200L);
 
 

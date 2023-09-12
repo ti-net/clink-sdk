@@ -118,6 +118,8 @@ public enum PathEnum {
     DownloadRecordFile("cc/download_record_file"),
     // 查询通话录音url
     DescribeRecordFileUrl("cc/describe_record_file_url"),
+    // 查询从通话录音url
+    DescribeDetailRecordFileUrl("cc/describe_detail_record_file_url"),
     // 语音导航
     ListIvrs("cc/list_ivrs"),
     ListIvrNodes("cc/list_ivr_nodes"),
