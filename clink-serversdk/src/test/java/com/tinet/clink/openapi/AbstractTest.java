@@ -17,9 +17,9 @@ public abstract class AbstractTest {
 
     @Before
     public void init() {
-        configuration = new ClientConfiguration("c58cce1ab1b0ce2164d6c757ccd03306", "94OmWluW56dpV05iy7Zx");
+        configuration = new ClientConfiguration("xxx", "xxxx");
         configuration.setScheme("https");
-        configuration.setHost("api-sh.clink.cn");
+        configuration.setHost("xxx");
 
         client = new Client(configuration);
     }
