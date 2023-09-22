@@ -3,17 +3,14 @@ package com.tinet.clink.livechat.request;
 import com.tinet.clink.core.utils.HttpMethodType;
 import com.tinet.clink.livechat.PathEnum;
 import com.tinet.clink.livechat.model.ChatWindowsSetting;
-import com.tinet.clink.livechat.response.ChatClientEffortResponse;
-import com.tinet.clink.livechat.response.ChatWebSettingResponse;
+import com.tinet.clink.livechat.response.ChatWebSettingUpdateResponse;
 import com.tinet.clink.ticket.request.stat.AbstractStatRequest;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @author midong
  * @since 2023/4/24 19:39
  */
-public class ChatWebSettingRequest extends AbstractStatRequest<ChatWebSettingResponse> {
+public class ChatWebSettingUpdateRequest extends AbstractStatRequest<ChatWebSettingUpdateResponse> {
 
     /**
      * 接入号名称
@@ -54,13 +51,13 @@ public class ChatWebSettingRequest extends AbstractStatRequest<ChatWebSettingRes
         this.windowSetting = windowSetting;
     }
 
-    public ChatWebSettingRequest() {
+    public ChatWebSettingUpdateRequest() {
         super(PathEnum.ChatWebSetting.value(), HttpMethodType.POST);
     }
 
     @Override
-    public Class<ChatWebSettingResponse> getResponseClass() {
-        return ChatWebSettingResponse.class;
+    public Class<ChatWebSettingUpdateResponse> getResponseClass() {
+        return ChatWebSettingUpdateResponse.class;
     }
 
 
