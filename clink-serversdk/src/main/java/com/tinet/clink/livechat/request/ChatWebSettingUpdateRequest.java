@@ -52,7 +52,7 @@ public class ChatWebSettingUpdateRequest extends AbstractStatRequest<ChatWebSett
     }
 
     public ChatWebSettingUpdateRequest() {
-        super(PathEnum.ChatWebSetting.value(), HttpMethodType.POST);
+        super(PathEnum.ChatWebSettingUpdate.value(), HttpMethodType.POST);
     }
 
     @Override
