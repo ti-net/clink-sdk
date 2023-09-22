@@ -51,6 +51,8 @@ public enum PathEnum {
     // 在线客服-配置修改-网页渠道
     ChatWebSetting("livechat/update_chat_web_setting"),
 
+    // 在线客服-配置复制-网页渠道
+    ChatWebSettingCopy("livechat/copy_chat_web_setting"),
     ;
     private String value;
 
