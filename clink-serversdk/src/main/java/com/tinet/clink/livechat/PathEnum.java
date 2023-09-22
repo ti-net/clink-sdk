@@ -49,7 +49,7 @@ public enum PathEnum {
     ChatVisitorUnreadCount("livechat/chat_visitor_unread_count"),
 
     // 在线客服-配置修改-网页渠道
-    ChatWebSetting("livechat/update_chat_web_setting"),
+    ChatWebSettingUpdate("livechat/update_chat_web_setting"),
 
     ;
     private String value;
