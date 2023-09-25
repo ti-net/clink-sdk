@@ -30,7 +30,7 @@ public class ChatWebSettingCopyTest {
 
 
     @Test
-    public void testUpdateWebSetting() throws Exception {
+    public void testCopyWebSetting() throws Exception {
         ObjectMapper mapper = new ObjectMapper();
         ChatWebSettingCopyRequest request = new ChatWebSettingCopyRequest();
         request.setAccessId("9ff07fd4-ff7d-457e-b7f2-356302f0f5e4");
