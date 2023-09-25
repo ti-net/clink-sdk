@@ -1,8 +1,10 @@
 package com.tinet.clink.livechat.model;
 
 /**
- * @author houwd
- * @date 2021/10/27 14:14
+ * 公告通知对象
+ *
+ * @author lj
+ * @date 2023/09/24 14:14
  */
 public class AnnouncementSetting {
 
