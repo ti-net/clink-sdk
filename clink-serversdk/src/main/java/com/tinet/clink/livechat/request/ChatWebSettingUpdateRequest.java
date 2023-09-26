@@ -7,8 +7,10 @@ import com.tinet.clink.livechat.response.ChatWebSettingUpdateResponse;
 import com.tinet.clink.ticket.request.stat.AbstractStatRequest;
 
 /**
- * @author midong
- * @since 2023/4/24 19:39
+ * 网页渠道配置修改请求对象
+ *
+ * @author lj
+ * @since 2023/9/24 19:39
  */
 public class ChatWebSettingUpdateRequest extends AbstractStatRequest<ChatWebSettingUpdateResponse> {
 

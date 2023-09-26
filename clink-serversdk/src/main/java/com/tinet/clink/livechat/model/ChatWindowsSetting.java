@@ -61,7 +61,6 @@ public class ChatWindowsSetting {
     /**
      * 访客端链接开关配置
      */
-
     private Integer visitorLink;
 
     public String getLogo() {
