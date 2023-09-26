@@ -110,6 +110,7 @@ public enum PathEnum {
 
     //  留言记录
     ListComments("cc/list_comments"),
+    ListVoiceMails("cc/list_voice_mails"),
     // 满意度记录
     ListInvestigations("cc/list_investigations"),
     // 添加满意度记录
@@ -151,6 +152,8 @@ public enum PathEnum {
     StatClientWorkload("cc/stat_client_workload"),
     //队列报表
     StatQueue("cc/stat_queue"),
+    // 新队列报表
+    StatNewQueue("cc/stat_new_queue"),
     //座席状态统计报表
     StatClientStatus("cc/stat_client_status"),
     //外呼报表-预览外呼
@@ -244,6 +247,14 @@ public enum PathEnum {
      * 更新外呼任务明细表单信息
      */
     UpdateTaskInventoryFormInfo("cc/update_task_inventory_form_info"),
+    /**
+     * 配置座席其它设置
+     */
+    OtherSetting("cc/other_setting"),
+    /**
+     * 获取座席其它设置
+     */
+    ListOtherSetting("cc/list_other_setting"),
     ;
     private String value;
 
