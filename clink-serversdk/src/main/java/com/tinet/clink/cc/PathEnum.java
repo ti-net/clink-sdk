@@ -247,6 +247,14 @@ public enum PathEnum {
      * 更新外呼任务明细表单信息
      */
     UpdateTaskInventoryFormInfo("cc/update_task_inventory_form_info"),
+    /**
+     * 配置座席其它设置
+     */
+    OtherSetting("cc/other_setting"),
+    /**
+     * 获取座席其它设置
+     */
+    ListOtherSetting("cc/list_other_setting"),
     ;
     private String value;
 
