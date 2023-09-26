@@ -33,7 +33,7 @@ public class DescribeDetailRecordFileUrlRequest extends AbstractRequestModel<Des
      */
     private Long timeout;
     public DescribeDetailRecordFileUrlRequest() {
-        super(PathEnum.DescribeRecordFileUrl.value(), HttpMethodType.GET);
+        super(PathEnum.DescribeDetailRecordFileUrl.value(), HttpMethodType.GET);
     }
 
 
@@ -54,6 +54,9 @@ public class DescribeDetailRecordFileUrlRequest extends AbstractRequestModel<Des
 
     public void setUniqueId(String uniqueId) {
         this.uniqueId = uniqueId;
+        if (uniqueId != null) {
+            putQueryParameter("uniqueId", uniqueId);
+        }
     }
 
     @Override

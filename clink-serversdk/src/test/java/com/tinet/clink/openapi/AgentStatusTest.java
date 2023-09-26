@@ -17,8 +17,8 @@ public class AgentStatusTest extends AbstractTest {
         request.setQnos(new String[]{"6666", "0000"});
         // request.setCnos(new String[]{"6666", "6665"});
         /// request.setPauseTypes(new Integer[]{1, 2});
-        request.setAgentStatus(new String[]{"PAUSE", "IDLE"});
-        request.setAgentStatusDetails(new String[]{"WC","666"});
+//        request.setAgentStatus(new String[]{"PAUSE", "IDLE"});
+//        request.setAgentStatusDetails(new String[]{"WC","666"});
 
 
         AgentStatusResponse response = client.getResponseModel(request);

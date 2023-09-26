@@ -135,11 +135,11 @@ public class CdrRecordTest extends AbstractTest {
     /**
      * 外呼通话记录明细详情单元测试
      */
-//    @Test
+    @Test
     public void describeCdrObDetailsTest() throws ServerException, ClientException, JsonProcessingException {
 
         DescribeCdrObDetailsRequest request = new DescribeCdrObDetailsRequest();
-        request.setMainUniqueId("AWS_DEV_MEDIA_SERVER_8-1540435106.22");
+        request.setMainUniqueId("medias_3-1694506364.124820");
         DescribeCdrObDetailsResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getCdrObDetails()));
     }
