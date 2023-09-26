@@ -45,6 +45,9 @@ public enum PathEnum {
     ListClidNumbers("cc/list_clid_numbers"),
     ListHotlineNumbers("cc/list_hotline_numbers"),
 
+    // 批量获取号码归属地
+    BatchGetAreaCode("cc/batch_get_areacode"),
+
     ListDynamicTelGroupRule("cc/list_dynamic_tel_group_rule"),
     // 呼叫控制
     Online("cc/online"),
