@@ -18,6 +18,10 @@ public enum PathEnum {
     SaveTicket("ticket/save_ticket"),
     // 更新工单-人工
     UpdateTicket("ticket/update_ticket"),
+    // 催单
+    ReminderTicket("ticket/reminder_ticket"),
+    // 重启
+    RestartTicket("ticket/restart_ticket"),
     // 更新工单-预制流
     UpdateTicketPrefabricated("ticket/update_ticket_prefabricated"),
     // 获取表单详情
