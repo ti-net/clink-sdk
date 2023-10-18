@@ -1,4 +1,4 @@
-package com.tinet.clink.ticket;
+package com.tinet.clink.ticket.response;
 
 /**
  * @author wangll
