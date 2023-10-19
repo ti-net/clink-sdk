@@ -255,6 +255,11 @@ public enum PathEnum {
      * 获取座席其它设置
      */
     ListOtherSetting("cc/list_other_setting"),
+
+    /**
+     * 获取企业SessionKey
+     */
+    EnterpriseSessionKey("cc/enterpriseSessionKey"),
     ;
     private String value;
 
