@@ -17,7 +17,7 @@
 <dependency>
     <groupId>com.ti-net</groupId>
     <artifactId>clink-serversdk</artifactId>
-    <version>2.0.45.1</version>
+    <version>3.0.13</version>
 </dependency>
 ```
 
@@ -608,5 +608,12 @@ public class Test {
 ```
 1、 新增 呼叫中心-电话-呼叫控制-转移 TransferRequest增加参数：clid
 2、 新增 呼叫中心-电话-呼叫控制-咨询 ConsultRequest增加参数：clid
+
+```
+
+### V 3.0.13
+
+```
+1、 新增 呼叫中心-企业级WebSocket订阅-获取SessionKey
 
 ```
