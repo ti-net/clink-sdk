@@ -264,6 +264,9 @@ public enum PathEnum {
      * 获取企业SessionKey
      */
     EnterpriseSessionKey("cc/enterpriseSessionKey"),
+
+    //  缓存数据请求
+    DataManager("cc/data_manager"),
     ;
     private String value;
 
