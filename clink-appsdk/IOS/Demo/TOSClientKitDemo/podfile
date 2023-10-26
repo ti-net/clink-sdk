@@ -1,0 +1,36 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform:ios,'10.0'
+use_frameworks!
+target "TOSClientKitDemo" do
+
+pod 'TOSClientKit'
+
+pod 'Bugly'
+pod 'MBProgressHUD'
+
+pod 'ReactiveObjC'
+pod 'Reachability'
+
+pod 'YYKit'
+
+pod "TTGTagCollectionView"
+
+#pod 'BRPickerView'
+pod 'MJRefresh'
+
+pod 'YTKNetwork'
+
+pod 'YBPopupMenu'
+pod 'ZYCornerRadius'
+
+pod 'WMPageController'
+
+pod 'RTRootNavigationController'
+
+pod 'TZImagePickerController'
+pod 'WZLBadge'
+
+pod 'Masonry'
+
+end
