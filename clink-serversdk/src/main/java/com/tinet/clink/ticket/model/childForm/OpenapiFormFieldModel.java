@@ -8,13 +8,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class OpenapiFormFieldModel {
-
-    /**
-     * 主键id
-     */
-    private Integer id;
-
-
     /**
      * 字段类型
      */
@@ -49,14 +42,6 @@ public class OpenapiFormFieldModel {
      * 是否级联 0 不级联 1 级联
      */
     private Integer cascade;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public Integer getType() {
         return type;

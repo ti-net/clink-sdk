@@ -13,13 +13,13 @@ import java.util.List;
  **/
 public class UpdateChildFormResponse extends PagedResponse {
 
-    List<CreateChildFormResultModel> data;
+    CreateChildFormResultModel data;
 
-    public List<CreateChildFormResultModel> getData() {
+    public CreateChildFormResultModel getData() {
         return data;
     }
 
-    public void setData(List<CreateChildFormResultModel> data) {
+    public void setData(CreateChildFormResultModel data) {
         this.data = data;
     }
 }

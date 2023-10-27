@@ -13,14 +13,13 @@ import java.util.List;
  * @date: 2020/8/20
  **/
 public class CreateChildFormResponse extends ResponseModel {
+    CreateChildFormResultModel data;
 
-    List<CreateChildFormResultModel> data;
-
-    public List<CreateChildFormResultModel> getData() {
+    public CreateChildFormResultModel getData() {
         return data;
     }
 
-    public void setData(List<CreateChildFormResultModel> data) {
+    public void setData(CreateChildFormResultModel data) {
         this.data = data;
     }
 }

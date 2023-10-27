@@ -56,6 +56,11 @@ public class OpenapiFormModel {
      */
     private FormConfigModel formConfig;
 
+    /**
+     * 级联表单内容
+     */
+    private String property;
+
     public Integer getId() {
         return id;
     }
@@ -126,5 +131,13 @@ public class OpenapiFormModel {
 
     public void setFormConfig(FormConfigModel formConfig) {
         this.formConfig = formConfig;
+    }
+
+    public String getProperty() {
+        return property;
+    }
+
+    public void setProperty(String property) {
+        this.property = property;
     }
 }

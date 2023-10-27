@@ -16,4 +16,12 @@ public class ListChildFormResponse extends PagedResponse {
      * 工单实体对象集合
      */
     List<ListChildFormResultModel> forms;
+
+    public List<ListChildFormResultModel> getForms() {
+        return forms;
+    }
+
+    public void setForms(List<ListChildFormResultModel> forms) {
+        this.forms = forms;
+    }
 }
