@@ -5,10 +5,7 @@ import com.tinet.clink.core.client.ClientConfiguration;
 import com.tinet.clink.openapi.AbstractTest;
 import com.tinet.clink.ticket.model.childForm.FormConfigModel;
 import com.tinet.clink.ticket.model.childForm.OpenapiFormFieldModel;
-import com.tinet.clink.ticket.request.childForm.CreateChildFormRequest;
-import com.tinet.clink.ticket.request.childForm.ListChildFormRequest;
 import com.tinet.clink.ticket.request.childForm.UpdateChildFormRequest;
-import com.tinet.clink.ticket.response.childForm.ListChildFormResponse;
 import com.tinet.clink.ticket.response.childForm.UpdateChildFormResponse;
 import org.junit.Test;
 
@@ -23,9 +20,7 @@ public class UpdateChildFormTest extends AbstractTest {
         ClientConfiguration configuration = new ClientConfiguration(
                 "AK",          // AccessKeyId
                 "SK");     // AccessKeySecret
-        configuration.setHost("127.0.0.1");
-        configuration.setPort(8111);
-        configuration.setScheme("http");
+        configuration.setHost("host");
 
         Client client = new Client(configuration);
         // 创建请求的request
@@ -33,8 +28,8 @@ public class UpdateChildFormTest extends AbstractTest {
         updateChildFormRequest.setFormId(28614);
         // 请求参数
         // 子表单名称
-        updateChildFormRequest.setName("测试接口创建子表单更新");
-        updateChildFormRequest.setDescription("测试接口创建子表单222");
+        updateChildFormRequest.setName("测试接口子表单更新");
+        updateChildFormRequest.setDescription("测试接口更新子表单");
         updateChildFormRequest.setCascade(1);
         // 导出展示方式
         FormConfigModel configModel = new FormConfigModel();

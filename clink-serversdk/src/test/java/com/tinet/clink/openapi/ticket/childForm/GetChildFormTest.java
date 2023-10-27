@@ -4,9 +4,7 @@ import com.tinet.clink.core.client.Client;
 import com.tinet.clink.core.client.ClientConfiguration;
 import com.tinet.clink.openapi.AbstractTest;
 import com.tinet.clink.ticket.request.childForm.GetChildFormRequest;
-import com.tinet.clink.ticket.request.childForm.ListChildFormRequest;
 import com.tinet.clink.ticket.response.childForm.GetChildFormResponse;
-import com.tinet.clink.ticket.response.childForm.ListChildFormResponse;
 import org.junit.Test;
 
 
@@ -18,9 +16,7 @@ public class GetChildFormTest extends AbstractTest {
         ClientConfiguration configuration = new ClientConfiguration(
                 "AK",          // AccessKeyId
                 "SK");     // AccessKeySecret
-        configuration.setHost("127.0.0.1");
-        configuration.setPort(8111);
-        configuration.setScheme("http");
+        configuration.setHost("host");
 
         Client client = new Client(configuration);
 

@@ -6,9 +6,7 @@ import com.tinet.clink.openapi.AbstractTest;
 import com.tinet.clink.ticket.model.childForm.FormConfigModel;
 import com.tinet.clink.ticket.model.childForm.OpenapiFormFieldModel;
 import com.tinet.clink.ticket.request.childForm.CreateChildFormRequest;
-import com.tinet.clink.ticket.request.childForm.ListChildFormRequest;
 import com.tinet.clink.ticket.response.childForm.CreateChildFormResponse;
-import com.tinet.clink.ticket.response.childForm.ListChildFormResponse;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -22,9 +20,7 @@ public class CreateChildFormTest extends AbstractTest {
         ClientConfiguration configuration = new ClientConfiguration(
                 "AK",          // AccessKeyId
                 "SK");     // AccessKeySecret
-        configuration.setHost("127.0.0.1");
-        configuration.setPort(8111);
-        configuration.setScheme("http");
+        configuration.setHost("host");
 
         Client client = new Client(configuration);
 
