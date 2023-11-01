@@ -23,6 +23,8 @@ public enum PathEnum {
     DeleteCustomer("crm/delete_customer"),
     //查询客户资料
     QueryCustomer("crm/query_customer"),
+    //查询客户资料可用标签
+    QueryCustomerLabels("crm/list_customer_labels"),
 
 
     //查询业务记录的自定义字段

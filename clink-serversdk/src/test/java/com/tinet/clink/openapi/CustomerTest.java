@@ -9,9 +9,11 @@ import com.tinet.clink.core.exceptions.ServerException;
 import com.tinet.clink.crm.model.IdValue;
 import com.tinet.clink.crm.request.customer.CreateCustomerRequest;
 import com.tinet.clink.crm.request.customer.ListCustomerFieldRequest;
+import com.tinet.clink.crm.request.customer.ListCustomerLabelsRequest;
 import com.tinet.clink.crm.request.customer.QueryCustomerRequest;
 import com.tinet.clink.crm.response.customer.CreateCustomerResponse;
 import com.tinet.clink.crm.response.customer.ListCustomerFieldResponse;
+import com.tinet.clink.crm.response.customer.ListCustomerLabelsResponse;
 import com.tinet.clink.crm.response.customer.QueryCustomerResponse;
 import org.junit.Test;
 
@@ -116,6 +118,38 @@ public class CustomerTest {
         request.setCustomerId(2201563);
         // 发起接口调用
         QueryCustomerResponse response = client.getResponseModel(request);
+
+        try {
+            String resultStr = mapper.writeValueAsString(response);
+            System.out.println(resultStr);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void QueryCustomerLabels() throws ServerException, ClientException {
+//        // 创建访问服务的client实例并初始化
+//        ClientConfiguration configuration = new ClientConfiguration(
+//                "9e969f413431ae0c0cf674fc56cec6ad",          // AccessKeyId
+//                "9616O59uJ3Whmp001704");     // AccessKeySecret
+//        configuration.setHost("api-bj-test0.clink.cn");
+//        configuration.setScheme("https");
+
+
+        // 创建访问服务的client实例并初始化
+        ClientConfiguration configuration = new ClientConfiguration(
+                "f7938cbf85fbc6ee82f9120386a62d6c",          // AccessKeyId
+                "195Hf4XQtg082X02776Z");     // AccessKeySecret
+        configuration.setHost("localhost");
+        configuration.setScheme("http");
+        configuration.setPort(8090);
+        Client client = new Client(configuration);
+
+        // 本接口无特有请求参数
+        ListCustomerLabelsRequest request = new ListCustomerLabelsRequest();
+        // 发起接口调用
+        ListCustomerLabelsResponse response = client.getResponseModel(request);
 
         try {
             String resultStr = mapper.writeValueAsString(response);

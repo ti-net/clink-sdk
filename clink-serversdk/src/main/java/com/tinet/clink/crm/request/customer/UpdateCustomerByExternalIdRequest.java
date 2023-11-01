@@ -16,12 +16,6 @@ public class UpdateCustomerByExternalIdRequest extends AbstractRequestModel<Upda
 
 
     /**
-     * 客户资料id
-     */
-    private Integer id;
-
-
-    /**
      * 客户姓名
      */
     private String name;
@@ -80,17 +74,6 @@ public class UpdateCustomerByExternalIdRequest extends AbstractRequestModel<Upda
      */
     private Integer renovate;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-
-        if (id != null) {
-            putBodyParameter("id", id);
-        }
-    }
 
     public String getName() {
         return name;

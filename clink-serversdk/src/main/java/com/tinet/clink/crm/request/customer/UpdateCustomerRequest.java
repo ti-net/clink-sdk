@@ -78,6 +78,20 @@ public class UpdateCustomerRequest extends AbstractRequestModel<UpdateCustomerRe
      */
     private Integer renovate;
 
+    private Integer[] labelIds;
+
+
+    public Integer[] getLabelIds() {
+        return labelIds;
+    }
+
+    public void setLabelIds(Integer[] labelIds) {
+        this.labelIds = labelIds;
+        if (labelIds != null) {
+            putBodyParameter("labelIds", labelIds);
+        }
+    }
+
     public Integer getId() {
         return id;
     }

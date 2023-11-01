@@ -72,6 +72,23 @@ public class CreateCustomerRequest extends AbstractRequestModel<CreateCustomerRe
      */
     private Integer source;
 
+    /**
+     * 客户标签
+     */
+    private Integer[] labelIds;
+
+
+    public Integer[] getLabelIds() {
+        return labelIds;
+    }
+
+    public void setLabelIds(Integer[] labelIds) {
+        this.labelIds = labelIds;
+        if (labelIds != null) {
+            putBodyParameter("labelIds", labelIds);
+        }
+    }
+
     public String getName() {
         return name;
     }
