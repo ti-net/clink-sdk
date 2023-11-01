@@ -11,13 +11,13 @@ import com.tinet.clink.crm.model.CustomerLabelsModel;
  */
 public class ListCustomerLabelsResponse extends ResponseModel {
 
-   private CustomerLabelsModel customerLabels;
+   private CustomerLabelsModel[] customerLabels;
 
-   public CustomerLabelsModel getCustomerLabels() {
+   public CustomerLabelsModel[] getCustomerLabels() {
       return customerLabels;
    }
 
-   public void setCustomerLabels(CustomerLabelsModel customerLabels) {
+   public void setCustomerLabels(CustomerLabelsModel[] customerLabels) {
       this.customerLabels = customerLabels;
    }
 }
