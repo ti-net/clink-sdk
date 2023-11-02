@@ -21,7 +21,7 @@ public class ListTicketTest extends AbstractTest {
     public void listTicket(){
 
         ClientConfiguration configuration = new ClientConfiguration(
-                "3ee29817e02c59ab4f27f55b75053ab9",          // AccessKeyId
+                "3ee29817e02c59ab4f27f55b75053ab9",           // AccessKeyId
                 "4498PzDejj8y13e2u19Q");     // AccessKeySecret
         configuration.setHost("alb-01l5fw2u4lg0sajop3.cn-beijing.alb.aliyuncs.com");
         configuration.setScheme("http");

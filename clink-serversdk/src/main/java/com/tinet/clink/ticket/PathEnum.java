@@ -7,6 +7,11 @@ package com.tinet.clink.ticket;
 public enum PathEnum {
     //查询工单记录
     ListTicket("ticket/list_ticket"),
+    ListChildForm("ticket/get_child_form_list"),
+    GetChildForm("ticket/get_child_form_detail"),
+    CreateChildForm("ticket/create_child_form"),
+    UpdateChildForm("ticket/update_child_form"),
+    DeleteChildForm("ticket/delete_child_form"),
 
     // 获取工单详情
     GetTicketDetail("ticket/get_ticket_detail"),
