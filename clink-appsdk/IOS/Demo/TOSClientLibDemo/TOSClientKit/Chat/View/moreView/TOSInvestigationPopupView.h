@@ -27,6 +27,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 提交用到的 uniqueId
 @property (nonatomic, copy) NSString                * uniqueId;
 
+/// 提交用到的 mainUniqueId
+@property (nonatomic, copy) NSString                * mainUniqueId;
+
 /// 标题
 @property (nonatomic, copy) NSString                * clientName;
 

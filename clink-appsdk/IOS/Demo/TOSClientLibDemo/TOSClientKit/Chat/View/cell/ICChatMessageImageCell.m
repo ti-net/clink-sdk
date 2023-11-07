@@ -185,6 +185,8 @@
 //        _imageBtn.layer.cornerRadius = 5;
         _imageBtn.clipsToBounds = YES;
         _imageBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        UIImage * image = [UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,@"loadImage.png"]];
+        [_imageBtn setBackgroundImage:image forState:(UIControlStateNormal)];
         
     }
     return _imageBtn;

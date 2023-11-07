@@ -149,7 +149,7 @@
 }
 
 
-#pragma mark - Privite Method 
+#pragma mark - Privite Method
 
 - (void)pageControlClicked:(UIPageControl *)pageControl
 {

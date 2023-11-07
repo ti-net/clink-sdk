@@ -70,9 +70,12 @@
 #import <TOSClientLib/TOSMessageKnowledgeBaseModel.h>
 
 #import "TOSChatCustomBaseTableViewCell.h"
-#import "TOSInvestigationPopupView.h"
 
+#import "TOSSatisfactionPopupView.h"
+#import "TOSInvestigationPopupView.h"
+#import "ICChatMessageSatisfactionPopupCell.h"
 #import "ICTools.h"
+#import "TOSReloadTaskManager.h"
 
 #define     MAX_SHOWTIME_MSG_SECOND     180
 #define     MIN_UPDATE_MSG_SECOND       (0.5f)
@@ -93,7 +96,7 @@ typedef NS_ENUM(NSInteger, offlineMessageType) {
 };
 
 @interface TOSCustomerChatVC ()<TIMChatBoxViewControllerDelegate,ICRecordManagerDelegate,
-TIMClientReceiveMessageDelegate,UITableViewDelegate,UITableViewDataSource,BaseCellDelegate, UIScrollViewDelegate, YBImageBrowserDelegate, YBImageBrowserDataSource, UIDocumentPickerDelegate, ICChatMessageCommodityCardDetailsCellDelegate, TOSInvestigationPopupViewDelegate> {
+TIMClientReceiveMessageDelegate,UITableViewDelegate,UITableViewDataSource,BaseCellDelegate, UIScrollViewDelegate, YBImageBrowserDelegate, YBImageBrowserDataSource, UIDocumentPickerDelegate, ICChatMessageCommodityCardDetailsCellDelegate, TOSInvestigationPopupViewDelegate, TOSReloadTaskManagerDelegate> {
     CGRect _smallRect;
     CGRect _bigRect;
     CGRect _videoBtnRect;
@@ -109,14 +112,18 @@ TIMClientReceiveMessageDelegate,UITableViewDelegate,UITableViewDataSource,BaseCe
     int   _firstHasGetHistoryListFinish; //第一次拉取历史消息是否结束
 }
 
+@property (nonatomic, strong) TOSReloadTaskManager *reloadTaskManager;
+
 @property (nonatomic, strong) TIMChatBoxViewController *chatBoxVC;
 @property (nonatomic, strong) UIView *chatCloseView;
 
 
 @property (nonatomic, strong) TOSBaseTableView *tableView;
 @property (nonatomic, strong) UITextView *textView;
-/** 数据源 */
+/** tableView数据源 */
 @property (nonatomic, strong) NSMutableArray *dataSource;
+/** 准备展示的数据源 */
+@property (nonatomic, strong) NSMutableArray *readyDisplayDataSource;
 /** voice path */
 @property (nonatomic, copy) NSString *voicePath;
 
@@ -197,6 +204,8 @@ TIMClientReceiveMessageDelegate,UITableViewDelegate,UITableViewDataSource,BaseCe
 /// 记录访客是否接入过座席
 @property (nonatomic, assign) BOOL                insertOnline;
 
+@property (nonatomic, strong) TOSSatisfactionPopupView *popupView;
+
 @end
 
 static const NSInteger kMaxImageDataRequest = 50;
@@ -219,195 +228,233 @@ static const NSInteger kMaxImageDataRequest = 50;
         return;
     }
     
-    switch (model.fileType) {
-        case SYCacheFileTypeVideo: {
-            
-            UIImage *imageSrc = [UIImage videoFramerateWithPath:model.filePath];
-            
-            CGFloat fixelW = imageSrc.size.width;
-            CGFloat fixelH = imageSrc.size.height;
+    @WeakObj(self);
+    [self.reloadTaskManager startTaskWithScroll:YES completion:^{
+        @StrongObj(self);
+        switch (model.fileType) {
+            case SYCacheFileTypeVideo: {
+                
+                
+                UIImage *imageSrc = [UIImage videoFramerateWithPath:model.filePath];
+                
+                CGFloat fixelW = imageSrc.size.width;
+                CGFloat fixelH = imageSrc.size.height;
 
-            NSData *videoData = [NSData dataWithContentsOfFile:model.filePath];
-            
-            __block TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeVideo
-                                                                       originalType:@"video"
-                                                                            content:@"[视频]"
-                                                                              extra:@""
-                                                                         auditExtra:@""
-                                                                               path:model.filePath
-                                                                            urlPath:nil
-                                                                               from:[[OnlineDataSave shareOnlineDataSave] getVisitorId]
-                                                                                 to:[[OnlineDataSave shareOnlineDataSave] getEndpointId]
-                                                                            fileKey:[[NSUUID UUID] UUIDString]
-                                                                       bigImgFileId:@""
-                                                                      voiceDuration:[NSNumber numberWithInt:0]
-                                                                              msgId:@""
-                                                                           sendTime:[self getNowTimestamp]
-                                                                           showTime:[self p_needShowTime:[NSDate date]]
-                                                                            picSize:CGSizeMake(fixelW, fixelH)
-                                                                            picType:@""
-                                                                           isSender:YES
-                                                           receivedSenderByYourself:NO
-                                                                             status:TIMMessageStatus_Sending];
-            // 创建本地消息
-            [self addObject:messageF isSender:YES isHeaderInsert:NO];
-            // 发送中
-            [self messageSending:messageF];
-            
-            [[OnlineMessageSendManager sharedOnlineMessageSendManager]sendVideoMessageWithVideoData:videoData success:^(NSString * _Nonnull messageId) {
-                messageF.model.message.messageId = messageId;
-                [self updateOldMessageId:messageId];
-                [self messageSendSucced:messageF];
-            } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
-                [self messageSendFailed:messageF];
-                int sizeLimitM = [[OnlineDataSave shareOnlineDataSave] getAppSettingFileSize].longLongValue /1024/1024;
-                NSString * strShow = [NSString stringWithFormat:@"文件过大，请发送小于%dM文件",sizeLimitM];
-                [WHToast showMessage:errorDes?:strShow duration:2 finishHandler:^{
+                NSData *videoData = [NSData dataWithContentsOfFile:model.filePath];
+                
+                __block TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeVideo
+                                                                           originalType:@"video"
+                                                                                content:@"[视频]"
+                                                                                  extra:@""
+                                                                             auditExtra:@""
+                                                                                   path:model.filePath
+                                                                                urlPath:nil
+                                                                                   from:[[OnlineDataSave shareOnlineDataSave] getVisitorId]
+                                                                                     to:[[OnlineDataSave shareOnlineDataSave] getEndpointId]
+                                                                                fileKey:[[NSUUID UUID] UUIDString]
+                                                                           bigImgFileId:@""
+                                                                          voiceDuration:[NSNumber numberWithInt:0]
+                                                                                  msgId:@""
+                                                                               sendTime:[self getNowTimestamp]
+                                                                               showTime:[self p_needShowTime:[NSDate date]]
+                                                                                picSize:CGSizeMake(fixelW, fixelH)
+                                                                                picType:@""
+                                                                               isSender:YES
+                                                               receivedSenderByYourself:NO
+                                                                                 status:TIMMessageStatus_Sending];
+                // 创建本地消息
+                [self addObject:messageF isSender:YES isHeaderInsert:NO];
+                // 发送中
+                [self messageSending:messageF];
+                
+                [[OnlineMessageSendManager sharedOnlineMessageSendManager] sendVideoMessageWithVideoData:videoData success:^(NSString * _Nonnull messageId) {
                     
+                    @StrongObj(self);
+                    messageF.model.message.messageId = messageId;
+                    [self updateOldMessageId:messageId];
+                    [self messageSendSucced:messageF];
+                    self.reloadTaskManager.isScroll = YES;
+                    [self.reloadTaskManager startCountdown];
+                } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+                    
+                    @StrongObj(self);
+                    [self messageSendFailed:messageF];
+                    self.reloadTaskManager.isScroll = YES;
+                    [self.reloadTaskManager startCountdown];
+                    
+                    int sizeLimitM = [[OnlineDataSave shareOnlineDataSave] getAppSettingFileSize].longLongValue /1024/1024;
+                    NSString * strShow = [NSString stringWithFormat:@"文件过大，请发送小于%dM文件",sizeLimitM];
+                    [WHToast showMessage:errorDes?:strShow duration:2 finishHandler:^{
+                        
+                    }];
                 }];
-            }];
-        }
-            break;
-        case SYCacheFileTypeAudio: {
-            // 获取时长
-            int voiceDuration = (int)[[ICRecordManager shareManager] durationWithVideo:[NSURL fileURLWithPath:model.filePath]];
-            if (voiceDuration < 1000) {
-                // 小于一秒的显示1秒
-                voiceDuration = 1000;
             }
-            
-            
-            NSData*voiceData = [NSData dataWithContentsOfFile:model.filePath];
-            
-            // Kit
-            __block TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeVoice
-                                                                       originalType:@"voice"
-                                                                            content:@"[语音]"
-                                                                              extra:@""
-                                                                         auditExtra:@""
-                                                                               path:model.filePath
-                                                                            urlPath:nil
-                                                                               from:[[OnlineDataSave shareOnlineDataSave] getVisitorId]
-                                                                                 to:[[OnlineDataSave shareOnlineDataSave] getEndpointId]
-                                                                            fileKey:[[NSUUID UUID] UUIDString]
-                                                                       bigImgFileId:@""
-                                                                      voiceDuration:[NSNumber numberWithInt:voiceDuration]
-                                                                              msgId:@""
-                                                                           sendTime:[self getNowTimestamp]
-                                                                           showTime:[self p_needShowTime:[NSDate date]]
-                                                                            picSize:CGSizeZero
-                                                                            picType:@""
-                                                                           isSender:YES
-                                                           receivedSenderByYourself:NO
-                                                                             status:TIMMessageStatus_Sending];
-            [self addObject:messageF isSender:YES isHeaderInsert:NO];
-            // 发送中
-            [self messageSending:messageF];
-            
-            [[OnlineMessageSendManager sharedOnlineMessageSendManager]sendVoiceMessageWithVoiceData:voiceData success:^(NSString * _Nonnull messageId) {
-                messageF.model.message.messageId = messageId;
-                [self updateOldMessageId:messageId];
-                [self messageSendSucced:messageF];
-            } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
-                [self messageSendFailed:messageF];
-            }];
-        }
-            break;
-        case SYCacheFileTypeImage: {
-            UIImage *image = [UIImage imageWithContentsOfFile:model.filePath];
-            
-            CGFloat fixelW = image.size.width;
-            CGFloat fixelH = image.size.height;
-            
-            NSData*uploadThumbFileData = UIImageJPEGRepresentation(image, 0.5);
-            
-            // Kit
-            CGSize imageSize = CGSizeMake(fixelW, fixelH);
-            __block TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypePic
-                                                                       originalType:@"image"
-                                                                            content:@"[图片]"
-                                                                              extra:@""
-                                                                         auditExtra:@""
-                                                                               path:model.filePath
-                                                                            urlPath:nil
-                                                                               from:[[OnlineDataSave shareOnlineDataSave] getVisitorId]
-                                                                                 to:[[OnlineDataSave shareOnlineDataSave] getEndpointId]
-                                                                            fileKey:[[NSUUID UUID] UUIDString]
-                                                                       bigImgFileId:@""
-                                                                      voiceDuration:[NSNumber numberWithInt:0]
-                                                                              msgId:@""
-                                                                           sendTime:[self getNowTimestamp]
-                                                                           showTime:[self p_needShowTime:[NSDate date]]
-                                                                            picSize:imageSize
-                                                                            picType:@""
-                                                                           isSender:YES
-                                                           receivedSenderByYourself:NO
-                                                                             status:TIMMessageStatus_Sending];
-            [self addObject:messageF isSender:YES isHeaderInsert:NO];
-            // 发送中
-            [self messageSending:messageF];
-            
-            [[OnlineMessageSendManager sharedOnlineMessageSendManager] sendImageMessageWithImageData:uploadThumbFileData        success:^(NSString * _Nonnull messageId,NSString * _Nonnull fileKey) {
-                messageF.model.message.messageId = messageId;
-                [self updateOldMessageId:messageId];
-                [self messageSendSucced:messageF];
-            } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
-                [self messageSendFailed:messageF];
-            }];
-        }
-            break;
-        case SYCacheFileTypeDocument:
-        case SYCacheFileTypeUnknow:
-        default: {
-            NSString * fileTypeStr = [kitUtils mimeTypeForFileAtPath:model.filePath];
-            NSDictionary* fileMessageDic = @{
-                @"fileTypeDesc": @"文件",
-                @"fileType": fileTypeStr,
-                @"fileName": fileName
-            };
-            // Kit
-            __block TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeCustomFile
-                                                                       originalType:@"file"
-                                                                            content:[kitUtils DataTOjsonString:fileMessageDic]
-                                                                              extra:@""
-                                                                         auditExtra:@""
-                                                                               path:model.filePath
-                                                                            urlPath:nil
-                                                                               from:[[OnlineDataSave shareOnlineDataSave] getVisitorId]
-                                                                                 to:[[OnlineDataSave shareOnlineDataSave] getEndpointId]
-                                                                            fileKey:[[NSUUID UUID] UUIDString]
-                                                                       bigImgFileId:@""
-                                                                      voiceDuration:[NSNumber numberWithInt:0]
-                                                                              msgId:@""
-                                                                           sendTime:[self getNowTimestamp]
-                                                                           showTime:[self p_needShowTime:[NSDate date]]
-                                                                            picSize:CGSizeMake(150, 60)
-                                                                            picType:@""
-                                                                           isSender:YES
-                                                           receivedSenderByYourself:NO
-                                                                             status:TIMMessageStatus_Sending];
-            // 创建本地消息
-            [self addObject:messageF isSender:YES isHeaderInsert:NO];
-            // 发送中
-            [self messageSending:messageF];
-            
-            NSData *fileData = [NSData dataWithContentsOfFile:model.filePath];
-            
-            [[OnlineMessageSendManager sharedOnlineMessageSendManager] sendFileMessageWithFileData:fileData fileType:fileTypeStr fileName:fileName success:^(NSString * _Nonnull messageId) {
-                messageF.model.message.messageId = messageId;
-                [self updateOldMessageId:messageId];
-                [self messageSendSucced:messageF];
-            } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
-                [self messageSendFailed:messageF];
-                int sizeLimitM = [[OnlineDataSave shareOnlineDataSave] getAppSettingFileSize].longLongValue /1024/1024;
-                NSString * strShow = [NSString stringWithFormat:@"文件过大，请发送小于%dM文件",sizeLimitM];
-                [WHToast showMessage:errorDes?:strShow duration:2 finishHandler:^{
+                break;
+            case SYCacheFileTypeAudio: {
+                // 获取时长
+                int voiceDuration = (int)[[ICRecordManager shareManager] durationWithVideo:[NSURL fileURLWithPath:model.filePath]];
+                if (voiceDuration < 1000) {
+                    // 小于一秒的显示1秒
+                    voiceDuration = 1000;
+                }
+                
+                
+                NSData*voiceData = [NSData dataWithContentsOfFile:model.filePath];
+                
+                // Kit
+                __block TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeVoice
+                                                                           originalType:@"voice"
+                                                                                content:@"[语音]"
+                                                                                  extra:@""
+                                                                             auditExtra:@""
+                                                                                   path:model.filePath
+                                                                                urlPath:nil
+                                                                                   from:[[OnlineDataSave shareOnlineDataSave] getVisitorId]
+                                                                                     to:[[OnlineDataSave shareOnlineDataSave] getEndpointId]
+                                                                                fileKey:[[NSUUID UUID] UUIDString]
+                                                                           bigImgFileId:@""
+                                                                          voiceDuration:[NSNumber numberWithInt:voiceDuration]
+                                                                                  msgId:@""
+                                                                               sendTime:[self getNowTimestamp]
+                                                                               showTime:[self p_needShowTime:[NSDate date]]
+                                                                                picSize:CGSizeZero
+                                                                                picType:@""
+                                                                               isSender:YES
+                                                               receivedSenderByYourself:NO
+                                                                                 status:TIMMessageStatus_Sending];
+                [self addObject:messageF isSender:YES isHeaderInsert:NO];
+                // 发送中
+                [self messageSending:messageF];
+                
+                [[OnlineMessageSendManager sharedOnlineMessageSendManager]sendVoiceMessageWithVoiceData:voiceData success:^(NSString * _Nonnull messageId) {
                     
+                    @StrongObj(self);
+                    messageF.model.message.messageId = messageId;
+                    [self updateOldMessageId:messageId];
+                    [self messageSendSucced:messageF];
+                    self.reloadTaskManager.isScroll = YES;
+                    [self.reloadTaskManager startCountdown];
+                } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+                    
+                    @StrongObj(self);
+                    [self messageSendFailed:messageF];
+                    self.reloadTaskManager.isScroll = YES;
+                    [self.reloadTaskManager startCountdown];
                 }];
-            }];
+            }
+                break;
+            case SYCacheFileTypeImage: {
+                UIImage *image = [UIImage imageWithContentsOfFile:model.filePath];
+                
+                CGFloat fixelW = image.size.width;
+                CGFloat fixelH = image.size.height;
+                
+                NSData*uploadThumbFileData = UIImageJPEGRepresentation(image, 0.5);
+                
+                // Kit
+                CGSize imageSize = CGSizeMake(fixelW, fixelH);
+                __block TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypePic
+                                                                           originalType:@"image"
+                                                                                content:@"[图片]"
+                                                                                  extra:@""
+                                                                             auditExtra:@""
+                                                                                   path:model.filePath
+                                                                                urlPath:nil
+                                                                                   from:[[OnlineDataSave shareOnlineDataSave] getVisitorId]
+                                                                                     to:[[OnlineDataSave shareOnlineDataSave] getEndpointId]
+                                                                                fileKey:[[NSUUID UUID] UUIDString]
+                                                                           bigImgFileId:@""
+                                                                          voiceDuration:[NSNumber numberWithInt:0]
+                                                                                  msgId:@""
+                                                                               sendTime:[self getNowTimestamp]
+                                                                               showTime:[self p_needShowTime:[NSDate date]]
+                                                                                picSize:imageSize
+                                                                                picType:@""
+                                                                               isSender:YES
+                                                               receivedSenderByYourself:NO
+                                                                                 status:TIMMessageStatus_Sending];
+                [self addObject:messageF isSender:YES isHeaderInsert:NO];
+                // 发送中
+                [self messageSending:messageF];
+                
+                [[OnlineMessageSendManager sharedOnlineMessageSendManager] sendImageMessageWithImageData:uploadThumbFileData        success:^(NSString * _Nonnull messageId,NSString * _Nonnull fileKey) {
+                    
+                    @StrongObj(self);
+                    messageF.model.message.messageId = messageId;
+                    [self updateOldMessageId:messageId];
+                    [self messageSendSucced:messageF];
+                    self.reloadTaskManager.isScroll = YES;
+                    [self.reloadTaskManager startCountdown];
+                } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+                    
+                    @StrongObj(self);
+                    [self messageSendFailed:messageF];
+                    self.reloadTaskManager.isScroll = YES;
+                    [self.reloadTaskManager startCountdown];
+                }];
+            }
+                break;
+            case SYCacheFileTypeDocument:
+            case SYCacheFileTypeUnknow:
+            default: {
+                NSString * fileTypeStr = [kitUtils mimeTypeForFileAtPath:model.filePath];
+                NSDictionary* fileMessageDic = @{
+                    @"fileTypeDesc": @"文件",
+                    @"fileType": fileTypeStr,
+                    @"fileName": fileName
+                };
+                // Kit
+                __block TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeCustomFile
+                                                                           originalType:@"file"
+                                                                                content:[kitUtils DataTOjsonString:fileMessageDic]
+                                                                                  extra:@""
+                                                                             auditExtra:@""
+                                                                                   path:model.filePath
+                                                                                urlPath:nil
+                                                                                   from:[[OnlineDataSave shareOnlineDataSave] getVisitorId]
+                                                                                     to:[[OnlineDataSave shareOnlineDataSave] getEndpointId]
+                                                                                fileKey:[[NSUUID UUID] UUIDString]
+                                                                           bigImgFileId:@""
+                                                                          voiceDuration:[NSNumber numberWithInt:0]
+                                                                                  msgId:@""
+                                                                               sendTime:[self getNowTimestamp]
+                                                                               showTime:[self p_needShowTime:[NSDate date]]
+                                                                                picSize:CGSizeMake(150, 60)
+                                                                                picType:@""
+                                                                               isSender:YES
+                                                               receivedSenderByYourself:NO
+                                                                                 status:TIMMessageStatus_Sending];
+                // 创建本地消息
+                [self addObject:messageF isSender:YES isHeaderInsert:NO];
+                // 发送中
+                [self messageSending:messageF];
+                
+                NSData *fileData = [NSData dataWithContentsOfFile:model.filePath];
+                
+                [[OnlineMessageSendManager sharedOnlineMessageSendManager] sendFileMessageWithFileData:fileData fileType:fileTypeStr fileName:fileName success:^(NSString * _Nonnull messageId) {
+                    
+                    @StrongObj(self);
+                    messageF.model.message.messageId = messageId;
+                    [self updateOldMessageId:messageId];
+                    [self messageSendSucced:messageF];
+                    self.reloadTaskManager.isScroll = YES;
+                    [self.reloadTaskManager startCountdown];
+                } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+                    
+                    @StrongObj(self);
+                    [self messageSendFailed:messageF];
+                    self.reloadTaskManager.isScroll = YES;
+                    [self.reloadTaskManager startCountdown];
+                    int sizeLimitM = [[OnlineDataSave shareOnlineDataSave] getAppSettingFileSize].longLongValue /1024/1024;
+                    NSString * strShow = [NSString stringWithFormat:@"文件过大，请发送小于%dM文件",sizeLimitM];
+                    [WHToast showMessage:errorDes?:strShow duration:2 finishHandler:^{
+                        
+                    }];
+                }];
+            }
+                break;
         }
-            break;
-    }
+    }];
 }
 
 #pragma mark UIDocumentPickerDelegate
@@ -486,6 +533,9 @@ static const NSInteger kMaxImageDataRequest = 50;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.reloadTaskManager = [[TOSReloadTaskManager alloc] init];
+    self.reloadTaskManager.delegate = self;
+    
     if ([TOSKitCustomInfo shareCustomInfo].titleName) {
         self.titleName = [TOSKitCustomInfo shareCustomInfo].titleName;
     }
@@ -505,10 +555,13 @@ static const NSInteger kMaxImageDataRequest = 50;
     @WeakObj(self);
     [[OnlineRequestManager sharedCustomerManager] getInvestigationInfoSuccess:^{
         @StrongObj(self);
-        dispatch_async(dispatch_get_main_queue(), ^{
-            @StrongObj(self);
-            [self.tableView reloadData];
-        });
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            @StrongObj(self);
+//            [self.tableView reloadData];
+//        });
+        [self.reloadTaskManager startTaskWithScroll:NO completion:^{
+            
+        }];
     } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
         
     }];
@@ -588,8 +641,9 @@ static const NSInteger kMaxImageDataRequest = 50;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
     
     
-    
-    
+    self.popupView = [[TOSSatisfactionPopupView alloc] initWithFrame:CGRectMake(0, 0, kWindowWidth, kWindowHeight - kNavTop)];
+    self.popupView.hidden = YES;
+    [self.view addSubview:self.popupView];
 }
 
 -(void)firstGetHistoryMessage{
@@ -610,7 +664,8 @@ static const NSInteger kMaxImageDataRequest = 50;
     
     if (!self.firstViewDidAppear) {
         [self.chatBoxVC.chatBox switchTextEditing];
-        [self scrollToBottom];
+        self.reloadTaskManager.isScroll = NO;
+        [self.reloadTaskManager startCountdown];
         self.firstViewDidAppear = YES;
     }
 }
@@ -619,9 +674,6 @@ static const NSInteger kMaxImageDataRequest = 50;
     [self.chatBoxVC.chatBox removeNotification];
     /// 清空最后一条消息/未读消息数
     [[NSNotificationCenter defaultCenter] postNotificationName:kTIMMessageClearUnReadCountNotification object:nil];
-    
-    
-    
 }
 
 - (void)setupUI
@@ -717,6 +769,7 @@ static const NSInteger kMaxImageDataRequest = 50;
 
 - (void)registerCell {
     [self.tableView registerClass:[ICChatMessageTextCell class] forCellReuseIdentifier:TypeText];
+    [self.tableView registerClass:[ICChatMessageSatisfactionPopupCell class] forCellReuseIdentifier:TypeSatisfactionPopup];
     [self.tableView registerClass:[ICChatMessageRevokeCell class] forCellReuseIdentifier:TypeRevoke];
     [self.tableView registerClass:[ICChatMessageUnsupportCell class] forCellReuseIdentifier:TypeUnsupport];
     [self.tableView registerClass:[ICChatMessageImageCell class] forCellReuseIdentifier:TypePic];
@@ -776,28 +829,30 @@ static const NSInteger kMaxImageDataRequest = 50;
     if (self->_firstHasGetHistoryListFinish == 1) {
         lastTime = @"";
     }
-    
+    @WeakObj(self);
     [[OnlineRequestManager sharedCustomerManager] getChatRecordListLastTime:lastTime
                                                                       limit:@"20"
                                                                     success:^(NSArray * _Nonnull chatList) {
+        @StrongObj(self);
         if (chatList.count>0) {
             self.pageIndex++;
             OnlineChatRecordModel*lastmodel = chatList.firstObject;
             self.lastTime = lastmodel.createTime;
-            //倒叙
-            NSMutableArray*historyList  = (NSMutableArray *)[[chatList reverseObjectEnumerator] allObjects];
-            for (OnlineChatRecordModel *model in historyList) {
-                [self analysisHistoryWithModel:model withItemReload:NO];
-            }
             
-            [self.tableView reloadData];
+            BOOL isScroll = self->_firstHasGetHistoryListFinish == 1;
+            
+            NSMutableArray *dataSource = [chatList mutableCopy];
+            [self.reloadTaskManager startTaskWithScroll:isScroll completion:^{
+                @StrongObj(self);
+                //倒叙
+                NSMutableArray *historyList  = (NSMutableArray *)[[dataSource reverseObjectEnumerator] allObjects];
+                for (OnlineChatRecordModel *model in historyList) {
+                    [self analysisHistoryWithModel:model withItemReload:NO];
+                }
+            }];
+            
             if (self->_firstHasGetHistoryListFinish == 1) {
                 [self addCommodityCardMessage];
-                if (self.dataSource.count > 0 &&
-                    [self.tableView numberOfRowsInSection:0] >= self.dataSource.count) {
-                    
-                    [self scrollToBottom];
-                }
                 self->_firstHasGetHistoryListFinish = 0;
             }
             [self.tableView.tos_header endRefreshing];
@@ -806,36 +861,37 @@ static const NSInteger kMaxImageDataRequest = 50;
         }else{
             if (self->_firstHasGetHistoryListFinish == 1) {
                 [self addCommodityCardMessage];
-                [self scrollToBottom];
                 self->_firstHasGetHistoryListFinish = 0;
             }
-            [self.tableView reloadData];
             [self.tableView.tos_header endRefreshing];
         }
     } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+        @StrongObj(self);
         if (self->_firstHasGetHistoryListFinish == 1) {
             [self addCommodityCardMessage];
-            [self scrollToBottom];
             self->_firstHasGetHistoryListFinish = 0;
         }
-        [self.tableView reloadData];
         [self.tableView.tos_header endRefreshing];
     }];
 }
 
 - (void)addCommodityCardMessage {
-    NSString * curMainUniqueId = [[OnlineDataSave shareOnlineDataSave] getMainUniqueId];
-    NSString * mainUniqueIdStatus = [[OnlineDataSave shareOnlineDataSave] getMainUniqueIdRunningStatus:curMainUniqueId];
-    // 做个保护 针对创建会话的状态
-    if (self.commodityCardOption &&
-        self->_firstHasGetHistoryListFinish == 1) {
-        TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeCommodityCard originalType:@"text" content:(NSString *)self.commodityCardOption extra:@"" auditExtra:@"" path:nil urlPath:nil from:[[OnlineDataSave shareOnlineDataSave] getVisitorId] to:[[OnlineDataSave shareOnlineDataSave] getEndpointId] fileKey:@"" bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:[kitUtils getMsgUUID] sendTime:[self getNowTimestamp] showTime:[self p_needShowTime:[NSDate date]] picSize:CGSizeMake(0, 0) picType:@"" isSender:YES receivedSenderByYourself:NO status:1];
-        [self addObject:messageF isSender:YES isHeaderInsert:NO];
-        [self messageSendSucced:messageF];
-//        [self scrollToBottom];
-        [self.tableView reloadData];
-        [[OnlineDataSave shareOnlineDataSave] saveMainUniqueIdRunningStatus:curMainUniqueId runningStatus:@"RunningStatus"];
-    }
+    @WeakObj(self);
+    [self.reloadTaskManager startTaskWithScroll:YES completion:^{
+        @StrongObj(self);
+        
+        NSString * curMainUniqueId = [[OnlineDataSave shareOnlineDataSave] getMainUniqueId];
+    //    NSString * mainUniqueIdStatus = [[OnlineDataSave shareOnlineDataSave] getMainUniqueIdRunningStatus:curMainUniqueId];
+        // 做个保护 针对创建会话的状态
+        if (self.commodityCardOption) {
+            TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeCommodityCard originalType:@"text" content:(NSString *)self.commodityCardOption extra:@"" auditExtra:@"" path:nil urlPath:nil from:[[OnlineDataSave shareOnlineDataSave] getVisitorId] to:[[OnlineDataSave shareOnlineDataSave] getEndpointId] fileKey:@"" bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:[kitUtils getMsgUUID] sendTime:[self getNowTimestamp] showTime:[self p_needShowTime:[NSDate date]] picSize:CGSizeMake(0, 0) picType:@"" isSender:YES receivedSenderByYourself:NO status:1];
+            [self addObject:messageF isSender:YES isHeaderInsert:NO];
+            [self messageSendSucced:messageF];
+    //        [self scrollToBottom];
+    //        [self.tableView reloadData];
+            [[OnlineDataSave shareOnlineDataSave] saveMainUniqueIdRunningStatus:curMainUniqueId runningStatus:@"RunningStatus"];
+        }
+    }];
 }
 
 /// 添加不支持的消息类型
@@ -845,10 +901,8 @@ static const NSInteger kMaxImageDataRequest = 50;
     TIMTextMessage * txtMsg = [[TIMTextMessage alloc] initMessageWithContent:kTIMUnsupportMessageCellType extra:@""];
     if (messageRecvDirection) {
         [self otherSendTextMessageWithContent:TypeText originalType:object.type from:object.senderId to:object.receiverId fileKey:object.messageUUID msgId:object.msg_id sendTime:object.timestamp content:txtMsg.content];
-        [self scrollToBottom];
     }else{
         [self sendTextMessageWithContent:TypeText originalType:object.type from:object.senderId to:object.receiverId fileKey:object.messageUUID msgId:object.msg_id sendTime:object.timestamp content:txtMsg.content];
-        [self scrollToBottom];
     }
 }
 
@@ -1044,19 +1098,24 @@ static const NSInteger kMaxImageDataRequest = 50;
 
                                 modelFrame.model.picWidth = fixelW;
                                 modelFrame.model.picHeight = fixelH;
+                                
+                                /// 图片下载后需要重新进行大小布局的更新，这里重新赋值一个frame，然后替换数据源列表的数据刷新列表
+                                TIMMessageFrame *testModelFrame = [ICMessageHelper createMessageFrame:TypePic originalType:@"image" content:@"[图片]" extra:@"" auditExtra:@"" path:modelFrame.model.mediaPath urlPath:modelFrame.model.urlPath from:modelFrame.model.message.from to:modelFrame.model.message.to fileKey:modelFrame.model.message.fileKey bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:modelFrame.model.message.messageId sendTime:[modelFrame.model.message.msgDate timeIntervalSince1970]*1000 showTime:modelFrame.model.message.showTime picSize:CGSizeMake(modelFrame.model.picWidth, modelFrame.model.picHeight) picType:@"" isSender:modelFrame.model.isSender receivedSenderByYourself:NO status:2];
+                                testModelFrame.model.message.deliveryState = ICMessageDeliveryState_Delivered;
+                                
                                 //回到主线程刷新表格
                                 [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                                     @StrongObj(self)
                                     [self.downloadOperations removeObjectForKey:modelFrame.model.message.messageId];
                                     __block NSInteger index;
-                                    [self.dataSource enumerateObjectsUsingBlock:^(TIMMessageFrame *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                                    [self.readyDisplayDataSource enumerateObjectsUsingBlock:^(TIMMessageFrame *obj, NSUInteger idx, BOOL * _Nonnull stop) {
                                         if ([obj.model.message.messageId isEqualToString:modelFrame.model.message.messageId]) {
                                             index = idx;
                                         }
                                     }];
-
-                                    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-                                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+                                    [self.readyDisplayDataSource replaceObjectAtIndex:index withObject:testModelFrame];
+                                    self.reloadTaskManager.isScroll = NO;
+                                    [self.reloadTaskManager startCountdown];
                                 }];
                             }
                         }else if ([modelFrame.model.message.type isEqualToString:TypeVoice]) {
@@ -1078,8 +1137,8 @@ static const NSInteger kMaxImageDataRequest = 50;
                                     @StrongObj(self)
                                     // 从字典中移除下载操作 (防止operations越来越大，保证下载失败后，能重新下载)
                                     [self.downloadOperations removeObjectForKey:modelFrame.model.message.messageId];
-                                    //刷新当前行的图片数据
-                                    [selfWeak.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+                                    self.reloadTaskManager.isScroll = NO;
+                                    [self.reloadTaskManager startCountdown];
                                 }];
                             }
                         }else if ([modelFrame.model.message.type isEqualToString:TypeVideo]) {
@@ -1101,12 +1160,13 @@ static const NSInteger kMaxImageDataRequest = 50;
                                     ICChatMessageBaseCell * baseCell = (ICChatMessageBaseCell *)cell;
                                     baseCell.modelFrame = modelFrame;
                                     //                                modelFrame.model.urlPath = videoImagePath;
-                                    selfWeak.downloadFileDatas[modelFrame.model.message.messageId] = localVideoPath;//localImagePath;
+                                    self.downloadFileDatas[modelFrame.model.message.messageId] = localVideoPath;//localImagePath;
 
                                     // 从字典中移除下载操作 (防止operations越来越大，保证下载失败后，能重新下载)
                                     [self.downloadOperations removeObjectForKey:modelFrame.model.message.messageId];
-                                    //刷新当前行的图片数据
-                                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+                                    
+                                    self.reloadTaskManager.isScroll = NO;
+                                    [self.reloadTaskManager startCountdown];
                                 }];
                             }
                         }
@@ -1131,7 +1191,9 @@ static const NSInteger kMaxImageDataRequest = 50;
 
 /// 卡片折叠/展开
 - (void)ICChatMessageCommodityCardDetailsCellWithIndexPath:(NSIndexPath *)indexPath {
-    [self.tableView reloadRowAtIndexPath:indexPath withRowAnimation:(UITableViewRowAnimationAutomatic)];
+//    [self.tableView reloadRowAtIndexPath:indexPath withRowAnimation:(UITableViewRowAnimationAutomatic)];
+    self.reloadTaskManager.isScroll = NO;
+    [self.reloadTaskManager startCountdown];
 }
 
 #pragma mark - UITableViewDelegate
@@ -1278,19 +1340,25 @@ static const NSInteger kMaxImageDataRequest = 50;
         }else{
 
 //            [self.tableView reloadData];
-            [self scrollToBottom];
+//            [self scrollToBottom];
+            self.reloadTaskManager.isScroll = YES;
+            [self.reloadTaskManager startCountdown];
             
             _isKeyBoardAppear  = NO;
         }
     } else if(iHeight == (int)(self.chatBoxVC.chatBox.textView.tos_height + [TOSKitCustomInfo shareCustomInfo].chatBox_Height - [TOSKitCustomInfo shareCustomInfo].chatBox_textView_height + HEIGHT_CHATBOXVIEW)){
 
-        [self scrollToBottom];
+//        [self scrollToBottom];
+        self.reloadTaskManager.isScroll = YES;
+        [self.reloadTaskManager startCountdown];
     } else {
         if (IphoneX) {
             self.chatBoxVC.view.top_sd += kBottomBarHeight;
             self.tableView.tos_height += kBottomBarHeight;
         }
-        [self scrollToBottom];
+//        [self scrollToBottom];
+        self.reloadTaskManager.isScroll = YES;
+        [self.reloadTaskManager startCountdown];
         _isKeyBoardAppear  = YES;
     }
     if (self.textView == nil) {
@@ -1358,12 +1426,16 @@ static const NSInteger kMaxImageDataRequest = 50;
         }else{
 
 //            [self.tableView reloadData];
-            [self scrollToBottom];
+//            [self scrollToBottom];
+            self.reloadTaskManager.isScroll = YES;
+            [self.reloadTaskManager startCountdown];
             
             _isKeyBoardAppear  = NO;
         }
     } else if(iHeight == (int)(self.chatBoxVC.chatBox.textView.tos_height + [TOSKitCustomInfo shareCustomInfo].chatBox_Height - [TOSKitCustomInfo shareCustomInfo].chatBox_textView_height + HEIGHT_CHATBOXVIEW)){
-        [self scrollToBottom];
+//        [self scrollToBottom];
+        self.reloadTaskManager.isScroll = YES;
+        [self.reloadTaskManager startCountdown];
     } else {
         /// 表情面板不需要再做底部安全区域的计算，系统的软件盘需要考虑安全区域的操作
         if (IphoneX && self.chatBoxVC.chatBox.status != ICChatBoxStatusShowFace) {
@@ -1371,7 +1443,9 @@ static const NSInteger kMaxImageDataRequest = 50;
             self.chatBoxVC.view.top_sd += kBottomBarHeight;
             self.tableView.tos_height += kBottomBarHeight;
         }
-        [self scrollToBottom];
+//        [self scrollToBottom];
+        self.reloadTaskManager.isScroll = YES;
+        [self.reloadTaskManager startCountdown];
         _isKeyBoardAppear  = YES;
     }
     if (self.textView == nil) {
@@ -1390,7 +1464,9 @@ static const NSInteger kMaxImageDataRequest = 50;
    
         }else{
             
-            [self.tableView reloadData];
+//            [self.tableView reloadData];
+            self.reloadTaskManager.isScroll = NO;
+            [self.reloadTaskManager startCountdown];
             _isKeyBoardAppear  = NO;
         }
     } else {
@@ -1398,7 +1474,9 @@ static const NSInteger kMaxImageDataRequest = 50;
             self.chatBoxVC.view.top_sd += kBottomBarHeight;
             self.tableView.tos_height += kBottomBarHeight;
         }
-        [self scrollToBottom];
+//        [self scrollToBottom];
+        self.reloadTaskManager.isScroll = YES;
+        [self.reloadTaskManager startCountdown];
         _isKeyBoardAppear  = YES;
     }
     if (self.textView == nil) {
@@ -1416,7 +1494,9 @@ static const NSInteger kMaxImageDataRequest = 50;
         height == (int)(self.chatBoxVC.chatBox.textView.tos_height + [TOSKitCustomInfo shareCustomInfo].chatBox_Height - [TOSKitCustomInfo shareCustomInfo].chatBox_textView_height) &&
         self.chatBoxVC.chatBox.status == ICChatBoxStatusShowKeyboard &&
         self.chatBoxVC.keyboardFrame.size.height <= 0) {
-        [self scrollToBottom];
+//        [self scrollToBottom];
+        self.reloadTaskManager.isScroll = YES;
+        [self.reloadTaskManager startCountdown];
     }
     self.chatBoxVC.view.top_sd = kScreenHeight-height - kNavTop- kBottomBarHeight - chatBarHeight;
     self.tableView.tos_height = kWindowHeight - height - kNavTop- kBottomBarHeight - chatBarHeight;
@@ -1433,14 +1513,18 @@ static const NSInteger kMaxImageDataRequest = 50;
             _isKeyBoardAppear  = NO;
         }
     }else if(iHeight == (int)(self.chatBoxVC.chatBox.textView.tos_height + [TOSKitCustomInfo shareCustomInfo].chatBox_Height - [TOSKitCustomInfo shareCustomInfo].chatBox_textView_height + HEIGHT_CHATBOXVIEW)){
-        [self scrollToBottom];
+//        [self scrollToBottom];
+        self.reloadTaskManager.isScroll = YES;
+        [self.reloadTaskManager startCountdown];
     }else{
         /// 表情面板不需要再做底部安全区域的计算，系统的软件盘需要考虑安全区域的操作
         if (IphoneX && self.chatBoxVC.chatBox.status != ICChatBoxStatusShowFace) {
             self.chatBoxVC.view.top_sd += kBottomBarHeight;
             self.tableView.tos_height += kBottomBarHeight;
         }
-        [self scrollToBottom];
+//        [self scrollToBottom];
+        self.reloadTaskManager.isScroll = YES;
+        [self.reloadTaskManager startCountdown];
         _isKeyBoardAppear  = YES;
     }
     if (self.textView == nil) {
@@ -1452,11 +1536,16 @@ static const NSInteger kMaxImageDataRequest = 50;
 {
     [_chatBoxVC.view setFrame:CGRectMake(0, HEIGHT_SCREEN-[TOSKitCustomInfo shareCustomInfo].chatBox_Height-kNavTop, App_Frame_Width, APP_Frame_Height)];
     //    videoView.hidden = NO;
+    @WeakObj(self);
     [UIView animateWithDuration:0.5 animations:^{
+        @StrongObj(self);
         self.tableView.tos_height = HEIGHT_SCREEN - videwViewH - kNavTop;
         self.chatBoxVC.view.frame = CGRectMake(0, videwViewX+kNavTop, App_Frame_Width, videwViewH);
-        [self scrollToBottom];
+//        [self scrollToBottom];
+        self.reloadTaskManager.isScroll = YES;
+        [self.reloadTaskManager startCountdown];
     } completion:^(BOOL finished) { // 状态改变
+        @StrongObj(self);
         self.chatBoxVC.chatBox.status = ICChatBoxStatusShowVideo;
         // 在这里创建视频设配
         UIView *videoLayerView = [videoView viewWithTag:1000];
@@ -1489,7 +1578,7 @@ static const NSInteger kMaxImageDataRequest = 50;
 //            [[ICVideoManager shareManager] WriteDataToFile:videoFileName data:videoData];
 //        });
         
-        NSString * videoImagePath = [[ICMediaManager sharedManager] saveVideoImage:imageSrc fileName:videoFileName];
+//        NSString * videoImagePath = [[ICMediaManager sharedManager] saveVideoImage:imageSrc fileName:videoFileName];
         
         double size = [videoData length]/1000.f/1024.f;
 
@@ -1503,105 +1592,109 @@ static const NSInteger kMaxImageDataRequest = 50;
             return;
         }
         
-
-        // Kit
-        __block TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeVideo
-                                                                   originalType:@"video"
-                                                                        content:@"[视频]"
-                                                                          extra:@""
-                                                                     auditExtra:@""
-                                                                           path:videoPath
-                                                                        urlPath:nil
-                                                                           from:[[OnlineDataSave shareOnlineDataSave] getVisitorId]
-                                                                             to:[[OnlineDataSave shareOnlineDataSave] getEndpointId]
-                                                                        fileKey:[[NSUUID UUID] UUIDString]
-                                                                   bigImgFileId:@""
-                                                                  voiceDuration:[NSNumber numberWithInt:0]
-                                                                          msgId:@""
-                                                                       sendTime:[self getNowTimestamp]
-                                                                       showTime:[self p_needShowTime:[NSDate date]]
-                                                                        picSize:CGSizeMake(fixelW, fixelH)
-                                                                        picType:@""
-                                                                       isSender:YES
-                                                       receivedSenderByYourself:NO
-                                                                         status:TIMMessageStatus_Sending];
-//        // 创建本地消息
-//        [self addObject:messageF isSender:YES isHeaderInsert:NO];
-//        // 如果当前mqtt连接中断(包含被踢下线的情况)
-//        if ([[TOSClientKit sharedTOSKit].mqttConnected boolValue]) {
-//            // 发送中
-//            [self messageSending:messageF];
-//        } else {
-//            [self messageSendFailed:messageF];
-//            return;
-//        }
-        @weakify(self);
-        if (self.isCloseSession) {
+        @WeakObj(self);
+        [self.reloadTaskManager startTaskWithScroll:YES completion:^{
+            @StrongObj(self);
             
-            NSString * moreInfo = [[OnlineDataSave shareOnlineDataSave] getConnectAdParams];
-            [[OnlineRequestManager sharedCustomerManager]visitorReadyWithDict:[kitUtils dictionaryWithJsonString:moreInfo]
-                                                                      success:^(TOSSessionInfoModel * _Nonnull sessModel) {
-                @strongify(self);
-//                self.chatCloseView.hidden = YES;
-//                self.chatBoxVC.view.hidden = NO;
+            // Kit
+            __block TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeVideo
+                                                                       originalType:@"video"
+                                                                            content:@"[视频]"
+                                                                              extra:@""
+                                                                         auditExtra:@""
+                                                                               path:videoPath
+                                                                            urlPath:nil
+                                                                               from:[[OnlineDataSave shareOnlineDataSave] getVisitorId]
+                                                                                 to:[[OnlineDataSave shareOnlineDataSave] getEndpointId]
+                                                                            fileKey:[[NSUUID UUID] UUIDString]
+                                                                       bigImgFileId:@""
+                                                                      voiceDuration:[NSNumber numberWithInt:0]
+                                                                              msgId:@""
+                                                                           sendTime:[self getNowTimestamp]
+                                                                           showTime:[self p_needShowTime:[NSDate date]]
+                                                                            picSize:CGSizeMake(fixelW, fixelH)
+                                                                            picType:@""
+                                                                           isSender:YES
+                                                           receivedSenderByYourself:NO
+                                                                             status:TIMMessageStatus_Sending];
+    //        // 创建本地消息
+    //        [self addObject:messageF isSender:YES isHeaderInsert:NO];
+    //        // 如果当前mqtt连接中断(包含被踢下线的情况)
+    //        if ([[TOSClientKit sharedTOSKit].mqttConnected boolValue]) {
+    //            // 发送中
+    //            [self messageSending:messageF];
+    //        } else {
+    //            [self messageSendFailed:messageF];
+    //            return;
+    //        }
+            if (self.isCloseSession) {
                 
-                /// 保存会话在线状态事件
-                [[OnlineDataSave shareOnlineDataSave] saveMainUniqueModel:[sessModel yy_modelToJSONString]];
-                self.offlineType = offlineMessageTypeVideo;
-                self.offlineNewMessage = messageF;
-                self.offlineMediaData = videoData;
-//                [[OnlineMessageSendManager sharedOnlineMessageSendManager]sendVideoMessageWithVideoData:videoData success:^(NSString * _Nonnull messageId) {
-//                    @strongify(self);
-//                    messageF.model.message.messageId = messageId;
-//                    [self updateOldMessageId:messageId];
-//                    [self messageSendSucced:messageF];
-//        //            [self innerScrollToBottom];
-//                } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
-//                    @strongify(self);
-//                    [self messageSendFailed:messageF];
-//        //            [self innerScrollToBottom];
-//
-//                    int sizeLimitM = [[OnlineDataSave shareOnlineDataSave] getAppSettingFileSize].longLongValue /1024/1024;
-//                    NSString * strShow = [NSString stringWithFormat:@"文件过大，请发送小于%dM文件",sizeLimitM];
-//                    [WHToast showMessage:errorDes?:strShow duration:2 finishHandler:^{
-//
-//                    }];
-//                }];
-                
-            } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
-                
-            }];
-        }
-        else {
-            // 创建本地消息
-            [self addObject:messageF isSender:YES isHeaderInsert:NO];
-            // 如果当前mqtt连接中断(包含被踢下线的情况)
-            if ([[TOSClientKit sharedTOSKit].mqttConnected boolValue]) {
-                // 发送中
-                [self messageSending:messageF];
-            } else {
-                [self messageSendFailed:messageF];
-                return;
-            }
-            
-            [[OnlineMessageSendManager sharedOnlineMessageSendManager]sendVideoMessageWithVideoData:videoData success:^(NSString * _Nonnull messageId) {
-                @strongify(self);
-                messageF.model.message.messageId = messageId;
-                [self updateOldMessageId:messageId];
-                [self messageSendSucced:messageF];
-    //            [self innerScrollToBottom];
-            } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
-                @strongify(self);
-                [self messageSendFailed:messageF];
-    //            [self innerScrollToBottom];
-
-                int sizeLimitM = [[OnlineDataSave shareOnlineDataSave] getAppSettingFileSize].longLongValue /1024/1024;
-                NSString * strShow = [NSString stringWithFormat:@"文件过大，请发送小于%dM文件",sizeLimitM];
-                [WHToast showMessage:errorDes?:strShow duration:2 finishHandler:^{
+                NSString * moreInfo = [[OnlineDataSave shareOnlineDataSave] getConnectAdParams];
+                [[OnlineRequestManager sharedCustomerManager]visitorReadyWithDict:[kitUtils dictionaryWithJsonString:moreInfo]
+                                                                          success:^(TOSSessionInfoModel * _Nonnull sessModel) {
+                    @StrongObj(self);
+    //                self.chatCloseView.hidden = YES;
+    //                self.chatBoxVC.view.hidden = NO;
+                    
+                    /// 保存会话在线状态事件
+                    [[OnlineDataSave shareOnlineDataSave] saveMainUniqueModel:[sessModel yy_modelToJSONString]];
+                    self.offlineType = offlineMessageTypeVideo;
+                    self.offlineNewMessage = messageF;
+                    self.offlineMediaData = videoData;
+    //                [[OnlineMessageSendManager sharedOnlineMessageSendManager]sendVideoMessageWithVideoData:videoData success:^(NSString * _Nonnull messageId) {
+    //                    @strongify(self);
+    //                    messageF.model.message.messageId = messageId;
+    //                    [self updateOldMessageId:messageId];
+    //                    [self messageSendSucced:messageF];
+    //        //            [self innerScrollToBottom];
+    //                } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+    //                    @strongify(self);
+    //                    [self messageSendFailed:messageF];
+    //        //            [self innerScrollToBottom];
+    //
+    //                    int sizeLimitM = [[OnlineDataSave shareOnlineDataSave] getAppSettingFileSize].longLongValue /1024/1024;
+    //                    NSString * strShow = [NSString stringWithFormat:@"文件过大，请发送小于%dM文件",sizeLimitM];
+    //                    [WHToast showMessage:errorDes?:strShow duration:2 finishHandler:^{
+    //
+    //                    }];
+    //                }];
+                    
+                } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
                     
                 }];
-            }];
-        }
+            }
+            else {
+                // 创建本地消息
+                [self addObject:messageF isSender:YES isHeaderInsert:NO];
+                // 如果当前mqtt连接中断(包含被踢下线的情况)
+                if ([[TOSClientKit sharedTOSKit].mqttConnected boolValue]) {
+                    // 发送中
+                    [self messageSending:messageF];
+                    
+                    [[OnlineMessageSendManager sharedOnlineMessageSendManager]sendVideoMessageWithVideoData:videoData success:^(NSString * _Nonnull messageId) {
+                        @StrongObj(self);
+                        messageF.model.message.messageId = messageId;
+                        [self updateOldMessageId:messageId];
+                        [self messageSendSucced:messageF];
+                        self.reloadTaskManager.isScroll = YES;
+                        [self.reloadTaskManager startCountdown];
+                    } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+                        @StrongObj(self);
+                        [self messageSendFailed:messageF];
+                        self.reloadTaskManager.isScroll = YES;
+                        [self.reloadTaskManager startCountdown];
+
+                        int sizeLimitM = [[OnlineDataSave shareOnlineDataSave] getAppSettingFileSize].longLongValue /1024/1024;
+                        NSString * strShow = [NSString stringWithFormat:@"文件过大，请发送小于%dM文件",sizeLimitM];
+                        [WHToast showMessage:errorDes?:strShow duration:2 finishHandler:^{
+                            
+                        }];
+                    }];
+                } else {
+                    [self messageSendFailed:messageF];
+                }
+            }
+        }];
     }
 }
 
@@ -1618,35 +1711,44 @@ static const NSInteger kMaxImageDataRequest = 50;
 //            @"type":kGIFTimageType
 //        };
 
-        TIMImageMessage * imageMsg = [[TIMImageMessage alloc] initMessageWithImageURI:imgPath extra:@""];
-        
-        TOSMessage * timMsg = [[TOSMessage alloc] initWithOption:[kitUtils getMsgUUID] msg_id:@"" type:@"image" senderId:[[OnlineDataSave shareOnlineDataSave] getVisitorId] receiverId:[[OnlineDataSave shareOnlineDataSave] getEndpointId] content:imageMsg msg_from:[self isGroupSession]?TIMSessionType_GROUP_CHAT:/*TIMSessionType_SINGLE_CHAT*/TIMSessionType_OnLINESERVICE_CHAT status:TIMMessageStatus_Sending timestamp:0];
-//        TIMMessage * timMsg = [[TIMMessage alloc] initWithOption:imageMsg msgUUID:[kitUtils getMsgUUID]  msg_from:[self isGroupSession]?TIMSessionType_GROUP_CHAT:TIMSessionType_SINGLE_CHAT];
-        TIMMessagePushOption * pushOption = [[TIMMessagePushOption alloc] initWithOption:YES title:@"" content:@"[图片]" pushData:nil];
-        TIMMessageSendOption * sendOption = [[TIMMessageSendOption alloc] initWithOption:[[OnlineDataSave shareOnlineDataSave] getEndpointId] content:timMsg pushOption:pushOption];
-        NSData *imageData = UIImageJPEGRepresentation(image,1.0f);
-        [[ICMediaManager sharedManager] saveImage:image msgId:timMsg.messageUUID picType:[UIImage typeForImageData:imageData]];
-        
-        // Kit
-        CGSize imageSize = CGSizeMake(fixelW, fixelH);
-        __block TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypePic originalType:@"image" content:@"[图片]" extra:@"" auditExtra:@"" path:imgPath urlPath:nil from:[[OnlineDataSave shareOnlineDataSave] getVisitorId] to:[[OnlineDataSave shareOnlineDataSave] getEndpointId] fileKey:timMsg.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:timMsg.msg_id sendTime:[self getNowTimestamp] showTime:[self p_needShowTime:[NSDate date]] picSize:imageSize picType:kGIFTimageType isSender:YES receivedSenderByYourself:NO status:@(timMsg.status).intValue];
-        [self addObject:messageF isSender:YES isHeaderInsert:NO];
-        @WeakObj(self)
-        [[TIMClient sharedTIMClient] sendMessage:sendOption  progress:^(float progress) {
-            TIMKitLog(@"send gif image progress = %f",progress);
-        } success:^(TOSMessage * timMessage){
-            @StrongObj(self)
-            TIMKitLog(@"send gif image success messageId = %@",timMessage.msg_id);
-            messageF.model.message.messageId = timMessage.msg_id;
-            [self updateOldMessageId:timMessage.msg_id];
-            [self messageSendSucced:messageF];
-//            [self scrollToBottom];
-        } error:^(TOSMessage *message, TIMConnectErrorCode nErrorCode, NSString * _Nonnull errorDes) {
-            @StrongObj(self)
-            TIMKitLog(@"send gif image message = %@ nErrorCode = %ld errorDes= %@",message,(long)nErrorCode,errorDes);
-            [self tim_showMBErrorView:errorDes];
-            [self messageSendFailed:messageF];
-//            [self scrollToBottom];
+        @WeakObj(self);
+        [self.reloadTaskManager startTaskWithScroll:YES completion:^{
+            @StrongObj(self);
+            
+            TIMImageMessage * imageMsg = [[TIMImageMessage alloc] initMessageWithImageURI:imgPath extra:@""];
+            
+            TOSMessage * timMsg = [[TOSMessage alloc] initWithOption:[kitUtils getMsgUUID] msg_id:@"" type:@"image" senderId:[[OnlineDataSave shareOnlineDataSave] getVisitorId] receiverId:[[OnlineDataSave shareOnlineDataSave] getEndpointId] content:imageMsg msg_from:[self isGroupSession]?TIMSessionType_GROUP_CHAT:/*TIMSessionType_SINGLE_CHAT*/TIMSessionType_OnLINESERVICE_CHAT status:TIMMessageStatus_Sending timestamp:0];
+    //        TIMMessage * timMsg = [[TIMMessage alloc] initWithOption:imageMsg msgUUID:[kitUtils getMsgUUID]  msg_from:[self isGroupSession]?TIMSessionType_GROUP_CHAT:TIMSessionType_SINGLE_CHAT];
+            TIMMessagePushOption * pushOption = [[TIMMessagePushOption alloc] initWithOption:YES title:@"" content:@"[图片]" pushData:nil];
+            TIMMessageSendOption * sendOption = [[TIMMessageSendOption alloc] initWithOption:[[OnlineDataSave shareOnlineDataSave] getEndpointId] content:timMsg pushOption:pushOption];
+            NSData *imageData = UIImageJPEGRepresentation(image,1.0f);
+            [[ICMediaManager sharedManager] saveImage:image msgId:timMsg.messageUUID picType:[UIImage typeForImageData:imageData]];
+            
+            // Kit
+            CGSize imageSize = CGSizeMake(fixelW, fixelH);
+            __block TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypePic originalType:@"image" content:@"[图片]" extra:@"" auditExtra:@"" path:imgPath urlPath:nil from:[[OnlineDataSave shareOnlineDataSave] getVisitorId] to:[[OnlineDataSave shareOnlineDataSave] getEndpointId] fileKey:timMsg.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:timMsg.msg_id sendTime:[self getNowTimestamp] showTime:[self p_needShowTime:[NSDate date]] picSize:imageSize picType:kGIFTimageType isSender:YES receivedSenderByYourself:NO status:@(timMsg.status).intValue];
+            [self addObject:messageF isSender:YES isHeaderInsert:NO];
+            @WeakObj(self)
+            [[TIMClient sharedTIMClient] sendMessage:sendOption  progress:^(float progress) {
+                TIMKitLog(@"send gif image progress = %f",progress);
+            } success:^(TOSMessage * timMessage){
+                @StrongObj(self)
+                TIMKitLog(@"send gif image success messageId = %@",timMessage.msg_id);
+                messageF.model.message.messageId = timMessage.msg_id;
+                [self updateOldMessageId:timMessage.msg_id];
+                [self messageSendSucced:messageF];
+                self.reloadTaskManager.isScroll = YES;
+                [self.reloadTaskManager startCountdown];
+    //            [self scrollToBottom];
+            } error:^(TOSMessage *message, TIMConnectErrorCode nErrorCode, NSString * _Nonnull errorDes) {
+                @StrongObj(self)
+                TIMKitLog(@"send gif image message = %@ nErrorCode = %ld errorDes= %@",message,(long)nErrorCode,errorDes);
+                [self tim_showMBErrorView:errorDes];
+                [self messageSendFailed:messageF];
+                self.reloadTaskManager.isScroll = YES;
+                [self.reloadTaskManager startCountdown];
+    //            [self scrollToBottom];
+            }];
         }];
     }
 }
@@ -1668,91 +1770,100 @@ static const NSInteger kMaxImageDataRequest = 50;
             return;
         }
         
-        // Kit
-        CGSize imageSize = CGSizeMake(fixelW, fixelH);
-        __block TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypePic
-                                                                   originalType:@"image"
-                                                                        content:@"[图片]"
-                                                                          extra:@""
-                                                                     auditExtra:@""
-                                                                           path:imgPath
-                                                                        urlPath:nil
-                                                                           from:[[OnlineDataSave shareOnlineDataSave] getVisitorId]
-                                                                             to:[[OnlineDataSave shareOnlineDataSave] getEndpointId]
-                                                                        fileKey:[[NSUUID UUID] UUIDString]
-                                                                   bigImgFileId:@""
-                                                                  voiceDuration:[NSNumber numberWithInt:0]
-                                                                          msgId:@""
-                                                                       sendTime:[self getNowTimestamp]
-                                                                       showTime:[self p_needShowTime:[NSDate date]]
-                                                                        picSize:imageSize
-                                                                        picType:@""
-                                                                       isSender:YES
-                                                       receivedSenderByYourself:NO
-                                                                         status:TIMMessageStatus_Sending];//self.session.messageStatus];
-//        [self addObject:messageF isSender:YES isHeaderInsert:NO];
-//        // 如果当前mqtt连接中断(包含被踢下线的情况)
-//        if ([[TOSClientKit sharedTOSKit].mqttConnected boolValue]) {
-//            // 发送中
-//            [self messageSending:messageF];
-//        } else {
-//            [self messageSendFailed:messageF];
-//            return;
-//        }
-        
-        if (self.isCloseSession) {
-            @weakify(self);
-            NSString * moreInfo = [[OnlineDataSave shareOnlineDataSave] getConnectAdParams];
-            [[OnlineRequestManager sharedCustomerManager]visitorReadyWithDict:[kitUtils dictionaryWithJsonString:moreInfo]
-                                                                      success:^(TOSSessionInfoModel * _Nonnull sessModel) {
-                @strongify(self);
-//                self.chatCloseView.hidden = YES;
-//                self.chatBoxVC.view.hidden = NO;
-                
-                /// 保存会话在线状态事件
-                [[OnlineDataSave shareOnlineDataSave] saveMainUniqueModel:[sessModel yy_modelToJSONString]];
-                
-                self.offlineType = offlineMessageTypeImage;
-                self.offlineNewMessage = messageF;
-                self.offlineMediaData = uploadThumbFileData;
-                
-                
-//                [[OnlineMessageSendManager sharedOnlineMessageSendManager] sendImageMessageWithImageData:uploadThumbFileData        success:^(NSString * _Nonnull messageId,NSString * _Nonnull fileKey) {
-//                    @strongify(self);
-//                    messageF.model.message.messageId = messageId;//timMessage.msg_id;
-//                    [self updateOldMessageId:messageId];
-//                    [self messageSendSucced:messageF];
-//        //            [self scrollToBottom];
-//                } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
-//                    [self messageSendFailed:messageF];
-//        //            [self scrollToBottom];
-//                }];
-                
-            } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
-                
-            }];
+        @WeakObj(self);
+        [self.reloadTaskManager startTaskWithScroll:YES completion:^{
+            @StrongObj(self);
             
-        }
-        else {
-            [self addObject:messageF isSender:YES isHeaderInsert:NO];
-            // 如果当前mqtt连接中断(包含被踢下线的情况)
-            if ([[TOSClientKit sharedTOSKit].mqttConnected boolValue]) {
-                // 发送中
-                [self messageSending:messageF];
-            } else {
-                [self messageSendFailed:messageF];
-                return;
+            // Kit
+            CGSize imageSize = CGSizeMake(fixelW, fixelH);
+            __block TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypePic
+                                                                       originalType:@"image"
+                                                                            content:@"[图片]"
+                                                                              extra:@""
+                                                                         auditExtra:@""
+                                                                               path:imgPath
+                                                                            urlPath:nil
+                                                                               from:[[OnlineDataSave shareOnlineDataSave] getVisitorId]
+                                                                                 to:[[OnlineDataSave shareOnlineDataSave] getEndpointId]
+                                                                            fileKey:[[NSUUID UUID] UUIDString]
+                                                                       bigImgFileId:@""
+                                                                      voiceDuration:[NSNumber numberWithInt:0]
+                                                                              msgId:@""
+                                                                           sendTime:[self getNowTimestamp]
+                                                                           showTime:[self p_needShowTime:[NSDate date]]
+                                                                            picSize:imageSize
+                                                                            picType:@""
+                                                                           isSender:YES
+                                                           receivedSenderByYourself:NO
+                                                                             status:TIMMessageStatus_Sending];//self.session.messageStatus];
+    //        [self addObject:messageF isSender:YES isHeaderInsert:NO];
+    //        // 如果当前mqtt连接中断(包含被踢下线的情况)
+    //        if ([[TOSClientKit sharedTOSKit].mqttConnected boolValue]) {
+    //            // 发送中
+    //            [self messageSending:messageF];
+    //        } else {
+    //            [self messageSendFailed:messageF];
+    //            return;
+    //        }
+            
+            if (self.isCloseSession) {
+                @weakify(self);
+                NSString * moreInfo = [[OnlineDataSave shareOnlineDataSave] getConnectAdParams];
+                [[OnlineRequestManager sharedCustomerManager]visitorReadyWithDict:[kitUtils dictionaryWithJsonString:moreInfo]
+                                                                          success:^(TOSSessionInfoModel * _Nonnull sessModel) {
+                    @strongify(self);
+    //                self.chatCloseView.hidden = YES;
+    //                self.chatBoxVC.view.hidden = NO;
+                    
+                    /// 保存会话在线状态事件
+                    [[OnlineDataSave shareOnlineDataSave] saveMainUniqueModel:[sessModel yy_modelToJSONString]];
+                    
+                    self.offlineType = offlineMessageTypeImage;
+                    self.offlineNewMessage = messageF;
+                    self.offlineMediaData = uploadThumbFileData;
+                    
+                    
+    //                [[OnlineMessageSendManager sharedOnlineMessageSendManager] sendImageMessageWithImageData:uploadThumbFileData        success:^(NSString * _Nonnull messageId,NSString * _Nonnull fileKey) {
+    //                    @strongify(self);
+    //                    messageF.model.message.messageId = messageId;//timMessage.msg_id;
+    //                    [self updateOldMessageId:messageId];
+    //                    [self messageSendSucced:messageF];
+    //        //            [self scrollToBottom];
+    //                } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+    //                    [self messageSendFailed:messageF];
+    //        //            [self scrollToBottom];
+    //                }];
+                    
+                } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+                    
+                }];
+                
             }
-            [[OnlineMessageSendManager sharedOnlineMessageSendManager] sendImageMessageWithImageData:uploadThumbFileData        success:^(NSString * _Nonnull messageId,NSString * _Nonnull fileKey) {
-                messageF.model.message.messageId = messageId;//timMessage.msg_id;
-                [self updateOldMessageId:messageId];
-                [self messageSendSucced:messageF];
-    //            [self scrollToBottom];
-            } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
-                [self messageSendFailed:messageF];
-    //            [self scrollToBottom];
-            }];
-        }
+            else {
+                [self addObject:messageF isSender:YES isHeaderInsert:NO];
+                // 如果当前mqtt连接中断(包含被踢下线的情况)
+                if ([[TOSClientKit sharedTOSKit].mqttConnected boolValue]) {
+                    // 发送中
+                    [self messageSending:messageF];
+                    
+                    [[OnlineMessageSendManager sharedOnlineMessageSendManager] sendImageMessageWithImageData:uploadThumbFileData        success:^(NSString * _Nonnull messageId,NSString * _Nonnull fileKey) {
+                        messageF.model.message.messageId = messageId;//timMessage.msg_id;
+                        [self updateOldMessageId:messageId];
+                        [self messageSendSucced:messageF];
+                        self.reloadTaskManager.isScroll = YES;
+                        [self.reloadTaskManager startCountdown];
+            //            [self scrollToBottom];
+                    } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+                        [self messageSendFailed:messageF];
+                        self.reloadTaskManager.isScroll = YES;
+                        [self.reloadTaskManager startCountdown];
+            //            [self scrollToBottom];
+                    }];
+                } else {
+                    [self messageSendFailed:messageF];
+                }
+            }
+        }];
     }
 }
 
@@ -1778,86 +1889,94 @@ static const NSInteger kMaxImageDataRequest = 50;
         [self.view tim_showMBErrorView:@"不能发送空白消息"];
         return;
     }
-    // Kit
-    __block TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeText
-                                                               originalType:@"text"
-                                                                    content:messageStr
-                                                                      extra:@""
-                                                                 auditExtra:@""
-                                                                       path:nil
-                                                                    urlPath:nil
-                                                                       from:[[OnlineDataSave shareOnlineDataSave]getVisitorId]
-                                                                         to:[[OnlineDataSave shareOnlineDataSave]getEndpointId]
-                                                                    fileKey:[[NSUUID UUID] UUIDString]
-                                                               bigImgFileId:@""
-                                                              voiceDuration:[NSNumber numberWithInt:0]
-                                                                      msgId:[NSString stringWithFormat:@"%ld",[self getNowTimestamp]]
-                                                                   sendTime:[self getNowTimestamp]
-                                                                   showTime:[self p_needShowTime:[NSDate date]]
-                                                                    picSize:CGSizeMake(0, 0)
-                                                                    picType:@""
-                                                                   isSender:YES
-                                                   receivedSenderByYourself:NO
-                                                                     status:TIMMessageStatus_Sending];
-    messageF.model.message.knowledge = knowledge;
-//    [self addObject:messageF isSender:YES isHeaderInsert:NO];
-//    // 发送中
-//    [self messageSending:messageF];
+    
+    @WeakObj(self);
+    [self.reloadTaskManager startTaskWithScroll:YES completion:^{
+        @StrongObj(self);
+        
+        // Kit
+        __block TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeText
+                                                                   originalType:@"text"
+                                                                        content:messageStr
+                                                                          extra:@""
+                                                                     auditExtra:@""
+                                                                           path:nil
+                                                                        urlPath:nil
+                                                                           from:[[OnlineDataSave shareOnlineDataSave]getVisitorId]
+                                                                             to:[[OnlineDataSave shareOnlineDataSave]getEndpointId]
+                                                                        fileKey:[[NSUUID UUID] UUIDString]
+                                                                   bigImgFileId:@""
+                                                                  voiceDuration:[NSNumber numberWithInt:0]
+                                                                          msgId:[NSString stringWithFormat:@"%ld",[self getNowTimestamp]]
+                                                                       sendTime:[self getNowTimestamp]
+                                                                       showTime:[self p_needShowTime:[NSDate date]]
+                                                                        picSize:CGSizeMake(0, 0)
+                                                                        picType:@""
+                                                                       isSender:YES
+                                                       receivedSenderByYourself:NO
+                                                                         status:TIMMessageStatus_Sending];
+        messageF.model.message.knowledge = knowledge;
+    //    [self addObject:messageF isSender:YES isHeaderInsert:NO];
+    //    // 发送中
+    //    [self messageSending:messageF];
 
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(sendInputHintEvent) object:nil];
-    [self performSelector:@selector(sendInputHintEvent) withObject:nil afterDelay:0.5];
-    
-    if (self.isCloseSession) {
-        @weakify(self);
-        NSString * moreInfo = [[OnlineDataSave shareOnlineDataSave] getConnectAdParams];
-        [[OnlineRequestManager sharedCustomerManager]visitorReadyWithDict:[kitUtils dictionaryWithJsonString:moreInfo]
-                                                                  success:^(TOSSessionInfoModel * _Nonnull sessModel) {
-            
-            @strongify(self);
-//            self.chatCloseView.hidden = YES;
-//            self.chatBoxVC.view.hidden = NO;
+        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(sendInputHintEvent) object:nil];
+        [self performSelector:@selector(sendInputHintEvent) withObject:nil afterDelay:0.5];
+        
+        if (self.isCloseSession) {
+            @weakify(self);
+            NSString * moreInfo = [[OnlineDataSave shareOnlineDataSave] getConnectAdParams];
+            [[OnlineRequestManager sharedCustomerManager]visitorReadyWithDict:[kitUtils dictionaryWithJsonString:moreInfo]
+                                                                      success:^(TOSSessionInfoModel * _Nonnull sessModel) {
+                
+                @strongify(self);
+    //            self.chatCloseView.hidden = YES;
+    //            self.chatBoxVC.view.hidden = NO;
 
-            /// 保存会话在线状态事件
-            [[OnlineDataSave shareOnlineDataSave] saveMainUniqueModel:[sessModel yy_modelToJSONString]];
+                /// 保存会话在线状态事件
+                [[OnlineDataSave shareOnlineDataSave] saveMainUniqueModel:[sessModel yy_modelToJSONString]];
+                
+                self.offlineType = offlineMessageTypeText;
+                self.offlineNewMessage = messageF;
+                
+                
+            } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+                
+            }];
+        }
+        else {
             
-            self.offlineType = offlineMessageTypeText;
-            self.offlineNewMessage = messageF;
+            [self addObject:messageF isSender:YES isHeaderInsert:NO];
+            // 发送中
+            [self messageSending:messageF];
             
+            //lib
+            [[OnlineMessageSendManager sharedOnlineMessageSendManager] sendTextMessageWithMessageStr:messageStr knowledge:knowledge messageUUID:messageF.model.message.fileKey success:^(TOSMessage * timMessage) {
+                messageF.model.message.messageId = timMessage.msg_id;
+                [self updateOldMessageId:timMessage.msg_id];
+                [self messageSendSucced:messageF];
+                self.reloadTaskManager.isScroll = YES;
+                [self.reloadTaskManager startCountdown];
+        //        [self innerScrollToBottom];
+                //发送成功预知设置为空
+                
+        //        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(sendInputHintEvent) object:nil];
+        //        [self performSelector:@selector(sendInputHintEvent) withObject:nil afterDelay:0.5];
+                
+            } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+                [self messageSendFailed:messageF];
+                self.reloadTaskManager.isScroll = YES;
+                [self.reloadTaskManager startCountdown];
+        //        [self innerScrollToBottom];
+                
+                //发送成功预知设置为空
+        //        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(sendInputHintEvent) object:nil];
+        //        [self performSelector:@selector(sendInputHintEvent) withObject:nil afterDelay:0.5];
+                
             
-        } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
-            
-        }];
-    }
-    else {
-        
-        [self addObject:messageF isSender:YES isHeaderInsert:NO];
-        // 发送中
-        [self messageSending:messageF];
-        
-        //lib
-        [[OnlineMessageSendManager sharedOnlineMessageSendManager] sendTextMessageWithMessageStr:messageStr knowledge:knowledge messageUUID:messageF.model.message.fileKey success:^(TOSMessage * timMessage) {
-            messageF.model.message.messageId = timMessage.msg_id;
-            [self updateOldMessageId:timMessage.msg_id];
-            [self messageSendSucced:messageF];
-    //        [self innerScrollToBottom];
-            //发送成功预知设置为空
-            
-    //        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(sendInputHintEvent) object:nil];
-    //        [self performSelector:@selector(sendInputHintEvent) withObject:nil afterDelay:0.5];
-            
-        } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
-            [self messageSendFailed:messageF];
-    //        [self innerScrollToBottom];
-            
-            //发送成功预知设置为空
-    //        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(sendInputHintEvent) object:nil];
-    //        [self performSelector:@selector(sendInputHintEvent) withObject:nil afterDelay:0.5];
-            
-        
-        }];
-    }
-    
-    
+            }];
+        }
+    }];
 }
 
 //发送输入预知事件
@@ -1904,9 +2023,13 @@ static const NSInteger kMaxImageDataRequest = 50;
     if ([[TOSClientKit sharedTOSKit].mqttConnected boolValue]) {
         /// 发送中
         [self messageSending:messageF];
+        self.reloadTaskManager.isScroll = YES;
+        [self.reloadTaskManager startCountdown];
     } else {
         /// 发送失败
         [self messageSendFailed:messageF];
+        self.reloadTaskManager.isScroll = YES;
+        [self.reloadTaskManager startCountdown];
         return;
     }
     
@@ -1919,12 +2042,16 @@ static const NSInteger kMaxImageDataRequest = 50;
             messageF.model.message.messageId = timMessage.msg_id;
             [self updateOldMessageId:timMessage.msg_id];
             [self messageSendSucced:messageF];
+            self.reloadTaskManager.isScroll = YES;
+            [self.reloadTaskManager startCountdown];
             self.offlineType = offlineMessageTypeNormal;
             self.offlineNewMessage = nil;
             
         } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
             @strongify(self);
             [self messageSendFailed:messageF];
+            self.reloadTaskManager.isScroll = YES;
+            [self.reloadTaskManager startCountdown];
             self.offlineType = offlineMessageTypeNormal;
             self.offlineNewMessage = nil;
             
@@ -1936,6 +2063,8 @@ static const NSInteger kMaxImageDataRequest = 50;
             messageF.model.message.messageId = messageId;
             [self updateOldMessageId:messageId];
             [self messageSendSucced:messageF];
+            self.reloadTaskManager.isScroll = YES;
+            [self.reloadTaskManager startCountdown];
             self.offlineType = offlineMessageTypeNormal;
             self.offlineMediaData = nil;
             self.offlineNewMessage = nil;
@@ -1943,6 +2072,8 @@ static const NSInteger kMaxImageDataRequest = 50;
         } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
             @strongify(self);
             [self messageSendFailed:messageF];
+            self.reloadTaskManager.isScroll = YES;
+            [self.reloadTaskManager startCountdown];
             self.offlineType = offlineMessageTypeNormal;
             self.offlineMediaData = nil;
             self.offlineNewMessage = nil;
@@ -1954,6 +2085,8 @@ static const NSInteger kMaxImageDataRequest = 50;
             messageF.model.message.messageId = messageId;//timMessage.msg_id;
             [self updateOldMessageId:messageId];
             [self messageSendSucced:messageF];
+            self.reloadTaskManager.isScroll = YES;
+            [self.reloadTaskManager startCountdown];
             self.offlineType = offlineMessageTypeNormal;
             self.offlineMediaData = nil;
             self.offlineNewMessage = nil;
@@ -1961,6 +2094,8 @@ static const NSInteger kMaxImageDataRequest = 50;
         } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
             @strongify(self);
             [self messageSendFailed:messageF];
+            self.reloadTaskManager.isScroll = YES;
+            [self.reloadTaskManager startCountdown];
             self.offlineType = offlineMessageTypeNormal;
             self.offlineMediaData = nil;
             self.offlineNewMessage = nil;
@@ -1972,6 +2107,8 @@ static const NSInteger kMaxImageDataRequest = 50;
             messageF.model.message.messageId = messageId;
             [self updateOldMessageId:messageId];
             [self messageSendSucced:messageF];
+            self.reloadTaskManager.isScroll = YES;
+            [self.reloadTaskManager startCountdown];
             self.offlineType = offlineMessageTypeNormal;
             self.offlineMediaData = nil;
             self.offlineNewMessage = nil;
@@ -1979,6 +2116,8 @@ static const NSInteger kMaxImageDataRequest = 50;
         } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
             @strongify(self);
             [self messageSendFailed:messageF];
+            self.reloadTaskManager.isScroll = YES;
+            [self.reloadTaskManager startCountdown];
             self.offlineType = offlineMessageTypeNormal;
             self.offlineMediaData = nil;
             self.offlineNewMessage = nil;
@@ -2055,81 +2194,88 @@ static const NSInteger kMaxImageDataRequest = 50;
             return;
         }
         
-        // Kit
-        __block TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeVoice
-                                                                   originalType:@"voice"
-                                                                        content:@"[语音]"
-                                                                          extra:@""
-                                                                     auditExtra:@""
-                                                                           path:voicePath
-                                                                        urlPath:nil
-                                                                           from:[[OnlineDataSave shareOnlineDataSave] getVisitorId]
-                                                                             to:[[OnlineDataSave shareOnlineDataSave] getEndpointId]
-                                                                        fileKey:[[NSUUID UUID] UUIDString]
-                                                                   bigImgFileId:@""
-                                                                  voiceDuration:[NSNumber numberWithInt:voiceDuration]
-                                                                          msgId:@""
-                                                                       sendTime:[self getNowTimestamp]
-                                                                       showTime:[self p_needShowTime:[NSDate date]]
-                                                                        picSize:CGSizeZero
-                                                                        picType:@""
-                                                                       isSender:YES
-                                                       receivedSenderByYourself:NO
-                                                                         status:TIMMessageStatus_Sending];//self.session.messageStatus];
-//        [self addObject:messageF isSender:YES isHeaderInsert:NO];
-//        // 如果当前mqtt连接中断(包含被踢下线的情况)
-//
-//        if ([[TOSClientKit sharedTOSKit].mqttConnected boolValue]) {
-//            // 发送中
-//            [self messageSending:messageF];
-//        } else {
-//            [self messageSendFailed:messageF];
-//            return;
-//        }
-        
-        if (self.isCloseSession) {
-            @weakify(self);
-            NSString * moreInfo = [[OnlineDataSave shareOnlineDataSave] getConnectAdParams];
-            [[OnlineRequestManager sharedCustomerManager]visitorReadyWithDict:[kitUtils dictionaryWithJsonString:moreInfo]
-                                                                      success:^(TOSSessionInfoModel * _Nonnull sessModel) {
-                
-                @strongify(self);
-    //            self.chatCloseView.hidden = YES;
-    //            self.chatBoxVC.view.hidden = NO;
+        @WeakObj(self);
+        [self.reloadTaskManager startTaskWithScroll:YES completion:^{
+            @StrongObj(self);
+            
+            // Kit
+            __block TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeVoice
+                                                                       originalType:@"voice"
+                                                                            content:@"[语音]"
+                                                                              extra:@""
+                                                                         auditExtra:@""
+                                                                               path:voicePath
+                                                                            urlPath:nil
+                                                                               from:[[OnlineDataSave shareOnlineDataSave] getVisitorId]
+                                                                                 to:[[OnlineDataSave shareOnlineDataSave] getEndpointId]
+                                                                            fileKey:[[NSUUID UUID] UUIDString]
+                                                                       bigImgFileId:@""
+                                                                      voiceDuration:[NSNumber numberWithInt:voiceDuration]
+                                                                              msgId:@""
+                                                                           sendTime:[self getNowTimestamp]
+                                                                           showTime:[self p_needShowTime:[NSDate date]]
+                                                                            picSize:CGSizeZero
+                                                                            picType:@""
+                                                                           isSender:YES
+                                                           receivedSenderByYourself:NO
+                                                                             status:TIMMessageStatus_Sending];//self.session.messageStatus];
+    //        [self addObject:messageF isSender:YES isHeaderInsert:NO];
+    //        // 如果当前mqtt连接中断(包含被踢下线的情况)
+    //
+    //        if ([[TOSClientKit sharedTOSKit].mqttConnected boolValue]) {
+    //            // 发送中
+    //            [self messageSending:messageF];
+    //        } else {
+    //            [self messageSendFailed:messageF];
+    //            return;
+    //        }
+            
+            if (self.isCloseSession) {
+                @weakify(self);
+                NSString * moreInfo = [[OnlineDataSave shareOnlineDataSave] getConnectAdParams];
+                [[OnlineRequestManager sharedCustomerManager]visitorReadyWithDict:[kitUtils dictionaryWithJsonString:moreInfo]
+                                                                          success:^(TOSSessionInfoModel * _Nonnull sessModel) {
+                    
+                    @strongify(self);
+        //            self.chatCloseView.hidden = YES;
+        //            self.chatBoxVC.view.hidden = NO;
 
-                /// 保存会话在线状态事件
-                [[OnlineDataSave shareOnlineDataSave] saveMainUniqueModel:[sessModel yy_modelToJSONString]];
-                
-                self.offlineType = offlineMessageTypeVoice;
-                self.offlineNewMessage = messageF;
-                self.offlineMediaData = voiceData;
-                
-                
-            } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
-                
-            }];
-        }
-        else {
-            [self addObject:messageF isSender:YES isHeaderInsert:NO];
-            // 如果当前mqtt连接中断(包含被踢下线的情况)
-
-            if ([[TOSClientKit sharedTOSKit].mqttConnected boolValue]) {
-                // 发送中
-                [self messageSending:messageF];
-            } else {
-                [self messageSendFailed:messageF];
-                return;
+                    /// 保存会话在线状态事件
+                    [[OnlineDataSave shareOnlineDataSave] saveMainUniqueModel:[sessModel yy_modelToJSONString]];
+                    
+                    self.offlineType = offlineMessageTypeVoice;
+                    self.offlineNewMessage = messageF;
+                    self.offlineMediaData = voiceData;
+                    
+                    
+                } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+                    
+                }];
             }
-            [[OnlineMessageSendManager sharedOnlineMessageSendManager]sendVoiceMessageWithVoiceData:voiceData success:^(NSString * _Nonnull messageId) {
-                messageF.model.message.messageId = messageId;
-                [self updateOldMessageId:messageId];
-                [self messageSendSucced:messageF];
-            } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
-                [self messageSendFailed:messageF];
-    //            [self innerScrollToBottom];
-            }];
-        }
-        
+            else {
+                [self addObject:messageF isSender:YES isHeaderInsert:NO];
+                // 如果当前mqtt连接中断(包含被踢下线的情况)
+
+                if ([[TOSClientKit sharedTOSKit].mqttConnected boolValue]) {
+                    // 发送中
+                    [self messageSending:messageF];
+                    [[OnlineMessageSendManager sharedOnlineMessageSendManager]sendVoiceMessageWithVoiceData:voiceData success:^(NSString * _Nonnull messageId) {
+                        messageF.model.message.messageId = messageId;
+                        [self updateOldMessageId:messageId];
+                        [self messageSendSucced:messageF];
+                        self.reloadTaskManager.isScroll = YES;
+                        [self.reloadTaskManager startCountdown];
+                    } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+                        [self messageSendFailed:messageF];
+                        self.reloadTaskManager.isScroll = YES;
+                        [self.reloadTaskManager startCountdown];
+            //            [self innerScrollToBottom];
+                    }];
+                } else {
+                    [self messageSendFailed:messageF];
+                }
+            }
+        }];
     }
 }
 
@@ -2348,13 +2494,24 @@ static const NSInteger kMaxImageDataRequest = 50;
     return _dataSource;
 }
 
+- (NSMutableArray *)readyDisplayDataSource {
+    if (!_readyDisplayDataSource) {
+        _readyDisplayDataSource = [NSMutableArray array];
+    }
+    return _readyDisplayDataSource;
+}
+
 #pragma mark - 接收Chat的刷新通知 来自lib层
 - (void)messageSendedUpdateUIFromLibNotification:(NSNotification *)sender {
     TOSMessage *recvMessage = [sender object];
-    [self.dataSource enumerateObjectsUsingBlock:^(TIMMessageFrame *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    @WeakObj(self);
+    [self.readyDisplayDataSource enumerateObjectsUsingBlock:^(TIMMessageFrame *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        @StrongObj(self);
         if (![kitUtils isBlankString:recvMessage.messageUUID] && [obj.model.message.fileKey isEqualToString:recvMessage.messageUUID]) {
             obj.model.message.messageId = recvMessage.msg_id;
             [self messageSendSucced:obj];
+            self.reloadTaskManager.isScroll = NO;
+            [self.reloadTaskManager startCountdown];
          }
     }];
 }
@@ -2388,7 +2545,6 @@ static const NSInteger kMaxImageDataRequest = 50;
     if ([message.type isEqualToString:@"text"]) {
         TIMTextMessage * txtMsg = (TIMTextMessage *)message.content;
         [self sendTextMessageWithContent:TypeText originalType:message.type from:message.senderId to:message.receiverId fileKey:message.messageUUID msgId:message.msg_id sendTime:message.timestamp content:txtMsg.content extra:txtMsg.extra];
-        [self scrollToBottom];
     }else if([message.type isEqualToString:@"customize"]){
         TIMCustomizeMessage * customMsg = (TIMCustomizeMessage *)message.content;
         NSDictionary * bodyDic;
@@ -2434,7 +2590,6 @@ static const NSInteger kMaxImageDataRequest = 50;
             type = TypeCustom;
         }
         [self sendTextMessageWithContent:type originalType:message.type from:message.senderId to:message.receiverId fileKey:message.messageUUID msgId:message.msg_id sendTime:[self getNowTimestamp] content:[kitUtils DataTOjsonString:bodyDic]];
-        [self scrollToBottom];
     }
 }
 
@@ -2494,350 +2649,359 @@ static const NSInteger kMaxImageDataRequest = 50;
 //        [self scrollToBottom];
 //    }
 
-    if ([message.type isEqualToString:@"ChatLeadingWordsMessage"]) {//引导语
-        ChatLeadingWordsMessage * robotBridgeMsg = (ChatLeadingWordsMessage *)message.content;
-        //用系统消息展示
-        TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeSystem originalType:message.type content:robotBridgeMsg.textContent extra:@"" auditExtra:@"" path:nil urlPath:nil from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
-        [self addObject:messageF isSender:NO isHeaderInsert:NO];
-        [self messageReceiveSucced:messageF];
-    } else if ([message.type isEqualToString:@"TIMCommodityCardMessage"]) {
+    [self.reloadTaskManager startTaskWithScroll:YES completion:^{
         
-        TIMCommodityCardMessage *commodityMsg = (TIMCommodityCardMessage *)message.content;
-        
-        BOOL isSender = NO;
-        NSString *senderId;
-        NSString *receiverId;
-        if ([commodityMsg.senderType isEqualToString:@"2"]) {
-            isSender = YES;
-            senderId = message.receiverId;
-            receiverId = message.senderId;
-        } else {
-            isSender = NO;
-            senderId = message.senderId;
-            receiverId = message.receiverId;
-        }
-        
-        TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeCommodityCardDetails originalType:message.type content:commodityMsg extra:@"" auditExtra:@"" path:nil urlPath:nil from:senderId to:receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:isSender receivedSenderByYourself:NO status:1];
-        [self addObject:messageF isSender:isSender isHeaderInsert:NO];
-        [self messageReceiveSucced:messageF];
-        
-    } else if ([message.type isEqualToString:@"TIMLogisticsCardMessage"]) {
-        
-        TIMLogisticsCardMessage *cardMsg = (TIMLogisticsCardMessage *)message.content;
-        TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeLogisticsCard originalType:message.type content:(NSString *)cardMsg extra:@"" auditExtra:@"" path:nil urlPath:nil from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
-        
-        [self addObject:messageF isSender:NO isHeaderInsert:NO];
-        [self newMessageSendSucced:messageF];
-        
-    } else if ([message.type isEqualToString:@"ChatSmallProgramMessage"]) {
-        
-        TOSMessageSmallProgramModel *smallProgramMsg = (TOSMessageSmallProgramModel *)message.content;
-        
-        TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeSmallProgramCard originalType:message.type content:(NSString *)smallProgramMsg extra:@"" auditExtra:@"" path:nil urlPath:nil from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
-        
-        [self addObject:messageF isSender:NO isHeaderInsert:NO];
-        [self newMessageSendSucced:messageF];
-    } else if ([message.type isEqualToString:@"ChatInvestigationMessage"]) {//满意度评价
-        sessionInfomodel.status = [NSNumber numberWithInt:6];
-        ChatInvestigationMessage * InvestigationMsg = (ChatInvestigationMessage *)message.content;
-        // 增加满意度评价的文案
-        NSString *extra = [TIMLibUtils convertToJsonDataWithDic:@{@"alreadyInvestigation" : @"0", @"uniqueId": message.msg_id?:@""}];
-        NSString *content = [[OnlineDataSave shareOnlineDataSave] getAppSetting];
-        TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeInvestigation originalType:message.type content:content extra:extra auditExtra:@"" path:nil urlPath:nil from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
-        [self addObject:messageF isSender:NO isHeaderInsert:NO];
-        [self messageReceiveSucced:messageF];
-        // 结束会话
-        if ([InvestigationMsg.isClose boolValue]) {
-            self.isCloseSession = YES;
-            sessionInfomodel.status = [NSNumber numberWithInt:7];
-            // 增加结束会话的文案
-            TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeText originalType:message.type content:InvestigationMsg.endMessage extra:@"" auditExtra:@"" path:nil urlPath:nil from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
+        if ([message.type isEqualToString:@"ChatLeadingWordsMessage"]) {//引导语
+            ChatLeadingWordsMessage * robotBridgeMsg = (ChatLeadingWordsMessage *)message.content;
+            //用系统消息展示
+            TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeSystem originalType:message.type content:robotBridgeMsg.textContent extra:@"" auditExtra:@"" path:nil urlPath:nil from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
             [self addObject:messageF isSender:NO isHeaderInsert:NO];
             [self messageReceiveSucced:messageF];
+        } else if ([message.type isEqualToString:@"TIMCommodityCardMessage"]) {
             
-//            self.chatBoxVC.view.hidden = YES;
-//            self.chatCloseView.hidden = NO;
-//            [self.chatBoxVC.chatBox.textView resignFirstResponder];
-//            self.chatBoxVC.chatBox.textView.text = @"";
-//            [[OnlineDataSave shareOnlineDataSave] saveUserInputText:@""];
-//            [self.chatBoxVC.chatBox switchTextEditing];
-//
-//            self.tableView.height = self.chatCloseView.top;
-            [self closeViewEvent];
+            TIMCommodityCardMessage *commodityMsg = (TIMCommodityCardMessage *)message.content;
             
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self scrollToBottom];
-            });
-        }
-    }else if ([message.type isEqualToString:@"SystemMessage"]) {//系统消息
-        TextMessage * textMsg = (TextMessage *)message.content;
-        TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeSystem originalType:message.type content:textMsg.textContent extra:@"" auditExtra:@"" path:nil urlPath:nil from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
-        [self addObject:messageF isSender:NO isHeaderInsert:NO];
-        [self messageReceiveSucced:messageF];
-    }else if ([message.type isEqualToString:@"TextMessage"]) {//文本消息
-        TextMessage * textMsg = (TextMessage *)message.content;
-        TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeText originalType:message.type content:textMsg.textContent extra:@"" auditExtra:@"" path:nil urlPath:nil from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
-        [self addObject:messageF isSender:NO isHeaderInsert:NO];
-        [self messageReceiveSucced:messageF];
-    }else if ([message.type isEqualToString:@"RichTextMessage"]) {//富文本消息
-        RichTextMessage * richTextMsg = (RichTextMessage *)message.content;
-        
-        [self.needDelRichTextIds addObject:message.msg_id];
-        NSString *tempPath = NSTemporaryDirectory();
-        NSString *filePath = [tempPath stringByAppendingPathComponent:@"RichTextMessageIds"];
-        [NSKeyedArchiver archiveRootObject:self.needDelRichTextIds toFile:filePath];
-        
-        
-        
-        NSString *contentStr = (NSString *)richTextMsg.elements;
-        TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:GXRichText originalType:@"text" content:contentStr extra:(NSString *)richTextMsg.repliedMessage auditExtra:@"" path:nil urlPath:nil from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
-        
-        [self addObject:messageF isSender:NO isHeaderInsert:NO];
-        [self messageReceiveSucced:messageF];
-        
-    }else if ([message.type isEqualToString:@"ImageMessage"]) {//图片消息
-        ImageMessage * imgMsg = (ImageMessage *)message.content;
-        TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypePic originalType:@"image" content:@"[图片]" extra:@"" auditExtra:@"" path:@"" urlPath:imgMsg.imgUrlPath from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(100, 100) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
-        [self addObject:messageF isSender:NO isHeaderInsert:NO];
-        [self messageReceiveSucced:messageF];
-    }else if ([message.type isEqualToString:@"VideoMessage"]) {//视频消息
-        VideoMessage * videoMsg = (VideoMessage *)message.content;
-        UIImage *videoArrowImage;
-        NSString * localPath;
-        localPath = [[ICMediaManager sharedManager] smallImgPath:message.msg_id];
-        videoArrowImage = [UIImage imageWithContentsOfFile:localPath];
-        if (!videoArrowImage) {
-            UIImage *resultImg = [self getVideoPreViewImage:[NSURL URLWithString:videoMsg.videoUrlPath]];
-            videoArrowImage = [UIImage addImage2:[UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,@"video_play_btn_bg"]] toImage:resultImg];
-            if (videoArrowImage) {
-                [[ICMediaManager sharedManager] saveImage:videoArrowImage msgId:message.msg_id picType:@"jpg"];
+            BOOL isSender = NO;
+            NSString *senderId;
+            NSString *receiverId;
+            if ([commodityMsg.senderType isEqualToString:@"2"]) {
+                isSender = YES;
+                senderId = message.receiverId;
+                receiverId = message.senderId;
+            } else {
+                isSender = NO;
+                senderId = message.senderId;
+                receiverId = message.receiverId;
             }
-        }
-        CGFloat fixelW = videoArrowImage.size.width;
-        CGFloat fixelH = videoArrowImage.size.height;
-        TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeVideo originalType:@"video" content:@"[视频]" extra:@"" auditExtra:@"" path:videoMsg.videoUrlPath urlPath:videoMsg.videoUrlPath from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(fixelW, fixelH) picType:@"jpg" isSender:NO receivedSenderByYourself:NO status:1];
-        [self addObject:messageF isSender:NO isHeaderInsert:NO];
-        [self messageReceiveSucced:messageF];
-        
-    }else if ([message.type isEqualToString:@"FileMessage"]) {//文件消息
-        FileMessage * fileMsg = (FileMessage *)message.content;
-        if ([fileMsg.type isEqualToString:TypeVideo]) {
-            // 视频
-            TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeVideo originalType:@"video" content:@"[视频]" extra:@"" auditExtra:@"" path:fileMsg.fileUrlPath urlPath:fileMsg.fileUrlPath from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(150 * 9.0/16.0, 150) picType:@"jpg" isSender:NO receivedSenderByYourself:NO status:1];
+            
+            TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeCommodityCardDetails originalType:message.type content:commodityMsg extra:@"" auditExtra:@"" path:nil urlPath:nil from:senderId to:receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:isSender receivedSenderByYourself:NO status:1];
+            [self addObject:messageF isSender:isSender isHeaderInsert:NO];
+            [self messageReceiveSucced:messageF];
+            
+        } else if ([message.type isEqualToString:@"TIMLogisticsCardMessage"]) {
+            
+            TIMLogisticsCardMessage *cardMsg = (TIMLogisticsCardMessage *)message.content;
+            TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeLogisticsCard originalType:message.type content:(NSString *)cardMsg extra:@"" auditExtra:@"" path:nil urlPath:nil from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
+            
+            [self addObject:messageF isSender:NO isHeaderInsert:NO];
+            [self newMessageSendSucced:messageF];
+            
+        } else if ([message.type isEqualToString:@"ChatSmallProgramMessage"]) {
+            
+            TOSMessageSmallProgramModel *smallProgramMsg = (TOSMessageSmallProgramModel *)message.content;
+            
+            TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeSmallProgramCard originalType:message.type content:(NSString *)smallProgramMsg extra:@"" auditExtra:@"" path:nil urlPath:nil from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
+            
+            [self addObject:messageF isSender:NO isHeaderInsert:NO];
+            [self newMessageSendSucced:messageF];
+        } else if ([message.type isEqualToString:@"ChatInvestigationMessage"]) {//满意度评价
+            sessionInfomodel.status = [NSNumber numberWithInt:6];
+            ChatInvestigationMessage * InvestigationMsg = (ChatInvestigationMessage *)message.content;
+            // 增加满意度评价的文案
+            NSString *extra = [TIMLibUtils convertToJsonDataWithDic:@{@"alreadyInvestigation" : @"0", @"uniqueId": message.msg_id?:@"",@"mainUniqueId": sessionInfomodel.mainUniqueId?:@""}];
+            NSString *content = [[OnlineDataSave shareOnlineDataSave] getAppSetting];
+            
+            
+            TIMMessageFrame *messageF;
+            if ([TOSKitCustomInfo shareCustomInfo].satisfactionViewPopupMode) {
+                messageF = [ICMessageHelper createMessageFrame:TypeSatisfactionPopup originalType:message.type content:content extra:extra auditExtra:@"" path:nil urlPath:nil from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
+            } else {
+                messageF = [ICMessageHelper createMessageFrame:TypeInvestigation originalType:message.type content:content extra:extra auditExtra:@"" path:nil urlPath:nil from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
+            }
+            
+            
             [self addObject:messageF isSender:NO isHeaderInsert:NO];
             [self messageReceiveSucced:messageF];
-        }else{
-            TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeCustomFile originalType:@"file" content:fileMsg.content extra:@"" auditExtra:@"" path:fileMsg.fileUrlPath urlPath:fileMsg.fileUrlPath from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeZero picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
-            [self addObject:messageF isSender:NO isHeaderInsert:NO];
-            [self messageReceiveSucced:messageF];
-        }
-        
-    }else if ([message.type isEqualToString:@"VoiceMessage"]) {//语音消息
-        VoiceMessage * voiceMsg = (VoiceMessage *)message.content;
-        int voiceDuration = (int)[[ICRecordManager shareManager] durationWithVideo:[NSURL fileURLWithPath:voiceMsg.voiceUrlPath]];
-        if (voiceDuration < 1000) {
-            // 小于一秒的显示1秒
-            voiceDuration = 1000;
-        }
-        
-        TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeVoice originalType:@"voice" content:@"[语音]" extra:@"" auditExtra:@"" path:voiceMsg.voiceUrlPath urlPath:voiceMsg.voiceUrlPath from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:voiceDuration] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeZero picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
-        [self addObject:messageF isSender:NO isHeaderInsert:NO];
-        [self messageReceiveSucced:messageF];
-    }else if ([message.type isEqualToString:@"RobotRichMessage"]) {//机器人选项消息
-        
-        NSArray <CombinationMessage *>*combinationMessage = message.content;
-        
-        NSString *contentStr = (NSString *)combinationMessage;
-        TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeRobotCombination originalType:@"text" content:contentStr extra:@"" auditExtra:@"" path:nil urlPath:nil from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
-        
-        [self addObject:messageF isSender:NO isHeaderInsert:NO];
-        [self messageReceiveSucced:messageF];
-        
-    }else if ([message.type isEqualToString:@"RobotRichMessage14"]) {//机器人选项消息14
-        
-        NSArray <CombinationMessage *>*combinationMessage = message.content;
-        
-        NSString *contentStr = (NSString *)combinationMessage;
-        
-        TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeRobotCombination originalType:@"text" content:contentStr extra:@"" auditExtra:@"" path:nil urlPath:nil from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
-        
-        [self addObject:messageF isSender:NO isHeaderInsert:NO];
-        [self messageReceiveSucced:messageF];
-    }else if ([message.type isEqualToString:@"RobotBridgeMessage"]) {//接通机器人
-        sessionInfomodel.status = [NSNumber numberWithInt:8];
-        self.isCloseSession = NO;
-        [self chatStatusChanged:TinetChatStatusTypeRobot];
-        RobotBridgeMessage * robotBridgeMsg = (RobotBridgeMessage *)message.content;
-        if (self.titleName ==nil || self.titleName.length == 0) {
-            self.title = robotBridgeMsg.robotNickName;
-        }
-        //获取机器人头像信息
-        [[OnlineRequestManager sharedCustomerManager] getClientInfoWithSender:robotBridgeMsg.robotId
-                                                                   senderType:@"4"
-                                                                      success:^(OnlineClientInfoModel * _Nonnull model) {
-            if (model.avatar == nil || model.avatar.length == 0) {
-                //保存头像
-                [[ICMediaManager sharedManager] savaHeadImgUrl:@"customer_service_default_avatar" userId:robotBridgeMsg.robotId];
-            }else{
-                [[ICMediaManager sharedManager] savaHeadImgUrl:model.avatar userId:robotBridgeMsg.robotId];
-            }
-            if (model.nickName == nil || model.nickName.length == 0) {
-                //保存名称
-                [[ICMediaManager sharedManager] savaHeadName:@"机器人" userId:robotBridgeMsg.robotId];
-            }else{
-                [[ICMediaManager sharedManager] savaHeadName:model.nickName userId:robotBridgeMsg.robotId];
-            }
-            
-        } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
-            
-        }];
-
-        
-    }else if ([message.type isEqualToString:@"ChatOpenMessage"]) {//会话开始
-        self.isCloseSession = NO;
-        ChatOpenMessage * eventMessage = (ChatOpenMessage *)message.content;
-    }else if ([message.type isEqualToString:@"ChatBridgeMessage"]) {//接通客服
-        self.insertOnline = YES;
-        NSLog(@"会话接通客服⚠️⚠️⚠️");
-        [self chatStatusChanged:TinetChatStatusTypeOnline];
-        sessionInfomodel.status = [NSNumber numberWithInt:4];
-        self.isCloseSession = NO;
-        ChatBridgeMessage * eventMessage = (ChatBridgeMessage *)message.content;
-        if (self.titleName ==nil || self.titleName.length == 0) {
-            self.title = [[OnlineDataSave shareOnlineDataSave] getCustomTitle];
-        }
-        //获取客服头像信息
-        [[OnlineRequestManager sharedCustomerManager] getClientInfoWithSender:eventMessage.sender
-                                                                   senderType:@"1"
-                                                                      success:^(OnlineClientInfoModel * _Nonnull model) {
-            if (model.avatar == nil || model.avatar.length == 0) {
-                //保存头像
-                [[ICMediaManager sharedManager] savaHeadImgUrl:@"default_avatar" userId:eventMessage.sender];
-            }else{
-                [[ICMediaManager sharedManager] savaHeadImgUrl:model.avatar userId:eventMessage.sender];
-            }
-            if (model.nickName == nil || model.nickName.length == 0) {
-                //保存名称
-                [[ICMediaManager sharedManager] savaHeadName:@"客服" userId:eventMessage.sender];
-            }else{
-                [[ICMediaManager sharedManager] savaHeadName:model.nickName userId:eventMessage.sender];
-            }
-        } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
-            
-        }];
+            // 结束会话
+            if ([InvestigationMsg.isClose boolValue]) {
+                self.isCloseSession = YES;
+                sessionInfomodel.status = [NSNumber numberWithInt:7];
+                // 增加结束会话的文案
+                TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeText originalType:message.type content:InvestigationMsg.endMessage extra:@"" auditExtra:@"" path:nil urlPath:nil from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
+                [self addObject:messageF isSender:NO isHeaderInsert:NO];
+                [self messageReceiveSucced:messageF];
                 
-        if (eventMessage.welcomStr.length>0) {
-            RichTextMessage *richTextMsg = [[RichTextMessage alloc] initMessageWithContent:eventMessage.welcomStr];
+    //            self.chatBoxVC.view.hidden = YES;
+    //            self.chatCloseView.hidden = NO;
+    //            [self.chatBoxVC.chatBox.textView resignFirstResponder];
+    //            self.chatBoxVC.chatBox.textView.text = @"";
+    //            [[OnlineDataSave shareOnlineDataSave] saveUserInputText:@""];
+    //            [self.chatBoxVC.chatBox switchTextEditing];
+    //
+    //            self.tableView.height = self.chatCloseView.top;
+                [self closeViewEvent];
+                
+                self.reloadTaskManager.isScroll = YES;
+                [self.reloadTaskManager startCountdown];
+            }
+        }else if ([message.type isEqualToString:@"SystemMessage"]) {//系统消息
+            TextMessage * textMsg = (TextMessage *)message.content;
+            TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeSystem originalType:message.type content:textMsg.textContent extra:@"" auditExtra:@"" path:nil urlPath:nil from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
+            [self addObject:messageF isSender:NO isHeaderInsert:NO];
+            [self messageReceiveSucced:messageF];
+        }else if ([message.type isEqualToString:@"TextMessage"]) {//文本消息
+            TextMessage * textMsg = (TextMessage *)message.content;
+            TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeText originalType:message.type content:textMsg.textContent extra:@"" auditExtra:@"" path:nil urlPath:nil from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
+            [self addObject:messageF isSender:NO isHeaderInsert:NO];
+            [self messageReceiveSucced:messageF];
+        }else if ([message.type isEqualToString:@"RichTextMessage"]) {//富文本消息
+            RichTextMessage * richTextMsg = (RichTextMessage *)message.content;
+            
+            [self.needDelRichTextIds addObject:message.msg_id];
+            NSString *tempPath = NSTemporaryDirectory();
+            NSString *filePath = [tempPath stringByAppendingPathComponent:@"RichTextMessageIds"];
+            [NSKeyedArchiver archiveRootObject:self.needDelRichTextIds toFile:filePath];
+            
+            
             
             NSString *contentStr = (NSString *)richTextMsg.elements;
+            TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:GXRichText originalType:@"text" content:contentStr extra:(NSString *)richTextMsg.repliedMessage auditExtra:@"" path:nil urlPath:nil from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
             
-            TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:GXRichText originalType:@"text" content:contentStr extra:@"" auditExtra:@"" path:nil urlPath:nil from:eventMessage.sender to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
             [self addObject:messageF isSender:NO isHeaderInsert:NO];
             [self messageReceiveSucced:messageF];
-        }
-        if (eventMessage.clientIntroduce.length>0) {
-            RichTextMessage *richTextMsg = [[RichTextMessage alloc] initMessageWithContent:eventMessage.clientIntroduce];
             
-            NSString *contentStr = (NSString *)richTextMsg.elements;
-            TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:GXRichText originalType:@"text" content:contentStr extra:@"" auditExtra:@"" path:nil urlPath:nil from:eventMessage.sender to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
+        }else if ([message.type isEqualToString:@"ImageMessage"]) {//图片消息
+            ImageMessage * imgMsg = (ImageMessage *)message.content;
+            TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypePic originalType:@"image" content:@"[图片]" extra:@"" auditExtra:@"" path:@"" urlPath:imgMsg.imgUrlPath from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(100, 100) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
             [self addObject:messageF isSender:NO isHeaderInsert:NO];
             [self messageReceiveSucced:messageF];
-        }
-    }else if ([message.type isEqualToString:@"ChatCloseMessage"]) {//会话结束
-        sessionInfomodel.status = [NSNumber numberWithInt:7];
-        self.insertOnline = NO;
-        self.isCloseSession = YES;
-        // 增加结束会话的文案
-        ChatCloseMessage * closeMessage = (ChatCloseMessage*)message.content;
-        if (![kitUtils isBlankString:closeMessage.endMessage]) {
-            TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeSystem originalType:@"text" content:closeMessage.endMessage extra:@"" auditExtra:@"" path:nil urlPath:nil from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
-            [self addObject:messageF isSender:NO isHeaderInsert:NO];
-            [self messageReceiveSucced:messageF];
-        }
-        
-        [self closeViewEvent];
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self scrollToBottom];
-        });
-    }else if ([message.type isEqualToString:@"ChatQueueMessage"]) {//进入排队
-        sessionInfomodel.status = [NSNumber numberWithInt:3];
-        ChatQueueMessage * eventMsg = (ChatQueueMessage *)message.content;
-        TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeEventQueue originalType:message.type content:eventMsg.locationstr extra:@"" auditExtra:@"" path:nil urlPath:nil from:[[OnlineDataSave shareOnlineDataSave] getVisitorId] to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:YES receivedSenderByYourself:NO status:1];
-        [self addObject:messageF isSender:NO isHeaderInsert:NO];
-        [self messageReceiveSucced:messageF];
-    }else if ([message.type isEqualToString:@"ChatLocationMessage"]) {//排队位置播报
-        ChatLocationMessage * eventMsg = (ChatLocationMessage *)message.content;
-        TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeEventQueue originalType:message.type content:eventMsg.locationstr extra:@"" auditExtra:@"" path:nil urlPath:nil from:[[OnlineDataSave shareOnlineDataSave] getVisitorId] to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:YES receivedSenderByYourself:NO status:1];
-        [self addObject:messageF isSender:NO isHeaderInsert:NO];
-        [self messageReceiveSucced:messageF];
-    }else if ([message.type isEqualToString:@"WithdrawMessage"]) {//座席撤回消息
-        WithdrawMessage * eventMsg = (WithdrawMessage *)message.content;
-        [self getRecallMessage:message msgId:message.msg_id];
-//        TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeSystem originalType:message.type content:@"对方撤回了一条消息" extra:@"" auditExtra:@"" path:nil urlPath:nil from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
-//        [self addObject:messageF isSender:NO isHeaderInsert:NO];
-//        [self messageSendSucced:messageF];
-    }else if ([message.type isEqualToString:@"ChatLeaveQueueMessage"]) {//访客退出排队
-        ChatLeaveQueueMessage * robotBridgeMsg = (ChatLeaveQueueMessage *)message.content;
-    }else if ([message.type isEqualToString:@"ChatOfflineMessage"]) {//访客离线
-        ChatOfflineMessage * robotBridgeMsg = (ChatOfflineMessage *)message.content;
-    }else if ([message.type isEqualToString:@"ChatOnlineMessage"]) {//访客上线
-        ChatOnlineMessage * robotBridgeMsg = (ChatOnlineMessage *)message.content;
-    }else if ([message.type isEqualToString:@"ChatLeaveMessage"]) {//留言消息事件
-        sessionInfomodel.status = [NSNumber numberWithInt:5];
-        ChatLeaveMessage * chatLeaveMessageMsg = (ChatLeaveMessage *)message.content;
-        
-        TIMChatLeaveVC*vc = [[TIMChatLeaveVC alloc]init];
-        vc.welcomContent = chatLeaveMessageMsg.welcomContent;
-        vc.leaveTip = chatLeaveMessageMsg.leaveTip;
-        vc.leaveMessageFields = [[NSMutableArray alloc]initWithArray:chatLeaveMessageMsg.leaveMessageFields];
-        [self.navigationController pushViewController:vc animated:NO];
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            NSMutableArray *marr = [[NSMutableArray alloc] initWithArray:self.navigationController.viewControllers];
-            for (UIViewController *vc in marr) {
-                if (vc == self) {
-                    [marr removeObject:vc];
-                    break;          //break一定要加，不加有时候有bug
+        }else if ([message.type isEqualToString:@"VideoMessage"]) {//视频消息
+            VideoMessage * videoMsg = (VideoMessage *)message.content;
+            UIImage *videoArrowImage;
+            NSString * localPath;
+            localPath = [[ICMediaManager sharedManager] smallImgPath:message.msg_id];
+            videoArrowImage = [UIImage imageWithContentsOfFile:localPath];
+            if (!videoArrowImage) {
+                UIImage *resultImg = [self getVideoPreViewImage:[NSURL URLWithString:videoMsg.videoUrlPath]];
+                videoArrowImage = [UIImage addImage2:[UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,@"video_play_btn_bg"]] toImage:resultImg];
+                if (videoArrowImage) {
+                    [[ICMediaManager sharedManager] saveImage:videoArrowImage msgId:message.msg_id picType:@"jpg"];
                 }
             }
-            self.navigationController.viewControllers = marr;
-        });
- 
-    }else if([message.type isEqualToString:@"ChatLeaveMessage"]){//留言消息
-        ChatLeaveReceiveMessage * chatLeaveReceiveMsg = (ChatLeaveReceiveMessage *)message.content;
-        TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeText originalType:message.type content:chatLeaveReceiveMsg.textContent extra:@"" auditExtra:@"" path:nil urlPath:nil from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:YES status:1];
-        [self addObject:messageF isSender:YES isHeaderInsert:NO];
-        [self messageReceiveSucced:messageF];
-    } else if ([message.type isEqualToString:@"MessageTextTag"]) {
-        
-        TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeTextTag originalType:message.type content:(NSString *)message.content extra:@"" auditExtra:@"" path:nil urlPath:nil from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
-        [self addObject:messageF isSender:NO isHeaderInsert:NO];
-        [self newMessageSendSucced:messageF];
-    } else if ([message.type isEqualToString:@"SensitiveWordEvent"]) {
-        
-        TOSSensitiveWordEventModel *sensitiveWordModel = (TOSSensitiveWordEventModel *)message.content;
-        NSLog(@"sensitiveWordModel ======= %@",[sensitiveWordModel yy_modelToJSONObject]);
-        @WeakObj(self)
-        [self.dataSource enumerateObjectsUsingBlock:^(TIMMessageFrame *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            if ([obj.model.message.fileKey isEqualToString:sensitiveWordModel.messageUUID]) {
-                
-                @StrongObj(self)
-                obj.model.message.deliveryState = ICMessageDeliveryState_Failure_SensitiveWords;
-                obj.model = obj.model;
-                [selfWeak.tableView reloadData];
-                *stop = YES;
+            CGFloat fixelW = videoArrowImage.size.width;
+            CGFloat fixelH = videoArrowImage.size.height;
+            TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeVideo originalType:@"video" content:@"[视频]" extra:@"" auditExtra:@"" path:videoMsg.videoUrlPath urlPath:videoMsg.videoUrlPath from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(fixelW, fixelH) picType:@"jpg" isSender:NO receivedSenderByYourself:NO status:1];
+            [self addObject:messageF isSender:NO isHeaderInsert:NO];
+            [self messageReceiveSucced:messageF];
+            
+        }else if ([message.type isEqualToString:@"FileMessage"]) {//文件消息
+            FileMessage * fileMsg = (FileMessage *)message.content;
+            if ([fileMsg.type isEqualToString:TypeVideo]) {
+                // 视频
+                TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeVideo originalType:@"video" content:@"[视频]" extra:@"" auditExtra:@"" path:fileMsg.fileUrlPath urlPath:fileMsg.fileUrlPath from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(150 * 9.0/16.0, 150) picType:@"jpg" isSender:NO receivedSenderByYourself:NO status:1];
+                [self addObject:messageF isSender:NO isHeaderInsert:NO];
+                [self messageReceiveSucced:messageF];
+            }else{
+                TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeCustomFile originalType:@"file" content:fileMsg.content extra:@"" auditExtra:@"" path:fileMsg.fileUrlPath urlPath:fileMsg.fileUrlPath from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeZero picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
+                [self addObject:messageF isSender:NO isHeaderInsert:NO];
+                [self messageReceiveSucced:messageF];
             }
-        }];
-    }
+            
+        }else if ([message.type isEqualToString:@"VoiceMessage"]) {//语音消息
+            VoiceMessage * voiceMsg = (VoiceMessage *)message.content;
+            int voiceDuration = (int)[[ICRecordManager shareManager] durationWithVideo:[NSURL fileURLWithPath:voiceMsg.voiceUrlPath]];
+            if (voiceDuration < 1000) {
+                // 小于一秒的显示1秒
+                voiceDuration = 1000;
+            }
+            
+            TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeVoice originalType:@"voice" content:@"[语音]" extra:@"" auditExtra:@"" path:voiceMsg.voiceUrlPath urlPath:voiceMsg.voiceUrlPath from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:voiceDuration] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeZero picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
+            [self addObject:messageF isSender:NO isHeaderInsert:NO];
+            [self messageReceiveSucced:messageF];
+        }else if ([message.type isEqualToString:@"RobotRichMessage"]) {//机器人选项消息
+            
+            NSArray <CombinationMessage *>*combinationMessage = message.content;
+            
+            NSString *contentStr = (NSString *)combinationMessage;
+            TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeRobotCombination originalType:@"text" content:contentStr extra:@"" auditExtra:@"" path:nil urlPath:nil from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
+            
+            [self addObject:messageF isSender:NO isHeaderInsert:NO];
+            [self messageReceiveSucced:messageF];
+            
+        }else if ([message.type isEqualToString:@"RobotRichMessage14"]) {//机器人选项消息14
+            
+            NSArray <CombinationMessage *>*combinationMessage = message.content;
+            
+            NSString *contentStr = (NSString *)combinationMessage;
+            
+            TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeRobotCombination originalType:@"text" content:contentStr extra:@"" auditExtra:@"" path:nil urlPath:nil from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
+            
+            [self addObject:messageF isSender:NO isHeaderInsert:NO];
+            [self messageReceiveSucced:messageF];
+        }else if ([message.type isEqualToString:@"RobotBridgeMessage"]) {//接通机器人
+            sessionInfomodel.status = [NSNumber numberWithInt:8];
+            self.isCloseSession = NO;
+            [self chatStatusChanged:TinetChatStatusTypeRobot];
+            RobotBridgeMessage * robotBridgeMsg = (RobotBridgeMessage *)message.content;
+            if (self.titleName ==nil || self.titleName.length == 0) {
+                self.title = robotBridgeMsg.robotNickName;
+            }
+            //获取机器人头像信息
+            [[OnlineRequestManager sharedCustomerManager] getClientInfoWithSender:robotBridgeMsg.robotId
+                                                                       senderType:@"4"
+                                                                          success:^(OnlineClientInfoModel * _Nonnull model) {
+                if (model.avatar == nil || model.avatar.length == 0) {
+                    //保存头像
+                    [[ICMediaManager sharedManager] savaHeadImgUrl:@"customer_service_default_avatar" userId:robotBridgeMsg.robotId];
+                }else{
+                    [[ICMediaManager sharedManager] savaHeadImgUrl:model.avatar userId:robotBridgeMsg.robotId];
+                }
+                if (model.nickName == nil || model.nickName.length == 0) {
+                    //保存名称
+                    [[ICMediaManager sharedManager] savaHeadName:@"机器人" userId:robotBridgeMsg.robotId];
+                }else{
+                    [[ICMediaManager sharedManager] savaHeadName:model.nickName userId:robotBridgeMsg.robotId];
+                }
+                
+            } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+                
+            }];
+
+            
+        }else if ([message.type isEqualToString:@"ChatOpenMessage"]) {//会话开始
+            self.isCloseSession = NO;
+            ChatOpenMessage * eventMessage = (ChatOpenMessage *)message.content;
+        }else if ([message.type isEqualToString:@"ChatBridgeMessage"]) {//接通客服
+            self.insertOnline = YES;
+            NSLog(@"会话接通客服⚠️⚠️⚠️");
+            [self chatStatusChanged:TinetChatStatusTypeOnline];
+            sessionInfomodel.status = [NSNumber numberWithInt:4];
+            self.isCloseSession = NO;
+            ChatBridgeMessage * eventMessage = (ChatBridgeMessage *)message.content;
+            if (self.titleName ==nil || self.titleName.length == 0) {
+                self.title = [[OnlineDataSave shareOnlineDataSave] getCustomTitle];
+            }
+            //获取客服头像信息
+            [[OnlineRequestManager sharedCustomerManager] getClientInfoWithSender:eventMessage.sender
+                                                                       senderType:@"1"
+                                                                          success:^(OnlineClientInfoModel * _Nonnull model) {
+                if (model.avatar == nil || model.avatar.length == 0) {
+                    //保存头像
+                    [[ICMediaManager sharedManager] savaHeadImgUrl:@"default_avatar" userId:eventMessage.sender];
+                }else{
+                    [[ICMediaManager sharedManager] savaHeadImgUrl:model.avatar userId:eventMessage.sender];
+                }
+                if (model.nickName == nil || model.nickName.length == 0) {
+                    //保存名称
+                    [[ICMediaManager sharedManager] savaHeadName:@"客服" userId:eventMessage.sender];
+                }else{
+                    [[ICMediaManager sharedManager] savaHeadName:model.nickName userId:eventMessage.sender];
+                }
+            } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+                
+            }];
+                    
+            if (eventMessage.welcomStr.length>0) {
+                RichTextMessage *richTextMsg = [[RichTextMessage alloc] initMessageWithContent:eventMessage.welcomStr];
+                
+                NSString *contentStr = (NSString *)richTextMsg.elements;
+                
+                TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:GXRichText originalType:@"text" content:contentStr extra:@"" auditExtra:@"" path:nil urlPath:nil from:eventMessage.sender to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
+                [self addObject:messageF isSender:NO isHeaderInsert:NO];
+                [self messageReceiveSucced:messageF];
+            }
+            if (eventMessage.clientIntroduce.length>0) {
+                RichTextMessage *richTextMsg = [[RichTextMessage alloc] initMessageWithContent:eventMessage.clientIntroduce];
+                
+                NSString *contentStr = (NSString *)richTextMsg.elements;
+                TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:GXRichText originalType:@"text" content:contentStr extra:@"" auditExtra:@"" path:nil urlPath:nil from:eventMessage.sender to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
+                [self addObject:messageF isSender:NO isHeaderInsert:NO];
+                [self messageReceiveSucced:messageF];
+            }
+        }else if ([message.type isEqualToString:@"ChatCloseMessage"]) {//会话结束
+            sessionInfomodel.status = [NSNumber numberWithInt:7];
+            self.insertOnline = NO;
+            self.isCloseSession = YES;
+            // 增加结束会话的文案
+            ChatCloseMessage * closeMessage = (ChatCloseMessage*)message.content;
+            if (![kitUtils isBlankString:closeMessage.endMessage]) {
+                TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeSystem originalType:@"text" content:closeMessage.endMessage extra:@"" auditExtra:@"" path:nil urlPath:nil from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
+                [self addObject:messageF isSender:NO isHeaderInsert:NO];
+                [self messageReceiveSucced:messageF];
+            }
+            
+            [self closeViewEvent];
+            
+            self.reloadTaskManager.isScroll = YES;
+            [self.reloadTaskManager startCountdown];
+        }else if ([message.type isEqualToString:@"ChatQueueMessage"]) {//进入排队
+            sessionInfomodel.status = [NSNumber numberWithInt:3];
+            ChatQueueMessage * eventMsg = (ChatQueueMessage *)message.content;
+            TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeEventQueue originalType:message.type content:eventMsg.locationstr extra:@"" auditExtra:@"" path:nil urlPath:nil from:[[OnlineDataSave shareOnlineDataSave] getVisitorId] to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:YES receivedSenderByYourself:NO status:1];
+            [self addObject:messageF isSender:NO isHeaderInsert:NO];
+            [self messageReceiveSucced:messageF];
+        }else if ([message.type isEqualToString:@"ChatLocationMessage"]) {//排队位置播报
+            ChatLocationMessage * eventMsg = (ChatLocationMessage *)message.content;
+            TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeEventQueue originalType:message.type content:eventMsg.locationstr extra:@"" auditExtra:@"" path:nil urlPath:nil from:[[OnlineDataSave shareOnlineDataSave] getVisitorId] to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:YES receivedSenderByYourself:NO status:1];
+            [self addObject:messageF isSender:NO isHeaderInsert:NO];
+            [self messageReceiveSucced:messageF];
+        }else if ([message.type isEqualToString:@"WithdrawMessage"]) {//座席撤回消息
+            WithdrawMessage * eventMsg = (WithdrawMessage *)message.content;
+            [self getRecallMessage:message msgId:message.msg_id];
+    //        TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeSystem originalType:message.type content:@"对方撤回了一条消息" extra:@"" auditExtra:@"" path:nil urlPath:nil from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
+    //        [self addObject:messageF isSender:NO isHeaderInsert:NO];
+    //        [self messageSendSucced:messageF];
+        }else if ([message.type isEqualToString:@"ChatLeaveQueueMessage"]) {//访客退出排队
+            ChatLeaveQueueMessage * robotBridgeMsg = (ChatLeaveQueueMessage *)message.content;
+        }else if ([message.type isEqualToString:@"ChatOfflineMessage"]) {//访客离线
+            ChatOfflineMessage * robotBridgeMsg = (ChatOfflineMessage *)message.content;
+        }else if ([message.type isEqualToString:@"ChatOnlineMessage"]) {//访客上线
+            ChatOnlineMessage * robotBridgeMsg = (ChatOnlineMessage *)message.content;
+        }else if ([message.type isEqualToString:@"ChatLeaveMessage"]) {//留言消息事件
+            sessionInfomodel.status = [NSNumber numberWithInt:5];
+            ChatLeaveMessage * chatLeaveMessageMsg = (ChatLeaveMessage *)message.content;
+            
+            TIMChatLeaveVC*vc = [[TIMChatLeaveVC alloc]init];
+            vc.welcomContent = chatLeaveMessageMsg.welcomContent;
+            vc.leaveTip = chatLeaveMessageMsg.leaveTip;
+            vc.leaveMessageFields = [[NSMutableArray alloc]initWithArray:chatLeaveMessageMsg.leaveMessageFields];
+            [self.navigationController pushViewController:vc animated:NO];
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                NSMutableArray *marr = [[NSMutableArray alloc] initWithArray:self.navigationController.viewControllers];
+                for (UIViewController *vc in marr) {
+                    if (vc == self) {
+                        [marr removeObject:vc];
+                        break;          //break一定要加，不加有时候有bug
+                    }
+                }
+                self.navigationController.viewControllers = marr;
+            });
+     
+        }else if([message.type isEqualToString:@"ChatLeaveMessage"]){//留言消息
+            ChatLeaveReceiveMessage * chatLeaveReceiveMsg = (ChatLeaveReceiveMessage *)message.content;
+            TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeText originalType:message.type content:chatLeaveReceiveMsg.textContent extra:@"" auditExtra:@"" path:nil urlPath:nil from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:YES status:1];
+            [self addObject:messageF isSender:YES isHeaderInsert:NO];
+            [self messageReceiveSucced:messageF];
+        } else if ([message.type isEqualToString:@"MessageTextTag"]) {
+            
+            TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeTextTag originalType:message.type content:(NSString *)message.content extra:@"" auditExtra:@"" path:nil urlPath:nil from:message.senderId to:message.receiverId fileKey:message.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:message.msg_id sendTime:message.timestamp showTime:[self p_needShowTimeStamp:(NSTimeInterval)message.timestamp] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
+            [self addObject:messageF isSender:NO isHeaderInsert:NO];
+            [self newMessageSendSucced:messageF];
+        } else if ([message.type isEqualToString:@"SensitiveWordEvent"]) {
+            
+            TOSSensitiveWordEventModel *sensitiveWordModel = (TOSSensitiveWordEventModel *)message.content;
+            NSLog(@"sensitiveWordModel ======= %@",[sensitiveWordModel yy_modelToJSONObject]);
+            @WeakObj(self)
+            [self.readyDisplayDataSource enumerateObjectsUsingBlock:^(TIMMessageFrame *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if ([obj.model.message.fileKey isEqualToString:sensitiveWordModel.messageUUID]) {
+                    
+                    @StrongObj(self)
+                    obj.model.message.deliveryState = ICMessageDeliveryState_Failure_SensitiveWords;
+                    obj.model = obj.model;
+                    self.reloadTaskManager.isScroll = NO;
+                    [self.reloadTaskManager startCountdown];
+                    *stop = YES;
+                }
+            }];
+        }
+    }];
     
     /// 保存会话在线状态事件
     [[OnlineDataSave shareOnlineDataSave] saveMainUniqueModel:[sessionInfomodel yy_modelToJSONString]];
     
 //    TOSSessionInfoModel *model = [[TOSClientKit sharedTOSKit] getCurrentSessionInfo];
 //    NSLog(@"保存会话在线状态事件model === %@",[model yy_modelToJSONObject]);
-    
-    [self scrollToBottom];
     
     if (self.offlineType != offlineMessageTypeNormal && self.existedWelcome) {
         [self sendOfflineNewMessage];
@@ -2885,77 +3049,111 @@ static const NSInteger kMaxImageDataRequest = 50;
     }
     
     
-    TIMMessageFrame *modelFrame = baseCell.modelFrame;
-    TIMICMessage *message = modelFrame.model.message;
-    NSString *mediaPath = modelFrame.model.mediaPath;
-    
-    [self messageSending:modelFrame];
-    
-    if ([message.type isEqualToString:TypeText]) {
+    @WeakObj(self);
+    [self.reloadTaskManager startTaskWithScroll:YES completion:^{
+        @StrongObj(self);
         
-        [[OnlineMessageSendManager sharedOnlineMessageSendManager] sendTextMessageWithMessageStr:message.content knowledge:message.knowledge?:@"" messageUUID:message.fileKey success:^(TOSMessage * timMessage) {
-            baseCell.modelFrame.model.message.messageId = timMessage.msg_id;
-            [self updateOldMessageId:timMessage.msg_id];
-            [self messageSendSucced:baseCell.modelFrame];
-        } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
-            [self messageSendFailed:baseCell.modelFrame];
-        }];
-    } else if ([message.type isEqualToString:TypePic]) {
+        TIMMessageFrame *modelFrame = baseCell.modelFrame;
+        TIMICMessage *message = modelFrame.model.message;
+        NSString *mediaPath = modelFrame.model.mediaPath;
         
-        UIImage *image = [UIImage imageWithContentsOfFile:mediaPath];
-        NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
-        [[OnlineMessageSendManager sharedOnlineMessageSendManager] sendImageMessageWithImageData:imageData success:^(NSString * _Nonnull messageId, NSString * _Nonnull fileKey) {
-            modelFrame.model.message.messageId = messageId;
-            [self updateOldMessageId:messageId];
-            [self messageSendSucced:modelFrame];
-        } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
-            [self messageSendFailed:modelFrame];
-        }];
-    } else if ([message.type isEqualToString:TypeVideo]) {
+        [self messageSending:modelFrame];
         
-        NSData *videoData = [NSData dataWithContentsOfFile:mediaPath];
-        [[OnlineMessageSendManager sharedOnlineMessageSendManager]sendVideoMessageWithVideoData:videoData success:^(NSString * _Nonnull messageId) {
-            modelFrame.model.message.messageId = messageId;
-            [self updateOldMessageId:messageId];
-            [self messageSendSucced:modelFrame];
-        } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
-            [self messageSendFailed:modelFrame];
-            long long sizeLimitM = [[OnlineDataSave shareOnlineDataSave] getAppSettingFileSize].longLongValue /1024/1024;
-            NSString *strShow = [NSString stringWithFormat:@"文件过大，请发送小于%lldM文件",sizeLimitM];
-            [WHToast showMessage:errorDes?:strShow duration:2.f finishHandler:^{
-                
+        if ([message.type isEqualToString:TypeText]) {
+            
+            [[OnlineMessageSendManager sharedOnlineMessageSendManager] sendTextMessageWithMessageStr:message.content knowledge:message.knowledge?:@"" messageUUID:message.fileKey success:^(TOSMessage * timMessage) {
+                @StrongObj(self);
+                baseCell.modelFrame.model.message.messageId = timMessage.msg_id;
+                [self updateOldMessageId:timMessage.msg_id];
+                [self messageSendSucced:baseCell.modelFrame];
+                self.reloadTaskManager.isScroll = YES;
+                [self.reloadTaskManager startCountdown];
+            } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+                [self messageSendFailed:baseCell.modelFrame];
+                self.reloadTaskManager.isScroll = YES;
+                [self.reloadTaskManager startCountdown];
             }];
-        }];
-    } else if ([message.type isEqualToString:TypeVoice]) {
-        
-        NSData *voiceData = [NSData dataWithContentsOfFile:mediaPath];
-        [[OnlineMessageSendManager sharedOnlineMessageSendManager] sendVoiceMessageWithVoiceData:voiceData success:^(NSString * _Nonnull messageId) {
-            modelFrame.model.message.messageId = messageId;
-            [self updateOldMessageId:messageId];
-            [self messageSendSucced:modelFrame];
-        } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
-            [self messageSendFailed:modelFrame];
-        }];
-    } else if ([message.type isEqualToString:TypeCustomFile]) {
-        
-        NSData *fileData = [NSData dataWithContentsOfFile:mediaPath];
-        NSString *fileTypeStr = [kitUtils mimeTypeForFileAtPath:mediaPath];
-        
-        NSString *fileName = [[kitUtils dictionaryWithJsonString:message.content] by_ObjectForKey:@"fileName"];
-        
-        [[OnlineMessageSendManager sharedOnlineMessageSendManager] sendFileMessageWithFileData:fileData fileType:fileTypeStr fileName:fileName success:^(NSString * _Nonnull messageId) {
-            modelFrame.model.message.messageId = messageId;
-            [self updateOldMessageId:messageId];
-            [self messageSendSucced:modelFrame];
-        } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
-            [self messageSendFailed:modelFrame];
-            long long sizeLimitM = [[OnlineDataSave shareOnlineDataSave] getAppSettingFileSize].longLongValue /1024/1024;
-            NSString *strShow = [NSString stringWithFormat:@"文件过大，请发送小于%lldM文件",sizeLimitM];
-            [WHToast showMessage:errorDes?:strShow duration:2.f finishHandler:^{
-                
+        } else if ([message.type isEqualToString:TypePic]) {
+            
+            UIImage *image = [UIImage imageWithContentsOfFile:mediaPath];
+            NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
+            [[OnlineMessageSendManager sharedOnlineMessageSendManager] sendImageMessageWithImageData:imageData success:^(NSString * _Nonnull messageId, NSString * _Nonnull fileKey) {
+                @StrongObj(self);
+                modelFrame.model.message.messageId = messageId;
+                [self updateOldMessageId:messageId];
+                [self messageSendSucced:modelFrame];
+                self.reloadTaskManager.isScroll = YES;
+                [self.reloadTaskManager startCountdown];
+            } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+                @StrongObj(self);
+                [self messageSendFailed:modelFrame];
+                self.reloadTaskManager.isScroll = YES;
+                [self.reloadTaskManager startCountdown];
             }];
-        }];
-    }
+        } else if ([message.type isEqualToString:TypeVideo]) {
+            
+            NSData *videoData = [NSData dataWithContentsOfFile:mediaPath];
+            [[OnlineMessageSendManager sharedOnlineMessageSendManager]sendVideoMessageWithVideoData:videoData success:^(NSString * _Nonnull messageId) {
+                @StrongObj(self);
+                modelFrame.model.message.messageId = messageId;
+                [self updateOldMessageId:messageId];
+                [self messageSendSucced:modelFrame];
+                self.reloadTaskManager.isScroll = YES;
+                [self.reloadTaskManager startCountdown];
+            } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+                @StrongObj(self);
+                [self messageSendFailed:modelFrame];
+                self.reloadTaskManager.isScroll = YES;
+                [self.reloadTaskManager startCountdown];
+                long long sizeLimitM = [[OnlineDataSave shareOnlineDataSave] getAppSettingFileSize].longLongValue /1024/1024;
+                NSString *strShow = [NSString stringWithFormat:@"文件过大，请发送小于%lldM文件",sizeLimitM];
+                [WHToast showMessage:errorDes?:strShow duration:2.f finishHandler:^{
+                    
+                }];
+            }];
+        } else if ([message.type isEqualToString:TypeVoice]) {
+            
+            NSData *voiceData = [NSData dataWithContentsOfFile:mediaPath];
+            [[OnlineMessageSendManager sharedOnlineMessageSendManager] sendVoiceMessageWithVoiceData:voiceData success:^(NSString * _Nonnull messageId) {
+                @StrongObj(self);
+                modelFrame.model.message.messageId = messageId;
+                [self updateOldMessageId:messageId];
+                [self messageSendSucced:modelFrame];
+                self.reloadTaskManager.isScroll = YES;
+                [self.reloadTaskManager startCountdown];
+            } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+                @StrongObj(self);
+                [self messageSendFailed:modelFrame];
+                self.reloadTaskManager.isScroll = YES;
+                [self.reloadTaskManager startCountdown];
+            }];
+        } else if ([message.type isEqualToString:TypeCustomFile]) {
+            
+            NSData *fileData = [NSData dataWithContentsOfFile:mediaPath];
+            NSString *fileTypeStr = [kitUtils mimeTypeForFileAtPath:mediaPath];
+            
+            NSString *fileName = [[kitUtils dictionaryWithJsonString:message.content] by_ObjectForKey:@"fileName"];
+            
+            [[OnlineMessageSendManager sharedOnlineMessageSendManager] sendFileMessageWithFileData:fileData fileType:fileTypeStr fileName:fileName success:^(NSString * _Nonnull messageId) {
+                @StrongObj(self);
+                modelFrame.model.message.messageId = messageId;
+                [self updateOldMessageId:messageId];
+                [self messageSendSucced:modelFrame];
+                self.reloadTaskManager.isScroll = YES;
+                [self.reloadTaskManager startCountdown];
+            } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+                @StrongObj(self);
+                [self messageSendFailed:modelFrame];
+                self.reloadTaskManager.isScroll = YES;
+                [self.reloadTaskManager startCountdown];
+                long long sizeLimitM = [[OnlineDataSave shareOnlineDataSave] getAppSettingFileSize].longLongValue /1024/1024;
+                NSString *strShow = [NSString stringWithFormat:@"文件过大，请发送小于%lldM文件",sizeLimitM];
+                [WHToast showMessage:errorDes?:strShow duration:2.f finishHandler:^{
+                    
+                }];
+            }];
+        }
+    }];
 }
 
 -(void)sendCombinaMessage:(NSString *)text{
@@ -2990,15 +3188,20 @@ static const NSInteger kMaxImageDataRequest = 50;
 /// 关闭事件
 - (void)closeViewEvent {
     
-    self.chatBoxVC.view.hidden = YES;
-    self.chatCloseView.hidden = NO;
-    [self.chatBoxVC.chatBox.textView resignFirstResponder];
-    self.chatBoxVC.chatBox.textView.text = @"";
-    [[OnlineDataSave shareOnlineDataSave] saveUserInputText:@""];
-    [self.chatBoxVC.chatBox switchTextEditing];
-    [self.chatBoxVC.chatBox.textView resignFirstResponder];
-    
-    self.tableView.tos_height = self.chatCloseView.top_sd;
+    @WeakObj(self);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        @StrongObj(self);
+        self.chatBoxVC.view.hidden = YES;
+        self.chatCloseView.hidden = NO;
+        [self.chatBoxVC.chatBox.textView resignFirstResponder];
+        self.chatBoxVC.chatBox.textView.text = @"";
+        [[OnlineDataSave shareOnlineDataSave] saveUserInputText:@""];
+        [self.chatBoxVC.chatBox switchTextEditing];
+        [self.chatBoxVC.chatBox.textView resignFirstResponder];
+        
+        self.tableView.tos_height = self.chatCloseView.top_sd;
+    });
     
 }
 
@@ -3022,29 +3225,36 @@ static const NSInteger kMaxImageDataRequest = 50;
         return;
     }
     TIMKitLog(@"发送图片 path:%@ src:%@ last:%@",imgPath,image,[[imgPath lastPathComponent] stringByDeletingPathExtension]);
-    NSString * sreGetMsgUUID = [[imgPath lastPathComponent] stringByDeletingPathExtension];
-    if (image) {
-        CGFloat fixelW = image.size.width;// CGImageGetWidth(image.CGImage);
-        CGFloat fixelH = image.size.height;// CGImageGetHeight(image.CGImage);
-        TIMImageMessage * imageMsg = [[TIMImageMessage alloc] initMessageWithImageURI:imgPath  extra:@""];
-        TOSMessage * timMsg = [[TOSMessage alloc] initWithOption:sreGetMsgUUID msg_id:@"" type:@"image" senderId:[[OnlineDataSave shareOnlineDataSave] getVisitorId] receiverId:[[OnlineDataSave shareOnlineDataSave] getEndpointId] content:imageMsg msg_from:[self isGroupSession]?TIMSessionType_GROUP_CHAT:/*TIMSessionType_SINGLE_CHAT*/TIMSessionType_OnLINESERVICE_CHAT status:TIMMessageStatus_Sending timestamp:0];
+    
+    
+    @WeakObj(self);
+    [self.reloadTaskManager startTaskWithScroll:YES completion:^{
+        @StrongObj(self);
+        
+        NSString * sreGetMsgUUID = [[imgPath lastPathComponent] stringByDeletingPathExtension];
+        if (image) {
+            CGFloat fixelW = image.size.width;// CGImageGetWidth(image.CGImage);
+            CGFloat fixelH = image.size.height;// CGImageGetHeight(image.CGImage);
+            TIMImageMessage * imageMsg = [[TIMImageMessage alloc] initMessageWithImageURI:imgPath  extra:@""];
+            TOSMessage * timMsg = [[TOSMessage alloc] initWithOption:sreGetMsgUUID msg_id:@"" type:@"image" senderId:[[OnlineDataSave shareOnlineDataSave] getVisitorId] receiverId:[[OnlineDataSave shareOnlineDataSave] getEndpointId] content:imageMsg msg_from:[self isGroupSession]?TIMSessionType_GROUP_CHAT:/*TIMSessionType_SINGLE_CHAT*/TIMSessionType_OnLINESERVICE_CHAT status:TIMMessageStatus_Sending timestamp:0];
 
-        CGSize imageSize = CGSizeMake(fixelW, fixelH);
-        __block TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypePic originalType:@"image" content:@"[图片]" extra:@"" auditExtra:@"" path:imgPath urlPath:nil from:[[OnlineDataSave shareOnlineDataSave] getVisitorId] to:[[OnlineDataSave shareOnlineDataSave] getEndpointId] fileKey:timMsg.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:timMsg.msg_id sendTime:[self getNowTimestamp] showTime:[self p_needShowTime:[NSDate date]] picSize:imageSize picType:@"" isSender:YES receivedSenderByYourself:NO status:TIMMessageStatus_Sending];
-        [self addObject:messageF isSender:YES isHeaderInsert:NO];
-   
-        if (sendSuccess) {
-            messageF.model.message.messageId = timMessage.msg_id;
-            [self updateOldMessageId:timMessage.msg_id];
-            [self messageSendSucced:messageF];
-//            [selfWeak scrollToBottom];
-//            [self innerScrollToBottom];
-        }else{
-            [self messageSendFailed:messageF];
-//            [selfWeak scrollToBottom];
-//            [self innerScrollToBottom];
+            CGSize imageSize = CGSizeMake(fixelW, fixelH);
+            __block TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypePic originalType:@"image" content:@"[图片]" extra:@"" auditExtra:@"" path:imgPath urlPath:nil from:[[OnlineDataSave shareOnlineDataSave] getVisitorId] to:[[OnlineDataSave shareOnlineDataSave] getEndpointId] fileKey:timMsg.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:timMsg.msg_id sendTime:[self getNowTimestamp] showTime:[self p_needShowTime:[NSDate date]] picSize:imageSize picType:@"" isSender:YES receivedSenderByYourself:NO status:TIMMessageStatus_Sending];
+            [self addObject:messageF isSender:YES isHeaderInsert:NO];
+       
+            if (sendSuccess) {
+                messageF.model.message.messageId = timMessage.msg_id;
+                [self updateOldMessageId:timMessage.msg_id];
+                [self messageSendSucced:messageF];
+    //            [selfWeak scrollToBottom];
+    //            [self innerScrollToBottom];
+            }else{
+                [self messageSendFailed:messageF];
+    //            [selfWeak scrollToBottom];
+    //            [self innerScrollToBottom];
+            }
         }
-    }
+    }];
 }
 
 #pragma mark 类内函数
@@ -3052,24 +3262,31 @@ static const NSInteger kMaxImageDataRequest = 50;
 - (void)sendImageMessageWithImgPath:(NSString *)imgPath originalType:(NSString *)originalType fileKey:(NSString *)fileKey bigImgFileId:(NSString *)bigImgFileId from:(NSString *)from to:(NSString *)to msgId:(NSString *)msgId sendTime:(NSInteger)sendTime picType:(NSString *)picType extra:(NSString *)strExtra
 {
     @WeakObj(self)
-    TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypePic originalType:originalType content:@"[图片]" extra:[selfWeak transferExtra:strExtra] auditExtra:@"" path:imgPath urlPath:nil from:from to:to fileKey:fileKey bigImgFileId:bigImgFileId voiceDuration:[NSNumber numberWithInt:0] msgId:msgId sendTime:sendTime showTime:[selfWeak p_needShowTime:[NSDate date]] picSize:CGSizeMake(0, 0) picType:picType isSender:YES receivedSenderByYourself:NO status:1];
-    [selfWeak addObject:messageF isSender:YES isHeaderInsert:NO];
-    
-    [selfWeak messageSendSucced:messageF];
+    [self.reloadTaskManager startTaskWithScroll:YES completion:^{
+        @StrongObj(self);
+        
+        TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypePic originalType:originalType content:@"[图片]" extra:[selfWeak transferExtra:strExtra] auditExtra:@"" path:imgPath urlPath:nil from:from to:to fileKey:fileKey bigImgFileId:bigImgFileId voiceDuration:[NSNumber numberWithInt:0] msgId:msgId sendTime:sendTime showTime:[selfWeak p_needShowTime:[NSDate date]] picSize:CGSizeMake(0, 0) picType:picType isSender:YES receivedSenderByYourself:NO status:1];
+        [selfWeak addObject:messageF isSender:YES isHeaderInsert:NO];
+        
+        [selfWeak messageSendSucced:messageF];
+    }];
 }
 
 - (void)otherSendImageMessageWithImgPath:(NSString *)imageUrl originalType:(NSString *)originalType image:(UIImage *)image fileKey:(NSString *)fileKey bigImgFileId:(NSString *)bigImgFileId from:(NSString *)from to:(NSString*)to msgId:(NSString *)msgId sendTime:(NSInteger)sendTime picType:(NSString *)picType picSize:(CGSize)size extra:(NSString *)strExtra auditExtra:(NSString *)auditExtra{
     // 接收消息
     @WeakObj(self)
-    NSString * localImagePath;
-    if (image != nil) {
-        localImagePath = [[ICMediaManager sharedManager] saveImage:image msgId:msgId picType:picType];
-    }
-    TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypePic originalType:originalType content:@"[图片]" extra:strExtra?:@"" auditExtra:auditExtra path:localImagePath urlPath:imageUrl from:from to:to fileKey:fileKey bigImgFileId:bigImgFileId voiceDuration:[NSNumber numberWithInt:0] msgId:msgId sendTime:sendTime showTime:[selfWeak p_needShowTimeStamp:(NSTimeInterval)sendTime] picSize:size picType:picType isSender:NO receivedSenderByYourself:NO status:1];
-    [selfWeak addObject:messageF isSender:NO isHeaderInsert:NO];
-    
-    [selfWeak messageSendSucced:messageF];
-    [self scrollToBottom];
+    [self.reloadTaskManager startTaskWithScroll:YES completion:^{
+        @StrongObj(self);
+        
+        NSString * localImagePath;
+        if (image != nil) {
+            localImagePath = [[ICMediaManager sharedManager] saveImage:image msgId:msgId picType:picType];
+        }
+        TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypePic originalType:originalType content:@"[图片]" extra:strExtra?:@"" auditExtra:auditExtra path:localImagePath urlPath:imageUrl from:from to:to fileKey:fileKey bigImgFileId:bigImgFileId voiceDuration:[NSNumber numberWithInt:0] msgId:msgId sendTime:sendTime showTime:[selfWeak p_needShowTimeStamp:(NSTimeInterval)sendTime] picSize:size picType:picType isSender:NO receivedSenderByYourself:NO status:1];
+        [selfWeak addObject:messageF isSender:NO isHeaderInsert:NO];
+        
+        [selfWeak messageSendSucced:messageF];
+    }];
 }
 
 - (void)otherSendImageMessageInsertWithImgPath:(NSString *)imageUrl originalType:(NSString *)originalType image:(UIImage *)image fileKey:(NSString *)fileKey bigImgFileId:(NSString *)bigImgFileId from:(NSString *)from to:(NSString*)to msgId:msgId sendTime:(NSInteger)sendTime picType:picType picSize:(CGSize)picSize content:(NSString *)content extra:(NSString*)strExtra isPlaceHolder:(BOOL)isPlaceHolder auditExtra:(NSString *)auditExtra type:(NSString *)type isHeaderInsert:(BOOL)isHeaderInsert fullJSONString:(NSString *)jsonStr{
@@ -3092,11 +3309,15 @@ static const NSInteger kMaxImageDataRequest = 50;
         // 无查看权限
         return;
     }
-    TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:type originalType:originalType content:content extra:showExtra  auditExtra:auditExtra path:localImagePath urlPath:imageUrl from:from to:to fileKey:fileKey bigImgFileId:bigImgFileId voiceDuration:[NSNumber numberWithInt:0] msgId:msgId sendTime:sendTime showTime:[selfWeak p_needShowTimeStamp:(NSTimeInterval)sendTime] picSize:picSize picType:picType isSender:NO receivedSenderByYourself:NO status:1 fullJSONString:jsonStr];
-    [selfWeak addObject:messageF isSender:NO isHeaderInsert:isHeaderInsert];
+    
+    [self.reloadTaskManager startTaskWithScroll:YES completion:^{
+        @StrongObj(self);
+        
+        TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:type originalType:originalType content:content extra:showExtra  auditExtra:auditExtra path:localImagePath urlPath:imageUrl from:from to:to fileKey:fileKey bigImgFileId:bigImgFileId voiceDuration:[NSNumber numberWithInt:0] msgId:msgId sendTime:sendTime showTime:[selfWeak p_needShowTimeStamp:(NSTimeInterval)sendTime] picSize:picSize picType:picType isSender:NO receivedSenderByYourself:NO status:1 fullJSONString:jsonStr];
+        [selfWeak addObject:messageF isSender:NO isHeaderInsert:isHeaderInsert];
 
-    [selfWeak messageSendSucced:messageF];
-    [self scrollToBottom];
+        [selfWeak messageSendSucced:messageF];
+    }];
 }
 
 - (void)sendTextMessageWithContent:(NSString *)type originalType:(NSString *)originalType from:(NSString *)from to:(NSString *)to fileKey:(NSString *)fileKey msgId:(NSString *)msgId sendTime:(NSInteger)sendTime content:(NSString *)messageStr
@@ -3106,27 +3327,34 @@ static const NSInteger kMaxImageDataRequest = 50;
 
 - (void)sendTextMessageWithContent:(NSString *)type originalType:(NSString *)originalType from:(NSString *)from to:(NSString *)to fileKey:(NSString *)fileKey msgId:(NSString *)msgId sendTime:(NSInteger)sendTime content:(NSString *)messageStr extra:(NSString *)extra
 {
-    @WeakObj(self)
-    TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:type originalType:originalType content:messageStr extra:extra auditExtra:@"" path:nil urlPath:nil from:from to:to fileKey:fileKey bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:msgId sendTime:sendTime showTime:[selfWeak p_needShowTimeStamp:(NSTimeInterval)sendTime] picSize:CGSizeMake(0, 0) picType:@"" isSender:YES receivedSenderByYourself:NO status:1];
-    [selfWeak addObject:messageF isSender:YES isHeaderInsert:NO];
-    
-    [selfWeak messageSendSucced:messageF];
+    @WeakObj(self);
+    [self.reloadTaskManager startTaskWithScroll:YES completion:^{
+        @StrongObj(self);
+        
+        TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:type originalType:originalType content:messageStr extra:extra auditExtra:@"" path:nil urlPath:nil from:from to:to fileKey:fileKey bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:msgId sendTime:sendTime showTime:[selfWeak p_needShowTimeStamp:(NSTimeInterval)sendTime] picSize:CGSizeMake(0, 0) picType:@"" isSender:YES receivedSenderByYourself:NO status:1];
+        [self addObject:messageF isSender:YES isHeaderInsert:NO];
+        
+        [self messageSendSucced:messageF];
+    }];
 }
 
 - (void)otherSendTextMessageWithContent:(NSString*)type originalType:(NSString *)originalType from:(NSString *)from to:(NSString *)to fileKey:(NSString *)fileKey msgId:(NSString *)msgId sendTime:(NSInteger)sendTime content:(NSString *)messageStr extra:(NSString *)extra
 {
     @WeakObj(self)
     
-    TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:type originalType:originalType content:messageStr extra:extra auditExtra:@"" path:nil urlPath:nil from:from to:to fileKey:fileKey bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:msgId sendTime:sendTime showTime:[selfWeak p_needShowTimeStamp:(NSTimeInterval)sendTime] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
-    [selfWeak addObject:messageF isSender:NO isHeaderInsert:NO];
-    
-    [selfWeak messageSendSucced:messageF];
-    [self scrollToBottom];
+    [self.reloadTaskManager startTaskWithScroll:YES completion:^{
+        @StrongObj(self);
+        
+        TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:type originalType:originalType content:messageStr extra:extra auditExtra:@"" path:nil urlPath:nil from:from to:to fileKey:fileKey bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:msgId sendTime:sendTime showTime:[selfWeak p_needShowTimeStamp:(NSTimeInterval)sendTime] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
+        [self addObject:messageF isSender:NO isHeaderInsert:NO];
+        
+        [self messageSendSucced:messageF];
+    }];
 }
 
 - (void)otherSendTextMessageWithContent:(NSString*)type originalType:(NSString *)originalType from:(NSString *)from to:(NSString *)to fileKey:(NSString *)fileKey msgId:(NSString *)msgId sendTime:(NSInteger)sendTime content:(NSString *)messageStr
 {
-    [self otherSendTextMessageWithContent:type originalType:originalType from:from to:to fileKey:fileKey msgId:msgId sendTime:sendTime content:messageStr];
+    [self otherSendTextMessageWithContent:type originalType:originalType from:from to:to fileKey:fileKey msgId:msgId sendTime:sendTime content:messageStr extra:@""];
 }
 
 - (void)sendTextMessageInsertWithContent:(NSString *)to fileKey:(NSString *)fileKey content:(NSString *)messageStr
@@ -3136,12 +3364,15 @@ static const NSInteger kMaxImageDataRequest = 50;
 
 - (void)otherSendTextMessageInsertWithContent:(NSString *)type originalType:(NSString *)originalType from:(NSString *)from to:(NSString *)to fileKey:(NSString *)fileKey msgId:msgId sendTime:(NSTimeInterval)sendTime content:(NSString *)messageStr isHeaderInsert:(BOOL)isHeaderInsert extra:(NSString *)extra
 {
-    @WeakObj(self)
-    TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:type originalType:originalType content:messageStr extra:extra auditExtra:@"" path:nil urlPath:nil from:from to:to fileKey:fileKey bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:msgId sendTime:sendTime showTime:[selfWeak p_needShowTimeStamp:sendTime] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
-    [selfWeak addObject:messageF isSender:NO isHeaderInsert:isHeaderInsert];
-    
-    [selfWeak messageSendSucced:messageF];
-    [self scrollToBottom];
+    @WeakObj(self);
+    [self.reloadTaskManager startTaskWithScroll:YES completion:^{
+        @StrongObj(self);
+        
+        TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:type originalType:originalType content:messageStr extra:extra auditExtra:@"" path:nil urlPath:nil from:from to:to fileKey:fileKey bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:msgId sendTime:sendTime showTime:[selfWeak p_needShowTimeStamp:sendTime] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
+        [selfWeak addObject:messageF isSender:NO isHeaderInsert:isHeaderInsert];
+        
+        [selfWeak messageSendSucced:messageF];
+    }];
 }
 
 - (void)otherSendTextMessageInsertWithContent:(NSString *)type originalType:(NSString *)originalType from:(NSString *)from to:(NSString *)to fileKey:(NSString *)fileKey msgId:msgId sendTime:(NSTimeInterval)sendTime content:(NSString *)messageStr isHeaderInsert:(BOOL)isHeaderInsert {
@@ -3153,7 +3384,6 @@ static const NSInteger kMaxImageDataRequest = 50;
 - (void)addObject:(TIMMessageFrame *)messageF
          isSender:(BOOL)isSender
 {
-    @WeakObj(self)
     if (messageF == nil) {
         TIMKitLog(@"(void)addObject:(TIMMessageFrame *)messageF messageF == nil");
         return;
@@ -3164,41 +3394,40 @@ static const NSInteger kMaxImageDataRequest = 50;
         return;
     }
     messageF.model.message.deliveryState = ICMessageDeliveryState_Delivered;
-    [selfWeak.dataSource insertObject:messageF atIndex:0];
+    [self.readyDisplayDataSource insertObject:messageF atIndex:0];
 }
 
 // 增加数据源并刷新
 - (void)addObject:(TIMMessageFrame *)messageF
          isSender:(BOOL)isSender isHeaderInsert:(BOOL)isHeaderInsert
 {
-    @WeakObj(self)
     if (messageF == nil) {
         TIMKitLog(@"(void)addObject:(TIMMessageFrame *)messageF messageF == nil");
         return;
     }
     /// 消息去重
-    BOOL find = [selfWeak removeDuplicatesMessage:messageF];
+    BOOL find = [self removeDuplicatesMessage:messageF];
     if (find) {
         return;
     }
     
     messageF.model.message.deliveryState = ICMessageDeliveryState_Delivered;
     if (isHeaderInsert) {
-        [selfWeak.dataSource insertObject:messageF atIndex:0];
+        [self.readyDisplayDataSource insertObject:messageF atIndex:0];
     }else{
-        [selfWeak.dataSource addObject:messageF];
+        [self.readyDisplayDataSource addObject:messageF];
     }
     
-    /// 目前用这个不是很合适(后面再优化)。  pageIndex  ！= 1 需要刷新，每次在拉取历史记录后，pageIndex会自加，等刷新了tableview后会置为0这个时候其他地方调用这个方法时，下面的条件是成立的。
-    /// 目的就是为了在获取历史记录后不需要每添加一条model就刷新一次数据，造成tableview刷新闪屏。
-    if (self->_firstHasGetHistoryListFinish == 0 && self.pageIndex != 1) {
-        [selfWeak.tableView reloadData];
-        if (!isHeaderInsert) {
-            if (isSender || _isKeyBoardAppear) {
-                [selfWeak scrollToBottom];
-            }
-        }
-    }
+//    /// 目前用这个不是很合适(后面再优化)。  pageIndex  ！= 1 需要刷新，每次在拉取历史记录后，pageIndex会自加，等刷新了tableview后会置为0这个时候其他地方调用这个方法时，下面的条件是成立的。
+//    /// 目的就是为了在获取历史记录后不需要每添加一条model就刷新一次数据，造成tableview刷新闪屏。
+//    if (self->_firstHasGetHistoryListFinish == 0 && self.pageIndex != 1) {
+//        [selfWeak.tableView reloadData];
+//        if (!isHeaderInsert) {
+//            if (isSender || _isKeyBoardAppear) {
+//                [selfWeak scrollToBottom];
+//            }
+//        }
+//    }
 }
 
 // 修改数据源并刷新
@@ -3210,17 +3439,18 @@ static const NSInteger kMaxImageDataRequest = 50;
         return;
     }
     
-    if (self.dataSource &&
-        [self.dataSource objectAtIndex:index]) {
-        self.dataSource[index] = messageF;
+    if (self.readyDisplayDataSource &&
+        [self.readyDisplayDataSource objectAtIndex:index]) {
+        self.readyDisplayDataSource[index] = messageF;
     }
     
-    [self.tableView reloadData];
+    self.reloadTaskManager.isScroll = NO;
     if (!isHeaderInsert) {
         if (isSender || _isKeyBoardAppear) {
-            [self scrollToBottom];
+            self.reloadTaskManager.isScroll = YES;
         }
     }
+    [self.reloadTaskManager startCountdown];
 }
 
 /// 消息去重
@@ -3229,7 +3459,7 @@ static const NSInteger kMaxImageDataRequest = 50;
     BOOL find = NO;
     NSMutableArray * testMArr = [NSMutableArray array];
     /// 获取接收的最后10条消息
-    for (TIMMessageFrame * obj in self.dataSource) {
+    for (TIMMessageFrame * obj in self.readyDisplayDataSource) {
         if (!obj.model.isSender) {
             [testMArr addObject:obj];
             if (testMArr.count > 9) {
@@ -3254,21 +3484,18 @@ static const NSInteger kMaxImageDataRequest = 50;
 //接收消息成功
 - (void)messageReceiveSucced:(TIMMessageFrame *)messageF
 {
-    [self scrollToBottom];
+//    [self scrollToBottom];
 }
 
 
 - (void)messageSendSucced:(TIMMessageFrame *)messageF
 {
-    @WeakObj(self)
     if (self->_firstHasGetHistoryListFinish == 0) {
         messageF.model.message.deliveryState = ICMessageDeliveryState_Delivered;
     }
-    [selfWeak.tableView reloadData];
 }
 
 - (void)newMessageSendSucced:(TIMMessageFrame *)messageF {
-    @WeakObj(self)
     if (self->_firstHasGetHistoryListFinish == 0) {
         messageF.model.message.deliveryState = ICMessageDeliveryState_Delivered;
     }
@@ -3276,38 +3503,33 @@ static const NSInteger kMaxImageDataRequest = 50;
 
 - (void)messageSending:(TIMMessageFrame *)messageF
 {
-    @WeakObj(self)
     messageF.model.message.deliveryState = ICMessageDeliveryState_Delivering;
-    [selfWeak.tableView reloadData];
 }
 
 - (void)messageSendFailed:(TIMMessageFrame *)messageF
 {
-    @WeakObj(self)
     messageF.model.message.deliveryState = ICMessageDeliveryState_Failure;
-    [selfWeak.tableView reloadData];
 }
 
 - (void)newMessageSendFailed:(TIMMessageFrame *)messageF
 {
-    @WeakObj(self)
     messageF.model.message.deliveryState = ICMessageDeliveryState_Failure;
 }
 
-- (void)scrollToBottom {
-    
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(innerScrollToBottom) object:nil];
-    [self performSelector:@selector(innerScrollToBottom) withObject:nil afterDelay:.5f];
-}
+//- (void)scrollToBottom {
+//
+//    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(innerScrollToBottom) object:nil];
+//    [self performSelector:@selector(innerScrollToBottom) withObject:nil afterDelay:.5f];
+//}
 
-- (void)innerScrollToBottom {
-    
-    [self.tableView reloadData];
-    if (self.dataSource.count > 0 &&
-        [self.tableView numberOfRowsInSection:0] >= self.dataSource.count) {
-        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.dataSource.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-    }
-}
+//- (void)innerScrollToBottom {
+//
+//    [self.tableView reloadData];
+//    if (self.dataSource.count > 0 &&
+//        [self.tableView numberOfRowsInSection:0] >= self.dataSource.count) {
+//        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.dataSource.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+//    }
+//}
 
 - (void)showMenuViewController:(UIView *)showInView andIndexPath:(NSIndexPath *)indexPath message:(TIMMessageModel *)messageModel
 {
@@ -3343,7 +3565,7 @@ static const NSInteger kMaxImageDataRequest = 50;
     __block BOOL showTime = NO;
     __block NSTimeInterval sendTime;
     __block NSInteger indexNum = 0;
-    [self.dataSource enumerateObjectsUsingBlock:^(TIMMessageFrame *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    [self.readyDisplayDataSource enumerateObjectsUsingBlock:^(TIMMessageFrame *obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([obj.model.message.messageId isEqualToString:messageId]) {
             indexNum = idx;
             if (obj.model.message.showTime) {
@@ -3356,15 +3578,19 @@ static const NSInteger kMaxImageDataRequest = 50;
         }
     }];
     
-    // Kit
-    TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeRevoke originalType:object.type content:object.content extra:@"" auditExtra:@"" path:nil urlPath:nil from:[[OnlineDataSave shareOnlineDataSave] getVisitorId] to:object.receiverId fileKey:object.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:messageId sendTime:sendTime showTime:showTime picSize:CGSizeMake(0, 0) picType:@"" isSender:YES receivedSenderByYourself:NO status:1];
-    messageF.model.message.status = ICMessageStatus_back;   //将消息类型改为撤回
-    
-    
-    [self modifyObject:messageF isSender:YES isHeaderInsert:NO index:indexNum];
-    [self messageSendSucced:messageF];
-//    [self innerScrollToBottom];
-    
+    @WeakObj(self);
+    [self.reloadTaskManager startTaskWithScroll:NO completion:^{
+        @StrongObj(self);
+        
+        // Kit
+        TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeRevoke originalType:object.type content:object.content extra:@"" auditExtra:@"" path:nil urlPath:nil from:[[OnlineDataSave shareOnlineDataSave] getVisitorId] to:object.receiverId fileKey:object.messageUUID bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:messageId sendTime:sendTime showTime:showTime picSize:CGSizeMake(0, 0) picType:@"" isSender:YES receivedSenderByYourself:NO status:1];
+        messageF.model.message.status = ICMessageStatus_back;   //将消息类型改为撤回
+        
+        
+        [self modifyObject:messageF isSender:YES isHeaderInsert:NO index:indexNum];
+        [self messageSendSucced:messageF];
+    //    [self innerScrollToBottom];
+    }];
 }
 
 
@@ -3433,7 +3659,8 @@ static const NSInteger kMaxImageDataRequest = 50;
                     [obj.type isEqualToString:@"19"] ||
                     [obj.type isEqualToString:@"20"] ||
                     [obj.type isEqualToString:@"31"]) {
-                    content = @"[猜你想问]";
+//                    content = @"[猜你想问]";
+                    content = @"[热门问题]";
                 } else if ([obj.type isEqualToString:@"2"]) {
                     content = @"[图片]";
                 } else if ([obj.type isEqualToString:@"3"]) {
@@ -3483,7 +3710,8 @@ static const NSInteger kMaxImageDataRequest = 50;
                     [obj.type isEqualToString:@"19"] ||
                     [obj.type isEqualToString:@"20"] ||
                     [obj.type isEqualToString:@"31"]) {
-                    str = @"[猜你想问]";
+//                    str = @"[猜你想问]";
+                    str = @"[热门问题]";
                 } else if ([obj.type isEqualToString:@"2"]) {
                     str = @"[图片]";
                 } else if ([obj.type isEqualToString:@"3"]) {
@@ -3529,13 +3757,13 @@ static const NSInteger kMaxImageDataRequest = 50;
     }
 }
 
-- (void)statusChanged:(TIMMessageFrame *)messageF
-{
-    [self.dataSource removeObject:messageF];
-    [self.tableView beginUpdates];
-    [self.tableView deleteRowsAtIndexPaths:@[_longIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-    [self.tableView endUpdates];
-}
+//- (void)statusChanged:(TIMMessageFrame *)messageF
+//{
+//    [self.dataSource removeObject:messageF];
+//    [self.tableView beginUpdates];
+//    [self.tableView deleteRowsAtIndexPaths:@[_longIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+//    [self.tableView endUpdates];
+//}
 
 - (void)forwardMessage:(UIMenuItem *)forwardItem
 {
@@ -3622,6 +3850,7 @@ static const NSInteger kMaxImageDataRequest = 50;
     
 }
 
+
 // 路由响应
 - (void)routerEventWithName:(NSString *)eventName
                    userInfo:(NSDictionary *)userInfo
@@ -3632,12 +3861,32 @@ static const NSInteger kMaxImageDataRequest = 50;
         NSString *text = [userInfo objectForKey:RouterEventGetSendTextMessage];
         NSString *knowledge = [userInfo objectForKey:RouterEventGetSendTextMessageKnowledge];
         [self sendTextMessagewithText:text knowledge:knowledge?:@""];
+    } else if ([eventName isEqualToString:GXRouterEventSatisfactionPopupView]) {
+        
+        NSString *uniqueId = [userInfo objectForKey:@"uniqueId"];
+        NSString *mainUniqueId = [userInfo objectForKey:@"mainUniqueId"];
+        self.popupView.uniqueId = uniqueId?:@"";
+        self.popupView.mainUniqueId = mainUniqueId?:@"";
+        self.popupView.tempModelFrame = modelFrame;
+        self.popupView.popViewController = NO;
+        [self.popupView showPopupView];
+    } else if ([eventName isEqualToString:GXRobotPopViewController]) {
+        
+        /// present还是push判断返回规则
+        if (self.navigationController) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        else {
+            [self dismissViewControllerAnimated:YES completion:^{
+                
+            }];
+        }
     } else if ([eventName isEqualToString:GXRobotCombinationHotIssueCellRefreshEventName]) {
         
         __block NSInteger index = 0;
         if ([kitUtils isBlankString:modelFrame.model.message.messageId]) {
             
-            [self.dataSource enumerateObjectsUsingBlock:^(TIMMessageFrame *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [self.readyDisplayDataSource enumerateObjectsUsingBlock:^(TIMMessageFrame *obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 if ([obj isEqual:modelFrame]) {
                     obj = modelFrame;
                     index = idx;
@@ -3646,7 +3895,7 @@ static const NSInteger kMaxImageDataRequest = 50;
             }];
         } else {
             
-            [self.dataSource enumerateObjectsUsingBlock:^(TIMMessageFrame *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [self.readyDisplayDataSource enumerateObjectsUsingBlock:^(TIMMessageFrame *obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 if ([obj.model.message.messageId isEqualToString:modelFrame.model.message.messageId]) {
                     obj = modelFrame;
                     index = idx;
@@ -3655,8 +3904,8 @@ static const NSInteger kMaxImageDataRequest = 50;
             }];
         }
         
-        NSIndexPath *indexPath=[NSIndexPath indexPathForRow:index inSection:0];
-        [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+        self.reloadTaskManager.isScroll = NO;
+        [self.reloadTaskManager startCountdown];
     } else if ([eventName isEqualToString:GXRouterEventVideoTapEventName]){//点击视频
         NSString *videoPath      = modelFrame.model.mediaPath;
         NSString *videoId = modelFrame.model.message.messageId;
@@ -3784,9 +4033,9 @@ static const NSInteger kMaxImageDataRequest = 50;
         if (!self.chatCloseView.hidden) {   //在会话结束状态下，不再发送消息
             return;
         }
-        [self.dataSource enumerateObjectsUsingBlock:^(TIMMessageFrame *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [self.readyDisplayDataSource enumerateObjectsUsingBlock:^(TIMMessageFrame *obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([obj.model.message.type isEqualToString:TypeCommodityCard]) {
-                [self.dataSource removeObjectAtIndex:idx];
+                [self.readyDisplayDataSource removeObjectAtIndex:idx];
                 *stop = YES;
             }
         }];
@@ -3815,7 +4064,8 @@ static const NSInteger kMaxImageDataRequest = 50;
             
         }];
         
-        [self.tableView reloadData];
+        self.reloadTaskManager.isScroll = NO;
+        [self.reloadTaskManager startCountdown];
         
     } else if ([eventName isEqualToString:TinetRouterClickCommodityCardEvent]) {
         if ([self respondsToSelector:@selector(tinet_textMessageClickAction:userInfo:)]) {
@@ -4063,44 +4313,59 @@ static const NSInteger kMaxImageDataRequest = 50;
                     @"fileType": fileTypeStr,
                     @"fileName": fileName
                 };
-    // Kit
-    __block TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeCustomFile
-                                                               originalType:@"file"
-                                                                    content:[kitUtils DataTOjsonString:fileMessageDic]
-                                                                      extra:@""
-                                                                 auditExtra:@""
-                                                                       path:newURL.absoluteString
-                                                                    urlPath:nil
-                                                                       from:[[OnlineDataSave shareOnlineDataSave] getVisitorId]
-                                                                         to:[[OnlineDataSave shareOnlineDataSave] getEndpointId]
-                                                                    fileKey:[[NSUUID UUID] UUIDString]
-                                                               bigImgFileId:@""
-                                                              voiceDuration:[NSNumber numberWithInt:0]
-                                                                      msgId:@""
-                                                                   sendTime:[self getNowTimestamp]
-                                                                   showTime:[self p_needShowTime:[NSDate date]]
-                                                                    picSize:CGSizeMake(150, 60)
-                                                                    picType:@""
-                                                                   isSender:YES
-                                                   receivedSenderByYourself:NO
-                                                                     status:TIMMessageStatus_Sending];
-    // 创建本地消息
-    [self addObject:messageF isSender:YES isHeaderInsert:NO];
-    // 发送中
-    [self messageSending:messageF];
     
-    [[OnlineMessageSendManager sharedOnlineMessageSendManager]sendFileMessageWithFileData:fileData fileType:fileTypeStr fileName:fileName success:^(NSString * _Nonnull messageId) {
-        messageF.model.message.messageId = messageId;
-        [self updateOldMessageId:messageId];
-        [self messageSendSucced:messageF];
-    } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
-        [self messageSendFailed:messageF];
-//        [self innerScrollToBottom];
-        int sizeLimitM = [[OnlineDataSave shareOnlineDataSave] getAppSettingFileSize].longLongValue /1024/1024;
-        NSString * strShow = [NSString stringWithFormat:@"文件过大，请发送小于%dM文件",sizeLimitM];
-        [WHToast showMessage:errorDes?:strShow duration:2 finishHandler:^{
+    @WeakObj(self);
+    [self.reloadTaskManager startTaskWithScroll:YES completion:^{
+        @StrongObj(self);
+        
+        // Kit
+        __block TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeCustomFile
+                                                                   originalType:@"file"
+                                                                        content:[kitUtils DataTOjsonString:fileMessageDic]
+                                                                          extra:@""
+                                                                     auditExtra:@""
+                                                                           path:newURL.absoluteString
+                                                                        urlPath:nil
+                                                                           from:[[OnlineDataSave shareOnlineDataSave] getVisitorId]
+                                                                             to:[[OnlineDataSave shareOnlineDataSave] getEndpointId]
+                                                                        fileKey:[[NSUUID UUID] UUIDString]
+                                                                   bigImgFileId:@""
+                                                                  voiceDuration:[NSNumber numberWithInt:0]
+                                                                          msgId:@""
+                                                                       sendTime:[self getNowTimestamp]
+                                                                       showTime:[self p_needShowTime:[NSDate date]]
+                                                                        picSize:CGSizeMake(150, 60)
+                                                                        picType:@""
+                                                                       isSender:YES
+                                                       receivedSenderByYourself:NO
+                                                                         status:TIMMessageStatus_Sending];
+        // 创建本地消息
+        [self addObject:messageF isSender:YES isHeaderInsert:NO];
+        // 发送中
+        [self messageSending:messageF];
+        
+        [[OnlineMessageSendManager sharedOnlineMessageSendManager]sendFileMessageWithFileData:fileData fileType:fileTypeStr fileName:fileName success:^(NSString * _Nonnull messageId) {
             
+            @StrongObj(self);
+            messageF.model.message.messageId = messageId;
+            [self updateOldMessageId:messageId];
+            [self messageSendSucced:messageF];
+            self.reloadTaskManager.isScroll = YES;
+            [self.reloadTaskManager startCountdown];
+        } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+            
+            @StrongObj(self);
+            [self messageSendFailed:messageF];
+            self.reloadTaskManager.isScroll = YES;
+            [self.reloadTaskManager startCountdown];
+            //        [self innerScrollToBottom];
+            int sizeLimitM = [[OnlineDataSave shareOnlineDataSave] getAppSettingFileSize].longLongValue /1024/1024;
+            NSString * strShow = [NSString stringWithFormat:@"文件过大，请发送小于%dM文件",sizeLimitM];
+            [WHToast showMessage:errorDes?:strShow duration:2 finishHandler:^{
+                
+            }];
         }];
+        
     }];
 }
 
@@ -4565,6 +4830,10 @@ static NSTimeInterval lastDateInterval = 0;
         
         NSString *contentStr = (NSString *)richTextMsg.elements;
         
+        if ([self historyMessageRevoke:model]) {
+            return;
+        }
+        
         TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:GXRichText originalType:@"text" content:contentStr extra:(NSString *)model.repliedMessage auditExtra:@"" path:nil urlPath:nil from:model.sender to:model.visitorId fileKey:model.fileKey bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:model.uniqueId sendTime:(NSTimeInterval)[model.createTime  doubleValue] showTime:[self p_needShowTimeStamp:(NSTimeInterval)[model.createTime  doubleValue]] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
 //        messageF.robotProvider = model.robotProvider;
         [self addObject:messageF isSender:NO];
@@ -4633,6 +4902,10 @@ static NSTimeInterval lastDateInterval = 0;
                                                            options:NSJSONReadingMutableContainers
                                                              error:&err];
         
+        if ([self historyMessageRevoke:model]) {
+            return;
+        }
+        
         if (messageContentDic &&
             [messageContentDic isKindOfClass:[NSDictionary class]] &&
             [[messageContentDic allKeys] containsObject:@"cardType"] &&
@@ -4650,6 +4923,10 @@ static NSTimeInterval lastDateInterval = 0;
         }
         
     } else if ([model.messageType intValue] == 13) {
+        
+        if ([self historyMessageRevoke:model]) {
+            return;
+        }
         
         TOSMessageSmallProgramModel *smallProgramMsg = [TOSMessageSmallProgramModel yy_modelWithJSON:model.content];
 
@@ -4709,7 +4986,7 @@ static NSTimeInterval lastDateInterval = 0;
         
     }else if ([model.messageType intValue] == 6  ||
               [model.messageType intValue] == 15 ||//机器人相关问题
-              [model.messageType intValue] == 16 ||//机器人猜你想问
+              [model.messageType intValue] == 16 ||//机器人猜你想问(热门问题)
               [model.messageType intValue] == 17 ||//机器人常见问题
               [model.messageType intValue] == 18 ||//机器人近似问题
               [model.messageType intValue] == 19 ||//机器人选项消息
@@ -4745,9 +5022,16 @@ static NSTimeInterval lastDateInterval = 0;
         }
         messageStr = model.content;
         
-        NSString *extra = [TIMLibUtils convertToJsonDataWithDic:@{@"alreadyInvestigation" : model.alreadyInvestigation?:@"", @"uniqueId": model.uniqueId?:@""}];
+        NSString *extra = [TIMLibUtils convertToJsonDataWithDic:@{@"alreadyInvestigation" : model.alreadyInvestigation?:@"", @"uniqueId": model.uniqueId?:@"",@"mainUniqueId": model.mainUniqueId?:@""}];
         NSString *content = [[OnlineDataSave shareOnlineDataSave] getAppSetting];
-        TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeInvestigation originalType:model.type content:content extra:extra auditExtra:@"" path:nil urlPath:nil from:model.sender to:model.visitorId fileKey:model.fileKey bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:model.uniqueId sendTime:(NSTimeInterval)[model.createTime  doubleValue] showTime:[self p_needShowTimeStamp:(NSTimeInterval)[model.createTime  doubleValue]] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
+        
+        TIMMessageFrame *messageF;
+        if ([TOSKitCustomInfo shareCustomInfo].satisfactionViewPopupMode) {
+            messageF = [ICMessageHelper createMessageFrame:TypeSatisfactionPopup originalType:model.type content:content extra:extra auditExtra:@"" path:nil urlPath:nil from:model.sender to:model.visitorId fileKey:model.fileKey bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:model.uniqueId sendTime:(NSTimeInterval)[model.createTime  doubleValue] showTime:[self p_needShowTimeStamp:(NSTimeInterval)[model.createTime  doubleValue]] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
+        } else {
+            messageF = [ICMessageHelper createMessageFrame:TypeInvestigation originalType:model.type content:content extra:extra auditExtra:@"" path:nil urlPath:nil from:model.sender to:model.visitorId fileKey:model.fileKey bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:model.uniqueId sendTime:(NSTimeInterval)[model.createTime  doubleValue] showTime:[self p_needShowTimeStamp:(NSTimeInterval)[model.createTime  doubleValue]] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1];
+        }
+        
         [self addObject:messageF isSender:NO];
         if (reload == NO) {
             return;
@@ -4801,7 +5085,9 @@ static NSTimeInterval lastDateInterval = 0;
 //关闭会话
 -(void)closeChatActon{
     self.isOpenSession = NO;
-    [[OnlineEventSendManager sharedOnlineEventSendManager] chatCloseEventWithSuccess:^{
+    TOSSessionInfoModel * infoModel = [TOSClientKit.sharedTOSKit getCurrentSessionInfo];
+    
+    [[OnlineEventSendManager sharedOnlineEventSendManager] closeLastSessionWithVisitorId:infoModel.visitorId success:^{
         //存储会话状态
         NSString * curMainUniqueId = [[OnlineDataSave shareOnlineDataSave] getMainUniqueId];
         TOSSessionInfoModel * model = [[TOSSessionInfoModel alloc] init];
@@ -4810,6 +5096,16 @@ static NSTimeInterval lastDateInterval = 0;
     } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
         
     }];
+    
+//    [[OnlineEventSendManager sharedOnlineEventSendManager] chatCloseEventWithSuccess:^{
+//        //存储会话状态
+//        NSString * curMainUniqueId = [[OnlineDataSave shareOnlineDataSave] getMainUniqueId];
+//        TOSSessionInfoModel * model = [[TOSSessionInfoModel alloc] init];
+//        [[OnlineDataSave shareOnlineDataSave] saveMainUniqueModel:[model yy_modelToJSONString]];
+//        [[OnlineDataSave shareOnlineDataSave] saveMainUniqueIdRunningStatus:curMainUniqueId runningStatus:@"ClosedStatus"];// 目前只做ClosedStatus RunningStatus俩个状态
+//    } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+//
+//    }];
 }
 
 // 获取网络视频第一帧
@@ -4883,12 +5179,22 @@ static NSTimeInterval lastDateInterval = 0;
             [self TOSInvestigationPopupViewCloseView];
             return;
         }
+        
         [[OnlineRequestManager sharedCustomerManager] getInvestigationUniqueIdSuccess:^(NSString * _Nonnull messageUniqueId) {
             @strongify(self);
-            TOSInvestigationPopupView * popupView = [[TOSInvestigationPopupView alloc] initWithFrame:(CGRectMake(0, 0, kScreenWidth, kScreenHeight))];
-            popupView.uniqueId = messageUniqueId;
-            popupView.delegate = self;
-            [popupView showPopupView];
+            if ([TOSKitCustomInfo shareCustomInfo].satisfactionViewPopupMode) {
+                
+                self.popupView.uniqueId = messageUniqueId?:@"";
+                self.popupView.mainUniqueId = @"";
+                self.popupView.popViewController = YES;
+                [self.popupView showPopupView];
+                [[OnlineDataSave shareOnlineDataSave] saveAlreadyInvestigation:@"1"];
+            } else {
+                TOSInvestigationPopupView * popupView = [[TOSInvestigationPopupView alloc] initWithFrame:(CGRectMake(0, 0, kScreenWidth, kScreenHeight))];
+                popupView.uniqueId = messageUniqueId;
+                popupView.delegate = self;
+                [popupView showPopupView];
+            }
         } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
             NSLog(@"获取满意度弹窗的uniqueid报错：%ld   请求体：%@", errCode, errorDes);
             @strongify(self);
@@ -4898,9 +5204,25 @@ static NSTimeInterval lastDateInterval = 0;
         @strongify(self);
         [self TOSInvestigationPopupViewCloseView];
     }];
-    
-    
 }
 
+#pragma mark - TOSReloadTaskManagerDelegate
+- (void)reloadTableViewWithScroll:(BOOL)isScroll {
+    
+    [self syncDisplayData];
+    [self.tableView reloadData];
+    NSLog(@"isScroll === %d",isScroll);
+    if (self.dataSource.count > 0 &&
+        [self.tableView numberOfRowsInSection:0] >= self.dataSource.count &&
+        isScroll) {
+        NSLog(@"isScroll === %d",isScroll);
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.dataSource.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    }
+}
+
+/// 同步准备展示数据到展示中
+- (void)syncDisplayData {
+    self.dataSource = [NSMutableArray arrayWithArray:self.readyDisplayDataSource];
+}
 
 @end

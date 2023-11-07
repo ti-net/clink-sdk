@@ -235,7 +235,7 @@
 //        }
     } else if ([eventName isEqualToString:GXRouterEventVideoRecordCancel]) {
         //ICLog(@"record cancel");
-    } 
+    }
 }
 
 #pragma mark - Private Methods
@@ -509,12 +509,6 @@
             }
         }
             break;
-    }
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) { // 去设置界面，开启相机访问权限
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
     }
 }
 
@@ -887,7 +881,25 @@
 //    }
     [[ICRecordManager shareManager] startRecordingWithFileName:self.recordName completion:^(NSError *error) {
         if (error) {   // 加了录音权限的判断
+            NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+            NSString *app_Name = [infoDictionary objectForKey:@"CFBundleDisplayName"];
+            NSString *str = [NSString stringWithFormat:@"无法录制声音 请在iPhone的“设置>%@”中打开麦克风权限",app_Name];
             
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:str preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:nil];
+            
+            UIAlertAction *setAction = [UIAlertAction actionWithTitle:@"前往设置" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+                if ([[UIApplication sharedApplication] canOpenURL:url]) {
+                    [[UIApplication sharedApplication] openURL:url];
+                }
+            }];
+            
+            [alertController addAction:cancelAction];
+            [alertController addAction:setAction];
+            
+            [self presentViewController:alertController animated:YES completion:nil];
         } else {
             
             if ([self->_delegate respondsToSelector:@selector(voiceDidStartRecording)]) {
@@ -1014,8 +1026,22 @@
         NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
         NSString *app_Name = [infoDictionary objectForKey:@"CFBundleDisplayName"];
         NSString *str = [NSString stringWithFormat:@"相机权限未开启，请在iphone的“设置>%@”中打开相机权限",app_Name];
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:str message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"前往设置", nil];
-        [alert show];
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:str preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:nil];
+        
+        UIAlertAction *setAction = [UIAlertAction actionWithTitle:@"前往设置" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+            if ([[UIApplication sharedApplication] canOpenURL:url]) {
+                [[UIApplication sharedApplication] openURL:url];
+            }
+        }];
+        
+        [alertController addAction:cancelAction];
+        [alertController addAction:setAction];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
     } else {
         TIMXFCameraController *cameraController = [TIMXFCameraController defaultCameraController];
         

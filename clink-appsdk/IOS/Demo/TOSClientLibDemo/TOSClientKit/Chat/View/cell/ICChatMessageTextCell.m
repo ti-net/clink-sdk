@@ -52,6 +52,7 @@
     self.chatLabel.frame = modelFrame.chatLabelF;
     self.readLabel.frame = modelFrame.unReadLabelF;
     NSMutableAttributedString *attStr;
+//    self.chatLabel.font = MessageFont;
     self.chatLabel.numberOfLines = 0;
     self.sensitiveWordsLabel.frame = modelFrame.sensitiveWordsLabelF;
     UIColor *textColor = [self setTextLabelColor:modelFrame.model.isSender];
@@ -77,19 +78,24 @@
     
 
     // Create text container
-    YYTextContainer *container = [[YYTextContainer alloc] init];
-    container.size = CGSizeMake(modelFrame.chatLabelF.size.width, modelFrame.chatLabelF.size.height);
-    container.maximumNumberOfRows = 0;
-    container.truncationType = YYTextTruncationTypeEnd;
+//    YYTextContainer *container = [[YYTextContainer alloc] init];
+//    container.size = CGSizeMake(modelFrame.chatLabelF.size.width, modelFrame.chatLabelF.size.height);
+//    container.maximumNumberOfRows = 0;
+//    container.truncationType = YYTextTruncationTypeEnd;
     
     // Generate a text layout.
-    YYTextLayout *layout = [YYTextLayout layoutWithContainer:container text:attStr];
+//    YYTextLayout *layout = [YYTextLayout layoutWithContainer:container text:attStr];
+//
+//    self.chatLabel.text = @"";
+//
+//    self.chatLabel.size = layout.textBoundingSize;
+//    self.chatLabel.textLayout = layout;
     
-    self.chatLabel.text = @"";
     
-    self.chatLabel.size = layout.textBoundingSize;
-    self.chatLabel.textLayout = layout;
+    [self.chatLabel setNumberOfLines:0];
+    [self.chatLabel setAttributedText:attStr];
     
+//    self.chatLabel.font = MessageFont;
     self.chatLabel.numberOfLines = 0;
     self.chatLabel.lineBreakMode = NSLineBreakByWordWrapping;
 }
@@ -243,28 +249,6 @@
     [self routerEventWithName:GXRouterEventURLSkip
                      userInfo:@{@"url"   : url
                                 }];
-}
-/// 获取当前控制器
-- (UIViewController *)getCurrentViewController {
-    UIWindow *window = [[UIApplication sharedApplication].delegate window];
-    UIViewController *topViewController = [window rootViewController];
-    while (true) {
-        if (topViewController.presentedViewController) {
-            topViewController = topViewController.presentedViewController;
-        }
-        else if ([topViewController isKindOfClass:[UINavigationController class]] && [(UINavigationController*)topViewController topViewController]) {
-            
-            topViewController = [(UINavigationController *)topViewController topViewController];
-        }
-        else if ([topViewController isKindOfClass:[UITabBarController class]]) {
-            
-            UITabBarController *tab = (UITabBarController *)topViewController;
-            topViewController = tab.selectedViewController;
-        } else {
-            break;
-        }
-    }
-    return topViewController;
 }
 
 #pragma mark - Getter and Setter

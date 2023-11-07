@@ -17,6 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) NSString *uniqueId;
 
+/// 满意度评价消息中的会话ID
+@property (nonatomic, copy) NSString *mainUniqueId;
+
 @end
 
 NS_ASSUME_NONNULL_END
