@@ -291,6 +291,7 @@ static TOSKitCustomInfo *customInfo = nil;
         self.chatMessage_tosRobotCombination_hotSubIssusSpacing = 10.0f;
         
         self.chatMessage_tosRobotCombination_segmentFont = [UIFont fontWithName:@"PingFangSC-Regular" size:14.0f];
+        self.chatMessage_tosRobotCombination_segmentUnselectedTextColor = TOSHexColor(0x141223);
         self.chatMessage_tosRobotCombination_segmentTextColor = TOSHexColor(0x4385FF);
         self.chatMessage_tosRobotCombination_segmentLineColor = TOSHexAColor(0x000000, .04f);
         self.chatMessage_tosRobotCombination_showRefreshNumber = 5;

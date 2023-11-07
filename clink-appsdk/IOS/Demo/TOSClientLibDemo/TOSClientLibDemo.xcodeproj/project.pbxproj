@@ -21,12 +21,41 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		22B2CD522A9A189600667A49 /* TOSInvestigationPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B2CD4C2A9A189500667A49 /* TOSInvestigationPopupView.m */; };
-		22B2CD532A9A189600667A49 /* TOSInvestigationPopupView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B2CD4D2A9A189500667A49 /* TOSInvestigationPopupView.h */; };
-		22B2CD542A9A189600667A49 /* TOSInvestigationStarTagView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B2CD4E2A9A189500667A49 /* TOSInvestigationStarTagView.h */; };
-		22B2CD552A9A189600667A49 /* TOSInvestigationStarTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B2CD4F2A9A189500667A49 /* TOSInvestigationStarTagView.m */; };
-		22B2CD562A9A189600667A49 /* TOSInvestigationStarView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B2CD502A9A189500667A49 /* TOSInvestigationStarView.h */; };
-		22B2CD572A9A189600667A49 /* TOSInvestigationStarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B2CD512A9A189500667A49 /* TOSInvestigationStarView.m */; };
+		3C0BBCA72AFA52ED00ADD897 /* TOSReloadTaskManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C0BBCA52AFA52EC00ADD897 /* TOSReloadTaskManager.h */; };
+		3C0BBCA82AFA52ED00ADD897 /* TOSReloadTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C0BBCA62AFA52EC00ADD897 /* TOSReloadTaskManager.m */; };
+		3C0BBCAB2AFA58A300ADD897 /* ICChatMessageSatisfactionPopupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C0BBCA92AFA58A200ADD897 /* ICChatMessageSatisfactionPopupCell.m */; };
+		3C0BBCAC2AFA58A300ADD897 /* ICChatMessageSatisfactionPopupCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C0BBCAA2AFA58A300ADD897 /* ICChatMessageSatisfactionPopupCell.h */; };
+		3C0BBCB92AFA5D0400ADD897 /* TOSSatisfactionEvaluationDetailsView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C0BBCAD2AFA5D0200ADD897 /* TOSSatisfactionEvaluationDetailsView.h */; };
+		3C0BBCBA2AFA5D0400ADD897 /* TOSInvestigationStarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C0BBCAE2AFA5D0200ADD897 /* TOSInvestigationStarView.m */; };
+		3C0BBCBB2AFA5D0400ADD897 /* TOSInvestigationStarView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C0BBCAF2AFA5D0200ADD897 /* TOSInvestigationStarView.h */; };
+		3C0BBCBC2AFA5D0400ADD897 /* TOSSatisfactionSolveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C0BBCB02AFA5D0200ADD897 /* TOSSatisfactionSolveView.m */; };
+		3C0BBCBD2AFA5D0400ADD897 /* TOSSatisfactionPopupView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C0BBCB12AFA5D0200ADD897 /* TOSSatisfactionPopupView.h */; };
+		3C0BBCBE2AFA5D0400ADD897 /* TOSInvestigationStarTagView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C0BBCB22AFA5D0300ADD897 /* TOSInvestigationStarTagView.h */; };
+		3C0BBCBF2AFA5D0400ADD897 /* TOSInvestigationPopupView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C0BBCB32AFA5D0300ADD897 /* TOSInvestigationPopupView.h */; };
+		3C0BBCC02AFA5D0400ADD897 /* TOSInvestigationStarTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C0BBCB42AFA5D0300ADD897 /* TOSInvestigationStarTagView.m */; };
+		3C0BBCC12AFA5D0400ADD897 /* TOSSatisfactionEvaluationDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C0BBCB52AFA5D0300ADD897 /* TOSSatisfactionEvaluationDetailsView.m */; };
+		3C0BBCC22AFA5D0400ADD897 /* TOSSatisfactionPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C0BBCB62AFA5D0300ADD897 /* TOSSatisfactionPopupView.m */; };
+		3C0BBCC32AFA5D0400ADD897 /* TOSSatisfactionSolveView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C0BBCB72AFA5D0300ADD897 /* TOSSatisfactionSolveView.h */; };
+		3C0BBCC42AFA5D0400ADD897 /* TOSInvestigationPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C0BBCB82AFA5D0400ADD897 /* TOSInvestigationPopupView.m */; };
+		3C0BBCD82AFA644D00ADD897 /* TOSSatisfaction_Star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C0BBCC52AFA644300ADD897 /* TOSSatisfaction_Star@2x.png */; };
+		3C0BBCD92AFA644D00ADD897 /* TOSSatisfaction_resolve_gray.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3C0BBCC62AFA644400ADD897 /* TOSSatisfaction_resolve_gray.gif */; };
+		3C0BBCDA2AFA644D00ADD897 /* TOSSatisfaction_Star_gray@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C0BBCC72AFA644400ADD897 /* TOSSatisfaction_Star_gray@3x.png */; };
+		3C0BBCDB2AFA644D00ADD897 /* TOSSatisfaction_Close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C0BBCC82AFA644500ADD897 /* TOSSatisfaction_Close@2x.png */; };
+		3C0BBCDC2AFA644D00ADD897 /* TOSSatisfaction_State_Successful@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C0BBCC92AFA644500ADD897 /* TOSSatisfaction_State_Successful@3x.png */; };
+		3C0BBCDD2AFA644D00ADD897 /* TOSSatisfaction_State_fail.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C0BBCCA2AFA644600ADD897 /* TOSSatisfaction_State_fail.png */; };
+		3C0BBCDE2AFA644D00ADD897 /* TOSSatisfaction_State_Successful@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C0BBCCB2AFA644600ADD897 /* TOSSatisfaction_State_Successful@2x.png */; };
+		3C0BBCDF2AFA644D00ADD897 /* TOSSatisfaction_State_Successful.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C0BBCCC2AFA644700ADD897 /* TOSSatisfaction_State_Successful.png */; };
+		3C0BBCE02AFA644D00ADD897 /* TOSSatisfaction_State_fail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C0BBCCD2AFA644700ADD897 /* TOSSatisfaction_State_fail@2x.png */; };
+		3C0BBCE12AFA644D00ADD897 /* TOSSatisfaction_unsolved.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3C0BBCCE2AFA644800ADD897 /* TOSSatisfaction_unsolved.gif */; };
+		3C0BBCE22AFA644D00ADD897 /* TOSSatisfaction_unsolved_gray.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3C0BBCCF2AFA644800ADD897 /* TOSSatisfaction_unsolved_gray.gif */; };
+		3C0BBCE32AFA644D00ADD897 /* TOSSatisfaction_State_fail@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C0BBCD02AFA644900ADD897 /* TOSSatisfaction_State_fail@3x.png */; };
+		3C0BBCE42AFA644D00ADD897 /* TOSSatisfaction_Star_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C0BBCD12AFA644A00ADD897 /* TOSSatisfaction_Star_gray.png */; };
+		3C0BBCE52AFA644D00ADD897 /* TOSSatisfaction_Star.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C0BBCD22AFA644A00ADD897 /* TOSSatisfaction_Star.png */; };
+		3C0BBCE62AFA644D00ADD897 /* TOSSatisfaction_Close.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C0BBCD32AFA644B00ADD897 /* TOSSatisfaction_Close.png */; };
+		3C0BBCE72AFA644D00ADD897 /* TOSSatisfaction_Close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C0BBCD42AFA644B00ADD897 /* TOSSatisfaction_Close@3x.png */; };
+		3C0BBCE82AFA644D00ADD897 /* TOSSatisfaction_Star@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C0BBCD52AFA644C00ADD897 /* TOSSatisfaction_Star@3x.png */; };
+		3C0BBCE92AFA644D00ADD897 /* TOSSatisfaction_resolve.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3C0BBCD62AFA644C00ADD897 /* TOSSatisfaction_resolve.gif */; };
+		3C0BBCEA2AFA644D00ADD897 /* TOSSatisfaction_Star_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C0BBCD72AFA644D00ADD897 /* TOSSatisfaction_Star_gray@2x.png */; };
 		3C1CD4762A5BAFB900E7766E /* YBImageBrowserVideo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3CAF652E2A569E1800DAE2B2 /* YBImageBrowserVideo.bundle */; };
 		3C1CD6BE2A5C045500E7766E /* OSEventSatisfactionExpressionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CAF64382A569E1800DAE2B2 /* OSEventSatisfactionExpressionView.xib */; };
 		3C1CD6BF2A5C046000E7766E /* OSEventSatisfactionTagView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CAF64322A569E1800DAE2B2 /* OSEventSatisfactionTagView.xib */; };
@@ -822,7 +851,7 @@
 		3CAF67842A569E1A00DAE2B2 /* TOSSatisfactionModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3CAF63E92A569E1800DAE2B2 /* TOSSatisfactionModel.h */; };
 		3CAF67852A569E1A00DAE2B2 /* ICChatBarItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CAF63EA2A569E1800DAE2B2 /* ICChatBarItemModel.m */; };
 		3CAF67872A569E1A00DAE2B2 /* TOSSendMultiMedia.h in Headers */ = {isa = PBXBuildFile; fileRef = 3CAF63EC2A569E1800DAE2B2 /* TOSSendMultiMedia.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3CAF67882A569E1A00DAE2B2 /* TIMMessageFrame.h in Headers */ = {isa = PBXBuildFile; fileRef = 3CAF63ED2A569E1800DAE2B2 /* TIMMessageFrame.h */; };
+		3CAF67882A569E1A00DAE2B2 /* TIMMessageFrame.h in Headers */ = {isa = PBXBuildFile; fileRef = 3CAF63ED2A569E1800DAE2B2 /* TIMMessageFrame.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3CAF67892A569E1A00DAE2B2 /* TOSSatisfactionStatusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CAF63EE2A569E1800DAE2B2 /* TOSSatisfactionStatusModel.m */; };
 		3CAF678A2A569E1A00DAE2B2 /* TIMMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CAF63EF2A569E1800DAE2B2 /* TIMMessageModel.m */; };
 		3CAF678B2A569E1A00DAE2B2 /* XZEmotion.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CAF63F02A569E1800DAE2B2 /* XZEmotion.m */; };
@@ -1244,13 +1273,42 @@
 /* Begin PBXFileReference section */
 		0E5CA2E25AB2D884AB837706 /* Pods_TOSClientKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TOSClientKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		19C9590EEE78F2E519ED57CB /* Pods-TOSClientLibDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TOSClientLibDemo.debug.xcconfig"; path = "Target Support Files/Pods-TOSClientLibDemo/Pods-TOSClientLibDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		22B2CD4C2A9A189500667A49 /* TOSInvestigationPopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOSInvestigationPopupView.m; sourceTree = "<group>"; };
-		22B2CD4D2A9A189500667A49 /* TOSInvestigationPopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOSInvestigationPopupView.h; sourceTree = "<group>"; };
-		22B2CD4E2A9A189500667A49 /* TOSInvestigationStarTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOSInvestigationStarTagView.h; sourceTree = "<group>"; };
-		22B2CD4F2A9A189500667A49 /* TOSInvestigationStarTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOSInvestigationStarTagView.m; sourceTree = "<group>"; };
-		22B2CD502A9A189500667A49 /* TOSInvestigationStarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOSInvestigationStarView.h; sourceTree = "<group>"; };
-		22B2CD512A9A189500667A49 /* TOSInvestigationStarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOSInvestigationStarView.m; sourceTree = "<group>"; };
 		2C90825FACCAE1F005357E25 /* Pods-TOSClientLibDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TOSClientLibDemo.release.xcconfig"; path = "Target Support Files/Pods-TOSClientLibDemo/Pods-TOSClientLibDemo.release.xcconfig"; sourceTree = "<group>"; };
+		3C0BBCA52AFA52EC00ADD897 /* TOSReloadTaskManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TOSReloadTaskManager.h; sourceTree = "<group>"; };
+		3C0BBCA62AFA52EC00ADD897 /* TOSReloadTaskManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TOSReloadTaskManager.m; sourceTree = "<group>"; };
+		3C0BBCA92AFA58A200ADD897 /* ICChatMessageSatisfactionPopupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICChatMessageSatisfactionPopupCell.m; sourceTree = "<group>"; };
+		3C0BBCAA2AFA58A300ADD897 /* ICChatMessageSatisfactionPopupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICChatMessageSatisfactionPopupCell.h; sourceTree = "<group>"; };
+		3C0BBCAD2AFA5D0200ADD897 /* TOSSatisfactionEvaluationDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOSSatisfactionEvaluationDetailsView.h; sourceTree = "<group>"; };
+		3C0BBCAE2AFA5D0200ADD897 /* TOSInvestigationStarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOSInvestigationStarView.m; sourceTree = "<group>"; };
+		3C0BBCAF2AFA5D0200ADD897 /* TOSInvestigationStarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOSInvestigationStarView.h; sourceTree = "<group>"; };
+		3C0BBCB02AFA5D0200ADD897 /* TOSSatisfactionSolveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOSSatisfactionSolveView.m; sourceTree = "<group>"; };
+		3C0BBCB12AFA5D0200ADD897 /* TOSSatisfactionPopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOSSatisfactionPopupView.h; sourceTree = "<group>"; };
+		3C0BBCB22AFA5D0300ADD897 /* TOSInvestigationStarTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOSInvestigationStarTagView.h; sourceTree = "<group>"; };
+		3C0BBCB32AFA5D0300ADD897 /* TOSInvestigationPopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOSInvestigationPopupView.h; sourceTree = "<group>"; };
+		3C0BBCB42AFA5D0300ADD897 /* TOSInvestigationStarTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOSInvestigationStarTagView.m; sourceTree = "<group>"; };
+		3C0BBCB52AFA5D0300ADD897 /* TOSSatisfactionEvaluationDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOSSatisfactionEvaluationDetailsView.m; sourceTree = "<group>"; };
+		3C0BBCB62AFA5D0300ADD897 /* TOSSatisfactionPopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOSSatisfactionPopupView.m; sourceTree = "<group>"; };
+		3C0BBCB72AFA5D0300ADD897 /* TOSSatisfactionSolveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOSSatisfactionSolveView.h; sourceTree = "<group>"; };
+		3C0BBCB82AFA5D0400ADD897 /* TOSInvestigationPopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOSInvestigationPopupView.m; sourceTree = "<group>"; };
+		3C0BBCC52AFA644300ADD897 /* TOSSatisfaction_Star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TOSSatisfaction_Star@2x.png"; sourceTree = "<group>"; };
+		3C0BBCC62AFA644400ADD897 /* TOSSatisfaction_resolve_gray.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = TOSSatisfaction_resolve_gray.gif; sourceTree = "<group>"; };
+		3C0BBCC72AFA644400ADD897 /* TOSSatisfaction_Star_gray@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TOSSatisfaction_Star_gray@3x.png"; sourceTree = "<group>"; };
+		3C0BBCC82AFA644500ADD897 /* TOSSatisfaction_Close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TOSSatisfaction_Close@2x.png"; sourceTree = "<group>"; };
+		3C0BBCC92AFA644500ADD897 /* TOSSatisfaction_State_Successful@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TOSSatisfaction_State_Successful@3x.png"; sourceTree = "<group>"; };
+		3C0BBCCA2AFA644600ADD897 /* TOSSatisfaction_State_fail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TOSSatisfaction_State_fail.png; sourceTree = "<group>"; };
+		3C0BBCCB2AFA644600ADD897 /* TOSSatisfaction_State_Successful@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TOSSatisfaction_State_Successful@2x.png"; sourceTree = "<group>"; };
+		3C0BBCCC2AFA644700ADD897 /* TOSSatisfaction_State_Successful.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TOSSatisfaction_State_Successful.png; sourceTree = "<group>"; };
+		3C0BBCCD2AFA644700ADD897 /* TOSSatisfaction_State_fail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TOSSatisfaction_State_fail@2x.png"; sourceTree = "<group>"; };
+		3C0BBCCE2AFA644800ADD897 /* TOSSatisfaction_unsolved.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = TOSSatisfaction_unsolved.gif; sourceTree = "<group>"; };
+		3C0BBCCF2AFA644800ADD897 /* TOSSatisfaction_unsolved_gray.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = TOSSatisfaction_unsolved_gray.gif; sourceTree = "<group>"; };
+		3C0BBCD02AFA644900ADD897 /* TOSSatisfaction_State_fail@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TOSSatisfaction_State_fail@3x.png"; sourceTree = "<group>"; };
+		3C0BBCD12AFA644A00ADD897 /* TOSSatisfaction_Star_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TOSSatisfaction_Star_gray.png; sourceTree = "<group>"; };
+		3C0BBCD22AFA644A00ADD897 /* TOSSatisfaction_Star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TOSSatisfaction_Star.png; sourceTree = "<group>"; };
+		3C0BBCD32AFA644B00ADD897 /* TOSSatisfaction_Close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TOSSatisfaction_Close.png; sourceTree = "<group>"; };
+		3C0BBCD42AFA644B00ADD897 /* TOSSatisfaction_Close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TOSSatisfaction_Close@3x.png"; sourceTree = "<group>"; };
+		3C0BBCD52AFA644C00ADD897 /* TOSSatisfaction_Star@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TOSSatisfaction_Star@3x.png"; sourceTree = "<group>"; };
+		3C0BBCD62AFA644C00ADD897 /* TOSSatisfaction_resolve.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = TOSSatisfaction_resolve.gif; sourceTree = "<group>"; };
+		3C0BBCD72AFA644D00ADD897 /* TOSSatisfaction_Star_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TOSSatisfaction_Star_gray@2x.png"; sourceTree = "<group>"; };
 		3C1CD47C2A5BFE8200E7766E /* TOSKitClient.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TOSKitClient.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C1CD6C42A5C06C600E7766E /* TIMXFCameraController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TIMXFCameraController.xib; sourceTree = "<group>"; };
 		3C1CD6C62A5C06C600E7766E /* smallProgram_link@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smallProgram_link@2x.png"; sourceTree = "<group>"; };
@@ -2580,6 +2638,25 @@
 		3C1CD6E22A5C06C600E7766E /* SatisfactionExpression */ = {
 			isa = PBXGroup;
 			children = (
+				3C0BBCD32AFA644B00ADD897 /* TOSSatisfaction_Close.png */,
+				3C0BBCC82AFA644500ADD897 /* TOSSatisfaction_Close@2x.png */,
+				3C0BBCD42AFA644B00ADD897 /* TOSSatisfaction_Close@3x.png */,
+				3C0BBCC62AFA644400ADD897 /* TOSSatisfaction_resolve_gray.gif */,
+				3C0BBCD62AFA644C00ADD897 /* TOSSatisfaction_resolve.gif */,
+				3C0BBCD12AFA644A00ADD897 /* TOSSatisfaction_Star_gray.png */,
+				3C0BBCD72AFA644D00ADD897 /* TOSSatisfaction_Star_gray@2x.png */,
+				3C0BBCC72AFA644400ADD897 /* TOSSatisfaction_Star_gray@3x.png */,
+				3C0BBCD22AFA644A00ADD897 /* TOSSatisfaction_Star.png */,
+				3C0BBCC52AFA644300ADD897 /* TOSSatisfaction_Star@2x.png */,
+				3C0BBCD52AFA644C00ADD897 /* TOSSatisfaction_Star@3x.png */,
+				3C0BBCCA2AFA644600ADD897 /* TOSSatisfaction_State_fail.png */,
+				3C0BBCCD2AFA644700ADD897 /* TOSSatisfaction_State_fail@2x.png */,
+				3C0BBCD02AFA644900ADD897 /* TOSSatisfaction_State_fail@3x.png */,
+				3C0BBCCC2AFA644700ADD897 /* TOSSatisfaction_State_Successful.png */,
+				3C0BBCCB2AFA644600ADD897 /* TOSSatisfaction_State_Successful@2x.png */,
+				3C0BBCC92AFA644500ADD897 /* TOSSatisfaction_State_Successful@3x.png */,
+				3C0BBCCF2AFA644800ADD897 /* TOSSatisfaction_unsolved_gray.gif */,
+				3C0BBCCE2AFA644800ADD897 /* TOSSatisfaction_unsolved.gif */,
 				3C1CD6E32A5C06C600E7766E /* TOSSatisfaction_expression_4@2x.png */,
 				3C1CD6E42A5C06C600E7766E /* TOSSatisfaction_expression_gray_4@2x.png */,
 				3C1CD6E52A5C06C600E7766E /* TOSSatisfaction_expression_gray_4@3x.png */,
@@ -4085,6 +4162,8 @@
 			children = (
 				3CAF63E82A569E1800DAE2B2 /* XZEmotion.h */,
 				3CAF63F02A569E1800DAE2B2 /* XZEmotion.m */,
+				3C0BBCA52AFA52EC00ADD897 /* TOSReloadTaskManager.h */,
+				3C0BBCA62AFA52EC00ADD897 /* TOSReloadTaskManager.m */,
 				3CAF63F12A569E1800DAE2B2 /* TIMICMessage.h */,
 				3CAF63E72A569E1800DAE2B2 /* TIMICMessage.m */,
 				3CAF63E62A569E1800DAE2B2 /* TIMMessageModel.h */,
@@ -4126,12 +4205,18 @@
 				3CAF63FC2A569E1800DAE2B2 /* ICMessageTopTimeView.m */,
 				3CAF63F82A569E1800DAE2B2 /* ICMessageTopView.h */,
 				3CAF63FB2A569E1800DAE2B2 /* ICMessageTopView.m */,
-				22B2CD4D2A9A189500667A49 /* TOSInvestigationPopupView.h */,
-				22B2CD4C2A9A189500667A49 /* TOSInvestigationPopupView.m */,
-				22B2CD4E2A9A189500667A49 /* TOSInvestigationStarTagView.h */,
-				22B2CD4F2A9A189500667A49 /* TOSInvestigationStarTagView.m */,
-				22B2CD502A9A189500667A49 /* TOSInvestigationStarView.h */,
-				22B2CD512A9A189500667A49 /* TOSInvestigationStarView.m */,
+				3C0BBCB32AFA5D0300ADD897 /* TOSInvestigationPopupView.h */,
+				3C0BBCB82AFA5D0400ADD897 /* TOSInvestigationPopupView.m */,
+				3C0BBCB22AFA5D0300ADD897 /* TOSInvestigationStarTagView.h */,
+				3C0BBCB42AFA5D0300ADD897 /* TOSInvestigationStarTagView.m */,
+				3C0BBCAF2AFA5D0200ADD897 /* TOSInvestigationStarView.h */,
+				3C0BBCAE2AFA5D0200ADD897 /* TOSInvestigationStarView.m */,
+				3C0BBCAD2AFA5D0200ADD897 /* TOSSatisfactionEvaluationDetailsView.h */,
+				3C0BBCB52AFA5D0300ADD897 /* TOSSatisfactionEvaluationDetailsView.m */,
+				3C0BBCB12AFA5D0200ADD897 /* TOSSatisfactionPopupView.h */,
+				3C0BBCB62AFA5D0300ADD897 /* TOSSatisfactionPopupView.m */,
+				3C0BBCB72AFA5D0300ADD897 /* TOSSatisfactionSolveView.h */,
+				3C0BBCB02AFA5D0200ADD897 /* TOSSatisfactionSolveView.m */,
 			);
 			path = moreView;
 			sourceTree = "<group>";
@@ -4156,6 +4241,8 @@
 				3CAF64512A569E1800DAE2B2 /* ICChatMessageBaseCell+CustomerUnread.m */,
 				3CAF64142A569E1800DAE2B2 /* TOSChatCustomBaseTableViewCell.h */,
 				3CAF64532A569E1800DAE2B2 /* TOSChatCustomBaseTableViewCell.m */,
+				3C0BBCAA2AFA58A300ADD897 /* ICChatMessageSatisfactionPopupCell.h */,
+				3C0BBCA92AFA58A200ADD897 /* ICChatMessageSatisfactionPopupCell.m */,
 				3CAF645C2A569E1800DAE2B2 /* ICChatSystemCell.h */,
 				3CAF64452A569E1800DAE2B2 /* ICChatSystemCell.m */,
 				3CAF64432A569E1800DAE2B2 /* ICChatMessageTextCell.h */,
@@ -4961,6 +5048,7 @@
 				3CAF676A2A569E1A00DAE2B2 /* TIMRefreshAutoFooter.h in Headers */,
 				3CAF67622A569E1A00DAE2B2 /* TIMRefreshBackFooter.h in Headers */,
 				3CAF678F2A569E1A00DAE2B2 /* ICHeadImageView.h in Headers */,
+				3C0BBCB92AFA5D0400ADD897 /* TOSSatisfactionEvaluationDetailsView.h in Headers */,
 				3CAF671E2A569E1A00DAE2B2 /* UIViewController+PanModalPresenter.h in Headers */,
 				3CAF68262A569E1B00DAE2B2 /* TIMImage.h in Headers */,
 				3CAF68022A569E1B00DAE2B2 /* ICChatBarFunctionView.h in Headers */,
@@ -5098,7 +5186,6 @@
 				3CAF65EC2A569E1900DAE2B2 /* UITableView+YYAdd.h in Headers */,
 				3CAF688A2A569E1B00DAE2B2 /* NSDictionary+SLExtension.h in Headers */,
 				3CAF67AC2A569E1A00DAE2B2 /* OSRobotHotSubIssueView.h in Headers */,
-				22B2CD532A9A189600667A49 /* TOSInvestigationPopupView.h in Headers */,
 				3CAF67492A569E1A00DAE2B2 /* TIMRefresh.h in Headers */,
 				3CAF65CC2A569E1900DAE2B2 /* YYTextRubyAnnotation.h in Headers */,
 				3CAF670D2A569E1A00DAE2B2 /* HWPanModalPresentationUpdateProtocol.h in Headers */,
@@ -5118,6 +5205,7 @@
 				3CAF68312A569E1B00DAE2B2 /* MYHTZGifPhotoPreviewController.h in Headers */,
 				3CAF65D12A569E1900DAE2B2 /* NSAttributedString+YYText.h in Headers */,
 				3CAF65982A569E1900DAE2B2 /* YYAnimatedImageView.h in Headers */,
+				3C0BBCBB2AFA5D0400ADD897 /* TOSInvestigationStarView.h in Headers */,
 				3CAF68C02A569E1B00DAE2B2 /* YBIBInteractionProfile.h in Headers */,
 				3CAF663C2A569E1900DAE2B2 /* QEmotionBoardView.h in Headers */,
 				3CAF68A42A569E1B00DAE2B2 /* YBIBVideoCell.h in Headers */,
@@ -5167,6 +5255,7 @@
 				3CAF68462A569E1B00DAE2B2 /* MYHTZPhotoPreviewCell.h in Headers */,
 				3CAF659C2A569E1900DAE2B2 /* YYWebImageManager.h in Headers */,
 				3CAF68E82A569E1B00DAE2B2 /* YBIBCollectionView.h in Headers */,
+				3C0BBCBF2AFA5D0400ADD897 /* TOSInvestigationPopupView.h in Headers */,
 				3CAF689F2A569E1B00DAE2B2 /* YBIBVideoActionBar.h in Headers */,
 				3CAF661F2A569E1900DAE2B2 /* YYThreadSafeArray.h in Headers */,
 				3CAF66502A569E1900DAE2B2 /* UIResponder+GXRouter.h in Headers */,
@@ -5226,7 +5315,6 @@
 				3CAF68AD2A569E1B00DAE2B2 /* YBIBOrientationReceiveProtocol.h in Headers */,
 				3CAF685C2A569E1B00DAE2B2 /* SLImageDecoder.h in Headers */,
 				3CAF664E2A569E1900DAE2B2 /* UIButton+TIMEnlargeEdge.h in Headers */,
-				22B2CD542A9A189600667A49 /* TOSInvestigationStarTagView.h in Headers */,
 				3CAF67762A569E1A00DAE2B2 /* ICMessageConst.h in Headers */,
 				3CAF68252A569E1B00DAE2B2 /* TIMSpriteSheetImage.h in Headers */,
 				3CAF658E2A569E1900DAE2B2 /* YYCache.h in Headers */,
@@ -5245,8 +5333,10 @@
 				3CAF67D22A569E1A00DAE2B2 /* ICChatMessageBaseCell+CustomerUnread.h in Headers */,
 				3CAF67452A569E1A00DAE2B2 /* UIScrollView+TIMExtension.h in Headers */,
 				3CAF66192A569E1900DAE2B2 /* YYTransaction.h in Headers */,
+				3C0BBCBE2AFA5D0400ADD897 /* TOSInvestigationStarTagView.h in Headers */,
 				3CAF67912A569E1A00DAE2B2 /* ICMessageTopView.h in Headers */,
 				3CAF661C2A569E1900DAE2B2 /* YYGestureRecognizer.h in Headers */,
+				3C0BBCAC2AFA58A300ADD897 /* ICChatMessageSatisfactionPopupCell.h in Headers */,
 				3CAF66052A569E1900DAE2B2 /* NSArray+YYAdd.h in Headers */,
 				3CAF68EC2A569E1B00DAE2B2 /* ICMessageHelper.h in Headers */,
 				3CAF67072A569E1A00DAE2B2 /* SYCacheFileRead.h in Headers */,
@@ -5296,6 +5386,7 @@
 				3CAF66232A569E1900DAE2B2 /* YYThreadSafeDictionary.h in Headers */,
 				3CAF661B2A569E1900DAE2B2 /* YYFileHash.h in Headers */,
 				3CAF65B82A569E1900DAE2B2 /* YYTextDebugOption.h in Headers */,
+				3C0BBCBD2AFA5D0400ADD897 /* TOSSatisfactionPopupView.h in Headers */,
 				3CAF67A12A569E1A00DAE2B2 /* chatLeaveSingleLineCell.h in Headers */,
 				3CAF67B42A569E1A00DAE2B2 /* OSRobotSelectCombinationCell.h in Headers */,
 				3CAF67AF2A569E1A00DAE2B2 /* OSRobotCombinationTextSubview.h in Headers */,
@@ -5319,6 +5410,7 @@
 				3CAF660E2A569E1900DAE2B2 /* NSThread+YYAdd.h in Headers */,
 				3CAF68872A569E1B00DAE2B2 /* SLMosaicView.h in Headers */,
 				3CAF67062A569E1A00DAE2B2 /* SYCacheFileCollectionCell.h in Headers */,
+				3C0BBCC32AFA5D0400ADD897 /* TOSSatisfactionSolveView.h in Headers */,
 				3CAF670E2A569E1A00DAE2B2 /* UIViewController+Presentation.h in Headers */,
 				3CAF68CB2A569E1B00DAE2B2 /* YBIBSentinel.h in Headers */,
 				3CAF66A12A569E1900DAE2B2 /* kitUtils.h in Headers */,
@@ -5341,7 +5433,6 @@
 				3CAF671D2A569E1A00DAE2B2 /* HWPanModalPresenterProtocol.h in Headers */,
 				3CAF66392A569E1900DAE2B2 /* UITextView+QEmotion.h in Headers */,
 				3CAF65D62A569E1900DAE2B2 /* UIPasteboard+YYText.h in Headers */,
-				22B2CD562A9A189600667A49 /* TOSInvestigationStarView.h in Headers */,
 				3CAF68BE2A569E1B00DAE2B2 /* YBImage.h in Headers */,
 				3CAF66A82A569E1900DAE2B2 /* TIMFoundation.h in Headers */,
 				3CAF66422A569E1900DAE2B2 /* QEmotion.h in Headers */,
@@ -5382,6 +5473,7 @@
 				3CAF68912A569E1B00DAE2B2 /* UIColor+SLCommon.h in Headers */,
 				3CAF68712A569E1B00DAE2B2 /* SLFaceDetectController.h in Headers */,
 				3CAF65872A569E1900DAE2B2 /* ZYSegmentControl.h in Headers */,
+				3C0BBCA72AFA52ED00ADD897 /* TOSReloadTaskManager.h in Headers */,
 				3CAF68E72A569E1B00DAE2B2 /* YBIBCollectionViewLayout.h in Headers */,
 				3CAF68422A569E1B00DAE2B2 /* MYHTZImagePickerController.h in Headers */,
 				3CAF67422A569E1A00DAE2B2 /* TOSAutoLayout.h in Headers */,
@@ -5430,8 +5522,8 @@
 				3CAF52322A556D4300DAE2B2 /* Frameworks */,
 				3CAF52332A556D4300DAE2B2 /* Resources */,
 				7F85EBC7FB7FC95545DD30C7 /* [CP] Embed Pods Frameworks */,
+				42FDCEC9B5419016642D5DD3 /* [CP] Copy Pods Resources */,
 				3CAF58062A5575D500DAE2B2 /* Embed Frameworks */,
-				5594842CFB4079185E70D6AF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -5488,7 +5580,7 @@
 				3CAF57F72A5575D400DAE2B2 /* Sources */,
 				3CAF57F82A5575D400DAE2B2 /* Frameworks */,
 				3CAF57F92A5575D400DAE2B2 /* Resources */,
-				BD7E3F3DA1F6FDAD23EDE26F /* [CP] Copy Pods Resources */,
+				0BFB674B3CBF69D178F9A9C0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -5602,6 +5694,7 @@
 				3C1CD8A72A5C06C900E7766E /* [失望]@2x.png in Resources */,
 				3C1CD8B72A5C06C900E7766E /* Fileppt@3x.png in Resources */,
 				3C1CD8262A5C06C900E7766E /* auditstatus3@3x.png in Resources */,
+				3C0BBCE22AFA644D00ADD897 /* TOSSatisfaction_unsolved_gray.gif in Resources */,
 				3C1CD8692A5C06C900E7766E /* voiceShort@2x.png in Resources */,
 				3C1CD8EA2A5C06C900E7766E /* chatBox_delete_gray@2x.png in Resources */,
 				3C1CD80C2A5C06C900E7766E /* TOSSatisfaction_expression_gray_4@3x.png in Resources */,
@@ -5619,6 +5712,7 @@
 				3C1CD8FA2A5C06C900E7766E /* photo_def_photoPickerVc@2x.png in Resources */,
 				3C1CD7FD2A5C06C900E7766E /* image_cacheFile@3x.png in Resources */,
 				3C1CD8AD2A5C06C900E7766E /* [惊恐]@2x.png in Resources */,
+				3C0BBCE72AFA644D00ADD897 /* TOSSatisfaction_Close@3x.png in Resources */,
 				3C1CD85C2A5C06C900E7766E /* left-1@2x.png in Resources */,
 				3C1CD81B2A5C06C900E7766E /* TOSSatisfaction_expression_gray_1@2x.png in Resources */,
 				3C1CD7F22A5C06C900E7766E /* logisticsCard_copy@3x.png in Resources */,
@@ -5644,6 +5738,7 @@
 				3C1CD81F2A5C06C900E7766E /* bottomArrow@2x.png in Resources */,
 				3C1CD8272A5C06C900E7766E /* iconfont-zhanting@3x.png in Resources */,
 				3C1CD8EF2A5C06C900E7766E /* chatBox_delete@2x.png in Resources */,
+				3C0BBCDA2AFA644D00ADD897 /* TOSSatisfaction_Star_gray@3x.png in Resources */,
 				3C1CD8D82A5C06C900E7766E /* SLEditImage_rotate@3x.png in Resources */,
 				3C1CD8DA2A5C06C900E7766E /* onlinePic@2x.png in Resources */,
 				3C1CD8972A5C06C900E7766E /* [难过]@2x.png in Resources */,
@@ -5688,6 +5783,8 @@
 				3C1CD8F82A5C06C900E7766E /* photo_original_sel@2x.png in Resources */,
 				3C1CD82D2A5C06C900E7766E /* xiugaiqunming@3x.png in Resources */,
 				3C1CD8662A5C06C900E7766E /* voiceShort@3x.png in Resources */,
+				3C0BBCDD2AFA644D00ADD897 /* TOSSatisfaction_State_fail.png in Resources */,
+				3C0BBCE82AFA644D00ADD897 /* TOSSatisfaction_Star@3x.png in Resources */,
 				3C1CD8672A5C06C900E7766E /* icon_finish_p@2x.png in Resources */,
 				3C1CD8852A5C06C900E7766E /* [笑]@2x.png in Resources */,
 				3C1CD87F2A5C06C900E7766E /* [玫瑰]@2x.png in Resources */,
@@ -5701,12 +5798,15 @@
 				3C1CD8462A5C06C900E7766E /* voice_4@2x.png in Resources */,
 				3C1CD82E2A5C06C900E7766E /* left-2@3x.png in Resources */,
 				3C1CD7FF2A5C06C900E7766E /* doc_cacheFile@2x.png in Resources */,
+				3C0BBCEA2AFA644D00ADD897 /* TOSSatisfaction_Star_gray@2x.png in Resources */,
 				3C1CD83C2A5C06C900E7766E /* iconfont-luyin@2x.png in Resources */,
 				3C1CD8992A5C06C900E7766E /* [便便]@2x.png in Resources */,
 				3C1CD87C2A5C06C900E7766E /* [疲倦]@2x.png in Resources */,
 				3C1CD8C12A5C06C900E7766E /* robotCell_hotIssueHelp@2x.png in Resources */,
 				3C1CD8552A5C06C900E7766E /* right-3@3x.png in Resources */,
+				3C0BBCE32AFA644D00ADD897 /* TOSSatisfaction_State_fail@3x.png in Resources */,
 				3C1CD8212A5C06C900E7766E /* stopActionVideo.png in Resources */,
+				3C0BBCDB2AFA644D00ADD897 /* TOSSatisfaction_Close@2x.png in Resources */,
 				3C1CD8AF2A5C06C900E7766E /* Filetxt@3x.png in Resources */,
 				3C1CD7F02A5C06C900E7766E /* smallProgram_link@2x.png in Resources */,
 				3C1CD83E2A5C06C900E7766E /* cancelVoice@3x.png in Resources */,
@@ -5739,7 +5839,10 @@
 				3C1CD8A52A5C06C900E7766E /* [惊讶]@2x.png in Resources */,
 				3C1CD84C2A5C06C900E7766E /* left-3@2x.png in Resources */,
 				3C1CD8CE2A5C06C900E7766E /* SLEditImage_EditMenuClipImage@2x.png in Resources */,
+				3C0BBCE92AFA644D00ADD897 /* TOSSatisfaction_resolve.gif in Resources */,
 				3C1CD8DE2A5C06C900E7766E /* onlineCloseChat@3x.png in Resources */,
+				3C0BBCDE2AFA644D00ADD897 /* TOSSatisfaction_State_Successful@2x.png in Resources */,
+				3C0BBCDC2AFA644D00ADD897 /* TOSSatisfaction_State_Successful@3x.png in Resources */,
 				3C1CD8112A5C06C900E7766E /* TOSSatisfaction_expression_gray_2@3x.png in Resources */,
 				3C1CD8162A5C06C900E7766E /* TOSSatisfaction_expression_1@3x.png in Resources */,
 				3C1CD83B2A5C06C900E7766E /* videoPlay@3x.png in Resources */,
@@ -5750,9 +5853,11 @@
 				3C1CD7F42A5C06C900E7766E /* ppt_cacheFile@2x.png in Resources */,
 				3C1CD84D2A5C06C900E7766E /* voice_3@3x.png in Resources */,
 				3C1CD8EB2A5C06C900E7766E /* chatBox_keyboard@3x.png in Resources */,
+				3C0BBCD92AFA644D00ADD897 /* TOSSatisfaction_resolve_gray.gif in Resources */,
 				3C1CD8F02A5C06C900E7766E /* chatBox_voice@2x.png in Resources */,
 				3C1CD8CD2A5C06C900E7766E /* SLEditImage_EditMenuClipImage@3x.png in Resources */,
 				3C1CD81E2A5C06C900E7766E /* bottomArrow@3x.png in Resources */,
+				3C0BBCE62AFA644D00ADD897 /* TOSSatisfaction_Close.png in Resources */,
 				3C1CD8192A5C06C900E7766E /* TOSSatisfaction_expression_gray_3@2x.png in Resources */,
 				3C1CD8BB2A5C06C900E7766E /* file_unknown@3x.png in Resources */,
 				3C1CD8DF2A5C06C900E7766E /* onlineCloseChat@2x.png in Resources */,
@@ -5765,6 +5870,7 @@
 				3C1CD8652A5C06C900E7766E /* deleteBtn@2x.png in Resources */,
 				3C1CD8602A5C06C900E7766E /* videoPause@2x.png in Resources */,
 				3C1CD7F62A5C06C900E7766E /* pdf_cacheFile@2x.png in Resources */,
+				3C0BBCD82AFA644D00ADD897 /* TOSSatisfaction_Star@2x.png in Resources */,
 				3C1CD8B12A5C06C900E7766E /* FileExcel@3x.png in Resources */,
 				3C1CD8C22A5C06C900E7766E /* robotCell_rightArrow@2x.png in Resources */,
 				3C1CD8052A5C06C900E7766E /* zip_cacheFile@2x.png in Resources */,
@@ -5775,6 +5881,7 @@
 				3C1CD84F2A5C06C900E7766E /* resendMessage@2x.png in Resources */,
 				3C1CD8F62A5C06C900E7766E /* iCloudError@2x.png in Resources */,
 				3C1CD8472A5C06C900E7766E /* ybib_save@2x.png in Resources */,
+				3C0BBCDF2AFA644D00ADD897 /* TOSSatisfaction_State_Successful.png in Resources */,
 				3C1CD8712A5C06C900E7766E /* [色]@2x.png in Resources */,
 				3C1CD84E2A5C06C900E7766E /* sdRefeshView_arrow@2x.png in Resources */,
 				3C1CD8A42A5C06C900E7766E /* [亲亲]@2x.png in Resources */,
@@ -5785,6 +5892,7 @@
 				3C1CD8FB2A5C06C900E7766E /* navi_back@2x.png in Resources */,
 				3C1CD8D72A5C06C900E7766E /* SLEditImage_rotate@2x.png in Resources */,
 				3C1CD8C32A5C06C900E7766E /* robotCell_hotIssueRefresh@3x.png in Resources */,
+				3C0BBCE42AFA644D00ADD897 /* TOSSatisfaction_Star_gray.png in Resources */,
 				3C1CD8512A5C06C900E7766E /* iconfont-kaishianniu@2x.png in Resources */,
 				3C1CD8612A5C06C900E7766E /* voice_1@3x.png in Resources */,
 				3C1CD8E22A5C06C900E7766E /* sharemore_file@3x.png in Resources */,
@@ -5798,6 +5906,7 @@
 				3C1CD84B2A5C06C900E7766E /* videoPause@3x.png in Resources */,
 				3C1CD8872A5C06C900E7766E /* [棒]@2x.png in Resources */,
 				3C1CD8132A5C06C900E7766E /* TOSSatisfaction_expression_5@2x.png in Resources */,
+				3C0BBCE12AFA644D00ADD897 /* TOSSatisfaction_unsolved.gif in Resources */,
 				3C1CD8812A5C06C900E7766E /* [OK]@2x.png in Resources */,
 				3C1CD88D2A5C06C900E7766E /* [拜托]@2x.png in Resources */,
 				3C1CD89B2A5C06C900E7766E /* [脸红]@2x.png in Resources */,
@@ -5817,6 +5926,7 @@
 				3C1CD86D2A5C06C900E7766E /* customer_service_default_avatar.png in Resources */,
 				3C1CD8012A5C06C900E7766E /* video_cacheFile@3x.png in Resources */,
 				3C1CD8172A5C06C900E7766E /* TOSSatisfaction_expression_3@2x.png in Resources */,
+				3C0BBCE52AFA644D00ADD897 /* TOSSatisfaction_Star.png in Resources */,
 				3C1CD8C82A5C06C900E7766E /* SLEditImage_editImage_againShoot@2x.png in Resources */,
 				3C1CD8592A5C06C900E7766E /* iconfont-kaishianniu@3x.png in Resources */,
 				3C1CD8D02A5C06C900E7766E /* SLEditImage_EditMenuGraffiti@2x.png in Resources */,
@@ -5831,6 +5941,7 @@
 				3C1CD7F72A5C06C900E7766E /* ppt_cacheFile@3x.png in Resources */,
 				3C1CD8BE2A5C06C900E7766E /* robotCell_downArrow@2x.png in Resources */,
 				3C1CD87A2A5C06C900E7766E /* [心动]@2x.png in Resources */,
+				3C0BBCE02AFA644D00ADD897 /* TOSSatisfaction_State_fail@2x.png in Resources */,
 				3C1CD8432A5C06C900E7766E /* loading.gif in Resources */,
 				3C1CD8242A5C06C900E7766E /* liaotianbeijing1@2x.png in Resources */,
 				3C1CD8E82A5C06C900E7766E /* chatBox_emotion@2x.png in Resources */,
@@ -5878,6 +5989,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0BFB674B3CBF69D178F9A9C0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TOSClientKit/Pods-TOSClientKit-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TOSClientKit/Pods-TOSClientKit-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TOSClientKit/Pods-TOSClientKit-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3CAF5F5C2A56639400DAE2B2 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -5894,6 +6022,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\nINSTALL_DIR=${SRCROOT}/TOSClientLibDemo/TOSKitSDK\n\nKit_DEVICE_DIR=${BUILD_DIR}/Release-iphoneos/TOSClientKit.framework\n\nBundle_DEVICE_DIR=${BUILD_DIR}/Release-iphoneos/TOSKitClient.bundle\n\n# Cleaning the oldest.\nif [ ! -d \"${INSTALL_DIR}\" ]\nthen\nmkdir -p \"${INSTALL_DIR}\"\nfi\n\ncp -R \"${Kit_DEVICE_DIR}\" \"${INSTALL_DIR}\"\n\ncp -R \"${Bundle_DEVICE_DIR}\" \"${INSTALL_DIR}\"\n\n\n";
+		};
+		42FDCEC9B5419016642D5DD3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TOSClientLibDemo/Pods-TOSClientLibDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TOSClientLibDemo/Pods-TOSClientLibDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TOSClientLibDemo/Pods-TOSClientLibDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		4920C66DDFC561C81908B728 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -5915,23 +6060,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5594842CFB4079185E70D6AF /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TOSClientLibDemo/Pods-TOSClientLibDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TOSClientLibDemo/Pods-TOSClientLibDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TOSClientLibDemo/Pods-TOSClientLibDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7F85EBC7FB7FC95545DD30C7 /* [CP] Embed Pods Frameworks */ = {
@@ -5971,23 +6099,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BD7E3F3DA1F6FDAD23EDE26F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TOSClientKit/Pods-TOSClientKit-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TOSClientKit/Pods-TOSClientKit-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TOSClientKit/Pods-TOSClientKit-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -6119,7 +6230,6 @@
 				3CAF67972A569E1A00DAE2B2 /* STBaseWebViewController.m in Sources */,
 				3CAF68202A569E1B00DAE2B2 /* ICAVPlayer.m in Sources */,
 				3CAF68BD2A569E1B00DAE2B2 /* YBIBImageCell.m in Sources */,
-				22B2CD522A9A189600667A49 /* TOSInvestigationPopupView.m in Sources */,
 				3CAF67F62A569E1B00DAE2B2 /* ICChatBox.m in Sources */,
 				3CAF666B2A569E1900DAE2B2 /* NSDate+TIMKit.m in Sources */,
 				3CAF67592A569E1A00DAE2B2 /* TIMRefreshAutoNormalFooter.m in Sources */,
@@ -6232,11 +6342,14 @@
 				3CAF68BF2A569E1B00DAE2B2 /* YBIBImageData.m in Sources */,
 				3CAF688D2A569E1B00DAE2B2 /* UIScrollView+SLCommon.m in Sources */,
 				3CAF65D52A569E1900DAE2B2 /* YYTextRubyAnnotation.m in Sources */,
+				3C0BBCC42AFA5D0400ADD897 /* TOSInvestigationPopupView.m in Sources */,
+				3C0BBCC12AFA5D0400ADD897 /* TOSSatisfactionEvaluationDetailsView.m in Sources */,
 				3CAF681A2A569E1B00DAE2B2 /* ICTools.m in Sources */,
 				3CAF68742A569E1B00DAE2B2 /* SLImageClipController.m in Sources */,
 				3CAF675C2A569E1A00DAE2B2 /* TIMRefreshStateHeader.m in Sources */,
 				3CAF67512A569E1A00DAE2B2 /* TIMRefreshBackGifFooter.m in Sources */,
 				3CAF65C02A569E1900DAE2B2 /* YYTextKeyboardManager.m in Sources */,
+				3C0BBCA82AFA52ED00ADD897 /* TOSReloadTaskManager.m in Sources */,
 				3CAF66FA2A569E1A00DAE2B2 /* SYCacheFileManager.m in Sources */,
 				3CAF66632A569E1900DAE2B2 /* NSObject+Common.m in Sources */,
 				3CAF68962A569E1B00DAE2B2 /* UIImage+SLCommon.m in Sources */,
@@ -6275,12 +6388,14 @@
 				3CAF68332A569E1B00DAE2B2 /* NSBundle+TZImagePicker.m in Sources */,
 				3CAF68AA2A569E1B00DAE2B2 /* YBIBDefaultWebImageMediator.m in Sources */,
 				3CAF670F2A569E1A00DAE2B2 /* UIViewController+LayoutHelper.m in Sources */,
+				3C0BBCC22AFA5D0400ADD897 /* TOSSatisfactionPopupView.m in Sources */,
 				3CAF68E62A569E1B00DAE2B2 /* NSObject+YBImageBrowser.m in Sources */,
 				3CAF68892A569E1B00DAE2B2 /* UIColor+SLCommon.m in Sources */,
 				3CAF660B2A569E1900DAE2B2 /* NSNotificationCenter+YYAdd.m in Sources */,
 				3CAF662E2A569E1900DAE2B2 /* QEmotionBoardView.m in Sources */,
 				3CAF67642A569E1A00DAE2B2 /* TIMRefreshFooter.m in Sources */,
 				3CAF689D2A569E1B00DAE2B2 /* YBIBVideoData.m in Sources */,
+				3C0BBCBC2AFA5D0400ADD897 /* TOSSatisfactionSolveView.m in Sources */,
 				3CAF66BF2A569E1A00DAE2B2 /* TTGTextTagStringContent.m in Sources */,
 				3CAF67E42A569E1B00DAE2B2 /* ICChatMessageBaseCell+CustomerUnread.m in Sources */,
 				3CAF66752A569E1900DAE2B2 /* VoiceConverter.mm in Sources */,
@@ -6290,7 +6405,7 @@
 				3CAF67852A569E1A00DAE2B2 /* ICChatBarItemModel.m in Sources */,
 				3CAF66312A569E1900DAE2B2 /* UITextView+QEmotion.m in Sources */,
 				3CAF682E2A569E1B00DAE2B2 /* TIMXFPhotoLibraryManager.m in Sources */,
-				22B2CD572A9A189600667A49 /* TOSInvestigationStarView.m in Sources */,
+				3C0BBCBA2AFA5D0400ADD897 /* TOSInvestigationStarView.m in Sources */,
 				3CAF658B2A569E1900DAE2B2 /* YYCache.m in Sources */,
 				3CAF65F62A569E1900DAE2B2 /* NSNumber+YYAdd.m in Sources */,
 				3CAF67332A569E1A00DAE2B2 /* HWPanModalContainerView.m in Sources */,
@@ -6322,9 +6437,9 @@
 				3CAF68392A569E1B00DAE2B2 /* MYHTZAssetModel.m in Sources */,
 				3CAF689E2A569E1B00DAE2B2 /* YBIBVideoTopBar.m in Sources */,
 				3CAF676F2A569E1A00DAE2B2 /* TOSBaseViewController.m in Sources */,
-				22B2CD552A9A189600667A49 /* TOSInvestigationStarTagView.m in Sources */,
 				3CAF67D92A569E1A00DAE2B2 /* ICChatMessageCommodityCardDetailsCell.m in Sources */,
 				3CAF68172A569E1B00DAE2B2 /* WHToastConfig.m in Sources */,
+				3C0BBCC02AFA5D0400ADD897 /* TOSInvestigationStarTagView.m in Sources */,
 				3CAF66602A569E1900DAE2B2 /* NSString+Extension.m in Sources */,
 				3CAF67CF2A569E1A00DAE2B2 /* OSEventSatisfactionTagView.m in Sources */,
 				3CAF664F2A569E1900DAE2B2 /* UIButton+TIMEnlargeEdge.m in Sources */,
@@ -6376,6 +6491,7 @@
 				3CAF65C32A569E1900DAE2B2 /* YYLabel.m in Sources */,
 				3CAF67FB2A569E1B00DAE2B2 /* ICChatBoxMoreView.m in Sources */,
 				3CAF66282A569E1900DAE2B2 /* YYFileHash.m in Sources */,
+				3C0BBCAB2AFA58A300ADD897 /* ICChatMessageSatisfactionPopupCell.m in Sources */,
 				3CAF68CF2A569E1B00DAE2B2 /* YBIBIconManager.m in Sources */,
 				3CAF65F32A569E1900DAE2B2 /* UIFont+YYAdd.m in Sources */,
 				3CAF65DA2A569E1900DAE2B2 /* UIBezierPath+YYAdd.m in Sources */,
@@ -6682,7 +6798,6 @@
 					"$(PROJECT_DIR)/TOSClientLibDemo/TOSClientKit/Chat/Tool/SLEditImage/General/SLAnimateImageView",
 					"$(PROJECT_DIR)/TOSClientLibDemo/TOSClientKit/ThirdLibs/YYKit/Vendor",
 					"$(PROJECT_DIR)/TOSClientLibDemo/TOSKitSDK",
-					"$(PROJECT_DIR)",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TOSClientLibDemo/Info.plist;
@@ -6733,7 +6848,6 @@
 					"$(PROJECT_DIR)/TOSClientLibDemo/TOSClientKit/Chat/Tool/SLEditImage/General/SLAnimateImageView",
 					"$(PROJECT_DIR)/TOSClientLibDemo/TOSClientKit/ThirdLibs/YYKit/Vendor",
 					"$(PROJECT_DIR)/TOSClientLibDemo/TOSKitSDK",
-					"$(PROJECT_DIR)",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TOSClientLibDemo/Info.plist;
@@ -6854,7 +6968,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/TOSClientKit/ThirdLibs/YYKit/Vendor",
 					"$(PROJECT_DIR)/TOSClientKit/Chat/Tool/SLEditImage/General/SLAnimateImageView",
-					"$(PROJECT_DIR)",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -6901,7 +7014,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/TOSClientKit/ThirdLibs/YYKit/Vendor",
 					"$(PROJECT_DIR)/TOSClientKit/Chat/Tool/SLEditImage/General/SLAnimateImageView",
-					"$(PROJECT_DIR)",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";

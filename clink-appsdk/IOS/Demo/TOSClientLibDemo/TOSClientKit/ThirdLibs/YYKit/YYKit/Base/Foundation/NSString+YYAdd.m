@@ -258,39 +258,39 @@ YYSYNTH_DUMMY_CLASS(NSString_YYAdd)
 }
 
 - (char)charValue {
-    return self.numberValue.charValue;
+    return self.tosNumberValue.charValue;
 }
 
 - (unsigned char) unsignedCharValue {
-    return self.numberValue.unsignedCharValue;
+    return self.tosNumberValue.unsignedCharValue;
 }
 
 - (short) shortValue {
-    return self.numberValue.shortValue;
+    return self.tosNumberValue.shortValue;
 }
 
 - (unsigned short) unsignedShortValue {
-    return self.numberValue.unsignedShortValue;
+    return self.tosNumberValue.unsignedShortValue;
 }
 
-- (unsigned int) unsignedIntValue {
-    return self.numberValue.unsignedIntValue;
+- (unsigned int) tosUnsignedIntValue {
+    return self.tosNumberValue.unsignedIntValue;
 }
 
 - (long) longValue {
-    return self.numberValue.longValue;
+    return self.tosNumberValue.longValue;
 }
 
 - (unsigned long) unsignedLongValue {
-    return self.numberValue.unsignedLongValue;
+    return self.tosNumberValue.unsignedLongValue;
 }
 
 - (unsigned long long) unsignedLongLongValue {
-    return self.numberValue.unsignedLongLongValue;
+    return self.tosNumberValue.unsignedLongLongValue;
 }
 
 - (NSUInteger) unsignedIntegerValue {
-    return self.numberValue.unsignedIntegerValue;
+    return self.tosNumberValue.unsignedIntegerValue;
 }
 
 
@@ -385,8 +385,8 @@ YYSYNTH_DUMMY_CLASS(NSString_YYAdd)
     return [self rangeOfCharacterFromSet:set].location != NSNotFound;
 }
 
-- (NSNumber *)numberValue {
-    return [NSNumber numberWithString:self];
+- (NSNumber *)tosNumberValue {
+    return [NSNumber tosNumberWithString:self];
 }
 
 - (NSData *)dataValue {
