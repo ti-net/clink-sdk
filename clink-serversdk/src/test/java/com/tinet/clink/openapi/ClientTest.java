@@ -28,34 +28,46 @@ import java.util.List;
 public class ClientTest extends AbstractTest{
 
     @Test
-    public void createClientTest() throws ServerException, ClientException, NoSuchPaddingException, BadPaddingException, NoSuchAlgorithmException, IllegalBlockSizeException, UnsupportedEncodingException, InvalidKeyException {
+    public void createClientTest() throws ServerException, ClientException, NoSuchPaddingException, BadPaddingException, NoSuchAlgorithmException, IllegalBlockSizeException, UnsupportedEncodingException, InvalidKeyException, JsonProcessingException {
         CreateClientRequest clientsRequest = new CreateClientRequest();
         ClientPermission permission = new ClientPermission();
         permission.setSms(1);
         permission.setChat(1);
         clientsRequest.setPermission(permission);
 
-        clientsRequest.setCno("5877");
+        clientsRequest.setCno("775566");
         clientsRequest.setName("张彤");
         clientsRequest.setAreaCode("010");
+        clientsRequest.setClidRule(1);
+        clientsRequest.setClidType(3);
         clientsRequest.setPassword(AesUtil.encrypt("Aa123456",configuration.getAccessKeySecret()));
+        clientsRequest.setObClidDefaultType(1);
+        clientsRequest.setClidDefault(new String[]{"01066541759"});
+        clientsRequest.setDynamicTelGroupIdDefault(152);
         CreateClientResponse response = client.getResponseModel(clientsRequest);
+        System.out.println(mapper.writeValueAsString(response));
     }
 
     @Test
-    public void updateClientTest() throws ServerException, ClientException{
+    public void updateClientTest() throws ServerException, ClientException, JsonProcessingException {
         UpdateClientRequest updateClientRequest = new UpdateClientRequest();
         ClientPermission permission = new ClientPermission();
         permission.setSms(0);
         permission.setChat(0);
         updateClientRequest.setPermission(permission);
 
-        updateClientRequest.setCno("5877");
+        updateClientRequest.setCno("775566");
         updateClientRequest.setName("张彤11");
         updateClientRequest.setAreaCode("010");
         updateClientRequest.setChatLimit(1);
         updateClientRequest.setChatLimitNum(20);
+        updateClientRequest.setObClidDefaultType(1);
+        updateClientRequest.setClidRule(1);
+        updateClientRequest.setClidType(3);
+        updateClientRequest.setClidDefault(new String[]{"01066541759","01066541539"});
+//        updateClientRequest.setDynamicTelGroupIdDefault(131);
         UpdateClientResponse response = client.getResponseModel(updateClientRequest);
+        System.out.println(mapper.writeValueAsString(response));
     }
 
     //@Test
