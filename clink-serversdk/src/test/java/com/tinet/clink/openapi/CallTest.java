@@ -321,7 +321,8 @@ public class CallTest extends AbstractTest {
     public void investigationTest() throws ServerException, ClientException, JsonProcessingException {
 
         InvestigationRequest request = new InvestigationRequest();
-        request.setCno("1000");
+        request.setCno("888888");
+        request.setInvestigationName("zzj");
 
         InvestigationResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getRequestId()));
