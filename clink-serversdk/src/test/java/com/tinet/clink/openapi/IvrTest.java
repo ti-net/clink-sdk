@@ -42,7 +42,7 @@ public class IvrTest extends AbstractTest{
     public void listIvrNodesTest() throws ServerException, ClientException, JsonProcessingException {
 
         ListIvrNodesRequest request = new ListIvrNodesRequest();
-        request.setIvrName("测试语音导航");
+        request.setIvrName("测试IVR");
 
         ListIvrNodesResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getIvrNodes()));

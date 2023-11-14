@@ -100,9 +100,10 @@ public class CallTest extends AbstractTest {
     public void calloutTest() throws ServerException, ClientException, JsonProcessingException {
 
         CalloutRequest request = new CalloutRequest();
-        request.setCno("5818");
+        request.setCno("888888");
         request.setCustomerNumber("17600055818");
-        request.setClid("02968214693");
+//        request.setClid("02968214693");
+        request.setClidGroupName("bcytest");
 
         CalloutResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getRequestId()));
