@@ -103,7 +103,6 @@ public class CallTest extends AbstractTest {
         request.setCno("5818");
         request.setCustomerNumber("17600055818");
         request.setClid("02968214693");
-        request.setType(0);
 
         CalloutResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getRequestId()));
@@ -171,7 +170,7 @@ public class CallTest extends AbstractTest {
 
         InteractRequest request = new InteractRequest();
         request.setCno("1000");
-        request.setIvrId(0);
+        request.setIvrName("测试语音导航");
         request.setIvrNode("");
 
         InteractResponse response = client.getResponseModel(request);

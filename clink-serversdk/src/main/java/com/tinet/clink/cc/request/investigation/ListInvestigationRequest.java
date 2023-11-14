@@ -24,7 +24,7 @@ public class ListInvestigationRequest extends AbstractRequestModel<ListInvestiga
     /**
      * 语音导航
      */
-    private Integer[] ivrId;
+    private String[] ivrName;
 
 
     private Integer limit;
@@ -43,14 +43,14 @@ public class ListInvestigationRequest extends AbstractRequestModel<ListInvestiga
         }
     }
 
-    public Integer[] getIvrId() {
-        return ivrId;
+    public String[] getIvrName() {
+        return ivrName;
     }
 
-    public void setIvrId(Integer[] ivrId) {
-        this.ivrId = ivrId;
-        if (ivrId != null) {
-            putQueryParameter("ivrId", ivrId);
+    public void setIvrName(String[] ivrName) {
+        this.ivrName = ivrName;
+        if (ivrName != null) {
+            putQueryParameter("ivrName", ivrName);
         }
     }
 

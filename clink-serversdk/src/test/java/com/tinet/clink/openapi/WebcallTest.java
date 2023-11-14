@@ -30,7 +30,7 @@ public class WebcallTest extends AbstractTest {
 
         WebcallRequest request = new WebcallRequest();
         request.setCustomerNumber("13716619459");
-        request.setIvrId(148);
+        request.setIvrName("测试语音导航");
         request.expires(100);
 
 
