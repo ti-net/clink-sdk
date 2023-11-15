@@ -80,10 +80,10 @@ public class CreateClientRequest extends AbstractRequestModel<CreateClientRespon
     private Integer assignType;
 
     /**
-     * 动态外呼组id
-     * dynamicTelGroupRule.id
+     * 动态外呼组名称
+     * dynamicTelGroupRule.name
      */
-    private Integer dynamicTelGroupId;
+    private String dynamicTelGroupName;
 
     /**
      * 外显号码
@@ -288,14 +288,14 @@ public class CreateClientRequest extends AbstractRequestModel<CreateClientRespon
         }
     }
 
-    public Integer getDynamicTelGroupId() {
-        return dynamicTelGroupId;
+    public String getDynamicTelGroupName() {
+        return dynamicTelGroupName;
     }
 
-    public void setDynamicTelGroupId(Integer dynamicTelGroupId) {
-        this.dynamicTelGroupId = dynamicTelGroupId;
-        if (dynamicTelGroupId != null) {
-            putBodyParameter("dynamicTelGroupId", dynamicTelGroupId);
+    public void setDynamicTelGroupName(String dynamicTelGroupName) {
+        this.dynamicTelGroupName = dynamicTelGroupName;
+        if (dynamicTelGroupName != null) {
+            putBodyParameter("dynamicTelGroupName", dynamicTelGroupName);
         }
     }
 

@@ -24,10 +24,10 @@ public class SmsSendTest extends AbstractTest {
 
         SmsSendRequest smsSendRequest = new SmsSendRequest();
 //        smsSendRequest.setCno("0611");
-        smsSendRequest.setAdminId(209);
+        smsSendRequest.setAdminUsername("admin");
         smsSendRequest.setContent("8888888888888888888888888");
         smsSendRequest.setTel("15176019948");
-        smsSendRequest.setCustomerId(3201);
+//        smsSendRequest.setCustomerId(3201);
 
         System.out.println("-------------------1---------------");
         SmsSendResponse response = client.getResponseModel(smsSendRequest);

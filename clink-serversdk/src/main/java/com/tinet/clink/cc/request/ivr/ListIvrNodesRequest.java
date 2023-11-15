@@ -15,22 +15,22 @@ import com.tinet.clink.core.utils.HttpMethodType;
 public class ListIvrNodesRequest extends AbstractRequestModel<ListIvrNodesResponse> {
 
     /**
-     * 语音导航id
+     * 语音导航名称
      */
-    private Integer ivrId;
+    private String ivrName;
 
     public ListIvrNodesRequest() {
         super(PathEnum.ListIvrNodes.value(), HttpMethodType.GET);
     }
 
-    public Integer getIvrId() {
-        return ivrId;
+    public String getIvrName() {
+        return ivrName;
     }
 
-    public void setIvrId(Integer ivrId) {
-        this.ivrId = ivrId;
-        if (ivrId != null) {
-            putQueryParameter("ivrId", ivrId);
+    public void setIvrName(String ivrName) {
+        this.ivrName = ivrName;
+        if (ivrName != null) {
+            putQueryParameter("ivrName", ivrName);
         }
     }
 

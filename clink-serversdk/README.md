@@ -17,7 +17,7 @@
 <dependency>
     <groupId>com.ti-net</groupId>
     <artifactId>clink-serversdk</artifactId>
-    <version>3.0.13.1</version>
+    <version>3.0.13.2</version>
 </dependency>
 ```
 
@@ -622,5 +622,19 @@ public class Test {
 
 ```
 1、 新增 呼叫中心-号码设置-批量查询号码归属地 
+
+```
+
+### V 3.0.13.2
+
+```
+1、 修改 呼叫中心-设置-座席设置-新增座席 增加参数:dynamicTelGroupName，clidArea增加参数:areaGroupName、dynamicTelGroupName，删除参数:dynamicTelGroupId，clidArea删除参数:areaGroupId、dynamicTelGroupId
+2、 修改 呼叫中心-设置-座席设置-更新座席 增加参数:dynamicTelGroupName，clidArea增加参数:areaGroupName、dynamicTelGroupName，删除参数:dynamicTelGroupId，clidArea删除参数:areaGroupId、dynamicTelGroupId
+3、 修改 呼叫中心-设置-语音导航设置-查询语音导航节点列表 增加参数:ivrName，删除参数:ivrId
+4、 修改 呼叫中心-设置-全局设置-查询满意度模板列表 增加参数:ivrName，删除参数:ivrId
+5、 修改 呼叫中心-电话-呼叫控制-外呼 增加参数:clidGroupName，删除参数:type
+6、 修改 呼叫中心-电话-呼叫控制-网上回呼 增加参数:clidGroupName，删除参数:clidType
+7、 修改 呼叫中心-电话-呼叫控制-转移 修改参数:transferNumber，当transferType=3时，去掉ivrId，增加ivrName
+8、 修改 呼叫中心-增值功能-发送短信 增加参数:adminUsername，删除参数:adminId
 
 ```
