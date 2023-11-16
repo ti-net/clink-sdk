@@ -140,6 +140,57 @@ public class UpdateClientRequest extends AbstractRequestModel<UpdateClientRespon
      */
     private Integer ibWrapupTime;
 
+
+    /**
+     * 缺省号码类型
+     * 0：号码 1：动态号码组 默认 0
+     */
+    private Integer obClidDefaultType;
+
+    /**
+     * 缺省外显号码
+     */
+    private String[] clidDefault;
+
+    /**
+     * 缺省动态外呼组id
+     */
+    private Integer dynamicTelGroupIdDefault;
+
+
+    public Integer getObClidDefaultType() {
+        return obClidDefaultType;
+    }
+
+    public void setObClidDefaultType(Integer obClidDefaultType) {
+        this.obClidDefaultType = obClidDefaultType;
+        if (obClidDefaultType != null) {
+            putBodyParameter("obClidDefaultType", obClidDefaultType);
+        }
+    }
+
+    public String[] getClidDefault() {
+        return clidDefault;
+    }
+
+    public void setClidDefault(String[] clidDefault) {
+        this.clidDefault = clidDefault;
+        if (clidDefault != null) {
+            putBodyParameter("clidDefault", clidDefault);
+        }
+    }
+
+    public Integer getDynamicTelGroupIdDefault() {
+        return dynamicTelGroupIdDefault;
+    }
+
+    public void setDynamicTelGroupIdDefault(Integer dynamicTelGroupIdDefault) {
+        this.dynamicTelGroupIdDefault = dynamicTelGroupIdDefault;
+        if (dynamicTelGroupIdDefault != null) {
+            putBodyParameter("dynamicTelGroupIdDefault", dynamicTelGroupIdDefault);
+        }
+    }
+
     public Integer getIbWrapupType() {
         return ibWrapupType;
     }
