@@ -17,7 +17,7 @@
 <dependency>
     <groupId>com.ti-net</groupId>
     <artifactId>clink-serversdk</artifactId>
-    <version>3.0.13.2</version>
+    <version>3.0.13.3</version>
 </dependency>
 ```
 
@@ -625,7 +625,7 @@ public class Test {
 
 ```
 
-### V 3.0.13.2
+### V 3.0.13.3
 
 ```
 1、 修改 呼叫中心-设置-座席设置-新增座席 增加参数:dynamicTelGroupName，clidArea增加参数:areaGroupName、dynamicTelGroupName，删除参数:dynamicTelGroupId，clidArea删除参数:areaGroupId、dynamicTelGroupId
