@@ -150,6 +150,12 @@ public enum PathEnum {
     //短信发送
     SsoLoginToken("cc/login_token"),
 
+    // 云手机ax绑定
+    CloudNumberAxBind("cc/cloud_number_ax_bind"),
+    // 云手机axb绑定
+    CloudNumberAxbBind("cc/cloud_number_axb_bind"),
+
+
     //----------------------------------------------↓呼叫中心-报表↓----------------------------------------------//
 
     //座席工作量报表
