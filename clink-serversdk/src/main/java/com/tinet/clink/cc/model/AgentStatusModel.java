@@ -54,6 +54,11 @@ public class AgentStatusModel {
     private String agentStatus;
 
     /**
+     * 客户状态，空闲，呼叫中，响铃，通话
+     */
+    private String customerStatus;
+
+    /**
      * 座席状态详情
      */
     private String agentStatusDetail;
@@ -174,7 +179,7 @@ public class AgentStatusModel {
     private double ibClientAnsweredRate;
 
     /**
-     *  座席是否处于预测外呼状态 1：是 0：否
+     * 座席是否处于预测外呼状态 1：是 0：否
      */
     private Integer predictToCall;
 
@@ -368,6 +373,14 @@ public class AgentStatusModel {
 
     public void setAgentStatus(String agentStatus) {
         this.agentStatus = agentStatus;
+    }
+
+    public String getCustomerStatus() {
+        return customerStatus;
+    }
+
+    public void setCustomerStatus(String customerStatus) {
+        this.customerStatus = customerStatus;
     }
 
     public Integer getIncomingCallCount() {
