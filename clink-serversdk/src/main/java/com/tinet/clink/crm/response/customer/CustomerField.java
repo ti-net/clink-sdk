@@ -24,6 +24,11 @@ public class CustomerField {
     private String value;
 
     /**
+     * 字段加密值
+     */
+    private String encryptValue;
+
+    /**
      * 是否为天润系统固定字段 1：系统固定字段  0：客户自定义字段
      */
     private Integer system;
@@ -52,6 +57,14 @@ public class CustomerField {
         this.value = value;
     }
 
+    public String getEncryptValue() {
+        return encryptValue;
+    }
+
+    public void setEncryptValue(String encryptValue) {
+        this.encryptValue = encryptValue;
+    }
+
     public Integer getSystem() {
         return system;
     }
@@ -66,6 +79,7 @@ public class CustomerField {
                 "key='" + key + '\'' +
                 ", name='" + name + '\'' +
                 ", value='" + value + '\'' +
+                ", encryptValue='" + encryptValue + '\'' +
                 ", system='" + system + '\'' +
                 '}';
     }
