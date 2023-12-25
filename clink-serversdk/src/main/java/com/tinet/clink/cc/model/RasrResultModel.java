@@ -20,11 +20,6 @@ public class RasrResultModel {
      */
     private String mainUniqueId;
     /**
-     * 客户号码
-     */
-    private String customerNumber;
-
-    /**
      * 开始时间
      */
     private Long startTime;
@@ -59,14 +54,6 @@ public class RasrResultModel {
 
     public void setMainUniqueId(String mainUniqueId) {
         this.mainUniqueId = mainUniqueId;
-    }
-
-    public String getCustomerNumber() {
-        return customerNumber;
-    }
-
-    public void setCustomerNumber(String customerNumber) {
-        this.customerNumber = customerNumber;
     }
 
     public Long getStartTime() {
