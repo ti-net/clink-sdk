@@ -101,6 +101,20 @@ public class PushProductCommentRequest extends BaseRequest<PushProductCommentRes
         this.userId = userId;
         putBodyParameter("userId", userId);
     }
+    /**
+     * 自定义数据
+     * 日期时间格式：yyyy-MM-dd HH:mm:ss
+     * 日期格式：yyyy-MM-dd
+     */
+    private Map<String,Object> customData;
+
+    public void setCustomData(Map<String,Object> customData) {
+        this.customData = customData;
+        putBodyParameter("customData", customData);
+    }
+    public Map<String,Object> getCustomData() {
+        return customData;
+    }
 
     public String getAccountLoginName() {
         return accountLoginName;
