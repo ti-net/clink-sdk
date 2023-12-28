@@ -102,7 +102,7 @@ public class PushProductCommentRequest extends BaseRequest<PushProductCommentRes
         putBodyParameter("userId", userId);
     }
     /**
-     * 自定义数据
+     * 自定义数据(key为参数名，value为参数值)
      * 日期时间格式：yyyy-MM-dd HH:mm:ss
      * 日期格式：yyyy-MM-dd
      */
