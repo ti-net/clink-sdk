@@ -270,6 +270,11 @@ public enum PathEnum {
      * 获取企业SessionKey
      */
     EnterpriseSessionKey("cc/enterpriseSessionKey"),
+
+    /**
+     * 查询AI对话转写记录
+     */
+    RobotRasr("cc/robot_rasr"),
     ;
     private String value;
 
