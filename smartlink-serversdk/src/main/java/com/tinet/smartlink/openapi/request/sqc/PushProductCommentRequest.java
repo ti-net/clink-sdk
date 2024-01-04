@@ -6,6 +6,7 @@ import com.tinet.smartlink.openapi.request.BaseRequest;
 import com.tinet.smartlink.openapi.response.sqc.PushProductCommentResponse;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.util.Map;
 import java.util.Date;
 
 public class PushProductCommentRequest extends BaseRequest<PushProductCommentResponse> {
