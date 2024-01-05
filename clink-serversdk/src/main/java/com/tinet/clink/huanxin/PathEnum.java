@@ -31,6 +31,18 @@ public enum PathEnum {
     //删除坐席
     IM_UPDATE_PASSWORD("huanxin/im_update_password"),
 
+    //获取队列列表
+    LIST_QUEUE("huanxin/list_queue"),
+
+    //新增队列
+    CREATE_QUEUE("huanxin/create_queue"),
+
+    //修改队列
+    UPDATE_QUEUE("huanxin/update_queue"),
+
+    //删除队列
+    DELETE_QUEUE("huanxin/delete_queue"),
+
 
 
 

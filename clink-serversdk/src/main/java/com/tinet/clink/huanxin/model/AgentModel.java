@@ -2,7 +2,7 @@ package com.tinet.clink.huanxin.model;
 
 import java.util.List;
 
-public class ListAgentModel {
+public class AgentModel {
 
     // 租户ID
     private int tenantId;

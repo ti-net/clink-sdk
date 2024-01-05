@@ -1,19 +1,19 @@
 package com.tinet.clink.huanxin.response;
 
 import com.tinet.clink.core.response.PagedResponse;
-import com.tinet.clink.huanxin.model.ListAgentModel;
+import com.tinet.clink.huanxin.model.AgentModel;
 
 import java.util.List;
 
 public class ListAgentResponse extends PagedResponse {
 
-    private List<ListAgentModel> agents;
+    private List<AgentModel> agents;
 
-    public List<ListAgentModel> getAgents() {
+    public List<AgentModel> getAgents() {
         return agents;
     }
 
-    public void setAgents(List<ListAgentModel> agents) {
+    public void setAgents(List<AgentModel> agents) {
         this.agents = agents;
     }
 }
