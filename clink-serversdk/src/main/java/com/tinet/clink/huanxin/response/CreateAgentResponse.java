@@ -7,11 +7,11 @@ public class CreateAgentResponse extends ResponseModel {
 
     private CreateAgentModel data;
 
-    public CreateAgentModel getCreateAgentModel() {
+    public CreateAgentModel getData() {
         return data;
     }
 
-    public void setCreateAgentModel(CreateAgentModel createAgentModel) {
-        this.data = createAgentModel;
+    public void setData(CreateAgentModel data) {
+        this.data = data;
     }
 }

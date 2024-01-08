@@ -44,7 +44,7 @@ public class SessionHisModel {
         private String agentLastMessageDate	;//	坐席最后一条消息的时间
         private String stopDateTime	;//	会话结束时间
         private String techChannelType	;//	关联类型
-        private List<Summary> summarys;
+        private List<List<Summary>> summarys;
 
         private String enquirySummary	;//		客户满意度评价
         private String enquiryDetail	;//		客户满意度评价详情
@@ -203,11 +203,11 @@ public class SessionHisModel {
             this.techChannelType = techChannelType;
         }
 
-        public List<Summary> getSummarys() {
+        public List<List<Summary>> getSummarys() {
             return summarys;
         }
 
-        public void setSummarys(List<Summary> summarys) {
+        public void setSummarys(List<List<Summary>> summarys) {
             this.summarys = summarys;
         }
 
@@ -489,7 +489,7 @@ public class SessionHisModel {
         private String toName	;//		转接用户姓名
         private String toState	;//		操作后状态
         private String type	;//		事件类型：Created-创建，Opened-接起，FirstReplyTime-首次响应，Transfer转接（AA-坐席转坐席，AQ-坐席转技能组，QA-技能组转坐席，QQ-技能组转技能组，RA-机器人转坐席，RQ-机器人转技能组），Closed-关闭，Aborted-待接入会话关闭
-        private ServiceSessionExt serviceSessionExt	;//	会话相关事件的详细信息
+        private String serviceSessionExt	;//	会话相关事件的详细信息
         private String createDateTime	;//		事件时间
         private String timeStamp	;//		可忽略
 
@@ -597,11 +597,11 @@ public class SessionHisModel {
             this.type = type;
         }
 
-        public ServiceSessionExt getServiceSessionExt() {
+        public String getServiceSessionExt() {
             return serviceSessionExt;
         }
 
-        public void setServiceSessionExt(ServiceSessionExt serviceSessionExt) {
+        public void setServiceSessionExt(String serviceSessionExt) {
             this.serviceSessionExt = serviceSessionExt;
         }
 

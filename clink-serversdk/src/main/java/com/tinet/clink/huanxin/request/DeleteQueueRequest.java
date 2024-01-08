@@ -2,6 +2,7 @@ package com.tinet.clink.huanxin.request;
 
 import com.tinet.clink.core.request.AbstractRequestModel;
 import com.tinet.clink.core.utils.HttpMethodType;
+import com.tinet.clink.huanxin.PathEnum;
 import com.tinet.clink.huanxin.response.DeleteQueueResponse;
 
 public class DeleteQueueRequest extends AbstractRequestModel<DeleteQueueResponse> {
@@ -44,8 +45,8 @@ public class DeleteQueueRequest extends AbstractRequestModel<DeleteQueueResponse
         this.userId = userId;
     }
 
-    public DeleteQueueRequest(String path, HttpMethodType httpMethod) {
-        super(path, httpMethod);
+    public DeleteQueueRequest() {
+        super(PathEnum.DELETE_QUEUE.value(), HttpMethodType.POST);
     }
 
     @Override

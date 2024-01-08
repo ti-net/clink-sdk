@@ -2,6 +2,7 @@ package com.tinet.clink.huanxin.request;
 
 import com.tinet.clink.core.request.AbstractRequestModel;
 import com.tinet.clink.core.utils.HttpMethodType;
+import com.tinet.clink.huanxin.PathEnum;
 import com.tinet.clink.huanxin.response.ListAgentResponse;
 
 public class ListAgentRequest extends AbstractRequestModel<ListAgentResponse> {
@@ -52,8 +53,8 @@ public class ListAgentRequest extends AbstractRequestModel<ListAgentResponse> {
         this.keyValue = keyValue;
     }
 
-    public ListAgentRequest(String path, HttpMethodType httpMethod) {
-        super(path, httpMethod);
+    public ListAgentRequest() {
+        super(PathEnum.LIST_AGENT.value(), HttpMethodType.POST);
     }
 
     @Override

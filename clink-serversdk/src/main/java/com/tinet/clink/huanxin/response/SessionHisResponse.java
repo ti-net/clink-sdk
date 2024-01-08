@@ -7,11 +7,11 @@ public class SessionHisResponse extends ResponseModel {
 
     private SessionHisModel data;
 
-    public SessionHisModel getSessionHisModel() {
+    public SessionHisModel getData() {
         return data;
     }
 
-    public void setSessionHisModel(SessionHisModel sessionHisModel) {
-        this.data = sessionHisModel;
+    public void setData(SessionHisModel data) {
+        this.data = data;
     }
 }

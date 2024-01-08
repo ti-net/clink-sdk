@@ -2,6 +2,7 @@ package com.tinet.clink.huanxin.request;
 
 import com.tinet.clink.core.request.AbstractRequestModel;
 import com.tinet.clink.core.utils.HttpMethodType;
+import com.tinet.clink.huanxin.PathEnum;
 import com.tinet.clink.huanxin.model.IMRegisterUserModel;
 import com.tinet.clink.huanxin.response.IMRegisterUserResponse;
 import com.tinet.clink.huanxin.response.IMUserUpdatePwdResponse;
@@ -35,11 +36,11 @@ public class IMUpdateUserPwdRequest extends AbstractRequestModel<IMUserUpdatePwd
 
     public void setUsername(String username) {
         this.username = username;
-        putBodyParameter("username",username);
+        putQueryParameter("username",username);
     }
 
-    public IMUpdateUserPwdRequest(String path, HttpMethodType httpMethod) {
-        super(path, httpMethod);
+    public IMUpdateUserPwdRequest() {
+        super(PathEnum.IM_UPDATE_PASSWORD.value(), HttpMethodType.PUT);
     }
 
     @Override

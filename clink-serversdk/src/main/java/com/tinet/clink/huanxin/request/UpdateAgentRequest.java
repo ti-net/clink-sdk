@@ -2,6 +2,7 @@ package com.tinet.clink.huanxin.request;
 
 import com.tinet.clink.core.request.AbstractRequestModel;
 import com.tinet.clink.core.utils.HttpMethodType;
+import com.tinet.clink.huanxin.PathEnum;
 import com.tinet.clink.huanxin.response.CreateAgentResponse;
 import com.tinet.clink.huanxin.response.UpdateAgentResponse;
 
@@ -27,7 +28,7 @@ public class UpdateAgentRequest extends AbstractRequestModel<UpdateAgentResponse
     /**
      * 电话号码
      */
-    private Integer mobilePhone;
+    private String mobilePhone;
     /**
      * 工号
      */
@@ -41,8 +42,8 @@ public class UpdateAgentRequest extends AbstractRequestModel<UpdateAgentResponse
      */
     private Integer maxServiceSessionCount;
 
-    public UpdateAgentRequest(String path, HttpMethodType httpMethod) {
-        super(path, httpMethod);
+    public UpdateAgentRequest() {
+        super(PathEnum.UPDATE_AGENT.value(), HttpMethodType.POST);
     }
 
     public String getNicename() {
@@ -77,11 +78,11 @@ public class UpdateAgentRequest extends AbstractRequestModel<UpdateAgentResponse
         this.agentType = agentType;
     }
 
-    public Integer getMobilePhone() {
+    public String getMobilePhone() {
         return mobilePhone;
     }
 
-    public void setMobilePhone(Integer mobilePhone) {
+    public void setMobilePhone(String mobilePhone) {
         this.mobilePhone = mobilePhone;
     }
 

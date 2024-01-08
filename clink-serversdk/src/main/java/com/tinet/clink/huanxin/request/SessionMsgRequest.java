@@ -2,6 +2,7 @@ package com.tinet.clink.huanxin.request;
 
 import com.tinet.clink.core.request.AbstractRequestModel;
 import com.tinet.clink.core.utils.HttpMethodType;
+import com.tinet.clink.huanxin.PathEnum;
 import com.tinet.clink.huanxin.response.SessionMsgResponse;
 
 public class SessionMsgRequest extends AbstractRequestModel<SessionMsgResponse> {
@@ -36,8 +37,8 @@ public class SessionMsgRequest extends AbstractRequestModel<SessionMsgResponse> 
         this.sessionServiceId = sessionServiceId;
     }
 
-    public SessionMsgRequest(String path, HttpMethodType httpMethod) {
-        super(path, httpMethod);
+    public SessionMsgRequest() {
+        super(PathEnum.QUERY_SESSION_MSGS.value(), HttpMethodType.POST);
     }
 
 

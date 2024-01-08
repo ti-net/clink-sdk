@@ -3,6 +3,7 @@ package com.tinet.clink.huanxin.request;
 
 import com.tinet.clink.core.request.AbstractRequestModel;
 import com.tinet.clink.core.utils.HttpMethodType;
+import com.tinet.clink.huanxin.PathEnum;
 import com.tinet.clink.huanxin.response.SessionHisResponse;
 
 import java.util.List;
@@ -114,8 +115,8 @@ public class SessionHisRequest extends AbstractRequestModel<SessionHisResponse> 
      */
     private String sortOrder;
 
-    public SessionHisRequest(String path, HttpMethodType httpMethod) {
-        super(path, httpMethod);
+    public SessionHisRequest() {
+        super(PathEnum.QUERY_SESSION_HISTORYS.value(), HttpMethodType.POST);
     }
 
 

@@ -2,6 +2,7 @@ package com.tinet.clink.huanxin.request;
 
 import com.tinet.clink.core.request.AbstractRequestModel;
 import com.tinet.clink.core.utils.HttpMethodType;
+import com.tinet.clink.huanxin.PathEnum;
 import com.tinet.clink.huanxin.response.CreateAgentResponse;
 import com.tinet.clink.huanxin.response.DeleteAgentResponse;
 
@@ -17,8 +18,8 @@ public class DeleteAgentRequest extends AbstractRequestModel<DeleteAgentResponse
         this.username = username;
     }
 
-    public DeleteAgentRequest(String path, HttpMethodType httpMethod) {
-        super(path, httpMethod);
+    public DeleteAgentRequest() {
+        super(PathEnum.DELETE_AGENT.value(), HttpMethodType.POST);
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.tinet.clink.huanxin.request;
 
 import com.tinet.clink.core.request.AbstractRequestModel;
 import com.tinet.clink.core.utils.HttpMethodType;
+import com.tinet.clink.huanxin.PathEnum;
 import com.tinet.clink.huanxin.response.CreateQueueResponse;
 import com.tinet.clink.huanxin.response.UpdateQueueResponse;
 
@@ -44,8 +45,8 @@ public class UpdateQueueRequest extends AbstractRequestModel<UpdateQueueResponse
         this.name = name;
     }
 
-    public UpdateQueueRequest(String path, HttpMethodType httpMethod) {
-        super(path, httpMethod);
+    public UpdateQueueRequest() {
+        super(PathEnum.UPDATE_QUEUE.value(), HttpMethodType.POST);
     }
 
     @Override

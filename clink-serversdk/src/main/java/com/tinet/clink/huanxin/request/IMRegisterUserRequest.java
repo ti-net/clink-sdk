@@ -2,6 +2,7 @@ package com.tinet.clink.huanxin.request;
 
 import com.tinet.clink.core.request.AbstractRequestModel;
 import com.tinet.clink.core.utils.HttpMethodType;
+import com.tinet.clink.huanxin.PathEnum;
 import com.tinet.clink.huanxin.model.IMRegisterUserModel;
 import com.tinet.clink.huanxin.response.IMRegisterUserResponse;
 
@@ -19,8 +20,8 @@ public class IMRegisterUserRequest extends AbstractRequestModel<IMRegisterUserRe
         this.registerUserModels = registerUserModels;
     }
 
-    public IMRegisterUserRequest(String path, HttpMethodType httpMethod) {
-        super(path, httpMethod);
+    public IMRegisterUserRequest() {
+        super(PathEnum.IM_REGISTER_USER.value(), HttpMethodType.POST);
     }
 
     @Override

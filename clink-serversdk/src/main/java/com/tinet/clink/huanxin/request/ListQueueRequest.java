@@ -2,6 +2,7 @@ package com.tinet.clink.huanxin.request;
 
 import com.tinet.clink.core.request.AbstractRequestModel;
 import com.tinet.clink.core.utils.HttpMethodType;
+import com.tinet.clink.huanxin.PathEnum;
 import com.tinet.clink.huanxin.response.ListAgentResponse;
 import com.tinet.clink.huanxin.response.ListQueueResponse;
 
@@ -53,8 +54,8 @@ public class ListQueueRequest extends AbstractRequestModel<ListQueueResponse> {
         this.queueName = queueName;
     }
 
-    public ListQueueRequest(String path, HttpMethodType httpMethod) {
-        super(path, httpMethod);
+    public ListQueueRequest() {
+        super(PathEnum.LIST_QUEUE.value(), HttpMethodType.POST);
     }
 
     @Override

@@ -358,11 +358,66 @@ public class SessionMsgModel {
             this.image = image;
         }
     }
+    public static class Agent {
+        private String avatar;
+        private String agentNumber;
+        private String trueName;
+        private String userId;
+        private String userType;
+        private String userNickname;
 
+        public String getAvatar() {
+            return avatar;
+        }
+
+        public void setAvatar(String avatar) {
+            this.avatar = avatar;
+        }
+
+        public String getAgentNumber() {
+            return agentNumber;
+        }
+
+        public void setAgentNumber(String agentNumber) {
+            this.agentNumber = agentNumber;
+        }
+
+        public String getTrueName() {
+            return trueName;
+        }
+
+        public void setTrueName(String trueName) {
+            this.trueName = trueName;
+        }
+
+        public String getUserId() {
+            return userId;
+        }
+
+        public void setUserId(String userId) {
+            this.userId = userId;
+        }
+
+        public String getUserType() {
+            return userType;
+        }
+
+        public void setUserType(String userType) {
+            this.userType = userType;
+        }
+
+        public String getUserNickname() {
+            return userNickname;
+        }
+
+        public void setUserNickname(String userNickname) {
+            this.userNickname = userNickname;
+        }
+    }
     public static class Weichat {
         private String msgId	;//	消息Id
         private String originType	;//	渠道类型
-        private String agent;
+        private Agent agent;
         private String queueId	;//	技能组Id
         private String queueName	;//	技能组名称
         private Event event;
@@ -387,11 +442,11 @@ public class SessionMsgModel {
             this.originType = originType;
         }
 
-        public String getAgent() {
+        public Agent getAgent() {
             return agent;
         }
 
-        public void setAgent(String agent) {
+        public void setAgent(Agent agent) {
             this.agent = agent;
         }
 

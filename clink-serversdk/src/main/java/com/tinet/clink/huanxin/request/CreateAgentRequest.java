@@ -2,6 +2,7 @@ package com.tinet.clink.huanxin.request;
 
 import com.tinet.clink.core.request.AbstractRequestModel;
 import com.tinet.clink.core.utils.HttpMethodType;
+import com.tinet.clink.huanxin.PathEnum;
 import com.tinet.clink.huanxin.response.CreateAgentResponse;
 
 public class CreateAgentRequest extends AbstractRequestModel<CreateAgentResponse> {
@@ -30,7 +31,7 @@ public class CreateAgentRequest extends AbstractRequestModel<CreateAgentResponse
     /**
      * 电话号码
      */
-    private Integer mobilePhone;
+    private String mobilePhone;
     /**
      * 工号
      */
@@ -84,11 +85,11 @@ public class CreateAgentRequest extends AbstractRequestModel<CreateAgentResponse
         this.agentType = agentType;
     }
 
-    public Integer getMobilePhone() {
+    public String getMobilePhone() {
         return mobilePhone;
     }
 
-    public void setMobilePhone(Integer mobilePhone) {
+    public void setMobilePhone(String mobilePhone) {
         this.mobilePhone = mobilePhone;
     }
 
@@ -116,8 +117,8 @@ public class CreateAgentRequest extends AbstractRequestModel<CreateAgentResponse
         this.maxServiceSessionCount = maxServiceSessionCount;
     }
 
-    public CreateAgentRequest(String path, HttpMethodType httpMethod) {
-        super(path, httpMethod);
+    public CreateAgentRequest() {
+        super(PathEnum.CREATE_AGENT.value(), HttpMethodType.POST);
     }
 
     @Override

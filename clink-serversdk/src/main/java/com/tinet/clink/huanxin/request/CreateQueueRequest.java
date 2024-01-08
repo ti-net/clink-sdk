@@ -2,6 +2,7 @@ package com.tinet.clink.huanxin.request;
 
 import com.tinet.clink.core.request.AbstractRequestModel;
 import com.tinet.clink.core.utils.HttpMethodType;
+import com.tinet.clink.huanxin.PathEnum;
 import com.tinet.clink.huanxin.response.CreateQueueResponse;
 
 public class CreateQueueRequest extends AbstractRequestModel<CreateQueueResponse> {
@@ -31,8 +32,8 @@ public class CreateQueueRequest extends AbstractRequestModel<CreateQueueResponse
         this.name = name;
     }
 
-    public CreateQueueRequest(String path, HttpMethodType httpMethod) {
-        super(path, httpMethod);
+    public CreateQueueRequest() {
+        super(PathEnum.CREATE_QUEUE.value(), HttpMethodType.POST);
     }
 
     @Override
