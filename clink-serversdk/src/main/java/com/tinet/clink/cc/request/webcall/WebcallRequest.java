@@ -56,6 +56,11 @@ public class WebcallRequest extends AbstractRequestModel<WebcallResponse> {
     private String ivrName;
 
     /**
+     * 外显方式，0：指定外显号码；1：指定外呼标识
+     */
+    private Integer clidType;
+
+    /**
      * 动态附带参数，参数会写入通道中，以便ivr中调用。参数名建议使用user_开头
      */
     private String params;
@@ -161,6 +166,17 @@ public class WebcallRequest extends AbstractRequestModel<WebcallResponse> {
         this.params = params;
         if (params != null) {
             putBodyParameter("params", params);
+        }
+    }
+
+    public Integer getClidType() {
+        return clidType;
+    }
+
+    public void setClidType(Integer clidType) {
+        this.clidType = clidType;
+        if (clidType != null) {
+            putBodyParameter("clidType", clidType);
         }
     }
 

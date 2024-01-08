@@ -36,6 +36,11 @@ public class CalloutRequest extends AbstractRequestModel<CalloutResponse> {
     private String clid;
 
     /**
+     * 外显类型，0：外显号码、1：接口标识
+     */
+    private Integer type;
+
+    /**
      * 接口外显规则名称，按照外显规则配置的外显号码进行外显。如果同时传入clid和clidGroupName，clidGroupName优先级高
      */
     private String clidGroupName;
@@ -161,6 +166,18 @@ public class CalloutRequest extends AbstractRequestModel<CalloutResponse> {
 
         if (requestUniqueId != null) {
             putBodyParameter("requestUniqueId", requestUniqueId);
+        }
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+
+        if (type != null) {
+            putBodyParameter("type", type);
         }
     }
 
