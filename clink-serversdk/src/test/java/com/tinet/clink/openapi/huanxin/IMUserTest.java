@@ -17,9 +17,10 @@ public class IMUserTest extends AbstractTest {
     public void registerUser() throws Exception {
         IMRegisterUserRequest request = new IMRegisterUserRequest();
         List<IMRegisterUserModel> registerUserModels = new ArrayList<>();
-        IMRegisterUserModel imRegisterUserModel = new IMRegisterUserModel("tj01", "123456", "田杰");
+        IMRegisterUserModel imRegisterUserModel = new IMRegisterUserModel("tj03", "123456", "田杰");
         registerUserModels.add(imRegisterUserModel);
         request.setRegisterUserModels(registerUserModels);
+        request.setAppKey("1433240103107043#kefuchannelapp108419");
         IMRegisterUserResponse response = client.getResponseModel(request);
         System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(response));
 
@@ -31,6 +32,7 @@ public class IMUserTest extends AbstractTest {
         IMUpdateUserPwdRequest request = new IMUpdateUserPwdRequest();
         request.setUsername("tj01");
         request.setNewpassword("12345678");
+        request.setAppKey("1433240103107043#kefuchannelapp108419");
         IMUserUpdatePwdResponse response = client.getResponseModel(request);
         System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(response));
 
