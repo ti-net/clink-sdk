@@ -17,7 +17,7 @@ public class IMUserTest extends AbstractTest {
     public void registerUser() throws Exception {
         IMRegisterUserRequest request = new IMRegisterUserRequest();
         List<IMRegisterUserModel> registerUserModels = new ArrayList<>();
-        IMRegisterUserModel imRegisterUserModel = new IMRegisterUserModel("tj03", "123456", "田杰");
+        IMRegisterUserModel imRegisterUserModel = new IMRegisterUserModel("tj031", "123456", "田杰");
         registerUserModels.add(imRegisterUserModel);
         request.setRegisterUserModels(registerUserModels);
         request.setAppKey("1433240103107043#kefuchannelapp108419");
