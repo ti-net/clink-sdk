@@ -6,6 +6,12 @@ import com.tinet.clink.huanxin.PathEnum;
 import com.tinet.clink.huanxin.response.CreateAgentResponse;
 import com.tinet.clink.huanxin.response.UpdateAgentResponse;
 
+/**
+ * 更新座席
+ *
+ * @author tian.jie
+ * @date 2024-01-18 11:33
+ */
 public class UpdateAgentRequest extends AbstractRequestModel<UpdateAgentResponse> {
 
 

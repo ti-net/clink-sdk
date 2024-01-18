@@ -5,6 +5,11 @@ import com.tinet.clink.core.utils.HttpMethodType;
 import com.tinet.clink.huanxin.PathEnum;
 import com.tinet.clink.huanxin.response.CreateAgentResponse;
 
+/**
+ *  创建坐席
+ * @author tian.jie
+ * @date 2024-01-18 11:32
+ */
 public class CreateAgentRequest extends AbstractRequestModel<CreateAgentResponse> {
 
 

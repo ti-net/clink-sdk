@@ -6,6 +6,12 @@ import com.tinet.clink.huanxin.PathEnum;
 import com.tinet.clink.huanxin.response.CreateQueueResponse;
 import com.tinet.clink.huanxin.response.UpdateQueueResponse;
 
+/**
+ * 更新队列
+ *
+ * @author tian.jie
+ * @date 2024-01-18 11:33
+ */
 public class UpdateQueueRequest extends AbstractRequestModel<UpdateQueueResponse> {
 
     /**

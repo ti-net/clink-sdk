@@ -2,19 +2,19 @@ package com.tinet.clink.huanxin.model;
 
 public class IMUserModel {
 
-    private String uuid;
+    private String uuid; //用户 ID。
 
-    private String type;
+    private String type; //用户类型
 
-    private Long created;
+    private Long created; //创建时间
 
-    private Long modified;
+    private Long modified; //修改时间
 
-    private String username;
+    private String username; //用户名
 
-    private boolean activated;
+    private boolean activated; //用户是否为活跃状态：
 
-    private String nickname;
+    private String nickname; //昵称
 
     public String getUuid() {
         return uuid;

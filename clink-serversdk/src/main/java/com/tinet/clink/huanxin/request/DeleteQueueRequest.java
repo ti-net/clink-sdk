@@ -5,6 +5,12 @@ import com.tinet.clink.core.utils.HttpMethodType;
 import com.tinet.clink.huanxin.PathEnum;
 import com.tinet.clink.huanxin.response.DeleteQueueResponse;
 
+/**
+ * 删除队列
+ *
+ * @author tian.jie
+ * @date 2024-01-18 11:33
+ */
 public class DeleteQueueRequest extends AbstractRequestModel<DeleteQueueResponse> {
 
 

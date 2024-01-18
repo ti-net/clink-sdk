@@ -6,6 +6,12 @@ import com.tinet.clink.huanxin.PathEnum;
 import com.tinet.clink.huanxin.response.ListAgentResponse;
 import com.tinet.clink.huanxin.response.ListQueueResponse;
 
+/**
+ * 查询队列列表
+ *
+ * @author tian.jie
+ * @date 2024-01-18 11:33
+ */
 public class ListQueueRequest extends AbstractRequestModel<ListQueueResponse> {
 
     private Integer page;

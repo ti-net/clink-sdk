@@ -8,6 +8,12 @@ import com.tinet.clink.huanxin.response.IMRegisterUserResponse;
 
 import java.util.List;
 
+/**
+ * IM 注册用户请求
+ *
+ * @author tian.jie
+ * @date 2024-01-18 11:33
+ */
 public class IMRegisterUserRequest extends AbstractRequestModel<IMRegisterUserResponse> {
 
     private List<IMRegisterUserModel> registerUserModels;

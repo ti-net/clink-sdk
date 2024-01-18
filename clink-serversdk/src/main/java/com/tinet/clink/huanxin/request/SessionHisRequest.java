@@ -8,6 +8,12 @@ import com.tinet.clink.huanxin.response.SessionHisResponse;
 
 import java.util.List;
 
+/**
+ * 查询历史会话
+ *
+ * @author tian.jie
+ * @date 2024-01-18 11:33
+ */
 public class SessionHisRequest extends AbstractRequestModel<SessionHisResponse> {
 
     /**

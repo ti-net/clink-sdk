@@ -9,6 +9,12 @@ import com.tinet.clink.huanxin.response.IMUserUpdatePwdResponse;
 
 import java.util.List;
 
+/**
+ * IM 更新用户
+ *
+ * @author tian.jie
+ * @date 2024-01-18 11:33
+ */
 public class IMUpdateUserPwdRequest extends AbstractRequestModel<IMUserUpdatePwdResponse> {
 
 
