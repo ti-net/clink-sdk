@@ -275,6 +275,11 @@ public enum PathEnum {
      * 查询AI对话转写记录
      */
     RobotRasr("cc/robot_rasr"),
+
+    /**
+     * 智能填单请求接口
+     */
+    IntelligentFillingInsight("cc/intelligent_filling_insight"),
     ;
     private String value;
 
