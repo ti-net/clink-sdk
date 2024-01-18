@@ -60,7 +60,7 @@ public class SessionHisModel {
         private Boolean fromAgentCallback	;//		会话类型 回呼：true 呼入：false
         private Boolean  transfered	;//		是否转接 是：true 不是：false
         private String visitorUserTags	;//		访客标签
-        private String enquiryTags	;//		满意度评价标签
+        private List<EnquiryTag> enquiryTags	;//		满意度评价标签
         private String chatMessages	;//		聊天消息
         private String lastChatMessage	;//		最后一条消息
 
@@ -307,11 +307,11 @@ public class SessionHisModel {
             this.visitorUserTags = visitorUserTags;
         }
 
-        public String getEnquiryTags() {
+        public List<EnquiryTag> getEnquiryTags() {
             return enquiryTags;
         }
 
-        public void setEnquiryTags(String enquiryTags) {
+        public void setEnquiryTags(List<EnquiryTag> enquiryTags) {
             this.enquiryTags = enquiryTags;
         }
 
@@ -472,6 +472,28 @@ public class SessionHisModel {
 
         public void setRegion(String region) {
             this.region = region;
+        }
+    }
+
+
+    public static class EnquiryTag {
+        private String appraiseTagId;
+        private String name;
+
+        public String getAppraiseTagId() {
+            return appraiseTagId;
+        }
+
+        public void setAppraiseTagId(String appraiseTagId) {
+            this.appraiseTagId = appraiseTagId;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
         }
     }
     public static class ServiceSessionEventHistory {
