@@ -23,7 +23,6 @@ public class IMUpdateUserPwdRequest extends AbstractRequestModel<IMUserUpdatePwd
     private String username;
 
 
-    private String appKey;
 
     public String getNewpassword() {
         return newpassword;
@@ -40,15 +39,6 @@ public class IMUpdateUserPwdRequest extends AbstractRequestModel<IMUserUpdatePwd
     public void setUsername(String username) {
         this.username = username;
         putQueryParameter("username",username);
-    }
-
-    public String getAppKey() {
-        return appKey;
-    }
-
-    public void setAppKey(String appKey) {
-        putQueryParameter("appKey",appKey);
-        this.appKey = appKey;
     }
 
     public IMUpdateUserPwdRequest() {

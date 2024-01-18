@@ -12,7 +12,6 @@ public class IMRegisterUserRequest extends AbstractRequestModel<IMRegisterUserRe
 
     private List<IMRegisterUserModel> registerUserModels;
 
-    private String appKey;
 
     public List<IMRegisterUserModel> getRegisterUserModels() {
         return registerUserModels;
@@ -26,14 +25,6 @@ public class IMRegisterUserRequest extends AbstractRequestModel<IMRegisterUserRe
         super(PathEnum.IM_REGISTER_USER.value(), HttpMethodType.POST);
     }
 
-    public String getAppKey() {
-        return appKey;
-    }
-
-    public void setAppKey(String appKey) {
-        putQueryParameter("appKey",appKey);
-        this.appKey = appKey;
-    }
 
     @Override
     public Class<IMRegisterUserResponse> getResponseClass() {
