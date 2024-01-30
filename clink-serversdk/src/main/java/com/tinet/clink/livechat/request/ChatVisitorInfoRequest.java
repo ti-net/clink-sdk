@@ -11,7 +11,9 @@ import com.tinet.clink.livechat.response.ChatVisitorInfoResponse;
  */
 public class ChatVisitorInfoRequest extends AbstractRequestModel<ChatVisitorInfoResponse> {
     private String visitorId;
+    @Deprecated
     private String accessId;
+    private String appId;
 
 
     public String getVisitorId() {
@@ -26,15 +28,28 @@ public class ChatVisitorInfoRequest extends AbstractRequestModel<ChatVisitorInfo
     }
 
     public String getAccessId() {
-        return accessId;
+        return appId;
     }
 
+    @Deprecated
     public void setAccessId(String accessId) {
-        this.accessId = accessId;
+        this.appId = accessId;
         if (accessId!=null){
-            putQueryParameter("accessId", accessId);
+            putQueryParameter("appId", accessId);
         }
     }
+
+    public String getAppId() {
+        return appId;
+    }
+
+    public void setAppId(String appId) {
+        this.appId = appId;
+        if (appId!=null){
+            putQueryParameter("appId", appId);
+        }
+    }
+
     public ChatVisitorInfoRequest() {
         super(PathEnum.ChatVisitorUnreadCount.value(), HttpMethodType.GET);
     }
@@ -49,6 +64,7 @@ public class ChatVisitorInfoRequest extends AbstractRequestModel<ChatVisitorInfo
         return "ChatVisitorInfoRequest{" +
                 "visitorId='" + visitorId + '\'' +
                 ", accessId='" + accessId + '\'' +
+                ", appId='" + appId + '\'' +
                 '}';
     }
 }
