@@ -155,6 +155,11 @@ public enum PathEnum {
     // 云手机axb绑定
     CloudNumberAxbBind("cc/cloud_number_axb_bind"),
 
+    ListCloudNumberCdrs("cc/list_cloud_number_cdrs"),
+    DescribeCloudNumberCdr("cc/describe_cloud_number_cdr"),
+    DescribeCloudNumberRecordFile("cc/describe_cloud_number_record_file"),
+    DownloadCloudNumberRecordFile("cc/download_cloud_number_record_file"),
+
 
     //----------------------------------------------↓呼叫中心-报表↓----------------------------------------------//
 
