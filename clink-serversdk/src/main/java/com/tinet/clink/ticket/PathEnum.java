@@ -19,8 +19,10 @@ public enum PathEnum {
     ListTicketCategory("ticket/list_ticket_category"),
 
     ListTicketWorkflow("ticket/list_ticket_workflow"),
-
+    // 创建工单
     SaveTicket("ticket/save_ticket"),
+    // 暂存工单
+    StagingTicket("ticket/staging_ticket"),
     // 更新工单-人工
     UpdateTicket("ticket/update_ticket"),
     // 催单
