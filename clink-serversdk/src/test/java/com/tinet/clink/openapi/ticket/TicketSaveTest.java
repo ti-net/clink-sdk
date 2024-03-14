@@ -6,11 +6,10 @@ import com.tinet.clink.core.client.Client;
 import com.tinet.clink.core.client.ClientConfiguration;
 import com.tinet.clink.openapi.AbstractTest;
 
-import com.tinet.clink.ticket.model.Field;
-import com.tinet.clink.ticket.model.Tag;
-import com.tinet.clink.ticket.model.TicketFormModel;
-import com.tinet.clink.ticket.model.TicketSaveModel;
+import com.tinet.clink.ticket.model.*;
+import com.tinet.clink.ticket.request.StagingTicketRequest;
 import com.tinet.clink.ticket.request.TicketSaveRequest;
+import com.tinet.clink.ticket.response.StagingTicketResponse;
 import com.tinet.clink.ticket.response.TicketSaveResponse;
 import org.junit.Test;
 
@@ -129,6 +128,81 @@ public class TicketSaveTest extends AbstractTest {
         ObjectMapper objectMapper = new ObjectMapper();
 //        System.out.println(objectMapper.writeValueAsString(ticketSaveModel));
         TicketSaveResponse ticketSaveResponse;
+
+        try {
+            ticketSaveResponse = client.getResponseModel(ticketSaveRequest);
+            System.out.println(objectMapper.writeValueAsString(ticketSaveResponse));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void stagingTicket() throws JsonProcessingException {
+
+
+        ClientConfiguration configuration = new ClientConfiguration(
+                "540446eaf6a1d5f5d05ffb14d088ea79",          // AccessKeyId
+                "1z2T635b489B6n4644C6");     // AccessKeySecret
+        configuration.setHost("clink2-openapi-dev.clink.cn");
+        configuration.setScheme("http");
+        Client client = new Client(configuration);
+
+        // 创建请求的request
+        StagingTicketRequest ticketSaveRequest = new StagingTicketRequest();
+
+        // 请求参数
+        TicketStagingModel ticketSaveModel = new TicketStagingModel();
+
+        ticketSaveModel.setCreatorCode(4);
+//        ticketSaveModel.setCreatorValue("48964");
+//        ticketSaveModel.setCreatorValue("17610031036");
+//        ticketSaveModel.setCreatorValue("wangli3");
+        ticketSaveModel.setCreatorValue("6666");
+
+        ticketSaveModel.setWorkflowId(2800);
+        ticketSaveModel.setClose(0);
+        ticketSaveModel.setCreateTime(new Date());
+        ticketSaveModel.setHandlerType(0);
+        ticketSaveModel.setHandlerId(48964);
+        ticketSaveModel.setLevel(3);
+        ticketSaveModel.setTopic("wangli测试暂存");
+//        ticketSaveModel.setCreatorId(156263);
+
+        // 需要保存的工单的表单对象
+        TicketFormModel ticketFormModel = new TicketFormModel();
+        ticketFormModel.setId(6232);
+        ticketFormModel.setName("wangli_form");
+        ticketSaveModel.setForm(ticketFormModel);
+
+
+//        Field[] customizeSystemFields = new Field[]{sysField1};
+//        ticketSaveModel.setCustomizeSystemFields(customizeSystemFields);
+
+        Tag tag = new Tag();
+        tag.setName("X1");
+        tag.setColor(10);
+        ticketSaveModel.setFocus(new Integer[]{});
+        ticketSaveModel.setTags(new Tag[]{tag});
+        ticketSaveModel.setRelateTicketId(new Integer[]{});
+        ticketSaveModel.setStateSelected("yuxr自定义状态");
+
+//        List<File> fileList = new ArrayList<>();
+//
+//        File file = new File("E:\\工单信息 - 副本.xlsx");
+//
+//        fileList.add(file);
+//
+//        Map<String, List<File>> fileMap = new HashMap<>();
+//
+//        fileMap.put("31075", fileList);
+        //将请求参数赋值到 request中
+        ticketSaveRequest.setModel(ticketSaveModel);
+//        ticketSaveRequest.setFileMap(fileMap);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+//        System.out.println(objectMapper.writeValueAsString(ticketSaveModel));
+        StagingTicketResponse ticketSaveResponse;
 
         try {
             ticketSaveResponse = client.getResponseModel(ticketSaveRequest);
