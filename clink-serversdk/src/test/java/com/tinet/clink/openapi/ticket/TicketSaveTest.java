@@ -28,8 +28,8 @@ public class TicketSaveTest extends AbstractTest {
 
 
         ClientConfiguration configuration = new ClientConfiguration(
-                "85cd43bc929ee1a8eae6faa066239b8a",          // AccessKeyId
-                "Et7GCR16765YC3T5i48V");     // AccessKeySecret
+                "******",          // AccessKeyId
+                "******");     // AccessKeySecret
         configuration.setHost("alb-01l5fw2u4lg0sajop3.cn-beijing.alb.aliyuncs.com");
         configuration.setScheme("http");
         Client client = new Client(configuration);
@@ -142,8 +142,8 @@ public class TicketSaveTest extends AbstractTest {
 
 
         ClientConfiguration configuration = new ClientConfiguration(
-                "540446eaf6a1d5f5d05ffb14d088ea79",          // AccessKeyId
-                "1z2T635b489B6n4644C6");     // AccessKeySecret
+                "******",          // AccessKeyId
+                "******");     // AccessKeySecret
         configuration.setHost("clink2-openapi-dev.clink.cn");
         configuration.setScheme("http");
         Client client = new Client(configuration);
