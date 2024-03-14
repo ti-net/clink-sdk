@@ -229,6 +229,11 @@ public enum PathEnum {
      * 工具条agentToken获取
      */
     wsAgentToken("cc/ws_agent_token"),
+    /**
+     * 工具条agent登录
+     */
+    wsAgentLogin("cc/ws_agent_login"),
+
 
     /**
      * 外呼任务创建
