@@ -118,7 +118,9 @@ public class Client {
             throw new ClientException("SDK", "URI 错误", e);
         }
         BasicHttpEntityEnclosingRequest httpRequest = new BasicHttpEntityEnclosingRequest(method, uri);
-        httpRequest.setHeader("X-Virtual-Env", "dev.wangli");
+        if (Objects.nonNull(configuration.getEnv()) && !Objects.equals("", configuration.getEnv())) {
+            httpRequest.setHeader("T-Env", configuration.getEnv());
+        }
         if (request.httpMethod().hasContent()) {
             if (request.isMultipartFormData()) {
                 MultipartEntityBuilder builder;
