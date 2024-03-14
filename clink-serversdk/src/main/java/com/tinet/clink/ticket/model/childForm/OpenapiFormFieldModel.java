@@ -43,6 +43,8 @@ public class OpenapiFormFieldModel {
      */
     private Integer cascade;
 
+    private String name;
+
     public Integer getType() {
         return type;
     }
@@ -97,5 +99,13 @@ public class OpenapiFormFieldModel {
 
     public void setCascade(Integer cascade) {
         this.cascade = cascade;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
