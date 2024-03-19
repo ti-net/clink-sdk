@@ -160,6 +160,12 @@ public enum PathEnum {
     DescribeCloudNumberRecordFile("cc/describe_cloud_number_record_file"),
     DownloadCloudNumberRecordFile("cc/download_cloud_number_record_file"),
 
+    // 智能助手
+    PushAssistantProcessRecommend("cc/push_assistant_process_recommend"),
+    PushAssistantKnownledges("cc/push_assistant_knownledges"),
+    PushAssistantRqcResult("cc/push_assistant_rqc_result"),
+    PushAssistantTag("cc/push_assistant_tag"),
+
 
     //----------------------------------------------↓呼叫中心-报表↓----------------------------------------------//
 
