@@ -45,6 +45,11 @@ public class OpenapiFormFieldModel {
 
     private String name;
 
+    /**
+     * 字段配置
+     */
+    private String property;
+
     public Integer getType() {
         return type;
     }
@@ -107,5 +112,13 @@ public class OpenapiFormFieldModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getProperty() {
+        return property;
+    }
+
+    public void setProperty(String property) {
+        this.property = property;
     }
 }
