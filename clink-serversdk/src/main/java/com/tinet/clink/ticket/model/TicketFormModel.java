@@ -1,6 +1,8 @@
 package com.tinet.clink.ticket.model;
 
 
+import com.tinet.clink.ticket.model.childForm.OpenapiFormModel;
+
 import java.util.List;
 
 /**
@@ -41,6 +43,11 @@ public class TicketFormModel {
      * 表单中的自定义字段集合
      */
     private List<Field> fields;
+
+    /**
+     * 子表单集合
+     */
+    List<OpenapiFormModel> childForms;
 
     public Integer getId() {
         return id;
@@ -88,5 +95,13 @@ public class TicketFormModel {
 
     public void setTaskId(String taskId) {
         this.taskId = taskId;
+    }
+
+    public List<OpenapiFormModel> getChildForms() {
+        return childForms;
+    }
+
+    public void setChildForms(List<OpenapiFormModel> childForms) {
+        this.childForms = childForms;
     }
 }
