@@ -73,6 +73,7 @@ public enum PathEnum {
     Dtmf("cc/dtmf"),
     Investigation("cc/investigation"),
     ListInvestigation("cc/list_investigation"),
+    BotTransfer("cc/bot_transfer"),
     // 呼叫管理
     Spy("cc/spy"),
     Threeway("threeway"),
