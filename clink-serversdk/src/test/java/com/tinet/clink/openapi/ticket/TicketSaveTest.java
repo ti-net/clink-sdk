@@ -28,9 +28,10 @@ public class TicketSaveTest extends AbstractTest {
 
 
         ClientConfiguration configuration = new ClientConfiguration(
-                "******",          // AccessKeyId
-                "******");     // AccessKeySecret
-        configuration.setHost("alb-01l5fw2u4lg0sajop3.cn-beijing.alb.aliyuncs.com");
+                "540446eaf6a1d5f5d05ffb14d088ea79",          // AccessKeyId
+                "1z2T635b489B6n4644C6");     // AccessKeySecret
+//        configuration.setHost("alb-01l5fw2u4lg0sajop3.cn-beijing.alb.aliyuncs.com");
+        configuration.setHost("clink2-openapi-dev.clink.cn");
         configuration.setScheme("http");
         Client client = new Client(configuration);
 
@@ -39,88 +40,88 @@ public class TicketSaveTest extends AbstractTest {
 
         // 请求参数
         TicketSaveModel ticketSaveModel = new TicketSaveModel();
-        ticketSaveModel.setWorkflowId(1934);
+        ticketSaveModel.setWorkflowId(2800);
         ticketSaveModel.setClose(0);
         ticketSaveModel.setCreateTime(new Date());
         ticketSaveModel.setHandlerType(0);
-        ticketSaveModel.setHandlerId(156263);
+        ticketSaveModel.setHandlerId(48964);
         ticketSaveModel.setLevel(3);
-        ticketSaveModel.setTopic("lize测接口创建工单");
-        ticketSaveModel.setCreatorId(156263);
+        ticketSaveModel.setTopic("wangli_11");
+        ticketSaveModel.setCreatorId(48964);
 
         // 需要保存的工单的表单对象
         TicketFormModel ticketFormModel = new TicketFormModel();
-        ticketFormModel.setId(5881);
-        ticketFormModel.setName("lize测接口");
+        ticketFormModel.setId(6232);
+        ticketFormModel.setName("wangli_form");
 
-//        // 需要保存的字段集合
-//        List<Field> fieldList = new ArrayList<>();
-//
-//        Field field = new Field();
-//        field.setId(83466);
-//        field.setName("lize测多行文本");
-//        field.setRequired(0);
-//        field.setType(5);
-//        field.setValue("1234");
-//
+        // 需要保存的字段集合
+        List<Field> fieldList = new ArrayList<>();
+
+        Field field = new Field();
+        field.setId(437613);
+        field.setName("wangli_文本1");
+        field.setRequired(0);
+        field.setType(1);
+        field.setValue("");
+
 //        Field field1 = new Field();
-//        field1.setId(85482);
-//        field1.setName("ize测单行文本");
+//        field1.setId(437614);
+//        field1.setName("wangli_文本2");
 //        field1.setRequired(0);
 //        field1.setType(1);
-//        field1.setValue("4321");
-//
-//        Field childField = new Field();
-//        childField.setId(4483);
-//        childField.setName("lize测试子表单");
-//        childField.setRequired(0);
-//        childField.setType(99);
-//        childField.setValue("lize子表单分类1");
-//
-//        List<Field> childFieldList = new ArrayList<>();
-//        Field field2 = new Field();
-//        field2.setId(27164);
-//        field2.setName("yy单选框");
-//        field2.setRequired(0);
-//        field2.setType(9);
-//        field2.setValue("1234");
-//        childFieldList.add(field2);
-//
-//        childField.setChildren(childFieldList);
-//
-//        fieldList.add(field);
+//        field1.setValue("wangli_文本2");
+
+        Field childField = new Field();
+        childField.setId(7352);
+        childField.setName("wangli_子表单");
+        childField.setRequired(0);
+        childField.setType(99);
+        childField.setValue("aa");
+
+        List<Field> childFieldList = new ArrayList<>();
+        Field field2 = new Field();
+        field2.setId(437613);
+        field2.setName("wangli_文本1");
+        field2.setRequired(0);
+        field2.setType(1);
+        field2.setValue("");
+        childFieldList.add(field2);
+
+        childField.setChildren(childFieldList);
+
+        fieldList.add(field);
 //        fieldList.add(field1);
-//        fieldList.add(childField);
+        fieldList.add(childField);
+
+        ticketFormModel.setFields(fieldList);
 //
-//        ticketFormModel.setFields(fieldList);
 //
-//
-//        Field sysField1 = new Field();
-//        sysField1.setId(86686);
-//        sysField1.setName("lize自定义属性");
-//        sysField1.setRequired(0);
-//        sysField1.setType(1);
-//        sysField1.setValue("4321");
+        Field sysField1 = new Field();
+        sysField1.setId(102997);
+        sysField1.setName("yuxr属性单行");
+        sysField1.setRequired(0);
+        sysField1.setType(1);
+        sysField1.setValue("yuxr属性单行");
         ticketSaveModel.setForm(ticketFormModel);
 
 
-//        Field[] customizeSystemFields = new Field[]{sysField1};
-//        ticketSaveModel.setCustomizeSystemFields(customizeSystemFields);
+        Field[] customizeSystemFields = new Field[]{sysField1};
+        ticketSaveModel.setCustomizeSystemFields(customizeSystemFields);
 
         ticketSaveModel.setFocus(new Integer[]{});
         ticketSaveModel.setTags(new Tag[]{});
         ticketSaveModel.setRelateTicketId(new Integer[]{});
         ticketSaveModel.setStateSelected("yuxr自定义状态");
 
-        List<File> fileList = new ArrayList<>();
-
-        File file = new File("E:\\工单信息 - 副本.xlsx");
-
-        fileList.add(file);
-
-        Map<String, List<File>> fileMap = new HashMap<>();
-
-        fileMap.put("31075", fileList);
+//        List<File> fileList = new ArrayList<>();
+//
+//        File file = new File("E:\\工单信息 - 副本.xlsx");
+//
+//        fileList.add(file);
+//
+//        Map<String, List<File>> fileMap = new HashMap<>();
+//
+//        fileMap.put("31075", fileList);
         //将请求参数赋值到 request中
         ticketSaveRequest.setModel(ticketSaveModel);
 //        ticketSaveRequest.setFileMap(fileMap);

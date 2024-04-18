@@ -91,6 +91,11 @@ public class TicketSaveModel {
      */
     private Field[] customizeSystemFields;
 
+    /**
+     * 不填充字段
+     */
+    private Integer notFillFields;
+
     public Integer getWorkflowId() {
         return workflowId;
     }
@@ -214,4 +219,12 @@ public class TicketSaveModel {
     public Field[] getCustomizeSystemFields() { return customizeSystemFields; }
 
     public void setCustomizeSystemFields(Field[] customizeSystemFields) { this.customizeSystemFields = customizeSystemFields; }
+
+    public Integer getNotFillFields() {
+        return notFillFields;
+    }
+
+    public void setNotFillFields(Integer notFillFields) {
+        this.notFillFields = notFillFields;
+    }
 }
