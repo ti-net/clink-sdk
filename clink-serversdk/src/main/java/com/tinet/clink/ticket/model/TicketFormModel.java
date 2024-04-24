@@ -1,7 +1,7 @@
 package com.tinet.clink.ticket.model;
 
 
-import com.tinet.clink.ticket.model.childForm.OpenapiFormModel;
+import com.tinet.clink.ticket.model.childForm.OpenapiFormModel4FormField;
 
 import java.util.List;
 
@@ -47,7 +47,7 @@ public class TicketFormModel {
     /**
      * 子表单集合
      */
-    List<OpenapiFormModel> childForms;
+    List<OpenapiFormModel4FormField> childForms;
 
     public Integer getId() {
         return id;
@@ -97,11 +97,11 @@ public class TicketFormModel {
         this.taskId = taskId;
     }
 
-    public List<OpenapiFormModel> getChildForms() {
+    public List<OpenapiFormModel4FormField> getChildForms() {
         return childForms;
     }
 
-    public void setChildForms(List<OpenapiFormModel> childForms) {
+    public void setChildForms(List<OpenapiFormModel4FormField> childForms) {
         this.childForms = childForms;
     }
 }
