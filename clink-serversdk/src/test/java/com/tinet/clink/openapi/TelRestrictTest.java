@@ -37,6 +37,8 @@ public class TelRestrictTest extends AbstractTest {
         request.setType(1);
         request.setRestrictType(1);
         request.setExpirationTime(new Date());
+        request.setEncrypt(1);
+        request.setEncryptType(1);
 
         CreateTelRestrictResponse responseModel = client.getResponseModel(request);
         System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(responseModel));
