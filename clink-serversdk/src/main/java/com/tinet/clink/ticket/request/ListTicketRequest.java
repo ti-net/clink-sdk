@@ -102,6 +102,16 @@ public class ListTicketRequest extends AbstractRequestModel<ListTicketResponse> 
     private String closeTimeEnd;
 
     /**
+     * 更新时间起
+     */
+    private String updateTimeStart;
+
+    /**
+     * 更新时间止
+     */
+    private String updateTimeEnd;
+
+    /**
      * 最近催单开始时间
      */
     private String lastReminderTimeStart;
@@ -448,6 +458,27 @@ public class ListTicketRequest extends AbstractRequestModel<ListTicketResponse> 
         }
     }
 
+    public String getUpdateTimeStart() {
+        return updateTimeStart;
+    }
+
+    public void setUpdateTimeStart(String updateTimeStart) {
+        this.updateTimeStart = updateTimeStart;
+        if (updateTimeStart != null) {
+            putQueryParameter("updateTimeStart", updateTimeStart);
+        }
+    }
+
+    public String getUpdateTimeEnd() {
+        return updateTimeEnd;
+    }
+
+    public void setUpdateTimeEnd(String updateTimeEnd) {
+        this.updateTimeEnd = updateTimeEnd;
+        if (updateTimeEnd != null) {
+            putQueryParameter("updateTimeEnd", updateTimeEnd);
+        }
+    }
 
     public ListTicketRequest() {
         super(PathEnum.ListTicket.value(), HttpMethodType.POST);
