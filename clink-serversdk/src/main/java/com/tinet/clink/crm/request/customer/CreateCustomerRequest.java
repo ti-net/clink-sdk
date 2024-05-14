@@ -72,6 +72,11 @@ public class CreateCustomerRequest extends AbstractRequestModel<CreateCustomerRe
      */
     private Integer source;
 
+    /**
+     * 客户标签
+     */
+    private Integer[] labelIds;
+
     public String getName() {
         return name;
     }
@@ -211,6 +216,14 @@ public class CreateCustomerRequest extends AbstractRequestModel<CreateCustomerRe
 
     public void setSource(Integer source) {
         this.source = source;
+    }
+
+    public Integer[] getLabelIds() {
+        return labelIds;
+    }
+
+    public void setLabelIds(Integer[] labelIds) {
+        this.labelIds = labelIds;
     }
 
     public CreateCustomerRequest() {
