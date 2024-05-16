@@ -6,13 +6,28 @@ import com.tinet.smartlink.openapi.response.sqc.DialogueSqcDetailsResponse;
 
 /**
  * 获取通话质检详情
+ *
  * @author 王大宝
  * @date 2019/9/4
  */
 public class DialogueSqcDetailsRequest extends BaseRequest<DialogueSqcDetailsResponse> {
 
+    private String id;
+
     private String uniqueId;
+
     private String userId;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+        if (id != null) {
+            putQueryParameter("id", id);
+        }
+    }
 
     public String getUniqueId() {
         return uniqueId;

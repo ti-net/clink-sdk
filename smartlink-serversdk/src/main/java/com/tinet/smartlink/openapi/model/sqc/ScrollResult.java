@@ -8,7 +8,13 @@ import java.io.Serializable;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ScrollResult implements Serializable {
+
     private static final long serialVersionUID = 1L;
+
+    private String id;
+
     private String userId;
+
     private String uniqueId;
+
 }
