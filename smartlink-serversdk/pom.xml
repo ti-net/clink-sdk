@@ -6,7 +6,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.ti-net</groupId>
   <artifactId>smartlink-serversdk</artifactId>
-  <version>2.70.0</version>
+  <version>2.72.0</version>
 
   <name>SmartLink Open API Java SDK</name>
   <description>SmartLink Open API Java SDK is used for simplify the development for smartlink open api access.</description>
