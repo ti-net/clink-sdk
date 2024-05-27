@@ -18,6 +18,10 @@ public class UpdateCustomerRequest extends AbstractRequestModel<UpdateCustomerRe
      */
     private Integer id;
 
+    /**
+     * 访客标识
+     */
+    private String visitorId;
 
     /**
      * 客户姓名
@@ -233,6 +237,14 @@ public class UpdateCustomerRequest extends AbstractRequestModel<UpdateCustomerRe
         if (renovate != null) {
             putBodyParameter("renovate", renovate);
         }
+    }
+
+    public String getVisitorId() {
+        return visitorId;
+    }
+
+    public void setVisitorId(String visitorId) {
+        this.visitorId = visitorId;
     }
 
     public UpdateCustomerRequest() {
