@@ -245,6 +245,10 @@ public class UpdateCustomerRequest extends AbstractRequestModel<UpdateCustomerRe
 
     public void setVisitorId(String visitorId) {
         this.visitorId = visitorId;
+
+        if (visitorId != null) {
+            putBodyParameter("visitorId", visitorId);
+        }
     }
 
     public UpdateCustomerRequest() {
