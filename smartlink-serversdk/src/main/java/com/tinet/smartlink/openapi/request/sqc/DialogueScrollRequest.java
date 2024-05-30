@@ -55,14 +55,14 @@ public class DialogueScrollRequest extends BaseRequest<ScrollResponse> {
         putBodyParameter("limit", limit);
     }
 
-    public void setChatTimeBegin(Date chatTimeBegin) {
-        this.channelTimeBegin = chatTimeBegin;
-        putBodyParameter("channelTimeBegin", chatTimeBegin);
+    public void setChannelTimeBegin(Date channelTimeBegin) {
+        this.channelTimeBegin = channelTimeBegin;
+        putBodyParameter("channelTimeBegin", channelTimeBegin);
     }
 
-    public void setChatTimeEnd(Date chatTimeEnd) {
-        this.channelTimeEnd = chatTimeEnd;
-        putBodyParameter("channelTimeEnd", chatTimeEnd);
+    public void setChannelTimeEnd(Date channelTimeEnd) {
+        this.channelTimeEnd = channelTimeEnd;
+        putBodyParameter("channelTimeEnd", channelTimeEnd);
     }
 
     public void setQcUpdateTimeBegin(Date qcUpdateTimeBegin) {
