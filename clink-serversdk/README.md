@@ -677,3 +677,10 @@ public class Test {
 4、 新增 呼叫中心-云手机-云手机通话记录-下载云手机通话录音文件
 5、 新增 呼叫中心-工具条token登录-agent登录接口
 ```
+### V 3.0.21
+
+```
+1、 新增 呼叫中心-设置-座席设置-新增座席 追加字段 参数：cloudNumberEnabled、cloudNumberModes
+2、 新增 呼叫中心-设置-座席设置-更新座席 追加字段 参数：cloudNumberEnabled、cloudNumberModes
+3、 新增 呼叫中心-设置-座席设置-查看座席 追加字段 返回值：cloudNumberEnabled、cloudNumberModes
+```
