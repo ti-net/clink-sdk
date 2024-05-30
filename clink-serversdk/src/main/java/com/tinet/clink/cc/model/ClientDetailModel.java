@@ -3,6 +3,7 @@ package com.tinet.clink.cc.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -130,6 +131,15 @@ public class ClientDetailModel {
      * 座席满意度自动执行，1：开启；0：关闭，默认开启
      */
     private Integer autoInvestigation;
+    /**
+     * 云号码外呼开关；0-关，1-开
+     */
+    private Integer cloudNumberEnabled;
+    /**
+     * 云号码模式 1-4 依次对应：工作号（实体卡）、工
+     * 作号+XB模式、AXB两端呼、RTC+PSTN外呼：
+     */
+    private Integer[] cloudNumberModes;
 
 
     public String getCno() {
@@ -316,6 +326,22 @@ public class ClientDetailModel {
         this.autoInvestigation = autoInvestigation;
     }
 
+    public Integer getCloudNumberEnabled() {
+        return cloudNumberEnabled;
+    }
+
+    public void setCloudNumberEnabled(Integer cloudNumberEnabled) {
+        this.cloudNumberEnabled = cloudNumberEnabled;
+    }
+
+    public Integer[] getCloudNumberModes() {
+        return cloudNumberModes;
+    }
+
+    public void setCloudNumberModes(Integer[] cloudNumberModes) {
+        this.cloudNumberModes = cloudNumberModes;
+    }
+
     @Override
     public String toString() {
         return "ClientDetailModel{" +
@@ -342,6 +368,8 @@ public class ClientDetailModel {
                 ", queues=" + queues +
                 ", crmId='" + crmId + '\'' +
                 ", autoInvestigation=" + autoInvestigation +
+                ", cloudNumberEnabled=" + cloudNumberEnabled +
+                ", cloudNumberModes=" + Arrays.toString(cloudNumberModes) +
                 '}';
     }
 }

@@ -1,7 +1,6 @@
 package com.tinet.clink.cc.request.client;
 
 
-
 import com.tinet.clink.cc.PathEnum;
 import com.tinet.clink.cc.model.ClidArea;
 import com.tinet.clink.cc.model.ClientPermission;
@@ -97,10 +96,10 @@ public class CreateClientRequest extends AbstractRequestModel<CreateClientRespon
 
     /**
      * 外显规则，
-     *
-     *
-     *（全部）1:按次轮选；2: 按天轮选。
-     *（智能外显）1:动态；2: 自定义
+     * <p>
+     * <p>
+     * （全部）1:按次轮选；2: 按天轮选。
+     * （智能外显）1:动态；2: 自定义
      */
     private Integer clidRule;
 
@@ -149,6 +148,16 @@ public class CreateClientRequest extends AbstractRequestModel<CreateClientRespon
      * 缺省动态外呼组id
      */
     private Integer dynamicTelGroupIdDefault;
+
+    /**
+     * 云号码外呼开关；0-关，1-开
+     */
+    private Integer cloudNumberEnabled;
+    /**
+     * 云号码模式 1-4 依次对应：工作号（实体卡）、工
+     * 作号+XB模式、AXB两端呼、RTC+PSTN外呼：
+     */
+    private Integer[] cloudNumberModes;
 
 
     public Integer getObClidDefaultType() {
@@ -423,6 +432,28 @@ public class CreateClientRequest extends AbstractRequestModel<CreateClientRespon
         this.cno = cno;
         if (cno != null) {
             putBodyParameter("cno", cno);
+        }
+    }
+
+    public Integer getCloudNumberEnabled() {
+        return cloudNumberEnabled;
+    }
+
+    public void setCloudNumberEnabled(Integer cloudNumberEnabled) {
+        this.cloudNumberEnabled = cloudNumberEnabled;
+        if (cloudNumberEnabled != null) {
+            putBodyParameter("cloudNumberEnabled", cloudNumberEnabled);
+        }
+    }
+
+    public Integer[] getCloudNumberModes() {
+        return cloudNumberModes;
+    }
+
+    public void setCloudNumberModes(Integer[] cloudNumberModes) {
+        this.cloudNumberModes = cloudNumberModes;
+        if (cloudNumberModes != null) {
+            putBodyParameter("cloudNumberModes", cloudNumberModes);
         }
     }
 

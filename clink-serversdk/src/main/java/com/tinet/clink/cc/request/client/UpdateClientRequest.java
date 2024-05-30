@@ -157,6 +157,16 @@ public class UpdateClientRequest extends AbstractRequestModel<UpdateClientRespon
      */
     private Integer dynamicTelGroupIdDefault;
 
+    /**
+     * 云号码外呼开关；0-关，1-开
+     */
+    private Integer cloudNumberEnabled;
+    /**
+     * 云号码模式 1-4 依次对应：工作号（实体卡）、工
+     * 作号+XB模式、AXB两端呼、RTC+PSTN外呼：
+     */
+    private Integer[] cloudNumberModes;
+
 
     public Integer getObClidDefaultType() {
         return obClidDefaultType;
@@ -443,6 +453,30 @@ public class UpdateClientRequest extends AbstractRequestModel<UpdateClientRespon
             putBodyParameter("permission", permission);
         }
     }
+
+
+    public Integer getCloudNumberEnabled() {
+        return cloudNumberEnabled;
+    }
+
+    public void setCloudNumberEnabled(Integer cloudNumberEnabled) {
+        this.cloudNumberEnabled = cloudNumberEnabled;
+        if (cloudNumberEnabled != null) {
+            putBodyParameter("cloudNumberEnabled", cloudNumberEnabled);
+        }
+    }
+
+    public Integer[] getCloudNumberModes() {
+        return cloudNumberModes;
+    }
+
+    public void setCloudNumberModes(Integer[] cloudNumberModes) {
+        this.cloudNumberModes = cloudNumberModes;
+        if (cloudNumberModes != null) {
+            putBodyParameter("cloudNumberModes", cloudNumberModes);
+        }
+    }
+
 
     public UpdateClientRequest() {
         super(PathEnum.UpdateClient.value(), HttpMethodType.POST);
