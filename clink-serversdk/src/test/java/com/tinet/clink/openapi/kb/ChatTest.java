@@ -24,9 +24,9 @@ public class ChatTest extends AbstractTest  {
     public void chatListConversations() {
 
         ClientConfiguration configuration = new ClientConfiguration(
-                "2d7fe04571cc95449b5267d57e334ab7",           // AccessKeyId
-                "456v5g3rdR57yc7H38hJ");     // AccessKeySecret
-        configuration.setHost("api-bj.clink.cn");
+                "ak",           // AccessKeyId
+                "sk");     // AccessKeySecret
+        configuration.setHost("host");
         configuration.setScheme("https");
         Client client = new Client(configuration);
 
@@ -50,9 +50,9 @@ public class ChatTest extends AbstractTest  {
     public void chatConversationRequest() {
 
         ClientConfiguration configuration = new ClientConfiguration(
-                "2d7fe04571cc95449b5267d57e334ab7",           // AccessKeyId
-                "456v5g3rdR57yc7H38hJ");     // AccessKeySecret
-        configuration.setHost("api-bj.clink.cn");
+                "ak",           // AccessKeyId
+                "sk");     // AccessKeySecret
+        configuration.setHost("host");
         configuration.setScheme("https");
         Client client = new Client(configuration);
 
@@ -78,9 +78,9 @@ public class ChatTest extends AbstractTest  {
     public void chatDescribeConversation() {
 
         ClientConfiguration configuration = new ClientConfiguration(
-                "2d7fe04571cc95449b5267d57e334ab7",           // AccessKeyId
-                "456v5g3rdR57yc7H38hJ");     // AccessKeySecret
-        configuration.setHost("api-bj.clink.cn");
+                "ak",           // AccessKeyId
+                "sk");     // AccessKeySecret
+        configuration.setHost("host");
         configuration.setScheme("https");
         Client client = new Client(configuration);
 
@@ -105,9 +105,9 @@ public class ChatTest extends AbstractTest  {
     public void chatUpdateConversationRequest() {
 
         ClientConfiguration configuration = new ClientConfiguration(
-                "2d7fe04571cc95449b5267d57e334ab7",           // AccessKeyId
-                "456v5g3rdR57yc7H38hJ");     // AccessKeySecret
-        configuration.setHost("api-bj.clink.cn");
+                "ak",           // AccessKeyId
+                "sk");     // AccessKeySecret
+        configuration.setHost("host");
         configuration.setScheme("https");
         Client client = new Client(configuration);
 
@@ -132,9 +132,9 @@ public class ChatTest extends AbstractTest  {
     public void chatDeleteConversationRequest() {
 
         ClientConfiguration configuration = new ClientConfiguration(
-                "2d7fe04571cc95449b5267d57e334ab7",           // AccessKeyId
-                "456v5g3rdR57yc7H38hJ");     // AccessKeySecret
-        configuration.setHost("api-bj.clink.cn");
+                "ak",           // AccessKeyId
+                "sk");     // AccessKeySecret
+        configuration.setHost("host");
         configuration.setScheme("https");
         Client client = new Client(configuration);
 
