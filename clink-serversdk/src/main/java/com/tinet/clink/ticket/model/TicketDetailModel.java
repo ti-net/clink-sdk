@@ -32,6 +32,16 @@ public class TicketDetailModel {
     private String workflowName;
 
     /**
+     * 模板类别id
+     */
+    private Integer workflowCategoryId;
+
+    /**
+     * 模板类别名称
+     */
+    private String workflowCategoryName;
+
+    /**
      * 主题
      */
     private String topic;
@@ -422,4 +432,20 @@ public class TicketDetailModel {
     public TicketSystemForm getSystemForm() { return systemForm; }
 
     public void setSystemForm(TicketSystemForm systemForm) { this.systemForm = systemForm; }
+
+    public Integer getWorkflowCategoryId() {
+        return workflowCategoryId;
+    }
+
+    public void setWorkflowCategoryId(Integer workflowCategoryId) {
+        this.workflowCategoryId = workflowCategoryId;
+    }
+
+    public String getWorkflowCategoryName() {
+        return workflowCategoryName;
+    }
+
+    public void setWorkflowCategoryName(String workflowCategoryName) {
+        this.workflowCategoryName = workflowCategoryName;
+    }
 }

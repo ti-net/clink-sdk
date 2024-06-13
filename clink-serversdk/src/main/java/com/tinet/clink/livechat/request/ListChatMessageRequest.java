@@ -12,6 +12,7 @@ import com.tinet.clink.livechat.response.ChatMessageResponse;
 public class ListChatMessageRequest extends AbstractRequestModel<ChatMessageResponse> {
 
     private String scrollId;
+    @Deprecated
     private String date;
     private Integer limit;
     private String mainUniqueId;
@@ -31,6 +32,7 @@ public class ListChatMessageRequest extends AbstractRequestModel<ChatMessageResp
         return date;
     }
 
+    @Deprecated
     public void setDate(String date) {
         this.date = date;
         if (date != null) {

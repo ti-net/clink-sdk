@@ -78,7 +78,7 @@
         
         
         self.extraInfo = [NSArray array];
-        [self.transportDetails registerNib:[UINib nibWithNibName:@"TOSKitClient.bundle/ICTransportDetailsTableCell" bundle:nil] forCellReuseIdentifier:[ICTransportDetailsTableCell className]];
+        [self.transportDetails registerNib:[UINib nibWithNibName:@"TOSClient.bundle/ICTransportDetailsTableCell" bundle:nil] forCellReuseIdentifier:[ICTransportDetailsTableCell className]];
         if (@available(iOS 15.0, *)) {
             self.transportDetails.sectionHeaderTopPadding = 0.f;
             [UITableView appearance].sectionHeaderTopPadding = 0.f;

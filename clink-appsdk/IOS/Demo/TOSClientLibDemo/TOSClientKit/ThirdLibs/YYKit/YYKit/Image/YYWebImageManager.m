@@ -13,6 +13,7 @@
 #import "YYImageCache.h"
 #import "YYWebImageOperation.h"
 #import "YYImageCoder.h"
+#import <TOSClientLib/TIMLibUtils.h>
 
 @implementation YYWebImageManager
 
@@ -41,11 +42,33 @@
     _cache = cache;
     _queue = queue;
     _timeout = 15.0;
+    
+    NSString * envString = [TIMLibUtils getEnvConfig];
+    /// 默认不是KT环境
+    BOOL isKT = NO;
+//    if ([TIYTKNetworkConfig.sharedConfig.baseUrl isEqualToString:@"https://clink2-chat-app-dev.clink.cn/"] && [envString isEqualToString:@"KTTestEnv"]) {
+//        isKT = YES;
+//    }
     if (YYImageWebPAvailable()) {
-        _headers = @{ @"Accept" : @"image/webp,image/*;q=0.8" };
+        if (isKT) {
+            _headers = @{ @"Accept" : @"image/webp,image/*;q=0.8" , @"X-Virtual-Env" : @"dev.chat"};
+        }
+        else {
+            _headers = @{ @"Accept" : @"image/webp,image/*;q=0.8"};
+        }
     } else {
-        _headers = @{ @"Accept" : @"image/*;q=0.8" };
+        if (isKT) {
+            _headers = @{ @"Accept" : @"image/*;q=0.8" , @"X-Virtual-Env" : @"dev.chat"};
+        }
+        else {
+            _headers = @{ @"Accept" : @"image/*;q=0.8" };
+        }
     }
+//    if (YYImageWebPAvailable()) {
+//        _headers = @{ @"Accept" : @"image/webp,image/*;q=0.8" };
+//    } else {
+//        _headers = @{ @"Accept" : @"image/*;q=0.8" };
+//    }
     return self;
 }
 

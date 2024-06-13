@@ -23,6 +23,8 @@ extern CGFloat const HEIGHT_CHATBOXVIEW;
 
 /************Event*************/
 
+extern NSString *const GXRouterEventSatisfactionPopupView;
+extern NSString *const GXRobotPopViewController;
 extern NSString *const GXHotIssueSendMessageEventName;
 extern NSString *const RouterEventGetSendTextMessage;
 extern NSString *const RouterEventGetSendTextMessageKnowledge;
@@ -69,6 +71,7 @@ extern NSString *const TypeCommodityCardDetails;
 extern NSString *const TypeSmallProgramCard;
 extern NSString *const TypeLogisticsCard;
 extern NSString *const TypeText;
+extern NSString *const TypeSatisfactionPopup;
 extern NSString *const TypeTextTag;
 extern NSString *const TypeRevoke;
 extern NSString *const TypeUnsupport;

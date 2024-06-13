@@ -33,6 +33,10 @@ public class ChatInvestigation {
      */
     private Integer invitationInitiator;
 
+    /**
+     * 解决状态 1:已解决、2：未解决、3：未评价
+     */
+    private Integer solve;
 
     public Integer getInvitationInitiator() {
         return invitationInitiator;
@@ -88,5 +92,13 @@ public class ChatInvestigation {
 
     public void setCreateTime(Long createTime) {
         this.createTime = createTime;
+    }
+
+    public Integer getSolve() {
+        return solve;
+    }
+
+    public void setSolve(Integer solve) {
+        this.solve = solve;
     }
 }

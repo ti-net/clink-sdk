@@ -2,6 +2,7 @@ package com.tinet.clink.openapi;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import com.tinet.clink.cc.model.ClidArea;
 import com.tinet.clink.cc.model.ClientDetailModel;
 import com.tinet.clink.cc.model.ClientObClidModel;
 import com.tinet.clink.cc.model.ClientPermission;
@@ -20,6 +21,7 @@ import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import java.util.ArrayList;
 
 /**
  * @author lizy
@@ -35,11 +37,27 @@ public class ClientTest extends AbstractTest{
         permission.setChat(1);
         clientsRequest.setPermission(permission);
 
-        clientsRequest.setCno("5877");
-        clientsRequest.setName("张彤");
+        clientsRequest.setCno("33333");
+        clientsRequest.setName("33333");
         clientsRequest.setAreaCode("010");
         clientsRequest.setPassword(AesUtil.encrypt("Aa123456",configuration.getAccessKeySecret()));
+        clientsRequest.setAssignType(1);
+        clientsRequest.setDynamicTelGroupName("wwd");
+
+        List<ClidArea> clidAreaList = new ArrayList<>();
+        ClidArea clidArea = new ClidArea();
+        clidArea.setAreaGroupName("zzces");
+        clidArea.setAssignType(1);
+        clidArea.setDynamicTelGroupName("bcy171");
+        clidAreaList.add(clidArea);
+        clientsRequest.setClidArea(clidAreaList);
+
         CreateClientResponse response = client.getResponseModel(clientsRequest);
+        try {
+            System.out.println(mapper.writeValueAsString(response));
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Test
@@ -48,13 +66,27 @@ public class ClientTest extends AbstractTest{
         ClientPermission permission = new ClientPermission();
         permission.setSms(0);
         permission.setChat(0);
-        updateClientRequest.setPermission(permission);
+//        updateClientRequest.setPermission(permission);
 
-        updateClientRequest.setCno("5877");
-        updateClientRequest.setName("张彤11");
-        updateClientRequest.setAreaCode("010");
-        updateClientRequest.setChatLimit(1);
-        updateClientRequest.setChatLimitNum(20);
+        updateClientRequest.setCno("33333333");
+//        updateClientRequest.setName("33333");
+//        updateClientRequest.setAreaCode("010");
+//        updateClientRequest.setChatLimit(1);
+//        updateClientRequest.setChatLimitNum(20);
+        updateClientRequest.setAssignType(1);
+//        updateClientRequest.setDynamicTelGroupName("bcy171");
+        updateClientRequest.setDynamicTelGroupName("wwd");
+
+        List<ClidArea> clidAreaList = new ArrayList<>();
+        ClidArea clidArea = new ClidArea();
+//        clidArea.setAreaGroupName("北京");
+        clidArea.setAreaGroupName("zzces");
+        clidArea.setAssignType(1);
+//        clidArea.setDynamicTelGroupName("wwd");
+        clidArea.setDynamicTelGroupName("bcy171");
+        clidAreaList.add(clidArea);
+        updateClientRequest.setClidArea(clidAreaList);
+
         UpdateClientResponse response = client.getResponseModel(updateClientRequest);
     }
 

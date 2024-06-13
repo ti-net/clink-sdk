@@ -128,7 +128,8 @@
         message.content = content;
     } else if ([type isEqualToString:TypeCustomFile]) {
         message.content = content;
-    } else if ([type isEqualToString:TypeInvestigation]) {
+    } else if ([type isEqualToString:TypeInvestigation] ||
+               [type isEqualToString:TypeSatisfactionPopup]) {
         message.content = content;
     } else if ([type isEqualToString:TypeSystem]) {
         message.content = content;

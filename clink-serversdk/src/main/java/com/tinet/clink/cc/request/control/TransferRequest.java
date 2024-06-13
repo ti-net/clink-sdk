@@ -34,6 +34,11 @@ public class TransferRequest extends AbstractRequestModel<TransferResponse> {
      */
     private Integer hold;
 
+    /**
+     * 自定义外显，咨询类型为0时生效，非必选
+     */
+    private String clid;
+
     public TransferRequest() {
         super(PathEnum.Transfer.value(), HttpMethodType.POST);
     }
@@ -79,6 +84,17 @@ public class TransferRequest extends AbstractRequestModel<TransferResponse> {
         this.hold = hold;
         if (hold != null) {
             putBodyParameter("hold", hold);
+        }
+    }
+
+    public String getClid() {
+        return clid;
+    }
+
+    public void setClid(String clid) {
+        this.clid = clid;
+        if (clid != null) {
+            putBodyParameter("clid", clid);
         }
     }
 

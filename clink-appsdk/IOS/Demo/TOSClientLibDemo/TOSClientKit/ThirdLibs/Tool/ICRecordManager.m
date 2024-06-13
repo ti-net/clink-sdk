@@ -43,12 +43,6 @@
     return _instance;
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) { // 去设置界面，开启相机访问权限
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
-    }
-}
-
 
 // here also need to limit recording time
 - (void)startRecordingWithFileName:(NSString *)fileName completion:(void(^)(NSError *error))completion
@@ -59,12 +53,7 @@
         if (self.microPhoneStatus == AVAuthorizationStatusNotDetermined) {
             return;
         }
-        NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-        NSString *app_Name = [infoDictionary objectForKey:@"CFBundleDisplayName"];
-        NSString *str = [NSString stringWithFormat:@"无法录制声音 请在iPhone的“设置>%@”中打开麦克风权限",app_Name];
-
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:str message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"前往设置", nil];
-        [alert show];
+        
         if (completion) {
             error = [NSError errorWithDomain:NSLocalizedString(@"error", @"没权限") code:122 userInfo:nil];
             completion(error);

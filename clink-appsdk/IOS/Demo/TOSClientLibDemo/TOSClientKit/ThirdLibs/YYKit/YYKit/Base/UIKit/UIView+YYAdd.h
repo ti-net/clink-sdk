@@ -65,7 +65,7 @@ NS_ASSUME_NONNULL_BEGIN
  Converts a point from the receiver's coordinate system to that of the specified view or window.
  
  @param point A point specified in the local coordinate system (bounds) of the receiver.
- @param view  The view or window into whose coordinate system point is to be converted. 
+ @param view  The view or window into whose coordinate system point is to be converted.
     If view is nil, this method instead converts to window base coordinates.
  @return The point converted to the coordinate system of view.
  */
@@ -75,7 +75,7 @@ NS_ASSUME_NONNULL_BEGIN
  Converts a point from the coordinate system of a given view or window to that of the receiver.
  
  @param point A point specified in the local coordinate system (bounds) of view.
- @param view  The view or window with point in its coordinate system. 
+ @param view  The view or window with point in its coordinate system.
     If view is nil, this method instead converts from window base coordinates.
  @return The point converted to the local coordinate system (bounds) of the receiver.
  */

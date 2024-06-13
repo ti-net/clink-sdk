@@ -1,0 +1,6 @@
+framework module TOSClientKit {
+  umbrella header "TOSClientKit.h"
+
+  export *
+  module * { export * }
+}

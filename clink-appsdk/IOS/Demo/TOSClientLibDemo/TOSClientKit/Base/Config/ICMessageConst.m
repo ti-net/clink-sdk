@@ -27,6 +27,7 @@ NSString *const GXRouterEventCombinationVoiceTapEventName   = @"GXRouterEventCom
 NSString *const GXRouterEventCombinationFileTapEventName   = @"GXRouterEventCombinationFileTapEventName";
 
 NSString *const GXRouterEventImageTapEventName   = @"GXRouterEventImageTapEventName";
+NSString *const GXRobotPopViewController   = @"GXRobotPopViewController";
 NSString *const GXRobotCombinationHotIssueCellRefreshEventName   = @"GXRobotCombinationHotIssueCellRefreshEventName";
 NSString *const GXRouterEventImageRejectedTapEventName   = @"GXRouterEventImageRejectedTapEventName";
 NSString *const GXRouterEventImageApprovedTapEventName   = @"GXRouterEventImageApprovedTapEventName";
@@ -67,7 +68,8 @@ NSString *const TinetRouterClickEventPhone            = @"TinetRouterClickEventP
 NSString *const TinetRouterSenderCommodityCardEventUrl                 = @"TinetRouterSenderCommodityCardEventUrl";
 
 NSString *const TinetRouterClickCommodityCardEvent                 = @"TinetRouterClickCommodityCardEvent";
-
+NSString *const GXRouterEventSatisfactionPopupView             =    @"GXRouterEventSatisfactionPopupView";
+NSString *const TypeSatisfactionPopup        = @"SatisfactionPopup";
 
 
 

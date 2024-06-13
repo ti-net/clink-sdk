@@ -477,7 +477,7 @@
 - (void) textViewDidBeginEditing:(UITextView *)textView
 {
     //    ICChatBoxStatus lastStatus = self.status;
-    self.status = ICChatBoxStatusShowKeyboard; 
+    self.status = ICChatBoxStatusShowKeyboard;
 }
 
 - (void)textViewDidChange:(UITextView *)textView
@@ -1002,7 +1002,7 @@
 //    [self setHeight:(height + HEIGHT_TABBAR - HEIGHT_TEXTVIEW)];
     [self setBackgroundColor:[TOSKitCustomInfo shareCustomInfo].ChatBox_backGroundColor];
 //    if (bResume) {
-//        
+//
 //    }
 //    [self mas_TIMupdateTIMConstraints:^(TIMMASConstraintMaker *make) {
 //        make.height.mas_TIMequalTo(height + barHeight + HEIGHT_TABBAR - HEIGHT_TEXTVIEW);

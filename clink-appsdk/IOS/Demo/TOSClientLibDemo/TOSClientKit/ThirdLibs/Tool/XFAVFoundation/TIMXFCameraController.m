@@ -96,7 +96,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 
 + (instancetype)defaultCameraController
 {
-    TIMXFCameraController *cameraController = [[TIMXFCameraController alloc] initWithNibName:@"TOSKitClient.bundle/TIMXFCameraController" bundle:nil];
+    TIMXFCameraController *cameraController = [[TIMXFCameraController alloc] initWithNibName:@"TOSClient.bundle/TIMXFCameraController" bundle:nil];
     
     return cameraController;
 }
@@ -1680,32 +1680,35 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     [TIMXFPhotoLibraryManager requestALAssetsLibraryAuthorizationWithCompletion:^(Boolean isAuth) {
         
         if (!isAuth) {
-            NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-            
-            NSString *appName = [infoDictionary objectForKey:@"CFBundleDisplayName"];
-            if (appName == nil) {
-                appName = @"APP";
-            }
-            NSString *message = [NSString stringWithFormat:@"允许%@访问你的相册？", appName];
-            
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"警告" message:message preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                [weakSelf dismissViewControllerAnimated:YES completion:nil];
-            }];
-            
-            UIAlertAction *setAction = [UIAlertAction actionWithTitle:@"设置" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-                if ([[UIApplication sharedApplication] canOpenURL:url]) {
-                    [[UIApplication sharedApplication] openURL:url];
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+                
+                NSString *appName = [infoDictionary objectForKey:@"CFBundleDisplayName"];
+                if (appName == nil) {
+                    appName = @"APP";
                 }
-                [weakSelf dismissViewControllerAnimated:YES completion:nil];
-            }];
-            
-            [alertController addAction:okAction];
-            [alertController addAction:setAction];
-            
-            [weakSelf presentViewController:alertController animated:YES completion:nil];
+                NSString *message = [NSString stringWithFormat:@"允许%@访问你的相册？", appName];
+                
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"警告" message:message preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    [strongSelf dismissViewControllerAnimated:YES completion:nil];
+                }];
+                
+                UIAlertAction *setAction = [UIAlertAction actionWithTitle:@"设置" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+                    if ([[UIApplication sharedApplication] canOpenURL:url]) {
+                        [[UIApplication sharedApplication] openURL:url];
+                    }
+                    [strongSelf dismissViewControllerAnimated:YES completion:nil];
+                }];
+                
+                [alertController addAction:okAction];
+                [alertController addAction:setAction];
+                
+                [strongSelf presentViewController:alertController animated:YES completion:nil];
+            });
         }
     }];
 }

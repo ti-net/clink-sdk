@@ -241,7 +241,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly) unsigned char unsignedCharValue;
 @property (readonly) short shortValue;
 @property (readonly) unsigned short unsignedShortValue;
-@property (readonly) unsigned int unsignedIntValue;
+@property (readonly) unsigned int tosUnsignedIntValue;
 @property (readonly) long longValue;
 @property (readonly) unsigned long unsignedLongValue;
 @property (readonly) unsigned long long unsignedLongLongValue;
@@ -285,7 +285,7 @@ NS_ASSUME_NONNULL_BEGIN
     range: The range in receiver. If the range.length is 1, the character is in BMP;
         otherwise (range.length is 2) the character is in none-BMP Plane and stored
         by a surrogate pair in the receiver.
-    stop: A reference to a Boolean value that the block can use to stop the enumeration 
+    stop: A reference to a Boolean value that the block can use to stop the enumeration
         by setting *stop = YES; it should not touch *stop otherwise.
  */
 - (void)enumerateUTF32CharInRange:(NSRange)range usingBlock:(void (^)(UTF32Char char32, NSRange range, BOOL *stop))block;
@@ -375,7 +375,7 @@ NS_ASSUME_NONNULL_BEGIN
  Try to parse this string and returns an `NSNumber`.
  @return Returns an `NSNumber` if parse succeed, or nil if an error occurs.
  */
-- (nullable NSNumber *)numberValue;
+- (nullable NSNumber *)tosNumberValue;
 
 /**
  Returns an NSData using UTF-8 encoding.

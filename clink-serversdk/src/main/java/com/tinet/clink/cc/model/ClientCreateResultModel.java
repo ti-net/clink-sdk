@@ -132,6 +132,16 @@ public class ClientCreateResultModel {
      */
     private Integer smsPermission;
 
+    /**
+     * 云号码外呼开关；0-关，1-开
+     */
+    private Integer cloudNumberEnabled;
+    /**
+     * 云号码模式 1-4 依次对应：工作号（实体卡）、工
+     * 作号+XB模式、AXB两端呼、RTC+PSTN外呼：
+     */
+    private Integer[] cloudNumberModes;
+
     public String getCno() {
         return cno;
     }
@@ -322,5 +332,21 @@ public class ClientCreateResultModel {
 
     public void setSmsPermission(Integer smsPermission) {
         this.smsPermission = smsPermission;
+    }
+
+    public Integer getCloudNumberEnabled() {
+        return cloudNumberEnabled;
+    }
+
+    public void setCloudNumberEnabled(Integer cloudNumberEnabled) {
+        this.cloudNumberEnabled = cloudNumberEnabled;
+    }
+
+    public Integer[] getCloudNumberModes() {
+        return cloudNumberModes;
+    }
+
+    public void setCloudNumberModes(Integer[] cloudNumberModes) {
+        this.cloudNumberModes = cloudNumberModes;
     }
 }

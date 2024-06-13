@@ -32,6 +32,9 @@
 #import <TOSClientLib/TIMLibUtils.h>
 #import <TOSClientKit/TOSKitCustomInfo.h>
 
+#import "XZEmotion.h"
+#import "ICFaceManager.h"
+
 #define APP_WIDTH ([UIScreen mainScreen].bounds.size.width)
 #define APP_HEIGHT ([UIScreen mainScreen].bounds.size.height)
 
@@ -303,7 +306,7 @@
             _bubbleViewF = CGRectMake(0, 0, APP_WIDTH, 112.f);
         } else if ([model.message.type isEqualToString:TypeRevoke]) { // 撤回消息
             
-            [self revokeMessageFrameWithModel:model bubblePadding:bubblePadding cellMinW:cellMinW topViewH:topViewH headToBubble:headToBubble topTimeViewH:topTimeViewH arrowWidth:arrowWidth topViewToBubbleH:2+20 cellMargin:cellMargin timeShowLength:timeShowLength];
+            [self revokeMessageFrameWithModel:model bubblePadding:bubblePadding cellMinW:cellMinW topViewH:topViewH headToBubble:headToBubble topTimeViewH:topTimeViewH arrowWidth:arrowWidth topViewToBubbleH:2 cellMargin:cellMargin timeShowLength:timeShowLength];
         } else if ([model.message.type isEqualToString:TypeEventQueue]) { // 排队消息
             
             [self queueMessageFrameWithModel:model bubblePadding:bubblePadding cellMinW:cellMinW topViewH:topViewH headToBubble:headToBubble topTimeViewH:topTimeViewH arrowWidth:arrowWidth topViewToBubbleH:2+20 cellMargin:cellMargin timeShowLength:timeShowLength];
@@ -349,7 +352,7 @@
                     CGSize topViewSize    = CGSizeMake(cellMinW+bubblePadding*2, topViewH);
                     _bubbleViewF          = CGRectMake(CGRectGetMinX(_headImageViewF) - headToBubble - bubbleSize.width, cellMargin+topViewH+topViewToBubbleH+topTimeViewH+sendNickNameToBubbleSpacing, bubbleSize.width, bubbleSize.height);
                     CGFloat x             = CGRectGetMinX(_bubbleViewF)+bubblePadding;
-                    _topViewF             = CGRectMake(CGRectGetMinX(_headImageViewF) - timeShowLength , cellMargin+topTimeViewH,topViewSize.width,topViewSize.height); 
+                    _topViewF             = CGRectMake(CGRectGetMinX(_headImageViewF) - timeShowLength , cellMargin+topTimeViewH,topViewSize.width,topViewSize.height);
                     _chatLabelF           = CGRectMake(x, CGRectGetMinY(_bubbleViewF) + (bubbleSize.height -chateLabelSize.height) / 2, chateLabelSize.width, chateLabelSize.height);
                 } else {
                     CGSize chateLabelSize = CGSizeMake(240.f, 113.f);
@@ -595,6 +598,13 @@
                         
                         if ([TIMLibUtils isTextTypeLabel:obj.type]) {
                             
+                            if ([obj.type isEqualToString:@"a"] ||
+                                [obj.type isEqualToString:@"knowledge"]) {
+                                
+                            } else {
+                                obj.attributedString = [self transferMessageString:obj.content?:@"" font:[TOSKitCustomInfo shareCustomInfo].chatMessage_tosRobotText_font foreColor:[TOSKitCustomInfo shareCustomInfo].receiveText_Color lineHeight:[TOSKitCustomInfo shareCustomInfo].chatMessage_tosRobotText_font.lineHeight];
+                            }
+                            
                             NSMutableArray *fontDic = [NSMutableArray array];
                             [obj.subElements enumerateObjectsUsingBlock:^(RichTextMessage * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                                 if ([obj.type isEqualToString:@"span"] &&
@@ -705,9 +715,11 @@
 //                    CGFloat titleTotalHeight = [obj.text?:@"" contentHeightWithFont:[UIFont fontWithName:@"PingFangSC-Medium" size:16.f] width:titleWidth];
                     CGFloat titleTotalHeight = [obj.text?:@"" sizeWithMaxWidth:chatLabelMax andFont:TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_titleFont].height;
                     
+                    obj.refreshBtnSize = [TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_showRefreshTitle sizeWithMaxWidth:chatLabelMax andFont:TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_showRefreshTitleFont];;
+                    
                     CGFloat titleHeight = titleTotalHeight >= 24.f ? titleTotalHeight : 24.f;
                     
-                    _hotIssueTitleF = CGRectMake(0, 12.f, titleWidth, titleHeight);
+                    _hotIssueTitleF = CGRectMake(0, 0.f, titleWidth, titleHeight);
                     
                     chateLabelSize.height += _hotIssueTitleF.size.height;
                     
@@ -803,13 +815,18 @@
                                    [obj.data isKindOfClass:[NSArray class]] &&
                                    obj.data.count > 0) {
                             __block CGFloat segmentHeight = 29.0f;
+                            __block CGFloat newSegmentHeight = 29.0f;
                             [obj.data enumerateObjectsUsingBlock:^(CombinationDataModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                                 if (idx == 0) {
                                     segmentHeight = [obj.name sizeWithMaxWidth:chatLabelMax andFont:TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_segmentFont].height;
+                                    
+                                    newSegmentHeight = [obj.name sizeWithMaxWidth:chateLabelSize.width andFont:TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_segmentFont].height;
+                                    
                                     * stop = YES;
                                 }
                             }];
                             chateLabelSize.height += MAX(segmentHeight, 29.0);//segmentC 固定高度 29.f;
+                            obj.segmentHeight = MAX(newSegmentHeight, 29.0);
 //                            chateLabelSize.height += 29.f;//segmentC 固定高度 29.f;
                             CombinationDataModel *dataObj = obj.data[obj.selectData?:0];
                             
@@ -940,6 +957,13 @@
             [richModels enumerateObjectsUsingBlock:^(RichTextMessage * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 
                 if ([TIMLibUtils isTextTypeLabel:obj.type]) {
+                    
+                    if ([obj.type isEqualToString:@"a"] ||
+                        [obj.type isEqualToString:@"knowledge"]) {
+                        
+                    } else {
+                        obj.attributedString = [self transferMessageString:obj.content?:@"" font:[TOSKitCustomInfo shareCustomInfo].chatMessage_tosRobotText_font foreColor:[TOSKitCustomInfo shareCustomInfo].receiveText_Color lineHeight:[TOSKitCustomInfo shareCustomInfo].chatMessage_tosRobotText_font.lineHeight];
+                    }
                     
                     NSMutableArray *fontDic = [NSMutableArray array];
                     [obj.subElements enumerateObjectsUsingBlock:^(RichTextMessage * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -1276,7 +1300,7 @@
             _smallProgram_copyBtnF = CGRectMake(chateLabelSize.width + bubblePadding * 2 + arrowWidth - 65.f, CGRectGetMaxY(_smallProgram_lineF) + 4.f, 55.f, 18.f);
             
             
-            chateLabelSize.height = CGRectGetMaxY(_smallProgram_copyBtnF);            
+            chateLabelSize.height = CGRectGetMaxY(_smallProgram_copyBtnF);
             CGSize topViewSize    = CGSizeMake(cellMinW+bubblePadding*2, topViewH);
             CGSize bubbleSize = CGSizeMake(chateLabelSize.width + bubblePadding * 2 + arrowWidth, chateLabelSize.height + 4.f);
             
@@ -1542,6 +1566,18 @@
             CGFloat x = CGRectGetMinX(_bubbleViewF) + bubblePadding + arrowWidth;
             CGFloat customPadding = (bubbleSize.height -htmlWebSize.height) / 2;
             _custContentF = CGRectMake(x, CGRectGetMinY(_bubbleViewF) + customPadding, htmlWebSize.width,200);
+        } else if ([model.message.type isEqualToString:TypeSatisfactionPopup]) { // 满意度评价底部弹框版本
+            //            CGSize chateLabelSize = [model.message.content sizeWithMaxWidth:chatLabelMax andFont:MessageFont];
+            CGSize chateLabelSize = [@"请对我本次服务进行满意度评价" sizeWithMaxWidth:chatLabelMax andFont:[TOSKitCustomInfo shareCustomInfo].chatMessage_tosRobotText_font];
+            chateLabelSize.width += 2.f;
+            CGSize topViewSize    = CGSizeMake(cellMinW+bubblePadding*2, topViewH);
+            CGSize bubbleSize = CGSizeMake(chateLabelSize.width + bubblePadding * 2 + arrowWidth, chateLabelSize.height + bubblePadding * 2 + 44.f);
+            
+            _bubbleViewF  = CGRectMake(CGRectGetMaxX(_headImageViewF) + headToBubble, cellMargin+topViewH+topViewToBubbleH+topTimeViewH+receiveNickNameToBubbleSpacing, bubbleSize.width, bubbleSize.height);
+            
+            CGFloat x     = CGRectGetMinX(_bubbleViewF) + bubblePadding + arrowWidth;
+            _topViewF     = CGRectMake(CGRectGetMinX(_bubbleViewF), cellMargin+topTimeViewH, topViewSize.width, topViewSize.height);
+            _chatLabelF   = CGRectMake(x, CGRectGetMinY(_bubbleViewF) + bubblePadding, chateLabelSize.width, chateLabelSize.height);
         } else if ([model.message.type isEqualToString:TypeInvestigation]){ // 满意度评价
             
             CGSize contentSize = CGSizeMake(APP_WIDTH - 16.f*2.f, 110.f);   //基础宽高，包含评价等级高度
@@ -1798,6 +1834,132 @@
     content.textFont = [UIFont fontWithName:@"PingFangSC-Regular" size:12.f];
     content.textColor = TOSHexColor(0xFFFFFF);
     return content;
+}
+
+- (NSMutableAttributedString *)transferMessageString:(NSString *)message
+                                                font:(UIFont *)font
+                                           foreColor:(UIColor *)fColor
+                                          lineHeight:(CGFloat)lineHeight {
+    
+    __weak typeof(self) weadSelf = self;
+    NSMutableAttributedString *attributeStr = [[NSMutableAttributedString alloc] initWithData:[message dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType} documentAttributes:nil error:nil];
+//    attributeStr.lineBreakMode = NSLineBreakByCharWrapping;
+    attributeStr.lineBreakMode = NSLineBreakByWordWrapping;
+    NSMutableDictionary <NSString *, NSString *>*linkDic = [NSMutableDictionary dictionary];
+    [attributeStr enumerateAttribute:NSLinkAttributeName inRange:NSMakeRange(0, attributeStr.length) options:(NSAttributedStringEnumerationReverse) usingBlock:^(id  _Nullable value, NSRange range, BOOL * _Nonnull stop) {
+        
+        if (value) {
+            [linkDic setObject:[NSString stringWithFormat:@"%lu,%lu",(unsigned long)range.location,(unsigned long)range.length] forKey:value];
+        }
+    }];
+    
+    // 表情的规则
+    NSString *emotionPattern = @"(\\[[a-zA-Z0-9\\/\\u4e00-\\u9fa5]+\\])";
+    // @的规则
+//    NSString *atPattern = @"@[0-9a-zA-Z\\u4e00-\\u9fa5-_]+";
+    // #话题#的规则
+//    NSString *topicPattern = @"#[0-9a-zA-Z\\u4e00-\\u9fa5]+#";
+    // 订单号的规则
+    NSString *orderNumberPattern = @"([a-zA-Z0-9_]{5,})";
+    
+    // url链接的规则
+    NSString *urlPattern = @"(((http[s]{0,1}|ftp)://[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)|(www.[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)|(((http[s]{0,1}|ftp)://|)((?:(?:25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d)))\\.){3}(?:25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d))))(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?))";
+     
+//    NSString *urlPattern = @"(<a[a-zA-Z0-9\\s:/%=><&\\?\\-~_\\$#+\\.,;\"']*(</a>))|([a-zA-Z0-9_]{5,})";
+    
+    NSString *phoneNumber = @"(\\d{3}-\\d{8}|\\d{4}-\\d{7}|\\d{11})";
+    
+//    NSString *pattern = [NSString stringWithFormat:@"%@",emotionPattern];
+    NSString *pattern = [NSString stringWithFormat:@"%@|%@|%@|%@", urlPattern, emotionPattern, phoneNumber, orderNumberPattern];
+    
+    NSError *error    = nil;
+    //pattern
+    NSRegularExpression *expression = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionCaseInsensitive error:&error];
+    if (!expression) {
+        return attributeStr;
+    }
+    [attributeStr addAttribute:NSForegroundColorAttributeName value:fColor range:NSMakeRange(0,attributeStr.length)]; //设置字体颜色
+    [attributeStr addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, attributeStr.length)];
+    
+    [linkDic enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, NSString * _Nonnull obj, BOOL * _Nonnull stop) {
+        
+        NSArray <NSString *>*rangeArray = [obj componentsSeparatedByString:@","];
+        NSRange range = NSMakeRange((rangeArray[0]).integerValue,(rangeArray[1]).integerValue);
+        [attributeStr setTextHighlightRange:range
+                                color:TOSHexColor(0x4385FF)
+                      backgroundColor:[UIColor colorWithWhite:0.000 alpha:0.220]
+                            tapAction:^(UIView *containerView, NSAttributedString *text, NSRange range, CGRect rect){
+            
+        }];
+    }];
+    
+    NSArray *resultArray = [expression matchesInString:attributeStr.string options:0 range:NSMakeRange(0, attributeStr.string.length)];
+    NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity:resultArray.count];
+    for (NSTextCheckingResult *match in resultArray) {
+        NSRange range    = match.range;
+        NSString *subStr = [attributeStr.string substringWithRange:range];
+        if ([subStr hasPrefix:@"http"] || [subStr hasPrefix:@"www"] || [subStr hasPrefix:@"ftp"]) {   //链接
+            
+            [attributeStr setTextHighlightRange:range
+                                    color:TOSHexColor(0x4385FF)
+                          backgroundColor:[UIColor colorWithWhite:0.000 alpha:0.220]
+                                tapAction:^(UIView *containerView, NSAttributedString *text, NSRange range, CGRect rect){
+                
+                
+            }];
+        } else if ([subStr hasPrefix:@"["] && [subStr hasSuffix:@"]"]) {    //表情
+            
+            NSArray *faceArr = [ICFaceManager customEmotion];
+            for (XZEmotion *face in faceArr) {
+                if ([face.face_name isEqualToString:subStr]) {
+                    
+                    UIImage *image = [[UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,face.face_name]] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
+                    image = [UIImage imageWithCGImage:image.CGImage scale:[UIScreen mainScreen].scale orientation:UIImageOrientationUp];
+                    
+                    
+                    NSMutableAttributedString *attachText = [NSMutableAttributedString attachmentStringWithContent:image contentMode:UIViewContentModeScaleAspectFit attachmentSize:CGSizeMake(1.f*lineHeight, 1.f*lineHeight) alignToFont:font alignment:YYTextVerticalAlignmentCenter];
+                    
+                    [attachText addAttribute:NSKernAttributeName value:@(100) range:NSMakeRange(0, attachText.string.length)];
+                    
+                    NSMutableDictionary *imagDic   = [NSMutableDictionary dictionaryWithCapacity:2];
+                    [imagDic setObject:attachText forKey:@"image"];
+                    [imagDic setObject:[NSValue valueWithRange:range] forKey:@"range"];
+                    
+                    [mutableArray addObject:imagDic];
+                }
+            }
+        } else {
+            
+            NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"[a-zA-Z_]+" options:NSRegularExpressionCaseInsensitive error:nil];
+            NSArray *matches = [regex matchesInString:subStr options:NSMatchingReportProgress range:NSMakeRange(0, [subStr length])];
+            
+            if (!matches || matches.count == 0) { //手机号
+                
+                [attributeStr setTextHighlightRange:range
+                                        color:TOSHexColor(0x4385FF)
+                              backgroundColor:[UIColor colorWithWhite:0.000 alpha:0.220]
+                                    tapAction:^(UIView *containerView, NSAttributedString *text, NSRange range, CGRect rect){
+                    
+                    
+                }];
+            } else {   //订单号
+                
+                [attributeStr setTextHighlightRange:range
+                                        color:TOSHexColor(0x4385FF)
+                              backgroundColor:[UIColor colorWithWhite:0.000 alpha:0.220]
+                                    tapAction:^(UIView *containerView, NSAttributedString *text, NSRange range, CGRect rect){
+                    
+                }];
+            }
+        }
+    }
+    for (int i =(int) mutableArray.count - 1; i >= 0; i --) {
+        NSRange range;
+        [mutableArray[i][@"range"] getValue:&range];
+        [attributeStr replaceCharactersInRange:range withAttributedString:mutableArray[i][@"image"]];
+    }
+    attributeStr.font = font;
+    return attributeStr;
 }
 
 @end

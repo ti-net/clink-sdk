@@ -18,7 +18,7 @@ YYSYNTH_DUMMY_CLASS(NSNumber_YYAdd)
 
 @implementation NSNumber (YYAdd)
 
-+ (NSNumber *)numberWithString:(NSString *)string {
++ (NSNumber *)tosNumberWithString:(NSString *)string {
     NSString *str = [[string stringByTrim] lowercaseString];
     if (!str || !str.length) {
         return nil;

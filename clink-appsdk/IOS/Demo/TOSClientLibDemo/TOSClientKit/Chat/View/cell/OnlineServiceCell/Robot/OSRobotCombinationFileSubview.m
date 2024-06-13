@@ -66,7 +66,7 @@
 }
 
 - (void)tapAction:(UITapGestureRecognizer *)sender {
-    [self routerEventWithName:GXRouterEventCombinationFileTapEventName 
+    [self routerEventWithName:GXRouterEventCombinationFileTapEventName
                      userInfo:@{@"urlPath"   : self.fileUrl,
                                 }];
 }
@@ -285,28 +285,6 @@
 // 点击预览窗口的“Done”(完成)按钮时调用
 - (void)documentInteractionControllerDidEndPreview:(UIDocumentInteractionController *)_controller {
     self.documentController = nil;
-}
-
-- (UIViewController *)getCurrentViewController {
-    UIWindow *window = [[UIApplication sharedApplication].delegate window];
-    UIViewController *topViewController = [window rootViewController];
-    while (true) {
-        if (topViewController.presentedViewController) {
-            topViewController = topViewController.presentedViewController;
-        }
-        else if ([topViewController isKindOfClass:[UINavigationController class]] && [(UINavigationController*)topViewController topViewController]) {
-            
-            topViewController = [(UINavigationController *)topViewController topViewController];
-        }
-        else if ([topViewController isKindOfClass:[UITabBarController class]]) {
-            
-            UITabBarController *tab = (UITabBarController *)topViewController;
-            topViewController = tab.selectedViewController;
-        } else {
-            break;
-        }
-    }
-    return topViewController;
 }
 
 /// 判断文件是否存在

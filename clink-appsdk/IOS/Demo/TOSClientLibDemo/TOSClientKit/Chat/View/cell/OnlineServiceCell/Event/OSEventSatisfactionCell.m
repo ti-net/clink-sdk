@@ -16,8 +16,6 @@
 #import "kitUtils.h"
 #import "TIMConstants.h"
 
-#import <TOSClientLib/OnlineRequestManager.h>
-
 #import <TOSClientLib/TOSGetInvestigationInfoModel.h>
 
 #import "TIMMessageModel.h"
@@ -211,8 +209,11 @@
 
     @WeakObj(self);
     [[OnlineRequestManager sharedCustomerManager] submitInvestigationUniqueId:extraModel.uniqueId?:@""
-                                                                      options:@[dic]
-                                                                      Success:^{
+                                             mainUniqueId:extraModel.mainUniqueId?:@""
+                                                  options:@[dic]
+                                                    solve:@""
+                                                   remark:@""
+                                                  Success:^{
         @StrongObj(self)
         TOSSatisfactionStatusModel *extraModel = [TOSSatisfactionStatusModel yy_modelWithJSON:self.tempModelFrame.model.message.extra];
         

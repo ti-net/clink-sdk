@@ -46,7 +46,14 @@ public enum PathEnum {
     ChatClientLogout("livechat/chat_client_logout"),
     ChatQueueAgentStatus("livechat/chat_queue_status"),
     // 在线客服 - 获取访客未读消息数
-    ChatVisitorUnreadCount("livechat/chat_visitor_unread_count"),;
+    ChatVisitorUnreadCount("livechat/chat_visitor_unread_count"),
+
+    // 在线客服-配置修改-网页渠道
+    ChatWebSettingUpdate("livechat/update_chat_web_setting"),
+
+    // 在线客服-配置复制-网页渠道
+    ChatWebSettingCopy("livechat/copy_chat_web_setting"),
+    ;
     private String value;
 
     PathEnum(String value) {

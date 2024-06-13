@@ -24,6 +24,12 @@ public class GetTicketDetailRequest extends AbstractRequestModel<GetTicketDetail
      */
     private String externalId;
 
+    /**
+     * forms中是否包含保存、存草稿表单信息
+     *      1: 包含   0/null: 不包含
+     */
+    private Integer includeSaveForm;
+
     public String getExternalId() { return externalId; }
 
     public void setExternalId(String externalId) {
@@ -41,6 +47,17 @@ public class GetTicketDetailRequest extends AbstractRequestModel<GetTicketDetail
         this.id = id;
         if (id != null) {
             putQueryParameter("id", id);
+        }
+    }
+
+    public Integer getIncludeSaveForm() {
+        return includeSaveForm;
+    }
+
+    public void setIncludeSaveForm(Integer includeSaveForm) {
+        this.includeSaveForm = includeSaveForm;
+        if (includeSaveForm != null) {
+            putQueryParameter("includeSaveForm", includeSaveForm);
         }
     }
 
