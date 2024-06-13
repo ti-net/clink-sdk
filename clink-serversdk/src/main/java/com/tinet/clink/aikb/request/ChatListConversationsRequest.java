@@ -1,7 +1,7 @@
-package com.tinet.clink.kb.request;
+package com.tinet.clink.aikb.request;
 
-import com.tinet.clink.kb.PathEnum;
-import com.tinet.clink.kb.response.ChatListConversationsResponse;
+import com.tinet.clink.aikb.PathEnum;
+import com.tinet.clink.aikb.response.ChatListConversationsResponse;
 import com.tinet.clink.core.request.AbstractRequestModel;
 import com.tinet.clink.core.utils.HttpMethodType;
 

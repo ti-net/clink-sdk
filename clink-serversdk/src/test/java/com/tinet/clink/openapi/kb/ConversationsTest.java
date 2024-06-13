@@ -1,22 +1,18 @@
 package com.tinet.clink.openapi.kb;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.tinet.clink.aikb.request.*;
+import com.tinet.clink.aikb.response.*;
 import com.tinet.clink.core.client.Client;
 import com.tinet.clink.core.client.ClientConfiguration;
-import com.tinet.clink.kb.request.*;
-import com.tinet.clink.kb.response.*;
 import com.tinet.clink.openapi.AbstractTest;
-import com.tinet.clink.ticket.request.ListTicketRequest;
-import com.tinet.clink.ticket.response.ListTicketResponse;
 import org.junit.Test;
-
-import java.util.HashMap;
 
 /**
  * @author zhangpc
  * @since 2024/06/05
  */
-public class ChatTest extends AbstractTest  {
+public class ConversationsTest extends AbstractTest  {
 
 
 

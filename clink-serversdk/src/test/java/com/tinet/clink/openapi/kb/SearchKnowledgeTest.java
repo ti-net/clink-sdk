@@ -3,10 +3,8 @@ package com.tinet.clink.openapi.kb;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tinet.clink.core.client.Client;
 import com.tinet.clink.core.client.ClientConfiguration;
-import com.tinet.clink.kb.request.ChatUpdateConversationRequest;
-import com.tinet.clink.kb.request.SearchKnowledgeOnOpenRequest;
-import com.tinet.clink.kb.response.ChatUpdateConversationResponse;
-import com.tinet.clink.kb.response.SearchKnowledgeOnOpenResponse;
+import com.tinet.clink.aikb.request.SearchKnowledgeOnOpenRequest;
+import com.tinet.clink.aikb.response.SearchKnowledgeOnOpenResponse;
 import com.tinet.clink.openapi.AbstractTest;
 import org.junit.Test;
 

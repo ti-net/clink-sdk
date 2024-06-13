@@ -1,4 +1,4 @@
-package com.tinet.clink.kb.response;
+package com.tinet.clink.aikb.response;
 
 import com.tinet.clink.core.response.ResponseModel;
 

@@ -1,4 +1,4 @@
-package com.tinet.clink.kb.model;
+package com.tinet.clink.aikb.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

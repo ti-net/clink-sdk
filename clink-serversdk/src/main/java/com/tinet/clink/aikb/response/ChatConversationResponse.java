@@ -1,6 +1,6 @@
-package com.tinet.clink.kb.response;
+package com.tinet.clink.aikb.response;
 
-import com.tinet.clink.kb.model.ChatQaResponseModel;
+import com.tinet.clink.aikb.model.ChatQaResponseModel;
 import com.tinet.clink.core.response.ResponseModel;
 
 /**

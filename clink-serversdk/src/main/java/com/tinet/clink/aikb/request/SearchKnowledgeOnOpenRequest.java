@@ -1,11 +1,10 @@
-package com.tinet.clink.kb.request;
+package com.tinet.clink.aikb.request;
 
 import com.tinet.clink.core.request.AbstractRequestModel;
 import com.tinet.clink.core.utils.HttpMethodType;
-import com.tinet.clink.kb.PathEnum;
+import com.tinet.clink.aikb.PathEnum;
 import com.tinet.clink.kb.model.SearchKnowledgeOnOpenModel;
-import com.tinet.clink.kb.response.ChatConversationResponse;
-import com.tinet.clink.kb.response.SearchKnowledgeOnOpenResponse;
+import com.tinet.clink.aikb.response.SearchKnowledgeOnOpenResponse;
 
 import java.util.Set;
 

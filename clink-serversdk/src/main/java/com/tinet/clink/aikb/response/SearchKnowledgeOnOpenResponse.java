@@ -1,7 +1,6 @@
-package com.tinet.clink.kb.response;
+package com.tinet.clink.aikb.response;
 
 import com.tinet.clink.core.response.ResponseModel;
-import com.tinet.clink.kb.model.ChatQaResponseModel;
 import com.tinet.clink.kb.model.SearchKnowledgeOnOpenModel;
 
 import java.util.List;
