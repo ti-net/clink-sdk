@@ -134,7 +134,7 @@ public class ClientTest extends AbstractTest{
     @Test
     public void describeClient() throws ServerException, ClientException, JsonProcessingException {
         DescribeClientRequest describeClientRequest = new DescribeClientRequest();
-        describeClientRequest.setCno("0611");
+        describeClientRequest.setCno("19970522");
         DescribeClientResponse response = client.getResponseModel(describeClientRequest);
 
         ClientDetailModel client =  response.getClient();

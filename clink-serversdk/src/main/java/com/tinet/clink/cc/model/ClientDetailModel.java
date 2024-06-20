@@ -57,6 +57,21 @@ public class ClientDetailModel {
     private Integer status;
 
     /**
+     * 呼入整理类型，1队列，2座席
+     */
+    private Integer ibWrapupType;
+
+    /**
+     * 呼入整理时长，当呼入整理类型为队列时生效
+     */
+    private Integer ibWrapupTime;
+
+    /**
+     * 座席整理时间 呼入与外呼整理时间使用一个字段
+     */
+    private Integer wrapupTime;
+
+    /**
      * 号码隐藏类型，0不隐藏 1全局。
      */
     private Integer hiddenTel;
@@ -141,6 +156,10 @@ public class ClientDetailModel {
      */
     private Integer[] cloudNumberModes;
 
+    /**
+     * 座席服务地区
+     */
+    private String[] serveArea;
 
     public String getCno() {
         return cno;
@@ -342,6 +361,38 @@ public class ClientDetailModel {
         this.cloudNumberModes = cloudNumberModes;
     }
 
+    public Integer getIbWrapupType() {
+        return ibWrapupType;
+    }
+
+    public void setIbWrapupType(Integer ibWrapupType) {
+        this.ibWrapupType = ibWrapupType;
+    }
+
+    public Integer getIbWrapupTime() {
+        return ibWrapupTime;
+    }
+
+    public void setIbWrapupTime(Integer ibWrapupTime) {
+        this.ibWrapupTime = ibWrapupTime;
+    }
+
+    public Integer getWrapupTime() {
+        return wrapupTime;
+    }
+
+    public void setWrapupTime(Integer wrapupTime) {
+        this.wrapupTime = wrapupTime;
+    }
+
+    public String[] getServeArea() {
+        return serveArea;
+    }
+
+    public void setServeArea(String[] serveArea) {
+        this.serveArea = serveArea;
+    }
+
     @Override
     public String toString() {
         return "ClientDetailModel{" +
@@ -370,6 +421,10 @@ public class ClientDetailModel {
                 ", autoInvestigation=" + autoInvestigation +
                 ", cloudNumberEnabled=" + cloudNumberEnabled +
                 ", cloudNumberModes=" + Arrays.toString(cloudNumberModes) +
+                ", ibWrapupType=" + ibWrapupType +
+                ", ibWrapupTime=" + ibWrapupTime +
+                ", wrapupTime=" + wrapupTime +
+                ", serveArea=" + Arrays.toString(serveArea) +
                 '}';
     }
 }
