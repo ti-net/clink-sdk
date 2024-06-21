@@ -24,6 +24,9 @@ public enum PathEnum {
     //查询客户资料
     QueryCustomer("crm/query_customer"),
 
+    //更新客户资料关联
+    UpdateCustomerRelevancy("crm/update_customer_relevancy"),
+
 
     //查询业务记录的自定义字段
     ListBusinessField("crm/list_business_customize_field"),
