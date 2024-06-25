@@ -13,7 +13,10 @@ public enum PathEnum {
     ChatDeleteConversation("aikb/delete_conversation"),
     SearchKnowledgeOnOpen("aikb/search_knowledge_on_open"),
     DescribeFileMediaUrl("aikb/describe_file_media_url"),
-    DescribeFaqMediaUrl("aikb/describe_faq_media_url")
+    DescribeFaqMediaUrl("aikb/describe_faq_media_url"),
+    CreateDirectory("aikb/create_directory"),
+    CreateFaq("aikb/create_faq"),
+    PushChatSession("aikb/push_chat_session")
 
     ;
 
