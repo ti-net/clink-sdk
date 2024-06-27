@@ -1,7 +1,7 @@
 package com.tinet.clink.aikb.response;
 
 import com.tinet.clink.core.response.ResponseModel;
-import com.tinet.clink.kb.model.SearchKnowledgeOnOpenModel;
+import com.tinet.clink.aikb.model.SearchKnowledgeOnOpenModel;
 
 import java.util.List;
 

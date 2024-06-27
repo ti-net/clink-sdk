@@ -6,7 +6,7 @@ import com.tinet.clink.core.client.ClientConfiguration;
 import com.tinet.clink.core.response.ResponseModel;
 import com.tinet.clink.aikb.request.DescribeFaqMediaUrlRequest;
 import com.tinet.clink.aikb.request.DescribeFileMediaUrlRequest;
-import com.tinet.clink.kb.response.DescribeFaqMediaUrlResponse;
+import com.tinet.clink.aikb.response.DescribeFaqMediaUrlResponse;
 import com.tinet.clink.openapi.AbstractTest;
 import org.junit.Test;
 

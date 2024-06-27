@@ -3,7 +3,7 @@ package com.tinet.clink.aikb.request;
 import com.tinet.clink.core.request.AbstractRequestModel;
 import com.tinet.clink.core.utils.HttpMethodType;
 import com.tinet.clink.aikb.PathEnum;
-import com.tinet.clink.kb.response.DescribeFaqMediaUrlResponse;
+import com.tinet.clink.aikb.response.DescribeFaqMediaUrlResponse;
 
 /**
  * @author zhangpc

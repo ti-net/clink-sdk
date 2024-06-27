@@ -1,9 +1,7 @@
-package com.tinet.clink.kb.model;
+package com.tinet.clink.aikb.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import java.util.Date;
 import java.util.List;
 
 /**
