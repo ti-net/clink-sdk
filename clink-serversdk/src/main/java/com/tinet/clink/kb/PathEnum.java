@@ -13,6 +13,7 @@ public enum PathEnum {
     ListArticles("kb/list_articles"),
     ListRepositories("kb/list_repositories"),
     ListDirectories("kb/list_directories"),
+
     //-------------------知识库API--------
 
     //-------------------机器人知识库API--------

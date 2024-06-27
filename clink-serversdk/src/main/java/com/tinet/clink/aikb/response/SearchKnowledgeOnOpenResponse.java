@@ -1,0 +1,23 @@
+package com.tinet.clink.aikb.response;
+
+import com.tinet.clink.core.response.ResponseModel;
+import com.tinet.clink.aikb.model.SearchKnowledgeOnOpenModel;
+
+import java.util.List;
+
+/**
+ * @author zhangpc
+ * @since 2024/06/05
+ */
+public class SearchKnowledgeOnOpenResponse extends ResponseModel {
+
+    private List<SearchKnowledgeOnOpenModel> result;
+
+    public List<SearchKnowledgeOnOpenModel> getResult() {
+        return result;
+    }
+
+    public void setResult(List<SearchKnowledgeOnOpenModel> result) {
+        this.result = result;
+    }
+}
