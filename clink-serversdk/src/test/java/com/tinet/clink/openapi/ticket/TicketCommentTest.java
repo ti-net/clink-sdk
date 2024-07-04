@@ -21,10 +21,10 @@ public class TicketCommentTest extends AbstractTest {
     public void ticketComment(){
         // 创建访问服务的client实例并初始化
         ClientConfiguration configuration = new ClientConfiguration(
-                "babc37aa470a92102016186b1cb79a82",          // AccessKeyId
-                "vtq672M5Y48aI3728m14");     // AccessKeySecret
-        configuration.setHost("127.0.0.1");
-        configuration.setPort(8111);
+                "c470fcc6f352e4fe56ce416a263711c1",          // AccessKeyId
+                "JTq5O462Au735874rax4");     // AccessKeySecret
+        configuration.setHost("api-bj-test0.clink.cn");
+        configuration.setPort(80);
         configuration.setScheme("http");
 
         Client client = new Client(configuration);
@@ -33,12 +33,12 @@ public class TicketCommentTest extends AbstractTest {
         TicketCommentRequest ticketCommentRequest = new TicketCommentRequest();
         // 请求参数
         TicketCommentModel ticketCommentModel = new TicketCommentModel();
-        ticketCommentModel.setId(1773804);
-        ticketCommentModel.setContent("content22222");
-        ticketCommentModel.setCommentatorId("linyang3");
+        ticketCommentModel.setId(45930);
+        ticketCommentModel.setContent("content222221");
+        ticketCommentModel.setCommentatorId("linyang-test0-1");
         ticketCommentModel.setCommentatorIdType(4);
-        ticketCommentModel.setStateId("827");
-        ticketCommentModel.setStateIdType(1);
+        ticketCommentModel.setStateId("ly待接单测试状态");
+        ticketCommentModel.setStateIdType(2);
 
         // 附件信息
         List<File> fileList = new ArrayList<>();
