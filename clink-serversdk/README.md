@@ -684,3 +684,9 @@ public class Test {
 2、 新增 呼叫中心-设置-座席设置-更新座席 追加字段 参数：cloudNumberEnabled、cloudNumberModes
 3、 新增 呼叫中心-设置-座席设置-查看座席 追加字段 返回值：cloudNumberEnabled、cloudNumberModes
 ```
+
+### V 3.0.24
+
+```
+AgentStatusDetailModel 座席状态监控详情补充字段
+```
