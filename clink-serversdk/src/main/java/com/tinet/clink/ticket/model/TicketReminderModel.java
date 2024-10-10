@@ -1,5 +1,7 @@
 package com.tinet.clink.ticket.model;
 
+import com.tinet.clink.ticket.UserIdType;
+
 /**
  * 工单催办model
  *
@@ -12,6 +14,8 @@ public class TicketReminderModel {
      * 催单员工id
      */
     private Integer userId;
+
+    private Integer userIdType = UserIdType.USER_ID.getCode();
 
     /**
      * 催单员工名
@@ -97,5 +101,13 @@ public class TicketReminderModel {
 
     public void setCustomId(String customId) {
         this.customId = customId;
+    }
+
+    public Integer getUserIdType() {
+        return userIdType;
+    }
+
+    public void setUserIdType(Integer userIdType) {
+        this.userIdType = userIdType;
     }
 }

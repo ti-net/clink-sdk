@@ -31,7 +31,7 @@ public class TicketCommentModel {
 
     /**
      * 评论人id类型
-     * 1:id 2:电话 3:员工号 4:用户名  默认为id
+     * 1:id 2:电话 3:员工号 4:用户名 5 ssoid 默认为id
      */
     private Integer commentatorIdType = 1;
 

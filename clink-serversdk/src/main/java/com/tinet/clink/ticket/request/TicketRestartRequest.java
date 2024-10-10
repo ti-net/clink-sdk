@@ -3,6 +3,7 @@ package com.tinet.clink.ticket.request;
 import com.tinet.clink.core.request.AbstractRequestModel;
 import com.tinet.clink.core.utils.HttpMethodType;
 import com.tinet.clink.ticket.PathEnum;
+import com.tinet.clink.ticket.UserIdType;
 import com.tinet.clink.ticket.response.TicketRestartResponse;
 
 /**
@@ -28,6 +29,8 @@ public class TicketRestartRequest extends AbstractRequestModel<TicketRestartResp
      */
     private Integer handlerId;
 
+    private Integer handlerIdType = UserIdType.USER_ID.getCode();
+
     /**
      * 处理人工号
      */
@@ -47,6 +50,8 @@ public class TicketRestartRequest extends AbstractRequestModel<TicketRestartResp
      * 重启后处理人Id
      */
     private Integer afterRestartHandlerId;
+
+    private Integer afterRestartHandlerIdType = UserIdType.USER_ID.getCode();
 
     /**
      * 重启后处理人工号
@@ -154,6 +159,28 @@ public class TicketRestartRequest extends AbstractRequestModel<TicketRestartResp
         this.afterRestartHandlerUserName = afterRestartHandlerUserName;
         if (afterRestartHandlerUserName != null) {
             putQueryParameter("afterRestartHandlerUserName", afterRestartHandlerUserName);
+        }
+    }
+
+    public Integer getAfterRestartHandlerIdType() {
+        return afterRestartHandlerIdType;
+    }
+
+    public void setAfterRestartHandlerIdType(Integer afterRestartHandlerIdType) {
+        this.afterRestartHandlerIdType = afterRestartHandlerIdType;
+        if (afterRestartHandlerIdType != null) {
+            putQueryParameter("afterRestartHandlerIdType", afterRestartHandlerIdType);
+        }
+    }
+
+    public Integer getHandlerIdType() {
+        return handlerIdType;
+    }
+
+    public void setHandlerIdType(Integer handlerIdType) {
+        this.handlerIdType = handlerIdType;
+        if (handlerIdType != null) {
+            putQueryParameter("handlerIdType", handlerIdType);
         }
     }
 
