@@ -53,6 +53,9 @@ public enum PathEnum {
 
     // 在线客服-配置复制-网页渠道
     ChatWebSettingCopy("livechat/copy_chat_web_setting"),
+
+    //在线客服 - 座席工作考勤报表
+    StatChatClientAttendance("livechat/stat_chat_client_attendance"),
     ;
     private String value;
 

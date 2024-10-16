@@ -4,7 +4,7 @@ import com.tinet.clink.core.utils.HttpMethodType;
 import com.tinet.clink.livechat.PathEnum;
 import com.tinet.clink.livechat.model.ChatWindowsSetting;
 import com.tinet.clink.livechat.response.ChatWebSettingUpdateResponse;
-import com.tinet.clink.ticket.request.stat.AbstractStatRequest;
+import com.tinet.clink.livechat.request.stat.AbstractStatRequest;
 
 /**
  * 网页渠道配置修改请求对象
