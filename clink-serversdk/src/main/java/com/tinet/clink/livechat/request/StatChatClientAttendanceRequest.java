@@ -1,14 +1,16 @@
-package com.tinet.clink.openapi.request.chat;
+package com.tinet.clink.livechat.request;
 
-import com.tinet.clink.openapi.PathEnum;
-import com.tinet.clink.openapi.request.stat.AbstractStatRequest;
-import com.tinet.clink.openapi.response.chat.StatChatClientAttendanceResponse;
-import com.tinet.clink.openapi.utils.HttpMethodType;
+import com.tinet.clink.core.utils.HttpMethodType;
+import com.tinet.clink.livechat.PathEnum;
+import com.tinet.clink.livechat.request.stat.AbstractStatRequest;
+import com.tinet.clink.livechat.response.StatChatClientAttendanceResponse;
+
 
 /**
  * 在线客服-座席工作考勤报表 Request
+ *
+ * @author lj
  */
-@Deprecated
 public class StatChatClientAttendanceRequest extends AbstractStatRequest<StatChatClientAttendanceResponse> {
 
     /**
@@ -71,9 +73,6 @@ public class StatChatClientAttendanceRequest extends AbstractStatRequest<StatCha
         this.cnos = cnos;
         if (cnos != null) {
             putQueryParameter("cnos", cnos);
-//            for (int i = 0; i < cnos.length; i++) {
-//                putQueryParameter("cnos[" + i + "]", cnos[i]);
-//            }
         }
 
     }

@@ -3,11 +3,8 @@ package com.tinet.clink.openapi.chat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tinet.clink.core.client.Client;
 import com.tinet.clink.core.client.ClientConfiguration;
-import com.tinet.clink.livechat.model.ChatWindowsSetting;
 import com.tinet.clink.livechat.request.ChatWebSettingCopyRequest;
-import com.tinet.clink.livechat.request.ChatWebSettingUpdateRequest;
 import com.tinet.clink.livechat.response.ChatWebSettingCopyResponse;
-import com.tinet.clink.livechat.response.ChatWebSettingUpdateResponse;
 import org.junit.Before;
 import org.junit.Test;
 

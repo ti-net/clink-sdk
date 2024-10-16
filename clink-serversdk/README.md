@@ -690,3 +690,9 @@ public class Test {
 ```
 AgentStatusDetailModel 座席状态监控详情补充字段
 ```
+
+### V 3.0.25
+
+```
+1、 废弃 openapi包 在线客服-考勤报表， 移动到core包中
+```
