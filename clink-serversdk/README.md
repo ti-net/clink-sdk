@@ -684,3 +684,9 @@ public class Test {
 2、 新增 呼叫中心-设置-座席设置-更新座席 追加字段 参数：cloudNumberEnabled、cloudNumberModes
 3、 新增 呼叫中心-设置-座席设置-查看座席 追加字段 返回值：cloudNumberEnabled、cloudNumberModes
 ```
+
+### V 3.0.25
+
+```
+1、 废弃 openapi包 在线客服-考勤报表， 移动到core包中
+```
