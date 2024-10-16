@@ -17,6 +17,7 @@
 #import "superCustomStylesModel.h"
 #import "CustomStylesModel.h"
 #import "MineConfigInputView.h"
+#import "NSString+Frame.h"
 
 
 @interface MineConfigViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -35,7 +36,7 @@
 - (void)setupSubviews {
     [super setupSubviews];
     self.navigationItem.title = @"自定义样式";
-    self.headDataSource = @[@"对话区域配置", @"输入框配置", @"吐司提示配置", @"相册导航栏配置"];
+    self.headDataSource = @[@"对话区域配置", @"输入框配置", @"吐司提示配置", @"相册导航栏配置", @"表情面板配置"];
     self.tableView = [self setupTableView];
     [self bindViewModel];
 }
@@ -270,6 +271,11 @@
                     [self showInputViewModel:model];
                     break;
                 }
+                case 2: case 3: {
+                    
+                    [self showInputViewModel:model withTipString:@"长度不超过 6" withRemoveSpaces:YES withRegex:RegexTypeFloat withtextMaxLength:6];
+                    break;
+                }
                     
                 default:
                     break;
@@ -278,34 +284,47 @@
         }
         case 1: {
             switch (indexPath.row) {
-                case 0: {
-                    [self showInputViewModel:model];
-                    break;
-                }
-                case 1: {
+                case 0: case 1: case 3: case 5: case 10: case 11: case 12: case 13: {
+                    /// 色值类型的
                     [self showInputViewModel:model];
                     break;
                 }
                 case 2: {
-                    [self showInputViewModel:model];
+                    [self showInputViewModel:model withTipString:@"长度不超过 6" withRemoveSpaces:YES withRegex:RegexTypeFloat withtextMaxLength:6];
                     break;
                 }
-                case 3: {
-                    MineConfigInputView * inputView = [[MineConfigInputView alloc] initWithFrame:(CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT))];
-                    inputView.titleString = model.title;
-                    inputView.textString = model.value.length ? model.value : @"";
-                    inputView.tipString = @"不超过 13 个字";
-                    inputView.textMaxLength = 13;
-                    inputView.isRegex = NO;
-                    inputView.tipTextColor = [UIColor colorWithHexString:@"#8C8C8C"];
-                    inputView.action = ^(NSString * _Nonnull string) {
-                        model.value = string;
-                        [TOSKitCustomInfo shareCustomInfo].ChatBox_textview_placeholder = string;
-                        /// 更新沙盒路径下的配置数据
-                        [self upDataPlist];
-                        [self.tableView reloadData];
-                    };
-                    [inputView show];
+                case 4: {
+                    [self showInputViewModel:model withTipString:@"长度不超过 6" withRemoveSpaces:YES withRegex:RegexTypeFloat withtextMaxLength:6];
+                    break;
+                }
+                case 6: {
+                    [self showInputViewModel:model withTipString:@"不超过 13 个字" withRemoveSpaces:NO withRegex:RegexTypeNormal withtextMaxLength:13];
+                    
+                    break;
+                }
+                case 7: {
+                    [self showInputViewModel:model withTipString:@"不超过 13 个字" withRemoveSpaces:NO withRegex:RegexTypeNormal withtextMaxLength:13];
+                    break;
+                }
+                case 8: {
+                    [self showInputViewModel:model withTipString:@"不超过 6 个字" withRemoveSpaces:YES withRegex:RegexTypeFloat withtextMaxLength:6];
+                    
+                    break;
+                }
+                case 9: {
+                    [self showInputViewModel:model withTipString:@"不超过 6 个字" withRemoveSpaces:YES withRegex:RegexTypeFloat withtextMaxLength:6];
+                    break;
+                }
+                case 14: {
+                    [self showInputViewModel:model withTipString:@"不超过 13 个字" withRemoveSpaces:NO withRegex:RegexTypeNormal withtextMaxLength:13];
+                    break;
+                }
+                case 16: {
+                    [self showInputViewModel:model withTipString:@"浮点数类型" withRemoveSpaces:YES withRegex:RegexTypeFloat withtextMaxLength:13];
+                    break;
+                }
+                case 17: {
+                    [self showInputViewModel:model withTipString:@"以“-”分隔 不超过 100 个字" withRemoveSpaces:YES withRegex:RegexTypeNormal withtextMaxLength:100];
                     break;
                 }
                     
@@ -322,12 +341,50 @@
             [self showInputViewModel:model];
             break;
         }
+        case 4: {
+            switch (indexPath.row) {
+                case 0: case 6: {
+                    [self showInputViewModel:model withTipString:@"长度不超过 6" withRemoveSpaces:YES withRegex:(RegexTypeFloat) withtextMaxLength:6];
+                    break;
+                }
+                case 1: case 2: case 7: case 10: {
+                    [self showInputViewModel:model withTipString:@"长度不超过 6" withRemoveSpaces:NO withRegex:(RegexTypeNormal) withtextMaxLength:6];
+                    break;
+                }
+                case 3: {
+                    [self showInputViewModel:model withTipString:@"宽,高 以英文\",\"分隔" withRemoveSpaces:NO withRegex:(RegexTypeNormal) withtextMaxLength:7];
+                    break;
+                }
+                case 4: case 8: case 9: {
+                    [self showInputViewModel:model];
+                    break;
+                }
+                case 5: {
+                    [self showInputViewModel:model withTipString:@"相对于控件右下角,仅right/bottom有效" withRemoveSpaces:NO withRegex:(RegexTypeNormal) withtextMaxLength:6];
+                    break;
+                }
+                case 11: {
+                    [self showInputViewModel:model withTipString:@"0表示“NO”,1表示“YES”" withRemoveSpaces:NO withRegex:(RegexTypeNormal) withtextMaxLength:6];
+                    break;
+                }
+                    
+                default:
+                    break;
+            }
+            
+        }
         default:
             break;
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    MineTextTableCellModel *model = self.cellDataSource[indexPath.section][indexPath.row];
+    if (model.value.length) {
+        /// +10是上下需要间距
+        CGFloat height = [model.value contentHeightWithFont:[UIFont systemFontOfSize:16.0] width:kScreenWidth/2.0]+10.0;
+        return MAX(45.0f, height);
+    }
     return 45.f;
 }
 
@@ -342,14 +399,15 @@
     return headView;
 }
 
+/// 色值类型的配置输入框
 - (void)showInputViewModel:(MineTextTableCellModel *)model {
     
     MineConfigInputView * inputView = [[MineConfigInputView alloc] initWithFrame:(CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT))];
     inputView.titleString = model.title;
     inputView.textString = model.value.length ? model.value : @"#";
-    inputView.tipString = @"6 位数色值";
-    inputView.textMaxLength = 7;
-    inputView.isRegex = YES;
+    inputView.tipString = @"16 进制色值";
+    inputView.textMaxLength = 9;
+    inputView.regex = RegexTypeColor;
     inputView.tipTextColor = [UIColor colorWithHexString:@"#8C8C8C"];
     @weakify(self);
     inputView.action = ^(NSString * _Nonnull string) {
@@ -365,6 +423,37 @@
     
     
     
+}
+
+/// 文案和数字类型的配置输入框
+/// - Parameters:
+///   - model: 数据model
+///   - tipString: 提示文案
+///   - removeSpaces: 是否去除所有空格
+///   - regex: 是否检验正则
+///   - textMaxLength: 最大输入字数长度
+- (void)showInputViewModel:(MineTextTableCellModel *)model
+             withTipString:(NSString *)tipString
+          withRemoveSpaces:(BOOL)removeSpaces
+                 withRegex:(RegexType)regex
+         withtextMaxLength:(NSInteger)textMaxLength {
+    MineConfigInputView * inputView = [[MineConfigInputView alloc] initWithFrame:(CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT))];
+    inputView.titleString = model.title;
+    inputView.textString = model.value.length ? model.value : @"";
+    inputView.tipString = tipString;
+    inputView.textMaxLength = textMaxLength;
+    inputView.regex = regex;
+    inputView.removeSpaces = removeSpaces;
+    inputView.tipTextColor = [UIColor colorWithHexString:@"#8C8C8C"];
+    inputView.action = ^(NSString * _Nonnull string) {
+        model.value = string;
+        [self customInfoTitle:model.title withValue:string];
+        
+        /// 更新沙盒路径下的配置数据
+        [self upDataPlist];
+        [self.tableView reloadData];
+    };
+    [inputView show];
 }
 
 - (void)customInfoTitle:(NSString *)title withValue:(NSString *)value {
@@ -383,17 +472,60 @@
     else if ([title isEqualToString:@"访客头像显示"]) {
         [TOSKitCustomInfo shareCustomInfo].Chat_visitor_portrait_enable = [value isEqualToString:@"1"] ? YES : NO;
     }
-    else if ([title isEqualToString:@"输入框背景色值"]) {
+    else if ([title isEqualToString:@"输入区域背景色值"]) {
         [TOSKitCustomInfo shareCustomInfo].ChatBox_backGroundColor = [UIColor colorWithHexString:value];
+    }
+    else if ([title isEqualToString:@"输入框背景色值"]) {
+        [TOSKitCustomInfo shareCustomInfo].chatBox_textView_backgroundColor = [UIColor colorWithHexString:value];
     }
     else if ([title isEqualToString:@"输入区分割线"]) {
         [TOSKitCustomInfo shareCustomInfo].ChatBox_lineColor = [UIColor colorWithHexString:value];
     }
+    else if ([title isEqualToString:@"输入区分割线高度"]) {
+        [TOSKitCustomInfo shareCustomInfo].chatBox_topLineHeight = [value floatValue];
+    }
     else if ([title isEqualToString:@"语音按钮色值"]) {
         [TOSKitCustomInfo shareCustomInfo].VoiceButton_textColor = [UIColor colorWithHexString:value];
     }
+    else if ([title isEqualToString:@"语音按钮默认文案"]) {
+        [TOSKitCustomInfo shareCustomInfo].chatBox_talkText = value;
+    }
+    else if ([title isEqualToString:@"语音按钮长按文案"]) {
+        [TOSKitCustomInfo shareCustomInfo].chatBox_talkHighlightedText = value;
+    }
+    else if ([title isEqualToString:@"语音按钮文案字体"]) {
+        [TOSKitCustomInfo shareCustomInfo].chatBox_talkFont = [UIFont boldSystemFontOfSize:[value floatValue]];
+    }
+    else if ([title isEqualToString:@"语音按钮边框"]) {
+        [TOSKitCustomInfo shareCustomInfo].chatBox_talk_borderWidth = [value floatValue];
+    }
+    else if ([title isEqualToString:@"语音按钮边框颜色"]) {
+        [TOSKitCustomInfo shareCustomInfo].chatBox_talk_borderColor = [UIColor colorWithHexString:value];
+    }
+    else if ([title isEqualToString:@"录制语音的按钮背景颜色"]) {
+        [TOSKitCustomInfo shareCustomInfo].chatBox_talk_backgroundColor = [UIColor colorWithHexString:value];
+    }
+    else if ([title isEqualToString:@"录制语音的按钮按住背景颜色"]) {
+        [TOSKitCustomInfo shareCustomInfo].chatBox_talk_backgroundHighlightedColor = [UIColor colorWithHexString:value];
+    }
+    else if ([title isEqualToString:@"录制语音的按钮按住字体颜色"]) {
+        [TOSKitCustomInfo shareCustomInfo].chatBox_talk_fontHighlightedColor = [UIColor colorWithHexString:value];
+    }
     else if ([title isEqualToString:@"输入框暗文提示语"]) {
         [TOSKitCustomInfo shareCustomInfo].ChatBox_textview_placeholder = value;
+    }
+    else if ([title isEqualToString:@"输入框暗文提示语色值"]) {
+        [TOSKitCustomInfo shareCustomInfo].chatBox_textview_placeholderTextColor = [UIColor colorWithHexString:value];
+    }
+    else if ([title isEqualToString:@"输入区域的快捷入口"]) {
+        if (value.length) {
+            [TOSKitCustomInfo shareCustomInfo].quickEntryAllItems = [value componentsSeparatedByString:@"-"];
+        } else {
+            [TOSKitCustomInfo shareCustomInfo].quickEntryAllItems = @[];
+        }
+    }
+    else if ([title isEqualToString:@"语音按钮文案字体"]) {
+        [TOSKitCustomInfo shareCustomInfo].chatBox_talkFont = [UIFont systemFontOfSize:[value floatValue]];
     }
     else if ([title isEqualToString:@"吐司提示背景色值"]) {
         [TOSKitCustomInfo shareCustomInfo].Toast_backGroundColor = [UIColor colorWithHexString:value];
@@ -419,6 +551,53 @@
         [TOSKitCustomInfo shareCustomInfo].portrait_cornerRadius = [model.portrait_cornerRadius doubleValue];
         
     }
+    else if ([title isEqualToString:@"删除按钮的圆角"]) {
+        [TOSKitCustomInfo shareCustomInfo].chatBox_emotion_deleteButton_cornerRadius = [value floatValue];
+    }
+    else if ([title isEqualToString:@"发送按钮文案"]) {
+        [TOSKitCustomInfo shareCustomInfo].chatBox_emotion_sendButton_text = value;
+    }
+    else if ([title isEqualToString:@"发送按钮高亮文案"]) {
+        [TOSKitCustomInfo shareCustomInfo].chatBox_emotion_sendButton_textHighlighted = value;
+    }
+    else if ([title isEqualToString:@"发送按钮大小"]) {
+        NSArray * size = [value componentsSeparatedByString:@","];
+        [TOSKitCustomInfo shareCustomInfo].chatBox_emotion_sendButtonSize = CGSizeMake([size[0] floatValue], [size[1] floatValue]);
+    }
+    else if ([title isEqualToString:@"发送按钮背景色"]) {
+        [TOSKitCustomInfo shareCustomInfo].chatBox_emotion_sendButtonBackGroundColor = [UIColor colorWithHexString:value];
+    }
+    else if ([title isEqualToString:@"发送按钮布局时的外边距"]) {
+        NSArray * margins = [value componentsSeparatedByString:@","];
+        if (margins.count != 2) {
+            [TOSKitCustomInfo shareCustomInfo].chatBox_emotion_sendButtonMargins = UIEdgeInsetsMake(0, 0, 16.0, 16.0);
+            return;
+        }
+        else {
+            [TOSKitCustomInfo shareCustomInfo].chatBox_emotion_sendButtonMargins = UIEdgeInsetsMake(0, 0, [margins[0] floatValue], [margins[1] floatValue]);
+        }
+    }
+    else if ([title isEqualToString:@"发送按钮的圆角"]) {
+        [TOSKitCustomInfo shareCustomInfo].chatBox_emotion_sendButton_cornerRadius = [value floatValue];
+    }
+    else if ([title isEqualToString:@"发送按钮字体"]) {
+        [TOSKitCustomInfo shareCustomInfo].chatBox_emotion_sendButtonFont = [UIFont fontWithName:@"PingFangSC-Regular" size:[value floatValue]];
+    }
+    else if ([title isEqualToString:@"发送按钮默认的文字颜色"]) {
+        [TOSKitCustomInfo shareCustomInfo].chatBox_emotion_sendButton_textColor = [UIColor colorWithHexString:value];
+    }
+    else if ([title isEqualToString:@"发送按钮高亮的文字颜色"]) {
+        [TOSKitCustomInfo shareCustomInfo].chatBox_emotion_sendButton_textHighlightedColor = [UIColor colorWithHexString:value];
+    }
+    else if ([title isEqualToString:@"分页控件距离底部的间距"]) {
+        [TOSKitCustomInfo shareCustomInfo].chatBox_emotion_pageControlMarginBottom = [value floatValue];
+    }
+    else if ([title isEqualToString:@"是否在删除和发送按钮下方显示表情"]) {
+        [TOSKitCustomInfo shareCustomInfo].chatBox_emotion_functionItemDisplayed = [value boolValue];
+    }
+    
+    
+    
     
 }
 
@@ -436,9 +615,10 @@
 
 - (NSMutableArray *)cellDataSource {
     if (!_cellDataSource) {
-        _cellDataSource = [NSMutableArray arrayWithObjects:[NSMutableArray array], [NSMutableArray array], [NSMutableArray array], [NSMutableArray array], nil];
+        _cellDataSource = [NSMutableArray arrayWithObjects:[NSMutableArray array], [NSMutableArray array], [NSMutableArray array], [NSMutableArray array], [NSMutableArray array], nil];
         NSString * plistPath = [self customStylesPlist];
         NSFileManager *fileManager = [NSFileManager defaultManager];
+        
         ///检测plistPath路径是否存在
         BOOL isFile = [fileManager fileExistsAtPath:plistPath];
         /// 如果存在就读取配置的Plist数据
