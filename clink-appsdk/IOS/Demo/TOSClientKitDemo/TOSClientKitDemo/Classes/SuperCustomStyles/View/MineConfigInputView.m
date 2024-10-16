@@ -172,7 +172,7 @@
     return @"^#[A-Fa-f0-9]+$";
 }
 
-/// 校验正则
+/// 16进制颜色校验正则
 - (BOOL)regexValidate:(NSString *)regex withString:(NSString *)string {
     
     if (string.length == 0) {
@@ -182,22 +182,52 @@
     NSPredicate *accountStringPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex];
     if(![accountStringPredicate evaluateWithObject:string]) {
         NSLog(@"%@格式不正确！", string);
-        self.tipsLabel.text = @"格式错误，请输入有效的 6 位数色值";
+        self.tipsLabel.text = @"格式错误，请输入有效的 16 进制色值";
         self.tipsLabel.textColor = [UIColor colorWithHexString:@"#FF4D4F"];
         return NO;
     };
     return YES;
 }
 
+/// 浮点数校验
+- (BOOL)isValidFloat:(NSString *)text {
+    /// 确保字符串不以 '.' 开始
+    if ([text hasPrefix:@"."]) {
+        return NO;
+    }
+
+    /// 使用 NSScanner 来检查是否是浮点数
+    NSScanner *scanner = [NSScanner scannerWithString:text];
+    float floatValue;
+    return [scanner scanFloat:&floatValue] && [scanner isAtEnd];
+//    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+//    formatter.numberStyle = NSNumberFormatterDecimalStyle;
+//    NSNumber *number = [formatter numberFromString:text];
+//    return number != nil;
+}
+
+
 - (void)textFieldDidChangeSelection:(UITextField *)textField {
     
     NSLog(@"textField : %@", textField.text);
     NSString *toBeString = textField.text;
-    if (self.isRegex && toBeString.length > 1) {
+    if (self.regex == RegexTypeColor && toBeString.length > 1) {
         BOOL regex = [self regexValidate:[self regular] withString:toBeString];
         if (regex) {
             self.tipsLabel.text = self.tipString;
             self.tipsLabel.textColor = self.tipTextColor;
+        }
+    }
+    else if (self.regex == RegexTypeFloat && toBeString.length > 1) {
+        BOOL regex = [self isValidFloat:toBeString];
+        if (regex) {
+            self.tipsLabel.text = self.tipString;
+            self.tipsLabel.textColor = self.tipTextColor;
+        }
+        else {
+            NSLog(@"%@格式不正确！", toBeString);
+            self.tipsLabel.text = @"格式错误，请输入有效的浮点数类型，不能已\".\"开头";
+            self.tipsLabel.textColor = [UIColor colorWithHexString:@"#FF4D4F"];
         }
     }
     
@@ -236,21 +266,47 @@
 
 - (void)confirmTouch {
     
-    if (self.isRegex) {
+    if (self.regex == RegexTypeColor) {
         BOOL regex = [self regexValidate:[self regular] withString:self.textField.text];
         if (regex) {
             if (self.action) {
-                self.action(self.textField.text);
+                if (self.removeSpaces) {
+                    self.action([self.textField.text stringByReplacingOccurrencesOfString:@" " withString:@""]);
+                } else {
+                    self.action(self.textField.text);
+                }
+                
                 [self closeTouch];
             }
         }
         else {
-            [self showErrorView:@"格式错误，请输入有效的 6 位数色值"];
+            [self showErrorView:@"格式错误，请输入有效的 16 进制色值"];
+        }
+    }
+    else if (self.regex == RegexTypeFloat) {
+        BOOL regex = [self isValidFloat:self.textField.text];
+        if (regex) {
+            if (self.action) {
+                if (self.removeSpaces) {
+                    self.action([self.textField.text stringByReplacingOccurrencesOfString:@" " withString:@""]);
+                } else {
+                    self.action(self.textField.text);
+                }
+                
+                [self closeTouch];
+            }
+        }
+        else {
+            [self showErrorView:@"格式错误，请输入有效的浮点数类型，不能已\".\"开头"];
         }
     }
     else {
         if (self.action) {
-            self.action(self.textField.text);
+            if (self.removeSpaces) {
+                self.action([self.textField.text stringByReplacingOccurrencesOfString:@" " withString:@""]);
+            } else {
+                self.action(self.textField.text);
+            }
             [self closeTouch];
         }
     }

@@ -1,5 +1,7 @@
 package com.tinet.clink.ticket.model;
 
+import com.tinet.clink.ticket.UserIdType;
+
 /**
  * 工单保存实体对象
  *
@@ -18,6 +20,8 @@ public class TicketStoreModel {
      * 处理人id
      */
     private Integer handlerId;
+
+    private Integer handlerIdType =  UserIdType.USER_ID.getCode();
 
     /**
      * 任务id
@@ -59,5 +63,13 @@ public class TicketStoreModel {
 
     public void setForm(TicketFormModel form) {
         this.form = form;
+    }
+
+    public Integer getHandlerIdType() {
+        return handlerIdType;
+    }
+
+    public void setHandlerIdType(Integer handlerIdType) {
+        this.handlerIdType = handlerIdType;
     }
 }
