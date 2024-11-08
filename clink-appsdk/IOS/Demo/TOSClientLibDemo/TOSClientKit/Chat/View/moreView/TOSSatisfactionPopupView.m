@@ -32,9 +32,11 @@
 
 @property (nonatomic, strong) UILabel *title;
 @property (nonatomic, strong) UIButton *close;
+@property (nonatomic, strong) UIButton *notEvaluatedBtn;
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIView *contentView;
+@property (nonatomic, strong) UIView *scrollContentView;
 
 @property (nonatomic, strong) UILabel *welcome;
 @property (nonatomic, strong) TOSSatisfactionSolveView *satisSolve;
@@ -51,6 +53,7 @@
 
 @property (nonatomic, strong) UIView *resultView;
 @property (nonatomic, strong) UIImageView *resultImage;
+@property (nonatomic, strong) UILabel *errorLabel;
 
 @end
 
@@ -71,13 +74,16 @@
     
     [self.popupView addSubview:self.title];
     [self.popupView addSubview:self.close];
+    [self.popupView addSubview:self.notEvaluatedBtn];
     
     [self.popupView addSubview:self.scrollView];
     
+    [self.scrollView addSubview:self.scrollContentView];
     [self.scrollView addSubview:self.contentView];
     [self.popupView addSubview:self.resultView];
     
     [self.resultView addSubview:self.resultImage];
+    [self.resultView addSubview:self.errorLabel];
     
     [self.contentView addSubview:self.welcome];
     [self.contentView addSubview:self.satisSolve];
@@ -111,15 +117,20 @@
     self.close.frame = CGRectMake(0, 20.f, 20.f, 20.f);
     self.close.right_sd = self.popupView.right_sd - 24.f;
     
+    self.notEvaluatedBtn.frame = CGRectMake(0, 20.f, 80.f, 24.f);
+    self.notEvaluatedBtn.centerY_sd = self.title.centerY_sd;
+    
     self.scrollView.frame = CGRectMake(6.f, 56.f, self.popupView.width_sd-12.f, self.popupView.height_sd - 56.f - 54.f - kBottomBarHeight);
+    self.scrollContentView.frame = self.scrollView.bounds;
     self.contentView.frame = CGRectMake(0, 0, self.scrollView.width_sd, self.scrollView.height_sd - 12.f);
     self.resultView.frame = self.scrollView.frame;
     self.resultImage.frame = CGRectMake(53.f, 60.f, self.resultView.width_sd - 106.f, self.resultView.width_sd - 106.f);
+    self.errorLabel.frame = CGRectMake(53.f, self.resultImage.height_sd-40, self.width_sd - 106.f, 40.f);
     
     self.welcome.frame = CGRectMake(16.f, 12.f, self.contentView.width_sd - 32.f, 0);
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         @strongify(self)
-        CGFloat height = [self.welcome.text sizeWithMaxWidth:self.welcome.width_sd andFont:self.welcome.font].height;
+        CGFloat height = [self.welcome.text tim_sizeWithMaxWidth:self.welcome.width_sd andFont:self.welcome.font].height;
         dispatch_async(dispatch_get_main_queue(), ^{
             @strongify(self)
             self.welcome.height_sd = height;
@@ -174,6 +185,11 @@
     self.commitBtnView.hidden = NO;
     self.bottomView.alpha = 0.f;
     self.popupView.frame = CGRectMake(0, kWindowHeight, self.width_sd, self.height_sd-112.f);
+    if (self.showNotEvaluated) {
+        self.notEvaluatedBtn.hidden = NO;
+    } else {
+        self.notEvaluatedBtn.hidden = YES;
+    }
     @weakify(self)
     [UIView animateWithDuration:.3f animations:^{
         @strongify(self)
@@ -193,11 +209,18 @@
         self.hidden = YES;
         self.resultView.hidden = YES;
         self.commitBtnView.hidden = NO;
+        
+        if (self.popViewController) {
+            [self routerEventWithName:GXRobotPopViewController
+                             userInfo:@{}];
+        }
     }];
 }
 
 - (void)didClickCommitBtnAction:(UIButton *)sender {
     // @[@{@"name": @"", @"star": @"", @"label": @[@"", @"",]}]
+    //隐藏键盘
+    [self.remark resignFirstResponder];
     __block NSMutableArray *dataArr = [NSMutableArray array];
     [self.options enumerateObjectsUsingBlock:^(TOSSatisfactionEvaluationDetailsView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [dataArr addObject:@{@"name": obj.optionsModel.name?:@"", @"star": obj.starModel.star?:@(0), @"label": obj.tabBarSelect?:@[]}];
@@ -215,7 +238,7 @@
         self.scrollView.hidden = YES;
         self.commitBtnView.hidden = YES;
         self.resultImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,@"TOSSatisfaction_State_Successful"]];
-        
+        self.errorLabel.text = @"";
         if (self.popViewController) {
             [self routerEventWithName:GXRobotPopViewController
                              userInfo:@{}];
@@ -232,11 +255,13 @@
                              userInfo:@{MessageKey: self.tempModelFrame}];
         }
     } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+        NSLog(@"=====errorDes=%@",errorDes);
         @StrongObj(self)
         self.resultView.hidden = NO;
         self.scrollView.hidden = YES;
         self.commitBtnView.hidden = YES;
-        self.resultImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,@"TOSSatisfaction_State_fail"]];
+        self.resultImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,@"TOSSatisfaction_State_fail_default"]];
+        self.errorLabel.text = errorDes;
     }];
 }
 
@@ -299,6 +324,27 @@
     return _close;
 }
 
+- (UIButton *)notEvaluatedBtn {
+    if (!_notEvaluatedBtn) {
+        _notEvaluatedBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+        [_notEvaluatedBtn setTitle:@"暂不评价" forState:(UIControlStateNormal)];
+        [_notEvaluatedBtn addTarget:self action:@selector(didClickCloseBtnAction:) forControlEvents:(UIControlEventTouchUpInside)];
+        _notEvaluatedBtn.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:14.f];
+        [_notEvaluatedBtn setTitleColor:TOSHexColor(0x262626) forState:(UIControlStateNormal)];
+    }
+    return _notEvaluatedBtn;
+}
+
+- (UILabel *)errorLabel {
+    if (!_errorLabel) {
+        _errorLabel = [[UILabel alloc] initWithFrame:(CGRectZero)];
+        _errorLabel.textColor = TOSHexColor(0x262626);
+        _errorLabel.textAlignment = NSTextAlignmentCenter;
+        _errorLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:14.f];
+        _errorLabel.numberOfLines = 0;
+    }
+    return _errorLabel;
+}
 - (UIScrollView *)scrollView {
     if (!_scrollView) {
         _scrollView = [[UIScrollView alloc] initWithFrame:(CGRectZero)];
@@ -307,8 +353,23 @@
         [_scrollView setShowsVerticalScrollIndicator:NO];
         _scrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
         _scrollView.delegate = self;
+        _scrollView.alwaysBounceVertical = YES;
     }
     return _scrollView;
+}
+
+- (UIView *)scrollContentView {
+    if (!_scrollContentView) {
+        _scrollContentView = [[UIView alloc] initWithFrame:(CGRectZero)];
+        _scrollContentView.backgroundColor = [UIColor clearColor];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didClickScrollViewAction:)];
+        [_scrollContentView addGestureRecognizer:tap];
+    }
+    return _scrollContentView;
+}
+
+- (void)didClickScrollViewAction:(UITapGestureRecognizer *)sender {
+    [self endEditing:YES];
 }
 
 - (UIView *)resultView {
@@ -403,11 +464,11 @@
 - (UIButton *)commitBtn {
     if (!_commitBtn) {
         _commitBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
-        [_commitBtn setTitle:@"提交评价" forState:(UIControlStateNormal)];
+        [_commitBtn setTitle:@"提交" forState:(UIControlStateNormal)];
         _commitBtn.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:16.f];
-        [_commitBtn setTitleColor:TOSHexColor(0xFFFFFF) forState:(UIControlStateNormal)];
+        [_commitBtn setTitleColor:[TOSKitCustomInfo shareCustomInfo].satisfaction_evaluate_submit_titleColor forState:(UIControlStateNormal)];
         [_commitBtn addTarget:self action:@selector(didClickCommitBtnAction:) forControlEvents:(UIControlEventTouchUpInside)];
-        _commitBtn.backgroundColor = TOSHexColor(0x4385FF);
+        _commitBtn.backgroundColor = [TOSKitCustomInfo shareCustomInfo].satisfaction_evaluate_submit;
         _commitBtn.layer.cornerRadius = 6.f;
         _commitBtn.layer.masksToBounds = YES;
     }

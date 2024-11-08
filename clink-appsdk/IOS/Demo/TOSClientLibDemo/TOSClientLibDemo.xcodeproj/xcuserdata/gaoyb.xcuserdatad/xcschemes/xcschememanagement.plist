@@ -7,7 +7,7 @@
 		<key>IntegrateTOSKitFramework.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>7</integer>
+			<integer>12</integer>
 		</dict>
 		<key>TOSClient.xcscheme_^#shared#^_</key>
 		<dict>
@@ -17,17 +17,17 @@
 		<key>TOSClientKit.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>0</integer>
 		</dict>
 		<key>TOSClientLibDemo.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>12</integer>
+			<integer>11</integer>
 		</dict>
 		<key>TOSKitClient.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>1</integer>
 		</dict>
 	</dict>
 </dict>

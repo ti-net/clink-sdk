@@ -24,8 +24,8 @@
 
 @interface ICChatBox ()<UITextViewDelegate,SWEmotionTextViewDelegate, ICChatBarFunctionViewDelegate>
 
-/** chotBox的顶部边线 */
-@property (nonatomic, strong) UIView *topLine;
+///** chotBox的顶部边线 */
+//@property (nonatomic, strong) UIView *topLine;
 /** 常用语按钮 */
 @property (nonatomic, strong) UIButton *wordsButton;
 /** 录音按钮 */
@@ -48,7 +48,7 @@
 /// 快捷功能区域
 @property (nonatomic, strong) ICChatBarFunctionView                * barFunctionView;
 
-@property (nonatomic, strong) NSArray                * barDataCount;
+@property (nonatomic, strong) NSArray   <TOSQuickEntryModel *> *barDataCount;
 
 // 退出或压后台标识
 @property (nonatomic, assign) BOOL bExitOrBackground;
@@ -69,13 +69,13 @@
         
         [self addSubview:self.barFunctionView];
         
-        [self addSubview:self.topLine];
+//        [self addSubview:self.topLine];
         // 先注释掉可选的常用语列表
         //[self addSubview:self.wordsButton];
-        if ([TOSKitCustomInfo shareCustomInfo].ChatBox_voiceButton_enable) {
+//        if ([TOSKitCustomInfo shareCustomInfo].ChatBox_voiceButton_enable) {
             // 当前有语音的权限
             [self addSubview:self.voiceButton];
-        }
+//        }
         [self addSubview:self.textView];
         if ([TOSKitCustomInfo shareCustomInfo].ChatBox_textview_placeholder.length > 0) {
             [self.textView addSubview:self.placeholderLable];//添加到UITextView上面
@@ -102,15 +102,16 @@
         
         
         
-        [self.topLine mas_TIMmakeTIMConstraints:^(TIMMASConstraintMaker *make) {
-            make.left.right.mas_TIMequalTo(0);
-            make.top.mas_TIMequalTo(0);
-            make.height.mas_TIMequalTo([TOSKitCustomInfo shareCustomInfo].chatBox_topLineHeight);
-        }];
+//        [self.topLine mas_TIMmakeTIMConstraints:^(TIMMASConstraintMaker *make) {
+//            make.left.right.mas_TIMequalTo(0);
+//            make.top.mas_TIMequalTo(0);
+//            make.height.mas_TIMequalTo([TOSKitCustomInfo shareCustomInfo].chatBox_topLineHeight);
+//        }];
         
         [self.barFunctionView mas_TIMmakeTIMConstraints:^(TIMMASConstraintMaker *make) {
             make.left.right.mas_TIMequalTo(0);
-            make.top.equalTo(self.topLine.mas_TIMbottom);
+//            make.top.equalTo(self.topLine.mas_TIMbottom);
+            make.top.mas_TIMequalTo(0);
             make.height.mas_TIMequalTo(0);
         }];
         /// 常用语
@@ -234,26 +235,79 @@
 - (void)configurationBarViewDataSrouce {
 
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        if (self.barDataSource && [self.barDataSource respondsToSelector:@selector(ICChatBoxBarDataSource)]) {
+        if (self.barDataSource &&
+            [self.barDataSource respondsToSelector:@selector(ICChatBoxBarDataSource)]) {
+            
             self.barDataCount = [self.barDataSource ICChatBoxBarDataSource];
             if (self.barDataCount.count > 0) {
-                NSLog(@"数据源的item数量：%ld", self.barDataCount.count);
-                [self.barFunctionView mas_TIMupdateTIMConstraints:^(TIMMASConstraintMaker *make) {
-                    make.height.mas_TIMequalTo(CHATBOX_BAR_HEIGHT);
-                }];
-                NSMutableArray * testArr = [NSMutableArray array];
-                for (NSInteger i = 0; i < self.barDataCount.count; i++) {
-                    ICChatBarItemView * testView = [[ICChatBarItemView alloc] initWithFrame:(CGRectZero)];
-                    testView.model = self.barDataCount[i];
-
-                    [testArr addObject:testView];
+                
+                TOSQuickEntryModel *quickEntryModel = nil;
+                for (TOSQuickEntryModel *model in self.barDataCount) {
+                    if ([model.eventName isEqualToString:TOS_EVENT_NAME_TICKET_MESSAGE_STATUS]) {
+                        quickEntryModel = model;
+                    }
                 }
-                [self.barFunctionView addBarItemView:testArr];
+                
+                if (quickEntryModel) {
+                    [[OnlineRequestManager sharedCustomerManager] getTicketCommentStatistics:quickEntryModel.dynamicConfigParameters[TOS_COMMENT_COUNT_ENABLE] visitorCreatedTicket:quickEntryModel.dynamicConfigParameters[TOS_VISITOR_CREATED_TICKET] ticketPluginUrl:quickEntryModel.dynamicConfigParameters[TOS_TICKET_PLUGIN_URL] success:^(NSNumber * _Nonnull staffCommentTotalCount, NSString * _Nonnull ticketPluginUrl) {
+                        quickEntryModel.dynamicConfigParameters[TOS_TICKET_PLUGIN_URL_RESULT] = ticketPluginUrl;
+                        [self setupStaffCommentTotalCount:staffCommentTotalCount];
+                    } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+                        [self setupStaffCommentTotalCount:@(0)];
+                    }];
+                } else {
+                    [self setupStaffCommentTotalCount:@(0)];
+                }
+            } else {
+                [self.barFunctionView mas_TIMupdateTIMConstraints:^(TIMMASConstraintMaker *make) {
+                    make.height.mas_TIMequalTo(0);
+                }];
+                [self.barFunctionView removeScrollViewAllSubviews];
             }
         }
-
     });
+}
 
+- (void)setupStaffCommentTotalCount:(NSNumber *)staffCommentTotalCount {
+    [self.barFunctionView mas_TIMupdateTIMConstraints:^(TIMMASConstraintMaker *make) {
+        make.height.mas_TIMequalTo(CHATBOX_BAR_HEIGHT);
+    }];
+    NSMutableArray * testArr = [NSMutableArray array];
+    for (NSInteger i = 0; i < self.barDataCount.count; i++) {
+        ICChatBarItemView * testView = [[ICChatBarItemView alloc] initWithFrame:(CGRectZero)];
+        
+        BOOL addItem = YES;
+        if ([self.barDataCount[i].eventName isEqualToString:TOS_EVENT_NAME_TICKET_MESSAGE_STATUS]) {
+            self.barDataCount[i].dynamicConfigParameters[TOS_STAFF_COMMENT_TOTAL_COUNT] = staffCommentTotalCount;
+            
+            if (staffCommentTotalCount.integerValue <= 0) {
+                NSNumber *noCommentCountHideQuickEntry = self.barDataCount[i].dynamicConfigParameters[TOS_NO_COMMENT_COUNT_HIDE_QUICK_ENTRY];
+                addItem = !noCommentCountHideQuickEntry.boolValue;
+            }
+            
+            NSString *applicationStage = self.barDataCount[i].dynamicConfigParameters[TOS_APPLICATION_STAGE];
+            
+            if ([applicationStage isEqualToString:TOSAppLicationStageType_OFF]) {
+                addItem = NO;
+            } else if ([applicationStage isEqualToString:TOSAppLicationStageType_Robot]) {
+                if ([[TIMClient sharedTIMClient] getLibOnlineStatus] != TinetChatStatusTypeRobot) {
+                    addItem = NO;
+                }
+            } else if ([applicationStage isEqualToString:TOSAppLicationStageType_Human]) {
+                if ([[TIMClient sharedTIMClient] getLibOnlineStatus] != TinetChatStatusTypeOnline) {
+                    addItem = NO;
+                }
+            } else if ([applicationStage isEqualToString:TOSAppLicationStageType_Both]) {
+                
+            }
+        }
+        testView.model = self.barDataCount[i];
+        
+        if (addItem) {
+            [testArr addObject:testView];
+        }
+    }
+    [self.barFunctionView addBarItemView:testArr];
 }
 
 
@@ -292,15 +346,15 @@
 }
 
 
-- (UIView *) topLine
-{
-    if (_topLine == nil) {
-//        _topLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.width, 0.5)];
-        _topLine = [[UIView alloc] initWithFrame:CGRectZero];
-        [_topLine setBackgroundColor:[TOSKitCustomInfo shareCustomInfo].ChatBox_lineColor];
-    }
-    return _topLine;
-}
+//- (UIView *) topLine
+//{
+//    if (_topLine == nil) {
+////        _topLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.width, 0.5)];
+//        _topLine = [[UIView alloc] initWithFrame:CGRectZero];
+//        [_topLine setBackgroundColor:[TOSKitCustomInfo shareCustomInfo].ChatBox_lineColor];
+//    }
+//    return _topLine;
+//}
 
 - (UIButton *)wordsButton{
     if (_wordsButton == nil) {
@@ -477,7 +531,7 @@
 - (void) textViewDidBeginEditing:(UITextView *)textView
 {
     //    ICChatBoxStatus lastStatus = self.status;
-    self.status = ICChatBoxStatusShowKeyboard;
+    self.status = ICChatBoxStatusShowKeyboard; 
 }
 
 - (void)textViewDidChange:(UITextView *)textView
@@ -934,7 +988,6 @@
 - (void)deleteBtnClicked
 {
     [self.textView deleteBackward];
-    BOOL isHighlighted = self.textView.attributedText.length > 0 ? YES : NO;
     [[NSNotificationCenter defaultCenter] postNotificationName:kTextViewChangeNotification object:nil userInfo:@{@"isHighlighted": @(self.placeholderLable.hidden)}];
 }
 
@@ -966,8 +1019,10 @@
     //遍历NSAttributedString,SWTextAttachment对应的字符串
     [emoticonAttributedString enumerateAttributesInRange:range options:0 usingBlock:^(NSDictionary<NSAttributedStringKey,id> * _Nonnull attrs, NSRange range, BOOL * _Nonnull stop) {
         SWTextAttachment *attachment = attrs[NSAttachmentAttributeName];
-        if(attachment){
-            if (attachment.chs) {
+        if(attachment &&
+           [attachment isKindOfClass:[SWTextAttachment class]]){
+            
+            if (![kitUtils isBlankString:attachment.chs]) {
                 [result appendString:attachment.chs];
 
             }else{
@@ -1002,7 +1057,7 @@
 //    [self setHeight:(height + HEIGHT_TABBAR - HEIGHT_TEXTVIEW)];
     [self setBackgroundColor:[TOSKitCustomInfo shareCustomInfo].ChatBox_backGroundColor];
 //    if (bResume) {
-//
+//        
 //    }
 //    [self mas_TIMupdateTIMConstraints:^(TIMMASConstraintMaker *make) {
 //        make.height.mas_TIMequalTo(height + barHeight + HEIGHT_TABBAR - HEIGHT_TEXTVIEW);

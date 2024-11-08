@@ -241,8 +241,8 @@ typedef void (^TOSSpaceToSuperView)(UIEdgeInsets insets);
 
 @interface UIView (TIMAutoFlowItems)
 
-/**
- * 设置类似collectionView效果的固定间距自动宽度浮动子view
+/** 
+ * 设置类似collectionView效果的固定间距自动宽度浮动子view 
  * viewsArray       : 需要浮动布局的所有视图
  * perRowItemsCount : 每行显示的视图个数
  * verticalMargin   : 视图之间的垂直间距
@@ -255,8 +255,8 @@ typedef void (^TOSSpaceToSuperView)(UIEdgeInsets insets);
 /** 清除固定间距自动宽度浮动子view设置 */
 - (void)clearAutoWidthFlowItemsSettings;
 
-/**
- * 设置类似collectionView效果的固定宽带自动间距浮动子view
+/** 
+ * 设置类似collectionView效果的固定宽带自动间距浮动子view 
  * viewsArray       : 需要浮动布局的所有视图
  * perRowItemsCount : 每行显示的视图个数
  * verticalMargin   : 视图之间的垂直间距

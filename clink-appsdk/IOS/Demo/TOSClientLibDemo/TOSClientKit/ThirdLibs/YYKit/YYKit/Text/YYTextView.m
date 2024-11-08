@@ -21,11 +21,11 @@
 #import "YYCGUtilities.h"
 #import "YYTransaction.h"
 #import "YYWeakProxy.h"
-#import "UIView+YYAdd.h"
+#import "UIView+TIMYYAdd.h"
 #import "NSAttributedString+YYText.h"
 #import "UIPasteboard+YYText.h"
-#import "UIDevice+YYAdd.h"
-#import "UIApplication+YYAdd.h"
+#import "UIDevice+TIMYYAdd.h"
+#import "UIApplication+TIMYYAdd.h"
 #import "YYImage.h"
 
 

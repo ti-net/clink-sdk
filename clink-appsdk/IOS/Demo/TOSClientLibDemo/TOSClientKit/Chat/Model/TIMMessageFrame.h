@@ -232,4 +232,7 @@
 //商品卡片(详情) 运输详情Frame
 @property (nonatomic, assign, readonly) CGRect transportDetailsF;
 
+///// 图片重定向用到
+//@property (nonatomic, copy) NSString                * robotProvider;
+
 @end

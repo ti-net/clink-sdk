@@ -1,5 +1,5 @@
 //
-//  UITextField+YYAdd.h
+//  UITextField+TIMYYAdd.h
 //  YYKit <https://github.com/ibireme/YYKit>
 //
 //  Created by ibireme on 14/5/12.
@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Provides extensions for `UITextField`.
  */
-@interface UITextField (YYAdd)
+@interface UITextField (TIMYYAdd)
 
 /**
  Set all text selected.

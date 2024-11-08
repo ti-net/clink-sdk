@@ -14,7 +14,7 @@
 #import "TIMConstants.h"
 #import "UIView+SDExtension.h"
 #import "kitUtils.h"
-#import "UIImageView+WebCache.h"
+#import "UIImageView+TIMWebCache.h"
 #import "ICFaceManager.h"
 #import "ICChatMessageBaseCell+CustomerUnread.h"
 #import "YYLabel.h"
@@ -82,13 +82,10 @@
     if (!modelFrame.model.message.content) {
         return;
     }
-    
     self.fileUrl = [modelFrame.model.urlPath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     self.readLabel.frame = modelFrame.unReadLabelF;
-    NSLog(@"self.fileUrl === %@",self.fileUrl);
 
     NSDictionary * contentDic = [kitUtils dictionaryWithJsonString:modelFrame.model.message.content];
-    NSLog(@"customFile setModelFrame = %@",contentDic);
     if (!contentDic) {
         return;
     }
@@ -146,7 +143,8 @@
 //    } else {
 //        self.custFileTimeLabel.text =progress @"";
 //    }
-    if ([self fileWhetherItExists:self.fileUrl withFileName:self.custFileTypeDescLabel.text]) {
+    if ([self fileWhetherItExists:self.fileUrl withFileName:self.custFileTypeDescLabel.text] ||
+        [[NSFileManager defaultManager] fileExistsAtPath:self.fileUrl]) {
         [self.downLoadBtn setTitle:@"已下载" forState:(UIControlStateNormal)];
     }
     else {
@@ -345,7 +343,7 @@
 /// 判断文件是否存在
 - (BOOL)fileWhetherItExists:(NSString *)file withFileName:(NSString *)fileName {
     /// 获取Documents目录路径
-    NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"File"];
+    NSString *path = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"File"];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     /// 判断是否存在该路径
     BOOL isDirExist = [fileManager fileExistsAtPath:path];

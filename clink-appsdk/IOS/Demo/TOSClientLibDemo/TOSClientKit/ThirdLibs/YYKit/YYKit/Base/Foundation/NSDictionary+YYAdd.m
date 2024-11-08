@@ -1,16 +1,16 @@
 //
-//  NSDictionary+YYAdd.m
+//  NSDictionary+TIMYYAdd.m
 //  YYKit <https://github.com/ibireme/YYKit>
 //
-//  Created by ibireme on 13/4/4.
-//  Copyright (c) 2015 ibireme.
+//  Created by 侯力 on 2024/4/17.
+//  Copyright © 2019年 侯力. All rights reserved.
 //
 //  This source code is licensed under the MIT-style license found in the
 //  LICENSE file in the root directory of this source tree.
 //
 
 #import "NSDictionary+YYAdd.h"
-#import "NSString+YYAdd.h"
+#import "NSString+TIMYYAdd.h"
 #import "NSData+YYAdd.h"
 #import "YYKitMacro.h"
 

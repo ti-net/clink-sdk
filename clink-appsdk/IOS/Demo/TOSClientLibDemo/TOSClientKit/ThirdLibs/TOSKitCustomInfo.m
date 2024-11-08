@@ -10,6 +10,36 @@
 #import "TIMConstants.h"
 #import "kitUtils.h"
 
+
+@implementation TOSRegularModel
+
+
+@end
+
+@implementation TOSQuickEntryModel
+
++ (TOSQuickEntryModel *)getChatLeaveMessageStatusWithTicketPluginUrl:(NSString *)ticketPluginUrl {
+    
+    TOSQuickEntryModel *quickEntryModel = [[TOSQuickEntryModel alloc] init];
+    quickEntryModel.name = @"留言状态更新";
+    quickEntryModel.value = @"留言状态更新";
+    quickEntryModel.eventName = TOS_EVENT_NAME_TICKET_MESSAGE_STATUS;
+    quickEntryModel.dynamicConfigParameters = [@{
+        TOS_TICKET_PLUGIN_URL: ticketPluginUrl,
+        TOS_COMMENT_COUNT_ENABLE: [NSNumber numberWithBool:true],
+        TOS_VISITOR_CREATED_TICKET: [NSNumber numberWithBool:false],
+        TOS_NO_COMMENT_COUNT_HIDE_QUICK_ENTRY: [NSNumber numberWithBool:false],
+        TOS_STAFF_COMMENT_TOTAL_COUNT: @"0",
+        TOS_APPLICATION_STAGE: TOSAppLicationStageType_Both,
+        TOS_TICKET_PLUGIN_URL_RESULT: @"",
+    } mutableCopy];
+    
+    return quickEntryModel;
+}
+
+@end
+
+
 static TOSKitCustomInfo *customInfo = nil;
 
 @interface TOSKitCustomInfo ()
@@ -117,6 +147,9 @@ static TOSKitCustomInfo *customInfo = nil;
         NSString *CommodityCard_title_textColor = customDic[@"CommodityCard_title_textColor"];
         customInfo.CommodityCard_title_textColor = [self colorWithHexString:CommodityCard_title_textColor alpha:1.0];
         
+        NSString *CommodityCard_descriptions_textColor = customDic[@"CommodityCard_descriptions_textColor"];
+        customInfo.CommodityCard_descriptions_textColor = [self colorWithHexString:CommodityCard_descriptions_textColor alpha:1.f];
+        
         NSString *CommodityCard_price_textColor = customDic[@"CommodityCard_price_textColor"];
         customInfo.CommodityCard_price_textColor = [self colorWithHexString:CommodityCard_price_textColor alpha:1.0];
     
@@ -167,7 +200,7 @@ static TOSKitCustomInfo *customInfo = nil;
         self.chatBox_emotionButton_enable = YES;
         self.chatBox_moreButton_enable = YES;
         self.chatBox_textView_topAndBottomMargin = 8.0f;
-        self.chatBox_Height = 56.0f;
+        self.chatBox_Height = 57.0f;
         self.chatBox_textView_height = self.chatBox_Height - self.chatBox_textView_topAndBottomMargin*2;
         self.chatBox_itemLeftPadding = 10.0f;
         self.chatBox_itemRightPadding = 10.0f;
@@ -303,10 +336,75 @@ static TOSKitCustomInfo *customInfo = nil;
         
         self.robotHiddenVoice = NO;
         
+        self.satisfactionViewShowModel = SatisfactionShowModelFirstTimePopup;
+        
+        self.satisfaction_evaluate_normal = TOSHexColor(0x4385FF);
+        self.satisfaction_evaluate_selected = TOSHexColor(0xF0F0F0);
+        self.satisfaction_evaluate_titleColor_normal = TOSHexColor(0xFFFFFF);
+        self.satisfaction_evaluate_titleColor_selected = TOSHexColor(0xBFBFBF);
+        
+        self.satisfaction_evaluate_submit = TOSHexColor(0x4385FF);
+        self.satisfaction_evaluate_submit_titleColor = TOSHexColor(0xFFFFFF);
+        
+        /// 电话正则model
+        TOSRegularModel * telRegular = [[TOSRegularModel alloc] init];
+        /// 电话正则表达式（⚠️⚠️⚠️暂定，需要确定最终的默认正则表达式）
+        telRegular.regular = @"(0\\d{2,3}-?\\d{7,8})|(\\(0\\d{2,3}\\)\\d{7,8})|1[34578]\\d{9}|400-?\\d{3}-?\\d{4}|\\+?\\d{2}1[34578]\\d{9}";
+        /// 电话匹配到的高亮颜色
+        telRegular.highlightColor = TOSHexColor(0x4385FF);
+        self.telRegular = telRegular;
+        // 订单号正则默认为null
+        self.orderNumberRegular = nil;
+        
+        /// 超链接的正则表达式
+        TOSRegularModel * urlRegular = [[TOSRegularModel alloc] init];
+        /// 超链接正则表达式（⚠️⚠️⚠️暂定，需要确定最终的默认正则表达式）
+        urlRegular.regular = @"(((http[s]{0,1}|ftp)://[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)|(www.[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)|(((http[s]{0,1}|ftp)://|)((?:(?:25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d)))\\.){3}(?:25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d))))(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?))";
+        /// 下面是安卓端的，ftp/www开头的匹配不到，存疑是否跟安卓端对齐
+//        urlRegular.regular = @"((http[s]{0,1})://)(([a-zA-Z0-9\\._-]+\\.[a-zA-Z]{2,6})|([0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}))(:[0-9]{1,4})*(/[a-zA-Z0-9\\&%_\\./-~-]*)?";
+        urlRegular.highlightColor = TOSHexColor(0x4385FF);
+        self.urlRegular = urlRegular;
+        
+        self.enableLocalAvatar = NO;
+        
+        /// 访客默认头像
+        self.visitorDefaultAvatar = [UIImage imageNamed:[NSString stringWithFormat:@"%@/defaultAvatar_visitor",FRAMEWORKS_BUNDLE_PATH]];
+
+        /// 机器人默认头像
+        self.robotDefaultAvatar = [UIImage imageNamed:[NSString stringWithFormat:@"%@/defaultAvatar_robot",FRAMEWORKS_BUNDLE_PATH]];
+
+        /// 客服默认头像
+        self.customerServiceDefaultAvatar = [UIImage imageNamed:[NSString stringWithFormat:@"%@/defaultAvatar_customerService",FRAMEWORKS_BUNDLE_PATH]];
+        
+        /// 系统默认头像
+        self.systemDefaultAvatar = [UIImage imageNamed:[NSString stringWithFormat:@"%@/defaultAvatar_customerService",FRAMEWORKS_BUNDLE_PATH]];
+        
+        self.isOpenHelpfulFeature = NO;
+        
+        /// 是否展示点踩内容输入框
+        self.isShowUnHelpfulContent = YES;
+
+        /// 是否必填点踩内容
+        self.isRequiredUnHelpfulContent = YES;
+
+        /// 设置点踩输入框提示安暗文
+        self.setUnHelpfulContentHint = @"感谢评价，您可以填写具体原因，我们会努力改进";
+
+        /// 设置点踩标签
+        self.setUnHelpfulTagList = @[];
     });
     return customInfo;
 }
 
+- (void)setEnableLocalAvatar:(BOOL)enableLocalAvatar {
+    _enableLocalAvatar = enableLocalAvatar;
+}
+
+
+//固定底部弹出 不支持设置其他模式
+- (BOOL)satisfactionViewPopupMode{
+    return YES;
+}
 - (void)setChatBox_Height:(CGFloat)chatBox_Height {
     _chatBox_Height = chatBox_Height;
     
