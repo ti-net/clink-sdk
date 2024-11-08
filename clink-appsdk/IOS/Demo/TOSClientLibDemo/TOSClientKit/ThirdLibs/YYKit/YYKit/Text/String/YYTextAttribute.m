@@ -12,12 +12,12 @@
 #import "YYTextAttribute.h"
 #import <UIKit/UIKit.h>
 #import <CoreText/CoreText.h>
-#import "NSObject+YYAdd.h"
+#import "NSObject+TIMYYAdd.h"
 #import "NSAttributedString+YYText.h"
 #import "YYAnimatedImageView.h"
 #import "YYTextArchiver.h"
-#import "UIFont+YYAdd.h"
-#import "UIDevice+YYAdd.h"
+#import "UIFont+TIMYYAdd.h"
+#import "UIDevice+TIMYYAdd.h"
 
 NSString *const YYTextBackedStringAttributeName = @"YYTextBackedString";
 NSString *const YYTextBindingAttributeName = @"YYTextBinding";

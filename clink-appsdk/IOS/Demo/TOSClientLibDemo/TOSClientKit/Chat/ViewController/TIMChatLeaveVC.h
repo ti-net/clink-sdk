@@ -1,4 +1,3 @@
-//  留言界面
 //
 //  TIMChatLeaveVC.h
 //  TIMClientKit

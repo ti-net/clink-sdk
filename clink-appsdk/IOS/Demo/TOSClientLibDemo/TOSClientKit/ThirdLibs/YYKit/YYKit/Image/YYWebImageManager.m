@@ -13,7 +13,8 @@
 #import "YYImageCache.h"
 #import "YYWebImageOperation.h"
 #import "YYImageCoder.h"
-#import <TOSClientLib/TIMLibUtils.h>
+#import "kitUtils.h"
+#import <TOSClientLib/TOSClientLib.h>
 
 @implementation YYWebImageManager
 
@@ -43,12 +44,12 @@
     _queue = queue;
     _timeout = 15.0;
     
-    NSString * envString = [TIMLibUtils getEnvConfig];
+    NSString * envString = [kitUtils getEnvConf];
     /// 默认不是KT环境
     BOOL isKT = NO;
-//    if ([TIYTKNetworkConfig.sharedConfig.baseUrl isEqualToString:@"https://clink2-chat-app-dev.clink.cn/"] && [envString isEqualToString:@"KTTestEnv"]) {
-//        isKT = YES;
-//    }
+    if ([[[OnlineDataSave shareOnlineDataSave] getOnlineUrl] isEqualToString:@"https://clink2-chat-app-dev.clink.cn/"] && [envString isEqualToString:@"KTTestEnv"]) {
+        isKT = YES;
+    }
     if (YYImageWebPAvailable()) {
         if (isKT) {
             _headers = @{ @"Accept" : @"image/webp,image/*;q=0.8" , @"X-Virtual-Env" : @"dev.chat"};

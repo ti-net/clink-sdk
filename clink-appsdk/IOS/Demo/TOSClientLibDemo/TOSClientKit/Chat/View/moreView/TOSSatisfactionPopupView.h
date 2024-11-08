@@ -25,6 +25,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 是否在提交后退出ViewController，NO：不退出，刷新消息界面。YES：退出
 @property (nonatomic, assign) BOOL popViewController;
 
+/// 是否显示暂不评价按钮
+@property (nonatomic, assign) BOOL showNotEvaluated;
+
 /// 展示弹窗
 - (void)showPopupView;
 

@@ -14,7 +14,7 @@
 #import "TIMConstants.h"
 #import "UIView+SDExtension.h"
 #import "kitUtils.h"
-#import "UIImageView+WebCache.h"
+#import "UIImageView+TIMWebCache.h"
 #import "ICFaceManager.h"
 #import "ICChatMessageBaseCell+CustomerUnread.h"
 #import <TOSClientLib/CombinationMessage.h>
@@ -66,7 +66,7 @@
 }
 
 - (void)tapAction:(UITapGestureRecognizer *)sender {
-    [self routerEventWithName:GXRouterEventCombinationFileTapEventName
+    [self routerEventWithName:GXRouterEventCombinationFileTapEventName 
                      userInfo:@{@"urlPath"   : self.fileUrl,
                                 }];
 }
@@ -290,7 +290,7 @@
 /// 判断文件是否存在
 - (BOOL)fileWhetherItExists:(NSString *)file withFileName:(NSString *)fileName {
     /// 获取Documents目录路径
-    NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"File"];
+    NSString *path = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"File"];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     /// 判断是否存在该路径
     BOOL isDirExist = [fileManager fileExistsAtPath:path];

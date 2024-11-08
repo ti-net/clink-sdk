@@ -8,8 +8,7 @@
 
 #import <TOSClientLib/TOSClientLib.h>
 #import <Foundation/Foundation.h>
-
-#import "TIMMessageFrame.h"
+#import <TOSClientKit/TIMMessageFrame.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

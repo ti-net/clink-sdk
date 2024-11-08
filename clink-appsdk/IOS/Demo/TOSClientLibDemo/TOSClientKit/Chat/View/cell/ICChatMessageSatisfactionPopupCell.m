@@ -14,7 +14,6 @@
 #import "ICFaceManager.h"
 #import "TIMConstants.h"
 #import "ICChatMessageBaseCell+CustomerUnread.h"
-#import <TOSClientLib/TIMLibUtils.h>
 #import "NSDictionary+TIMTool.h"
 #import "YYKit.h"
 #import "XZEmotion.h"
@@ -52,17 +51,18 @@
     [super setModelFrame:modelFrame];
     self.title.frame = modelFrame.chatLabelF;
     self.satisfactionBtn.frame = CGRectMake(modelFrame.chatLabelF.origin.x, self.title.bottom_sd + 12.f, modelFrame.chatLabelF.size.width, 32.f);
-    
+    //获取存储AppSetting全局配置信息
+    TOSSatisfactionModel *contentModel = [TOSSatisfactionModel yy_modelWithJSON:[[OnlineDataSave shareOnlineDataSave] getAppSetting]];
+    NSLog(@"====multiInvestigation==%ld",contentModel.investigation.multiInvestigation.integerValue);
     TOSSatisfactionStatusModel *extraModel = [TOSSatisfactionStatusModel yy_modelWithJSON:modelFrame.model.message.extra];
-    
     self.tempModelFrame = modelFrame;
-    
+    //根据AppSetting全局配置信息判断是否开启重复提交满意度评价的开关
     if (extraModel.alreadyInvestigation &&
-        [extraModel.alreadyInvestigation isEqualToString:@"1"]) {  //已评价
-        self.satisfactionBtn.backgroundColor = TOSHexColor(0xF0F0F0);
+        [extraModel.alreadyInvestigation isEqualToString:@"1"] && (contentModel && contentModel.investigation.multiInvestigation.integerValue !=1)) {  //已评价
+        self.satisfactionBtn.backgroundColor = [TOSKitCustomInfo shareCustomInfo].satisfaction_evaluate_selected;
         self.satisfactionBtn.selected = YES;
     } else {
-        self.satisfactionBtn.backgroundColor = TOSHexColor(0x4385FF);
+        self.satisfactionBtn.backgroundColor = [TOSKitCustomInfo shareCustomInfo].satisfaction_evaluate_normal;
         self.satisfactionBtn.selected = NO;
     }
 }
@@ -97,10 +97,10 @@
         [_satisfactionBtn setTitle:@"评价" forState:(UIControlStateNormal)];
         [_satisfactionBtn setTitle:@"已评价" forState:(UIControlStateSelected)];
         _satisfactionBtn.titleLabel.font = [TOSKitCustomInfo shareCustomInfo].chatMessage_tosRobotText_font;
-        [_satisfactionBtn setTitleColor:TOSHexColor(0xFFFFFF) forState:(UIControlStateNormal)];
-        [_satisfactionBtn setTitleColor:TOSHexColor(0xBFBFBF) forState:(UIControlStateSelected)];
+        [_satisfactionBtn setTitleColor:[TOSKitCustomInfo shareCustomInfo].satisfaction_evaluate_titleColor_normal forState:(UIControlStateNormal)];
+        [_satisfactionBtn setTitleColor:[TOSKitCustomInfo shareCustomInfo].satisfaction_evaluate_titleColor_selected forState:(UIControlStateSelected)];
         [_satisfactionBtn addTarget:self action:@selector(didClickSatisfactionBtnAction:) forControlEvents:(UIControlEventTouchUpInside)];
-        _satisfactionBtn.backgroundColor = TOSHexColor(0x4385FF);
+        _satisfactionBtn.backgroundColor = [TOSKitCustomInfo shareCustomInfo].satisfaction_evaluate_normal;
         _satisfactionBtn.layer.cornerRadius = 4.f;
         _satisfactionBtn.layer.masksToBounds = YES;
     }

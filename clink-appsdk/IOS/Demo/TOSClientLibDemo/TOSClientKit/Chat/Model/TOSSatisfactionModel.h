@@ -71,6 +71,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSNumber *feedbackType;
 @property (nonatomic, strong) NSNumber *rename_id;
 @property (nonatomic, strong) NSDictionary *investigationTimeout;
+/// 是否重复提交满意度评价 0：不重复。1：重复
 @property (nonatomic, strong) NSNumber *multiInvestigation;
 
 /// 是否显示备注评价 0：不显示。1：显示

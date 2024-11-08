@@ -19,7 +19,7 @@
 #import "TIMConstants.h"
 #import "UIView+SDExtension.h"
 #import "kitUtils.h"
-#import "UIImageView+WebCache.h"
+#import "UIImageView+TIMWebCache.h"
 #import "ICFaceManager.h"
 #import "ICChatMessageBaseCell+CustomerUnread.h"
 #import "ZYSegmentControl.h"

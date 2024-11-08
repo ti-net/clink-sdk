@@ -16,7 +16,8 @@ typedef NS_ENUM(NSInteger, TOSChatBoxExtendBoardType) {
     TOSChatBoxExtendBoardTypeCustomFile,    //文件
     TOSChatBoxExtendBoardTypeArtificial,    //转人工
     TOSChatBoxExtendBoardTypeCloseChat,     //结束会话
-    TOSChatBoxExtendBoardTypeCustom         //自定义
+    TOSChatBoxExtendBoardTypeCustom,        //自定义
+    TOSChatBoxExtendBoardTypeCustomFileApp, //手机系统的文件App
 };
 
 @interface TOSKitExtendBoardItemModel : TIMLibBaseModel

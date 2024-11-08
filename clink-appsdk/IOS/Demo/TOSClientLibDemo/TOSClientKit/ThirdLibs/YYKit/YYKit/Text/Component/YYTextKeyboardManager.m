@@ -10,7 +10,7 @@
 //
 
 #import "YYTextKeyboardManager.h"
-#import "UIApplication+YYAdd.h"
+#import "UIApplication+TIMYYAdd.h"
 #import <objc/runtime.h>
 
 

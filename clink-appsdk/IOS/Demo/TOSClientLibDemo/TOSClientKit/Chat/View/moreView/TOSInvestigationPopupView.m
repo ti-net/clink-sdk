@@ -7,8 +7,8 @@
 //
 
 #import "TOSInvestigationPopupView.h"
-#import "UIColor+YYAdd.h"
-#import "NSArray+YYAdd.h"
+#import "UIColor+TIMYYAdd.h"
+#import "NSArray+TIMYYAdd.h"
 #import "TIMConstants.h"
 #import "TIMMasonry.h"
 #import <TOSClientLib/OnlineDataSave.h>

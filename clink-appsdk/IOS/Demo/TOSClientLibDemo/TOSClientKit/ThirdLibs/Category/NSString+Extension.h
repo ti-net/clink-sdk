@@ -12,13 +12,21 @@
 
 - (NSString *)emoji;
 
-- (CGSize)sizeWithMaxWidth:(CGFloat)width andFont:(UIFont *)font;
+- (NSMutableAttributedString *)transferMessageFont:(UIFont *)font
+                                         foreColor:(UIColor *)fColor
+                                           fontDic:(NSMutableArray <NSDictionary *>*)fontDic
+                                        lineHeight:(CGFloat)lineHeight
+                                  filteredLineFeed:(BOOL)filteredLineFeed;
 
-- (CGSize)sizeWithMaxWidth:(CGFloat)width
-                   andFont:(UIFont *)font
-                   fontDic:(NSMutableArray <NSDictionary *>*)fontDic;
+- (CGSize)tim_sizeWithMaxWidth:(CGFloat)width
+                  attributeStr:(NSMutableAttributedString *)attributeStr;
+
+- (CGSize)tim_sizeWithMaxWidth:(CGFloat)width
+                       andFont:(UIFont *)font;
 
 - (CGSize)defaultLabelSizeWithMaxWidth:(CGFloat)width andFont:(UIFont *)font;
+
+- (CGSize)defaultLabelSizeWithMaxHeight:(CGFloat)height andFont:(UIFont *)font;
 
 - (NSString *)originName;
 
@@ -26,6 +34,7 @@
 
 - (NSString *)firstStringSeparatedByString:(NSString *)separeted;
 
-
+/// 计算富文本所占的大小
+- (CGSize)tim_sizeForWithMaxWidth:(CGFloat)width lineSpacing:(CGFloat)lineSpacing withFont:(UIFont *)font;
 
 @end
