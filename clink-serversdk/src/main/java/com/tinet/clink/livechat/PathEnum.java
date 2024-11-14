@@ -56,6 +56,16 @@ public enum PathEnum {
 
     //在线客服 - 座席工作考勤报表
     StatChatClientAttendance("livechat/stat_chat_client_attendance"),
+
+    //在线客服 - 满意度报表
+    statInvestigationCnoPage("livechat/stat_investigation_cno_page"),
+
+    //在线客服 - 队列报表_按时间统计
+    statQueuePeriodList("livechat/stat_queue_period_list"),
+
+    //在线客服 - 队列报表_按队列统计
+    statQueueQnoPage("livechat/stat_queue_qno_page"),
+
     ;
     private String value;
 
