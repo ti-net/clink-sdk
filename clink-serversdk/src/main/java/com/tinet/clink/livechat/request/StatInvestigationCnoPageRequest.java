@@ -1,9 +1,9 @@
 package com.tinet.clink.livechat.request;
 
 
-import com.tinet.clink.cc.request.stat.AbstractStatRequest;
 import com.tinet.clink.core.utils.HttpMethodType;
 import com.tinet.clink.livechat.PathEnum;
+import com.tinet.clink.livechat.request.stat.AbstractStatRequest;
 import com.tinet.clink.livechat.response.StatInvestigationCnoPageResponse;
 import java.util.List;
 import java.util.stream.Collectors;
