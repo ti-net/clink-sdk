@@ -10,10 +10,10 @@
 #import "TOSAutoLayout.h"
 #import "UIView+SDExtension.h"
 #import "kitUtils.h"
-#import "UIImageView+WebCache.h"
+#import "UIImageView+TIMWebCache.h"
 #import "UIImage+Extension.h"
 #import "ICMediaManager.h"
-#import "UIImage+GIF.h"
+#import "UIImage+TIMGIF.h"
 #import "TIMConstants.h"
 #import <TOSClientKit/TOSClientKit.h>
 #import "WHToast.h"

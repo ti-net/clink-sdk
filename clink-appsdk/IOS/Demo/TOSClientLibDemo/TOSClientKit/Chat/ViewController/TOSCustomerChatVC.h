@@ -1,4 +1,3 @@
-//  聊天页面
 //
 //  TOSCustomerChatVC.h
 //  TIMClientKit
@@ -17,6 +16,7 @@
 #import <TOSClientKit/TIMRefresh.h>
 
 NS_ASSUME_NONNULL_BEGIN
+@class TOSQuickEntryModel;
 
 typedef NS_ENUM(NSUInteger, TinetClickTextMessageEventType) {
     TinetClickEventTypeUrl,
@@ -33,6 +33,8 @@ typedef NS_ENUM(NSUInteger, TinetClickTextMessageEventType) {
 //    TinetChatStatusTypeOnline,    // 客服在线
 //};
 
+@class TIMChatBoxViewController;
+
 @interface TOSCustomerChatVC : TOSBaseViewController
 
 /// 标题名字
@@ -42,7 +44,7 @@ typedef NS_ENUM(NSUInteger, TinetClickTextMessageEventType) {
 @property(nonatomic, copy) NSString *appName;
 
 /// 快捷入口的数据
-@property (nonatomic, strong) NSArray *quickEntryAllItems;
+@property (nonatomic, strong) NSArray <TOSQuickEntryModel *>*quickEntryAllItems;
 
 /// 商品卡片配置数据
 @property (nonatomic, strong) TOSClientKitCommodityCardOption *commodityCardOption;
@@ -59,11 +61,13 @@ typedef NS_ENUM(NSUInteger, TinetClickTextMessageEventType) {
 - (void)tinet_textMessageClickAction:(TinetClickTextMessageEventType)eventType userInfo:(NSDictionary *)userInfo;
 
 //此方法获取文件保存得到的文件路径
--(NSString*)saveFileMethed;
+//-(NSString*)saveFileMethed;
 
+/// 快接入口数据更新方法
+- (void)updateSessionWindowQuickEntrys:(NSArray <TOSQuickEntryModel *>*)quickEntryAllItems;
 
-/// 快捷入口的点击事件    index    点击索引从0开始 （需要在子类实现这个方法）
-- (void)quickEntryItemDidTouchIndex:(NSInteger)index;
+/// 快捷入口的点击事件（需要在子类实现这个方法）
+- (void)quickEntryItemDidTouchModel:(TOSQuickEntryModel *)model;
 
 /// 当前会话状态监听
 - (void)chatStatusChanged:(TinetChatStatusType)status;
@@ -93,9 +97,21 @@ typedef NS_ENUM(NSUInteger, TinetClickTextMessageEventType) {
 /// 发送文本消息
 - (void)sendText:(NSString *)text;
 
+/// 发送转人工事件
+/// @param messageStr 自定义文本消息
+- (void)sendTransferToHumanMessage:(NSString *)messageStr;
 
 /// 重写返回事件，是否弹出满意度弹窗
 - (void)investigationAlert;
+
+- (void)chatBoxViewController:(TIMChatBoxViewController *)chatboxViewController
+             sendImageMessage:(UIImage *)image
+                    imagePath:(NSString *)imgPath;
+
+- (void)chatBoxViewController:(TIMChatBoxViewController *)chatboxViewController
+             sendVideoMessage:(NSString *)videoPath
+                     duration:(CGFloat)videoTimeLength
+           thumbnailImagePath:(NSString *)thumbnailImagePath;
 
 @end
 

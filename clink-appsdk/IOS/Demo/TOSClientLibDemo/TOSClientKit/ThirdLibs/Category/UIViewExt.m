@@ -113,23 +113,23 @@ CGRect CGRectMoveToCenter(CGRect rect, CGPoint center)
 //	self.frame = newframe;
 //}
 
-- (CGFloat)x {
+- (CGFloat)tos_x {
     return self.frame.origin.x;
 }
 
-- (void)setX:(CGFloat)x {
+- (void)setTos_x:(CGFloat)tos_x {
     CGRect newframe = self.frame;
-    newframe.origin.x = x;
+    newframe.origin.x = tos_x;
     self.frame = newframe;
 }
 
-- (CGFloat)y {
+- (CGFloat)tos_y {
     return self.frame.origin.y;
 }
 
-- (void)setY:(CGFloat)y {
+- (void)setTos_y:(CGFloat)tos_y {
     CGRect newframe = self.frame;
-    newframe.origin.y = y;
+    newframe.origin.y = tos_y;
     self.frame = newframe;
 }
 

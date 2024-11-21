@@ -17,7 +17,7 @@
 #import "YYTextArchiver.h"
 
 #import "NSAttributedString+YYText.h"
-#import "UIFont+YYAdd.h"
+#import "UIFont+TIMYYAdd.h"
 
 const CGSize YYTextContainerMaxSize = (CGSize){0x100000, 0x100000};
 

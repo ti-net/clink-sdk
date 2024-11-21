@@ -41,7 +41,7 @@ static const int block_key;
 
 
 
-@implementation UIGestureRecognizer (YYAdd)
+@implementation UIGestureRecognizer (TIMYYAdd)
 
 - (instancetype)initWithActionBlock:(void (^)(id sender))block {
     self = [self init];

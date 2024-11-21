@@ -17,7 +17,7 @@ public abstract class AbstractTest {
 
     @Before
     public void init() {
-        configuration = new ClientConfiguration("xxx", "xxxx");
+        configuration = new ClientConfiguration("xxx", "xxx");
         configuration.setScheme("https");
         configuration.setHost("xxx");
 

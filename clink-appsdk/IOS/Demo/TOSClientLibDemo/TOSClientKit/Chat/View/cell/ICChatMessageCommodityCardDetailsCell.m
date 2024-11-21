@@ -11,11 +11,11 @@
 #import "ICTransportDetailsTableCell.h"
 
 #import "YYKit.h"
-#import "UIImageView+WebCache.h"
+#import "UIImageView+TIMWebCache.h"
 #import "kitUtils.h"
 #import "UIImage+PureColorImage.h"
 #import "UIImage+Extension.h"
-#import "UIImage+GIF.h"
+#import "UIImage+TIMGIF.h"
 #import <TOSClientLib/TIMCommodityCardMessage.h>
 #import "TIMMessageModel.h"
 #import "TIMICMessage.h"
@@ -60,8 +60,6 @@
         self.bubbleView.hidden = YES;
         [self.contentView addSubview:self.bottomView];
         
-        [self.bottomView addSubview:self.cellClickBtn];
-        
         [self.bottomView addSubview:self.orderNumber];
         [self.bottomView addSubview:self.time];
         [self.bottomView addSubview:self.topCuttingLine];
@@ -74,11 +72,14 @@
         [self.bottomView addSubview:self.transportTitle];
         [self.bottomView addSubview:self.foldAndUnfoldIcon];
         [self.bottomView addSubview:self.transportStatus];
+        
+        [self.bottomView addSubview:self.cellClickBtn];
+        
         [self.bottomView addSubview:self.foldAndUnfoldBtn];
         
         
         self.extraInfo = [NSArray array];
-        [self.transportDetails registerNib:[UINib nibWithNibName:@"TOSKitClient.bundle/ICTransportDetailsTableCell" bundle:nil] forCellReuseIdentifier:[ICTransportDetailsTableCell className]];
+        [self.transportDetails registerNib:[UINib nibWithNibName:@"TOSClient.bundle/ICTransportDetailsTableCell" bundle:nil] forCellReuseIdentifier:[ICTransportDetailsTableCell className]];
         if (@available(iOS 15.0, *)) {
             self.transportDetails.sectionHeaderTopPadding = 0.f;
             [UITableView appearance].sectionHeaderTopPadding = 0.f;
@@ -141,22 +142,10 @@
         self.commodityPic.hidden = YES;
     }
     
-//    self.extraInfo = option.extraInfo;
-//    [self.transportDetails reloadData];
-//
-//    if (option.extraInfo &&
-//        [option.extraInfo isKindOfClass:[NSArray class]] &&
-//        option.extraInfo.count > 3) {
-//        self.foldAndUnfoldBtn.hidden = NO;
-//        self.foldAndUnfoldIcon.hidden = NO;
-//    } else {
-//        self.foldAndUnfoldBtn.hidden = YES;
-//        self.foldAndUnfoldIcon.hidden = YES;
-//    }
-    
-    
+    NSInteger extraInfoCount = 0;
     __block NSString *orderNumber = @"";
     if ([option.extraInfo isKindOfClass:[NSArray class]]) {
+        extraInfoCount = option.extraInfo.count;
         [option.extraInfo enumerateObjectsUsingBlock:^(NSDictionary<NSString *,NSString *> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             
             if ([obj[@"name"] isEqualToString:@"订单号"]) {
@@ -173,17 +162,20 @@
         self.orderNumber.text = @" ";
     }
     
-    NSInteger extraInfoCount = option.extraInfo.count;
     if (orderNumber.length) {
         extraInfoCount -= 1;
     }
-    NSMutableArray * testArray = [NSMutableArray array];
-    for (NSDictionary * item in option.extraInfo) {
-        if (![item[@"name"] isEqualToString:@"订单号"]) {
-            [testArray addObject:item];
+    
+    if (extraInfoCount > 0) {
+        NSMutableArray * updateArray = [NSMutableArray array];
+        for (NSDictionary * item in option.extraInfo) {
+            if (![item[@"name"] isEqualToString:@"订单号"]) {
+                [updateArray addObject:item];
+            }
         }
+        self.extraInfo = updateArray;
     }
-    self.extraInfo = testArray;
+    
     [self.transportDetails reloadData];
         
     if (option.extraInfo &&
@@ -200,11 +192,7 @@
     self.commodityTitle.text = option.subTitle?:@" ";
     self.commoditySubTitle.text = option.descriptions?:@" ";
     if (![kitUtils isBlankString:option.price]) {
-        if ([option.price hasPrefix:@"￥"]) {
-            self.price.text = [NSString stringWithFormat:@"%@",option.price?:@" "];
-        } else {
-            self.price.text = [NSString stringWithFormat:@"￥%@",option.price?:@" "];
-        }
+        self.price.text = [NSString stringWithFormat:@"%@",option.price?:@" "];
     } else {
         self.price.text = @" ";
     }

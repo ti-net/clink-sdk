@@ -233,34 +233,9 @@
             domainName.domainName = @"天润上海";
             domainName.apiUrlDomainName = @"https://octopus-api-1.vlink.cn/api/sdk/v1";
             domainName.onlineUrlDomainName = @"https://chat-app-sh.clink.cn";
-//            domainName.accessSecretDomainName = @"D5B70DD63C4848B6824C0233D2FC201F";//@"50ECA889F8F04EF29EE53FAEB009FBAE";//@"523A3358B62A433B8281F3524107DD75";
-//            domainName.accessIdDomainName = @"f8f7d2be61ce4b8ba272b35647ac1eb2";//@"b9a4b617017f4316bb567e69fa5e685b";//@"b7793dd47ec048b8adb6d118dc1eb00b";
-//            domainName.enterpriseIdDomainName = @"8003846";//@"8003846";//@"8008047";
-            
-            domainName.accessSecretDomainName = @"CAF7303F4ACA4A39831CD59B88FF475D";
-            domainName.accessIdDomainName = @"1a9301c2f49d439887d9f10596f7d675";
-            domainName.enterpriseIdDomainName = @"8006886";
-            
-            
-            /**下面的都是集度的账号**/
-//            domainName.accessSecretDomainName = @"C7A9F08C77094C5B89AC66A296B3E7FF";
-//            domainName.accessIdDomainName = @"80ffab421a2b44a9a20a6ba9c51266d0";
-//            domainName.enterpriseIdDomainName = @"8009725";
-            
-//            domainName.accessSecretDomainName = @"2A911DC35309459C88B554B63A8C1B09";
-//            domainName.accessIdDomainName = @"ece7c7197fe34459abe98d602fb52072";
-//            domainName.enterpriseIdDomainName = @"8009726";
-            
-//            /// 自建的集度新的 accessSecret 和 accessId
-//            domainName.accessSecretDomainName = @"354A4F14CED94694A5C9303FF5CFB443";
-//            domainName.accessIdDomainName = @"6aef004204c64ded93aefb097941dd66";
-//            domainName.enterpriseIdDomainName = @"8009725";
-            
-//            domainName.accessSecretDomainName = @"7045358122EA4410B6C3BE6246B0CF14";
-//            domainName.accessIdDomainName = @"bcfd1c8a283d403698cf14de2ee3d01e";
-//            domainName.enterpriseIdDomainName = @"8009727";
-            /**上面的都是集度的账号**/
-            
+            domainName.accessSecretDomainName = @"";
+            domainName.accessIdDomainName = @"";
+            domainName.enterpriseIdDomainName = @"";
         }
             break;
         case 1: {
@@ -268,68 +243,10 @@
             domainName.domainName = @"天润北京";
             domainName.apiUrlDomainName = @"https://octopus-api-1.vlink.cn/api/sdk/v1";
             domainName.onlineUrlDomainName = @"https://chat-app-bj.clink.cn";
+            domainName.accessSecretDomainName = @"";
+            domainName.accessIdDomainName = @"";
+            domainName.enterpriseIdDomainName = @"";
             
-            /// 集度
-//            domainName.accessSecretDomainName = @"252920977A7443C385423FD8084FA1F7";
-//            domainName.accessIdDomainName = @"c1b86e53996e4c74b6ce28df8f9faee1";
-//            domainName.enterpriseIdDomainName = @"8009636";
-            
-//            domainName.accessSecretDomainName = @"2E2DA31A81B34BAAA42EA70728C00C7E";
-//            domainName.accessIdDomainName = @"ec5d4a981a094ffcaefad0579c14a209";
-//            domainName.enterpriseIdDomainName = @"8000467";
-            
-            
-//            domainName.accessSecretDomainName = @"D3C4D9DE92C74DF389AFDEBAD97007E0";
-//            domainName.accessIdDomainName = @"726637e9b8474675beca358a4817cd43";
-//            domainName.enterpriseIdDomainName = @"8007325";
-            
-            
-            domainName.accessSecretDomainName = @"0B787C5B09F144868D367DF0DB373CA2";
-            domainName.accessIdDomainName = @"bbf1b992191c4567ac44811e338eb251";
-            domainName.enterpriseIdDomainName = @"8000002";
-            
-//            /// 分贝通
-//            domainName.accessSecretDomainName = @"5B002BF8447148DFB06C5D3C4982B49F";
-//            domainName.accessIdDomainName = @"78a696762ab04b0ba1e52a1535d4011c";
-//            domainName.enterpriseIdDomainName = @"8008921";
-            
-            //环球
-//            domainName.accessSecretDomainName = @"ADA6FD05D804449E81EA073A0585184A";
-//            domainName.accessIdDomainName = @"9396287862064752b4d7edab90b02448";
-//            domainName.enterpriseIdDomainName = @"8005912";
-            
-            
-//            //环球
-//            domainName.accessSecretDomainName = @"146F4FF774974780A92C191C70644E15";
-//            domainName.accessIdDomainName = @"e103eb5bd2d14e8981b88326ee4a1637";
-//            domainName.enterpriseIdDomainName = @"8005912";
-            
-            //环球兴学
-            //@"8005912"
-            //@"e103eb5bd2d14e8981b88326ee4a1637"
-            //@"146F4FF774974780A92C191C70644E15"
-            
-            
-            //@"b0531dc999634ea0ba0b0f4534f833d0";
-            //@"2C7C5D937C24492C8CC325F8546BACAD";
-            
-            //北京测试
-            //@"8000002";
-            //@"72EBF29CB4614F7AB404EEC07BFF0B1B";
-            //@"8758096679544ff189d4a9457747f109";
-            
-//            domainName.accessSecretDomainName = @"762316074B214A69B85B41001FB56008";
-//            domainName.accessIdDomainName = @"f819c4d256ef4eadb6047a87aff686b5";
-//            domainName.enterpriseIdDomainName = @"8009137";
-//            domainName.accessSecretDomainName = @"72EBF29CB4614F7AB404EEC07BFF0B1B";
-//            domainName.accessIdDomainName = @"8758096679544ff189d4a9457747f109";
-//            domainName.enterpriseIdDomainName = @"8000002";
-            
-            
-            //中青旅遨游
-            //@"8008567";
-            //57EC597D74324BE0B0E5B6C234B84E77
-            //24bd9a30cfaa455696dfc72a2d86f46e
         }
             break;
         case 2: {
@@ -337,9 +254,9 @@
             domainName.domainName = @"正和共达";
             domainName.apiUrlDomainName = @"https://octopus-api-1.vlink.cn/api/sdk/v1";
             domainName.onlineUrlDomainName = @"https://chat-app-bj.clink.cn";
-            domainName.accessSecretDomainName = @"0B2A488841FC44C899FC76C5EBEF6491";
-            domainName.accessIdDomainName = @"56ab9623cf2840a88aa0897f6da6ef25";
-            domainName.enterpriseIdDomainName = @"8004022";
+            domainName.accessSecretDomainName = @"";
+            domainName.accessIdDomainName = @"";
+            domainName.enterpriseIdDomainName = @"";
         }
             break;
         case 3: {
@@ -347,9 +264,9 @@
             domainName.domainName = @"易流";
             domainName.apiUrlDomainName = @"https://octopus-api-1.vlink.cn/api/sdk/v1";
             domainName.onlineUrlDomainName = @"https://chat-app-bj.clink.cn";
-            domainName.accessSecretDomainName = @"03B83916DD8A409A9A4835C958F34245";
-            domainName.accessIdDomainName = @"4dfd6ce439434226917dc4c1fdbc29f1";
-            domainName.enterpriseIdDomainName = @"8002259";
+            domainName.accessSecretDomainName = @"";
+            domainName.accessIdDomainName = @"";
+            domainName.enterpriseIdDomainName = @"";
         }
             break;
         case 4: {
@@ -357,14 +274,9 @@
             domainName.domainName = @"天润北京测试";
             domainName.apiUrlDomainName = @"https://tcbus-api-dev.vlink.cn/api/sdk/v1";
             domainName.onlineUrlDomainName = @"https://chat-app-bj-test0.clink.cn";
-//            domainName.accessSecretDomainName = @"7286A15D65444A00A8CEEE5F6665091F";//@"F08784A3713D44EFBDC44AB8A8DD1143";//@"C9BA8CCD2B69431FADA31D71E7183D76";
-//            domainName.accessIdDomainName = @"bf4cd0e6259640d29fabee960d02c561";//@"9b205d1f71904ceab0a464acd6cfc839";//@"98262f45c9df42a68eecfded8a597fdd";
-//            domainName.enterpriseIdDomainName = @"8001678";//@"8001612";//@"8001294";
-            
-            /// 陈仪(test0)
-            domainName.accessSecretDomainName = @"71E0A8FB84BD4BE0B4CC813B73B5B47D";
-            domainName.accessIdDomainName = @"7b9ec915f0c74443ac7115d241af9c26";
-            domainName.enterpriseIdDomainName = @"8001678";
+            domainName.accessSecretDomainName = @"";
+            domainName.accessIdDomainName = @"";
+            domainName.enterpriseIdDomainName = @"";
             
             
         }
@@ -375,24 +287,9 @@
             domainName.apiUrlDomainName = @"https://tcbus-api-dev.vlink.cn/api/sdk/v1";
             domainName.onlineUrlDomainName = @"https://clink2-chat-app-dev.clink.cn/";
             
-            //小美
-//            domainName.accessSecretDomainName = @"FB44FE4A397F40FCAE6F00BA302357AA";
-//            domainName.accessIdDomainName = @"35a919ecd0ca4b619f82a655ba1e696d";
-//            domainName.enterpriseIdDomainName = @"8000376";
-            
-            domainName.accessSecretDomainName = @"AE7BA517D22B4E77982472B6088F0CDF";
-            domainName.accessIdDomainName = @"5eea43dcfa39447c9bf7e0ebbc388021";
-            domainName.enterpriseIdDomainName = @"8000376";
-            
-            //刘丽测试
-//            domainName.accessSecretDomainName = @"530EE3604D884A188A22AD8E134936AF";
-//            domainName.accessIdDomainName = @"b543c57d6e9e4eef91d576061dc7b813";
-//            domainName.enterpriseIdDomainName = @"8000376";
-            
-            //姚老板
-//            domainName.accessSecretDomainName = @"CAEDE8AE3B4840DCBECDD4C77671E524";
-//            domainName.accessIdDomainName = @"1070fd52f73a4b5f927767bcbafc7e27";
-//            domainName.enterpriseIdDomainName = @"8000376";
+            domainName.accessSecretDomainName = @"";
+            domainName.accessIdDomainName = @"";
+            domainName.enterpriseIdDomainName = @"";
         }
             break;
 

@@ -10,8 +10,8 @@
 //
 
 #import "YYImage.h"
-#import "NSString+YYAdd.h"
-#import "NSBundle+YYAdd.h"
+#import "NSString+TIMYYAdd.h"
+#import "NSBundle+TIMYYAdd.h"
 
 @implementation YYImage {
     YYImageDecoder *_decoder;

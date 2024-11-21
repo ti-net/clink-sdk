@@ -16,8 +16,6 @@
 #import "kitUtils.h"
 #import "TIMConstants.h"
 
-#import <TOSClientLib/OnlineRequestManager.h>
-
 #import <TOSClientLib/TOSGetInvestigationInfoModel.h>
 
 #import "TIMMessageModel.h"
@@ -70,14 +68,11 @@
     self.tagBottomView.frame = CGRectMake(0, CGRectGetMaxY(self.expressionBottomView.frame), self.contentView.tos_width - 32.f, modelFrame.satisfactionSelectStarTagHeight);
     
     self.commitBtn.frame = CGRectMake(25.f, CGRectGetMaxY(self.tagBottomView.frame) + 24.f, self.contentView.tos_width - 32.f - 25.f - 25.f, 38.f);
-        
     TOSSatisfactionModel *contentModel = [TOSSatisfactionModel yy_modelWithJSON:modelFrame.model.message.content];
-    
     self.tempModelFrame = modelFrame;
-    
     TOSSatisfactionStatusModel *extraModel = [TOSSatisfactionStatusModel yy_modelWithJSON:modelFrame.model.message.extra];
-    
     [self.maskView removeFromSuperview];
+    
     if (extraModel.alreadyInvestigation &&
         [extraModel.alreadyInvestigation isEqualToString:@"1"]) { //已评价
         self.commitBtn.hidden = YES;
@@ -211,8 +206,11 @@
 
     @WeakObj(self);
     [[OnlineRequestManager sharedCustomerManager] submitInvestigationUniqueId:extraModel.uniqueId?:@""
-                                                                      options:@[dic]
-                                                                      Success:^{
+                                             mainUniqueId:extraModel.mainUniqueId?:@""
+                                                  options:@[dic]
+                                                    solve:@""
+                                                   remark:@""
+                                                  Success:^{
         @StrongObj(self)
         TOSSatisfactionStatusModel *extraModel = [TOSSatisfactionStatusModel yy_modelWithJSON:self.tempModelFrame.model.message.extra];
         

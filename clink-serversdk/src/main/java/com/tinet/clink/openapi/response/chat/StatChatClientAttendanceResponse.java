@@ -7,6 +7,7 @@ import java.util.Map;
 /**
  * 在线客服-座席工作量报表 Response
  */
+@Deprecated
 public class StatChatClientAttendanceResponse extends ResponseModel {
 
     private List<Map<String, Object>> statChatClientAttendance;

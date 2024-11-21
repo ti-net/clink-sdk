@@ -27,6 +27,10 @@ public class AsrModel {
      */
     private Long startTime;
     /**
+     * 接通时间
+     **/
+    private Long bridgeTime;
+    /**
      * 转写的结果数据
      */
     private List<Asr> agentAsrs;
@@ -71,6 +75,14 @@ public class AsrModel {
 
     public void setStartTime(Long startTime) {
         this.startTime = startTime;
+    }
+
+    public Long getBridgeTime() {
+        return bridgeTime;
+    }
+
+    public void setBridgeTime(Long bridgeTime) {
+        this.bridgeTime = bridgeTime;
     }
 
     public List<Asr> getAgentAsrs() {

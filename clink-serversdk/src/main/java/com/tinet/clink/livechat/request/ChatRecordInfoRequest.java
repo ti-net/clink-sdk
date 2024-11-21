@@ -11,6 +11,7 @@ import com.tinet.clink.livechat.response.ChatRecordResponse;
  */
 public class ChatRecordInfoRequest extends AbstractRequestModel<ChatRecordResponse> {
 
+    @Deprecated
     private String date;
     private String mainUniqueId;
 
@@ -18,6 +19,7 @@ public class ChatRecordInfoRequest extends AbstractRequestModel<ChatRecordRespon
         return date;
     }
 
+    @Deprecated
     public void setDate(String date) {
         this.date = date;
         if (date != null) {

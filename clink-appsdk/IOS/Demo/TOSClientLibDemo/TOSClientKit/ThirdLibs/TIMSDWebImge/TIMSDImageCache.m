@@ -8,7 +8,7 @@
 
 #import "TIMSDImageCache.h"
 #import "TIMSDWebImageDecoder.h"
-#import "UIImage+MultiFormat.h"
+#import "UIImage+TIMMultiFormat.h"
 #import <CommonCrypto/CommonDigest.h>
 
 static const NSInteger kDefaultCacheMaxCacheAge = 60 * 60 * 24 * 7; // 1 week

@@ -45,6 +45,9 @@
 
 @end
 
+@implementation TOSSatisfactionChatSatisSolveStateModel
+
+@end
 
 @implementation TOSSatisfactionInvestigationModel
 

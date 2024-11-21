@@ -118,4 +118,7 @@
 /// 发送状态的检测
 - (void)checkSendButtonType;
 
+/// 顶部的快捷菜单数据源/代理配置
+- (void)configurationBarViewDataSrouce;
+
 @end

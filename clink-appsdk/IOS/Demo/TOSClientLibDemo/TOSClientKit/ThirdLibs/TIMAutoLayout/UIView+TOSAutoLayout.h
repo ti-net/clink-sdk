@@ -59,15 +59,15 @@
 
 @class TOSAutoLayoutModel, TIMUIViewCategoryManager;
 
-typedef TOSAutoLayoutModel *(^MarginToView)(id viewOrViewsArray, CGFloat value);
-typedef TOSAutoLayoutModel *(^Margin)(CGFloat value);
-typedef TOSAutoLayoutModel *(^MarginEqualToView)(UIView *toView);
-typedef TOSAutoLayoutModel *(^WidthHeight)(CGFloat value);
-typedef TOSAutoLayoutModel *(^WidthHeightEqualToView)(UIView *toView, CGFloat ratioValue);
-typedef TOSAutoLayoutModel *(^AutoHeight)(CGFloat ratioValue);
-typedef TOSAutoLayoutModel *(^SameWidthHeight)(void);
-typedef TOSAutoLayoutModel *(^Offset)(CGFloat value);
-typedef void (^SpaceToSuperView)(UIEdgeInsets insets);
+typedef TOSAutoLayoutModel *(^TOSMarginToView)(id viewOrViewsArray, CGFloat value);
+typedef TOSAutoLayoutModel *(^TOSMargin)(CGFloat value);
+typedef TOSAutoLayoutModel *(^TOSMarginEqualToView)(UIView *toView);
+typedef TOSAutoLayoutModel *(^TOSWidthHeight)(CGFloat value);
+typedef TOSAutoLayoutModel *(^TOSWidthHeightEqualToView)(UIView *toView, CGFloat ratioValue);
+typedef TOSAutoLayoutModel *(^TOSAutoHeight)(CGFloat ratioValue);
+typedef TOSAutoLayoutModel *(^TOSSameWidthHeight)(void);
+typedef TOSAutoLayoutModel *(^TOSOffset)(CGFloat value);
+typedef void (^TOSSpaceToSuperView)(UIEdgeInsets insets);
 
 @interface TOSAutoLayoutModel : NSObject
 
@@ -86,85 +86,85 @@ typedef void (^SpaceToSuperView)(UIEdgeInsets insets);
 /* 设置距离其它view的间距 */
 
 /** 左边到其参照view之间的间距，参数为“(View 或者 view数组, CGFloat)”  */
-@property (nonatomic, copy, readonly) MarginToView leftSpaceToView;
+@property (nonatomic, copy, readonly) TOSMarginToView leftSpaceToView;
 /** 右边到其参照view之间的间距，参数为“(View, CGFloat)”  */
-@property (nonatomic, copy, readonly) MarginToView rightSpaceToView;
+@property (nonatomic, copy, readonly) TOSMarginToView rightSpaceToView;
 /** 顶部到其参照view之间的间距，参数为“(View 或者 view数组, CGFloat)”  */
-@property (nonatomic, copy, readonly) MarginToView topSpaceToView;
+@property (nonatomic, copy, readonly) TOSMarginToView topSpaceToView;
 /** 底部到其参照view之间的间距，参数为“(View, CGFloat)”  */
-@property (nonatomic, copy, readonly) MarginToView bottomSpaceToView;
+@property (nonatomic, copy, readonly) TOSMarginToView bottomSpaceToView;
 
 
 
 /* 设置x、y、width、height、centerX、centerY 值 */
 
 /** x值，参数为“(CGFloat)”  */
-@property (nonatomic, copy, readonly) Margin xIs;
+@property (nonatomic, copy, readonly) TOSMargin xIs;
 /** y值，参数为“(CGFloat)”  */
-@property (nonatomic, copy, readonly) Margin yIs;
+@property (nonatomic, copy, readonly) TOSMargin yIs;
 /** centerX值，参数为“(CGFloat)”  */
-@property (nonatomic, copy, readonly) Margin centerXIs;
+@property (nonatomic, copy, readonly) TOSMargin centerXIs;
 /** centerY值，参数为“(CGFloat)”  */
-@property (nonatomic, copy, readonly) Margin centerYIs;
+@property (nonatomic, copy, readonly) TOSMargin centerYIs;
 /** 宽度值，参数为“(CGFloat)”  */
-@property (nonatomic, copy, readonly) WidthHeight widthIs;
+@property (nonatomic, copy, readonly) TOSWidthHeight widthIs;
 /** 高度值，参数为“(CGFloat)”  */
-@property (nonatomic, copy, readonly) WidthHeight heightIs;
+@property (nonatomic, copy, readonly) TOSWidthHeight heightIs;
 
 
 
 /* 设置最大宽度和高度、最小宽度和高度 */
 
 /** 最大宽度值，参数为“(CGFloat)”  */
-@property (nonatomic, copy, readonly) WidthHeight maxWidthIs;
+@property (nonatomic, copy, readonly) TOSWidthHeight maxWidthIs;
 /** 最大高度值，参数为“(CGFloat)”  */
-@property (nonatomic, copy, readonly) WidthHeight maxHeightIs;
+@property (nonatomic, copy, readonly) TOSWidthHeight maxHeightIs;
 /** 最小宽度值，参数为“(CGFloat)”  */
-@property (nonatomic, copy, readonly) WidthHeight minWidthIs;
+@property (nonatomic, copy, readonly) TOSWidthHeight minWidthIs;
 /** 最小高度值，参数为“(CGFloat)”  */
-@property (nonatomic, copy, readonly) WidthHeight minHeightIs;
+@property (nonatomic, copy, readonly) TOSWidthHeight minHeightIs;
 
 
 
 /* 设置和某个参照view的边距相同 */
 
 /** 左间距与参照view相同，参数为“(View)”  */
-@property (nonatomic, copy, readonly) MarginEqualToView leftEqualToView;
+@property (nonatomic, copy, readonly) TOSMarginEqualToView leftEqualToView;
 /** 右间距与参照view相同，参数为“(View)”  */
-@property (nonatomic, copy, readonly) MarginEqualToView rightEqualToView;
+@property (nonatomic, copy, readonly) TOSMarginEqualToView rightEqualToView;
 /** 顶部间距与参照view相同，参数为“(View)”  */
-@property (nonatomic, copy, readonly) MarginEqualToView topEqualToView;
+@property (nonatomic, copy, readonly) TOSMarginEqualToView topEqualToView;
 /** 底部间距与参照view相同，参数为“(View)”  */
-@property (nonatomic, copy, readonly) MarginEqualToView bottomEqualToView;
+@property (nonatomic, copy, readonly) TOSMarginEqualToView bottomEqualToView;
 /** centerX与参照view相同，参数为“(View)”  */
-@property (nonatomic, copy, readonly) MarginEqualToView centerXEqualToView;
+@property (nonatomic, copy, readonly) TOSMarginEqualToView centerXEqualToView;
 /** centerY与参照view相同，参数为“(View)”  */
-@property (nonatomic, copy, readonly) MarginEqualToView centerYEqualToView;
+@property (nonatomic, copy, readonly) TOSMarginEqualToView centerYEqualToView;
 
 
 
 /*  设置宽度或者高度等于参照view的多少倍 */
 
 /** 宽度是参照view宽度的多少倍，参数为“(View, CGFloat)” */
-@property (nonatomic, copy, readonly) WidthHeightEqualToView widthRatioToView;
+@property (nonatomic, copy, readonly) TOSWidthHeightEqualToView widthRatioToView;
 /** 高度是参照view高度的多少倍，参数为“(View, CGFloat)” */
-@property (nonatomic, copy, readonly) WidthHeightEqualToView heightRatioToView;
+@property (nonatomic, copy, readonly) TOSWidthHeightEqualToView heightRatioToView;
 /** 设置一个view的宽度和它的高度相同，参数为空“()” */
-@property (nonatomic, copy, readonly) SameWidthHeight widthEqualToHeight;
+@property (nonatomic, copy, readonly) TOSSameWidthHeight widthEqualToHeight;
 /** 设置一个view的高度和它的宽度相同，参数为空“()” */
-@property (nonatomic, copy, readonly) SameWidthHeight heightEqualToWidth;
+@property (nonatomic, copy, readonly) TOSSameWidthHeight heightEqualToWidth;
 /** 自适应高度，传入高宽比值，label可以传0实现文字高度自适应 */
-@property (nonatomic, copy, readonly) AutoHeight autoHeightRatio;
+@property (nonatomic, copy, readonly) TOSAutoHeight autoHeightRatio;
 
 
 
 /* 填充父view(快捷方法) */
 
 /** 传入UIEdgeInsetsMake(top, left, bottom, right)，可以快捷设置view到其父view上左下右的间距  */
-@property (nonatomic, copy, readonly) SpaceToSuperView spaceToSuperView;
+@property (nonatomic, copy, readonly) TOSSpaceToSuperView spaceToSuperView;
 
 /** 设置偏移量，参数为“(CGFloat value)，目前只有带有equalToView的方法可以设置offset” */
-@property (nonatomic, copy, readonly) Offset offset;
+@property (nonatomic, copy, readonly) TOSOffset offset;
 
 @property (nonatomic, weak) UIView *needsAutoResizeView;
 
