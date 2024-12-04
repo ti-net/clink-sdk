@@ -60,14 +60,13 @@ public abstract class AbstractRequestModel<T extends ResponseModel> {
         this.httpMethod = httpMethod;
     }
 
-    public void signRequest(Signer signer, Credentials credentials, String domain) {
+    public void signRequest(Signer signer, Credentials credentials, String domain, int timeOffsetSeconds) {
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
         sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
         putQueryParameter(RequestConstant.ACCESS_KEY_ID, credentials.getAccessKeyId());
-        putQueryParameter(RequestConstant.EXPIRES, expires);
-        putQueryParameter(RequestConstant.TIMESTAMP, sdf.format(new Date()));
-
+        putQueryParameter(RequestConstant.EXPIRES, expires+timeOffsetSeconds);
+        putQueryParameter(RequestConstant.TIMESTAMP, sdf.format(new Date(new Date().getTime()+timeOffsetSeconds*1000L)));
         String stringToSign = composer.getStringToSign(httpMethod.toString(), domain, "/" + path + "?",
                 queryParameters);
         String signature = signer.signString(stringToSign, credentials);

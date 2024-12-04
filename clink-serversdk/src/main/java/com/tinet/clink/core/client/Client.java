@@ -108,7 +108,7 @@ public class Client {
 
     public <T extends ResponseModel> HttpResponse doAction(AbstractRequestModel<T> request) throws ClientException {
 
-        request.signRequest(signer, configuration.getCredentials(), configuration.getHost());
+        request.signRequest(signer, configuration.getCredentials(), configuration.getHost(), configuration.getTimeOffsetSeconds());
         String method = request.httpMethod().toString();
 
         String uri;

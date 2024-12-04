@@ -17,10 +17,10 @@ public abstract class AbstractTest {
 
     @Before
     public void init() {
-        configuration = new ClientConfiguration("xxx", "xxx");
-        configuration.setScheme("https");
-        configuration.setHost("xxx");
-
+        configuration = new ClientConfiguration(
+                "76836982809697349dbbcc4679fb2217",          // AccessKeyId
+                "Ys00n39TztyR76Mf24xm");     // AccessKeySecret
+        configuration.setHost("api-sh.clink.cn");
         client = new Client(configuration);
     }
 }
