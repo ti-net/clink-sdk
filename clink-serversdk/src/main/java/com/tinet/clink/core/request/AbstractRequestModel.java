@@ -66,7 +66,7 @@ public abstract class AbstractRequestModel<T extends ResponseModel> {
         sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
         putQueryParameter(RequestConstant.ACCESS_KEY_ID, credentials.getAccessKeyId());
         putQueryParameter(RequestConstant.EXPIRES, expires+timeOffsetSeconds);
-        putQueryParameter(RequestConstant.TIMESTAMP, sdf.format(new Date(new Date().getTime()+timeOffsetSeconds*1000L)));
+        putQueryParameter(RequestConstant.TIMESTAMP, sdf.format(new Date(new Date().getTime()-timeOffsetSeconds*1000L)));
         String stringToSign = composer.getStringToSign(httpMethod.toString(), domain, "/" + path + "?",
                 queryParameters);
         String signature = signer.signString(stringToSign, credentials);
