@@ -93,6 +93,7 @@ public class SplashActivity extends BaseActivity implements View.OnClickListener
 
         // : 2022/6/23 改版后直接连接，无需点击登录按钮再连接
         TOSConnectOption tOSConnectOption = new TOSConnectOption();
+        tOSConnectOption.setVisitorId("android_visitor_demo_" + System.currentTimeMillis());
         tOSConnectOption.setNickname("快速接入测试名称");
         tOSConnectOption.setHeadUrl("https://img2.baidu.com/it/u=1229468480,2938819374&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=500");
         tOSConnectOption.setMobile("135xxxx9206");

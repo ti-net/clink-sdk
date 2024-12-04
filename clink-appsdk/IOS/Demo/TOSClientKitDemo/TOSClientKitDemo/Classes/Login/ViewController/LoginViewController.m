@@ -90,7 +90,7 @@
     
     NSString *nickname     = @"先生";
     NSString *headerUrl    = @"https://img2.baidu.com/it/u=1229468480,2938819374&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=500";
-    NSString *userId       = [NSString stringWithFormat:@"%ld",[[NSDate date] timeSwitchTimestamp]];
+    NSString *userId       = [NSString stringWithFormat:@"ios_visitor_demo_%ld",[[NSDate date] timeSwitchTimestamp]];
     NSString *phoneNumber  = @"14107240003";
     
     if (self.userId &&
