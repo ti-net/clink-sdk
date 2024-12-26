@@ -8,6 +8,8 @@ import com.tinet.clink.core.exceptions.ClientException;
 import com.tinet.clink.core.exceptions.ServerException;
 import com.tinet.clink.livechat.request.SessionStatPeriodRequest;
 import com.tinet.clink.livechat.response.SessionStatPeriodResponse;
+import java.util.Collections;
+import java.util.List;
 import org.junit.Test;
 
 /**
@@ -25,6 +27,8 @@ public class SessionStatPeriodTest {
         SessionStatPeriodRequest request = new SessionStatPeriodRequest();
         request.setStartTime("2024-12-10 00:25");
         request.setEndTime("2024-12-10 10:25");
+        List<Integer> contactTypes = Collections.singletonList(1);
+        request.setContactTypes(contactTypes);
         request.setPeriodType(1);
         ClientConfiguration clientConfiguration = new ClientConfiguration("58675b79b5582fe19ccb891ee1f8418a", "3l3q23wmX1WV4528x910");
         clientConfiguration.setScheme("https");
