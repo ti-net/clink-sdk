@@ -16,11 +16,10 @@ public class ChatMessageToClientTest {
 
     @Before
     public void init() {
-
-        configuration = new ClientConfiguration("1ad36475b5fb78c23f033250cb19a0a5", "li8FM094H5qj4O0SEdu8");
-        configuration.setScheme("http");
-        configuration.setHost("api-bj-test4.clink.cn");
-
+        configuration = new ClientConfiguration("58675b79b5582fe19ccb891ee1f8418a", "3l3q23wmX1WV4528x910");
+        configuration.setScheme("https");
+        configuration.setHost("api-bj-test0.clink.cn");
+        configuration.setEnv("gray");
         client = new Client(configuration);
     }
 
@@ -31,7 +30,7 @@ public class ChatMessageToClientTest {
     public void testMessageToClient() throws Exception{
         ObjectMapper mapper = new ObjectMapper();
         ChatMessageToClientRequest request = new ChatMessageToClientRequest();
-        request.setSessionId("5d43691b-7fd3-4077-b116-6ec2feb05f0f.1638415584");
+        request.setSessionId("a006b5f2-f181-4cd8-a678-46864b6b303b.1733970993");
         request.setMessageType(1);
         request.setContent("一样一样");
 
