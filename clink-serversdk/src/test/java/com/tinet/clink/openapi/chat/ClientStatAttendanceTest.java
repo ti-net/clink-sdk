@@ -11,12 +11,12 @@ import com.tinet.clink.livechat.response.ClientStatAttendancePageResponse;
 import org.junit.Test;
 
 /**
- * 会话详情查看
+ * 座席考勤报表
  *
  * @author wangbin
  * @since 2024/12/10
  */
-public class StatClientAttendanceTest {
+public class ClientStatAttendanceTest {
 
     ObjectMapper mapper = new ObjectMapper();
 
@@ -28,7 +28,6 @@ public class StatClientAttendanceTest {
         request.setEndTime("2024-12-10 10:25");
         request.setPageIndex(1);
         request.setPageSize(1);
-        request.setPeriodType(3);
         ClientConfiguration clientConfiguration = new ClientConfiguration("58675b79b5582fe19ccb891ee1f8418a", "3l3q23wmX1WV4528x910");
         clientConfiguration.setScheme("https");
         clientConfiguration.setHost("api-bj-test0.clink.cn");

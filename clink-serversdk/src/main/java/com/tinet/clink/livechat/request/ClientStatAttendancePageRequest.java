@@ -27,19 +27,6 @@ public class ClientStatAttendancePageRequest extends AbstractStatRequest<ClientS
 
     private Integer pageIndex;
 
-    private Integer periodType;
-
-    public Integer getPeriodType() {
-        return periodType;
-    }
-
-    public void setPeriodType(Integer periodType) {
-        this.periodType = periodType;
-        if (periodType != null) {
-            putQueryParameter("periodType", periodType);
-        }
-    }
-
     public String getStartTime() {
         return startTime;
     }
