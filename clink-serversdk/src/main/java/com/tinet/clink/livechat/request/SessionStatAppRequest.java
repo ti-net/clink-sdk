@@ -21,7 +21,7 @@ public class SessionStatAppRequest extends AbstractStatRequest<SessionStatAppRes
 
     private String endTime;
 
-    private List<Integer> appType;
+    private List<Integer> contactTypes;
 
     private Integer pageSize;
 
@@ -38,15 +38,15 @@ public class SessionStatAppRequest extends AbstractStatRequest<SessionStatAppRes
         }
     }
 
-    public List<Integer> getAppType() {
-        return appType;
+    public List<Integer> getContactTypes() {
+        return contactTypes;
     }
 
 
-    public void setAppType(List<Integer> appType) {
-        this.appType = appType;
-        if (appType != null && appType.size() != 0) {
-            putQueryParameter("appTypes", convertIntegerListToString(appType));
+    public void setContactTypes(List<Integer> contactTypes) {
+        this.contactTypes = contactTypes;
+        if (contactTypes != null && contactTypes.size() != 0) {
+            putQueryParameter("contactTypes", convertIntegerListToString(contactTypes));
         }
     }
 

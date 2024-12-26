@@ -30,8 +30,8 @@ public class SessionStatAppTest {
         request.setEndTime("2024-12-10 23:25");
         request.setPageIndex(1);
         request.setPageSize(2);
-        List<Integer> appType = Collections.singletonList(1);
-        request.setAppType(appType);
+        List<Integer> contactTypes = Collections.singletonList(1);
+        request.setContactTypes(contactTypes);
         ClientConfiguration clientConfiguration = new ClientConfiguration("58675b79b5582fe19ccb891ee1f8418a", "3l3q23wmX1WV4528x910");
         clientConfiguration.setScheme("https");
         clientConfiguration.setHost("api-bj-test0.clink.cn");

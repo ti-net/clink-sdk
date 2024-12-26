@@ -31,8 +31,8 @@ public class ClientStatCnoTest {
         request.setEndTime("2024-12-10 10:25");
         request.setPageIndex(1);
         request.setPageSize(1);
-        List<Integer> appType = Collections.singletonList(2);
-        request.setAppType(appType);
+        List<Integer> contactTypes = Collections.singletonList(2);
+        request.setContactTypes(contactTypes);
         List<String> qnos = new ArrayList<>();
         request.setQnos(qnos);
         ClientConfiguration clientConfiguration = new ClientConfiguration("58675b79b5582fe19ccb891ee1f8418a", "3l3q23wmX1WV4528x910");

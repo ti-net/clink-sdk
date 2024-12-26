@@ -21,7 +21,7 @@ public class InvestigationStatQnoPageRequest extends AbstractStatRequest<Investi
 
     private String endTime;
 
-    private List<Integer> appType;
+    private List<Integer> contactTypes;
 
     private List<String> qnos;
 
@@ -40,15 +40,15 @@ public class InvestigationStatQnoPageRequest extends AbstractStatRequest<Investi
         }
     }
 
-    public List<Integer> getAppType() {
-        return appType;
+    public List<Integer> getContactTypes() {
+        return contactTypes;
     }
 
 
-    public void setAppType(List<Integer> appType) {
-        this.appType = appType;
-        if (appType != null && appType.size() != 0) {
-            putQueryParameter("appType", convertIntegerListToString(appType));
+    public void setContactTypes(List<Integer> contactTypes) {
+        this.contactTypes = contactTypes;
+        if (contactTypes != null && contactTypes.size() != 0) {
+            putQueryParameter("contactTypes", convertIntegerListToString(contactTypes));
         }
     }
 
