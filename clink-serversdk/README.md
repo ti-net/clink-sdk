@@ -716,3 +716,9 @@ AgentStatusDetailModel 座席状态监控详情补充字段
 2、 新增 在线客服-报表-队列报表_按队列统计
 3、 新增 在线客服-报表-满意度报表
 ```
+
+### V 3.0.29
+
+```
+1、在线客服-会话管理-发消息给客服， SDK响应体新增：sessionId、messageId、sendStatus、createTime、sensitiveWord
+```
