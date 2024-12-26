@@ -65,9 +65,8 @@ public class ChatStatTest {
         StatQueueQnoPageRequest request = new StatQueueQnoPageRequest();
         request.setStartTime("");
         request.setEndTime("");
-        List<Integer> appType = new ArrayList<>();
-        appType.add(1);
-        request.setAppType(appType);
+        List<Integer> contactTypes = new ArrayList<>();
+        request.setContactTypes(contactTypes);
         List<String> qnos = new ArrayList<>();
         request.setQnos(qnos);
         request.setPageIndex(1);

@@ -20,6 +20,9 @@ public class StatInvestigationCnoPageRequest extends AbstractStatRequest<StatInv
 
     private String endTime;
 
+    @Deprecated
+    private List<Integer> appType;
+
     private List<Integer> contactTypes;
 
     private List<String> cnos;
@@ -38,6 +41,17 @@ public class StatInvestigationCnoPageRequest extends AbstractStatRequest<StatInv
         this.startTime = startTime;
         if (startTime != null) {
             putQueryParameter("startTime", startTime);
+        }
+    }
+
+    public List<Integer> getAppType() {
+        return appType;
+    }
+
+    public void setAppType(List<Integer> appType) {
+        this.appType = appType;
+        if (appType != null && appType.size() != 0) {
+            putQueryParameter("appType", convertIntegerListToString(appType));
         }
     }
 

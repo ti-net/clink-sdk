@@ -19,6 +19,9 @@ public class StatQueueQnoPageRequest extends AbstractStatRequest<StatQueueQnoPag
 
     private String endTime;
 
+    @Deprecated
+    private List<Integer> appType;
+
     private List<Integer> contactTypes;
 
     private List<String> qnos;
@@ -35,6 +38,17 @@ public class StatQueueQnoPageRequest extends AbstractStatRequest<StatQueueQnoPag
         this.startTime = startTime;
         if (startTime != null) {
             putQueryParameter("startTime", startTime);
+        }
+    }
+
+    public List<Integer> getAppType() {
+        return appType;
+    }
+
+    public void setAppType(List<Integer> appType) {
+        this.appType = appType;
+        if (appType != null && appType.size() != 0) {
+            putQueryParameter("appType", convertIntegerListToString(appType));
         }
     }
 
