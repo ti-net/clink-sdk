@@ -79,7 +79,7 @@
 //        visitorsID = self.visitorsID.text;
 //    }
     
-    TOSConnectOption * connectOption = [[TOSConnectOption alloc] initWithOption:[NSString stringWithFormat:@"%@_ios",visitorsID] nickname:@"客户" headUrl:@"https://img2.baidu.com/it/u=1229468480,2938819374&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=500" mobile:@"14107240003" advanceParams:@{}];
+    TOSConnectOption * connectOption = [[TOSConnectOption alloc] initWithOption:[NSString stringWithFormat:@"ios_visitor_demo_%@",visitorsID] nickname:@"客户" headUrl:@"https://img2.baidu.com/it/u=1229468480,2938819374&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=500" mobile:@"14107240003" advanceParams:@{}];
     [[TOSClientKit sharedTOSKit] connect:connectOption success:^{
         
     } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
