@@ -3,32 +3,38 @@ package com.tinet.clink.livechat.request;
 import com.tinet.clink.core.utils.HttpMethodType;
 import com.tinet.clink.livechat.PathEnum;
 import com.tinet.clink.livechat.request.stat.AbstractStatRequest;
-import com.tinet.clink.livechat.response.StatQueueQnoPageResponse;
+import com.tinet.clink.livechat.response.SessionStatPeriodResponse;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * 在线客服-队列报表_按队列统计 Request
+ * 在线客服 - 会话量报表_按会话量号统计
  *
- * @author midong
- * @date 2024/11/11
+ * @author wangbin
+ * @since 2024/12/10
  */
-public class StatQueueQnoPageRequest extends AbstractStatRequest<StatQueueQnoPageResponse> {
+public class SessionStatPeriodRequest extends AbstractStatRequest<SessionStatPeriodResponse> {
+
 
     private String startTime;
 
     private String endTime;
 
-    @Deprecated
-    private List<Integer> appType;
-
     private List<Integer> contactTypes;
 
-    private List<String> qnos;
+    private Integer periodType;
 
-    private Integer pageSize;
+    public Integer getPeriodType() {
+        return periodType;
+    }
 
-    private Integer pageIndex;
+    public void setPeriodType(Integer periodType) {
+        this.periodType = periodType;
+        if (periodType != null) {
+            putBodyParameter("periodType", periodType);
+        }
+    }
 
     public String getStartTime() {
         return startTime;
@@ -38,17 +44,6 @@ public class StatQueueQnoPageRequest extends AbstractStatRequest<StatQueueQnoPag
         this.startTime = startTime;
         if (startTime != null) {
             putQueryParameter("startTime", startTime);
-        }
-    }
-
-    public List<Integer> getAppType() {
-        return appType;
-    }
-
-    public void setAppType(List<Integer> appType) {
-        this.appType = appType;
-        if (appType != null && appType.size() != 0) {
-            putQueryParameter("appType", convertIntegerListToString(appType));
         }
     }
 
@@ -74,48 +69,13 @@ public class StatQueueQnoPageRequest extends AbstractStatRequest<StatQueueQnoPag
         }
     }
 
-    public List<String> getQnos() {
-        return qnos;
-    }
-
-
-    public void setQnos(List<String> qnos) {
-        this.qnos = qnos;
-        if (qnos != null && qnos.size() != 0) {
-            putQueryParameter("qnos", convertStringListToString(qnos));
-        }
-    }
-
-    public Integer getPageSize() {
-        return pageSize;
-    }
-
-    public void setPageSize(Integer pageSize) {
-        this.pageSize = pageSize;
-        if (pageSize != null) {
-            putQueryParameter("pageSize", pageSize);
-        }
-    }
-
-    public Integer getPageIndex() {
-        return pageIndex;
-    }
-
-    public void setPageIndex(Integer pageIndex) {
-        this.pageIndex = pageIndex;
-        if (pageIndex != null) {
-            putQueryParameter("pageIndex", pageIndex);
-        }
-    }
-
-
     @Override
-    public Class<StatQueueQnoPageResponse> getResponseClass() {
-        return StatQueueQnoPageResponse.class;
+    public Class<SessionStatPeriodResponse> getResponseClass() {
+        return SessionStatPeriodResponse.class;
     }
 
-    public StatQueueQnoPageRequest() {
-        super(PathEnum.statQueueQnoPage.value(), HttpMethodType.POST);
+    public SessionStatPeriodRequest() {
+        super(PathEnum.StatSessionPeriodList.value(), HttpMethodType.POST);
     }
 
     private static String convertStringListToString(List<String> list) {
@@ -133,4 +93,5 @@ public class StatQueueQnoPageRequest extends AbstractStatRequest<StatQueueQnoPag
             return list.stream().map(Object::toString).collect(Collectors.joining(","));
         }
     }
+
 }
