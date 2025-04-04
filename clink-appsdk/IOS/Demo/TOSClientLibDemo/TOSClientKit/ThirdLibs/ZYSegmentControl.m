@@ -212,7 +212,7 @@ static const CGFloat LineHeight = 2.f;          //下划线的高
         self.tempBtn = sender;
     }
     
-    CGFloat offsetX = sender.superview.x + sender.superview.tos_width/2 - self.tos_width/2;
+    CGFloat offsetX = sender.superview.tos_x + sender.superview.tos_width/2 - self.tos_width/2;
     if (self.bottomView.contentSize.width < self.tos_width || offsetX < self.tos_width/4) {
         offsetX = 0.f;
     } else if (offsetX > self.bottomView.contentSize.width - self.tos_width) {

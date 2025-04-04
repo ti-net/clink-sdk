@@ -11,7 +11,7 @@
 #import "UIView+SDExtension.h"
 #import "TIMMessageModel.h"
 #import "kitUtils.h"
-#import "UIImageView+WebCache.h"
+#import "UIImageView+TIMWebCache.h"
 #import "ICFaceManager.h"
 #import "ICChatMessageBaseCell+CustomerUnread.h"
 
@@ -58,6 +58,9 @@ static CGFloat PaddingLength = 3.0f;
         if ([contentDic objectForKey:@"body"] && [contentDic[@"body"] objectForKey:@"stopAction"]) {
             NSDictionary * bodyContentDic = contentDic[@"body"];
             NSString * contentStr = [kitUtils transferStopAction:bodyContentDic[@"stopAction"] isSender:modelFrame.model.isSender duration:[bodyContentDic[@"duration"] intValue]];
+            if (!contentStr) {
+                contentStr = @"";
+            }
             NSMutableAttributedString *strAtt = [[NSMutableAttributedString alloc] initWithString:contentStr attributes:@{
                 NSFontAttributeName : self.chatLabel.font
             }
@@ -182,7 +185,7 @@ static CGFloat PaddingLength = 3.0f;
 //替换图片的高度为屏幕的高度
 //    NSString *newString = [html stringByReplacingOccurrencesOfString:@"<img" withString:[NSString stringWithFormat:@"<img width=\"%f\"",width]];
     
-    NSAttributedString *attributeString=[[NSAttributedString alloc] initWithData:[html dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType} documentAttributes:nil error:nil];
+    NSAttributedString *attributeString=[[NSAttributedString alloc] initWithData:[html dataUsingEncoding:NSUTF8StringEncoding] options:@{} documentAttributes:nil error:nil];
      
      
     return attributeString;

@@ -14,7 +14,7 @@
 #import "TIMConstants.h"
 #import "UIView+SDExtension.h"
 #import "kitUtils.h"
-#import "UIImageView+WebCache.h"
+#import "UIImageView+TIMWebCache.h"
 #import "ICFaceManager.h"
 #import "ICChatMessageBaseCell+CustomerUnread.h"
 #import "ZYSegmentControl.h"
@@ -67,7 +67,8 @@
     
     self.model = model;
     
-    CGSize refreshBtnSize = [TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_showRefreshTitle sizeWithMaxWidth:self.tos_width andFont:TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_showRefreshTitleFont];
+//    CGSize refreshBtnSize = [TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_showRefreshTitle sizeWithMaxWidth:self.tos_width andFont:TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_showRefreshTitleFont];
+    CGSize refreshBtnSize = model.refreshBtnSize;
     
     self.refreshBtn.frame = CGRectMake(194.f, self.refreshBtnY, refreshBtnSize.width+10, 18.f);
 //    self.refreshBtn.x = self.width - 53.f;//37.f + 16.f;
@@ -80,7 +81,8 @@
     self.title.frame = self.hotIssueTitleF;
     
     if ([kitUtils isBlankString:model.text]) {
-        self.title.text = @"猜你想问";
+//        self.title.text = @"猜你想问";
+        self.title.text = @"热门问题";
     } else {
         self.title.text = model.text;
     }
@@ -169,12 +171,12 @@
             self.segmentC.hidden = NO;
             
             NSMutableArray *array = [NSMutableArray array];
-            __block CGFloat segmentHeight = 29.0f;
+            CGFloat segmentHeight = model.segmentHeight;
             [model.data enumerateObjectsUsingBlock:^(CombinationDataModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 [array addObject:[NSString stringWithFormat:@"%@",obj.name?:@""]];
-                if (idx == 0) {
-                    segmentHeight = [obj.name sizeWithMaxWidth:self.tos_width andFont:TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_segmentFont].height;
-                }
+//                if (idx == 0) {
+//                    segmentHeight = [obj.name sizeWithMaxWidth:self.tos_width andFont:TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_segmentFont].height;
+//                }
             }];
             
             self.segmentC.tos_height = MAX(segmentHeight, 29.0);
@@ -302,7 +304,8 @@
 - (YYLabel *)title {
     if (!_title) {
         _title = [[YYLabel alloc] init];
-        _title.text = @"猜你想问";
+//        _title.text = @"猜你想问";
+        _title.text = @"热门问题";
 //        _title.font = [UIFont fontWithName:@"PingFangSC-Medium" size:16.f];
         _title.font = TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_titleFont;
 //        _title.textColor = TOSHexColor(0xFAAD14);
@@ -336,8 +339,8 @@
                                       initWithFrame:CGRectMake(0, 0, kWindowWidth, 29.f)
                                       items:@[]
                                       styleType:(StyleTypeLine)
-                                      arrayColor:@[TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_segmentTextColor, TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_segmentTextColor, TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_segmentTextColor]];
-        _segmentC.backgroundColor = [UIColor whiteColor];
+                                      arrayColor:@[TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_segmentUnselectedTextColor, TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_segmentTextColor, TOSKitCustomInfo.shareCustomInfo.chatMessage_tosRobotCombination_segmentTextColor]];
+        _segmentC.backgroundColor = [UIColor clearColor];
         _segmentC.delegate = self;
         [self addSubview:_segmentC];
         [_segmentC addSubview:self.segmentCLine];

@@ -36,6 +36,8 @@
     NSString *msgId = [kitUtils getMsgUUID];
     
     NSString *filePath = [[ICMediaManager sharedManager] saveImage:simpleImg msgId:msgId picType:[UIImage typeForImageData:imageData]];
+//    NSString * sreGetMsgUUID = [[filePath lastPathComponent] stringByDeletingPathExtension];
+//    NSLog(@"sreGetMsgUUID == %@<##>",sreGetMsgUUID);
     
     if (simpleImg) {
         TIMSessionType sessionType;

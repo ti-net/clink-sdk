@@ -8,6 +8,7 @@ import com.tinet.clink.openapi.utils.HttpMethodType;
 /**
  * 在线客服-座席工作考勤报表 Request
  */
+@Deprecated
 public class StatChatClientAttendanceRequest extends AbstractStatRequest<StatChatClientAttendanceResponse> {
 
     /**

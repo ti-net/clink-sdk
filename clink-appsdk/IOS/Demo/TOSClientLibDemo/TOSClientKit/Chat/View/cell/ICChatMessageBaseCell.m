@@ -13,11 +13,11 @@
 #import "ICMediaManager.h"
 #import <TOSClientLib/TOSClientLib.h>
 #import <TOSClientKit/TOSClientKit.h>
-#import "UIImageView+WebCache.h"
+#import "UIImageView+TIMWebCache.h"
 #import "kitUtils.h"
 #import "UIImage+PureColorImage.h"
 #import "UIImage+Extension.h"
-#import "UIImage+GIF.h"
+#import "UIImage+TIMGIF.h"
 #import <TOSClientLib/TOSClientLib.h>
 #import "YYKit.h"
 #import "UIImageView+YYWebImage.h"
@@ -64,6 +64,7 @@
         _nameLabel.backgroundColor = [UIColor clearColor];
         _nameLabel.textColor = [TOSKitCustomInfo shareCustomInfo].chatMessage_visitorName_textColor;
         _nameLabel.font = [TOSKitCustomInfo shareCustomInfo].chatMessage_visitorName_font;
+//        _nameLabel.text = @"我是名字";
     }
     return _nameLabel;
 }
@@ -170,90 +171,93 @@
 }
 
 
-- (void)setModelFrame:(TIMMessageFrame *)modelFrame
-{
+- (void)setModelFrame:(TIMMessageFrame *)modelFrame {
     _modelFrame = modelFrame;
     
     TIMMessageModel *messageModel = modelFrame.model;
     self.headImageView.frame     = modelFrame.headImageViewF;
     self.nameLabel.frame = modelFrame.headNameF;
     @WeakObj(self)
-    dispatch_async(dispatch_get_main_queue(), ^{
-        @StrongObj(self)
-        self.bubbleView.frame        = modelFrame.bubbleViewF;
-    });
+    self.bubbleView.frame        = modelFrame.bubbleViewF;
     self.messageTopView.frame    = modelFrame.topViewF;
     self.messageTopTimeView.frame= modelFrame.topTimeViewF;
     
+    __block UIImage *placeholder;
+    if ([TOSKitCustomInfo shareCustomInfo].enableLocalAvatar) {
+        switch (modelFrame.model.message.senderType.integerValue) {
+            case 1:     //座席
+                placeholder = [TOSKitCustomInfo shareCustomInfo].customerServiceDefaultAvatar;
+                break;
+            case 2:     //访客
+                placeholder = [TOSKitCustomInfo shareCustomInfo].visitorDefaultAvatar;
+                break;
+            case 3:     //系统
+                placeholder = [TOSKitCustomInfo shareCustomInfo].systemDefaultAvatar;
+                break;
+            case 4:     //机器人
+                placeholder = [TOSKitCustomInfo shareCustomInfo].robotDefaultAvatar;
+                break;
+            case 5:     //系统通知
+                placeholder = [TOSKitCustomInfo shareCustomInfo].systemDefaultAvatar;
+                break;
+            default:
+                placeholder = [TOSKitCustomInfo shareCustomInfo].systemDefaultAvatar;
+                break;
+        }
+    } else {
+        placeholder = [UIImage imageNamed:[NSString stringWithFormat:@"%@/defaultAvatar_transparent",FRAMEWORKS_BUNDLE_PATH]];
+    }
     
     if ([modelFrame.model.message.from isEqualToString:[[OnlineDataSave shareOnlineDataSave] getVisitorId]]) {//访客端
-        [self.headImageView.imageView setImageWithURL:[NSURL URLWithString:[[OnlineDataSave shareOnlineDataSave] getVisitorHeaderUrl]] placeholder:[UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,@"default_avatar"]]];
-//        self.nameLabel.textAlignment = NSTextAlignmentRight;
+        
+        [self loadImageWithUrl:[[OnlineDataSave shareOnlineDataSave] getVisitorHeaderUrl]
+                   placeholder:placeholder
+                     imageView:self.headImageView.imageView
+                     cacheType:YES];
+        
         self.nameLabel.text = [[OnlineDataSave shareOnlineDataSave] getVisitorName];
         // 配置是否显示访客端昵称
         if (![TOSKitCustomInfo shareCustomInfo].Chat_visitorName_show) {
             self.nameLabel.text = @"";
         }
-    }else{//坐席端
-       NSString*name = [[ICMediaManager sharedManager] getHeadNameWithUserId:modelFrame.model.message.from];
-       NSString*headUrl = [[ICMediaManager sharedManager] getHeadImgUrlWithUserId:modelFrame.model.message.from];
+    } else {//坐席端
         
-//        self.nameLabel.textAlignment = NSTextAlignmentLeft;
-
-        if (name.length == 0 || headUrl.length == 0) {
-            //获取客服头像信息
+//        NSString *name = [[ICMediaManager sharedManager] getHeadNameWithUserId:modelFrame.model.message.from];
+//        NSString *headUrl = [[ICMediaManager sharedManager] getHeadImgUrlWithUserId:modelFrame.model.message.from];
+        
+//        if (modelFrame.model.message.senderType.integerValue == 1 ||
+//            modelFrame.model.message.senderType.integerValue == 4) {
+            
             [[OnlineRequestManager sharedCustomerManager] getClientInfoWithSender:modelFrame.model.message.from
-                                                                       senderType:@"1"
-                                                                          success:^(OnlineClientInfoModel * _Nonnull model) {
-                NSLog(@"headUrl ===== %@",[model yy_modelToJSONObject]);
-                if (model.avatar != nil && model.avatar.length > 0) {
-                    //保存头像
-                    [[ICMediaManager sharedManager] savaHeadImgUrl:model.avatar userId:modelFrame.model.message.from];
-                    [self.headImageView.imageView setImageWithURL:[NSURL URLWithString:model.avatar] placeholder:[UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,@"default_avatar"]]];
-                }else{
-                    if (headUrl.length>0) {
-                        [self.headImageView.imageView setImageWithURL:[NSURL URLWithString:headUrl] placeholder:[UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,@"default_avatar"]]];
-                    }else{
-                        self.headImageView.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,@"default_avatar"]];
+                                                                       senderType:[NSString stringWithFormat:@"%@",modelFrame.model.message.senderType] complete:^(OnlineClientInfoModel *model, TIMConnectErrorCode errCode, NSString *errorDes) {
+                @StrongObj(self)
+                if (errCode == TIM_API_REQUEST_SUCCESSFUL) {
+                    
+                    if (![kitUtils isBlankString:model.avatar]) {
+                        //保存头像
+//                        [[ICMediaManager sharedManager] savaHeadImgUrl:model.avatar userId:modelFrame.model.message.from];
+                        [self loadImageWithUrl:model.avatar
+                                   placeholder:placeholder
+                                     imageView:self.headImageView.imageView
+                                     cacheType:NO];
+                    } else {
+                        self.headImageView.imageView.image = placeholder;
                     }
-                }
-                if (model.nickName != nil && model.nickName.length > 0) {
-                    //保存名称
-                    [[ICMediaManager sharedManager] savaHeadName:model.nickName userId:modelFrame.model.message.from];
-                    self.nameLabel.text = model.nickName;
-                }else{
-                    if (name.length>0) {
-                        self.nameLabel.text = name;
-                    }else{
-                        self.nameLabel.text = @"客服";
+                    
+                    if (![kitUtils isBlankString:model.nickName]) {
+                        //保存名称
+//                        [[ICMediaManager sharedManager] savaHeadName:model.nickName userId:modelFrame.model.message.from];
+                        self.nameLabel.text = model.nickName;
+                    } else {
+                        self.nameLabel.text = modelFrame.model.message.senderType.integerValue == 4 ? @"机器人" : @"客服";
                     }
-                }
-                
-            } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
-                
-                if (name.length>0) {
-                    self.nameLabel.text = name;
-                }else{
-                    self.nameLabel.text = @"客服";
-                }
-                
-                if (headUrl.length>0) {
-                    [self.headImageView.imageView setImageWithURL:[NSURL URLWithString:headUrl] placeholder:[UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,@"default_avatar"]]];
-                }else{
-                    self.headImageView.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,@"default_avatar"]];
+                } else {
+                    self.nameLabel.text = modelFrame.model.message.senderType.integerValue == 4 ? @"机器人" : @"客服";
+                    self.headImageView.imageView.image = placeholder;
                 }
             }];
-
-        }else{
-            self.nameLabel.text = name;
-            if ([headUrl isEqualToString:@"customer_service_default_avatar"]) {
-                self.headImageView.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,@"customer_service_default_avatar"]];
-            } else if ([headUrl isEqualToString:@"default_avatar"]) {
-                self.headImageView.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,@"default_avatar"]];
-            } else {
-                [self.headImageView.imageView setImageWithURL:[NSURL URLWithString:headUrl] placeholder:[UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,@"default_avatar"]]];
-            }
-        }
+//        }
+        
         // 配置是否显示坐席或机器人的昵称或工号
         if (![TOSKitCustomInfo shareCustomInfo].Chat_tosRobotName_show) {
             self.nameLabel.text = @"";
@@ -313,24 +317,24 @@
             default:
                 break;
         }
-        if ([modelFrame.model.message.type isEqualToString:TypeFile] ||[modelFrame.model.message.type isEqualToString:TypePicText]) {
-            UIImage * srcImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,@"liaotianfile"]];
-            self.bubbleView.image = [[srcImage stretchableImageWithLeftCapWidth:10 topCapHeight:30] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-        } else if([modelFrame.model.message.type isEqualToString:TypeCustom] ||
-                  [modelFrame.model.message.type isEqualToString:TypeCustomFile]){
-            NSDictionary * contentDic = [kitUtils dictionaryWithJsonString:modelFrame.model.message.content];
-            if (contentDic && [contentDic objectForKey:@"template"] &&
-                [contentDic[@"template"] isEqualToString:@"tim-rtcMedia"]) {
-                UIImage * srcImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,@"liaotianbeijing2"]];
-                self.bubbleView.image = [[srcImage stretchableImageWithLeftCapWidth:10 topCapHeight:30] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-            }else{
-                UIImage * srcImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,@"custombeijing1"]];
-                self.bubbleView.image = [[srcImage stretchableImageWithLeftCapWidth:10 topCapHeight:30] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-            }
-        } else{
-            UIImage * srcImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,@"liaotianbeijing2"]];
-            self.bubbleView.image = [[srcImage stretchableImageWithLeftCapWidth:10 topCapHeight:30] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-        }
+//        if ([modelFrame.model.message.type isEqualToString:TypeFile] ||[modelFrame.model.message.type isEqualToString:TypePicText]) {
+//            UIImage * srcImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,@"liaotianfile"]];
+//            self.bubbleView.image = [[srcImage stretchableImageWithLeftCapWidth:10 topCapHeight:30] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+//        } else if([modelFrame.model.message.type isEqualToString:TypeCustom] ||
+//                  [modelFrame.model.message.type isEqualToString:TypeCustomFile]){
+//            NSDictionary * contentDic = [kitUtils dictionaryWithJsonString:modelFrame.model.message.content];
+//            if (contentDic && [contentDic objectForKey:@"template"] &&
+//                [contentDic[@"template"] isEqualToString:@"tim-rtcMedia"]) {
+//                UIImage * srcImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,@"liaotianbeijing2"]];
+//                self.bubbleView.image = [[srcImage stretchableImageWithLeftCapWidth:10 topCapHeight:30] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+//            }else{
+//                UIImage * srcImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,@"custombeijing1"]];
+//                self.bubbleView.image = [[srcImage stretchableImageWithLeftCapWidth:10 topCapHeight:30] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+//            }
+//        } else{
+//            UIImage * srcImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,@"liaotianbeijing2"]];
+//            self.bubbleView.image = [[srcImage stretchableImageWithLeftCapWidth:10 topCapHeight:30] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+//        }
         [self setBubbleColor:YES];
     } else {    // 接收者
         self.nameLabel.textAlignment = NSTextAlignmentLeft;
@@ -343,21 +347,21 @@
             [self.messageTopView messageSendName:strName isSender:NO date:modelFrame.model.message.msgDate.timeIntervalSince1970];
         }
         self.retryButton.hidden  = YES;
-        if([modelFrame.model.message.type isEqualToString:TypeCustom] ||
-           [modelFrame.model.message.type isEqualToString:TypeCustomFile]){
-            NSDictionary * contentDic = [kitUtils dictionaryWithJsonString:modelFrame.model.message.content];
-            if (contentDic && [contentDic objectForKey:@"template"] &&
-                [contentDic[@"template"] isEqualToString:@"tim-rtcMedia"]) {
-                UIImage * srcImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,@"liaotianbeijing1"]];
-                self.bubbleView.image = [[srcImage stretchableImageWithLeftCapWidth:10 topCapHeight:30] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-            }else{
-                UIImage * srcImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,@"custombeijing1"]];
-                self.bubbleView.image = [[srcImage stretchableImageWithLeftCapWidth:10 topCapHeight:30] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-            }
-        }else{
-            UIImage * srcImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,@"liaotianbeijing1"]];
-            self.bubbleView.image = [[srcImage stretchableImageWithLeftCapWidth:10 topCapHeight:30] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-        }
+//        if([modelFrame.model.message.type isEqualToString:TypeCustom] ||
+//           [modelFrame.model.message.type isEqualToString:TypeCustomFile]){
+//            NSDictionary * contentDic = [kitUtils dictionaryWithJsonString:modelFrame.model.message.content];
+//            if (contentDic && [contentDic objectForKey:@"template"] &&
+//                [contentDic[@"template"] isEqualToString:@"tim-rtcMedia"]) {
+//                UIImage * srcImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,@"liaotianbeijing1"]];
+//                self.bubbleView.image = [[srcImage stretchableImageWithLeftCapWidth:10 topCapHeight:30] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+//            }else{
+//                UIImage * srcImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,@"custombeijing1"]];
+//                self.bubbleView.image = [[srcImage stretchableImageWithLeftCapWidth:10 topCapHeight:30] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+//            }
+//        }else{
+//            UIImage * srcImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,@"liaotianbeijing1"]];
+//            self.bubbleView.image = [[srcImage stretchableImageWithLeftCapWidth:10 topCapHeight:30] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+//        }
         [self setBubbleColor:NO];
     }
 }
@@ -504,6 +508,49 @@
 {
     if ([self.longPressDelegate respondsToSelector:@selector(longPress:)]) {
         [self.longPressDelegate longPress:recognizer];
+    }
+}
+
+- (void)loadImageWithUrl:(NSString *)urlString
+             placeholder:(UIImage *)placeholder
+               imageView:(UIImageView *)imageView
+               cacheType:(BOOL)cacheType {
+    // 获取默认的图片管理器
+    YYWebImageManager *manager = [YYWebImageManager sharedManager];
+    
+    // 创建 URL
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    // 尝试从缓存中获取图片
+    UIImage *cachedImage;
+    if (cacheType) {
+        cachedImage = [manager.cache getImageForKey:urlString withType:YYImageCacheTypeAll];
+    } else {
+        cachedImage = [manager.cache getImageForKey:url.path withType:YYImageCacheTypeAll];
+    }
+    
+    if (cachedImage) {
+        imageView.image = cachedImage;
+    } else {
+        if (cacheType) {
+            [imageView setImageWithURL:url
+                           placeholder:placeholder
+                               options:YYWebImageOptionSetImageWithFadeAnimation
+                            completion:nil];
+        } else {
+            __block NSString *path = url.path;
+            __block UIImageView *imageViewBlock = imageView;
+            [imageView setImageWithURL:url
+                           placeholder:placeholder
+                               options:YYWebImageOptionAvoidSetImage | YYWebImageOptionSetImageWithFadeAnimation
+                            completion:^(UIImage * _Nullable image, NSURL * _Nullable url, YYWebImageFromType from, YYWebImageStage stage, NSError * _Nullable error) {
+                if (image && !error) {
+                    // 将下载的图片缓存到自定义 Key 下
+                    [[YYImageCache sharedCache] setImage:image forKey:path];
+                    imageViewBlock.image = image;
+                }
+            }];
+        }
     }
 }
 

@@ -46,19 +46,24 @@ public class WebcallRequest extends AbstractRequestModel<WebcallResponse> {
     private String clid;
 
     /**
-     * 回呼接通后进入的ivrId
+     * 接口外显规则名称，按照外显规则配置的外显号码进行外显。如果同时传入clid和clidGroupName，clidGroupName优先级高
      */
-    private Integer ivrId;
+    private String clidGroupName;
 
     /**
-     * 动态附带参数，参数会写入通道中，以便ivr中调用。参数名建议使用user_开头
+     * 回呼接通后进入的语音导航
      */
-    private String params;
+    private String ivrName;
 
     /**
      * 外显方式，0：指定外显号码；1：指定外呼标识
      */
     private Integer clidType;
+
+    /**
+     * 动态附带参数，参数会写入通道中，以便ivr中调用。参数名建议使用user_开头
+     */
+    private String params;
 
     public WebcallRequest() {
         super(PathEnum.Webcall.value(), HttpMethodType.POST);
@@ -131,14 +136,25 @@ public class WebcallRequest extends AbstractRequestModel<WebcallResponse> {
         }
     }
 
-    public Integer getIvrId() {
-        return ivrId;
+    public String getIvrName() {
+        return ivrName;
     }
 
-    public void setIvrId(Integer ivrId) {
-        this.ivrId = ivrId;
-        if (ivrId != null) {
-            putBodyParameter("ivrId", ivrId);
+    public void setIvrName(String ivrName) {
+        this.ivrName = ivrName;
+        if (ivrName != null) {
+            putBodyParameter("ivrName", ivrName);
+        }
+    }
+
+    public String getClidGroupName() {
+        return clidGroupName;
+    }
+
+    public void setClidGroupName(String clidGroupName) {
+        this.clidGroupName = clidGroupName;
+        if (clidGroupName != null) {
+            putBodyParameter("clidGroupName", clidGroupName);
         }
     }
 

@@ -17,7 +17,7 @@
 <dependency>
     <groupId>com.ti-net</groupId>
     <artifactId>clink-serversdk</artifactId>
-    <version>2.0.45.1</version>
+    <version>3.0.16</version>
 </dependency>
 ```
 
@@ -576,14 +576,149 @@ public class Test {
 1、 调整 呼叫中心-监控-座席状态监控 返回参数
 2、 新增 呼叫中心-黑白名单设置-添加黑白名单列表 查询参数：description
 3、 新增 呼叫中心-数据-呼入通话记录-查询呼入通话记录 返回参数：hotlineName
-``
+```
 
 ### V 3.0.9.8
 
 ```
 
 1、 新增 呼叫中心-设置-座席设置-新增座席 permission字段追加 参数：transfer、otherData、taskInventory
-1、 新增 呼叫中心-设置-座席设置-更新座席 permission字段追加 参数：transfer、otherData、taskInventory
-1、 新增 呼叫中心-设置-座席设置-查看座席 permission字段追加 返回值：transfer、otherData、taskInventory
+2、 新增 呼叫中心-设置-座席设置-更新座席 permission字段追加 参数：transfer、otherData、taskInventory
+3、 新增 呼叫中心-设置-座席设置-查看座席 permission字段追加 返回值：transfer、otherData、taskInventory
 
+```
+### V 3.0.10
+
+```
+1、 新增 呼叫中心-设置-留言箱设置-查询留言箱列表 
+
+```
+
+### V 3.0.11
+
+```
+1、 新增 呼叫中心-报表-队列报表
+2、 新增 呼叫中心-设置-座席设置-配置座席其它设置
+3、 新增 呼叫中心-设置-座席设置-获取座席其它设置
+
+```
+
+### V 3.0.12.1
+
+```
+1、 新增 呼叫中心-电话-呼叫控制-转移 TransferRequest增加参数：clid
+2、 新增 呼叫中心-电话-呼叫控制-咨询 ConsultRequest增加参数：clid
+
+```
+
+### V 3.0.13
+
+```
+1、 新增 呼叫中心-企业级WebSocket订阅-获取SessionKey
+
+```
+
+### V 3.0.13.1
+
+```
+1、 新增 呼叫中心-号码设置-批量查询号码归属地 
+
+```
+
+### V 3.0.13.3
+
+```
+1、 修改 呼叫中心-设置-座席设置-新增座席 增加参数:dynamicTelGroupName，clidArea增加参数:areaGroupName、dynamicTelGroupName，删除参数:dynamicTelGroupId，clidArea删除参数:areaGroupId、dynamicTelGroupId
+2、 修改 呼叫中心-设置-座席设置-更新座席 增加参数:dynamicTelGroupName，clidArea增加参数:areaGroupName、dynamicTelGroupName，删除参数:dynamicTelGroupId，clidArea删除参数:areaGroupId、dynamicTelGroupId
+3、 修改 呼叫中心-设置-语音导航设置-查询语音导航节点列表 增加参数:ivrName，删除参数:ivrId
+4、 修改 呼叫中心-设置-全局设置-查询满意度模板列表 增加参数:ivrName，删除参数:ivrId
+5、 修改 呼叫中心-电话-呼叫控制-外呼 增加参数:clidGroupName，删除参数:type
+6、 修改 呼叫中心-电话-呼叫控制-网上回呼 增加参数:clidGroupName，删除参数:clidType
+7、 修改 呼叫中心-电话-呼叫控制-转移 修改参数:transferNumber，当transferType=3时，去掉ivrId，增加ivrName
+8、 修改 呼叫中心-增值功能-发送短信 增加参数:adminUsername，删除参数:adminId
+
+```
+
+### V 3.0.14
+```
+1、 新增 呼叫中心-云手机-AX绑定
+2、 新增 呼叫中心-云手机-AXB绑定
+```
+
+### V 3.0.15
+
+```
+1、 新增 在线客服-会话记录-同步满意度记录 返回参数：solve
+```
+
+
+
+
+### V 3.0.18
+
+```
+1、在线客服-会话记录-查询消息记录 弃用date字段
+2、在线客服-会话记录-查询会话详情 弃用date字段
+2、在线客服-会话记录-查询访客消息未读数 弃用accessId字段 统一使用appId字段
+```
+
+### V 3.0.19
+
+```
+1、 修改 呼叫中心-数据-通话录音-查看通话录音地址 返回数据：audioFlows
+```
+
+### V 3.0.20
+
+```
+1、 新增 呼叫中心-云手机-云手机通话记录-查询云手机通话记录列表
+2、 新增 呼叫中心-云手机-云手机通话记录-查询云手机通话记录明细
+3、 新增 呼叫中心-云手机-云手机通话记录-查询云手机通话录音地址
+4、 新增 呼叫中心-云手机-云手机通话记录-下载云手机通话录音文件
+5、 新增 呼叫中心-工具条token登录-agent登录接口
+```
+### V 3.0.21
+
+```
+1、 新增 呼叫中心-设置-座席设置-新增座席 追加字段 参数：cloudNumberEnabled、cloudNumberModes
+2、 新增 呼叫中心-设置-座席设置-更新座席 追加字段 参数：cloudNumberEnabled、cloudNumberModes
+3、 新增 呼叫中心-设置-座席设置-查看座席 追加字段 返回值：cloudNumberEnabled、cloudNumberModes
+```
+
+### V 3.0.24
+
+```
+AgentStatusDetailModel 座席状态监控详情补充字段
+```
+
+### V 3.0.25
+
+```
+1、 废弃 openapi包 在线客服-考勤报表， 移动到core包中
+```
+
+### V 3.0.26
+
+```
+1、 下载通话录音文件接口，支持获取mp3格式双轨录音
+```
+
+### V 3.0.27
+
+```
+1、 查询ASR转写记录接口，和API接口model响应参数对齐
+```
+
+### V 3.0.28
+
+```
+1、 新增 在线客服-报表-队列报表_按时间统计
+2、 新增 在线客服-报表-队列报表_按队列统计
+3、 新增 在线客服-报表-满意度报表
+```
+
+### V 3.0.29
+
+```
+1、在线客服-会话管理-发消息给客服， SDK响应体新增：sessionId、messageId、sendStatus、createTime、sensitiveWord
 ```

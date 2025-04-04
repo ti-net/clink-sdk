@@ -20,9 +20,9 @@ public class InteractRequest extends AbstractRequestModel<InteractResponse> {
     private String cno;
 
     /**
-     * 交互类型，0:语音导航节点；1:语音导航名称
+     * 语音导航名称
      */
-    private Integer ivrId;
+    private String ivrName;
 
     /**
      * 交互对象号码
@@ -45,14 +45,14 @@ public class InteractRequest extends AbstractRequestModel<InteractResponse> {
         }
     }
 
-    public Integer getIvrId() {
-        return ivrId;
+    public String getIvrName() {
+        return ivrName;
     }
 
-    public void setIvrId(Integer ivrId) {
-        this.ivrId = ivrId;
-        if (ivrId != null) {
-            putBodyParameter("ivrId", ivrId);
+    public void setIvrName(String ivrName) {
+        this.ivrName = ivrName;
+        if (ivrName != null) {
+            putBodyParameter("ivrName", ivrName);
         }
     }
 

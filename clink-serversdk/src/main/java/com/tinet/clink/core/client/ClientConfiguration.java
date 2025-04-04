@@ -14,6 +14,7 @@ public class ClientConfiguration {
 
     private String accessKeyId = null;
     private String accessKeySecret = null;
+    private String env = null;
 
     public ClientConfiguration(String accessKeyId, String accessKeySecret) {
         this.accessKeyId = accessKeyId;
@@ -62,5 +63,13 @@ public class ClientConfiguration {
 
     public void setScheme(String scheme) {
         this.scheme = scheme;
+    }
+
+    public String getEnv() {
+        return env;
+    }
+
+    public void setEnv(String env) {
+        this.env = env;
     }
 }

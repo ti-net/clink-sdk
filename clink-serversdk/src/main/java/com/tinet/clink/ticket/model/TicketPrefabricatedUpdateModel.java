@@ -1,5 +1,7 @@
 package com.tinet.clink.ticket.model;
 
+import com.tinet.clink.ticket.UserIdType;
+
 import java.util.Date;
 
 /**
@@ -22,6 +24,11 @@ public class TicketPrefabricatedUpdateModel {
      * 操作人ID
      */
     private Integer operatorId;
+
+    /**
+     * @see com.tinet.clink.ticket.UserIdType
+     */
+    private Integer operatorIdType = UserIdType.USER_ID.getCode();
 
     /**
      * 表单数据
@@ -73,4 +80,11 @@ public class TicketPrefabricatedUpdateModel {
         this.updateTime = updateTime;
     }
 
+    public Integer getOperatorIdType() {
+        return operatorIdType;
+    }
+
+    public void setOperatorIdType(Integer operatorIdType) {
+        this.operatorIdType = operatorIdType;
+    }
 }

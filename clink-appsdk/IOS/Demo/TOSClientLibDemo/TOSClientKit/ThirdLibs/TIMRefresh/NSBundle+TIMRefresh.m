@@ -16,7 +16,7 @@
     static NSBundle *refreshBundle = nil;
     if (refreshBundle == nil) {
         // 这里不使用mainBundle是为了适配pod 1.x和0.x
-        refreshBundle = [NSBundle bundleWithPath:[[NSBundle bundleForClass:[TIMRefreshComponent class]] pathForResource:@"TOSKitClient" ofType:@"bundle"]];
+        refreshBundle = [NSBundle bundleWithPath:[[NSBundle bundleForClass:[TIMRefreshComponent class]] pathForResource:@"TOSClient" ofType:@"bundle"]];
     }
     return refreshBundle;
 }

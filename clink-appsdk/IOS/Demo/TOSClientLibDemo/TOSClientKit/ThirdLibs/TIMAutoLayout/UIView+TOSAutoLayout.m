@@ -78,7 +78,7 @@
 @synthesize offset = _offset;
 
 
-- (MarginToView)leftSpaceToView
+- (TOSMarginToView)leftSpaceToView
 {
     if (!_leftSpaceToView) {
         _leftSpaceToView = [self marginToViewblockWithKey:@"left"];
@@ -86,7 +86,7 @@
     return _leftSpaceToView;
 }
 
-- (MarginToView)rightSpaceToView
+- (TOSMarginToView)rightSpaceToView
 {
     if (!_rightSpaceToView) {
         _rightSpaceToView = [self marginToViewblockWithKey:@"right"];
@@ -94,7 +94,7 @@
     return _rightSpaceToView;
 }
 
-- (MarginToView)topSpaceToView
+- (TOSMarginToView)topSpaceToView
 {
     if (!_topSpaceToView) {
         _topSpaceToView = [self marginToViewblockWithKey:@"top"];
@@ -102,7 +102,7 @@
     return _topSpaceToView;
 }
 
-- (MarginToView)bottomSpaceToView
+- (TOSMarginToView)bottomSpaceToView
 {
     if (!_bottomSpaceToView) {
         _bottomSpaceToView = [self marginToViewblockWithKey:@"bottom"];
@@ -110,7 +110,7 @@
     return _bottomSpaceToView;
 }
 
-- (MarginToView)marginToViewblockWithKey:(NSString *)key
+- (TOSMarginToView)marginToViewblockWithKey:(NSString *)key
 {
     __weak typeof(self) weakSelf = self;
     return ^(id viewOrViewsArray, CGFloat value) {
@@ -126,7 +126,7 @@
     };
 }
 
-- (WidthHeight)widthIs
+- (TOSWidthHeight)widthIs
 {
     if (!_widthIs) {
         __weak typeof(self) weakSelf = self;
@@ -141,7 +141,7 @@
     return _widthIs;
 }
 
-- (WidthHeight)heightIs
+- (TOSWidthHeight)heightIs
 {
     if (!_heightIs) {
         __weak typeof(self) weakSelf = self;
@@ -156,7 +156,7 @@
     return _heightIs;
 }
 
-- (WidthHeightEqualToView)widthRatioToView
+- (TOSWidthHeightEqualToView)widthRatioToView
 {
     if (!_widthRatioToView) {
         __weak typeof(self) weakSelf = self;
@@ -170,7 +170,7 @@
     return _widthRatioToView;
 }
 
-- (WidthHeightEqualToView)heightRatioToView
+- (TOSWidthHeightEqualToView)heightRatioToView
 {
     if (!_heightRatioToView) {
         __weak typeof(self) weakSelf = self;
@@ -184,7 +184,7 @@
     return _heightRatioToView;
 }
 
-- (WidthHeight)maxWidthIs
+- (TOSWidthHeight)maxWidthIs
 {
     if (!_maxWidthIs) {
         _maxWidthIs = [self limitingWidthHeightWithKey:@"maxWidth"];
@@ -192,7 +192,7 @@
     return _maxWidthIs;
 }
 
-- (WidthHeight)maxHeightIs
+- (TOSWidthHeight)maxHeightIs
 {
     if (!_maxHeightIs) {
         _maxHeightIs = [self limitingWidthHeightWithKey:@"maxHeight"];
@@ -200,7 +200,7 @@
     return _maxHeightIs;
 }
 
-- (WidthHeight)minWidthIs
+- (TOSWidthHeight)minWidthIs
 {
     if (!_minWidthIs) {
         _minWidthIs = [self limitingWidthHeightWithKey:@"minWidth"];
@@ -208,7 +208,7 @@
     return _minWidthIs;
 }
 
-- (WidthHeight)minHeightIs
+- (TOSWidthHeight)minHeightIs
 {
     if (!_minHeightIs) {
         _minHeightIs = [self limitingWidthHeightWithKey:@"minHeight"];
@@ -217,7 +217,7 @@
 }
 
 
-- (WidthHeight)limitingWidthHeightWithKey:(NSString *)key
+- (TOSWidthHeight)limitingWidthHeightWithKey:(NSString *)key
 {
     __weak typeof(self) weakSelf = self;
     
@@ -229,7 +229,7 @@
 }
 
 
-- (MarginEqualToView)marginEqualToViewBlockWithKey:(NSString *)key
+- (TOSMarginEqualToView)marginEqualToViewBlockWithKey:(NSString *)key
 {
     __weak typeof(self) weakSelf = self;
     
@@ -245,7 +245,7 @@
     };
 }
 
-- (MarginEqualToView)leftEqualToView
+- (TOSMarginEqualToView)leftEqualToView
 {
     if (!_leftEqualToView) {
         _leftEqualToView = [self marginEqualToViewBlockWithKey:@"equalLeft"];
@@ -253,7 +253,7 @@
     return _leftEqualToView;
 }
 
-- (MarginEqualToView)rightEqualToView
+- (TOSMarginEqualToView)rightEqualToView
 {
     if (!_rightEqualToView) {
         _rightEqualToView = [self marginEqualToViewBlockWithKey:@"equalRight"];
@@ -261,7 +261,7 @@
     return _rightEqualToView;
 }
 
-- (MarginEqualToView)topEqualToView
+- (TOSMarginEqualToView)topEqualToView
 {
     if (!_topEqualToView) {
         _topEqualToView = [self marginEqualToViewBlockWithKey:@"equalTop"];
@@ -269,7 +269,7 @@
     return _topEqualToView;
 }
 
-- (MarginEqualToView)bottomEqualToView
+- (TOSMarginEqualToView)bottomEqualToView
 {
     if (!_bottomEqualToView) {
         _bottomEqualToView = [self marginEqualToViewBlockWithKey:@"equalBottom"];
@@ -277,7 +277,7 @@
     return _bottomEqualToView;
 }
 
-- (MarginEqualToView)centerXEqualToView
+- (TOSMarginEqualToView)centerXEqualToView
 {
     if (!_centerXEqualToView) {
         _centerXEqualToView = [self marginEqualToViewBlockWithKey:@"equalCenterX"];
@@ -285,7 +285,7 @@
     return _centerXEqualToView;
 }
 
-- (MarginEqualToView)centerYEqualToView
+- (TOSMarginEqualToView)centerYEqualToView
 {
     if (!_centerYEqualToView) {
         _centerYEqualToView = [self marginEqualToViewBlockWithKey:@"equalCenterY"];
@@ -294,7 +294,7 @@
 }
 
 
-- (Margin)marginBlockWithKey:(NSString *)key
+- (TOSMargin)marginBlockWithKey:(NSString *)key
 {
     __weak typeof(self) weakSelf = self;
     
@@ -314,7 +314,7 @@
     };
 }
 
-- (Margin)xIs
+- (TOSMargin)xIs
 {
     if (!_xIs) {
         _xIs = [self marginBlockWithKey:@"x"];
@@ -322,7 +322,7 @@
     return _xIs;
 }
 
-- (Margin)yIs
+- (TOSMargin)yIs
 {
     if (!_yIs) {
         _yIs = [self marginBlockWithKey:@"y"];
@@ -330,7 +330,7 @@
     return _yIs;
 }
 
-- (Margin)centerXIs
+- (TOSMargin)centerXIs
 {
     if (!_centerXIs) {
         _centerXIs = [self marginBlockWithKey:@"centerX"];
@@ -338,7 +338,7 @@
     return _centerXIs;
 }
 
-- (Margin)centerYIs
+- (TOSMargin)centerYIs
 {
     if (!_centerYIs) {
         _centerYIs = [self marginBlockWithKey:@"centerY"];
@@ -346,7 +346,7 @@
     return _centerYIs;
 }
 
-- (AutoHeight)autoHeightRatio
+- (TOSAutoHeight)autoHeightRatio
 {
     __weak typeof(self) weakSelf = self;
     
@@ -359,7 +359,7 @@
     return _autoHeightRatio;
 }
 
-- (SpaceToSuperView)spaceToSuperView
+- (TOSSpaceToSuperView)spaceToSuperView
 {
     __weak typeof(self) weakSelf = self;
     
@@ -378,7 +378,7 @@
     return _spaceToSuperView;
 }
 
-- (SameWidthHeight)widthEqualToHeight
+- (TOSSameWidthHeight)widthEqualToHeight
 {
     __weak typeof(self) weakSelf = self;
     
@@ -394,7 +394,7 @@
     return _widthEqualToHeight;
 }
 
-- (SameWidthHeight)heightEqualToWidth
+- (TOSSameWidthHeight)heightEqualToWidth
 {
     __weak typeof(self) weakSelf = self;
     

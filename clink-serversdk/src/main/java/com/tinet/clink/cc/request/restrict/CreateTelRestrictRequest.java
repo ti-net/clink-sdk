@@ -49,6 +49,16 @@ public class CreateTelRestrictRequest extends AbstractRequestModel<CreateTelRest
      **/
     private String description;
 
+    /**
+     * 是否加密 1：加密 0：不加密（默认）
+     */
+    private Integer encrypt;
+
+    /**
+     * 加密类型 1：aes加密 （默认aes加密)
+     */
+    private Integer encryptType;
+
 
     public CreateTelRestrictRequest() {
         super(PathEnum.CreateTelRestrict.value(), HttpMethodType.POST);
@@ -94,6 +104,30 @@ public class CreateTelRestrictRequest extends AbstractRequestModel<CreateTelRest
             putBodyParameter("expirationTime", expirationTime);
         }
     }
+
+    public void setEncrypt(Integer encrypt) {
+        this.encrypt = encrypt;
+        if (Objects.nonNull(encrypt) ) {
+            putBodyParameter("encrypt", encrypt);
+        }
+    }
+
+    public void setEncryptType(Integer encryptType) {
+        this.encryptType = encryptType;
+        if (Objects.nonNull(encryptType) ) {
+            putBodyParameter("encryptType", encryptType);
+        }
+    }
+
+    public Integer getEncrypt() {
+        return encrypt;
+    }
+
+    public Integer getEncryptType() {
+        return encryptType;
+    }
+
+
 
     public Integer getRestrictType() {
         return restrictType;

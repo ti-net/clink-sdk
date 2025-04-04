@@ -41,6 +41,7 @@
     [TOSKitCustomInfo shareCustomInfo].Chat_visitorName_show = NO;
     [TOSKitCustomInfo shareCustomInfo].portrait_cornerRadius = 20;
     [TOSKitCustomInfo shareCustomInfo].chatBox_talk_backgroundColor = [UIColor blueColor];
+    [TOSKitCustomInfo shareCustomInfo].satisfactionViewPopupMode = YES;
     
     
     [TOSKitCustomInfo shareCustomInfo].titleName = @"客服";

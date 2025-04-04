@@ -1,5 +1,7 @@
 package com.tinet.clink.ticket.model;
 
+import com.tinet.clink.ticket.UserIdType;
+
 import java.util.Date;
 
 /**
@@ -34,6 +36,11 @@ public class TicketUpdateModel {
      * 关注人 Id数组
      */
     private Integer[] focus;
+
+    /**
+     * 关注人人员信息类型.默认是id
+     */
+    private Integer focusIdType = UserIdType.USER_ID.getCode();
 
     /**
      * 工单标签数组
@@ -135,4 +142,12 @@ public class TicketUpdateModel {
     public Field[] getCustomizeSystemFields() { return customizeSystemFields; }
 
     public void setCustomizeSystemFields(Field[] customizeSystemFields) { this.customizeSystemFields = customizeSystemFields; }
+
+    public Integer getFocusIdType() {
+        return focusIdType;
+    }
+
+    public void setFocusIdType(Integer focusIdType) {
+        this.focusIdType = focusIdType;
+    }
 }

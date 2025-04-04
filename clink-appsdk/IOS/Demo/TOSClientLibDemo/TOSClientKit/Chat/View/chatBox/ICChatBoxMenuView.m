@@ -13,7 +13,7 @@
 #import "TIMConstants.h"
 #import "UIView+SDExtension.h"
 #import "NSString+Extension.h"
-#import "UIImage+GIF.h"
+#import "UIImage+TIMGIF.h"
 #import "kitUtils.h"
 #import <TOSClientKit/TOSKit.h>
 

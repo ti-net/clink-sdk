@@ -54,6 +54,7 @@
 + (UIImage *)simpleImage:(UIImage *)originImg
 {
     CGSize imageSize = [self handleImage:originImg.size];
+    if (imageSize.width <= 0 || imageSize.height <= 0 || isnan(imageSize.width) || isnan(imageSize.height)) return nil;
     UIGraphicsBeginImageContextWithOptions(imageSize, YES, 0.0);
     CGContextRef contextRef = UIGraphicsGetCurrentContext();
     UIBezierPath *bezierPath = [UIBezierPath bezierPathWithRect:CGRectMake(0, 0, imageSize.width, imageSize.height)];
@@ -83,6 +84,7 @@
                               image:(UIImage *)image
                            isSender:(BOOL)isSender
 {
+    if (imageSize.width <= 0 || imageSize.height <= 0 || isnan(imageSize.width) || isnan(imageSize.height)) return nil;
     UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0.0);
     CGContextRef contextRef = UIGraphicsGetCurrentContext();
     UIBezierPath *path = [self getBezierPath:isSender imageSize:imageSize];
@@ -124,25 +126,62 @@
 + (UIImage *)addImage:(UIImage *)firstImg
               toImage:(UIImage *)secondImg
 {
-    UIGraphicsBeginImageContext(secondImg.size);
-    [secondImg drawInRect:CGRectMake(0, 0, secondImg.size.width, secondImg.size.height)];
-    [firstImg drawInRect:CGRectMake((secondImg.size.width-firstImg.size.width)*0.5,(secondImg.size.height-firstImg.size.height)*0.5, firstImg.size.width, firstImg.size.height)];
-    UIImage *resultImg = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
+    // iOS 17.0以上针对某些接口UIGraphicsBeginImageContextWithOptions的废弃兼容
+    CGFloat scale = 1.0f;  // 默认值 1.0f
+    UIImage *resultImg = nil;
+    if (secondImg.size.width <= 0 || secondImg.size.height <= 0 || isnan(secondImg.size.width) || isnan(secondImg.size.height)) return nil;
+    if (@available(iOS 17.0, *)) {
+        // 实际应该是在10.0作为分界点 但是为了谨慎起见只针对17做处理
+        UIGraphicsImageRendererFormat *format = [[UIGraphicsImageRendererFormat alloc] init];
+        format.scale = scale;
+        format.opaque = NO;
+        UIGraphicsImageRenderer *renderer = [[UIGraphicsImageRenderer alloc] initWithSize:secondImg.size
+                                                                                   format:format];
+        resultImg = [renderer imageWithActions:^(UIGraphicsImageRendererContext * _Nonnull rendererContext) {
+            [secondImg drawInRect:CGRectMake(0, 0, secondImg.size.width, secondImg.size.height)];
+            [firstImg drawInRect:CGRectMake((secondImg.size.width-firstImg.size.width)*0.5,(secondImg.size.height-firstImg.size.height)*0.5, firstImg.size.width, firstImg.size.height)];
+        }];
+    } else {
+        UIGraphicsBeginImageContext(secondImg.size);
+        [secondImg drawInRect:CGRectMake(0, 0, secondImg.size.width, secondImg.size.height)];
+        [firstImg drawInRect:CGRectMake((secondImg.size.width-firstImg.size.width)*0.5,(secondImg.size.height-firstImg.size.height)*0.5, firstImg.size.width, firstImg.size.height)];
+        resultImg = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+    }
     return resultImg;
 }
 
 + (UIImage *)addImage2:(UIImage *)firstImg
                toImage:(UIImage *)secondImg
 {
-    UIGraphicsBeginImageContext(secondImg.size);
-    [secondImg drawInRect:CGRectMake(0, 0,secondImg.size.width,secondImg.size.height)];
-    CGFloat firstImgW = secondImg.size.width/4;
-    CGFloat firstImgH = secondImg.size.width/4;
-    [firstImg drawInRect:CGRectMake((secondImg.size.width-firstImgW)*0.5,(secondImg.size.height-firstImgH)*0.5, firstImgW,firstImgH)];
-    UIImage *resultImg = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return resultImg;
+    // iOS 17.0以上针对某些接口UIGraphicsBeginImageContextWithOptions的废弃兼容
+    CGFloat scale = 1.0f;  // 默认值 1.0f
+    UIImage *image = nil;
+    if (secondImg.size.width <= 0 || secondImg.size.height <= 0 || isnan(secondImg.size.width) || isnan(secondImg.size.height)) return nil;
+    if (@available(iOS 17.0, *)) {
+        // 实际应该是在10.0作为分界点 但是为了谨慎起见只针对17做处理
+        UIGraphicsImageRendererFormat *format = [[UIGraphicsImageRendererFormat alloc] init];
+        format.scale = scale;
+        format.opaque = NO;
+        UIGraphicsImageRenderer *renderer = [[UIGraphicsImageRenderer alloc] initWithSize:secondImg.size
+                                                                                   format:format];
+        image = [renderer imageWithActions:^(UIGraphicsImageRendererContext * _Nonnull rendererContext) {
+            [secondImg drawInRect:CGRectMake(0, 0,secondImg.size.width,secondImg.size.height)];
+            CGFloat firstImgW = secondImg.size.width/4;
+            CGFloat firstImgH = secondImg.size.width/4;
+            [firstImg drawInRect:CGRectMake((secondImg.size.width-firstImgW)*0.5,(secondImg.size.height-firstImgH)*0.5, firstImgW,firstImgH)];
+        }];
+    } else {
+        UIGraphicsBeginImageContextWithOptions(secondImg.size, NO, scale);
+        [secondImg drawInRect:CGRectMake(0, 0,secondImg.size.width,secondImg.size.height)];
+        CGFloat firstImgW = secondImg.size.width/4;
+        CGFloat firstImgH = secondImg.size.width/4;
+        [firstImg drawInRect:CGRectMake((secondImg.size.width-firstImgW)*0.5,(secondImg.size.height-firstImgH)*0.5, firstImgW,firstImgH)];
+        image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+    }
+
+    return image;
 }
 
 + (NSString *)typeForImageData:(NSData *)data{

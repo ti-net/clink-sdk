@@ -3,6 +3,7 @@ package com.tinet.clink.ticket.request;
 import com.tinet.clink.ticket.PathEnum;
 import com.tinet.clink.core.request.AbstractRequestModel;
 import com.tinet.clink.core.utils.HttpMethodType;
+import com.tinet.clink.ticket.UserIdType;
 import com.tinet.clink.ticket.response.TicketCloseResponse;
 
 /**
@@ -22,7 +23,7 @@ public class TicketCloseRequest extends AbstractRequestModel<TicketCloseResponse
      * 操作人id
      */
     private Integer operatorId;
-
+    private Integer operatorIdType = UserIdType.USER_ID.getCode();
     /**
      * 评论内容
      */
@@ -56,6 +57,14 @@ public class TicketCloseRequest extends AbstractRequestModel<TicketCloseResponse
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Integer getOperatorIdType() {
+        return operatorIdType;
+    }
+
+    public void setOperatorIdType(Integer operatorIdType) {
+        this.operatorIdType = operatorIdType;
     }
 
     /**

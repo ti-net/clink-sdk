@@ -17,6 +17,12 @@ NS_ASSUME_NONNULL_BEGIN
 // 设置日志输出状态
 + (void)setLogEnable:(BOOL)enable;
 
+// 设置环境 为了判断KT
++ (void)setEnvConf:(NSString *)env;
+
+// 获取环境 为了判断KT
++ (NSString*)getEnvConf;
+
 // 获取日志输出状态
 + (BOOL)getLogEnable;
 
@@ -84,9 +90,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSDictionary *)getPlistFile:(NSString *)plistName;
 
+/// ⚠️这个方法有问题，会在客户的app中造成不准确的问题，后续不要使用这个类方法⚠️
 + (UIViewController *)XG_GetController;
 
 + (UIViewController *)XG_GetCurrentViewControllerFrom:(UIViewController *)rootViewController;
+
+/// 字典转字符串
+/// @param dic 字典
++ (NSString *)convertToJsonDataWithDic:(NSDictionary *)dic;
+
+/// 判断富文本的标签是否属于文本类型
+/// @param type 类型
++ (BOOL)isTextTypeLabel:(NSString *)type;
 @end
 
 NS_ASSUME_NONNULL_END
