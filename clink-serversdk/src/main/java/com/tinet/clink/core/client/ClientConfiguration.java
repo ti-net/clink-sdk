@@ -16,6 +16,8 @@ public class ClientConfiguration {
     private String accessKeySecret = null;
     private String env = null;
 
+    private int timeOffsetSeconds =0;
+
     public ClientConfiguration(String accessKeyId, String accessKeySecret) {
         this.accessKeyId = accessKeyId;
         this.accessKeySecret = accessKeySecret;
@@ -71,5 +73,13 @@ public class ClientConfiguration {
 
     public void setEnv(String env) {
         this.env = env;
+    }
+
+    public int getTimeOffsetSeconds() {
+        return timeOffsetSeconds;
+    }
+
+    public void setTimeOffsetSeconds(int timeOffsetSeconds) {
+        this.timeOffsetSeconds = timeOffsetSeconds;
     }
 }
