@@ -182,6 +182,19 @@ public class TicketDetailModel {
      */
     private TicketOperationLogNewModel[] operationLogsNew;
 
+    /**
+     * 来源    TicketSourceEnum
+     */
+    private Integer source;
+
+    public Integer getSource() {
+        return source;
+    }
+
+    public void setSource(Integer source) {
+        this.source = source;
+    }
+
 
     public TicketOperationLogNewModel[] getOperationLogsNew() {
         return operationLogsNew;
