@@ -1,6 +1,7 @@
 package com.tinet.clink.ticket.model;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 工单详情对象
@@ -177,6 +178,7 @@ public class TicketDetailModel {
      */
     private TicketSystemForm systemForm;
 
+
     /**
      * 操作日志v2
      */
@@ -186,6 +188,108 @@ public class TicketDetailModel {
      * 来源    TicketSourceEnum
      */
     private Integer source;
+
+    /**
+     * 催单记录
+     */
+    private List<ReminderLogModel> reminderLogs;
+
+
+    public static class ReminderLogModel {
+        private Integer reminderClient;
+        private String reminderClientName;
+        private String reminderClientUserName;
+        private String reminderClientCno;
+        private Date reminderTime;
+        private String reminderRemark;
+        private List<ReminderAttachmentModel> reminderAttachmentModelList;
+
+        public Integer getReminderClient() {
+            return reminderClient;
+        }
+
+        public void setReminderClient(Integer reminderClient) {
+            this.reminderClient = reminderClient;
+        }
+
+        public String getReminderClientName() {
+            return reminderClientName;
+        }
+
+        public void setReminderClientName(String reminderClientName) {
+            this.reminderClientName = reminderClientName;
+        }
+
+        public String getReminderClientUserName() {
+            return reminderClientUserName;
+        }
+
+        public void setReminderClientUserName(String reminderClientUserName) {
+            this.reminderClientUserName = reminderClientUserName;
+        }
+
+        public String getReminderClientCno() {
+            return reminderClientCno;
+        }
+
+        public void setReminderClientCno(String reminderClientCno) {
+            this.reminderClientCno = reminderClientCno;
+        }
+
+        public Date getReminderTime() {
+            return reminderTime;
+        }
+
+        public void setReminderTime(Date reminderTime) {
+            this.reminderTime = reminderTime;
+        }
+
+        public String getReminderRemark() {
+            return reminderRemark;
+        }
+
+        public void setReminderRemark(String reminderRemark) {
+            this.reminderRemark = reminderRemark;
+        }
+
+        public List<ReminderAttachmentModel> getReminderAttachmentModelList() {
+            return reminderAttachmentModelList;
+        }
+
+        public void setReminderAttachmentModelList(List<ReminderAttachmentModel> reminderAttachmentModelList) {
+            this.reminderAttachmentModelList = reminderAttachmentModelList;
+        }
+    }
+
+    public static class ReminderAttachmentModel{
+        private String attachmentKey;
+        private String attachmentUrl;
+
+        public String getAttachmentKey() {
+            return attachmentKey;
+        }
+
+        public void setAttachmentKey(String attachmentKey) {
+            this.attachmentKey = attachmentKey;
+        }
+
+        public String getAttachmentUrl() {
+            return attachmentUrl;
+        }
+
+        public void setAttachmentUrl(String attachmentUrl) {
+            this.attachmentUrl = attachmentUrl;
+        }
+    }
+
+    public List<ReminderLogModel> getReminderLogs() {
+        return reminderLogs;
+    }
+
+    public void setReminderLogs(List<ReminderLogModel> reminderLogs) {
+        this.reminderLogs = reminderLogs;
+    }
+
 
     public Integer getSource() {
         return source;
