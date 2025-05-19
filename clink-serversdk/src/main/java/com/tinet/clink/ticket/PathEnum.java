@@ -39,6 +39,8 @@ public enum PathEnum {
     FlowTicket("ticket/flow_ticket"),
     // 保存工单
     StoreTicket("ticket/store_ticket"),
+
+    PreserveTicket("ticket/ticket_preserve"),
     // 评论工单
     CommentTicket("ticket/comment_ticket"),
     // 关闭工单
