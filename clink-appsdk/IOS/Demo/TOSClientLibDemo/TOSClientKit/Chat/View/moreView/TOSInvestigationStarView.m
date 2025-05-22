@@ -7,7 +7,7 @@
 //
 
 #import "TOSInvestigationStarView.h"
-#import "UIColor+YYAdd.h"
+#import "UIColor+TIMYYAdd.h"
 #import "TIMConstants.h"
 #import "ICTools.h"
 

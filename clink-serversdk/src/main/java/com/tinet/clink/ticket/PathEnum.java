@@ -7,6 +7,11 @@ package com.tinet.clink.ticket;
 public enum PathEnum {
     //查询工单记录
     ListTicket("ticket/list_ticket"),
+    ListChildForm("ticket/get_child_form_list"),
+    GetChildForm("ticket/get_child_form_detail"),
+    CreateChildForm("ticket/create_child_form"),
+    UpdateChildForm("ticket/update_child_form"),
+    DeleteChildForm("ticket/delete_child_form"),
 
     // 获取工单详情
     GetTicketDetail("ticket/get_ticket_detail"),
@@ -14,10 +19,16 @@ public enum PathEnum {
     ListTicketCategory("ticket/list_ticket_category"),
 
     ListTicketWorkflow("ticket/list_ticket_workflow"),
-
+    // 创建工单
     SaveTicket("ticket/save_ticket"),
+    // 暂存工单
+    StagingTicket("ticket/staging_ticket"),
     // 更新工单-人工
     UpdateTicket("ticket/update_ticket"),
+    // 催单
+    ReminderTicket("ticket/reminder_ticket"),
+    // 重启
+    RestartTicket("ticket/restart_ticket"),
     // 更新工单-预制流
     UpdateTicketPrefabricated("ticket/update_ticket_prefabricated"),
     // 获取表单详情
@@ -28,6 +39,8 @@ public enum PathEnum {
     FlowTicket("ticket/flow_ticket"),
     // 保存工单
     StoreTicket("ticket/store_ticket"),
+
+    PreserveTicket("ticket/ticket_preserve"),
     // 评论工单
     CommentTicket("ticket/comment_ticket"),
     // 关闭工单

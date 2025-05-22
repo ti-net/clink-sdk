@@ -10,7 +10,6 @@
 #import "TIMMessageModel.h"
 #import "ICFaceManager.h"
 #import "TIMConstants.h"
-#import <TOSClientLib/TIMLibUtils.h>
 #import <TOSClientLib/TOSClientLib.h>
 #import <CoreText/CoreText.h>
 #import "NSString+Extension.h"

@@ -10,7 +10,7 @@
 //
 
 #import "YYThreadSafeArray.h"
-#import "NSArray+YYAdd.h"
+#import "NSArray+TIMYYAdd.h"
 
 
 #define INIT(...) self = super.init; \

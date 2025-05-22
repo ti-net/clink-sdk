@@ -45,6 +45,9 @@ public enum PathEnum {
     ListClidNumbers("cc/list_clid_numbers"),
     ListHotlineNumbers("cc/list_hotline_numbers"),
 
+    // 批量获取号码归属地
+    BatchGetAreaCode("cc/batch_get_areacode"),
+
     ListDynamicTelGroupRule("cc/list_dynamic_tel_group_rule"),
     // 呼叫控制
     Online("cc/online"),
@@ -61,6 +64,7 @@ public enum PathEnum {
     ConsultCancel("cc/consult_cancel"),
     ConsultTransfer("cc/consult_transfer"),
     ConsultThreeway("cc/consult_threeway"),
+    ConsultUnthreeway("cc/consult_unthreeway"),
     Unconsult("cc/unconsult"),
     Hold("cc/hold"),
     Unhold("cc/unhold"),
@@ -69,6 +73,7 @@ public enum PathEnum {
     Dtmf("cc/dtmf"),
     Investigation("cc/investigation"),
     ListInvestigation("cc/list_investigation"),
+    BotTransfer("cc/bot_transfer"),
     // 呼叫管理
     Spy("cc/spy"),
     Threeway("threeway"),
@@ -110,6 +115,7 @@ public enum PathEnum {
 
     //  留言记录
     ListComments("cc/list_comments"),
+    ListVoiceMails("cc/list_voice_mails"),
     // 满意度记录
     ListInvestigations("cc/list_investigations"),
     // 添加满意度记录
@@ -145,12 +151,25 @@ public enum PathEnum {
     //短信发送
     SsoLoginToken("cc/login_token"),
 
+    // 云手机ax绑定
+    CloudNumberAxBind("cc/cloud_number_ax_bind"),
+    // 云手机axb绑定
+    CloudNumberAxbBind("cc/cloud_number_axb_bind"),
+
+    ListCloudNumberCdrs("cc/list_cloud_number_cdrs"),
+    DescribeCloudNumberCdr("cc/describe_cloud_number_cdr"),
+    DescribeCloudNumberRecordFile("cc/describe_cloud_number_record_file"),
+    DownloadCloudNumberRecordFile("cc/download_cloud_number_record_file"),
+
+
     //----------------------------------------------↓呼叫中心-报表↓----------------------------------------------//
 
     //座席工作量报表
     StatClientWorkload("cc/stat_client_workload"),
     //队列报表
     StatQueue("cc/stat_queue"),
+    // 新队列报表
+    StatNewQueue("cc/stat_new_queue"),
     //座席状态统计报表
     StatClientStatus("cc/stat_client_status"),
     //外呼报表-预览外呼
@@ -211,6 +230,11 @@ public enum PathEnum {
      * 工具条agentToken获取
      */
     wsAgentToken("cc/ws_agent_token"),
+    /**
+     * 工具条agent登录
+     */
+    wsAgentLogin("cc/ws_agent_login"),
+
 
     /**
      * 外呼任务创建
@@ -244,6 +268,29 @@ public enum PathEnum {
      * 更新外呼任务明细表单信息
      */
     UpdateTaskInventoryFormInfo("cc/update_task_inventory_form_info"),
+    /**
+     * 配置座席其它设置
+     */
+    OtherSetting("cc/other_setting"),
+    /**
+     * 获取座席其它设置
+     */
+    ListOtherSetting("cc/list_other_setting"),
+
+    /**
+     * 获取企业SessionKey
+     */
+    EnterpriseSessionKey("cc/enterpriseSessionKey"),
+
+    /**
+     * 查询AI对话转写记录
+     */
+    RobotRasr("cc/robot_rasr"),
+
+    /**
+     * 智能填单请求接口
+     */
+    IntelligentFillingInsight("cc/intelligent_filling_insight"),
     ;
     private String value;
 

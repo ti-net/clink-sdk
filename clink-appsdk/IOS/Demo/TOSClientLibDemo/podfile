@@ -5,19 +5,29 @@ use_frameworks!
 
 target "TOSClientKit" do
 
-pod 'TOSClientLib'
+  pod 'TOSClientLib', '~> 2.0.5'
 
 end
 
 target "TOSClientLibDemo" do
 
-pod 'TOSClientLib'
+  pod 'TOSClientLib', '~> 2.0.5'
 
-pod 'YTKNetwork'
-pod 'AFNetworking', '~> 3.0', :subspecs => ['Reachability', 'Serialization', 'Security', 'NSURLSession']
-pod 'ReactiveObjC'
-pod 'YBPopupMenu'
-pod 'YYKit'
+  pod 'YTKNetwork'
+  pod 'AFNetworking', '~> 3.0', :subspecs => ['Reachability', 'Serialization', 'Security', 'NSURLSession']
+  pod 'ReactiveObjC'
+  pod 'YBPopupMenu'
+  pod 'YYKit'
 
+end
 
+# 所有三方SDK最小支持小于iOS 13的都改成iOS 13
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      if config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'].to_f < 12.0
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
+      end
+    end
+  end
 end

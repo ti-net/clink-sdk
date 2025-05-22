@@ -108,7 +108,7 @@ public class Client {
 
     public <T extends ResponseModel> HttpResponse doAction(AbstractRequestModel<T> request) throws ClientException {
 
-        request.signRequest(signer, configuration.getCredentials(), configuration.getHost());
+        request.signRequest(signer, configuration.getCredentials(), configuration.getHost(), configuration.getTimeOffsetSeconds());
         String method = request.httpMethod().toString();
 
         String uri;
@@ -118,7 +118,9 @@ public class Client {
             throw new ClientException("SDK", "URI 错误", e);
         }
         BasicHttpEntityEnclosingRequest httpRequest = new BasicHttpEntityEnclosingRequest(method, uri);
-
+        if (Objects.nonNull(configuration.getEnv()) && !Objects.equals("", configuration.getEnv())) {
+            httpRequest.setHeader("T-Env", configuration.getEnv());
+        }
         if (request.httpMethod().hasContent()) {
             if (request.isMultipartFormData()) {
                 MultipartEntityBuilder builder;

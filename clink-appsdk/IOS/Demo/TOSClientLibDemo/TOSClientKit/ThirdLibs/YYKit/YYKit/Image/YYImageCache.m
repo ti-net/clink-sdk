@@ -10,10 +10,10 @@
 //
 
 #import "YYImageCache.h"
-#import "YYMemoryCache.h"
-#import "YYDiskCache.h"
-#import "UIImage+YYAdd.h"
-#import "NSObject+YYAdd.h"
+#import "TIMYYMemoryCache.h"
+#import "TIMYYDiskCache.h"
+#import "UIImage+TIMYYAdd.h"
+#import "NSObject+TIMYYAdd.h"
 #import "YYImage.h"
 
 #if __has_include("YYDispatchQueuePool.h")
@@ -57,7 +57,7 @@ static inline dispatch_queue_t YYImageCacheDecodeQueue() {
 }
 
 - (UIImage *)imageFromData:(NSData *)data {
-    NSData *scaleData = [YYDiskCache getExtendedDataFromObject:data];
+    NSData *scaleData = [TIMYYDiskCache getExtendedDataFromObject:data];
     CGFloat scale = 0;
     if (scaleData) {
         scale = ((NSNumber *)[NSKeyedUnarchiver unarchiveObjectWithData:scaleData]).doubleValue;
@@ -95,14 +95,14 @@ static inline dispatch_queue_t YYImageCacheDecodeQueue() {
 }
 
 - (instancetype)initWithPath:(NSString *)path {
-    YYMemoryCache *memoryCache = [YYMemoryCache new];
+    TIMYYMemoryCache *memoryCache = [TIMYYMemoryCache new];
     memoryCache.shouldRemoveAllObjectsOnMemoryWarning = YES;
     memoryCache.shouldRemoveAllObjectsWhenEnteringBackground = YES;
     memoryCache.countLimit = NSUIntegerMax;
     memoryCache.costLimit = NSUIntegerMax;
     memoryCache.ageLimit = 12 * 60 * 60;
     
-    YYDiskCache *diskCache = [[YYDiskCache alloc] initWithPath:path];
+    TIMYYDiskCache *diskCache = [[TIMYYDiskCache alloc] initWithPath:path];
     diskCache.customArchiveBlock = ^(id object) { return (NSData *)object; };
     diskCache.customUnarchiveBlock = ^(NSData *data) { return (id)data; };
     if (!memoryCache || !diskCache) return nil;
@@ -146,7 +146,7 @@ static inline dispatch_queue_t YYImageCacheDecodeQueue() {
     if (type & YYImageCacheTypeDisk) { // add to disk cache
         if (imageData) {
             if (image) {
-                [YYDiskCache setExtendedData:[NSKeyedArchiver archivedDataWithRootObject:@(image.scale)] toObject:imageData];
+                [TIMYYDiskCache setExtendedData:[NSKeyedArchiver archivedDataWithRootObject:@(image.scale)] toObject:imageData];
             }
             [_diskCache setObject:imageData forKey:key];
         } else if (image) {
@@ -154,7 +154,7 @@ static inline dispatch_queue_t YYImageCacheDecodeQueue() {
                 __strong typeof(_self) self = _self;
                 if (!self) return;
                 NSData *data = [image imageDataRepresentation];
-                [YYDiskCache setExtendedData:[NSKeyedArchiver archivedDataWithRootObject:@(image.scale)] toObject:data];
+                [TIMYYDiskCache setExtendedData:[NSKeyedArchiver archivedDataWithRootObject:@(image.scale)] toObject:data];
                 [self.diskCache setObject:data forKey:key];
             });
         }

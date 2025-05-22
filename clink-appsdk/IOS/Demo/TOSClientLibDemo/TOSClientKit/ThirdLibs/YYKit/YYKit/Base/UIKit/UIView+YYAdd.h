@@ -1,5 +1,5 @@
 //
-//  UIView+YYAdd.h
+//  UIView+TIMYYAdd.h
 //  YYKit <https://github.com/ibireme/YYKit>
 //
 //  Created by ibireme on 13/4/3.
@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Provides extensions for `UIView`.
  */
-@interface UIView (YYAdd)
+@interface UIView (TIMYYAdd)
 
 /**
  Create a snapshot image of the complete view hierarchy.

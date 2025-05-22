@@ -41,11 +41,23 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@interface TOSSatisfactionChatSatisSolveStateModel : TIMLibBaseModel
+
+/// 0：不展示，1：展示
+@property (nonatomic, strong) NSNumber *enabled;
+@property (nonatomic, strong) NSNumber *required;
+
+@end
+
 @interface TOSSatisfactionInvestigationModel : TIMLibBaseModel
 
 @property (nonatomic, strong) NSNumber *appEnabled;
 @property (nonatomic, strong) NSDictionary *chatSatisNumEvaluation;
-@property (nonatomic, strong) NSDictionary *chatSatisSolveState;
+
+/// 判断是否展示问题已解决
+@property (nonatomic, strong) TOSSatisfactionChatSatisSolveStateModel *chatSatisSolveState;
+
+@property (nonatomic, strong) NSDictionary *chatWeixinTemplateState;
 
 
 @property (nonatomic, strong) TOSSatisfactionContentModel *content;
@@ -59,12 +71,17 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSNumber *feedbackType;
 @property (nonatomic, strong) NSNumber *rename_id;
 @property (nonatomic, strong) NSDictionary *investigationTimeout;
+/// 是否重复提交满意度评价 0：不重复。1：重复
 @property (nonatomic, strong) NSNumber *multiInvestigation;
+
+/// 是否显示备注评价 0：不显示。1：显示
 @property (nonatomic, strong) NSNumber *remark;
+
+/// 备注评价的占位文本
 @property (nonatomic, copy) NSString *remarkContent;
 @property (nonatomic, strong) NSDictionary *satisfactionRate;
 
-/// star
+/// 评价星级数
 @property (nonatomic, strong) NSArray <TOSSatisfactionStarModel *>*star;
 
 @property (nonatomic, strong) NSNumber *starType;

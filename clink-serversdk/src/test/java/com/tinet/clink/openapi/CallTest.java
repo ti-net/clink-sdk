@@ -100,10 +100,10 @@ public class CallTest extends AbstractTest {
     public void calloutTest() throws ServerException, ClientException, JsonProcessingException {
 
         CalloutRequest request = new CalloutRequest();
-        request.setCno("5818");
+        request.setCno("888888");
         request.setCustomerNumber("17600055818");
-        request.setClid("02968214693");
-        request.setType(0);
+//        request.setClid("02968214693");
+        request.setClidGroupName("bcytest");
 
         CalloutResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getRequestId()));
@@ -171,7 +171,7 @@ public class CallTest extends AbstractTest {
 
         InteractRequest request = new InteractRequest();
         request.setCno("1000");
-        request.setIvrId(0);
+        request.setIvrName("测试语音导航");
         request.setIvrNode("");
 
         InteractResponse response = client.getResponseModel(request);
@@ -321,7 +321,8 @@ public class CallTest extends AbstractTest {
     public void investigationTest() throws ServerException, ClientException, JsonProcessingException {
 
         InvestigationRequest request = new InvestigationRequest();
-        request.setCno("1000");
+        request.setCno("888888");
+        request.setInvestigationName("zzj");
 
         InvestigationResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response.getRequestId()));

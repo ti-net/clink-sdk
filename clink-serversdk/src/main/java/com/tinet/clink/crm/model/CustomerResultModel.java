@@ -195,6 +195,11 @@ public class CustomerResultModel {
      * */
     private Date lastRepeatPromoteTime;
 
+    /**
+     * 客户标签
+     */
+    private Integer[] labelIds;
+
     public Integer getId() {
         return id;
     }
@@ -489,5 +494,13 @@ public class CustomerResultModel {
 
     public void setLastRepeatPromoteTime(Date lastRepeatPromoteTime) {
         this.lastRepeatPromoteTime = lastRepeatPromoteTime;
+    }
+
+    public Integer[] getLabelIds() {
+        return labelIds;
+    }
+
+    public void setLabelIds(Integer[] labelIds) {
+        this.labelIds = labelIds;
     }
 }

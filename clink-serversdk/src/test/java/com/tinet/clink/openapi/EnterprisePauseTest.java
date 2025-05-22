@@ -41,7 +41,7 @@ public class EnterprisePauseTest extends AbstractTest {
     @Test
     public void updateTest() throws ServerException, ClientException, JsonProcessingException {
         UpdateEnterprisePausesRequest request = new UpdateEnterprisePausesRequest();
-        request.setId(68068);
+        request.setId(1951772672);
         request.setPauseStatus("000");
         request.setIsRest(0);
         request.setIsDefault(0);
@@ -52,7 +52,7 @@ public class EnterprisePauseTest extends AbstractTest {
     @Test
     public void delTest() throws ServerException, ClientException, JsonProcessingException {
         DeleteEnterprisePausesRequest request = new DeleteEnterprisePausesRequest();
-        request.setPauseStatus("opt");
+        request.setPauseStatus("000");
         DeleteEnterprisePausesResponse responseModel = client.getResponseModel(request);
         System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(responseModel));
     }

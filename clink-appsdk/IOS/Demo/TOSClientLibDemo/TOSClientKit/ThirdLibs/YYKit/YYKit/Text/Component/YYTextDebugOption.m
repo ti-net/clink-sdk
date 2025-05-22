@@ -11,7 +11,7 @@
 
 #import "YYTextDebugOption.h"
 #import "YYKitMacro.h"
-#import "UIColor+YYAdd.h"
+#import "UIColor+TIMYYAdd.h"
 #import "YYWeakProxy.h"
 
 

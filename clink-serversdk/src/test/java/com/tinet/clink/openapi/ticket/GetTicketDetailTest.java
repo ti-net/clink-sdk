@@ -19,15 +19,15 @@ public class GetTicketDetailTest extends AbstractTest {
     public void getTicketDetail() {
 
         ClientConfiguration configuration = new ClientConfiguration(
-                "a307c59f2e9e95b236aaded45806366c",          // AccessKeyId
-                "55xWk0s47070pZK82e0w");     // AccessKeySecret
+                "c470fcc6f352e4fe56ce416a263711c1",          // AccessKeyId
+                "JTq5O462Au735874rax4");     // AccessKeySecret
         configuration.setHost("api-bj-test0.clink.cn");
-        configuration.setScheme("http");
+        configuration.setScheme("https");
         Client client = new Client(configuration);
 
         // 创建请求request
         GetTicketDetailRequest getTicketDetailRequest = new GetTicketDetailRequest();
-        getTicketDetailRequest.setId(171269);
+        getTicketDetailRequest.setId(1470);
 
         GetTicketDetailResponse getTicketDetailResponse;
 

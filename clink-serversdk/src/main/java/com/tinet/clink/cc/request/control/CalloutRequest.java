@@ -41,9 +41,9 @@ public class CalloutRequest extends AbstractRequestModel<CalloutResponse> {
     private Integer type;
 
     /**
-     * 接口外呼标识，按照标识配置的外显号码进行外显。如果同时传入clid和clidGroup，clid优先级高
+     * 接口外显规则名称，按照外显规则配置的外显号码进行外显。如果同时传入clid和clidGroupName，clidGroupName优先级高
      */
-    private String clidGroup;
+    private String clidGroupName;
 
     /**
      * 呼叫座席侧超时时间，取值范围 5-60s，默认 30s
@@ -113,14 +113,14 @@ public class CalloutRequest extends AbstractRequestModel<CalloutResponse> {
         }
     }
 
-    public String getClidGroup() {
-        return clidGroup;
+    public String getClidGroupName() {
+        return clidGroupName;
     }
 
-    public void setClidGroup(String clidGroup) {
-        this.clidGroup = clidGroup;
-        if (clidGroup != null) {
-            putBodyParameter("clidGroup", clidGroup);
+    public void setClidGroupName(String clidGroupName) {
+        this.clidGroupName = clidGroupName;
+        if (clidGroupName != null) {
+            putBodyParameter("clidGroupName", clidGroupName);
         }
     }
 

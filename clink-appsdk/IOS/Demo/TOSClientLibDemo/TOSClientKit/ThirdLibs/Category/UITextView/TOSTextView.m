@@ -11,6 +11,7 @@
 #import "SWTextAttachment.h"
 #import "TIMConstants.h"
 #import "ICFaceManager.h"
+#import "kitUtils.h"
 
 
 @interface TOSTextView ()
@@ -115,8 +116,15 @@
     //遍历NSAttributedString,SWTextAttachment对应的字符串
     [self.attributedText enumerateAttributesInRange:range options:0 usingBlock:^(NSDictionary<NSAttributedStringKey,id> * _Nonnull attrs, NSRange range, BOOL * _Nonnull stop) {
         SWTextAttachment *attachment = attrs[NSAttachmentAttributeName];
-        if(attachment){
-            [result appendString:attachment.chs];
+        if(attachment &&
+           [attachment isKindOfClass:[SWTextAttachment class]]){
+            
+            if (![kitUtils isBlankString:attachment.chs]) {
+                [result appendString:attachment.chs];
+
+            }else{
+                TIMKitLog(@"attachment.chs 不存在");
+            }
         }else{
             NSString *str = [self.attributedText.string substringWithRange:range];
             [result appendString:str];

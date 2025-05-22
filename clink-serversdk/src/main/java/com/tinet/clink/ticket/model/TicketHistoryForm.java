@@ -32,6 +32,10 @@ public class TicketHistoryForm {
     private Integer operatorId;
 
     /**
+     * 操作类型  1: 保存
+     */
+    private Integer operationType;
+    /**
      * 当前节点的名称
      */
     private String taskName;
@@ -92,6 +96,14 @@ public class TicketHistoryForm {
 
     public void setOperatorId(Integer operatorId) {
         this.operatorId = operatorId;
+    }
+
+    public Integer getOperationType() {
+        return operationType;
+    }
+
+    public void setOperationType(Integer operationType) {
+        this.operationType = operationType;
     }
 
     public String getTaskName() {

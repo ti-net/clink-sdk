@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) id <ICChatBarFunctionViewDelegate>                delegate;
 
 - (void)addBarItemView:(NSArray <ICChatBarItemView *>*)items;
+- (void)removeScrollViewAllSubviews;
 
 @end
 

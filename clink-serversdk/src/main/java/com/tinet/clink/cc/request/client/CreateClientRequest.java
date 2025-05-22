@@ -1,7 +1,6 @@
 package com.tinet.clink.cc.request.client;
 
 
-
 import com.tinet.clink.cc.PathEnum;
 import com.tinet.clink.cc.model.ClidArea;
 import com.tinet.clink.cc.model.ClientPermission;
@@ -80,10 +79,10 @@ public class CreateClientRequest extends AbstractRequestModel<CreateClientRespon
     private Integer assignType;
 
     /**
-     * 动态外呼组id
-     * dynamicTelGroupRule.id
+     * 动态外呼组名称
+     * dynamicTelGroupRule.name
      */
-    private Integer dynamicTelGroupId;
+    private String dynamicTelGroupName;
 
     /**
      * 外显号码
@@ -97,10 +96,10 @@ public class CreateClientRequest extends AbstractRequestModel<CreateClientRespon
 
     /**
      * 外显规则，
-     *
-     *
-     *（全部）1:按次轮选；2: 按天轮选。
-     *（智能外显）1:动态；2: 自定义
+     * <p>
+     * <p>
+     * （全部）1:按次轮选；2: 按天轮选。
+     * （智能外显）1:动态；2: 自定义
      */
     private Integer clidRule;
 
@@ -133,6 +132,66 @@ public class CreateClientRequest extends AbstractRequestModel<CreateClientRespon
      * 在线客服座席会话上限
      */
     private Integer chatLimitNum;
+
+    /**
+     * 缺省号码类型
+     * 0：号码 1：动态号码组 默认 0
+     */
+    private Integer obClidDefaultType;
+
+    /**
+     * 缺省外显号码
+     */
+    private String[] clidDefault;
+
+    /**
+     * 缺省动态外呼组id
+     */
+    private Integer dynamicTelGroupIdDefault;
+
+    /**
+     * 云号码外呼开关；0-关，1-开
+     */
+    private Integer cloudNumberEnabled;
+    /**
+     * 云号码模式 1-4 依次对应：工作号（实体卡）、工
+     * 作号+XB模式、AXB两端呼、RTC+PSTN外呼：
+     */
+    private Integer[] cloudNumberModes;
+
+
+    public Integer getObClidDefaultType() {
+        return obClidDefaultType;
+    }
+
+    public void setObClidDefaultType(Integer obClidDefaultType) {
+        this.obClidDefaultType = obClidDefaultType;
+        if (obClidDefaultType != null) {
+            putBodyParameter("obClidDefaultType", obClidDefaultType);
+        }
+    }
+
+    public String[] getClidDefault() {
+        return clidDefault;
+    }
+
+    public void setClidDefault(String[] clidDefault) {
+        this.clidDefault = clidDefault;
+        if (clidDefault != null) {
+            putBodyParameter("clidDefault", clidDefault);
+        }
+    }
+
+    public Integer getDynamicTelGroupIdDefault() {
+        return dynamicTelGroupIdDefault;
+    }
+
+    public void setDynamicTelGroupIdDefault(Integer dynamicTelGroupIdDefault) {
+        this.dynamicTelGroupIdDefault = dynamicTelGroupIdDefault;
+        if (dynamicTelGroupIdDefault != null) {
+            putBodyParameter("dynamicTelGroupIdDefault", dynamicTelGroupIdDefault);
+        }
+    }
 
     public Integer getType() {
         return type;
@@ -288,14 +347,14 @@ public class CreateClientRequest extends AbstractRequestModel<CreateClientRespon
         }
     }
 
-    public Integer getDynamicTelGroupId() {
-        return dynamicTelGroupId;
+    public String getDynamicTelGroupName() {
+        return dynamicTelGroupName;
     }
 
-    public void setDynamicTelGroupId(Integer dynamicTelGroupId) {
-        this.dynamicTelGroupId = dynamicTelGroupId;
-        if (dynamicTelGroupId != null) {
-            putBodyParameter("dynamicTelGroupId", dynamicTelGroupId);
+    public void setDynamicTelGroupName(String dynamicTelGroupName) {
+        this.dynamicTelGroupName = dynamicTelGroupName;
+        if (dynamicTelGroupName != null) {
+            putBodyParameter("dynamicTelGroupName", dynamicTelGroupName);
         }
     }
 
@@ -373,6 +432,28 @@ public class CreateClientRequest extends AbstractRequestModel<CreateClientRespon
         this.cno = cno;
         if (cno != null) {
             putBodyParameter("cno", cno);
+        }
+    }
+
+    public Integer getCloudNumberEnabled() {
+        return cloudNumberEnabled;
+    }
+
+    public void setCloudNumberEnabled(Integer cloudNumberEnabled) {
+        this.cloudNumberEnabled = cloudNumberEnabled;
+        if (cloudNumberEnabled != null) {
+            putBodyParameter("cloudNumberEnabled", cloudNumberEnabled);
+        }
+    }
+
+    public Integer[] getCloudNumberModes() {
+        return cloudNumberModes;
+    }
+
+    public void setCloudNumberModes(Integer[] cloudNumberModes) {
+        this.cloudNumberModes = cloudNumberModes;
+        if (cloudNumberModes != null) {
+            putBodyParameter("cloudNumberModes", cloudNumberModes);
         }
     }
 

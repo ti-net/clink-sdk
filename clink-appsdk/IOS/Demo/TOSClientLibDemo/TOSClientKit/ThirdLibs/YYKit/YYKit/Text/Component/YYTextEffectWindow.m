@@ -13,8 +13,8 @@
 #import "YYTextKeyboardManager.h"
 #import "YYKitMacro.h"
 #import "YYCGUtilities.h"
-#import "UIView+YYAdd.h"
-#import "UIApplication+YYAdd.h"
+#import "UIView+TIMYYAdd.h"
+#import "UIApplication+TIMYYAdd.h"
 
 
 @implementation YYTextEffectWindow
@@ -246,13 +246,16 @@
             static UIImage *placeholder;
             static dispatch_once_t onceToken;
             dispatch_once(&onceToken, ^{
-                CGRect rect = CGRectMake(0, 0, mag.tos_width, mag.tos_height);
-                UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
-                CGContextRef context = UIGraphicsGetCurrentContext();
-                [[UIColor colorWithWhite:1 alpha:0.8] set];
-                CGContextFillRect(context, rect);
-                placeholder = UIGraphicsGetImageFromCurrentImageContext();
-                UIGraphicsEndImageContext();
+                if (mag.tos_width > 0 && mag.tos_height > 0) {
+                    // 是兼容iOS17的 后续可以考虑是否替换实现 TODO
+                    CGRect rect = CGRectMake(0, 0, mag.tos_width, mag.tos_height);
+                    UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
+                    CGContextRef context = UIGraphicsGetCurrentContext();
+                    [[UIColor colorWithWhite:1 alpha:0.8] set];
+                    CGContextFillRect(context, rect);
+                    placeholder = UIGraphicsGetImageFromCurrentImageContext();
+                    UIGraphicsEndImageContext();
+                }
             });
             mag.captureFadeAnimation = YES;
             mag.snapshot = placeholder;
@@ -261,6 +264,10 @@
         return rotation;
     }
     
+    if (captureRect.size.width <= 0 || captureRect.size.height <= 0 || isnan(captureRect.size.width) || isnan(captureRect.size.height)) {
+        // 是兼容iOS17的 后续可以考虑是否替换实现 TODO
+        return rotation;
+    }
     UIGraphicsBeginImageContextWithOptions(captureRect.size, NO, 0);
     CGContextRef context = UIGraphicsGetCurrentContext();
     if (!context) return rotation;

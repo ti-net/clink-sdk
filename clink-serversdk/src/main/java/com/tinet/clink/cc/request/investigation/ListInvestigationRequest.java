@@ -8,7 +8,6 @@ import com.tinet.clink.core.utils.HttpMethodType;
 
 /**
  * 满意度调查模板请求
- *
  **/
 public class ListInvestigationRequest extends AbstractRequestModel<ListInvestigationResponse> {
 
@@ -24,7 +23,12 @@ public class ListInvestigationRequest extends AbstractRequestModel<ListInvestiga
     /**
      * 语音导航
      */
-    private Integer[] ivrId;
+    private String ivrId;
+
+    /**
+     * 语音导航
+     */
+    private String[] ivrName;
 
 
     private Integer limit;
@@ -43,16 +47,22 @@ public class ListInvestigationRequest extends AbstractRequestModel<ListInvestiga
         }
     }
 
-    public Integer[] getIvrId() {
-        return ivrId;
+    public String[] getIvrName() {
+        return ivrName;
     }
 
-    public void setIvrId(Integer[] ivrId) {
-        this.ivrId = ivrId;
-        if (ivrId != null) {
-            putQueryParameter("ivrId", ivrId);
+    public void setIvrName(String[] ivrName) {
+        this.ivrName = ivrName;
+        if (ivrName != null && ivrName.length > 0) {
+            StringBuilder sb = new StringBuilder();
+            for (String s : ivrName) {
+                sb.append(s).append(",");
+            }
+            sb.deleteCharAt(sb.length() - 1);
+            putQueryParameter("ivrName", sb.toString());
         }
     }
+
 
     public Integer getLimit() {
         return limit;

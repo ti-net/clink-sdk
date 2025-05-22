@@ -3,6 +3,7 @@ package com.tinet.clink.ticket.request;
 import com.tinet.clink.ticket.PathEnum;
 import com.tinet.clink.core.request.AbstractRequestModel;
 import com.tinet.clink.core.utils.HttpMethodType;
+import com.tinet.clink.ticket.UserIdType;
 import com.tinet.clink.ticket.response.TicketAssignResponse;
 
 /**
@@ -19,6 +20,10 @@ public class TicketAssignRequest extends AbstractRequestModel<TicketAssignRespon
      * 操作人ID
      */
     private Integer operatorId;
+    /**
+     * 类型
+     */
+    private Integer operatorIdType = UserIdType.USER_ID.getCode();
 
     /**
      * 工单ID
@@ -34,6 +39,11 @@ public class TicketAssignRequest extends AbstractRequestModel<TicketAssignRespon
      * 处理人ID
      */
     private Integer handlerId;
+
+    /**
+     * 处理人ID
+     */
+    private Integer handlerIdType = UserIdType.USER_ID.getCode();
 
     /**
      * 是否开启自动分配
@@ -124,6 +134,28 @@ public class TicketAssignRequest extends AbstractRequestModel<TicketAssignRespon
         this.content = content;
         if (content != null) {
             putQueryParameter("content",content);
+        }
+    }
+
+    public Integer getHandlerIdType() {
+        return handlerIdType;
+    }
+
+    public void setHandlerIdType(Integer handlerIdType) {
+        this.handlerIdType = handlerIdType;
+        if (handlerIdType != null) {
+            putQueryParameter("handlerIdType",handlerIdType);
+        }
+    }
+
+    public Integer getOperatorIdType() {
+        return operatorIdType;
+    }
+
+    public void setOperatorIdType(Integer operatorIdType) {
+        this.operatorIdType = operatorIdType;
+        if (operatorIdType != null) {
+            putQueryParameter("operatorIdType",operatorIdType);
         }
     }
 

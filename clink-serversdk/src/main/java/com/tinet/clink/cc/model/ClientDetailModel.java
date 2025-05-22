@@ -3,6 +3,7 @@ package com.tinet.clink.cc.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -54,6 +55,21 @@ public class ClientDetailModel {
      * 座席状态 0离线 1离线
      */
     private Integer status;
+
+    /**
+     * 呼入整理类型，1队列，2座席
+     */
+    private Integer ibWrapupType;
+
+    /**
+     * 呼入整理时长，当呼入整理类型为队列时生效
+     */
+    private Integer ibWrapupTime;
+
+    /**
+     * 座席整理时间 呼入与外呼整理时间使用一个字段
+     */
+    private Integer wrapupTime;
 
     /**
      * 号码隐藏类型，0不隐藏 1全局。
@@ -130,7 +146,20 @@ public class ClientDetailModel {
      * 座席满意度自动执行，1：开启；0：关闭，默认开启
      */
     private Integer autoInvestigation;
+    /**
+     * 云号码外呼开关；0-关，1-开
+     */
+    private Integer cloudNumberEnabled;
+    /**
+     * 云号码模式 1-4 依次对应：工作号（实体卡）、工
+     * 作号+XB模式、AXB两端呼、RTC+PSTN外呼：
+     */
+    private Integer[] cloudNumberModes;
 
+    /**
+     * 座席服务地区
+     */
+    private String[] serveArea;
 
     public String getCno() {
         return cno;
@@ -316,6 +345,54 @@ public class ClientDetailModel {
         this.autoInvestigation = autoInvestigation;
     }
 
+    public Integer getCloudNumberEnabled() {
+        return cloudNumberEnabled;
+    }
+
+    public void setCloudNumberEnabled(Integer cloudNumberEnabled) {
+        this.cloudNumberEnabled = cloudNumberEnabled;
+    }
+
+    public Integer[] getCloudNumberModes() {
+        return cloudNumberModes;
+    }
+
+    public void setCloudNumberModes(Integer[] cloudNumberModes) {
+        this.cloudNumberModes = cloudNumberModes;
+    }
+
+    public Integer getIbWrapupType() {
+        return ibWrapupType;
+    }
+
+    public void setIbWrapupType(Integer ibWrapupType) {
+        this.ibWrapupType = ibWrapupType;
+    }
+
+    public Integer getIbWrapupTime() {
+        return ibWrapupTime;
+    }
+
+    public void setIbWrapupTime(Integer ibWrapupTime) {
+        this.ibWrapupTime = ibWrapupTime;
+    }
+
+    public Integer getWrapupTime() {
+        return wrapupTime;
+    }
+
+    public void setWrapupTime(Integer wrapupTime) {
+        this.wrapupTime = wrapupTime;
+    }
+
+    public String[] getServeArea() {
+        return serveArea;
+    }
+
+    public void setServeArea(String[] serveArea) {
+        this.serveArea = serveArea;
+    }
+
     @Override
     public String toString() {
         return "ClientDetailModel{" +
@@ -342,6 +419,12 @@ public class ClientDetailModel {
                 ", queues=" + queues +
                 ", crmId='" + crmId + '\'' +
                 ", autoInvestigation=" + autoInvestigation +
+                ", cloudNumberEnabled=" + cloudNumberEnabled +
+                ", cloudNumberModes=" + Arrays.toString(cloudNumberModes) +
+                ", ibWrapupType=" + ibWrapupType +
+                ", ibWrapupTime=" + ibWrapupTime +
+                ", wrapupTime=" + wrapupTime +
+                ", serveArea=" + Arrays.toString(serveArea) +
                 '}';
     }
 }
