@@ -44,6 +44,8 @@ public enum PathEnum {
     ChatClientWithdraw("livechat/chat_client_withdraw"),
     ChatClientLogin("livechat/chat_client_login"),
     ChatClientLogout("livechat/chat_client_logout"),
+
+    ChatClientStatusChange("livechat/chat_client_status_change"),
     ChatQueueAgentStatus("livechat/chat_queue_status"),
     // 在线客服 - 获取访客未读消息数
     ChatVisitorUnreadCount("livechat/chat_visitor_unread_count"),
