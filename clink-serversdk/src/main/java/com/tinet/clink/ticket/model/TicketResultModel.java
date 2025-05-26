@@ -46,6 +46,17 @@ public class TicketResultModel {
     private Integer level;
 
     /**
+     * 工单标签
+     */
+    private Tag[] tags;
+
+    /**
+     * 来源
+     */
+    private Integer source;
+
+
+    /**
      * 工单状态
      */
     private TicketStatusModel[] status;
@@ -213,8 +224,19 @@ public class TicketResultModel {
         return level;
     }
 
+
     public void setLevel(Integer level) {
         this.level = level;
+    }
+    public Integer getSource(){return source;}
+    public void setSource(Integer source){this.source = source;}
+
+    public Tag[] getTags() {
+        return tags;
+    }
+
+    public void setTags(Tag[] tags) {
+        this.tags = tags;
     }
 
     public TicketStatusModel[] getStatus() {
