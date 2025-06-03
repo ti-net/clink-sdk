@@ -23,7 +23,7 @@ public class ChatClientStatusChangeRequest extends AbstractRequestModel<ChatClie
      */
     private String cno;
     /**
-     * 坐席状态 0：离线 1：在线空闲 2：在线置忙
+     * 坐席状态1：在线空闲 2：在线置忙
      */
     private Integer status;
 
