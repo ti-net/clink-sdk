@@ -19,7 +19,10 @@ public class StatQueuePeriodListRequest extends AbstractStatRequest<StatQueuePer
 
     private String endTime;
 
+    @Deprecated
     private List<Integer> appType;
+
+    private List<Integer> contactTypes;
 
     private List<String> qnos;
 
@@ -47,10 +50,20 @@ public class StatQueuePeriodListRequest extends AbstractStatRequest<StatQueuePer
         }
     }
 
+    public List<Integer> getContactTypes() {
+        return contactTypes;
+    }
+
+    public void setContactTypes(List<Integer> contactTypes) {
+        this.contactTypes = contactTypes;
+        if (contactTypes != null && contactTypes.size() != 0) {
+            putQueryParameter("contactTypes", convertIntegerListToString(contactTypes));
+        }
+    }
+
     public List<Integer> getAppType() {
         return appType;
     }
-
 
     public void setAppType(List<Integer> appType) {
         this.appType = appType;

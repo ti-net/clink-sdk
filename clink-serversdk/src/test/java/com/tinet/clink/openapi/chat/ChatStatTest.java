@@ -25,8 +25,8 @@ public class ChatStatTest {
         StatInvestigationCnoPageRequest request = new StatInvestigationCnoPageRequest();
         request.setStartTime("");
         request.setEndTime("");
-        List<Integer> appType = new ArrayList<>();
-        request.setAppType(appType);
+        List<Integer> contactTypes = new ArrayList<>();
+        request.setContactTypes(contactTypes);
         List<String> cnos = new ArrayList<>();
         request.setCnos(cnos);
         List<String> qnos = new ArrayList<>();
@@ -46,8 +46,8 @@ public class ChatStatTest {
         StatQueuePeriodListRequest request = new StatQueuePeriodListRequest();
         request.setStartTime("");
         request.setEndTime("");
-        List<Integer> appType = new ArrayList<>();
-        request.setAppType(appType);
+        List<Integer> contactTypes = new ArrayList<>();
+        request.setContactTypes(contactTypes);
         List<String> qnos = new ArrayList<>();
         request.setQnos(qnos);
         request.setPeriodType(1);
@@ -65,9 +65,8 @@ public class ChatStatTest {
         StatQueueQnoPageRequest request = new StatQueueQnoPageRequest();
         request.setStartTime("");
         request.setEndTime("");
-        List<Integer> appType = new ArrayList<>();
-        appType.add(1);
-        request.setAppType(appType);
+        List<Integer> contactTypes = new ArrayList<>();
+        request.setContactTypes(contactTypes);
         List<String> qnos = new ArrayList<>();
         request.setQnos(qnos);
         request.setPageIndex(1);
