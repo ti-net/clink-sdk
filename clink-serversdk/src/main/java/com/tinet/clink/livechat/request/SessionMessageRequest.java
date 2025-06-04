@@ -15,34 +15,6 @@ public class SessionMessageRequest extends AbstractStatRequest<SessionMessageRes
 
     private String mainUniqueId;
 
-    private Integer pageSize;
-
-    private Integer pageIndex;
-
-
-
-    public Integer getPageSize() {
-        return pageSize;
-    }
-
-    public void setPageSize(Integer pageSize) {
-        this.pageSize = pageSize;
-        if (pageSize != null) {
-            putQueryParameter("pageSize", pageSize);
-        }
-    }
-
-    public Integer getPageIndex() {
-        return pageIndex;
-    }
-
-    public void setPageIndex(Integer pageIndex) {
-        this.pageIndex = pageIndex;
-        if (pageIndex != null) {
-            putQueryParameter("pageIndex", pageIndex);
-        }
-    }
-
     public SessionMessageRequest() {
         super(PathEnum.ListSessionMessages.value(), HttpMethodType.POST);
     }

@@ -22,8 +22,6 @@ public class SessionRecordMessageTest {
     public void sessionRecordMessageTest() throws ServerException, ClientException, JsonProcessingException {
         SessionMessageRequest request = new SessionMessageRequest();
         request.setMainUniqueId("84b40d1c-3be1-437e-a560-3ca30bb3fde6.1733397784");
-        request.setPageIndex(2);
-        request.setPageSize(1);
         ClientConfiguration clientConfiguration = new ClientConfiguration("58675b79b5582fe19ccb891ee1f8418a", "3l3q23wmX1WV4528x910");
         clientConfiguration.setScheme("https");
         clientConfiguration.setHost("api-bj-test0.clink.cn");
