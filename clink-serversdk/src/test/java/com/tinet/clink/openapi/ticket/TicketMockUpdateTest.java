@@ -5,6 +5,7 @@ import com.tinet.clink.core.client.Client;
 import com.tinet.clink.core.client.ClientConfiguration;
 import com.tinet.clink.openapi.AbstractTest;
 import com.tinet.clink.ticket.request.TicketMockSaveRequest;
+import com.tinet.clink.ticket.request.TicketMockUpdateRequest;
 import com.tinet.clink.ticket.response.TicketMockCommonResponse;
 import org.junit.Test;
 
@@ -17,7 +18,7 @@ import org.junit.Test;
 public class TicketMockUpdateTest extends AbstractTest {
 
     @Test
-    public void ticketMockReminder() {
+    public void ticketMockUpdate() {
 
         // 创建访问服务的client实例并初始化
         ClientConfiguration configuration = new ClientConfiguration(
@@ -28,13 +29,15 @@ public class TicketMockUpdateTest extends AbstractTest {
         Client client = new Client(configuration);
 
         // 创建请求request
-        TicketMockSaveRequest ticketMockSaveRequest =  new TicketMockSaveRequest();
-        ticketMockSaveRequest.setWorkflowName("wjn串行预置");
+        TicketMockUpdateRequest ticketMockUpdateRequest =  new TicketMockUpdateRequest();
+        ticketMockUpdateRequest.setFormId(32391);
+        ticketMockUpdateRequest.setTaskId("StartEvent_1uwp14d-27d98023-1e2c-4ffa-bf5f-598096c3957f");
+        ticketMockUpdateRequest.setId(69821);
 
         TicketMockCommonResponse ticketMockResponse ;
 
         try {
-            ticketMockResponse = client.getResponseModel(ticketMockSaveRequest);
+            ticketMockResponse = client.getResponseModel(ticketMockUpdateRequest);
             ObjectMapper objectMapper = new ObjectMapper();
             System.out.println(objectMapper.writeValueAsString(ticketMockResponse));
         } catch (Exception e) {
