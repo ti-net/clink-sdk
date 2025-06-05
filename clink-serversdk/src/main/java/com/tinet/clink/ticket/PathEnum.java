@@ -68,7 +68,13 @@ public enum PathEnum {
     // 获取工单自定义导出文件状态
     TicketRecordFilesStatus("ticket/ticket_records_file_status"),
     // 获取工单自定义导出文件链接
-    TicketRecordFileUrl("ticket/ticket_records_file_url")
+    TicketRecordFileUrl("ticket/ticket_records_file_url"),
+
+    MockSaveTicket("ticket/mock_save_ticket"),
+
+    MockUpdateTicket("ticket/mock_update_ticket"),
+
+    MockReminderTicket("ticket/mock_reminder_ticket"),
     ;
     private String value;
 
