@@ -32,7 +32,7 @@ public class TicketMockReminderTest extends AbstractTest {
 
         // 创建请求request
         TicketMockReminderRequest ticketMockReminderRequest = new TicketMockReminderRequest();
-        ticketMockReminderRequest.setTicketId(69813);
+        ticketMockReminderRequest.setTicketId(69821);
 
         TicketMockCommonResponse ticketMockResponse ;
 

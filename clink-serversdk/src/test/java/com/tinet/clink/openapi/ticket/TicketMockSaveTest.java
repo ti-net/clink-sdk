@@ -18,7 +18,7 @@ import org.junit.Test;
 public class TicketMockSaveTest extends AbstractTest {
 
     @Test
-    public void ticketMockReminder() {
+    public void ticketMockSave() {
 
         // 创建访问服务的client实例并初始化
         ClientConfiguration configuration = new ClientConfiguration(
@@ -30,7 +30,7 @@ public class TicketMockSaveTest extends AbstractTest {
 
         // 创建请求request
         TicketMockSaveRequest ticketMockSaveRequest =  new TicketMockSaveRequest();
-        ticketMockSaveRequest.setWorkflowName("wjn串行预置");
+        ticketMockSaveRequest.setWorkflowName("知识审核_汽车销售话术");
 
         TicketMockCommonResponse ticketMockResponse ;
 
