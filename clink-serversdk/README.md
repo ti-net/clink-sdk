@@ -738,3 +738,8 @@ AgentStatusDetailModel 座席状态监控详情补充字段
 10、新增 在线客服-座席考勤报表（新）
 
 ```
+### V 3.0.31
+
+```
+1、 支持自定义请求超时时间，默认的创建连接超时（connectTimeout）为3秒。可以在创建ClientConfiguration后，调用setConnectTimeout修改连接超时时长（毫秒）。
+```

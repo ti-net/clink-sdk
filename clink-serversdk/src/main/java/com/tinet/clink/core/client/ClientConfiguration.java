@@ -18,6 +18,16 @@ public class ClientConfiguration {
 
     private int timeOffsetSeconds =0;
 
+    /**
+     * 默认的连接超时时长（毫秒）
+     */
+    private int connectTimeout = 3000;
+
+    /**
+     * 数据传输超时时长（毫秒）
+     */
+    private Integer SocketTimeout = 60000;
+
     public ClientConfiguration(String accessKeyId, String accessKeySecret) {
         this.accessKeyId = accessKeyId;
         this.accessKeySecret = accessKeySecret;
@@ -82,4 +92,17 @@ public class ClientConfiguration {
     public void setTimeOffsetSeconds(int timeOffsetSeconds) {
         this.timeOffsetSeconds = timeOffsetSeconds;
     }
+
+    public int getConnectTimeout() {
+        return connectTimeout;
+    }
+
+    public void setConnectTimeout(int connectTimeout) {
+        this.connectTimeout = connectTimeout;
+    }
+
+    public Integer getSocketTimeout() {
+        return SocketTimeout;
+    }
+
 }
