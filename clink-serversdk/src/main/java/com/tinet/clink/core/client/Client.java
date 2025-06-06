@@ -78,7 +78,7 @@ public class Client {
                             // 连接超时时间（毫秒）
                             .setConnectTimeout(configuration.getConnectTimeout())
                             // Socket（数据传输）超时时间（毫秒）
-                            .setConnectionRequestTimeout(configuration.getSocketTimeout())
+                            .setSocketTimeout(configuration.getSocketTimeout())
                             .build();
 
                     // 创建httpClient
