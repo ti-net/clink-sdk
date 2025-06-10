@@ -44,6 +44,8 @@ public enum PathEnum {
     ChatClientWithdraw("livechat/chat_client_withdraw"),
     ChatClientLogin("livechat/chat_client_login"),
     ChatClientLogout("livechat/chat_client_logout"),
+
+    ChatClientStatusChange("livechat/chat_client_status_change"),
     ChatQueueAgentStatus("livechat/chat_queue_status"),
     // 在线客服 - 获取访客未读消息数
     ChatVisitorUnreadCount("livechat/chat_visitor_unread_count"),
@@ -57,7 +59,7 @@ public enum PathEnum {
     //在线客服 - 座席工作考勤报表
     StatChatClientAttendance("livechat/stat_chat_client_attendance"),
 
-    //在线客服 - 满意度报表
+    //在线客服 - 满意度报表-按座席统计
     statInvestigationCnoPage("livechat/stat_investigation_cno_page"),
 
     //在线客服 - 队列报表_按时间统计
@@ -65,6 +67,37 @@ public enum PathEnum {
 
     //在线客服 - 队列报表_按队列统计
     statQueueQnoPage("livechat/stat_queue_qno_page"),
+
+    //在线客服 - 查询聊天记录（新）
+    ListSessionMessages("livechat/record_session_message_list"),
+
+    //在线客服 - 查询会话详情（新）
+    RecordSession("livechat/record_session"),
+
+    //在线客服 - 同步会话记录（新）
+    RecordSessionPage("livechat/record_session_page"),
+
+    //在线客服 - 同步座席&机器人会话记录
+    RecordSessionDetailPage("livechat/record_session_detail_page"),
+
+    //在线客服 - 同步满意度记录（新）
+    RecordInvestigationsPage("livechat/record_investigations_page"),
+
+    //在线客服 - 满意度报表-按队列统计
+    StatInvestigationQnoPage("livechat/stat_investigation_qno_page"),
+
+    //在线客服 - 会话量报表-按会话统计
+    StatSessionPeriodList("livechat/stat_session_period_list"),
+
+    //在线客服 - 会话量报表_按接入号统计
+    StatSessionAppPage("livechat/stat_session_app_page"),
+
+    //在线客服 - 座席工作量报表（新）
+    StatClientCnoPage("livechat/stat_client_cno_page"),
+
+    //在线客服 - 座席考勤报表（新）
+    StatClientAttendanceCnoPage("livechat/stat_client_attendance_cno_page"),
+
 
     ;
     private String value;

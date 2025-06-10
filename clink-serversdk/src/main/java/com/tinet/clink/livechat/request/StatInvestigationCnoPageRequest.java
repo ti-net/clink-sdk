@@ -20,7 +20,10 @@ public class StatInvestigationCnoPageRequest extends AbstractStatRequest<StatInv
 
     private String endTime;
 
+    @Deprecated
     private List<Integer> appType;
+
+    private List<Integer> contactTypes;
 
     private List<String> cnos;
 
@@ -45,11 +48,21 @@ public class StatInvestigationCnoPageRequest extends AbstractStatRequest<StatInv
         return appType;
     }
 
-
     public void setAppType(List<Integer> appType) {
         this.appType = appType;
         if (appType != null && appType.size() != 0) {
             putQueryParameter("appType", convertIntegerListToString(appType));
+        }
+    }
+
+    public List<Integer> getContactTypes() {
+        return contactTypes;
+    }
+
+    public void setContactTypes(List<Integer> contactTypes) {
+        this.contactTypes = contactTypes;
+        if (contactTypes != null && contactTypes.size() != 0) {
+            putQueryParameter("contactTypes", convertIntegerListToString(contactTypes));
         }
     }
 

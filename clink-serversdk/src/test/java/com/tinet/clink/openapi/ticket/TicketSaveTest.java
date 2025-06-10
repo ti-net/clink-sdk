@@ -113,18 +113,18 @@ public class TicketSaveTest extends AbstractTest {
         ticketSaveModel.setRelateTicketId(new Integer[]{});
         ticketSaveModel.setStateSelected("yuxr自定义状态");
 
-//        List<File> fileList = new ArrayList<>();
-//
-//        File file = new File("E:\\工单信息 - 副本.xlsx");
-//
-//        fileList.add(file);
-//
-//        Map<String, List<File>> fileMap = new HashMap<>();
-//
-//        fileMap.put("31075", fileList);
+        List<File> fileList = new ArrayList<>();
+
+        File file = new File("E:\\工单信息 - 副本.xlsx");
+
+        fileList.add(file);
+
+        Map<String, List<File>> fileMap = new HashMap<>();
+
+        fileMap.put("31075", fileList);
         //将请求参数赋值到 request中
         ticketSaveRequest.setModel(ticketSaveModel);
-//        ticketSaveRequest.setFileMap(fileMap);
+        ticketSaveRequest.setFileMap(fileMap);
 
         ObjectMapper objectMapper = new ObjectMapper();
 //        System.out.println(objectMapper.writeValueAsString(ticketSaveModel));

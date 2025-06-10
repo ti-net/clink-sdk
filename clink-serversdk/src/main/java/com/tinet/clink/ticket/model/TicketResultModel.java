@@ -1,6 +1,7 @@
 package com.tinet.clink.ticket.model;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * 工单列表查询结果对象
@@ -170,6 +171,22 @@ public class TicketResultModel {
      * 工单的系统表单
      */
     private TicketSystemForm systemForm;
+
+    /**
+     * 关联父工单id
+     */
+    private Integer parentTicketId;
+
+    /**
+     * 关联父工单节点 taskKey
+     */
+    private String parentTicketNode;
+
+    private String isSubWorkflow;
+
+    public String getIsSubWorkflow() {
+        return Objects.isNull(this.parentTicketId) ? "否" : "是";
+    }
 
 
     /**
@@ -468,4 +485,12 @@ public class TicketResultModel {
     public TicketSystemForm getSystemForm() { return systemForm; }
 
     public void setSystemForm(TicketSystemForm systemForm) { this.systemForm = systemForm; }
+
+    public Integer getParentTicketId() {
+        return parentTicketId;
+    }
+
+    public String getParentTicketNode() {
+        return parentTicketNode;
+    }
 }
