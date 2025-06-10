@@ -189,6 +189,58 @@ public class TicketResultModel {
     }
 
 
+    /**
+     * 撤回状态 1 撤回  旧数据是 0 未撤回
+     */
+    private Integer goBackStatus;
+
+    /**
+     * 重启状态 1 已重启  旧数据是 0 未重启
+     */
+    private Integer restartStatus;
+
+    /**
+     * 催单状态
+     */
+
+    private Integer reminderStatus;
+    /**
+     * 评论状态
+     */
+    private Integer commentNotRead;
+
+    public Integer getGoBackStatus() {
+        return goBackStatus;
+    }
+
+    public void setGoBackStatus(Integer goBackStatus) {
+        this.goBackStatus = goBackStatus;
+    }
+
+    public Integer getRestartStatus() {
+        return restartStatus;
+    }
+
+    public void setRestartStatus(Integer restartStatus) {
+        this.restartStatus = restartStatus;
+    }
+
+    public Integer getReminderStatus() {
+        return reminderStatus;
+    }
+
+    public void setReminderStatus(Integer reminderStatus) {
+        this.reminderStatus = reminderStatus;
+    }
+
+    public Integer getCommentNotRead() {
+        return commentNotRead;
+    }
+
+    public void setCommentNotRead(Integer commentNotRead) {
+        this.commentNotRead = commentNotRead;
+    }
+
     public Integer getId() {
         return id;
     }
