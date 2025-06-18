@@ -21,30 +21,18 @@ public class ListTicketTest extends AbstractTest {
     public void listTicket(){
 
         ClientConfiguration configuration = new ClientConfiguration(
-                "3ee29817e02c59ab4f27f55b75053ab9",           // AccessKeyId
-                "4498PzDejj8y13e2u19Q");     // AccessKeySecret
-        configuration.setHost("alb-01l5fw2u4lg0sajop3.cn-beijing.alb.aliyuncs.com");
-        configuration.setScheme("http");
+                "657c8b11f7ae9bc9b51ec67747fc24f5",          // AccessKeyId
+                "5924A00GL81m97NB0zH9");     // AccessKeySecret
+        configuration.setHost("api-bj-test0.clink.cn");
+        configuration.setScheme("https");
         Client client = new Client(configuration);
 
         ListTicketRequest listTicketRequest= new ListTicketRequest();
-
-        listTicketRequest.setStartTime("2022-07-20 00:00:00");
-        listTicketRequest.setEndTime("2022-10-19 23:59:59");
-        listTicketRequest.setCloseTimeStart("2022-07-20 00:00:00");
-        listTicketRequest.setCloseTimeEnd("2022-10-19 23:59:59");
-//        listTicketRequest.setEndTimeStart("2022-07-20 00:00:00");
-//        listTicketRequest.setEndTimeEnd("2022-10-19 23:59:59");
-        listTicketRequest.setOffset(0);
-        listTicketRequest.setLimit(10);
-        HashMap<String, String> fieldMap = new HashMap<>();
-        fieldMap.put("93915", "43dd");
-
-        HashMap<String, String> systemFieldMap = new HashMap<>();
-        systemFieldMap.put("866872", "1");
-//        listTicketRequest.setFields(fieldMap);
-//        listTicketRequest.setSystemFields(systemFieldMap);
-
+        listTicketRequest.setSource(1);
+        listTicketRequest.setStartTime("2025-05-01 00:00:00");
+        listTicketRequest.setEndTime("2025-07-01 23:59:59");
+        listTicketRequest.setUpdateTimeStart("2025-06-16 00:00:00");
+        listTicketRequest.setUpdateTimeEnd("2025-06-16 23:59:59");
         try {
             ListTicketResponse response= client.getResponseModel(listTicketRequest);
 
