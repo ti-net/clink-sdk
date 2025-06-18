@@ -27,7 +27,7 @@ public class ListTicketRequest extends AbstractRequestModel<ListTicketResponse> 
     private String customId;
 
     /**
-     * 工单的处理状态 不传为状态 0：待领取 2：处理中 3：已撤销 4：已完成
+     * 处理状态 0: 待领取 2: 处理中 4: 已完成 5: 已关闭 9: 待接单。 默认为全部状态
      */
     private Integer handleStatus;
 
@@ -42,7 +42,7 @@ public class ListTicketRequest extends AbstractRequestModel<ListTicketResponse> 
     private String topic;
 
     /**
-     * 工单模板 Id
+     * 工单模板 ID, 查询所处任务节点的工单时, 工单模板 ID必传
      */
     private Integer workflowId;
 
@@ -57,7 +57,7 @@ public class ListTicketRequest extends AbstractRequestModel<ListTicketResponse> 
     private Integer handlerId;
 
     /**
-     * 优先级 不传为所有优先级 0：低、1：中、2：高、3：紧急
+     * 工单优先级 0: 低, 1: 中, 2: 高, 3: 紧急 (系统默认优先级 可自定义)
      */
     private Integer level;
 
@@ -67,47 +67,57 @@ public class ListTicketRequest extends AbstractRequestModel<ListTicketResponse> 
     private String tag;
 
     /**
-     * 工单类别 不传为所有类别 1：预制工作流模板 2：人工分配模板
+     * 工单类别 1: 预制工作流模板, 2: 人工分配模板 不传为所有类别
      */
     private Integer type;
 
     /**
-     * 开始时间
+     * 开始时间 按照格式 "yyyy-MM-dd HH:mm:ss" 进行格式化
      */
     private String startTime;
 
     /**
-     * 结束时间
+     * 结束时间 按照格式 "yyyy-MM-dd HH:mm:ss" 进行格式化
      */
     private String endTime;
 
     /**
-     * 结束时间查询条件-开始时间
+     * 工单完成开始时间 按照格式 "yyyy-MM-dd HH:mm:ss" 进行格式化
      */
     private String endTimeStart;
 
     /**
-     * 结束时间查询条件-结束时间
+     * 工单完成结束时间 按照格式 "yyyy-MM-dd HH:mm:ss" 进行格式化
      */
     private String endTimeEnd;
 
     /**
-     * 关闭时间查询条件-开始时间
+     * 工单关闭开始时间 按照格式 "yyyy-MM-dd HH:mm:ss" 进行格式化
      */
     private String closeTimeStart;
 
     /**
-     * 关闭时间查询条件-结束时间
+     * 工单关闭结束时间 按照格式 "yyyy-MM-dd HH:mm:ss" 进行格式化
      */
     private String closeTimeEnd;
 
     /**
-     * 最近催单开始时间
+     * 更新开始时间 按照格式 "yyyy-MM-dd HH:mm:ss" 进行格式化
+     */
+    private String updateTimeStart;
+
+    /**
+     * 更新结束时间 按照格式 "yyyy-MM-dd HH:mm:ss" 进行格式化
+     */
+    private String updateTimeEnd;
+
+    /**
+     * 最近催单开始时间 按照格式 "yyyy-MM-dd" 进行格式化
      */
     private String lastReminderTimeStart;
 
     /**
-     * 最近催单结束时间
+     * 最近催单结束时间 按照格式 "yyyy-MM-dd" 进行格式化
      */
     private String lastReminderTimeEnd;
 
@@ -150,6 +160,11 @@ public class ListTicketRequest extends AbstractRequestModel<ListTicketResponse> 
      * 自定义系统字段集合
      */
     private Map<String, String> systemFields;
+
+    /**
+     * 来源 0: 呼叫中心, 1: 在线咨询, 2: 微信, 3: 人工添加, 4: 小程序, 5: 微博, 6: 电子邮件, 7: app端, 8: 企业微信, 9: 微信客服（独立版）, 10: 第三方接入, 11: 接口创建, 12: 企微客服, 14: 抖音企业号, 15: 百度营销, 16: sdk渠道, 17: 自助工单, 18: 访客端APP, 19: 微信客服, 20: 人工导入创建, 21: 企微助手, 22: 自动化任务创建, 23:飞书, 24: 留言节点, 30: 接口创建, 31: 知识库审批, 32: 智能质检, 33: 触发器, 34: 视频客服, 35: 邮件工单, 36: 在线留言, 37: 机器人工单, 38: 小红书
+     */
+    private Integer source;
 
     public Integer getId() {
         return id;
@@ -448,6 +463,39 @@ public class ListTicketRequest extends AbstractRequestModel<ListTicketResponse> 
         }
     }
 
+
+    public void setUpdateTimeStart(String updateTimeStart) {
+        this.updateTimeStart = updateTimeStart;
+        if (updateTimeStart != null) {
+            putQueryParameter("updateTimeStart", updateTimeStart);
+        }
+    }
+
+    public String getUpdateTimeStart() {
+        return updateTimeStart;
+    }
+
+    public void setUpdateTimeEnd(String updateTimeEnd) {
+        this.updateTimeEnd = updateTimeEnd;
+        if (updateTimeEnd != null) {
+            putQueryParameter("updateTimeEnd", updateTimeEnd);
+        }
+    }
+
+    public String getupdateTimeEnd() {
+        return updateTimeEnd;
+    }
+
+    public void setSource(Integer source) {
+        this.source = source;
+        if (source != null) {
+            putQueryParameter("source", source);
+        }
+    }
+
+    public Integer getSource() {
+        return source;
+    }
 
     public ListTicketRequest() {
         super(PathEnum.ListTicket.value(), HttpMethodType.POST);
