@@ -28,11 +28,14 @@ public class ListTicketTest extends AbstractTest {
         Client client = new Client(configuration);
 
         ListTicketRequest listTicketRequest= new ListTicketRequest();
-        listTicketRequest.setSource(1);
-        listTicketRequest.setStartTime("2025-05-01 00:00:00");
-        listTicketRequest.setEndTime("2025-07-01 23:59:59");
-        listTicketRequest.setUpdateTimeStart("2025-06-16 00:00:00");
-        listTicketRequest.setUpdateTimeEnd("2025-06-16 23:59:59");
+        //listTicketRequest.setSource(1);
+        listTicketRequest.setStartTime("2025-05-26 00:00:00");
+        listTicketRequest.setEndTime("2025-06-25 23:59:59");
+        listTicketRequest.setUpdateTimeStart("2025-05-26 00:00:00");
+        listTicketRequest.setUpdateTimeEnd("2025-06-25 23:59:59");
+        //listTicketRequest.setCustomerId(5575461);
+        listTicketRequest.setCustomerName("沈忱测试");
+        listTicketRequest.setCustomerTel("13700000000");
         try {
             ListTicketResponse response= client.getResponseModel(listTicketRequest);
 
