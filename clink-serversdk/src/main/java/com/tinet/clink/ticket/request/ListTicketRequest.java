@@ -27,6 +27,11 @@ public class ListTicketRequest extends AbstractRequestModel<ListTicketResponse> 
     private String customId;
 
     /**
+     * 客户资料ID
+     */
+    private Integer customerId;
+
+    /**
      * 处理状态 0: 待领取 2: 处理中 4: 已完成 5: 已关闭 9: 待接单。 默认为全部状态
      */
     private Integer handleStatus;
@@ -495,6 +500,17 @@ public class ListTicketRequest extends AbstractRequestModel<ListTicketResponse> 
 
     public Integer getSource() {
         return source;
+    }
+
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
+        if (customerId != null) {
+            putQueryParameter("customerId", customerId);
+        }
+    }
+
+    public Integer getCustomerId() {
+        return customerId;
     }
 
     public ListTicketRequest() {
