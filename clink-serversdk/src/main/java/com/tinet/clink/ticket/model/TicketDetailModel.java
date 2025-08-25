@@ -261,6 +261,8 @@ public class TicketDetailModel {
         }
     }
 
+    private String senderEmail;
+
     public static class ReminderAttachmentModel{
         private String attachmentKey;
         private String attachmentUrl;
@@ -299,6 +301,12 @@ public class TicketDetailModel {
         this.source = source;
     }
 
+    private String recipientEmail;
+
+    /**
+     * 会话的mainUniqueId
+     */
+    private String chatId;
 
     public TicketOperationLogNewModel[] getOperationLogsNew() {
         return operationLogsNew;
@@ -564,5 +572,29 @@ public class TicketDetailModel {
 
     public void setWorkflowCategoryName(String workflowCategoryName) {
         this.workflowCategoryName = workflowCategoryName;
+    }
+
+    public String getSenderEmail() {
+        return senderEmail;
+    }
+
+    public void setSenderEmail(String senderEmail) {
+        this.senderEmail = senderEmail;
+    }
+
+    public String getRecipientEmail() {
+        return recipientEmail;
+    }
+
+    public void setRecipientEmail(String recipientEmail) {
+        this.recipientEmail = recipientEmail;
+    }
+
+    public String getChatId() {
+        return chatId;
+    }
+
+    public void setChatId(String chatId) {
+        this.chatId = chatId;
     }
 }
