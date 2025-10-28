@@ -200,6 +200,32 @@ public class CustomerResultModel {
      */
     private Integer[] labelIds;
 
+    /**
+     * 第一次联系时间
+     */
+    private Date firstContactTime;
+    /**
+     * 呼叫第一次联系时间
+     */
+    private Date firstCcContactTime;
+    /**
+     * 在线第一次联系时间
+     */
+    private Date firstChatContactTime;
+    /**
+     * 呼叫最后一次联系时间
+     */
+    private Date lastCcContactTime;
+    /**
+     * 在线最后一次联系时间
+     */
+    private Date lastChatContactTime;
+
+    /**
+     * 在线联系次数
+     */
+    private Integer chatNumber;
+
     public Integer getId() {
         return id;
     }
@@ -502,5 +528,53 @@ public class CustomerResultModel {
 
     public void setLabelIds(Integer[] labelIds) {
         this.labelIds = labelIds;
+    }
+
+    public Date getFirstContactTime() {
+        return firstContactTime;
+    }
+
+    public void setFirstContactTime(Date firstContactTime) {
+        this.firstContactTime = firstContactTime;
+    }
+
+    public Date getFirstCcContactTime() {
+        return firstCcContactTime;
+    }
+
+    public void setFirstCcContactTime(Date firstCcContactTime) {
+        this.firstCcContactTime = firstCcContactTime;
+    }
+
+    public Date getFirstChatContactTime() {
+        return firstChatContactTime;
+    }
+
+    public void setFirstChatContactTime(Date firstChatContactTime) {
+        this.firstChatContactTime = firstChatContactTime;
+    }
+
+    public Date getLastCcContactTime() {
+        return lastCcContactTime;
+    }
+
+    public void setLastCcContactTime(Date lastCcContactTime) {
+        this.lastCcContactTime = lastCcContactTime;
+    }
+
+    public Date getLastChatContactTime() {
+        return lastChatContactTime;
+    }
+
+    public void setLastChatContactTime(Date lastChatContactTime) {
+        this.lastChatContactTime = lastChatContactTime;
+    }
+
+    public Integer getChatNumber() {
+        return chatNumber;
+    }
+
+    public void setChatNumber(Integer chatNumber) {
+        this.chatNumber = chatNumber;
     }
 }
