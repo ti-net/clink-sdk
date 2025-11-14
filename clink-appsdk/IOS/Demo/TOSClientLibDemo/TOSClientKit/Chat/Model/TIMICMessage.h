@@ -12,6 +12,9 @@
 
 @interface TIMICMessage : NSObject
 
+// 消息来源用户类型    1:座席    2:访客    3:系统    4:机器人   5:系统通知
+@property (nonatomic, strong) NSNumber *senderType;
+
 // 消息来源用户名
 @property (nonatomic, copy) NSString *senderName;
 // 消息来源用户id
@@ -53,7 +56,9 @@
 @property (nonatomic, assign) ICMessageStatus status;
 
 @property (nonatomic, copy) NSString *knowledge;
+@property (nonatomic, copy) NSString *intent;
 
-
+/// 转人工数据
+@property (nonatomic, assign) BOOL sysTransfer;
 
 @end

@@ -33,6 +33,14 @@ public class DownloadRecordFileRequest extends AbstractRequestModel<DownloadReco
      **/
     private String recordType;
 
+    /**
+     * 下载类型，传值"mp3"时生效
+     *     若传递fixType，则参数recordSide效果变更为：recordSide不传递则获取mp3格式两侧合成录音，
+     *     传递时支持获取mp3格式双轨录音。1：双轨录音客户侧，2：双轨录音座席侧，3：两侧合成录音。
+     *     需要客户开启"mp3录音类型为混音且分线"。
+     */
+    private String fixType;
+
     public DownloadRecordFileRequest() {
         super(PathEnum.DownloadRecordFile.value(), HttpMethodType.GET);
     }
@@ -68,6 +76,13 @@ public class DownloadRecordFileRequest extends AbstractRequestModel<DownloadReco
         this.recordType = recordType;
         if (recordType != null) {
             putQueryParameter("recordType", recordType);
+        }
+    }
+
+    public void setFixType(String fixType) {
+        this.fixType = fixType;
+        if (fixType != null) {
+            putQueryParameter("fixType", fixType);
         }
     }
 

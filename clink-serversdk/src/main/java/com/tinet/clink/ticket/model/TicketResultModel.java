@@ -1,6 +1,7 @@
 package com.tinet.clink.ticket.model;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * 工单列表查询结果对象
@@ -44,6 +45,17 @@ public class TicketResultModel {
      * 紧急程度 0：低、1：中、2：高、3：紧急
      */
     private Integer level;
+
+    /**
+     * 工单标签
+     */
+    private Tag[] tags;
+
+    /**
+     * 来源
+     */
+    private Integer source;
+
 
     /**
      * 工单状态
@@ -160,6 +172,74 @@ public class TicketResultModel {
      */
     private TicketSystemForm systemForm;
 
+    /**
+     * 关联父工单id
+     */
+    private Integer parentTicketId;
+
+    /**
+     * 关联父工单节点 taskKey
+     */
+    private String parentTicketNode;
+
+    private String isSubWorkflow;
+
+    public String getIsSubWorkflow() {
+        return Objects.isNull(this.parentTicketId) ? "否" : "是";
+    }
+
+
+    /**
+     * 撤回状态 1 撤回  旧数据是 0 未撤回
+     */
+    private Integer goBackStatus;
+
+    /**
+     * 重启状态 1 已重启  旧数据是 0 未重启
+     */
+    private Integer restartStatus;
+
+    /**
+     * 催单状态
+     */
+
+    private Integer reminderStatus;
+    /**
+     * 评论状态
+     */
+    private Integer commentNotRead;
+
+    public Integer getGoBackStatus() {
+        return goBackStatus;
+    }
+
+    public void setGoBackStatus(Integer goBackStatus) {
+        this.goBackStatus = goBackStatus;
+    }
+
+    public Integer getRestartStatus() {
+        return restartStatus;
+    }
+
+    public void setRestartStatus(Integer restartStatus) {
+        this.restartStatus = restartStatus;
+    }
+
+    public Integer getReminderStatus() {
+        return reminderStatus;
+    }
+
+    public void setReminderStatus(Integer reminderStatus) {
+        this.reminderStatus = reminderStatus;
+    }
+
+    public Integer getCommentNotRead() {
+        return commentNotRead;
+    }
+
+    public void setCommentNotRead(Integer commentNotRead) {
+        this.commentNotRead = commentNotRead;
+    }
 
     public Integer getId() {
         return id;
@@ -213,8 +293,19 @@ public class TicketResultModel {
         return level;
     }
 
+
     public void setLevel(Integer level) {
         this.level = level;
+    }
+    public Integer getSource(){return source;}
+    public void setSource(Integer source){this.source = source;}
+
+    public Tag[] getTags() {
+        return tags;
+    }
+
+    public void setTags(Tag[] tags) {
+        this.tags = tags;
     }
 
     public TicketStatusModel[] getStatus() {
@@ -394,4 +485,12 @@ public class TicketResultModel {
     public TicketSystemForm getSystemForm() { return systemForm; }
 
     public void setSystemForm(TicketSystemForm systemForm) { this.systemForm = systemForm; }
+
+    public Integer getParentTicketId() {
+        return parentTicketId;
+    }
+
+    public String getParentTicketNode() {
+        return parentTicketNode;
+    }
 }

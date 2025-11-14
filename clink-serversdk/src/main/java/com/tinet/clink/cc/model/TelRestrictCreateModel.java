@@ -41,6 +41,32 @@ public class TelRestrictCreateModel {
      */
     private Date expirationTime;
 
+    /**
+     * 是否加密 1：加密 0：不加密（默认）
+     */
+    private Integer encrypt;
+
+    /**
+     * 加密类型 1：aes加密 （默认aes加密)
+     */
+    private Integer encryptType;
+
+    public Integer getEncrypt() {
+        return encrypt;
+    }
+
+    public void setEncrypt(Integer encrypt) {
+        this.encrypt = encrypt;
+    }
+
+    public Integer getEncryptType() {
+        return encryptType;
+    }
+
+    public void setEncryptType(Integer encryptType) {
+        this.encryptType = encryptType;
+    }
+
     public Integer getRestrictType() {
         return restrictType;
     }

@@ -1,0 +1,47 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform:ios,'12.0'
+use_frameworks!
+target "TOSClientKitDemo" do
+
+pod 'TOSClientKit', '~> 2.1.0'
+
+pod 'Bugly'
+pod 'MBProgressHUD'
+
+pod 'ReactiveObjC'
+pod 'Reachability'
+
+pod 'YYKit'
+
+pod "TTGTagCollectionView"
+
+#pod 'BRPickerView'
+pod 'MJRefresh'
+
+pod 'YTKNetwork'
+
+pod 'YBPopupMenu'
+pod 'ZYCornerRadius'
+
+pod 'WMPageController'
+
+pod 'RTRootNavigationController'
+
+pod 'TZImagePickerController'
+pod 'WZLBadge'
+
+pod 'Masonry'
+
+end
+
+# 所有三方SDK最小支持小于iOS 13的都改成iOS 13
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      if config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'].to_f < 12.0
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
+      end
+    end
+  end
+end

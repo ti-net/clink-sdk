@@ -12,7 +12,7 @@
 #import "YYTextArchiver.h"
 #import "YYTextRunDelegate.h"
 #import "YYTextRubyAnnotation.h"
-#import "UIDevice+YYAdd.h"
+#import "UIDevice+TIMYYAdd.h"
 
 /**
  When call CTRunDelegateGetTypeID() on some devices (runs iOS6), I got the error:

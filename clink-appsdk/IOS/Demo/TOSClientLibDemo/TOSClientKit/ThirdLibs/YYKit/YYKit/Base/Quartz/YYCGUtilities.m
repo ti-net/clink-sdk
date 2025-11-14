@@ -11,7 +11,7 @@
 
 #import "YYCGUtilities.h"
 #import <Accelerate/Accelerate.h>
-#import "UIView+YYAdd.h"
+#import "UIView+TIMYYAdd.h"
 
 CGContextRef YYCGContextCreateARGBBitmapContext(CGSize size, BOOL opaque, CGFloat scale) {
     size_t width = ceil(size.width * scale);

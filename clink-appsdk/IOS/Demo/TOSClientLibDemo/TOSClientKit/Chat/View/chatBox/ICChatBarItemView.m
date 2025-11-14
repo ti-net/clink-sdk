@@ -9,13 +9,11 @@
 #import "ICChatBarItemView.h"
 #import "TIMMasonry.h"
 #import "TIMConstants.h"
+#import "NSDictionary+TIMTool.h"
 #import "kitUtils.h"
 #import <TOSClientKit/TOSKitCustomInfo.h>
 
 @interface ICChatBarItemView ()
-
-/// 显示文案内容
-@property (nonatomic, strong) UILabel                * contentLabel;
 
 @end
 
@@ -27,10 +25,10 @@
     if (self) {
         
         self.backgroundColor = [TOSKitCustomInfo shareCustomInfo].quickEntryItem_backgroundColor;
-        
         [self addSubview:self.contentLabel];
-        
+        @WeakObj(self);
         [self.contentLabel mas_TIMmakeTIMConstraints:^(TIMMASConstraintMaker *make) {
+            @StrongObj(self);
             make.edges.equalTo(self);
         }];
     }
@@ -38,11 +36,22 @@
 }
 
 
-- (void)setModel:(ICChatBarItemModel *)model {
+- (void)setModel:(TOSQuickEntryModel *)model {
     _model = model;
     
-    self.contentLabel.text = model.titleStr;
+    NSInteger staffCommentTotalCount = ((NSString *)model.dynamicConfigParameters[TOS_STAFF_COMMENT_TOTAL_COUNT]).integerValue;
+    if (staffCommentTotalCount <= 0) {
+        self.warnLabel.hidden = YES;
+    } else {
+        self.warnLabel.hidden = NO;
+    }
+    if (staffCommentTotalCount >= 100) {
+        self.warnLabel.text = @"99+";
+    } else {
+        self.warnLabel.text = [NSString stringWithFormat:@"%ld",staffCommentTotalCount];
+    }
     
+    self.contentLabel.text = model.name;
 }
 
 
@@ -56,12 +65,27 @@
 //        _contentLabel.layer.borderWidth = 1.0f;
 //        _contentLabel.layer.cornerRadius = 14.0f;
 //        _contentLabel.layer.masksToBounds = YES;
-        _contentLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:12.f];
+        _contentLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:14.f];
         _contentLabel.textColor = TOSHexColor(0x595959);
         
         _contentLabel.backgroundColor = [TOSKitCustomInfo shareCustomInfo].quickEntryItem_backgroundColor;
     }
     return _contentLabel;
+}
+
+- (UILabel *)warnLabel {
+    if (!_warnLabel) {
+        _warnLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        _warnLabel.backgroundColor = TOSHexColor(0xFF4D4F);
+        _warnLabel.textColor = TOSHexColor(0xFFFFFF);
+        _warnLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:12.f];
+        _warnLabel.hidden = YES;
+        _warnLabel.layer.masksToBounds = YES;
+        _warnLabel.layer.cornerRadius = 8.f;
+        _warnLabel.numberOfLines = 1;
+        _warnLabel.textAlignment = NSTextAlignmentCenter;
+    }
+    return _warnLabel;
 }
 
 @end

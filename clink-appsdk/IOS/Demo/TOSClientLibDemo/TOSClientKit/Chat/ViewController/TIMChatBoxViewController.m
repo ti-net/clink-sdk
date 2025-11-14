@@ -8,6 +8,7 @@
 
 #import "TIMChatBoxViewController.h"
 #import "ICChatBoxMoreView.h"
+//#import "ICChatBoxFaceView.h"
 #import "TIMICMessage.h"
 #import "ICMediaManager.h"
 #import "ICVideoView.h"
@@ -17,30 +18,32 @@
 #import "UIView+SDExtension.h"
 #import "NSString+Extension.h"
 #import "TIMConstants.h"
+//#import "ICDocumentViewController.h"
 #import "ICTools.h"
 #import "TIMXFCameraController.h"
+// TZImagePicker
 #import "MYHTZImagePickerController.h"
 #import "kitUtils.h"
 #import <TOSClientKit/TOSKit.h>
 #import "NSObject+TIMShowError.h"
 #import "WHToast.h"
-#import "SYCacheFileManager.h"
-#import "SYCacheFileViewController.h"
+#import "TIMSYCacheFileManager.h"
+#import "TIMSYCacheFileViewController.h"
 #import "TIMMasonry.h"
 #import "TOSKitChatBoxExtendBoard.h"
 #import "TOSKitExtendBoardItemModel.h"
 
 #import "XZEmotion.h"
 #import "ICFaceManager.h"
-#import "QEmotionHelper.h"
-#import "QEmotionBoardView.h"
+#import "TIMQEmotionHelper.h"
+#import "TIMQEmotionBoardView.h"
 
-@interface TIMChatBoxViewController ()<ICChatBoxDelegate,ICChatBoxMoreViewDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate,MYHTZImagePickerControllerDelegate,UIAlertViewDelegate, ICChatBoxBarViewDelegate, ICChatBoxBarViewDataSource, QEmotionBoardViewDelegate> //ICDocumentDelegate
+@interface TIMChatBoxViewController ()<ICChatBoxDelegate,ICChatBoxMoreViewDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate,MYHTZImagePickerControllerDelegate,UIAlertViewDelegate, ICChatBoxBarViewDelegate, ICChatBoxBarViewDataSource, TIMQEmotionBoardViewDelegate> //ICDocumentDelegate
 
 /** 更多功能的面板*/
 @property (nonatomic, strong) ICChatBoxMoreView *chatBoxMoreView;
 /** 表情面板 */
-@property (nonatomic, strong) QEmotionBoardView *chatBoxFaceView;
+@property (nonatomic, strong) TIMQEmotionBoardView *chatBoxFaceView;
 /** 录音文件名 */
 @property (nonatomic, copy) NSString *recordName;
 @property (nonatomic, strong) UIImagePickerController *imagePicker;
@@ -142,6 +145,11 @@
                 [arr addObject:closeChatItem];
             }
                 break;
+            case TOSChatBoxExtendBoardTypeCustomFileApp: {
+                ICChatBoxMoreViewItem *closeChatItem = [self setupxMoreItem:@"文件" imageName:@"onlineCloseChat" obj:obj];
+                [arr addObject:closeChatItem];
+            }
+                break;
             default: {
                 ICChatBoxMoreViewItem *customItem = [self setupxMoreItem:@"" imageName:@"" obj:obj];
                 [arr addObject:customItem];
@@ -161,7 +169,7 @@
  *  @param  index   被选中的表情在`emotions`里的索引
  *  @param  emotion 被选中的表情对应的`QMUIEmotion`对象
  */
-- (void)emotionView:(QEmotionBoardView *)emotionView didSelectEmotion:(QEmotion *)emotion atIndex:(NSInteger)index {
+- (void)emotionView:(TIMQEmotionBoardView *)emotionView didSelectEmotion:(TIMQEmotion *)emotion atIndex:(NSInteger)index {
     
     XZEmotion *xzEmotion = [[XZEmotion alloc] init];
     xzEmotion.face_name = emotion.identifier;
@@ -172,12 +180,12 @@
 }
 
 // 删除按钮的点击事件回调
-- (void)emotionViewDidSelectDeleteButton:(QEmotionBoardView *)emotionView {
+- (void)emotionViewDidSelectDeleteButton:(TIMQEmotionBoardView *)emotionView {
     [[NSNotificationCenter defaultCenter] postNotificationName:GXEmotionDidDeleteNotification object:nil];
 }
 
 // 发送按钮的点击事件回调
-- (void)emotionViewDidSelectSendButton:(QEmotionBoardView *)emotionView {
+- (void)emotionViewDidSelectSendButton:(TIMQEmotionBoardView *)emotionView {
     [[NSNotificationCenter defaultCenter] postNotificationName:GXEmotionDidSendNotification object:nil];
 }
 
@@ -263,26 +271,31 @@
 
 - (void)keyboardFrameWillChange:(NSNotification *)notification
 {
-    self.keyboardFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    self.keyboardFrameHeight = self.keyboardFrame.size.height;
-    // MARK: 软键盘可以设置是否启用输入预测，如果没有输入预测，会被下面的方法拦截掉，无法进入后续逻辑，HEIGHT_CHATBOXVIEW是表情/更多面板的高度，不应该用来对软键盘进行高度的比较!!!⚠️⚠️⚠️
-//    if (_chatBox.status == ICChatBoxStatusShowKeyboard && self.keyboardFrame.size.height <= HEIGHT_CHATBOXVIEW) {
-//        return;
-//    }
-//    else
-    if ((_chatBox.status == ICChatBoxStatusShowFace || _chatBox.status == ICChatBoxStatusShowMore) && self.keyboardFrame.size.height <= HEIGHT_CHATBOXVIEW) {
-        return;
-    }
-    
-    else if (_chatBox.status == ICChatBoxStatusShowFace  || _chatBox.status == ICChatBoxStatusShowMore) {
-        return;
-    }
-    
-    if (_delegate && [_delegate respondsToSelector:@selector(chatBoxViewController:didChangeChatBoxHeight:)]) {
-        [_delegate chatBoxViewController:self didChangeChatBoxHeight: self.keyboardFrame.size.height + [self getTextviewHeight]];
-        _chatBox.status = ICChatBoxStatusShowKeyboard; // 状态改变
-        [self.chatBoxFaceView removeFromSuperview];
-        [self.chatBoxMoreView removeFromSuperview];
+    if ([self.chatBox.textView isFirstResponder]) {
+        /// 输入框成为第一响应者，需要发送通知移除底部的商品卡片UI
+        [[NSNotificationCenter defaultCenter] postNotificationName:kTIMMessageSendChatUIFromLibNotification object:nil];
+        
+        self.keyboardFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+        self.keyboardFrameHeight = self.keyboardFrame.size.height;
+        // MARK: 软键盘可以设置是否启用输入预测，如果没有输入预测，会被下面的方法拦截掉，无法进入后续逻辑，HEIGHT_CHATBOXVIEW是表情/更多面板的高度，不应该用来对软键盘进行高度的比较!!!⚠️⚠️⚠️
+    //    if (_chatBox.status == ICChatBoxStatusShowKeyboard && self.keyboardFrame.size.height <= HEIGHT_CHATBOXVIEW) {
+    //        return;
+    //    }
+    //    else
+        if ((_chatBox.status == ICChatBoxStatusShowFace || _chatBox.status == ICChatBoxStatusShowMore) && self.keyboardFrame.size.height <= HEIGHT_CHATBOXVIEW) {
+            return;
+        }
+        
+        else if (_chatBox.status == ICChatBoxStatusShowFace  || _chatBox.status == ICChatBoxStatusShowMore) {
+            return;
+        }
+        
+        if (_delegate && [_delegate respondsToSelector:@selector(chatBoxViewController:didChangeChatBoxHeight:)]) {
+            [_delegate chatBoxViewController:self didChangeChatBoxHeight: self.keyboardFrame.size.height + [self getTextviewHeight]];
+            _chatBox.status = ICChatBoxStatusShowKeyboard; // 状态改变
+            [self.chatBoxFaceView removeFromSuperview];
+            [self.chatBoxMoreView removeFromSuperview];
+        }
     }
 }
 
@@ -330,14 +343,14 @@
     return _chatBox;
 }
 
-- (QEmotionBoardView *)chatBoxFaceView
+- (TIMQEmotionBoardView *)chatBoxFaceView
 {
     if (nil == _chatBoxFaceView) {
 //        _chatBoxFaceView = [[QEmotionBoardView alloc] initWithFrame:CGRectMake(0, HEIGHT_TABBAR, App_Frame_Width, HEIGHT_CHATBOXVIEW)];
-        QEmotionHelper *faceManager = [QEmotionHelper sharedEmotionHelper];
+        TIMQEmotionHelper *faceManager = [TIMQEmotionHelper sharedEmotionHelper];
         faceManager.emotionArray = [self createTotalEmotion];
         CGFloat chatBarheight = self.barDataCount.count ? CHATBOX_BAR_HEIGHT : 0.0f;
-        _chatBoxFaceView = [[QEmotionBoardView alloc] initWithFrame:CGRectMake(0, [TOSKitCustomInfo shareCustomInfo].chatBox_Height+chatBarheight, App_Frame_Width, HEIGHT_CHATBOXVIEW)];
+        _chatBoxFaceView = [[TIMQEmotionBoardView alloc] initWithFrame:CGRectMake(0, [TOSKitCustomInfo shareCustomInfo].chatBox_Height+chatBarheight, App_Frame_Width, HEIGHT_CHATBOXVIEW)];
         _chatBoxFaceView.emotions = faceManager.emotionArray;
         _chatBoxFaceView.delegate = self;
         /***删除按钮相关配置***/
@@ -369,17 +382,17 @@
 }
 
 //创建表情列表。这段代码耗时约0.02秒，占用内存约0.5M
-- (NSMutableArray<QEmotion *> *)createTotalEmotion {
+- (NSMutableArray<TIMQEmotion *> *)createTotalEmotion {
     
     NSArray <XZEmotion *>*array = [ICFaceManager customEmotion];
     
-    NSMutableArray<QEmotion *> *emotionArray = [[NSMutableArray alloc] init];
+    NSMutableArray<TIMQEmotion *> *emotionArray = [[NSMutableArray alloc] init];
     [array enumerateObjectsUsingBlock:^(XZEmotion * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [emotionArray addObject:[QEmotion emotionWithIdentifier:obj.face_name displayName:obj.face_name]];
+        [emotionArray addObject:[TIMQEmotion emotionWithIdentifier:obj.face_name displayName:obj.face_name]];
     }];
     
     //这一步初始化image很重要，你可能是bundle，也可能是imageNamed。但是一定要做
-    for (QEmotion *e in emotionArray) {
+    for (TIMQEmotion *e in emotionArray) {
         e.image = [[UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,e.identifier]] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
     }
     return emotionArray;
@@ -432,35 +445,35 @@
 }
 
 #pragma mark - setter
-- (void)setBarItemArray:(NSArray *)barItemArray {
+- (void)setBarItemArray:(NSArray <TOSQuickEntryModel *>*)barItemArray {
     _barItemArray = barItemArray;
-    if (barItemArray.count == 0) {
-        return;
-    }
-    [self ICChatBoxBarDataSource];
+    [self.chatBox configurationBarViewDataSrouce];
     
 }
 
 #pragma mark - ICChatBoxBarViewDataSource
-- (NSArray<ICChatBarItemModel *> *)ICChatBoxBarDataSource {
+- (NSArray<TOSQuickEntryModel *> *)ICChatBoxBarDataSource {
     NSLog(@"ICChatBoxBarDataSource");
     NSMutableArray * testArr = [NSMutableArray array];
     for (int i = 0; i < self.barItemArray.count; i++) {
-        ICChatBarItemModel * model = [ICChatBarItemModel new];
-        model.titleStr = self.barItemArray[i];
+        TOSQuickEntryModel * model = [self.barItemArray[i] mutableCopy];
         [testArr addObject:model];
     }
     
     if (self.barItemArray.count) {
-        self.chatBox.tosCF_height = [TOSKitCustomInfo shareCustomInfo].chatBox_Height+CHATBOX_BAR_HEIGHT;
+//        self.chatBox.tosCF_height = [TOSKitCustomInfo shareCustomInfo].chatBox_Height + CHATBOX_BAR_HEIGHT;
+        self.chatBox.tosCF_height = self.chatBox.textView.tosCF_height + [TOSKitCustomInfo shareCustomInfo].chatBox_Height - [TOSKitCustomInfo shareCustomInfo].chatBox_textView_height + CHATBOX_BAR_HEIGHT;
+    } else {
+//        self.chatBox.tosCF_height = [TOSKitCustomInfo shareCustomInfo].chatBox_Height;
+        self.chatBox.tosCF_height = self.chatBox.textView.tosCF_height + [TOSKitCustomInfo shareCustomInfo].chatBox_Height - [TOSKitCustomInfo shareCustomInfo].chatBox_textView_height;
     }
     
     return testArr;
 }
 
 - (void)ICChatBoxBarWithItemDidselectedIndex:(NSInteger)index {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(chatBoxDidClickBarItemViewController:withItemIndex:)]) {
-        [self.delegate chatBoxDidClickBarItemViewController:self withItemIndex:index];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(chatBoxDidClickBarItemViewController:withItemModel:)]) {
+        [self.delegate chatBoxDidClickBarItemViewController:self withItemModel:self.barItemArray[index]];
     }
 }
 
@@ -482,8 +495,8 @@
             break;
         case TOSChatBoxExtendBoardTypeCustomFile: {
             if (self.delegate &&
-                [self.delegate respondsToSelector:@selector(chatBoxViewController:senderFile:)]) {
-                [self.delegate chatBoxViewController:self senderFile:item.index];
+                [self.delegate respondsToSelector:@selector(chatBoxViewController:senderFile:openFileApp:)]) {
+                [self.delegate chatBoxViewController:self senderFile:item.index openFileApp:NO];
             }
         }
             break;
@@ -498,7 +511,13 @@
             if (self.delegate && [self.delegate respondsToSelector:@selector(chatBoxViewController:closeChat:)]) {
                 [self.delegate chatBoxViewController:self closeChat:item.index];
             }
-            
+        }
+            break;
+        case TOSChatBoxExtendBoardTypeCustomFileApp : {
+            if (self.delegate &&
+                [self.delegate respondsToSelector:@selector(chatBoxViewController:senderFile:openFileApp:)]) {
+                [self.delegate chatBoxViewController:self senderFile:item.index openFileApp:YES];
+            }
         }
             break;
         default: {
@@ -509,12 +528,6 @@
             }
         }
             break;
-    }
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) { // 去设置界面，开启相机访问权限
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
     }
 }
 
@@ -606,30 +619,75 @@
             return;
         }
         NSURL *videoUrl = urlAsset.URL;
+        NSLog(@"audioMix : %@", audioMix);
+        NSLog(@"视频的详细信息：%@", info);
+        
         NSLog(@"获取视频的绝对路径:%@",[videoUrl absoluteString]);
         
         //判断视频内存大小
-        NSData *videoData;
-        __block NSString * strRealVideoPath;
-        if ([[[videoUrl absoluteString] substringToIndex:7] isEqualToString:@"file://"]) {
-            strRealVideoPath = [[videoUrl absoluteString] substringFromIndex:7];
-        }else{
-            strRealVideoPath = [videoUrl absoluteString];
-        }
-        videoData = [NSData dataWithContentsOfFile:strRealVideoPath];
-        
-        CGFloat timeLong = CMTimeGetSeconds(asset.duration);
-        // 保存路径
-        NSString *currentTimeJpg = [NSString stringWithFormat:@"%@.jpg",[strRealVideoPath.lastPathComponent stringByDeletingPathExtension] ];
-        UIImage *simpleImg = [UIImage simpleImage:coverImage];
-        NSString * thumbnailImagePath = [[ICMediaManager sharedManager] saveVideoImage:simpleImg fileName:currentTimeJpg];
-        
-        NSLog(@"strRealVideoPath = %@ timeLong = %ld",strRealVideoPath,(long)timeLong);
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (self->_delegate && [self->_delegate respondsToSelector:@selector(chatBoxViewController:sendVideoMessage:duration:thumbnailImagePath:)]) {
-                [self->_delegate chatBoxViewController:self sendVideoMessage:strRealVideoPath duration:timeLong thumbnailImagePath:thumbnailImagePath];
+//        NSData *videoData;
+//        __block NSString * strRealVideoPath;
+//        if ([[[videoUrl absoluteString] substringToIndex:7] isEqualToString:@"file://"]) {
+//            strRealVideoPath = [[videoUrl absoluteString] substringFromIndex:7];
+//        }else{
+//            strRealVideoPath = [videoUrl absoluteString];
+//        }
+//        videoData = [NSData dataWithContentsOfFile:strRealVideoPath];
+
+        [self exportAssetToData:urlAsset withCoverImage:coverImage completion:^(NSData *data, AVAssetExportSessionStatus status, NSError *error) {
+            if (status != AVAssetExportSessionStatusCompleted) {
+                NSString * errorMsg = @"导出视频失败";
+                if (error != nil) {
+                    errorMsg = [NSString stringWithFormat:@"%@:%@",errorMsg,error.localizedDescription];
+                }
+                [self tim_showMBErrorView:errorMsg];
             }
-        });
+        }];
+        
+        
+    }];
+}
+
+- (void)exportAssetToData:(AVURLAsset *)asset withCoverImage:(UIImage *)coverImage completion:(void (^)(NSData *data, AVAssetExportSessionStatus status, NSError * error))completion {
+    // 创建 AVAssetExportSession 以导出媒体资源
+    AVAssetExportSession *exportSession = [[AVAssetExportSession alloc] initWithAsset:asset presetName:AVAssetExportPresetPassthrough];
+    if (!exportSession) {
+        completion(nil, AVAssetExportSessionStatusUnknown, nil);
+        return;
+    }
+    
+    // 判断文件路径是否存在
+    NSString * fullFileName = [NSString stringWithFormat:@"%@.mp4",[[NSUUID UUID] UUIDString]];
+    [[ICVideoManager shareManager] videoPathWithFileName:fullFileName];
+    // 设置输出文件路径
+    NSString *outputFilePath = [[[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:kChatVideoPath] stringByAppendingPathComponent:fullFileName];
+    NSURL *outputURL = [NSURL fileURLWithPath:outputFilePath];
+    exportSession.outputURL = outputURL;
+    exportSession.outputFileType = AVFileTypeMPEG4; // 可根据需求调整文件类型
+    
+    // 导出文件
+    [exportSession exportAsynchronouslyWithCompletionHandler:^{
+        if (exportSession.status == AVAssetExportSessionStatusCompleted) {
+            // 将导出的文件转换为 NSData
+            NSData *data = [NSData dataWithContentsOfURL:outputURL];
+            NSLog(@"二进制数据大小：%@", data);
+            CGFloat timeLong = CMTimeGetSeconds(asset.duration);
+            // 保存路径
+            NSString *currentTimeJpg = [NSString stringWithFormat:@"%@.jpg",[outputFilePath.lastPathComponent stringByDeletingPathExtension] ];
+            UIImage *simpleImg = [UIImage simpleImage:coverImage];
+            NSString * thumbnailImagePath = [[ICMediaManager sharedManager] saveVideoImage:simpleImg fileName:currentTimeJpg];
+            
+            NSLog(@"strRealVideoPath = %@ timeLong = %ld",outputFilePath,(long)timeLong);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (self->_delegate && [self->_delegate respondsToSelector:@selector(chatBoxViewController:sendVideoMessage:duration:thumbnailImagePath:)]) {
+                    [self->_delegate chatBoxViewController:self sendVideoMessage:outputFilePath duration:timeLong thumbnailImagePath:thumbnailImagePath];
+                }
+            });
+            completion(data, AVAssetExportSessionStatusCompleted, nil);
+        } else {
+            completion(nil, exportSession.status, exportSession.error);
+        }
+        
     }];
 }
 
@@ -692,6 +750,7 @@
                     self.keyboardFrame.size.height <= 0 &&
                     (int)self.chatBox.textView.tosSD_height <= [TOSKitCustomInfo shareCustomInfo].chatBox_Height) {
                     TIMKitLog(@"nothing to do");
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kTIMMessageSendChatUIFromLibNotification object:nil];
                 }else{
                     
                     [self->_delegate chatBoxViewController:self didChangeChatBoxHeight:([TOSKitCustomInfo shareCustomInfo].chatBox_textView_height + [TOSKitCustomInfo shareCustomInfo].chatBox_Height - [TOSKitCustomInfo shareCustomInfo].chatBox_textView_height + chatBarheight + kBottomBarHeight)];
@@ -887,7 +946,25 @@
 //    }
     [[ICRecordManager shareManager] startRecordingWithFileName:self.recordName completion:^(NSError *error) {
         if (error) {   // 加了录音权限的判断
+            NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+            NSString *app_Name = [infoDictionary objectForKey:@"CFBundleDisplayName"];
+            NSString *str = [NSString stringWithFormat:@"无法录制声音 请在iPhone的“设置>%@”中打开麦克风权限",app_Name];
             
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:str preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:nil];
+            
+            UIAlertAction *setAction = [UIAlertAction actionWithTitle:@"前往设置" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+                if ([[UIApplication sharedApplication] canOpenURL:url]) {
+                    [[UIApplication sharedApplication] openURL:url];
+                }
+            }];
+            
+            [alertController addAction:cancelAction];
+            [alertController addAction:setAction];
+            
+            [self presentViewController:alertController animated:YES completion:nil];
         } else {
             
             if ([self->_delegate respondsToSelector:@selector(voiceDidStartRecording)]) {
@@ -1013,9 +1090,23 @@
     if (![ICTools hasPermissionToGetCamera]) {
         NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
         NSString *app_Name = [infoDictionary objectForKey:@"CFBundleDisplayName"];
-        NSString *str = [NSString stringWithFormat:@"相机权限未开启，请在iphone的“设置>%@”中打开相机权限",app_Name];
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:str message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"前往设置", nil];
-        [alert show];
+        NSString *str = [NSString stringWithFormat:@"相机或麦克风权限未开启，请在iphone的“设置>%@”中打开相机权限",app_Name];
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:str preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:nil];
+        
+        UIAlertAction *setAction = [UIAlertAction actionWithTitle:@"前往设置" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+            if ([[UIApplication sharedApplication] canOpenURL:url]) {
+                [[UIApplication sharedApplication] openURL:url];
+            }
+        }];
+        
+        [alertController addAction:cancelAction];
+        [alertController addAction:setAction];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
     } else {
         TIMXFCameraController *cameraController = [TIMXFCameraController defaultCameraController];
         

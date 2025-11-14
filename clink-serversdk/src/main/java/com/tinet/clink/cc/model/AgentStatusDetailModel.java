@@ -40,6 +40,7 @@ public class AgentStatusDetailModel {
      * 座席状态详情，空闲，忙碌，整体，呼叫中，响铃，呼入振铃，外呼振铃，通话，呼入通话，外呼通话，自定义置忙状态
      */
     private String statusDetail;
+    private String statusDetails;
 
     public String getCno() {
         return cno;
@@ -95,5 +96,13 @@ public class AgentStatusDetailModel {
 
     public void setStatusDetail(String statusDetail) {
         this.statusDetail = statusDetail;
+    }
+
+    public String getStatusDetails() {
+        return statusDetails;
+    }
+
+    public void setStatusDetails(String statusDetails) {
+        this.statusDetails = statusDetails;
     }
 }

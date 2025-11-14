@@ -106,7 +106,11 @@ if (@available(iOS 11.0, *)) { \
 #define kGIFTimageType @"gif"
 
 
-static NSString * const FRAMEWORKS_BUNDLE_PATH=@"TOSKitClient.bundle";
+static NSString * const FRAMEWORKS_BUNDLE_PATH=@"TOSClient.bundle";
+
+
+// 非控件类需要调用的响应事件
+static NSString * const kTIMRouterEventNotification = @"kTIMRouterEventNotification";
 
 //新增消息推送
 static NSString * const kTIMMessageReceivedNotification = @"kTIMMessageReceivedNotification";
@@ -126,6 +130,9 @@ static NSString * const kTextViewChangeNotification = @"kTextViewChangeNotificat
 
 /// 更新扩展面板的item，（从机器人转到座席时触发）
 static NSString * const kOnlineChangeExtendBoardItemNotification = @"kOnlineChangeExtendBoardItemNotification";
+
+/// 更新工单留言模块未读数显示
+static NSString * const kUpdateTicketMessageStatus = @"kUpdateTicketMessageStatus";
 
 //撤回消息重新编辑的展示字符
 static NSString * const kTIMRecalledMessageAgainEdit = @"重新编辑";

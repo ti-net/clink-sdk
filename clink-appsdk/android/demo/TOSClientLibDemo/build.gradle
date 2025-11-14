@@ -7,13 +7,13 @@ buildscript {
 
     repositories {
         google()
-        jcenter()
+        mavenCentral()
         maven { url "https://plugins.gradlew.org/m2/" }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.0.3'
-        classpath "io.realm:realm-gradle-plugin:6.0.2"
-        classpath "com.kezong:fat-aar:1.2.16"
+//        classpath "io.realm:realm-gradle-plugin:6.0.2"
+//        classpath "com.kezong:fat-aar:1.2.16"
     }
 }
 
@@ -24,7 +24,7 @@ allprojects {
         }
 
         google()
-        jcenter()
+        mavenCentral()
         maven { url "https://jitpack.io" }
     }
 }

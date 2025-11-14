@@ -30,8 +30,9 @@ public class WebcallTest extends AbstractTest {
 
         WebcallRequest request = new WebcallRequest();
         request.setCustomerNumber("13716619459");
-        request.setIvrId(148);
+        request.setIvrName("aaa");
         request.expires(100);
+        request.setClidGroupName("bcytest");
 
 
         WebcallResponse response = client.getResponseModel(request);

@@ -8,7 +8,7 @@
 
 #import "TIMSDWebImageDownloaderOperation.h"
 #import "TIMSDWebImageDecoder.h"
-#import "UIImage+MultiFormat.h"
+#import "UIImage+TIMMultiFormat.h"
 #import <ImageIO/ImageIO.h>
 #import "TIMSDWebImageManager.h"
 

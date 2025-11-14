@@ -16,7 +16,6 @@
 #import "TIMMessageModel.h"
 #import "ICFaceManager.h"
 #import "ICChatMessageBaseCell+CustomerUnread.h"
-#import <TOSClientLib/TIMLibUtils.h>
 #import "NSDictionary+TIMTool.h"
 #import "YYKit.h"
 #import "XZEmotion.h"

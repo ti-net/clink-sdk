@@ -49,8 +49,8 @@
 - (void)setItems:(NSMutableArray *)items
 {
     _items = items;
-    self.pageControl.numberOfPages = items.count / 8 + 1;
-    self.scrollView.contentSize = CGSizeMake(self.scrollView.tosSD_width * (items.count / 8 + 1), _scrollView.tosSD_height);
+    self.pageControl.numberOfPages = items.count/8 + (items.count%8 > 0 ? 1 : 0);
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.tosSD_width * self.pageControl.numberOfPages, _scrollView.tosSD_height);
     /// 赋值前先移除之前的item
     for (UIView * item in self.scrollView.subviews) {
         if ([item isKindOfClass:[ICChatBoxMoreViewItem class]]) {

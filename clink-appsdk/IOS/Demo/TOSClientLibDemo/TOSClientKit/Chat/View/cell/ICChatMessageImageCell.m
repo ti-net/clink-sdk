@@ -12,16 +12,16 @@
 #import "TIMICMessage.h"
 #import "ICFileTool.h"
 #import "ICMessageHelper.h"
-#import "UIImage+GIF.h"
+#import "UIImage+TIMGIF.h"
 //#import "UIButton+WebCache.h"
 #import "TIMConstants.h"
 #import "NSString+Extension.h"
-#import <TOSClientLib/TIMLibUtils.h>
 #import "UIImage+Extension.h"
 #import "ICChatMessageBaseCell+CustomerUnread.h"
 //#import <SDWebImage/SDWebImage.h>
 #import <TOSClientKit/TOSClientKit.h>
 #import "NSObject+TIMImage.h"
+#import "kitUtils.h"
 
 //#import "TIMSDWebImageDownloader.h"
 
@@ -57,6 +57,7 @@
     ICMediaManager *manager = [ICMediaManager sharedManager];
     
     NSString * strPicType = [modelFrame.model.mediaPath pathExtension];
+    NSLog(@"modelFrame.model.mediaPath === %@",modelFrame.model.mediaPath);
     if ([strPicType isEqualToString:kGIFTimageType]) {
         NSData *imageData = [NSData dataWithContentsOfFile:modelFrame.model.mediaPath];
         image = [UIImage sd_animatedGIFWithData:imageData];
@@ -79,7 +80,7 @@
     if (modelFrame.model.isSender) {    // 发送者
         self.imageBtn.layer.cornerRadius = [TOSKitCustomInfo shareCustomInfo].senderBubble_cornerRadius;
         if (image == nil) {
-            TIMLog(@"image == nil");
+            TIMKitLog(@"image == nil");
         }else{
             // 如果本地路径的图片存在 那么直接显示
             if ([strPicType isEqualToString:kGIFTimageType]) {
@@ -185,6 +186,8 @@
 //        _imageBtn.layer.cornerRadius = 5;
         _imageBtn.clipsToBounds = YES;
         _imageBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        UIImage * image = [UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,@"loadImage.png"]];
+        [_imageBtn setBackgroundImage:image forState:(UIControlStateNormal)];
         
     }
     return _imageBtn;

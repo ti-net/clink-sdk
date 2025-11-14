@@ -15,7 +15,7 @@
 #import "YYTextAttribute.h"
 #import "NSAttributedString+YYText.h"
 #import "NSParagraphStyle+YYText.h"
-#import "UIFont+YYAdd.h"
+#import "UIFont+TIMYYAdd.h"
 
 
 #pragma mark - Markdown Parser

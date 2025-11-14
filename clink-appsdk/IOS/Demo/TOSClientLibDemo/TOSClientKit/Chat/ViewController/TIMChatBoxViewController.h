@@ -1,4 +1,3 @@
-//  输入框页面
 //
 //  ICChatBoxViewController.h
 //  XZ_WeChat
@@ -18,7 +17,7 @@
 
 @end
 
-
+@class TOSQuickEntryModel;
 @interface TIMChatBoxViewController : UIViewController
 
 @property(nonatomic, weak) id<TIMChatBoxViewControllerDelegate>delegate;
@@ -33,5 +32,7 @@
 
 @property (nonatomic, copy) NSString * curGroupType; // 当前用户在组中的type
 
-@property (nonatomic, strong) NSArray                * barItemArray;
+//@property (nonatomic, copy) NSString *  curGroupSAType; // 当前用户在组中的SA权限
+
+@property (nonatomic, strong) NSArray      <TOSQuickEntryModel *> * barItemArray;
 @end

@@ -13,7 +13,7 @@
 #import "UIView+SDExtension.h"
 #import "TIMMessageModel.h"
 #import "kitUtils.h"
-#import "UIImageView+WebCache.h"
+#import "UIImageView+TIMWebCache.h"
 #import "ICFaceManager.h"
 #import "ICChatMessageBaseCell+CustomerUnread.h"
 #import "ICFaceManager.h"
@@ -289,18 +289,6 @@
         }
     }
     [self.tableView reloadData];
-}
-
-///显示富文本
--(NSAttributedString *)showAttributedToHtml:(NSString *)html{
-//替换图片的高度为屏幕的高度
-//    NSString *newString = [html stringByReplacingOccurrencesOfString:@"<img" withString:[NSString stringWithFormat:@"<img width=\"%f\"",width]];
-    
-    NSAttributedString *attributeString=[[NSAttributedString alloc] initWithData:[html dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType} documentAttributes:nil error:nil];
-     
-     
-    return attributeString;
- 
 }
 
 @end

@@ -8,6 +8,7 @@
 
 #import <TOSClientLib/TOSClientLib.h>
 #import <Foundation/Foundation.h>
+#import <TOSClientKit/TIMMessageFrame.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -138,6 +139,25 @@ TIMKit核心类
 /// @param errorBlock 失败
 - (void)closeSession:(void (^)(void))successBlock
                error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
+
+
+/// 关闭上一个会话
+/// @param visitorId 访客ID
+/// @param successBlock 成功
+/// @param errorBlock 失败
+- (void)closeLastSession:(NSString *)visitorId
+                succuess:(void (^)(void))successBlock
+                   error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
+
+/// 关闭会话
+/// @param mainUniqueId 会话ID
+/// @param visitorId 访客ID
+/// @param successBlock 成功
+/// @param errorBlock 失败
+- (void)closeSessionMainUniqueId:(NSString *)mainUniqueId
+                   withVisitorId:(NSString *)visitorId
+                        succuess:(void (^)(void))successBlock
+                           error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock;
 
 /// 设置附加参数
 /// @param advanceParams 附加参数
@@ -318,6 +338,9 @@ SDK内置的消息类型，如果您将pushOption置为nil，会使用默认的�
 
 /// 获取是否app在前台活跃
 -(BOOL)getStateActive;
+
+/// 获取最后一条消息
+- (void)getLastMessage:(void (^)(TIMMessageFrame * lastMessage))successBlock withError:(void (^)(NSString *errorStr))errorBlock;
 
 @end
 

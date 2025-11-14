@@ -10,7 +10,7 @@
 //
 
 #import "YYKeychain.h"
-#import "UIDevice+YYAdd.h"
+#import "UIDevice+TIMYYAdd.h"
 #import "YYKitMacro.h"
 #import <Security/Security.h>
 

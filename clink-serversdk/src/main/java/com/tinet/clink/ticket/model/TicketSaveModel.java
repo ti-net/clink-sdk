@@ -1,5 +1,7 @@
 package com.tinet.clink.ticket.model;
 
+import com.tinet.clink.ticket.UserIdType;
+
 import java.util.Date;
 
 /**
@@ -36,6 +38,8 @@ public class TicketSaveModel {
      */
     private Integer creatorId;
 
+    private Integer creatorIdType = UserIdType.USER_ID.getCode();
+
     /**
      * 处理类型。 0: 座席， 1: 队列。
      */
@@ -46,10 +50,14 @@ public class TicketSaveModel {
      */
     private Integer handlerId;
 
+    private Integer handlerIdType = UserIdType.USER_ID.getCode();
+
     /**
      * 关注人 Id数组
      */
     private Integer[] focus;
+
+    private Integer focusIdType = UserIdType.USER_ID.getCode();
 
     /**
      * 工单标签数组
@@ -90,6 +98,11 @@ public class TicketSaveModel {
      * 自定义系统字段
      */
     private Field[] customizeSystemFields;
+
+    /**
+     * 不填充字段
+     */
+    private Integer notFillFields;
 
     public Integer getWorkflowId() {
         return workflowId;
@@ -214,4 +227,36 @@ public class TicketSaveModel {
     public Field[] getCustomizeSystemFields() { return customizeSystemFields; }
 
     public void setCustomizeSystemFields(Field[] customizeSystemFields) { this.customizeSystemFields = customizeSystemFields; }
+
+    public Integer getNotFillFields() {
+        return notFillFields;
+    }
+
+    public void setNotFillFields(Integer notFillFields) {
+        this.notFillFields = notFillFields;
+    }
+
+    public Integer getCreatorIdType() {
+        return creatorIdType;
+    }
+
+    public void setCreatorIdType(Integer creatorIdType) {
+        this.creatorIdType = creatorIdType;
+    }
+
+    public Integer getFocusIdType() {
+        return focusIdType;
+    }
+
+    public void setFocusIdType(Integer focusIdType) {
+        this.focusIdType = focusIdType;
+    }
+
+    public Integer getHandlerIdType() {
+        return handlerIdType;
+    }
+
+    public void setHandlerIdType(Integer handlerIdType) {
+        this.handlerIdType = handlerIdType;
+    }
 }

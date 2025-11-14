@@ -1,5 +1,5 @@
 //
-//  CALayer+YYAdd.h
+//  CALayer+TIMYYAdd.h
 //  YYKit <https://github.com/ibireme/YYKit>
 //
 //  Created by ibireme on 14/5/10.
@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Provides extensions for `CALayer`.
  */
-@interface CALayer (YYAdd)
+@interface CALayer (TIMYYAdd)
 
 /**
  Take snapshot without transform, image's size equals to bounds.

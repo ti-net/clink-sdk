@@ -9,7 +9,7 @@
 #import "ICEmotionButton.h"
 #import "NSString+Extension.h"
 #import "TIMConstants.h"
-#import "UIImage+GIF.h"
+#import "UIImage+TIMGIF.h"
 
 @implementation ICEmotionButton
 

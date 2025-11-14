@@ -17,8 +17,8 @@
  @discussion Generally, access performance is lower than NSMutableArray, 
  but higher than using @synchronized, NSLock, or pthread_mutex_t.
  
- @discussion It's also compatible with the custom methods in `NSArray(YYAdd)`
- and `NSMutableArray(YYAdd)`
+ @discussion It's also compatible with the custom methods in `NSArray(TIMYYAdd)`
+ and `NSMutableArray(TIMYYAdd)`
  
  @warning Fast enumerate(for..in) and enumerator is not thread safe,
  use enumerate using block instead. When enumerate or sort with block/callback,

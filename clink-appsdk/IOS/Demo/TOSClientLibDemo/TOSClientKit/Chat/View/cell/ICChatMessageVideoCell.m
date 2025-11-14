@@ -112,6 +112,12 @@
     self.strEnableAudit = modelFrame.model.strEnableAudit;
     self.msgAuditStatus = modelFrame.model.auditStatus;
     
+    if (!videoArrowImage) {
+        UIImage *resultImg = [UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,@"loadImgErr"]];
+        videoArrowImage = [UIImage addImage2:[UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,@"video_play_btn_bg"]] toImage:resultImg];
+        [[ICMediaManager sharedManager] saveImage:videoArrowImage msgId:modelFrame.model.message.messageId picType:@"jpg"];
+    }
+    
     self.bubbleView.userInteractionEnabled = videoArrowImage != nil;
     [self.imageBtn setImage:videoArrowImage  forState:UIControlStateNormal];
     self.topBtn.frame = CGRectMake(0, 0, _imageBtn.tosSD_width, _imageBtn.tosSD_height);

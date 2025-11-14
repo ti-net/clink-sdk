@@ -22,8 +22,8 @@ android {
         applicationId "com.tinet.tosclientkitdemo"
         minSdk 21
         targetSdk 31
-        versionCode 18
-        versionName "1.8.6"
+        versionCode 202
+        versionName "2.0.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -88,7 +88,7 @@ dependencies {
     implementation 'com.github.gzu-liyujiang.AndroidPicker:FilePicker:4.1.5'
 
     // 客服SDK
-    implementation 'com.github.ti-net-project:OnlineSDK-Android:1.8.6'
+    implementation 'com.github.ti-net-project:OnlineSDK-Android:2.0.2'
 //    api files('libs/online_sdk_1.7.0.1_release.aar')
 
 }

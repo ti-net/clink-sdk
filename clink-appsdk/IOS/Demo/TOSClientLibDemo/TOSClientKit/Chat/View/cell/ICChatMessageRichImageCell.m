@@ -86,7 +86,7 @@
             [model.urlPath hasPrefix:@"file/attachment"]) { //知识库类型
             
             model.urlPath = [[NSString stringWithFormat:@"%@/api/kb/articles/images?filePath=%@",[[OnlineDataSave shareOnlineDataSave] getOnlineUrl],model.urlPath] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        } else if ([model.urlPath hasPrefix:@"/basic-api/oss/avatar"]) {    //机器人类型
+        } else if ([model.urlPath hasPrefix:@"/basic-api/oss/"]) {    //机器人类型
             NSString *path = @"";
             if (![model.urlPath hasPrefix:@"/"]) {
                 path = @"/";
@@ -99,6 +99,9 @@
             /// 北京
             else if ([[[OnlineDataSave shareOnlineDataSave] getOnlineUrl] isEqualToString:@"https://chat-app-bj.clink.cn"]) {
                 hostURL = @"https://webchat-bj.clink.cn";
+            }/// 北京Test0
+            else if ([[[OnlineDataSave shareOnlineDataSave] getOnlineUrl] isEqualToString:@"https://chat-app-bj-test0.clink.cn"]) {
+                hostURL = @"https://webchat-bj-test0.clink.cn";
             }
             model.urlPath = [[NSString stringWithFormat:@"%@%@%@%@%@%@%@", hostURL, @"/api/bot_media?fileKey=",path,model.urlPath, @"&provider=", self.robotProvider, @"&isDownload=false&isThumbnail=true"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         } else {
@@ -109,6 +112,7 @@
             model.urlPath = [[NSString stringWithFormat:@"%@%@%@",[[OnlineDataSave shareOnlineDataSave] getOnlineUrl],path,model.urlPath] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         }
     } else {
+        model.fileKey = model.urlPath;
         model.urlPath = [model.urlPath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     }
     
@@ -132,10 +136,6 @@
             localPath = [[ICMediaManager sharedManager] smallImgPath:fileKey];
             videoArrowImage = [UIImage imageWithContentsOfFile:localPath];
             
-            NSLog(@"[model yy_modelToJSONObject] ==== %@",[model yy_modelToJSONObject]);
-            
-            NSLog(@"urlPath ==== %@",model.urlPath);
-            
             if (!videoArrowImage) {
                 UIImage *resultImg = [self getVideoPreViewImage:[NSURL URLWithString:model.urlPath]];
                 videoArrowImage = [UIImage addImage2:[UIImage imageNamed:[NSString stringWithFormat:@"%@/%@",FRAMEWORKS_BUNDLE_PATH,@"video_play_btn_bg"]] toImage:resultImg];
@@ -145,14 +145,6 @@
             }
             
         }
-//        else {
-//            NSString * strRealVideoPath;
-//            if (model.urlPath!=nil && model.urlPath.length>=0) {
-//                strRealVideoPath = model.urlPath;
-//
-//                videoArrowImage = [manager videoConverPhotoWithVideoPath:strRealVideoPath size:model.contentF.size isSender:NO];
-//            }
-//        }
         // 判断封面图
         if (model.urlPath.length > 0 && ![model.urlPath hasPrefix:@"http"]) {
             
@@ -182,7 +174,7 @@
         [self routerEventWithName:GXRouterEventVideoTapEventName
                          userInfo:@{MessageKey   : modelFrame,
                                     @"BtnView"   : btnValue,
-                                    @"urlPath"   : self.urlPath,
+                                    @"urlPath"   : self.urlPath?:@"",
                                     }];
         
     } else {

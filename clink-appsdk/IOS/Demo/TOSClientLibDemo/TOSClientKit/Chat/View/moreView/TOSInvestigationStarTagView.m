@@ -7,7 +7,7 @@
 //
 
 #import "TOSInvestigationStarTagView.h"
-#import "UIColor+YYAdd.h"
+#import "UIColor+TIMYYAdd.h"
 
 @interface TOSInvestigationStarTagView ()
 

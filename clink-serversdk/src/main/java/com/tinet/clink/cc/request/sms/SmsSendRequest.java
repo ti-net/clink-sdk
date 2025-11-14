@@ -20,9 +20,9 @@ public class SmsSendRequest extends AbstractRequestModel<SmsSendResponse> {
     private String cno;
 
     /**
-     * 管理员ID
+     * 管理员用户名
      */
-    private Integer adminId;
+    private String adminUsername;
 
     /**
      * 电话
@@ -57,13 +57,13 @@ public class SmsSendRequest extends AbstractRequestModel<SmsSendResponse> {
         putBodyParameter("cno", cno);
     }
 
-    public Integer getAdminId() {
-        return adminId;
+    public String getAdminUsername() {
+        return adminUsername;
     }
 
-    public void setAdminId(Integer adminId) {
-        this.adminId = adminId;
-        putBodyParameter("adminId", adminId);
+    public void setAdminUsername(String adminUsername) {
+        this.adminUsername = adminUsername;
+        putBodyParameter("adminUsername", adminUsername);
     }
 
     public String getTel() {

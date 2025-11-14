@@ -36,6 +36,12 @@ public class TicketHistoryField {
      */
     private String value;
 
+    /**
+     * 字段值的扩展信息
+     */
+    private Object valueExt;
+
+
     private List<TicketHistoryField> children;
 
     public Integer getId() {
@@ -68,6 +74,14 @@ public class TicketHistoryField {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    public Object getValueExt() {
+        return valueExt;
+    }
+
+    public void setValueExt(Object valueExt) {
+        this.valueExt = valueExt;
     }
 
     public List<TicketHistoryField> getChildren() {

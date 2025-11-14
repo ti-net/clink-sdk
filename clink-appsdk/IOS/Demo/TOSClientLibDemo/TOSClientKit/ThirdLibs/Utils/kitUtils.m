@@ -9,13 +9,14 @@
 #import "kitUtils.h"
 #import <TOSClientLib/TIMClient.h>
 #import "sys/utsname.h"
-#import <TOSClientLib/TIMLibUtils.h>
 #import <CommonCrypto/CommonHMAC.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "NSDate+Common.h"
 
 // 默认值为NO
 static BOOL kKitLogEnable = NO;
+
+static NSString * kitEVN_Config = @"";
 
 #define kRandomLength 10
 
@@ -24,6 +25,16 @@ static BOOL kKitLogEnable = NO;
 // 设置日志输出状态
 + (void)setLogEnable:(BOOL)enable {
     kKitLogEnable = enable;
+}
+
+// 设置环境 为了判断KT
++ (void)setEnvConf:(NSString *)env {
+    kitEVN_Config = env;
+}
+
+// 获取环境 为了判断KT
++ (NSString*)getEnvConf {
+    return kitEVN_Config;
 }
 
 // 获取日志输出状态
@@ -99,7 +110,7 @@ static BOOL kKitLogEnable = NO;
 }
 
 +(NSString *)getDeviceUDID{
-    return [TIMLibUtils getDeviceUDID];
+    return [kitUtils getDeviceUDID];
 }
 
 + (NSString *) removeTheLastOneStr:(NSString*)string{
@@ -152,6 +163,7 @@ static BOOL kKitLogEnable = NO;
         TIMKitLog(@"Got an error: %@", error);
     } else {
         jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+//        NSLog(@"jsonStr==%@",jsonString);
     }
     return jsonString;
 }
@@ -440,7 +452,7 @@ static BOOL kKitLogEnable = NO;
 
 + (NSDictionary *)getPlistFile:(NSString *)plistName{
     //首先读取studentInfo.plist中的数据
-    NSBundle *bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"TOSKitClient" ofType:@"bundle"]];
+    NSBundle *bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"TOSClient" ofType:@"bundle"]];
     NSString *plistPath = [bundle pathForResource:plistName ofType:@"plist"];
     return [[NSDictionary alloc] initWithContentsOfFile:plistPath];
     
@@ -473,6 +485,54 @@ static BOOL kKitLogEnable = NO;
         currentViewController = rootViewController;
     }
     return currentViewController;
+}
+
++ (NSString *)convertToJsonDataWithDic:(NSDictionary *)dic {
+    if (dic &&
+        [dic isKindOfClass:[NSDictionary class]] &&
+        [dic allKeys].count > 0) {
+        
+        NSError *error;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&error];
+        NSString *jsonString;
+        if (!jsonData) {
+            NSLog(@"%@",error);
+        } else {
+            jsonString = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
+        }
+        NSMutableString *mutStr = [NSMutableString stringWithString:jsonString];
+//        NSRange range = {0,jsonString.length};
+        //去掉字符串中的空格
+//        [mutStr replaceOccurrencesOfString:@" " withString:@"" options:NSLiteralSearch range:range];
+        NSRange range2 = {0,mutStr.length};
+        //去掉字符串中的换行符
+        [mutStr replaceOccurrencesOfString:@"\n" withString:@"" options:NSLiteralSearch range:range2];
+        return mutStr;
+    } else {
+        
+        return @"数据格式不正确";
+    }
+}
+
++ (BOOL)isTextTypeLabel:(NSString *)type {
+    if ([type isEqualToString:@"h1"] ||
+        [type isEqualToString:@"h2"] ||
+        [type isEqualToString:@"h3"] ||
+        [type isEqualToString:@"h4"] ||
+        [type isEqualToString:@"h5"] ||
+        [type isEqualToString:@"h6"] ||
+        [type isEqualToString:@"tr"] ||
+        [type isEqualToString:@"ul"] ||
+        [type isEqualToString:@"ol"] ||
+        [type isEqualToString:@"img"] ||
+        [type isEqualToString:@"video"] ||
+        [type isEqualToString:@"br"] ||
+        [type isEqualToString:@"div"] ||
+        [type isEqualToString:@"colgroup"]) {
+        return NO;
+    } else {
+        return YES;
+    }
 }
 
 @end

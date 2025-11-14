@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>title_top</key>
+		<string>聊天背景</string>
+		<key>describe_top</key>
+		<string>ChatBack Ground，例如：#FFFFF</string>
+		<key>value_top</key>
+		<string></string>
+		<key>title_bottom</key>
+		<string>头像圆角弧度</string>
+		<key>describe_bottom</key>
+		<string>Portrait cornerRadius，例如：(0-10)</string>
+		<key>value_bottom</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>title_top</key>
+		<string>发送者气泡颜色</string>
+		<key>describe_top</key>
+		<string>SenderBubble BackGround，例如：#FFFFF</string>
+		<key>value_top</key>
+		<string></string>
+		<key>title_bottom</key>
+		<string>发送者气泡圆角弧度</string>
+		<key>describe_bottom</key>
+		<string>SenderBubble cornerRadius，例如：(0-10)</string>
+		<key>value_bottom</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>title_top</key>
+		<string>接收者气泡颜色</string>
+		<key>describe_top</key>
+		<string>ReceiveBubble BackGround，例如：#FFFFF</string>
+		<key>value_top</key>
+		<string></string>
+		<key>title_bottom</key>
+		<string>接收者气泡圆角弧度</string>
+		<key>describe_bottom</key>
+		<string>ReceiveBubble cornerRadius，例如：(1-10)</string>
+		<key>value_bottom</key>
+		<string></string>
+	</dict>
+</array>
+</plist>

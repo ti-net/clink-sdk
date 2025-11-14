@@ -29,6 +29,11 @@ public class ConsultRequest extends AbstractRequestModel<ConsultResponse> {
      */
     private String consultNumber;
 
+    /**
+     * 自定义外显，咨询类型为0时生效，非必选
+     */
+    private String clid;
+
     public ConsultRequest() {
         super(PathEnum.Consult.value(), HttpMethodType.POST);
     }
@@ -63,6 +68,17 @@ public class ConsultRequest extends AbstractRequestModel<ConsultResponse> {
         this.consultNumber = consultNumber;
         if (consultNumber != null) {
             putBodyParameter("consultNumber", consultNumber);
+        }
+    }
+
+    public String getClid() {
+        return clid;
+    }
+
+    public void setClid(String clid) {
+        this.clid = clid;
+        if (clid != null) {
+            putBodyParameter("clid", clid);
         }
     }
 

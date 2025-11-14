@@ -11,7 +11,6 @@
 #import "ICFaceManager.h"
 #import "TIMConstants.h"
 #import "ICChatMessageBaseCell+CustomerUnread.h"
-#import <TOSClientLib/TIMLibUtils.h>
 #import "NSDictionary+TIMTool.h"
 #import "XZEmotion.h"
 #import "YYLabel.h"
@@ -23,11 +22,11 @@
 #import "NSObject+TIMShowError.h"
 
 #import "YYKit.h"
-#import "UIImageView+WebCache.h"
+#import "UIImageView+TIMWebCache.h"
 #import "kitUtils.h"
 #import "UIImage+PureColorImage.h"
 #import "UIImage+Extension.h"
-#import "UIImage+GIF.h"
+#import "UIImage+TIMGIF.h"
 #import <TOSClientLib/TIMCommodityCardMessage.h>
 #import "TIMMessageModel.h"
 #import "TIMICMessage.h"

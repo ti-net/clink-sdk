@@ -11,16 +11,21 @@
 #import "chatLeaveSingleLineCell.h"
 #import "chatLeaveMultilineLineCell.h"
 #import "TIMConstants.h"
-#import <TOSClientLib/TIMLibUtils.h>
+#import "kitUtils.h"
 #import "WHToast.h"
 #import <TOSClientLib/TOSClientLib.h>
+//#import "UIView+SDExtension.h"
+//#import "IQKeyboardManager.h"
+#import "NSString+Extension.h"
+#import "UIView+TIMYYAdd.h"
 
-@interface TIMChatLeaveVC ()<UITableViewDelegate,UITableViewDataSource>
+@interface TIMChatLeaveVC ()<UITableViewDelegate,UITableViewDataSource>//chatLeaveMultilineLineCellDelegate
 
 @property (nonatomic, strong) UITableView *chatLeaveTableView;
 @property (nonatomic, strong) UIButton *commitBtn;
 @property (nonatomic, strong) UIView *successView;//提交成功的view
 @property (nonatomic, strong) NSMutableArray *cellIdList;//记录只加载一次
+
 
 @end
 
@@ -29,9 +34,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupSubView];
+//    [self addNotificationAction];
     
     self.cellIdList = [[NSMutableArray alloc]init];
 
+//    [self setKeyboardAction];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:(UIBarButtonItemStylePlain) target:self action:@selector(cancelBtnAction:)];
 }
 
@@ -77,14 +84,14 @@
     NSDictionary*dict = self.leaveMessageFields[indexPath.row - 1];
     NSString*type = [NSString stringWithFormat:@"%@",dict[@"type"]];
 
-    if (![TIMLibUtils isBlankString:type]) {
+    if (![kitUtils isBlankString:type]) {
         if ([type isEqualToString:@"0"]) {//单选
             NSString * identifier = [NSString stringWithFormat:@"CellId%ld%ld",(long)indexPath.section,(long)indexPath.row];
             chatLeaveSingleLineCell *singleCell = [tableView dequeueReusableCellWithIdentifier:identifier];
             if (!singleCell) {
                 singleCell = [[chatLeaveSingleLineCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifier];
             }
-            if (![TIMLibUtils isBlankString:dict[@"name"]]) {
+            if (![kitUtils isBlankString:dict[@"name"]]) {
                 [singleCell setCellWithTitle:[NSString stringWithFormat:@"%@",dict[@"name"]] must:[NSString stringWithFormat:@"%@",dict[@"must"]]];
             }
             return singleCell;
@@ -96,8 +103,21 @@
                 multilineCell = [[chatLeaveMultilineLineCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifier];
             }
                 
-            if (![TIMLibUtils isBlankString:dict[@"name"]]) {
+//            int j = 0;
+//            if (self.cellIdList.count>0) {
+//                for (NSString*ident in self.cellIdList) {
+//                    if ([ident isEqualToString:identifier]) {//加载过了
+//                        j = 1;
+//                    }
+//                }
+//            }
+//            if (j == 0) {
+//                [self.cellIdList addObject:identifier];
+//            }
+                
+            if (![kitUtils isBlankString:dict[@"name"]]) {
                 [multilineCell setCellWithTitle:[NSString stringWithFormat:@"%@",dict[@"name"]] must:[NSString stringWithFormat:@"%@",dict[@"must"]] index:indexPath];
+//                multilineCell.multilineDelegate = self;
             }
 
             return multilineCell;
@@ -116,12 +136,13 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (indexPath.row == 0) {
+//        CGSize size = [self.welcomContent sizewithfont];
         return 80;
     }
     NSDictionary*dict = self.leaveMessageFields[indexPath.row - 1];
     NSString*type = [NSString stringWithFormat:@"%@",dict[@"type"]];
 
-    if (![TIMLibUtils isBlankString:type]) {
+    if (![kitUtils isBlankString:type]) {
         if ([type isEqualToString:@"0"]) {//单选
             return 90;
         }else if ([type isEqualToString:@"1"]) {//多选
@@ -131,6 +152,12 @@
     
     return 90;
 }
+
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+//    
+//    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
+//}
+
 
 #pragma mark 初始化
 -(UITableView *)chatLeaveTableView
@@ -182,11 +209,15 @@
         title.text = @"留言成功";
         [_successView addSubview:title];
         
-        UILabel*subtitle = [[UILabel alloc]initWithFrame:CGRectMake(30, 160, App_Frame_Width - 60, 30)];
+        UILabel*subtitle = [[UILabel alloc]initWithFrame:CGRectMake(30, 160, App_Frame_Width - 60, APP_Frame_Height - 100)];
         subtitle.textColor = TOSHexAColor(0x94969b,1.0);
         subtitle.font = [UIFont systemFontOfSize:16];
         subtitle.textAlignment = NSTextAlignmentCenter;
+        subtitle.numberOfLines = 0;
         subtitle.text = [NSString stringWithFormat:@"%@",self.leaveTip];//@"我们将尽快与您取得联系并解决您的问题";
+        
+        CGSize size = [subtitle.text tim_sizeWithMaxWidth:App_Frame_Width - 60 andFont:[UIFont systemFontOfSize:16]];
+        subtitle.tos_height = size.height;
         [_successView addSubview:subtitle];
 
     }
@@ -204,7 +235,7 @@
         for (int i = 0; i<self.leaveMessageFields.count; i++) {
             NSDictionary*dict = self.leaveMessageFields[i];
             NSString*type = [NSString stringWithFormat:@"%@",dict[@"type"]];
-            if (![TIMLibUtils isBlankString:type]) {
+            if (![kitUtils isBlankString:type]) {
                 if ([type isEqualToString:@"0"]) {//单选
                     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i+1 inSection:0];
                     chatLeaveSingleLineCell *singleCell = [self.chatLeaveTableView cellForRowAtIndexPath:indexPath];
@@ -252,8 +283,45 @@
     }
 }
 
+
+#pragma mark chatLeaveMultilineLineCellDelegate
+//-(void)scrollerToIndex:(NSIndexPath *)index{
+////    if (self.chatLeaveTableView.height<APP_Frame_Height -kNavTop - kBottomBarHeight  - 100) {
+////        [self.chatLeaveTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:index.row inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+////    }
+//}
+//
+//
+//
+//-(void)addNotificationAction{
+//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+//}
+//
+//#pragma mark 键盘出现
+//- (void)keyboardWillShow:(NSNotification*)note
+//{
+//    CGRect keyBoardRect=[note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+//    
+////    self.chatLeaveTableView.contentInset= UIEdgeInsetsMake(0,0, keyBoardRect.size.height,0);
+//    self.chatLeaveTableView.height = APP_Frame_Height -kNavTop - kBottomBarHeight  - keyBoardRect.size.height;
+////    [self innerScrollToBottom];
+//}
+//
+//#pragma mark 键盘消失
+//- (void)keyboardWillHide:(NSNotification*)note
+//{
+////    self.chatLeaveTableView.contentInset = UIEdgeInsetsZero;
+//    self.chatLeaveTableView.height = APP_Frame_Height -kNavTop - kBottomBarHeight  - 100;
+//
+//}
+
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
+}
+
+- (void)dealloc {
+    NSLog(@"dealloc");
 }
 
 @end

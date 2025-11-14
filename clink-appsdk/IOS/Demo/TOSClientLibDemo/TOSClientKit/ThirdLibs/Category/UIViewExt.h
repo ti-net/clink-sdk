@@ -43,8 +43,8 @@ CGRect  CGRectMoveToCenter(CGRect rect, CGPoint center);
 @property CGFloat centerY;
 
 
-@property (nonatomic, assign)CGFloat x;
-@property (nonatomic, assign)CGFloat y;
+@property (nonatomic, assign)CGFloat tos_x;
+@property (nonatomic, assign)CGFloat tos_y;
 
 - (void)verticalCenter;
 

@@ -11,12 +11,22 @@
 #import "NSDate+TimeFormatting.h"
 #import "TOSCustomerChatVC.h"
 
+//#import "TIMRTCMediaViewController.h"
+#import "YYKit.h"
 #import "kitUtils.h"
 #import "ICMediaManager.h"
 #import <TOSClientLib/TOSClientLib.h>
 #import "NSObject+TIMShowError.h"
 #import <TOSClientLib/NSObject+TIMModel.h>
 #import <TOSClientLib/OctoIMParamDefines.h>
+#import "ICMessageHelper.h"
+#import "ICMessageConst.h"
+#import <TOSClientLib/TOSMessageSmallProgramModel.h>
+#import <TOSClientLib/TIMLogisticsCardMessage.h>
+#import <TOSClientLib/TIMCommodityCardMessage.h>
+#import <TOSClientLib/CombinationMessage.h>
+#import <TOSClientLib/TOSMessageTextTagModel.h>
+#import <TOSClientKit.h>
 
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
@@ -39,9 +49,6 @@ TIMLibTotalUnreadCountChangedDelegate>{
 }
 /// Flutter Activity
 //@property (nonatomic, strong) TIMRTCMediaViewController * rtcMediaVC;
-
-/// 会话状态
-@property (nonatomic, assign) TinetChatStatusType                chatStatusType;
 
 @end
 
@@ -68,8 +75,6 @@ static NSString * kTIMServerUrlSave = @"kTIM_Last_ServerUrl_Save";
     if (self) {
         /// 接受需要清空未读消息数
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clearUnReadCount:) name:kTIMMessageClearUnReadCountNotification object:nil];
-        self.chatStatusType = TinetChatStatusTypeOutline;
-        
     }
     return self;
 }
@@ -91,8 +96,12 @@ static NSString * kTIMServerUrlSave = @"kTIM_Last_ServerUrl_Save";
     NSString * moreInfo = [kitUtils DataTOjsonString:option.advanceParams?:@{}];
     [[OnlineDataSave shareOnlineDataSave] saveConnectAdParams:moreInfo];
     
+    /// 客户资料缓存
+    OnlineRequestManager.sharedCustomerManager.customerFields = option.customerFields;
+    
     [[TIMClient sharedTIMClient] setTIMConnectionStatusChangeDelegate:self];
     [[OnlineRequestManager sharedCustomerManager] getUserInfoWithUserId:option.visitorId
+                                                             externalId:option.externalId
                                                                nickname:option.nickname
                                                                phoneNum:option.mobile
                                                               headerUrl:option.headUrl
@@ -122,7 +131,59 @@ static NSString * kTIMServerUrlSave = @"kTIM_Last_ServerUrl_Save";
         NSString * curMainUniqueId = [[OnlineDataSave shareOnlineDataSave] getMainUniqueId];
         TOSSessionInfoModel * model = [[TOSSessionInfoModel alloc] init];
         [[OnlineDataSave shareOnlineDataSave] saveMainUniqueModel:[model yy_modelToJSONString]];
-        [[OnlineDataSave shareOnlineDataSave] saveMainUniqueIdRunningStatus:curMainUniqueId runningStatus:@"ClosedStatus"];// 目前只做ClosedStatus RunningStatus俩个状态
+        
+        if (successBlock) {
+            successBlock();
+        }
+    } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+        if (errorBlock) {
+            errorBlock(errCode, errorDes);
+        }
+    }];
+}
+
+
+
+/// 关闭上一个会话
+/// @param visitorId 访客ID
+/// @param successBlock 成功
+/// @param errorBlock 失败
+- (void)closeLastSession:(NSString *)visitorId succuess:(void (^)(void))successBlock error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock {
+    
+    [[OnlineEventSendManager sharedOnlineEventSendManager] closeLastSessionWithVisitorId:visitorId success:^{
+        //存储会话状态
+        NSString * curMainUniqueId = [[OnlineDataSave shareOnlineDataSave] getMainUniqueId];
+        TOSSessionInfoModel * model = [[TOSSessionInfoModel alloc] init];
+        [[OnlineDataSave shareOnlineDataSave] saveMainUniqueModel:[model yy_modelToJSONString]];
+        
+        if (successBlock) {
+            successBlock();
+        }
+    } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+        if (errorBlock) {
+            errorBlock(errCode, errorDes);
+        }
+    }];
+    
+    
+    
+}
+
+/// 关闭会话
+/// @param mainUniqueId 会话ID
+/// @param visitorId 访客ID
+/// @param successBlock 成功
+/// @param errorBlock 失败
+- (void)closeSessionMainUniqueId:(NSString *)mainUniqueId
+                   withVisitorId:(NSString *)visitorId
+                        succuess:(void (^)(void))successBlock
+                           error:(void (^)(TIMConnectErrorCode errCode,NSString *errorDes))errorBlock {
+    [[OnlineEventSendManager sharedOnlineEventSendManager] chatCloseSessionEventWithMainUniqueId:mainUniqueId withVisitorId:visitorId success:^{
+        //存储会话状态
+        NSString * curMainUniqueId = [[OnlineDataSave shareOnlineDataSave] getMainUniqueId];
+        TOSSessionInfoModel * model = [[TOSSessionInfoModel alloc] init];
+        [[OnlineDataSave shareOnlineDataSave] saveMainUniqueModel:[model yy_modelToJSONString]];
+        
         if (successBlock) {
             successBlock();
         }
@@ -154,6 +215,27 @@ static NSString * kTIMServerUrlSave = @"kTIM_Last_ServerUrl_Save";
     NSString *mainUniqueId = [[OnlineDataSave shareOnlineDataSave] getMainUniqueId];
     
     [[OnlineRequestManager sharedCustomerManager] sessionInfoUnreadCountCurrentVisitorId:[[OnlineDataSave shareOnlineDataSave] getVisitorId] WithMainUniqueId:[NSString stringWithFormat:@"%@", mainUniqueId.length > 0 ? mainUniqueId : @""] withSuccess:successBlock withError:errorBlock];
+}
+
+/// 获取最后一条消息
+- (void)getLastMessage:(void (^)(TIMMessageFrame * lastMessage))successBlock withError:(void (^)(NSString *errorStr))errorBlock {
+    
+    [[OnlineRequestManager sharedCustomerManager] getChatRecordListLastTime:@""
+                                                                      limit:@"1"
+                                                                    success:^(NSArray * _Nonnull chatList) {
+        if (chatList.count>0) {
+            OnlineChatRecordModel *model = chatList.lastObject;
+            
+            TIMMessageFrame * testModel = [self analysisHistoryWithModel:model withItemReload:NO];
+            successBlock(testModel);
+            
+        }else{
+            
+        }
+    } error:^(TIMConnectErrorCode errCode, NSString * _Nonnull errorDes) {
+        errorBlock(errorDes);
+    }];
+    
 }
 
 #pragma mark TIMConnectionStatusChangeDelegate
@@ -297,7 +379,7 @@ static NSString * kTIMServerUrlSave = @"kTIM_Last_ServerUrl_Save";
 - (void)onReceived:(TOSMessage *)message left:(int)nLeft{
     TIMKitLog(@"TOSClientKit TIMClientReceiveMessageDelegate");
     // 增加过滤当前不支持的会话类型
-    if (!message.receiverId || message.receiverId.length < 2 || [self isUnSupportSessionType:message.msg_from]) {
+    if (!message.receiverId || message.receiverId.length <= 0 || [self isUnSupportSessionType:message.msg_from]) {
         return ;
     }
     TIMKitLog(@"接收到新数据 msgId:%@ receiverId = %@ senderId = %@",message.msg_id,message.receiverId,message.senderId);
@@ -307,14 +389,12 @@ static NSString * kTIMServerUrlSave = @"kTIM_Last_ServerUrl_Save";
     
     /// 接通机器人
     if ([message.type isEqualToString:@"RobotBridgeMessage"]) {
-        self.chatStatusType = TinetChatStatusTypeRobot;
         if (self->reckitMessageDelegate && [self->reckitMessageDelegate respondsToSelector:@selector(getCurrentOnlineStatus:)]) {
             [self->reckitMessageDelegate getCurrentOnlineStatus:(TinetChatStatusTypeRobot)];
         }
     }
     /// 接通客服
     else if ([message.type isEqualToString:@"ChatBridgeMessage"]) {
-        self.chatStatusType = TinetChatStatusTypeOnline;
         if (self->reckitMessageDelegate && [self->reckitMessageDelegate respondsToSelector:@selector(getCurrentOnlineStatus:)]) {
             [self->reckitMessageDelegate getCurrentOnlineStatus:(TinetChatStatusTypeOnline)];
         }
@@ -323,7 +403,6 @@ static NSString * kTIMServerUrlSave = @"kTIM_Last_ServerUrl_Save";
     else if ([message.type isEqualToString:@"ChatInvestigationMessage"]) {
         ChatInvestigationMessage * InvestigationMsg = (ChatInvestigationMessage *)message.content;
         if ([InvestigationMsg.isClose boolValue]) {
-            self.chatStatusType = TinetChatStatusTypeOutline;
             if (self->reckitMessageDelegate && [self->reckitMessageDelegate respondsToSelector:@selector(getCurrentOnlineStatus:)]) {
                 [self->reckitMessageDelegate getCurrentOnlineStatus:(TinetChatStatusTypeOutline)];
             }
@@ -331,7 +410,6 @@ static NSString * kTIMServerUrlSave = @"kTIM_Last_ServerUrl_Save";
     }
     /// 会话结束
     else if ([message.type isEqualToString:@"ChatCloseMessage"]) {
-        self.chatStatusType = TinetChatStatusTypeOutline;
         if (self->reckitMessageDelegate && [self->reckitMessageDelegate respondsToSelector:@selector(getCurrentOnlineStatus:)]) {
             [self->reckitMessageDelegate getCurrentOnlineStatus:(TinetChatStatusTypeOutline)];
         }
@@ -593,14 +671,14 @@ static NSString * kTIMServerUrlSave = @"kTIM_Last_ServerUrl_Save";
     /// 满意度
     if ([message.type isEqualToString:@"ChatInvestigationMessage"]) {
         ChatInvestigationMessage * InvestigationMsg = (ChatInvestigationMessage *)message.content;
-        if ([InvestigationMsg.isClose boolValue] && self.chatStatusType == TinetChatStatusTypeRobot) {
+        if ([InvestigationMsg.isClose boolValue] && [[TIMClient sharedTIMClient] getLibOnlineStatus] == TinetChatStatusTypeRobot) {
             /// 排队监听 退出排队
             if (self->onlineQueueDelegate && [self->onlineQueueDelegate respondsToSelector:@selector(exitChatQueue)]) {
                 [self->onlineQueueDelegate exitChatQueue];
             }
         }
     }
-    if ([message.type isEqualToString:@"ChatCloseMessage"] && self.chatStatusType == TinetChatStatusTypeRobot ) {
+    if ([message.type isEqualToString:@"ChatCloseMessage"] && [[TIMClient sharedTIMClient] getLibOnlineStatus] == TinetChatStatusTypeRobot ) {
         /// 排队监听 退出排队
         if (self->onlineQueueDelegate && [self->onlineQueueDelegate respondsToSelector:@selector(exitChatQueue)]) {
             [self->onlineQueueDelegate exitChatQueue];
@@ -847,6 +925,10 @@ static NSString * kTIMServerUrlSave = @"kTIM_Last_ServerUrl_Save";
 
 - (void)initSDK:(TOSInitOption *)option{
     self->initOSOption = option;
+    NSDictionary * advanceParams = option.advanceParams;
+    if ([advanceParams objectForKey:@"configENVString"] && [advanceParams[@"configENVString"] isKindOfClass:[NSString class]]) {
+        [kitUtils setEnvConf:advanceParams[@"configENVString"]];
+    }
     [[OnlineInitOption shareOnlineInitOption] initWithOptionIsDebug:option.debug
                                                              apiUrl:option.apiUrl
                                                           onlineUrl:option.onlineUrl
@@ -857,7 +939,7 @@ static NSString * kTIMServerUrlSave = @"kTIM_Last_ServerUrl_Save";
 
 /// 获取当前在线状态
 - (TinetChatStatusType)getCurrentOnlineStatus {
-    return self.chatStatusType;
+    return [[TIMClient sharedTIMClient] getLibOnlineStatus];
 }
 
 
@@ -870,5 +952,402 @@ static NSString * kTIMServerUrlSave = @"kTIM_Last_ServerUrl_Save";
     NSDictionary * modelJson = [kitUtils dictionaryWithJsonString:sessModelStr];
     return [TOSSessionInfoModel yy_modelWithJSON:modelJson];
 }
+
+
+//拉取历史消息
+-(TIMMessageFrame *)analysisHistoryWithModel:(OnlineChatRecordModel*)model withItemReload:(BOOL)reload {
+    NSLog(@"model ======== %@",[model yy_modelToJSONObject]);
+    BOOL messageRecvDirection = nil;
+    if ([model.senderType.stringValue isEqualToString:@"2"]) {//访客发送的消息
+        messageRecvDirection = NO;
+    }else if ([model.senderType.stringValue isEqualToString:@"4"]) {//机器人发送的消息
+        messageRecvDirection = YES;
+    }else{
+        messageRecvDirection = YES;
+    }
+    
+    NSString*messageStr = @"";
+    TIMMessageFrame *messageF = nil;
+    
+    /// 移动端目前只处理到32种类型，超过32的都是未知消息类型
+    if ([model.messageType intValue] > 32) {
+        
+        messageF = [ICMessageHelper createMessageFrame:TypeUnknown originalType:@"text" content:@"未知消息类型" extra:@"" auditExtra:@"" path:nil urlPath:nil from:model.sender to:model.visitorId fileKey:model.fileKey bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:model.uniqueId sendTime:[model.createTime  doubleValue] showTime:NO picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1 senderType:model.senderType];
+        
+        return messageF;
+    }
+    
+    if ([model.messageType intValue] == 1) {//文本消息
+        if (model.content == nil || model.content.length == 0) {
+            return messageF;
+        }
+        messageStr = model.content;
+        
+        if (messageRecvDirection) {
+            //系统消息
+            if ([model.senderType.stringValue isEqualToString:@"3"] || [model.senderType.stringValue isEqualToString:@"5"]) {//机器人发送的消息
+                messageF = [ICMessageHelper createMessageFrame:TypeSystem originalType:@"text" content:messageStr extra:@"" auditExtra:@"" path:nil urlPath:nil from:model.sender to:model.visitorId fileKey:model.fileKey bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:model.uniqueId sendTime:(NSTimeInterval)[model.createTime  doubleValue] showTime:[self p_needShowTimeStamp:(NSTimeInterval)[model.createTime  doubleValue]] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1 senderType:model.senderType];
+                return messageF;
+            }else{
+                
+                messageF = [ICMessageHelper createMessageFrame:TypeText originalType:@"text" content:messageStr extra:@"" auditExtra:@"" path:nil urlPath:nil from:model.sender to:model.visitorId fileKey:model.fileKey bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:model.uniqueId sendTime:(NSTimeInterval)[model.createTime  doubleValue] showTime:[self p_needShowTimeStamp:(NSTimeInterval)[model.createTime  doubleValue]] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1 senderType:model.senderType];
+                return messageF;
+            }
+            
+        } else {
+            
+            messageF = [ICMessageHelper createMessageFrame:TypeText originalType:@"text" content:messageStr extra:@"" auditExtra:@"" path:nil urlPath:nil from:model.sender to:model.visitorId fileKey:model.fileKey bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:model.uniqueId sendTime:[model.createTime  doubleValue] showTime:[self p_needShowTimeStamp:(NSTimeInterval)[model.createTime  doubleValue]] picSize:CGSizeMake(0, 0) picType:@"" isSender:YES receivedSenderByYourself:NO status:1 senderType:model.senderType];
+            return messageF;
+        }
+        
+    }else if ([model.messageType intValue] == 2) {//图片消息
+        NSString*fileKey = @"null";
+        NSString*fileName = @"null";
+        if (![kitUtils isBlankString:model.fileKey]) {
+            fileKey = model.fileKey;
+        }
+        if (![kitUtils isBlankString:model.fileName]) {
+            fileName = model.fileName;
+        }
+        NSString * timestamp = [kitUtils getNowTimestampWithSec];
+        
+        NSString*accessSecret = [[OnlineDataSave shareOnlineDataSave] getAccessSecret];
+        NSString * sign = [kitUtils md5StringFromString:[NSString stringWithFormat:@"%@%@%@%@", [[OnlineDataSave shareOnlineDataSave] getEnterpriseId],[[OnlineDataSave shareOnlineDataSave] getAccessId],timestamp,accessSecret]];
+        NSString*urlPath =   [[NSString stringWithFormat:@"%@?fileKey=%@&fileName=%@&accessId=%@&timestamp=%@&enterpriseId=%@&sign=%@",[NSString stringWithFormat:@"%@/api/app/message/file",[[OnlineDataSave shareOnlineDataSave] getOnlineUrl]],fileKey,fileName,[[OnlineDataSave shareOnlineDataSave] getAccessId],timestamp,[[OnlineDataSave shareOnlineDataSave] getEnterpriseId],sign] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
+        //根据msgId去本地搜寻
+        UIImage *image;
+        NSString *localPath = @"";
+        CGFloat fixelW = 100;
+        CGFloat fixelH = 100;
+        NSString * fileKeyName = [model.fileKey stringByDeletingPathExtension];
+        localPath = [[ICMediaManager sharedManager] smallImgPath:fileKeyName];
+        image = [UIImage imageWithContentsOfFile:localPath];
+        if (image) {
+            
+            fixelW = image.size.width;
+            fixelH = image.size.height;
+        } else {
+            image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:urlPath]]];
+            if (image) {
+                [[ICMediaManager sharedManager] saveImage:image msgId:fileKeyName picType:@"jpg"];
+                fixelW = image.size.width;
+                fixelH = image.size.height;
+            }
+        }
+        
+        if (messageRecvDirection){
+            
+            messageF = [ICMessageHelper createMessageFrame:TypePic originalType:@"image" content:@"[图片]" extra:@"" auditExtra:@"" path:localPath urlPath:urlPath from:model.sender to:model.visitorId fileKey:model.fileKey bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:model.uniqueId sendTime:[model.createTime  doubleValue] showTime:[self p_needShowTimeStamp:(NSTimeInterval)[model.createTime  doubleValue]] picSize:CGSizeMake(fixelW, fixelH) picType:@"" isSender:NO receivedSenderByYourself:NO status:1 senderType:model.senderType];
+            return messageF;
+        }else{
+            
+            messageF = [ICMessageHelper createMessageFrame:TypePic originalType:@"image" content:@"[图片]" extra:@"" auditExtra:@"" path:localPath urlPath:urlPath from:model.sender to:model.visitorId fileKey:model.fileKey bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:model.uniqueId sendTime:[model.createTime  doubleValue] showTime:[self p_needShowTimeStamp:(NSTimeInterval)[model.createTime  doubleValue]] picSize:CGSizeMake(fixelW, fixelH) picType:@"" isSender:YES receivedSenderByYourself:NO status:1 senderType:model.senderType];
+            return messageF;
+        }
+    }
+    else if ([model.messageType intValue] == 3 ||
+             [model.messageType intValue] == 8){//文件消息
+        
+        NSString*fileUrlPath = @"";
+        NSString*fileKey = @"null";
+        NSString*fileName = @"null";
+        if (![kitUtils isBlankString:model.fileKey]) {
+            fileKey = model.fileKey;
+        }
+        if (![kitUtils isBlankString:model.fileName]) {
+            fileName = model.fileName ;
+        }
+        
+        NSString *path = @"";
+        if ([model.messageType intValue] == 8) {
+            path = @"/api/kb/files/attachment";
+        } else {
+            path = @"/api/app/message/file";
+        }
+        
+        //视频消息类型
+        if (fileName.length>0 && [fileName rangeOfString:@"mp4"].location !=NSNotFound) {
+            
+            NSString * timestamp = [kitUtils getNowTimestampWithSec];
+            NSString*accessSecret = [[OnlineDataSave shareOnlineDataSave] getAccessSecret];
+            NSString * sign = [kitUtils md5StringFromString:[NSString stringWithFormat:@"%@%@%@%@", [[OnlineDataSave shareOnlineDataSave] getEnterpriseId],[[OnlineDataSave shareOnlineDataSave] getAccessId],timestamp,accessSecret]];
+            
+            NSString*urlPath =  [[NSString stringWithFormat:@"%@%@?fileKey=%@&fileName=%@&accessId=%@&timestamp=%@&enterpriseId=%@&sign=%@",[[OnlineDataSave shareOnlineDataSave] getOnlineUrl],path,fileKey,fileName,[[OnlineDataSave shareOnlineDataSave] getAccessId],timestamp,[[OnlineDataSave shareOnlineDataSave] getEnterpriseId],sign] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            
+            UIImage *videoArrowImage;
+            NSString * localPath;
+            localPath = [[ICMediaManager sharedManager] smallImgPath:model.uniqueId];
+            videoArrowImage = [UIImage imageWithContentsOfFile:localPath];
+            
+            CGFloat fixelW = videoArrowImage.size.width;
+            CGFloat fixelH = videoArrowImage.size.height;
+            
+            if (messageRecvDirection) {
+                messageF = [ICMessageHelper createMessageFrame:TypeVideo originalType:@"video" content:@"[视频]" extra:@"" auditExtra:@"" path:urlPath urlPath:urlPath from:model.sender to:model.visitorId fileKey:model.fileKey bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:model.uniqueId sendTime:[model.createTime  doubleValue] showTime:[self p_needShowTimeStamp:(NSTimeInterval)[model.createTime  doubleValue]] picSize:CGSizeMake(fixelW, fixelH) picType:@"jpg" isSender:NO receivedSenderByYourself:NO status:1 senderType:model.senderType];
+                return messageF;
+            }else{
+                
+                messageF = [ICMessageHelper createMessageFrame:TypeVideo originalType:@"video" content:@"[视频]" extra:@"" auditExtra:@"" path:urlPath urlPath:urlPath from:model.sender to:model.visitorId fileKey:model.fileKey bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:model.uniqueId sendTime:[model.createTime  doubleValue] showTime:[self p_needShowTimeStamp:(NSTimeInterval)[model.createTime  doubleValue]] picSize:CGSizeMake(fixelW, fixelH) picType:@"jpg" isSender:YES receivedSenderByYourself:NO status:1 senderType:model.senderType];
+                return messageF;
+            }
+        }else{//文件类型
+            //文件消息类型
+            if (fileName.length>0 ) {
+                NSString * timestamp = [kitUtils getNowTimestampWithSec];
+                NSString*accessSecret = [[OnlineDataSave shareOnlineDataSave] getAccessSecret];
+                NSString * sign = [kitUtils md5StringFromString:[NSString stringWithFormat:@"%@%@%@%@", [[OnlineDataSave shareOnlineDataSave] getEnterpriseId],[[OnlineDataSave shareOnlineDataSave] getAccessId],timestamp,accessSecret]];
+                NSString*urlPath =   [[NSString stringWithFormat:@"%@%@?fileKey=%@&fileName=%@&accessId=%@&timestamp=%@&enterpriseId=%@&sign=%@",[[OnlineDataSave shareOnlineDataSave] getOnlineUrl],path,fileKey,fileName,[[OnlineDataSave shareOnlineDataSave] getAccessId],timestamp,[[OnlineDataSave shareOnlineDataSave] getEnterpriseId],sign] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                fileUrlPath = urlPath;
+            }else{
+                fileUrlPath = @"";
+            }
+            
+            NSMutableDictionary*dict = [[NSMutableDictionary alloc]init];
+            [dict setObject:model.fileName?:@"" forKey:@"fileName"];
+            [dict setObject:model.fileKey?:@"" forKey:@"fileKey"];
+            NSError *parseError = nil;
+            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&parseError];
+            NSString*messageContent = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+            
+            
+            if (messageRecvDirection) {
+                messageF = [ICMessageHelper createMessageFrame:TypeCustomFile originalType:@"file" content:messageContent extra:@"" auditExtra:@"" path:fileUrlPath urlPath:fileUrlPath from:model.sender to:model.visitorId fileKey:model.fileKey bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:model.uniqueId sendTime:[model.createTime  doubleValue] showTime:[self p_needShowTimeStamp:(NSTimeInterval)[model.createTime  doubleValue]] picSize:CGSizeZero picType:@"" isSender:NO receivedSenderByYourself:NO status:1 senderType:model.senderType];
+                return messageF;
+            }else{
+                messageF = [ICMessageHelper createMessageFrame:TypeCustomFile originalType:@"file" content:messageContent extra:@"" auditExtra:@"" path:fileUrlPath urlPath:fileUrlPath from:model.sender to:model.visitorId fileKey:model.fileKey bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:model.uniqueId sendTime:[model.createTime  doubleValue] showTime:[self p_needShowTimeStamp:(NSTimeInterval)[model.createTime  doubleValue]] picSize:CGSizeZero picType:@"" isSender:YES receivedSenderByYourself:NO status:1 senderType:model.senderType];
+                return messageF;
+            }
+        }
+    }
+    else if( [model.messageType intValue] == 4) {//4视频消息
+        NSString*fileKey = @"null";
+        NSString*fileName = @"null";
+        if (![kitUtils isBlankString:model.fileKey]) {
+            fileKey = model.fileKey;
+        }
+        if (![kitUtils isBlankString:model.fileName]) {
+            fileName = model.fileName;
+        }
+        
+        //视频消息类型
+        if (fileName.length>0 && ([fileName rangeOfString:@"mp4"].location !=NSNotFound || [fileName rangeOfString:@"MP4"].location !=NSNotFound)) {
+            
+            NSString * timestamp = [kitUtils getNowTimestampWithSec];
+            NSString*accessSecret = [[OnlineDataSave shareOnlineDataSave] getAccessSecret];
+            NSString * sign = [kitUtils md5StringFromString:[NSString stringWithFormat:@"%@%@%@%@", [[OnlineDataSave shareOnlineDataSave] getEnterpriseId],[[OnlineDataSave shareOnlineDataSave] getAccessId],timestamp,accessSecret]];
+            NSString*urlPath =  [[NSString stringWithFormat:@"%@?fileKey=%@&fileName=%@&accessId=%@&timestamp=%@&enterpriseId=%@&sign=%@",[NSString stringWithFormat:@"%@/api/app/message/file",[[OnlineDataSave shareOnlineDataSave] getOnlineUrl]],fileKey,fileName,[[OnlineDataSave shareOnlineDataSave] getAccessId],timestamp,[[OnlineDataSave shareOnlineDataSave] getEnterpriseId],sign] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            
+            UIImage *videoArrowImage;
+            NSString * localPath;
+            localPath = [[ICMediaManager sharedManager] smallImgPath:model.uniqueId];
+            videoArrowImage = [UIImage imageWithContentsOfFile:localPath];
+            
+            CGFloat fixelW = videoArrowImage.size.width;
+            CGFloat fixelH = videoArrowImage.size.height;
+            
+            if (messageRecvDirection) {
+                
+                messageF = [ICMessageHelper createMessageFrame:TypeVideo originalType:@"video" content:@"[视频]" extra:@"" auditExtra:@"" path:urlPath urlPath:urlPath from:model.sender to:model.visitorId fileKey:model.fileKey bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:model.uniqueId sendTime:[model.createTime  doubleValue] showTime:[self p_needShowTimeStamp:(NSTimeInterval)[model.createTime  doubleValue]] picSize:CGSizeMake(fixelW, fixelH) picType:@"jpg" isSender:NO receivedSenderByYourself:NO status:1 senderType:model.senderType];
+                return messageF;
+            }else{
+                messageF = [ICMessageHelper createMessageFrame:TypeVideo originalType:@"video" content:@"[视频]" extra:@"" auditExtra:@"" path:urlPath urlPath:urlPath from:model.sender to:model.visitorId fileKey:model.fileKey bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:model.uniqueId sendTime:[model.createTime  doubleValue] showTime:[self p_needShowTimeStamp:(NSTimeInterval)[model.createTime  doubleValue]] picSize:CGSizeMake(fixelW, fixelH) picType:@"jpg" isSender:YES receivedSenderByYourself:NO status:1 senderType:model.senderType];
+                return messageF;
+            }
+        }else{//统一认定为文件类型
+            
+        }
+        
+    }else if ([model.messageType intValue] == 5 ||
+              [model.messageType intValue] == 26) {//机器人富文本消息
+        
+        
+        if ([model.messageType intValue] == 26) {
+            TOSMessageKnowledgeBaseModel *knowledgeBaseModel = [TOSMessageKnowledgeBaseModel yy_modelWithJSON:model.content];
+            model.content = knowledgeBaseModel.head;
+            
+            if (knowledgeBaseModel.list &&
+                [knowledgeBaseModel.list isKindOfClass:[NSArray class]] &&
+                knowledgeBaseModel.list.count > 0) {
+                
+                [knowledgeBaseModel.list enumerateObjectsUsingBlock:^(TOSMessageKnowledgeBaseListModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    
+                    if ([obj.type isEqualToString:@"click"]) {
+                        model.content = [NSString stringWithFormat:@"%@ <knowledge data-frontend=%@>#%@</knowledge>",model.content,obj.click.content?:@"",obj.click.content?:@""];
+                    }
+                }];
+            }
+        }
+        
+        RichTextMessage *richTextMsg = [[RichTextMessage alloc] initMessageWithContent:model.content];
+        
+        NSString *contentStr = (NSString *)richTextMsg.elements;
+        
+        messageF = [ICMessageHelper createMessageFrame:GXRichText originalType:@"text" content:contentStr extra:(NSString *)model.repliedMessage auditExtra:@"" path:nil urlPath:nil from:model.sender to:model.visitorId fileKey:model.fileKey bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:model.uniqueId sendTime:(NSTimeInterval)[model.createTime  doubleValue] showTime:[self p_needShowTimeStamp:(NSTimeInterval)[model.createTime  doubleValue]] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1 senderType:model.senderType];
+        return messageF;
+    }else if ([model.messageType intValue] == 7) {//语音消息
+        NSString*fileKey = @"null";
+        NSString*fileName = @"null";
+        if (![kitUtils isBlankString:model.fileKey]) {
+            fileKey = model.fileKey;
+        }
+        if (![kitUtils isBlankString:model.fileName]) {
+            fileName = model.fileName;
+        }
+        
+        NSString * timestamp = [kitUtils getNowTimestampWithSec];
+        NSString*accessSecret = [[OnlineDataSave shareOnlineDataSave] getAccessSecret];
+        NSString * sign = [kitUtils md5StringFromString:[NSString stringWithFormat:@"%@%@%@%@", [[OnlineDataSave shareOnlineDataSave] getEnterpriseId],[[OnlineDataSave shareOnlineDataSave] getAccessId],timestamp,accessSecret]];
+        NSString*urlPath =   [[NSString stringWithFormat:@"%@?fileKey=%@&fileName=%@&accessId=%@&timestamp=%@&enterpriseId=%@&sign=%@",[NSString stringWithFormat:@"%@/api/app/message/file",[[OnlineDataSave shareOnlineDataSave] getOnlineUrl]],fileKey,fileName,[[OnlineDataSave shareOnlineDataSave] getAccessId],timestamp,[[OnlineDataSave shareOnlineDataSave] getEnterpriseId],sign] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
+        NSNumber *voiceDuration = @1;
+        if (messageRecvDirection) {
+            
+            messageF = [ICMessageHelper createMessageFrame:TypeVoice originalType:@"voice" content:@"[语音]" extra:@"" auditExtra:@"" path:urlPath urlPath:urlPath from:model.sender to:model.visitorId fileKey:model.fileKey bigImgFileId:@"" voiceDuration:voiceDuration msgId:model.uniqueId sendTime:[model.createTime  doubleValue] showTime:[self p_needShowTimeStamp:(NSTimeInterval)[model.createTime  doubleValue]] picSize:CGSizeZero picType:@"" isSender:NO receivedSenderByYourself:NO status:1 senderType:model.senderType];
+            return messageF;
+        }else {
+            messageF = [ICMessageHelper createMessageFrame:TypeVoice originalType:@"voice" content:@"[语音]" extra:@"" auditExtra:@"" path:urlPath urlPath:urlPath from:model.sender to:model.visitorId fileKey:model.fileKey bigImgFileId:@"" voiceDuration:voiceDuration msgId:model.uniqueId sendTime:[model.createTime  doubleValue] showTime:[self p_needShowTimeStamp:(NSTimeInterval)[model.createTime  doubleValue]] picSize:CGSizeZero picType:@"" isSender:YES receivedSenderByYourself:NO status:1 senderType:model.senderType];
+            return messageF;
+        }
+    } else if ([model.messageType intValue] == 10) {
+            BOOL isSender = NO;
+            NSString *senderId;
+            NSString *receiverId;
+            if (messageRecvDirection) {
+                isSender = NO;
+                senderId = model.sender;
+                receiverId = model.visitorId;
+            } else {
+                isSender = YES;
+                senderId = model.visitorId;
+                receiverId = model.sender;
+            }
+            
+            NSData *jsonData = [model.content dataUsingEncoding:NSUTF8StringEncoding];
+            NSError *err;
+            NSDictionary *messageContentDic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                                              options:NSJSONReadingMutableContainers
+                                                                                error:&err];
+            
+            if (messageContentDic &&
+                [messageContentDic isKindOfClass:[NSDictionary class]] &&
+                [[messageContentDic allKeys] containsObject:@"cardType"] &&
+                [messageContentDic[@"cardType"] isKindOfClass:[NSString class]] &&
+                [messageContentDic[@"cardType"] isEqualToString:@"1"]) {    //物流卡片
+                
+                TIMLogisticsCardMessage *cardMsg = [TIMLogisticsCardMessage yy_modelWithJSON:model.content];
+                messageF = [ICMessageHelper createMessageFrame:TypeLogisticsCard originalType:model.type content:cardMsg extra:@"" auditExtra:@"" path:nil urlPath:nil from:senderId to:receiverId fileKey:model.mainUniqueId bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:model.uniqueId sendTime:model.createTime.integerValue showTime:[self p_needShowTimeStamp:(NSTimeInterval)model.createTime.integerValue] picSize:CGSizeMake(0, 0) picType:@"" isSender:isSender receivedSenderByYourself:NO status:1 senderType:model.senderType];
+                return messageF;
+            } else {
+                TIMCommodityCardMessage *commodityMsg = [TIMCommodityCardMessage yy_modelWithJSON:model.content];
+                
+                messageF = [ICMessageHelper createMessageFrame:TypeCommodityCardDetails originalType:model.type content:commodityMsg extra:@"" auditExtra:@"" path:nil urlPath:nil from:senderId to:receiverId fileKey:model.mainUniqueId bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:model.uniqueId sendTime:model.createTime.integerValue showTime:[self p_needShowTimeStamp:(NSTimeInterval)model.createTime.integerValue] picSize:CGSizeMake(0, 0) picType:@"" isSender:isSender receivedSenderByYourself:NO status:1 senderType:model.senderType];
+                return messageF;
+            }
+            
+        } else if ([model.messageType intValue] == 13) {
+            
+            TOSMessageSmallProgramModel *smallProgramMsg = [TOSMessageSmallProgramModel yy_modelWithJSON:model.content];
+            
+            messageF = [ICMessageHelper createMessageFrame:TypeSmallProgramCard originalType:@"text" content:(NSString *)smallProgramMsg extra:@"" auditExtra:@"" path:nil urlPath:nil from:model.sender to:model.visitorId fileKey:nil bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:model.uniqueId sendTime:[model.createTime doubleValue] showTime:[self p_needShowTimeStamp:(NSTimeInterval)[model.createTime doubleValue]] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1 senderType:model.senderType];
+            return messageF;
+        } else if ([model.messageType intValue] == 12) {//留言消息
+            
+            if (model.content == nil || model.content.length == 0) {
+                return messageF;
+            }
+            
+            NSString*jsonTextContent = @"";
+            //        messageStr = model.content;
+            NSError *err;
+            NSData *leavejsonData = [model.content dataUsingEncoding:NSUTF8StringEncoding];
+            NSDictionary *leavejsonDict = [NSJSONSerialization JSONObjectWithData:leavejsonData
+                                                                          options:NSJSONReadingMutableContainers
+                                                                            error:&err];
+            if ([leavejsonDict isKindOfClass:[NSDictionary class]]) {
+                NSArray* titleArr = [leavejsonDict allKeys];
+                if (titleArr.count>0) {
+                    for (NSString*key in titleArr) {
+                        jsonTextContent = [NSString stringWithFormat:@"%@\n%@:%@",jsonTextContent,key,leavejsonDict[key]];
+                    }
+                }
+            }
+            jsonTextContent  = [jsonTextContent substringFromIndex:1];
+            
+            if (messageRecvDirection) {
+                messageF = [ICMessageHelper createMessageFrame:TypeText originalType:@"text" content:jsonTextContent extra:@"" auditExtra:@"" path:nil urlPath:nil from:model.sender to:model.visitorId fileKey:model.fileKey bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:model.uniqueId sendTime:(NSTimeInterval)[model.createTime  doubleValue] showTime:[self p_needShowTimeStamp:(NSTimeInterval)[model.createTime  doubleValue]] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1 senderType:model.senderType];
+                return messageF;
+            } else {
+                messageF = [ICMessageHelper createMessageFrame:TypeText originalType:@"text" content:jsonTextContent extra:@"" auditExtra:@"" path:nil urlPath:nil from:model.sender to:model.visitorId fileKey:model.fileKey bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:model.uniqueId sendTime:[model.createTime  doubleValue] showTime:[self p_needShowTimeStamp:(NSTimeInterval)[model.createTime  doubleValue]] picSize:CGSizeMake(0, 0) picType:@"" isSender:YES receivedSenderByYourself:NO status:1 senderType:model.senderType];
+                return messageF;
+            }
+            
+            
+        }else if ([model.messageType intValue] == 6  ||
+                  [model.messageType intValue] == 15 ||//机器人相关问题
+                  [model.messageType intValue] == 16 ||//机器人猜你想问(热门问题)
+                  [model.messageType intValue] == 17 ||//机器人常见问题
+                  [model.messageType intValue] == 18 ||//机器人近似问题
+                  [model.messageType intValue] == 19 ||//机器人选项消息
+                  [model.messageType intValue] == 20) {//机器人相关问题
+            
+            NSArray <CombinationMessage *>*message = [NSArray yy_modelArrayWithClass:[CombinationMessage class] json:model.content];
+            
+            [message enumerateObjectsUsingBlock:^(CombinationMessage * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                obj.robotProvider = model.robotProvider;
+            }];
+            
+            BOOL isSender = messageRecvDirection?NO:YES;
+            
+            messageF = [ICMessageHelper createMessageFrame:TypeRobotCombination originalType:@"text" content:(NSString *)message extra:@"" auditExtra:@"" path:nil urlPath:nil from:model.sender to:model.visitorId fileKey:nil bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:model.uniqueId sendTime:[model.createTime doubleValue] showTime:[self p_needShowTimeStamp:(NSTimeInterval)[model.createTime doubleValue]] picSize:CGSizeMake(0, 0) picType:@"" isSender:isSender receivedSenderByYourself:NO status:1 senderType:model.senderType];
+            return messageF;
+        }else if ([model.messageType intValue] == 14) {//机器人组合消息
+            
+            NSArray <CombinationMessage *>*message = [NSArray yy_modelArrayWithClass:[CombinationMessage class] json:model.content];
+            
+            [message enumerateObjectsUsingBlock:^(CombinationMessage * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                obj.robotProvider = model.robotProvider;
+            }];
+            
+            BOOL isSender = messageRecvDirection?NO:YES;
+            
+            messageF = [ICMessageHelper createMessageFrame:TypeRobotCombination originalType:@"text" content:(NSString *)message extra:@"" auditExtra:@"" path:nil urlPath:nil from:model.sender to:model.visitorId fileKey:nil bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:model.uniqueId sendTime:[model.createTime doubleValue] showTime:[self p_needShowTimeStamp:(NSTimeInterval)[model.createTime doubleValue]] picSize:CGSizeMake(0, 0) picType:@"" isSender:isSender receivedSenderByYourself:NO status:1 senderType:model.senderType];
+            return messageF;
+        }else if ([model.messageType intValue] == 27) {//满意度评价
+            if (model.content == nil || model.content.length == 0) {
+                return messageF;
+            }
+            messageStr = model.content;
+            
+            NSString *extra = [kitUtils convertToJsonDataWithDic:@{@"alreadyInvestigation" : model.alreadyInvestigation?:@"", @"uniqueId": model.uniqueId?:@"",@"mainUniqueId": model.mainUniqueId?:@""}];
+            NSString *content = [[OnlineDataSave shareOnlineDataSave] getAppSetting];
+            messageF = [ICMessageHelper createMessageFrame:TypeInvestigation originalType:model.type content:content extra:extra auditExtra:@"" path:nil urlPath:nil from:model.sender to:model.visitorId fileKey:model.fileKey bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:model.uniqueId sendTime:(NSTimeInterval)[model.createTime  doubleValue] showTime:[self p_needShowTimeStamp:(NSTimeInterval)[model.createTime  doubleValue]] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1 senderType:model.senderType];
+            return messageF;
+        } else if ([model.messageType intValue] == 30) {//
+            
+            TOSMessageTextTagModel *textTagModel = [TOSMessageTextTagModel yy_modelWithJSON:model.content];
+            
+            NSMutableArray <TOSMessageTextSubTagModel *>*tags = [NSMutableArray array];
+            
+            [textTagModel.data enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                
+                TOSMessageTextSubTagModel *model = [TOSMessageTextSubTagModel yy_modelWithJSON:obj];
+                [tags addObject:model];
+            }];
+            
+            textTagModel.tags = [NSArray arrayWithArray:tags];
+            
+            TIMMessageFrame *messageF = [ICMessageHelper createMessageFrame:TypeTextTag originalType:model.type content:(NSString *)textTagModel extra:@"" auditExtra:@"" path:nil urlPath:nil from:model.sender to:model.visitorId fileKey:model.fileKey bigImgFileId:@"" voiceDuration:[NSNumber numberWithInt:0] msgId:model.uniqueId sendTime:[model.createTime  doubleValue] showTime:[self p_needShowTimeStamp:(NSTimeInterval)[model.createTime  doubleValue]] picSize:CGSizeMake(0, 0) picType:@"" isSender:NO receivedSenderByYourself:NO status:1 senderType:model.senderType];
+        }
+    
+    return messageF;
+}
+
+    
+- (BOOL)p_needShowTimeStamp:(NSTimeInterval)timestamp
+{
+    return NO;
+}
+
 
 @end

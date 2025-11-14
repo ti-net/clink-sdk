@@ -7,15 +7,15 @@
 //
 
 #import "TOSInvestigationPopupView.h"
-#import "UIColor+YYAdd.h"
-#import "NSArray+YYAdd.h"
+#import "UIColor+TIMYYAdd.h"
+#import "NSArray+TIMYYAdd.h"
 #import "TIMConstants.h"
 #import "TIMMasonry.h"
+#import <TOSClientLib/OnlineDataSave.h>
 #import "TOSSatisfactionModel.h"
 #import "TOSInvestigationStarView.h"
 #import "TOSInvestigationStarTagView.h"
 #import <TOSClientLib/OnlineRequestManager.h>
-#import <TOSClientLib/OnlineDataSave.h>
 #import "NSObject+TIMShowError.h"
 
 static CGFloat bgMinHeight = 198.0f;
@@ -202,7 +202,10 @@ static CGFloat bgMinHeight = 198.0f;
     NSLog(@"uniqueId : %@", self.uniqueId);
     @WeakObj(self);
     [[OnlineRequestManager sharedCustomerManager] submitInvestigationUniqueId:self.uniqueId?:@""
+                                                                 mainUniqueId:self.mainUniqueId?:@""
                                                                       options:@[dic]
+                                                                        solve:@""
+                                                                       remark:@""
                                                                       Success:^{
         @StrongObj(self)
         // GXRobotCombinationHotIssueCellRefreshEventName

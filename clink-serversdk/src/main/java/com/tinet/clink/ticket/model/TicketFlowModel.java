@@ -1,5 +1,7 @@
 package com.tinet.clink.ticket.model;
 
+import com.tinet.clink.ticket.UserIdType;
+
 /**
  * 工单流转实体对象
  *
@@ -18,6 +20,8 @@ public class TicketFlowModel {
      * 处理人id
      */
     private Integer handlerId;
+
+    private Integer handlerIdType =  UserIdType.USER_ID.getCode();
 
     /**
      * 任务id
@@ -38,6 +42,8 @@ public class TicketFlowModel {
      * 下一节点 处理人 Id
      */
     private Integer nextHandlerId;
+
+    private Integer nextHandlerIdType = UserIdType.USER_ID.getCode();
 
     /**
      * 自定义状态id，用于指定当前工单的下一节点的自定义状态
@@ -78,5 +84,21 @@ public class TicketFlowModel {
 
     public void setStateId(Integer stateId) {
         this.stateId = stateId;
+    }
+
+    public Integer getHandlerIdType() {
+        return handlerIdType;
+    }
+
+    public void setHandlerIdType(Integer handlerIdType) {
+        this.handlerIdType = handlerIdType;
+    }
+
+    public Integer getNextHandlerIdType() {
+        return nextHandlerIdType;
+    }
+
+    public void setNextHandlerIdType(Integer nextHandlerIdType) {
+        this.nextHandlerIdType = nextHandlerIdType;
     }
 }

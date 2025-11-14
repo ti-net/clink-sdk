@@ -18,6 +18,9 @@
 // 是否是群聊
 //@property (nonatomic, assign) BOOL isChatGroup;
 
+/// 文本内容
+@property (nonatomic, strong) NSMutableAttributedString *attributedString;
+
 
 @property (nonatomic, strong) TIMICMessage * message;
 

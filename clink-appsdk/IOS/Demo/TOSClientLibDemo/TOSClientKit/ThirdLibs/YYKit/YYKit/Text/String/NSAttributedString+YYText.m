@@ -11,8 +11,8 @@
 
 #import "NSAttributedString+YYText.h"
 #import "YYKitMacro.h"
-#import "UIDevice+YYAdd.h"
-#import "UIFont+YYAdd.h"
+#import "UIDevice+TIMYYAdd.h"
+#import "UIFont+TIMYYAdd.h"
 #import "NSParagraphStyle+YYText.h"
 #import "YYTextArchiver.h"
 #import "YYTextRunDelegate.h"

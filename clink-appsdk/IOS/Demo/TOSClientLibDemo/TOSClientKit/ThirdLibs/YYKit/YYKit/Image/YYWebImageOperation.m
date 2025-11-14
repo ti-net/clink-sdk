@@ -10,10 +10,10 @@
 //
 
 #import "YYWebImageOperation.h"
-#import "UIApplication+YYAdd.h"
+#import "UIApplication+TIMYYAdd.h"
 #import "YYImage.h"
 #import "YYWeakProxy.h"
-#import "UIImage+YYAdd.h"
+#import "UIImage+TIMYYAdd.h"
 #import <ImageIO/ImageIO.h>
 #import "YYKitMacro.h"
 

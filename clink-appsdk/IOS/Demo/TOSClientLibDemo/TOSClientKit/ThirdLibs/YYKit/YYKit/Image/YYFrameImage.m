@@ -10,8 +10,8 @@
 //
 
 #import "YYFrameImage.h"
-#import "NSString+YYAdd.h"
-#import "UIImage+YYAdd.h"
+#import "NSString+TIMYYAdd.h"
+#import "UIImage+TIMYYAdd.h"
 #import "YYImageCoder.h"
 
 @implementation YYFrameImage {

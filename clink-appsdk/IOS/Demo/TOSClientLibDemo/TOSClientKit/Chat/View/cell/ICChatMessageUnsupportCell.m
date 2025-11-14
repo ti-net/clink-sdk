@@ -38,9 +38,9 @@
     self.readLabel.frame = modelFrame.unReadLabelF;
 
     if (modelFrame.model.isSender) {
-        [self.chatLabel setAttributedText:[ICFaceManager transferMessageString:modelFrame.model.message.content?:@"" font:self.chatLabel.font  foreColor:TOSHexAColor(0xffffff,1.0) lineHeight:self.chatLabel.font.lineHeight]];
+        [self.chatLabel setAttributedText:modelFrame.model.attributedString];
     }else{
-        [self.chatLabel setAttributedText:[ICFaceManager transferMessageString:modelFrame.model.message.content?:@"" font:self.chatLabel.font  foreColor:TOSHexAColor(0x000000,1.0) lineHeight:self.chatLabel.font.lineHeight]];
+        [self.chatLabel setAttributedText:modelFrame.model.attributedString];
     }
 //    [self BMWCustomerUnreadStatusDisplayWithModel:modelFrame.model];
 

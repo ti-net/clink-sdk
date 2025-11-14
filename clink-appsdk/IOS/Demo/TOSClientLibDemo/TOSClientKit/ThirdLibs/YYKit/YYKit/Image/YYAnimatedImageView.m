@@ -11,7 +11,7 @@
 
 #import "YYAnimatedImageView.h"
 #import "YYWeakProxy.h"
-#import "UIDevice+YYAdd.h"
+#import "UIDevice+TIMYYAdd.h"
 #import "YYImageCoder.h"
 #import "YYKitMacro.h"
 

@@ -62,6 +62,19 @@ public class WorkflowResultModel {
      */
     private TicketFormModel form;
 
+    /**
+     * 工单模板启用的属性表单字段
+     */
+    private SysFormField[] sysFormFields;
+
+    public SysFormField[] getSysFormFields() {
+        return sysFormFields;
+    }
+
+    public void setSysFormFields(SysFormField[] sysFormFields) {
+        this.sysFormFields = sysFormFields;
+    }
+
     public Integer getId() {
         return id;
     }

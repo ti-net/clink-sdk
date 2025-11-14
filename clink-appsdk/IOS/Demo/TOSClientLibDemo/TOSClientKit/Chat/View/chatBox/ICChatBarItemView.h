@@ -7,14 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ICChatBarItemModel.h"
 
 
 NS_ASSUME_NONNULL_BEGIN
-
+@class TOSQuickEntryModel;
 @interface ICChatBarItemView : UIView
 
-@property (nonatomic, strong) ICChatBarItemModel                * model;
+@property (nonatomic, strong) TOSQuickEntryModel                * model;
+
+/// 显示文案内容
+@property (nonatomic, strong) UILabel                * contentLabel;
+
+/// 显示文案内容
+@property (nonatomic, strong) UILabel                * warnLabel;
 
 @end
 
