@@ -8,17 +8,14 @@ import com.tinet.clink.core.response.ResponseModel;
 import com.tinet.clink.core.utils.HttpMethodType;
 import com.tinet.clink.core.utils.RequestConstant;
 import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.message.BasicNameValuePair;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.TimeZone;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * 如果需要支持上传附件则需要按照以下方式：
@@ -38,6 +35,12 @@ public abstract class AbstractRequestModel<T extends ResponseModel> {
     private SignatureComposer composer = null;
 
     private final Map<String, String> queryParameters = new TreeMap<String, String>();
+
+    private final List<BasicNameValuePair> nameValuePairParameter = new ArrayList<>();
+
+    public List<BasicNameValuePair> getNameValuePairParameter() {
+        return nameValuePairParameter;
+    }
 
     /**
      * multipart 添加附件列表
@@ -81,6 +84,10 @@ public abstract class AbstractRequestModel<T extends ResponseModel> {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
+    }
+
+    protected void putNameValuePairParameter(String name, String value) {
+        nameValuePairParameter.add(new BasicNameValuePair(name, value));
     }
 
     public void expires(int expires) {

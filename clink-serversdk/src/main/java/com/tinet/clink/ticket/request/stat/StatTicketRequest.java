@@ -6,6 +6,9 @@ import com.tinet.clink.core.utils.HttpMethodType;
 import com.tinet.clink.ticket.PathEnum;
 import com.tinet.clink.ticket.response.stat.StatTicketResponse;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -30,6 +33,78 @@ public class StatTicketRequest extends AbstractStatRequest<StatTicketResponse> {
      * 统计方式
      */
     private Integer statisticMethod;
+
+    public List<Integer> getLevels() {
+        return levels;
+    }
+
+    public void setLevels(List<Integer> levels) {
+        this.levels = levels;
+        if(Objects.nonNull(levels) && !levels.isEmpty()) {
+            for (Integer level : levels) {
+                putNameValuePairParameter("levels", level.toString());
+            }
+        }
+    }
+
+    public Map<String, String> getSystemFieldMap() {
+        return systemFieldMap;
+    }
+
+    public void setSystemFieldMap(Map<String, String> systemFieldMap) {
+        this.systemFieldMap = systemFieldMap;
+        if(Objects.nonNull(systemFieldMap) && !systemFieldMap.isEmpty()) {
+            for (Map.Entry<String, String> entry : systemFieldMap.entrySet()) {
+                putNameValuePairParameter("systemFieldMap[" + entry.getKey() + "]", entry.getValue());
+            }
+        }
+    }
+
+    public Map<String, String> getFieldMap() {
+        return fieldMap;
+    }
+
+    public void setFieldMap(Map<String, String> fieldMap) {
+        this.fieldMap = fieldMap;
+        if(Objects.nonNull(fieldMap) && !fieldMap.isEmpty()) {
+          for (Map.Entry<String, String> entry : fieldMap.entrySet()) {
+              putNameValuePairParameter("fieldMap[" + entry.getKey() + "]", entry.getValue());
+          }
+        }
+    }
+
+    public List<Integer> getWorkflowIds() {
+        return workflowIds;
+    }
+
+    public void setWorkflowIds(List<Integer> workflowIds) {
+        this.workflowIds = workflowIds;
+        if(Objects.nonNull(workflowIds) && !workflowIds.isEmpty()) {
+            for (Integer workflowId : workflowIds) {
+                putNameValuePairParameter("workflowIds", workflowId.toString());
+            }
+        }
+    }
+
+    /**
+     * 优先级
+     */
+    private List<Integer> levels;
+
+    /**
+     * 自定义系统属性字段集合
+     */
+    private Map<String, String> systemFieldMap;
+
+    /**
+     * 自定义字段集合
+     */
+    private Map<String, String> fieldMap;
+
+    /**
+     * 工单模板
+     */
+    private List<Integer> workflowIds;
 
     public String getTag() {
         return tag;
