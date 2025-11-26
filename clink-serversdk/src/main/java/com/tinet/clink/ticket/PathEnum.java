@@ -75,6 +75,8 @@ public enum PathEnum {
     MockUpdateTicket("ticket/mock_update_ticket"),
 
     MockReminderTicket("ticket/mock_reminder_ticket"),
+    // 工单审批
+    ApproveTicket("ticket/approve_ticket")
     ;
     private String value;
 

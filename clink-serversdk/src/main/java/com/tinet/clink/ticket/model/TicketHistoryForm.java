@@ -66,6 +66,26 @@ public class TicketHistoryForm {
      */
     private String taskKey;
 
+    private Integer approvalResult;
+
+    private String approvalComment;
+
+    public Integer getApprovalResult() {
+        return approvalResult;
+    }
+
+    public void setApprovalResult(Integer approvalResult) {
+        this.approvalResult = approvalResult;
+    }
+
+    public String getApprovalComment() {
+        return approvalComment;
+    }
+
+    public void setApprovalComment(String approvalComment) {
+        this.approvalComment = approvalComment;
+    }
+
     public Integer getFormId() {
         return formId;
     }
