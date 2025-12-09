@@ -22,15 +22,15 @@ public class TicketMockSaveTest extends AbstractTest {
 
         // 创建访问服务的client实例并初始化
         ClientConfiguration configuration = new ClientConfiguration(
-                "657c8b11f7ae9bc9b51ec67747fc24f5",          // AccessKeyId
-                "5924A00GL81m97NB0zH9");     // AccessKeySecret
-        configuration.setHost("api-bj-test0.clink.cn");
+                "9abf58ac259bf7ca8f69788b04c45bb7",          // AccessKeyId
+                "s1L55xP7JF1J9I90a684");     // AccessKeySecret
+        configuration.setHost("api-bj.clink.cn");
         configuration.setScheme("https");
         Client client = new Client(configuration);
 
         // 创建请求request
         TicketMockSaveRequest ticketMockSaveRequest =  new TicketMockSaveRequest();
-        ticketMockSaveRequest.setWorkflowName("知识审核_汽车销售话术");
+        ticketMockSaveRequest.setWorkflowName("知识审核_UI测试");
 
         TicketMockCommonResponse ticketMockResponse ;
 

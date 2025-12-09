@@ -19,7 +19,7 @@ public class TicketFlowModel {
     /**
      * 处理人id
      */
-    private Integer handlerId;
+    private String handlerId;
 
     private Integer handlerIdType =  UserIdType.USER_ID.getCode();
 
@@ -41,7 +41,7 @@ public class TicketFlowModel {
     /**
      * 下一节点 处理人 Id
      */
-    private Integer nextHandlerId;
+    private String nextHandlerId;
 
     private Integer nextHandlerIdType = UserIdType.USER_ID.getCode();
 
@@ -54,9 +54,9 @@ public class TicketFlowModel {
 
     public void setTicketId(Integer ticketId) { this.ticketId = ticketId; }
 
-    public Integer getHandlerId() { return handlerId; }
+    public String getHandlerId() { return handlerId; }
 
-    public void setHandlerId(Integer handlerId) { this.handlerId = handlerId; }
+    public void setHandlerId(String handlerId) { this.handlerId = handlerId; }
 
     public String getTaskId() { return taskId; }
 
@@ -70,11 +70,11 @@ public class TicketFlowModel {
 
     public void setCustomizeSystemFields(Field[] customizeSystemFields) { this.customizeSystemFields = customizeSystemFields; }
 
-    public Integer getNextHandlerId() {
+    public String getNextHandlerId() {
         return nextHandlerId;
     }
 
-    public void setNextHandlerId(Integer nextHandlerId) {
+    public void setNextHandlerId(String nextHandlerId) {
         this.nextHandlerId = nextHandlerId;
     }
 

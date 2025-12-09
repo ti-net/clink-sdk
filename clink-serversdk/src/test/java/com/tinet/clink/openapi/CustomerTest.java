@@ -104,16 +104,15 @@ public class CustomerTest {
 
         // 创建访问服务的client实例并初始化
         ClientConfiguration configuration = new ClientConfiguration(
-                "f7938cbf85fbc6ee82f9120386a62d6c",          // AccessKeyId
-                "195Hf4XQtg082X02776Z");     // AccessKeySecret
-        configuration.setHost("localhost");
-        configuration.setScheme("http");
-        configuration.setPort(8090);
+                "7ca7a871c0b0eeb1bf356449931d3866",          // AccessKeyId
+                "Q6M35169p00893V6314T");     // AccessKeySecret
+        configuration.setHost("api-bj-test0.clink.cn");
+        configuration.setScheme("https");
         Client client = new Client(configuration);
 
         // 本接口无特有请求参数
         QueryCustomerRequest request = new QueryCustomerRequest();
-        request.setCustomerId(2201563);
+        request.setCustomerId(5604703);
         // 发起接口调用
         QueryCustomerResponse response = client.getResponseModel(request);
 

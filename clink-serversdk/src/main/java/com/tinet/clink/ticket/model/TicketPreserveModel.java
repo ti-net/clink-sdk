@@ -19,7 +19,7 @@ public class TicketPreserveModel {
     /**
      * 处理人id
      */
-    private Integer handlerId;
+    private String handlerId;
 
     private Integer handlerIdType =  UserIdType.USER_ID.getCode();
 
@@ -41,11 +41,11 @@ public class TicketPreserveModel {
         this.ticketId = ticketId;
     }
 
-    public Integer getHandlerId() {
+    public String getHandlerId() {
         return handlerId;
     }
 
-    public void setHandlerId(Integer handlerId) {
+    public void setHandlerId(String handlerId) {
         this.handlerId = handlerId;
     }
 

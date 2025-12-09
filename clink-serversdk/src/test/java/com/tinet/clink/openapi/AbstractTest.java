@@ -1,5 +1,6 @@
 package com.tinet.clink.openapi;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tinet.clink.core.client.Client;
 import com.tinet.clink.core.client.ClientConfiguration;
@@ -20,7 +21,7 @@ public abstract class AbstractTest {
         configuration = new ClientConfiguration("c470fcc6f352e4fe56ce416a263711c1", "JTq5O462Au735874rax4");
         configuration.setScheme("https");
         configuration.setHost("api-bj-test0.clink.cn");
-
+        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         client = new Client(configuration);
     }
 }
