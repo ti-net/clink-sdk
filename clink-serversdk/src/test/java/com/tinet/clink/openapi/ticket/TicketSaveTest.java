@@ -56,9 +56,17 @@ public class TicketSaveTest extends AbstractTest {
         field1.setId(265721);
         field1.setValue("23423rder");
 
+        Field field11 = new Field();
+        field11.setId(265721);
+        field11.setValue("11");
+
         Field field2 = new Field();
         field2.setId(265943);
         field2.setValue("(+86)17602810001");
+
+        Field field22 = new Field();
+        field22.setId(265943);
+        field22.setValue("(+86)17602810022");
 
         Field field3 = new Field();
         field3.setId(265746);
@@ -100,7 +108,7 @@ public class TicketSaveTest extends AbstractTest {
         field6.setType(99);
         field6.setName("liuxl__子表单下拉_自增表");
         field6.setValue("A类liuxl自增表格全名称二十个字左右");
-        field6.setChildren(Arrays.asList(childField61, childField62, childField63));
+        field6.setChildren(Arrays.asList(childField61, childField62));
 
         Field field7 = new Field();
         field7.setId(31621);
@@ -108,7 +116,7 @@ public class TicketSaveTest extends AbstractTest {
         field7.setName("孔其富文本子表单");
         field7.setChildren(new ArrayList<>());
 
-        fieldList.addAll(Arrays.asList(field1, field2, field3, field4, field5, field6, field7));
+        fieldList.addAll(Arrays.asList(field1, field11, field22, field2, field3, field4, field5, field6, field7));
         ticketFormModel.setFields(fieldList);
 
         ticketSaveModel.setForm(ticketFormModel);

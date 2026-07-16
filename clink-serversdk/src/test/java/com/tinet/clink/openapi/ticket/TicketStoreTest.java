@@ -1,5 +1,6 @@
 package com.tinet.clink.openapi.ticket;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.tinet.clink.core.client.Client;
 import com.tinet.clink.core.client.ClientConfiguration;
 import com.tinet.clink.openapi.AbstractTest;
@@ -21,7 +22,7 @@ import java.util.*;
 public class TicketStoreTest extends AbstractTest {
 
     @Test
-    public void storeTicket() {
+    public void storeTicket() throws JsonProcessingException {
         // 创建访问服务的client实例并初始化
         ClientConfiguration configuration = new ClientConfiguration(
                 "7ca7a871c0b0eeb1bf356449931d3866",          // AccessKeyId
@@ -36,8 +37,8 @@ public class TicketStoreTest extends AbstractTest {
         // 请求参数
         TicketStoreModel ticketStoreModel  = new TicketStoreModel();
         ticketStoreModel.setTicketId(74382);
-        ticketStoreModel.setHandlerId("051204");
-        ticketStoreModel.setHandlerIdType(4);
+        ticketStoreModel.setHandlerId("1001612");
+        ticketStoreModel.setHandlerIdType(6);
         ticketStoreModel.setTaskId("52bd33ae-d4dc-11f0-953f-b26534095d65");
 
         TicketFormModel ticketFormModel = new TicketFormModel();
@@ -136,6 +137,8 @@ public class TicketStoreTest extends AbstractTest {
 
         ticketStoreRequest.setModel(ticketStoreModel);
         ticketStoreRequest.setFileMap(fileMap);
+
+        System.out.println(mapper.writeValueAsString(ticketStoreModel));
 
         try {
             //将请求参数赋值到 request中

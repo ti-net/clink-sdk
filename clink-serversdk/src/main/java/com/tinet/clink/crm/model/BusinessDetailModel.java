@@ -87,6 +87,36 @@ public class BusinessDetailModel {
      */
     private String callId;
 
+    private String chatId;
+
+    private String callUniqueId;
+
+    private String chatUniqueId;
+
+    public String getChatId() {
+        return chatId;
+    }
+
+    public void setChatId(String chatId) {
+        this.chatId = chatId;
+    }
+
+    public String getCallUniqueId() {
+        return callUniqueId;
+    }
+
+    public void setCallUniqueId(String callUniqueId) {
+        this.callUniqueId = callUniqueId;
+    }
+
+    public String getChatUniqueId() {
+        return chatUniqueId;
+    }
+
+    public void setChatUniqueId(String chatUniqueId) {
+        this.chatUniqueId = chatUniqueId;
+    }
+
     public String getCallId() {
         return callId;
     }

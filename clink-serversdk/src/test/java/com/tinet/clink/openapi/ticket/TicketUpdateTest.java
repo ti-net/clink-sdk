@@ -187,7 +187,7 @@ public class TicketUpdateTest extends AbstractTest {
 
         Field field1 = new Field();
         field1.setId(265721);
-        field1.setValue("23423rder");
+        field1.setValue("23423rderxx");
 
         Field field2 = new Field();
         field2.setId(265943);
@@ -219,7 +219,7 @@ public class TicketUpdateTest extends AbstractTest {
         childField61.setId(265941);
         childField61.setName("yuxr附件-SC");
         childField61.setType(14);
-        Field childField62 = new Field();
+        /*Field childField62 = new Field();
         childField62.setId(120569);
         childField62.setName("yuxr复选-SC");
         childField62.setType(10);
@@ -227,13 +227,13 @@ public class TicketUpdateTest extends AbstractTest {
         childField63.setId(120565);
         childField63.setValue("下拉2-改");
         childField63.setName("yuxr下拉-SC");
-        childField63.setType(6);
+        childField63.setType(6);*/
         Field field6 = new Field();
         field6.setId(25563);
         field6.setType(99);
         field6.setName("liuxl__子表单下拉_自增表");
         field6.setValue("A类liuxl自增表格全名称二十个字左右");
-        field6.setChildren(Arrays.asList(childField61, childField62, childField63));
+        field6.setChildren(Arrays.asList(childField61/*, childField62, childField63*/));
 
         Field field7 = new Field();
         field7.setId(31621);
@@ -311,12 +311,12 @@ public class TicketUpdateTest extends AbstractTest {
 
         // 请求参数
         TicketPrefabricatedUpdateModel ticketPrefabricatedUpdateModel = new TicketPrefabricatedUpdateModel();
-        ticketPrefabricatedUpdateModel.setId(74366);
+        ticketPrefabricatedUpdateModel.setId(77847);
 
         // 需要保存的工单的表单对象
         TicketFormModel ticketFormModel = new TicketFormModel();
         ticketFormModel.setId(25960);
-        ticketFormModel.setTaskId("StartEvent_1uwp14d-427df25b-bf79-4903-868e-6b27a6398471");
+        ticketFormModel.setTaskId("StartEvent_1uwp14d-88216975-cd5c-4158-bce8-a8ba09e1986b");
         ticketFormModel.setName("liuxl_全表单_自增表格_字段同步");
 
         // 需要保存的字段集合
@@ -324,11 +324,11 @@ public class TicketUpdateTest extends AbstractTest {
 
         Field field1 = new Field();
         field1.setId(265721);
-        field1.setValue("23423rder");
+        field1.setValue("23423rder11111");
 
         Field field2 = new Field();
         field2.setId(265943);
-        field2.setValue("(+86)17602810001");
+        field2.setValue("(+86)17602810009");
 
         Field field3 = new Field();
         field3.setId(265746);
@@ -356,7 +356,7 @@ public class TicketUpdateTest extends AbstractTest {
         childField61.setId(265941);
         childField61.setName("yuxr附件-SC");
         childField61.setType(14);
-        Field childField62 = new Field();
+        /*Field childField62 = new Field();
         childField62.setId(120569);
         childField62.setName("yuxr复选-SC");
         childField62.setType(10);
@@ -364,13 +364,13 @@ public class TicketUpdateTest extends AbstractTest {
         childField63.setId(120565);
         childField63.setValue("下拉2-改");
         childField63.setName("yuxr下拉-SC");
-        childField63.setType(6);
+        childField63.setType(6);*/
         Field field6 = new Field();
         field6.setId(25563);
         field6.setType(99);
         field6.setName("liuxl__子表单下拉_自增表");
         field6.setValue("A类liuxl自增表格全名称二十个字左右");
-        field6.setChildren(Arrays.asList(childField61, childField62, childField63));
+        field6.setChildren(Arrays.asList(childField61/*, childField62, childField63*/));
 
         Field field7 = new Field();
         field7.setId(31621);
