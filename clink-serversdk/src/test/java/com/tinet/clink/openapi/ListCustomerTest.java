@@ -25,18 +25,17 @@ public class ListCustomerTest {
     public void listCustomers() throws ServerException, ClientException {
         // 创建访问服务的client实例并初始化
         ClientConfiguration configuration = new ClientConfiguration(
-                "9abf58ac259bf7ca8f69788b04c45bb7",          // AccessKeyId
-                "s1L55xP7JF1J9I90a684");     // AccessKeySecret
-        configuration.setHost("api-bj.clink.cn");
+                "7ca7a871c0b0eeb1bf356449931d3866",          // AccessKeyId
+                "Q6M35169p00893V6314T");     // AccessKeySecret
+        configuration.setHost("api-bj-test0.clink.cn");
         configuration.setScheme("https");
-        configuration.setEnv("gray");
         Client client = new Client(configuration);
 
         // 本接口无特有请求参数
         ListCustomerRequest request = new ListCustomerRequest();
         // 发起接口调用
-        request.setFirstChatContactStartTime(1767249794L);
-        request.setFirstChatContactEndTime(1783924994L);
+        request.setLastChatContactStartTime(1781575809L);
+        request.setLastChatContactEndTime(1784167809L);
         ListCustomerResponse response = client.getResponseModel( request);
         System.out.println(response);
     }

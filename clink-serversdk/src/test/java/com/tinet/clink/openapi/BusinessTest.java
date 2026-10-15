@@ -50,21 +50,18 @@ public class BusinessTest extends AbstractTest {
     @Test
     public void listBusiness() throws ServerException, ClientException {
         // 创建访问服务的client实例并初始化
-//        ClientConfiguration configuration = new ClientConfiguration(
-//                "4245119ab0968e825d9274fb393b33b5",          // AccessKeyId
-//                "3F67ul90zO76E901941o");     // AccessKeySecret
-//        configuration.setHost("api-bj-test0.clink.cn");
-//        configuration.setScheme("https");
         ClientConfiguration configuration = new ClientConfiguration(
-                "9abf58ac259bf7ca8f69788b04c45bb7",          // AccessKeyId
-                "s1L55xP7JF1J9I90a684");     // AccessKeySecret
-        configuration.setHost("api-bj.clink.cn");
+                "7ca7a871c0b0eeb1bf356449931d3866",          // AccessKeyId
+                "Q6M35169p00893V6314T");     // AccessKeySecret
+        configuration.setHost("api-bj-test0.clink.cn");
         configuration.setScheme("https");
-        configuration.setEnv("gray");
         Client client = new Client(configuration);
+
+        //当前企业可以用的查询参数
         ListBusinessRequest listBusinessRequest = new ListBusinessRequest();
-        listBusinessRequest.setStartTime(1783165381L);
-        listBusinessRequest.setEndTime(1785253956L);
+        listBusinessRequest.setStartTime(1689868800L);
+        listBusinessRequest.setEndTime(1689955199L);
+
         listBusinessRequest.setLimit(20);
         listBusinessRequest.setOffset(0);
 
@@ -82,15 +79,15 @@ public class BusinessTest extends AbstractTest {
     public void getBusinessDetail() throws ServerException, ClientException {
         // 创建访问服务的client实例并初始化
         ClientConfiguration configuration = new ClientConfiguration(
-                "9abf58ac259bf7ca8f69788b04c45bb7",          // AccessKeyId
-                "s1L55xP7JF1J9I90a684");     // AccessKeySecret
-        configuration.setHost("api-bj.clink.cn");
+                "7ca7a871c0b0eeb1bf356449931d3866",          // AccessKeyId
+                "Q6M35169p00893V6314T");     // AccessKeySecret
+        configuration.setHost("api-bj-test0.clink.cn");
         configuration.setScheme("https");
-        configuration.setEnv("gray");
         Client client = new Client(configuration);
 
+
         GetBusinessRequest businessRequest = new GetBusinessRequest();
-        businessRequest.setId(305677);
+        businessRequest.setId(2144);
 
         // 发起接口调用
         GetBusinessResponse response = client.getResponseModel(businessRequest);
