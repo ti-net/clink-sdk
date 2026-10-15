@@ -75,6 +75,11 @@ public enum PathEnum {
     MockUpdateTicket("ticket/mock_update_ticket"),
 
     MockReminderTicket("ticket/mock_reminder_ticket"),
+
+    GetTimeSlotOptionalDate("ticket/get_time_slot_optional_date"),
+
+    GetTimeSlotOptionalDateById("ticket/get_time_slot_optional_date_by_skill_id"),
+    TimeSlotOccupyBySkillId("ticket/time_slot_occupy_by_skill_id")
     ;
     private String value;
 

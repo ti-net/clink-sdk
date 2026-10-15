@@ -50,30 +50,21 @@ public class BusinessTest extends AbstractTest {
     @Test
     public void listBusiness() throws ServerException, ClientException {
         // 创建访问服务的client实例并初始化
+//        ClientConfiguration configuration = new ClientConfiguration(
+//                "4245119ab0968e825d9274fb393b33b5",          // AccessKeyId
+//                "3F67ul90zO76E901941o");     // AccessKeySecret
+//        configuration.setHost("api-bj-test0.clink.cn");
+//        configuration.setScheme("https");
         ClientConfiguration configuration = new ClientConfiguration(
-                "ac9d9658fecd3cd64cec4324d59fb88f",          // AccessKeyId
-                "J402964Em6c4b22c3XQL");     // AccessKeySecret
-        configuration.setHost("api-bj-test0.clink.cn");
+                "9abf58ac259bf7ca8f69788b04c45bb7",          // AccessKeyId
+                "s1L55xP7JF1J9I90a684");     // AccessKeySecret
+        configuration.setHost("api-bj.clink.cn");
         configuration.setScheme("https");
+        configuration.setEnv("gray");
         Client client = new Client(configuration);
-
-        //当前企业可以用的查询参数
         ListBusinessRequest listBusinessRequest = new ListBusinessRequest();
-        listBusinessRequest.setStartTime(1689868800L);
-        listBusinessRequest.setEndTime(1689955199L);
-        listBusinessRequest.setUpdateStartTime(1689904800L);
-        listBusinessRequest.setUpdateEndTime(1689908400L);
-        listBusinessRequest.setCustomerId(5209110);
-        listBusinessRequest.setCallId("callId-A");
-        listBusinessRequest.setChatId("chatId-A");
-        listBusinessRequest.setSource(30);
-        listBusinessRequest.setCustomerTel("10086");
-        listBusinessRequest.setTel("10086");
-        listBusinessRequest.setCustomerName("sdk");
-        Map<String, String> customize = new HashMap<>();
-        customize.put("158571", "备注");
-        listBusinessRequest.setCustomize(customize);
-
+        listBusinessRequest.setStartTime(1783165381L);
+        listBusinessRequest.setEndTime(1785253956L);
         listBusinessRequest.setLimit(20);
         listBusinessRequest.setOffset(0);
 
@@ -91,14 +82,15 @@ public class BusinessTest extends AbstractTest {
     public void getBusinessDetail() throws ServerException, ClientException {
         // 创建访问服务的client实例并初始化
         ClientConfiguration configuration = new ClientConfiguration(
-                "ac9d9658fecd3cd64cec4324d59fb88f",          // AccessKeyId
-                "J402964Em6c4b22c3XQL");     // AccessKeySecret
-        configuration.setHost("api-bj-test0.clink.cn");
+                "9abf58ac259bf7ca8f69788b04c45bb7",          // AccessKeyId
+                "s1L55xP7JF1J9I90a684");     // AccessKeySecret
+        configuration.setHost("api-bj.clink.cn");
         configuration.setScheme("https");
+        configuration.setEnv("gray");
         Client client = new Client(configuration);
 
         GetBusinessRequest businessRequest = new GetBusinessRequest();
-        businessRequest.setId(2142);
+        businessRequest.setId(305677);
 
         // 发起接口调用
         GetBusinessResponse response = client.getResponseModel(businessRequest);

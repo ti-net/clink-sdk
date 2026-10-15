@@ -1,5 +1,6 @@
 package com.tinet.clink.openapi.ticket;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.tinet.clink.core.client.Client;
 import com.tinet.clink.core.client.ClientConfiguration;
 import com.tinet.clink.openapi.AbstractTest;
@@ -22,7 +23,7 @@ import java.util.*;
 public class TicketFlowTest extends AbstractTest {
 
     @Test
-    public void flowTicket() {
+    public void flowTicket() throws JsonProcessingException {
         ClientConfiguration configuration = new ClientConfiguration(
                 "7ca7a871c0b0eeb1bf356449931d3866",          // AccessKeyId
                 "Q6M35169p00893V6314T");     // AccessKeySecret
@@ -38,8 +39,8 @@ public class TicketFlowTest extends AbstractTest {
         ticketFlowModel.setTicketId(74382);
         ticketFlowModel.setHandlerId("051204");
         ticketFlowModel.setHandlerIdType(4);
-        //ticketFlowModel.setNextHandlerId("051204");
-        //ticketFlowModel.setNextHandlerIdType(4);
+        ticketFlowModel.setNextHandlerId("1034111");
+        ticketFlowModel.setNextHandlerIdType(4);
         ticketFlowModel.setTaskId("53d8ec27-d4a6-11f0-83f1-0e6a5c04debb");
 
         // 需要保存的工单的表单对象
@@ -149,6 +150,8 @@ public class TicketFlowTest extends AbstractTest {
 
         ticketFlowRequest.setModel(ticketFlowModel);
         ticketFlowRequest.setFileMap(fileMap);
+
+        System.out.println(mapper.writeValueAsString(ticketFlowModel));
 
         try {
             //将请求参数赋值到 request中

@@ -41,24 +41,35 @@ public class TicketSaveTest extends AbstractTest {
 
         // 预制系统属性字段
         TicketSaveModel ticketSaveModel = new TicketSaveModel();
-        ticketSaveModel.setWorkflowId(11515);
-        ticketSaveModel.setTopic("接口提示错误");
+        ticketSaveModel.setWorkflowId(18305);
+        ticketSaveModel.setTopic("测试接口创建错误");
+        ticketSaveModel.setCreatorIdType(1);
+        ticketSaveModel.setHandlerType(1);
+        ticketSaveModel.setFocusIdType(1);
+        ticketSaveModel.setClose(0);
+        ticketSaveModel.setNotFillFields(0);
 
         // 工单表单
         TicketFormModel ticketFormModel = new TicketFormModel();
         ticketFormModel.setId(25960);
-        ticketFormModel.setName("liuxl_全表单_自增表格_字段同步");
-
         // 工单自定义字段
         List<Field> fieldList = new ArrayList<>();
 
         Field field1 = new Field();
         field1.setId(265721);
-        field1.setValue("23423rder");
+        field1.setValue("2341231rder");
+
+        Field field11 = new Field();
+        field11.setId(265721);
+        field11.setValue("11");
 
         Field field2 = new Field();
         field2.setId(265943);
         field2.setValue("(+86)17602810001");
+
+        Field field22 = new Field();
+        field22.setId(265943);
+        field22.setValue("(+86)17602810022");
 
         Field field3 = new Field();
         field3.setId(265746);
@@ -95,12 +106,7 @@ public class TicketSaveTest extends AbstractTest {
         childField63.setValue("下拉2-改");
         childField63.setName("yuxr下拉-SC");
         childField63.setType(6);
-        Field field6 = new Field();
-        field6.setId(25563);
-        field6.setType(99);
-        field6.setName("liuxl__子表单下拉_自增表");
-        field6.setValue("A类liuxl自增表格全名称二十个字左右");
-        field6.setChildren(Arrays.asList(childField61, childField62, childField63));
+
 
         Field field7 = new Field();
         field7.setId(31621);
@@ -108,7 +114,7 @@ public class TicketSaveTest extends AbstractTest {
         field7.setName("孔其富文本子表单");
         field7.setChildren(new ArrayList<>());
 
-        fieldList.addAll(Arrays.asList(field1, field2, field3, field4, field5, field6, field7));
+        fieldList.addAll(Arrays.asList(field1, field11, field22, field2, field3, field4, field5, field7));
         ticketFormModel.setFields(fieldList);
 
         ticketSaveModel.setForm(ticketFormModel);

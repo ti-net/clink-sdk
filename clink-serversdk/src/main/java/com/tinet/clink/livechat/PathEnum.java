@@ -56,6 +56,33 @@ public enum PathEnum {
     // 在线客服-配置复制-网页渠道
     ChatWebSettingCopy("livechat/copy_chat_web_setting"),
 
+    // 路由导航
+    ListChatIvr("livechat/v2/list_chat_ivr"),
+    GetChatIvr("livechat/v2/get_chat_ivr"),
+    CreateChatIvr("livechat/v2/create_chat_ivr"),
+    UpdateChatIvr("livechat/v2/update_chat_ivr"),
+    GetChatIvrNode("livechat/v2/get_chat_ivr_node"),
+    CreateChatIvrNode("livechat/v2/create_chat_ivr_node"),
+    UpdateChatIvrNode("livechat/v2/update_chat_ivr_node"),
+    UpdateChatIvrFlow("livechat/v2/update_chat_ivr_flow"),
+    CopyChatIvr("livechat/v2/copy_chat_ivr"),
+    DeleteChatIvr("livechat/v2/delete_chat_ivr"),
+
+    // 渠道接入
+    GetChannelAccess("livechat/v2/get_channel_access"),
+    CreateChannelAccess("livechat/v2/create_channel_access"),
+    UpdateChannelAccess("livechat/v2/update_channel_access"),
+    DeleteChannelAccess("livechat/v2/delete_channel_access"),
+    UpdateChatWebWindow("livechat/v2/update_chat_web_window"),
+    PreviewChatWeb("livechat/v2/preview_chat_web"),
+    GetQwkfQrStatus("livechat/v2/get_qwkf_qr_status"),
+
+    // 只读辅助
+    ListTimeRule("livechat/v2/list_time_rule"),
+    GetLeaveMessageTemplate("livechat/v2/get_leave_message_template"),
+    ListChatQueue("livechat/v2/list_chat_queue"),
+    ListChatBot("livechat/v2/list_chat_bot"),
+
     //在线客服 - 座席工作考勤报表
     StatChatClientAttendance("livechat/stat_chat_client_attendance"),
 

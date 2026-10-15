@@ -44,6 +44,16 @@ public class TicketFormModel {
      */
     private List<Field> fields;
 
+    private Integer timeSlotOccupyId;
+
+    public Integer getTimeSlotOccupyId() {
+        return timeSlotOccupyId;
+    }
+
+    public void setTimeSlotOccupyId(Integer timeSlotOccupyId) {
+        this.timeSlotOccupyId = timeSlotOccupyId;
+    }
+
     /**
      * 子表单集合
      */
