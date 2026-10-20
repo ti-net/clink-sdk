@@ -1,5 +1,6 @@
 package com.tinet.clink.livechat.request;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.tinet.clink.core.utils.HttpMethodType;
 import com.tinet.clink.livechat.PathEnum;
 import com.tinet.clink.livechat.request.stat.AbstractStatRequest;
@@ -18,11 +19,11 @@ public class UpdateChatIvrNodeRequest extends AbstractStatRequest<UpdateChatIvrN
     /**
      * 不传则不改属性
      */
-    private Object property;
+    private JsonNode property;
     /**
      * 不传则不改画布；传入时随节点一起提交
      */
-    private Object flow;
+    private JsonNode flow;
 
     public UpdateChatIvrNodeRequest() {
         super(PathEnum.UpdateChatIvrNode.value(), HttpMethodType.POST);
@@ -73,19 +74,19 @@ public class UpdateChatIvrNodeRequest extends AbstractStatRequest<UpdateChatIvrN
         this.type = type;
     }
 
-    public Object getProperty() {
+    public JsonNode getProperty() {
         return property;
     }
 
-    public void setProperty(Object property) {
+    public void setProperty(JsonNode property) {
         this.property = property;
     }
 
-    public Object getFlow() {
+    public JsonNode getFlow() {
         return flow;
     }
 
-    public void setFlow(Object flow) {
+    public void setFlow(JsonNode flow) {
         this.flow = flow;
     }
 }

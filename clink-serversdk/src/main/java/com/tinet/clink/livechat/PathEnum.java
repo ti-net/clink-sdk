@@ -77,6 +77,10 @@ public enum PathEnum {
     PreviewChatWeb("livechat/v2/preview_chat_web"),
     GetQwkfQrStatus("livechat/v2/get_qwkf_qr_status"),
 
+    // 渠道接入号与路由导航绑定
+    ListChannelIvrBinding("livechat/v2/list_channel_ivr_binding"),
+    UpdateChannelIvrBinding("livechat/v2/update_channel_ivr_binding"),
+
     // 只读辅助
     ListTimeRule("livechat/v2/list_time_rule"),
     GetLeaveMessageTemplate("livechat/v2/get_leave_message_template"),

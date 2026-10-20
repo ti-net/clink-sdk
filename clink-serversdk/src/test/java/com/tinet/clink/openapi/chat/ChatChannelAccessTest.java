@@ -35,9 +35,10 @@ public class ChatChannelAccessTest {
 
     @Before
     public void init() {
-        configuration = new ClientConfiguration("eb4ced4fde712c89ea726a8e4bb24ca6", "p232A34m2e640vt2ro1o");
+        configuration = new ClientConfiguration("7ca7a871c0b0eeb1bf356449931d3866", "Q6M35169p00893V6314T");
         configuration.setScheme("https");
-        configuration.setHost("clink2-openapi-dev.clink.cn");
+        configuration.setPort(443);
+        configuration.setHost("api-bj-test0.clink.cn");
         client = new Client(configuration);
     }
 
@@ -46,7 +47,7 @@ public class ChatChannelAccessTest {
         CreateChannelAccessRequest request = new CreateChannelAccessRequest();
         request.setContactType(2);
         request.setName("官网");
-        request.setIvrId(7);
+        request.setIvrId(17961);
         CreateChannelAccessResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response));
     }
@@ -55,7 +56,7 @@ public class ChatChannelAccessTest {
     public void testGetChannelAccess() throws Exception {
         GetChannelAccessRequest request = new GetChannelAccessRequest();
         request.setContactType(2);
-        request.setAccessId("acc");
+        request.setAccessId("f9dfca77-888f-41ef-9c4d-028b7b492798");
         GetChannelAccessResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response));
     }
@@ -64,11 +65,9 @@ public class ChatChannelAccessTest {
     public void testUpdateChannelAccessQueue() throws Exception {
         UpdateChannelAccessRequest request = new UpdateChannelAccessRequest();
         request.setContactType(2);
-        request.setAccessId("acc");
-        request.setBlock("queue");
-        Map<String, Object> setting = new HashMap<String, Object>();
-        setting.put("customize", 1);
-        request.setSetting(setting);
+        request.setAccessId("0c1c46bc-0854-44a5-85c6-38ba9db0c3f0");
+        request.setName("官方openapi");
+        request.setIvrId(17965);
         UpdateChannelAccessResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response));
     }
@@ -76,9 +75,9 @@ public class ChatChannelAccessTest {
     @Test
     public void testUpdateChatWebWindow() throws Exception {
         UpdateChatWebWindowRequest request = new UpdateChatWebWindowRequest();
-        request.setAccessId("acc");
+        request.setAccessId("0c1c46bc-0854-44a5-85c6-38ba9db0c3f0");
         ChatWindowsSetting windowSetting = new ChatWindowsSetting();
-        windowSetting.setTitle("在线咨询");
+        windowSetting.setTitle("在线咨询openapi");
         request.setWindowSetting(windowSetting);
         UpdateChatWebWindowResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response));
@@ -87,7 +86,7 @@ public class ChatChannelAccessTest {
     @Test
     public void testPreviewChatWeb() throws Exception {
         PreviewChatWebRequest request = new PreviewChatWebRequest();
-        request.setAccessId("acc");
+        request.setAccessId("0c1c46bc-0854-44a5-85c6-38ba9db0c3f0");
         PreviewChatWebResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response));
     }
@@ -96,7 +95,7 @@ public class ChatChannelAccessTest {
     public void testDeleteChannelAccess() throws Exception {
         DeleteChannelAccessRequest request = new DeleteChannelAccessRequest();
         request.setContactType(2);
-        request.setAccessId("acc");
+        request.setAccessId("0c1c46bc-0854-44a5-85c6-38ba9db0c3f0");
         DeleteChannelAccessResponse response = client.getResponseModel(request);
         System.out.println(mapper.writeValueAsString(response));
     }

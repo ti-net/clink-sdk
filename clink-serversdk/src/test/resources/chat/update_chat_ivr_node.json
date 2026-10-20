@@ -1,0 +1,705 @@
+{
+  "ivrId": "17961",
+  "endpoint": "zy~7tYMO",
+  "name": "重复进线消息提示",
+  "type": 10003,
+  "property": {
+    "type": 1,
+    "content": "重复进线的消息",
+    "imgUrl": "1791870541305.png",
+    "fontSize": "20"
+  },
+  "ivrNodeId": 126748,
+  "flow": [
+    {
+      "type": "ivr.Start",
+      "ports": {
+        "groups": {
+          "out": {
+            "position": "right",
+            "attrs": {
+              "circle": {
+                "magnet": true,
+                "stroke": "none",
+                "fill": "#30D69A",
+                "r": 5
+              }
+            }
+          }
+        },
+        "items": [
+          {
+            "group": "out",
+            "id": "start"
+          }
+        ]
+      },
+      "position": {
+        "x": 30,
+        "y": 30
+      },
+      "size": {
+        "width": 82,
+        "height": 48.4
+      },
+      "angle": 0,
+      "id": "1",
+      "title": "开始",
+      "attrs": {
+        "text": {
+          "text": "开始"
+        }
+      }
+    },
+    {
+      "type": "ivr.Fork",
+      "optionHeight": 20,
+      "titleHeight": 45,
+      "minWidth": 135,
+      "ports": {
+        "groups": {
+          "in": {
+            "position": {
+              "name": "left",
+              "args": {
+                "y": 30,
+                "deep": true
+              }
+            },
+            "attrs": {
+              "circle": {
+                "magnet": true,
+                "stroke": "none",
+                "fill": "#FF4D4F",
+                "r": 5
+              }
+            }
+          },
+          "out": {
+            "position": "right",
+            "attrs": {
+              "circle": {
+                "magnet": true,
+                "stroke": "none",
+                "fill": "#30D69A",
+                "r": 5
+              }
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "in",
+            "group": "in",
+            "attrs": {
+              "circle": {
+                "fill": "#FF4D4F"
+              }
+            }
+          },
+          {
+            "group": "out",
+            "id": "queueEmptyNext",
+            "args": {
+              "y": 57.5
+            }
+          },
+          {
+            "group": "out",
+            "id": "queueFullNext",
+            "args": {
+              "y": 82.5
+            }
+          },
+          {
+            "group": "out",
+            "id": "queuingNext",
+            "args": {
+              "y": 107.5
+            }
+          },
+          {
+            "group": "out",
+            "id": "queueTimeoutNext",
+            "args": {
+              "y": 132.5
+            }
+          }
+        ]
+      },
+      "position": {
+        "x": 960,
+        "y": 30
+      },
+      "size": {
+        "width": 135,
+        "height": 145
+      },
+      "angle": 0,
+      "key": "queue",
+      "title": "队列1",
+      "options": [
+        {
+          "id": "queueEmptyNext",
+          "text": "无可用座席"
+        },
+        {
+          "id": "queueFullNext",
+          "text": "队列溢出"
+        },
+        {
+          "id": "queuingNext",
+          "text": "访客取消排队"
+        },
+        {
+          "id": "queueTimeoutNext",
+          "text": "队列超时"
+        }
+      ],
+      "id": "UiPerJwA",
+      "z": 2,
+      "attrs": {
+        "image": {
+          "xlink:href": "https://livechat-bj-test0.clink.cn/assets/images/ivr/icon_queue.svg"
+        },
+        ".options": {
+          "refY": 45
+        },
+        ".title-text": {
+          "text": "队列1"
+        },
+        ".option-queueEmptyNext": {
+          "transform": "translate(0, 0)",
+          "dynamic": true
+        },
+        ".option-queueEmptyNext .option-rect": {
+          "height": 25,
+          "dynamic": true
+        },
+        ".option-queueEmptyNext .option-text": {
+          "text": "无可用座席",
+          "dynamic": true,
+          "refY": 12.5
+        },
+        ".option-queueFullNext": {
+          "transform": "translate(0, 25)",
+          "dynamic": true
+        },
+        ".option-queueFullNext .option-rect": {
+          "height": 25,
+          "dynamic": true
+        },
+        ".option-queueFullNext .option-text": {
+          "text": "队列溢出",
+          "dynamic": true,
+          "refY": 12.5
+        },
+        ".option-queuingNext": {
+          "transform": "translate(0, 50)",
+          "dynamic": true
+        },
+        ".option-queuingNext .option-rect": {
+          "height": 25,
+          "dynamic": true
+        },
+        ".option-queuingNext .option-text": {
+          "text": "访客取消排队",
+          "dynamic": true,
+          "refY": 12.5
+        },
+        ".option-queueTimeoutNext": {
+          "transform": "translate(0, 75)",
+          "dynamic": true
+        },
+        ".option-queueTimeoutNext .option-rect": {
+          "height": 25,
+          "dynamic": true
+        },
+        ".option-queueTimeoutNext .option-text": {
+          "text": "队列超时",
+          "dynamic": true,
+          "refY": 12.5
+        }
+      }
+    },
+    {
+      "type": "ivr.Fork",
+      "optionHeight": 20,
+      "titleHeight": 45,
+      "minWidth": 135,
+      "ports": {
+        "groups": {
+          "in": {
+            "position": {
+              "name": "left",
+              "args": {
+                "y": 30,
+                "deep": true
+              }
+            },
+            "attrs": {
+              "circle": {
+                "magnet": true,
+                "stroke": "none",
+                "fill": "#FF4D4F",
+                "r": 5
+              }
+            }
+          },
+          "out": {
+            "position": "right",
+            "attrs": {
+              "circle": {
+                "magnet": true,
+                "stroke": "none",
+                "fill": "#30D69A",
+                "r": 5
+              }
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "in",
+            "group": "in"
+          },
+          {
+            "group": "out",
+            "id": "switchOtherNext",
+            "args": {
+              "y": 157.5
+            }
+          },
+          {
+            "group": "out",
+            "id": "chat-value-newVisitor",
+            "args": {
+              "y": 57.5
+            }
+          },
+          {
+            "group": "out",
+            "id": "chat-value-oldVisitor",
+            "args": {
+              "y": 82.5
+            }
+          },
+          {
+            "group": "out",
+            "id": "chat-value-customer",
+            "args": {
+              "y": 107.5
+            }
+          },
+          {
+            "group": "out",
+            "id": "chat-value-repeatVisit",
+            "args": {
+              "y": 132.5
+            }
+          }
+        ]
+      },
+      "position": {
+        "x": 280,
+        "y": 20
+      },
+      "size": {
+        "width": 135,
+        "height": 170
+      },
+      "angle": 0,
+      "key": "variable",
+      "title": "交互节点变量判断",
+      "id": "Rz41GwZ7",
+      "options": [
+        {
+          "id": "chat-value-newVisitor",
+          "text": "新访客"
+        },
+        {
+          "id": "chat-value-oldVisitor",
+          "text": "咨询过"
+        },
+        {
+          "id": "chat-value-customer",
+          "text": "有客户资料"
+        },
+        {
+          "id": "chat-value-repeatVisit",
+          "text": "重复进线"
+        },
+        {
+          "id": "switchOtherNext",
+          "text": "其他"
+        }
+      ],
+      "z": 17,
+      "attrs": {
+        "image": {
+          "xlink:href": "https://livechat-bj-test0.clink.cn/assets/images/ivr/icon_variable.svg"
+        },
+        ".options": {
+          "refY": 45
+        },
+        ".title-text": {
+          "text": "交互节点变量判断"
+        },
+        ".option-chat。value。newVisitor": {
+          "transform": "translate(0, 0)",
+          "dynamic": true
+        },
+        ".option-chat。value。newVisitor .option-rect": {
+          "height": 25,
+          "dynamic": true
+        },
+        ".option-chat。value。newVisitor .option-text": {
+          "text": "新访客",
+          "dynamic": true,
+          "refY": 12.5
+        },
+        ".option-chat。value。oldVisitor": {
+          "transform": "translate(0, 25)",
+          "dynamic": true
+        },
+        ".option-chat。value。oldVisitor .option-rect": {
+          "height": 25,
+          "dynamic": true
+        },
+        ".option-chat。value。oldVisitor .option-text": {
+          "text": "咨询过",
+          "dynamic": true,
+          "refY": 12.5
+        },
+        ".option-chat。value。customer": {
+          "transform": "translate(0, 50)",
+          "dynamic": true
+        },
+        ".option-chat。value。customer .option-rect": {
+          "height": 25,
+          "dynamic": true
+        },
+        ".option-chat。value。customer .option-text": {
+          "text": "有客户资料",
+          "dynamic": true,
+          "refY": 12.5
+        },
+        ".option-chat。value。repeatVisit": {
+          "transform": "translate(0, 75)",
+          "dynamic": true
+        },
+        ".option-chat。value。repeatVisit .option-rect": {
+          "height": 25,
+          "dynamic": true
+        },
+        ".option-chat。value。repeatVisit .option-text": {
+          "text": "重复进线",
+          "dynamic": true,
+          "refY": 12.5
+        },
+        ".option-switchOtherNext": {
+          "transform": "translate(0, 100)",
+          "dynamic": true
+        },
+        ".option-switchOtherNext .option-rect": {
+          "height": 25,
+          "dynamic": true
+        },
+        ".option-switchOtherNext .option-text": {
+          "text": "其他",
+          "dynamic": true,
+          "refY": 12.5
+        }
+      }
+    },
+    {
+      "type": "link",
+      "source": {
+        "id": "1",
+        "magnet": "circle",
+        "port": "start"
+      },
+      "target": {
+        "id": "Rz41GwZ7",
+        "magnet": "circle",
+        "port": "in"
+      },
+      "id": "wdj8nBzI",
+      "router": {
+        "name": "manhattan"
+      },
+      "connector": {
+        "name": "rounded"
+      },
+      "z": 18,
+      "attrs": {
+        ".marker-target": {
+          "d": "M 10 0 L 0 5 L 10 10 z",
+          "fill": "#4385ff",
+          "stroke": "#4385ff"
+        },
+        ".connection": {
+          "stroke": "#4385ff",
+          "strokeWidth": 2
+        }
+      }
+    },
+    {
+      "type": "link",
+      "source": {
+        "id": "Rz41GwZ7",
+        "magnet": "circle",
+        "port": "chat-value-newVisitor"
+      },
+      "target": {
+        "id": "UiPerJwA",
+        "magnet": "circle",
+        "port": "in"
+      },
+      "id": "7spJzfGW",
+      "router": {
+        "name": "manhattan"
+      },
+      "connector": {
+        "name": "rounded"
+      },
+      "z": 19,
+      "attrs": {
+        ".marker-target": {
+          "d": "M 10 0 L 0 5 L 10 10 z",
+          "fill": "#4385ff",
+          "stroke": "#4385ff"
+        },
+        ".connection": {
+          "stroke": "#4385ff",
+          "strokeWidth": 2
+        }
+      }
+    },
+    {
+      "type": "link",
+      "source": {
+        "id": "Rz41GwZ7",
+        "magnet": "circle",
+        "port": "chat-value-oldVisitor"
+      },
+      "target": {
+        "id": "UiPerJwA",
+        "magnet": "circle",
+        "port": "in"
+      },
+      "id": "qmhYKHOQ",
+      "router": {
+        "name": "manhattan"
+      },
+      "connector": {
+        "name": "rounded"
+      },
+      "z": 20,
+      "attrs": {
+        ".marker-target": {
+          "d": "M 10 0 L 0 5 L 10 10 z",
+          "fill": "#4385ff",
+          "stroke": "#4385ff"
+        },
+        ".connection": {
+          "stroke": "#4385ff",
+          "strokeWidth": 2
+        }
+      }
+    },
+    {
+      "type": "link",
+      "source": {
+        "id": "Rz41GwZ7",
+        "magnet": "circle",
+        "port": "chat-value-customer"
+      },
+      "target": {
+        "id": "UiPerJwA",
+        "magnet": "circle",
+        "port": "in"
+      },
+      "id": "Ju~vUhiu",
+      "router": {
+        "name": "manhattan"
+      },
+      "connector": {
+        "name": "rounded"
+      },
+      "z": 21,
+      "attrs": {
+        ".marker-target": {
+          "d": "M 10 0 L 0 5 L 10 10 z",
+          "fill": "#4385ff",
+          "stroke": "#4385ff"
+        },
+        ".connection": {
+          "stroke": "#4385ff",
+          "strokeWidth": 2
+        }
+      }
+    },
+    {
+      "type": "link",
+      "source": {
+        "id": "Rz41GwZ7",
+        "magnet": "circle",
+        "port": "switchOtherNext"
+      },
+      "target": {
+        "id": "UiPerJwA",
+        "magnet": "circle",
+        "port": "in"
+      },
+      "id": "l1SvOsbM",
+      "router": {
+        "name": "manhattan"
+      },
+      "connector": {
+        "name": "rounded"
+      },
+      "z": 22,
+      "attrs": {
+        ".marker-target": {
+          "d": "M 10 0 L 0 5 L 10 10 z",
+          "fill": "#4385ff",
+          "stroke": "#4385ff"
+        },
+        ".connection": {
+          "stroke": "#4385ff",
+          "strokeWidth": 2
+        }
+      }
+    },
+    {
+      "type": "ivr.Direct",
+      "ports": {
+        "groups": {
+          "in": {
+            "position": {
+              "name": "left",
+              "args": {
+                "y": 30
+              }
+            },
+            "attrs": {
+              "circle": {
+                "magnet": true,
+                "stroke": "none",
+                "fill": "#FF4D4F",
+                "r": 5
+              }
+            }
+          },
+          "out": {
+            "position": "right",
+            "attrs": {
+              "circle": {
+                "magnet": true,
+                "stroke": "none",
+                "fill": "#30D69A",
+                "r": 5
+              }
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "in",
+            "group": "in"
+          },
+          {
+            "id": "dialFailNext",
+            "group": "out"
+          }
+        ]
+      },
+      "position": {
+        "x": 550,
+        "y": 220
+      },
+      "size": {
+        "width": 146,
+        "height": 54.4
+      },
+      "angle": 0,
+      "key": "guide",
+      "title": "重复进线消息提示",
+      "id": "zy~7tYMO",
+      "z": 23,
+      "attrs": {
+        "image": {
+          "xlink:href": "https://livechat-bj-test0.clink.cn/assets/images/ivr/icon_guide.svg"
+        },
+        "text": {
+          "text": "重复进线消息提示"
+        }
+      }
+    },
+    {
+      "type": "link",
+      "source": {
+        "id": "Rz41GwZ7",
+        "magnet": "circle",
+        "port": "chat-value-repeatVisit"
+      },
+      "target": {
+        "id": "zy~7tYMO",
+        "magnet": "circle",
+        "port": "in"
+      },
+      "id": "TxnQitRK",
+      "router": {
+        "name": "manhattan"
+      },
+      "connector": {
+        "name": "rounded"
+      },
+      "z": 24,
+      "attrs": {
+        ".marker-target": {
+          "d": "M 10 0 L 0 5 L 10 10 z",
+          "fill": "#4385ff",
+          "stroke": "#4385ff"
+        },
+        ".connection": {
+          "stroke": "#4385ff",
+          "strokeWidth": 2
+        }
+      }
+    },
+    {
+      "type": "link",
+      "source": {
+        "id": "zy~7tYMO",
+        "magnet": "circle",
+        "port": "dialFailNext"
+      },
+      "target": {
+        "id": "UiPerJwA",
+        "magnet": "circle",
+        "port": "in"
+      },
+      "id": "MT6723nn",
+      "router": {
+        "name": "manhattan"
+      },
+      "connector": {
+        "name": "rounded"
+      },
+      "z": 25,
+      "attrs": {
+        ".marker-target": {
+          "d": "M 10 0 L 0 5 L 10 10 z",
+          "fill": "#4385ff",
+          "stroke": "#4385ff"
+        },
+        ".connection": {
+          "stroke": "#4385ff",
+          "strokeWidth": 2
+        }
+      }
+    }
+  ]
+}
