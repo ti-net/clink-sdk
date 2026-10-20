@@ -87,6 +87,14 @@ public enum PathEnum {
     ListChatQueue("livechat/v2/list_chat_queue"),
     ListChatBot("livechat/v2/list_chat_bot"),
 
+    // 数据推送
+    ListChatHttpPush("livechat/v2/list_chat_http_push"),
+    GetChatHttpPush("livechat/v2/get_chat_http_push"),
+    CreateChatHttpPush("livechat/v2/create_chat_http_push"),
+    UpdateChatHttpPush("livechat/v2/update_chat_http_push"),
+    UpdateChatHttpPushStatus("livechat/v2/update_chat_http_push_status"),
+    DeleteChatHttpPush("livechat/v2/delete_chat_http_push"),
+
     //在线客服 - 座席工作考勤报表
     StatChatClientAttendance("livechat/stat_chat_client_attendance"),
 
